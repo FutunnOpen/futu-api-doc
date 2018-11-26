@@ -29,6 +29,8 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _2202:  trade_protocol.html#trd-placeorder-proto-2202
   
   .. _Trd_ModifyOrder.proto:  trade_protocol.html#trd-modifyorder-proto-2205
+  .. _2205:  trade_protocol.html#trd-modifyorder-proto-2205
+  
   .. _Trd_UpdateOrder.proto:  trade_protocol.html#trd-updateorder-proto-2208
   
   .. _Trd_GetOrderFillList.proto:  trade_protocol.html#trd-getorderfilllist-proto-2211
@@ -171,6 +173,7 @@ API用户等级
  =========================        ======================================        =========================        =========================        =========================
  2005_                            30秒内解锁交易请求次数                        10                               10                               10
  2202_                            30秒内下单请求次数(1秒内不可超过5次)          15                               15                               15
+ 2205_                            30秒内改单请求次数(1秒内不可超过5次)          20                               20                               20
  2221_                            30秒内历史订单请求次数                        10                               10                               10
  2222_                            30秒内历史成交请求次数                        10                               10                               10
  3001_                            订阅额度上限                                  100                              300                              1000
