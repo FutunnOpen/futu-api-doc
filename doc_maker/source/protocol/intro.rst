@@ -1,6 +1,6 @@
-协议接口指南
+协议接口
 ====================
-`futu-api <https://github.com/FutunnOpen/py-futu-api/>`_ 开源项目是基于FutuOpenD开放协议实现的Python交易和行情接口，如果对接口的执行效率和灵活性有更高要求，您也可以选择用其它语言直接对接原始协议。
+FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后，第三方应用即可通过约定的TCP协议与之通讯， 达到调用指定行情和交易接口的目的。 
 
 --------------
 
@@ -54,7 +54,7 @@
   .. _Qot_GetHistoryKL.proto:  quote_protocol.html#qot-gethistorykl-proto-3100k
   .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-k
   .. _Qot_GetRehab.proto:  quote_protocol.html#qot-getrehab-proto-3102
-  .. _RequestHistoryKL.proto:  quote_protocol.html#qot-requesthistorykl-proto-3103
+  .. _Qot_RequestHistoryKL.proto:  quote_protocol.html#qot-requesthistorykl-proto-3103k
   
   .. _Qot_GetTradeDate.proto:  quote_protocol.html#qot-gettradedate-proto-3200
   .. _Qot_GetStaticInfo.proto:  quote_protocol.html#qot-getstaticinfo-proto-3202
@@ -73,15 +73,6 @@
 + 支持protobuf/json两种协议格式， 灵活接入。
 + 协议设计支持加密、数据校验及回放功击保护，安全可靠。
 
-
-变更记录
-----------
-
- ==============   ===========   ===================================================================
- 时间             修改文件      说明
- ==============   ===========   ===================================================================
- 2018/6/20        无            初稿
- ==============   ===========   ===================================================================
  
 ---------------------------------------------------
  
@@ -91,7 +82,7 @@
  ==============   ==================================     ==================================================================
  协议ID           Protobuf文件                           说明
  ==============   ==================================     ==================================================================
- 1001        	  InitConnect.proto_                      初始化连接
+ 1001        	    InitConnect.proto_                      初始化连接
  1002             GetGlobalState.proto_                   获取全局状态 
  1003             Notify.proto_                           系统通知推送
  1004             KeepAlive.proto_                        保活心跳
@@ -126,10 +117,10 @@
  3015             Qot_UpdateBroker.proto_                 推送经纪队列
  3016             Qot_GetOrderDetail.proto_               获取委托明细
  3017             Qot_UpdateOrderDetail.proto_            推送委托明细
- 3100             Qot_GetHistoryKL.proto_                 获取单只股票一段历史K线
- 3101             Qot_GetHistoryKLPoints.proto_           获取多只股票多点历史K线
- 3102             Qot_GetRehab.proto_                     获取复权信息
- 3103             RequestHistoryKL
+ 3100             Qot_GetHistoryKL.proto_                 从本地下载历史数据获取单只股票一段历史K线
+ 3101             Qot_GetHistoryKLPoints.proto_           从本地下载历史数据获取多只股票多点历史K线
+ 3102             Qot_GetRehab.proto_                     从本地下载历史数据获取复权信息
+ 3103             Qot_RequestHistoryKL.proto_                   在线获取单只股票一段历史K线
  3200             Qot_GetTradeDate.proto_                 获取市场交易日
  3202             Qot_GetStaticInfo.proto_                获取股票静态信息
  3203             Qot_GetSecuritySnapshot.proto_          获取股票快照

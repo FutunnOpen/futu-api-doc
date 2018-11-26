@@ -690,8 +690,8 @@
 	
 -------------------------------------
 
-`Qot_GetHistoryKL.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto>`_ - 3100获取单只股票一段历史K线
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+`Qot_GetHistoryKL.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto>`_ - 3100从本地下载历史数据获取单只股票一段历史K线
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
 
@@ -734,7 +734,8 @@
 	}
 
 .. note::
-	
+
+	* 历史K线数据下载到本地需单独申请
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
 	* K线类型参考 `KLType <base_define.html#kltype-k>`_
 	* 股票结构参考 `Security <base_define.html#security>`_
@@ -743,8 +744,8 @@
 	
 -------------------------------------
 
-`Qot_GetHistoryKLPoints.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto>`_  - 3101获取多只股票多点历史K线
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+`Qot_GetHistoryKLPoints.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto>`_  - 3101从本地下载历史数据获取多只股票多点历史K线
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 .. code-block:: protobuf
@@ -817,7 +818,8 @@
 	}
 
 .. note::
-	
+
+	* 历史K线数据下载到本地需单独申请
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
 	* K线类型参考 `KLType <base_define.html#kltype-k>`_
 	* 股票结构参考 `Security <base_define.html#security>`_
@@ -827,8 +829,8 @@
 	
 -------------------------------------
 
-`Qot_GetRehab.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto>`_ - 3102获取复权信息
----------------------------------------------------------------------------------------------------------------------------------------
+`Qot_GetRehab.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto>`_ - 3102从本地下载历史数据获取复权信息
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
 
@@ -908,12 +910,13 @@
 	}
 
 .. note::
-	
+
+	* 历史K线数据下载到本地需单独申请
 	* 股票结构参考 `Security <base_define.html#security>`_
 
 -------------------------------------
 
-`Qot_RequestHistoryKL.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKL.proto>`_ - 3103获取单只股票一段历史K线
+`Qot_RequestHistoryKL.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKL.proto>`_ - 3103在线获取单只股票一段历史K线
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
@@ -1249,7 +1252,7 @@
 -------------------------------------
 
 `Qot_GetReference.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetReference.proto>`_ - 3206 获取正股相关股票
----------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
 

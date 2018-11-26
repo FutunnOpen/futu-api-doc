@@ -15,18 +15,7 @@ futuapi documentation
 	:hidden:
 
 	intro/intro
-	setup/setup
 	setup/FutuOpenDGuide
-	setup/Hist_KLine_Download_Intro
-	
-.. toctree::
-	:caption: API
-	:maxdepth: 4
-	:hidden:
-	
-	api/Base_API
-	api/Quote_API
-	api/Trade_API
 
 .. toctree::
 	:caption: PROTOCOL
@@ -37,7 +26,15 @@ futuapi documentation
 	protocol/base_define
 	protocol/quote_protocol
 	protocol/trade_protocol
+		
+.. toctree::
+	:caption: Python API
+	:maxdepth: 4
+	:hidden:
 	
+	api/Base_API
+	api/Quote_API
+	api/Trade_API
 	
 .. toctree::
 	:caption: Q&A

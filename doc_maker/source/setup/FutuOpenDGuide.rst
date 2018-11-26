@@ -2,18 +2,31 @@
 FutuOpenD使用说明
 =================
 
+下载安装
+----------
+FutuOpenD目前直接提供程序压缩包，解压后即可运行。 压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml）,程序打包数据（Appdata.dat）。
+
+方式1：`富途官网下载 <https://www.futunn.com/download/index/>`_ 
+
+.. image:: ../_static/futunn.com.png
+
+
+方式2：QQ群文件下载
+
+.. image:: ../_static/download-QQ.png
+
+--------------
+
+
 基本介绍
 ----------
 
   FutuOpenD运行于客户本机或服务器，接收API协议，中转协议到富途后台并将处理后的数据返回给协议请求连接。
-
-  FutuOpenD程序暂时不提供安装程序，直接提供程序压缩包。压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml），默认FutuHisData配置文件（FutuHistData.xml）以及程序打包数据（Appdata.dat）。
   
   FutuOpenD配置文件用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动。
   
-  FutuHisData用于配置历史数据位置，若不存在则历史数据接口无法获取到数据。
-  
   程序打包数据是程序需要用到的一些数据量较大的信息，打包数据减少启动下载该数据用时，若不存在则程序无法正常启动。
+  
 
 免责声明
 ---------
