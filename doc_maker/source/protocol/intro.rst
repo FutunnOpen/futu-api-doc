@@ -13,7 +13,10 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _KeepAlive:  base_define.html#keepalive-proto-1004
   
   .. _Trd_GetAccList.proto:  trade_protocol.html#trd-getacclist-proto-2001
+  
   .. _Trd_UnlockTrade.proto:  trade_protocol.html#trd-unlocktrade-proto-2005
+  .. _2005:  trade_protocol.html#trd-unlocktrade-proto-2005
+  
   .. _Trd_SubAccPush.proto:  trade_protocol.html#trd-subaccpush-proto-2008
   .. _Trd_GetFunds.proto:  trade_protocol.html#trd-getfunds-proto-2101
   .. _Trd_GetPositionList.proto:  trade_protocol.html#trd-getpositionlist-proto-2102
@@ -21,7 +24,10 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _Trd_GetMaxTrdQtys.proto:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   
   .. _Trd_GetOrderList.proto:  trade_protocol.html#trd-getorderlist-proto-2201
+  
   .. _Trd_PlaceOrder.proto:  trade_protocol.html#trd-placeorder-proto-2202
+  .. _2202:  trade_protocol.html#trd-placeorder-proto-2202
+  
   .. _Trd_ModifyOrder.proto:  trade_protocol.html#trd-modifyorder-proto-2205
   .. _Trd_UpdateOrder.proto:  trade_protocol.html#trd-updateorder-proto-2208
   
@@ -29,9 +35,13 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _Trd_UpdateOrderFill.proto:  trade_protocol.html#trd-updateorderfill-proto-2218
   
   .. _Trd_GetHistoryOrderList.proto:  trade_protocol.html#trd-gethistoryorderlist-proto-2221
+  .. _2221:  trade_protocol.html#trd-gethistoryorderlist-proto-2221
+  
   .. _Trd_GetHistoryOrderFillList.proto:  trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
+  .. _2222:  trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
   
   .. _Qot_Sub.proto:  quote_protocol.html#qot-sub-proto-3001
+  .. _3001:  quote_protocol.html#qot-sub-proto-3001
   .. _Qot_RegQotPush.proto:  quote_protocol.html#qot-regqotpush-proto-3002
   .. _Qot_GetSubInfo.proto:  quote_protocol.html#qot-getsubinfo-proto-3003
   .. _Qot_GetBasicQot.proto:  quote_protocol.html#qot-getbasicqot-proto-3004
@@ -54,11 +64,16 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _Qot_GetHistoryKL.proto:  quote_protocol.html#qot-gethistorykl-proto-3100k
   .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-k
   .. _Qot_GetRehab.proto:  quote_protocol.html#qot-getrehab-proto-3102
+  
   .. _Qot_RequestHistoryKL.proto:  quote_protocol.html#qot-requesthistorykl-proto-3103k
+  .. _3103:  quote_protocol.html#qot-requesthistorykl-proto-3103k
   
   .. _Qot_GetTradeDate.proto:  quote_protocol.html#qot-gettradedate-proto-3200
   .. _Qot_GetStaticInfo.proto:  quote_protocol.html#qot-getstaticinfo-proto-3202
+  
   .. _Qot_GetSecuritySnapshot.proto:  quote_protocol.html#qot-getsecuritysnapshot-proto-3203
+  .. _3203:  quote_protocol.html#qot-getsecuritysnapshot-proto-3203
+  
   .. _Qot_GetPlateSet.proto:  quote_protocol.html#qot-getplateset-proto-3204
   .. _Qot_GetPlateSecurity.proto:  quote_protocol.html#qot-getplatesecurity-proto-3205
   .. _Qot_GetReference.proto:  quote_protocol.html#qot-getreference-proto-3206
@@ -120,7 +135,7 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
  3100             Qot_GetHistoryKL.proto_                 从本地下载历史数据获取单只股票一段历史K线
  3101             Qot_GetHistoryKLPoints.proto_           从本地下载历史数据获取多只股票多点历史K线
  3102             Qot_GetRehab.proto_                     从本地下载历史数据获取复权信息
- 3103             Qot_RequestHistoryKL.proto_                   在线获取单只股票一段历史K线
+ 3103             Qot_RequestHistoryKL.proto_             在线获取单只股票一段历史K线
  3200             Qot_GetTradeDate.proto_                 获取市场交易日
  3202             Qot_GetStaticInfo.proto_                获取股票静态信息
  3203             Qot_GetSecuritySnapshot.proto_          获取股票快照
@@ -135,6 +150,37 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
 .. note::
 
     * 所有 Protobuf 文件可从 `futu-api <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb>`_ Python开源项目下获取
+
+
+
+---------------------------------------------------
+ 
+协议请求限制
+----------
+
+API用户等级
+~~~~~~~~~~~~~~~~~~~~~~
+ 
+ 部分协议的限制与API用户等级相关，划分如下：用户净资产大于10000港币为二级用户，小于10000港币为三级用户，一级用户需要与富途联系获取。
+ 
+具体限制
+~~~~~~~~~~~
+
+ =========================        ======================================        =========================        =========================        =========================
+ 协议ID                           限制内容                                      三级用户                         二级用户                         一级用户
+ =========================        ======================================        =========================        =========================        =========================
+ 2005_                            30秒内解锁交易请求次数                        10                               10                               10
+ 2202_                            30秒内下单请求次数                            15                               15                               15
+ 2221_                            30秒内历史订单请求次数                        10                               10                               10
+ 2222_                            30秒内历史成交请求次数                        10                               10                               10
+ 3001_                            订阅额度上限                                  100                              300                              1000
+ 3103_                            30天在线获取历史K线最多可请求股票数           100                              300                              1000                     
+ 3203_                            30秒内快照请求次数                            10                               20                               30 
+ 3203_                            快照每次请求股票数                            200                              300                              400
+ =========================        ======================================        =========================        =========================        =========================
+
+
+
 
 ---------------------------------------------------
 
