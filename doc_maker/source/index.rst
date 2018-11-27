@@ -35,6 +35,15 @@ futuapi documentation
 	api/Base_API
 	api/Quote_API
 	api/Trade_API
+
+.. toctree::
+	:caption: C++ API
+	:maxdepth: 4
+	:hidden:
+	
+	cpp_api/intro.rst
+	cpp_api/api_base.rst
+	cpp_api/api_sample.rst
 	
 .. toctree::
 	:caption: Q&A
@@ -42,3 +51,4 @@ futuapi documentation
 	:hidden:
 
 	q&a/Q&A
+
