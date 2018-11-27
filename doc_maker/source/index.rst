@@ -31,7 +31,9 @@ futuapi documentation
 	:caption: Python API
 	:maxdepth: 4
 	:hidden:
-	
+
+	api/intro
+	api/setup
 	api/Base_API
 	api/Quote_API
 	api/Trade_API

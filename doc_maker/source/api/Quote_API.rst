@@ -1,3 +1,9 @@
+.. role:: strike
+    :class: strike
+.. role:: red-strengthen
+    :class: red-strengthen
+
+
 ========
 行情API
 ========
@@ -62,7 +68,7 @@
 接口类对象
 ==========
 
-OpenQuoteContext - 行情上下文对象类
+OpenQuoteContext - 行情上下文
 -------------------------------------------
 
 
@@ -192,9 +198,9 @@ get_stock_basicinfo
     print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.WARRANT))
     print(quote_ctx.get_stock_basicinfo(Market.US, SecurityType.STOCK, 'US.AAPL'))
     quote_ctx.close()
-    
-    
-get_multiple_history_kline
+
+
+:strike:`get_multiple_history_kline`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_multiple_history_kline(self, codelist, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ)
@@ -915,9 +921,9 @@ get_order_book
     quote_ctx.close()
 
 
-        
-get_multi_points_history_kline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:strike:`get_multi_points_history_kline`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_multi_points_history_kline(self, code_list, dates, fields, ktype=KLType.K_DAY, autype=AuType.QFQ, no_data_mode=KLNoDataMode.FORWARD)
 
@@ -1177,7 +1183,7 @@ get_option_chain
 ---------------------------------------------------------------------    
 
 
-SysNotifyHandlerBase - OpenD通知回调处理类
+SysNotifyHandlerBase - OpenD通知回调
 -------------------------------------------
 
 通知OpenD一些重要消息，类似连接断开等。
@@ -1224,7 +1230,7 @@ msg              	 str           消息描述
   
 ----------------------------
 
-StockQuoteHandlerBase - 实时报价回调处理类
+StockQuoteHandlerBase - 实时报价回调
 -------------------------------------------
 
 异步处理推送的订阅股票的报价。
@@ -1268,7 +1274,7 @@ on_recv_rsp
     
 ----------------------------
 
-OrderBookHandlerBase - 实时摆盘回调处理类
+OrderBookHandlerBase - 实时摆盘回调
 -------------------------------------------
 
 异步处理推送的实时摆盘。
@@ -1313,7 +1319,7 @@ on_recv_rsp
     
 ----------------------------
 
-CurKlineHandlerBase - 实时k线推送回调处理类
+CurKlineHandlerBase - 实时k线推送回调
 -------------------------------------------
 
 异步处理推送的k线数据。
@@ -1358,7 +1364,7 @@ on_recv_rsp
     
 ----------------------------
 
-TickerHandlerBase - 实时逐笔推送回调处理类
+TickerHandlerBase - 实时逐笔推送回调
 -------------------------------------------
 
 异步处理推送的逐笔数据。
@@ -1407,7 +1413,7 @@ on_recv_rsp
 
 ----------------------------
 
-RTDataHandlerBase - 实时分时推送回调处理类
+RTDataHandlerBase - 实时分时推送回调
 -------------------------------------------
 
 异步处理推送的分时数据。
@@ -1452,7 +1458,7 @@ on_recv_rsp
 
 ----------------------------
 
-BrokerHandlerBase - 实时经纪推送回调处理类
+BrokerHandlerBase - 实时经纪推送回调
 -------------------------------------------
 
 异步处理推送的经纪数据。
@@ -1497,7 +1503,7 @@ on_recv_rsp
 
 ----------------------------    
 
-OrderDetailHandlerBase - A股委托明细推送回调处理类
+OrderDetailHandlerBase - A股委托明细推送回调
 --------------------------------------------------
 
 异步处理推送的A股委托明细数据。
