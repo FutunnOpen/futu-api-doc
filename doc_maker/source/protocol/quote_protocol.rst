@@ -1,3 +1,8 @@
+.. role:: strike
+    :class: strike
+.. role:: red-strengthen
+    :class: red-strengthen
+
 行情协议
 ==========
 	这里对FutuOpenD开放的行情协议接口作出归档说明。
@@ -690,7 +695,7 @@
 	
 -------------------------------------
 
-`Qot_GetHistoryKL.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto>`_ - 3100从本地下载历史数据获取单只股票一段历史K线
+`Qot_GetHistoryKL.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto>`_ - :strike:`3100从本地下载历史数据获取单只股票一段历史K线`
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
@@ -735,7 +740,7 @@
 
 .. note::
 
-	* 历史K线数据下载到本地需单独申请
+	* :red-strengthen:`历史K线数据下载到本地需单独申请`
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
 	* K线类型参考 `KLType <base_define.html#kltype-k>`_
 	* 股票结构参考 `Security <base_define.html#security>`_
