@@ -1,7 +1,21 @@
-基础API
+基础通道
 ========
 
- .. _QotMarket: Base_API.html#_CPPv29QotMarket
+ .. _SetClientInfo: api_base.html#id3
+ .. _SetProtoFormatType: api_base.html#id4
+ .. _SetRSAPrivateKey: api_base.html#id5
+ .. _InitConnect: api_base.html#id6
+ .. _OnInitConnect: api_base.html#id7
+ .. _IsConnected: api_base.html#id8
+ .. _Close: api_base.html#id9
+ .. _Send: api_base.html#id10
+ .. _OnConnect: api_base.html#id11
+ .. _OnDisConnect: api_base.html#id12
+ .. _OnTimeTicker: api_base.html#id13
+ .. _OnReply: api_base.html#id14
+ .. _OnPush: api_base.html#id15
+
+ .. _FTAPI_Sample: api_sample.html#ftapi-sample
 
 ------------------------------------
 
@@ -10,20 +24,32 @@
 接口清单
 ------------------
 
- ==================      ==================================     ==================================================================
- 导出类                  接口                                   说明
- ==================      ==================================     ==================================================================
- FOAC_Basic(加链接)      SetClientInfo(加链接)                  初始化.... 
- ==================      ==================================     ==================================================================
- 
+ ====================      ==================================
+ 接口                       说明
+ ====================      ==================================
+ SetClientInfo_            设置api的client信息
+ SetProtoFormatType_       协议格式类型
+ SetRSAPrivateKey_         设置RSA私钥
+ InitConnect_              初始化连接
+ OnInitConnect_            初始化连接结果回调函数
+ IsConnected_              是否与OpenD连接成功
+ Close_                    执行关闭与OpenD的连接，异步关闭
+ Send_                     发送与OpenD的API协议
+ OnConnect_                连接结果回调
+ OnDisConnect_             发生断线回调
+ OnTimeTicker_             每秒定时回调
+ OnReply_                  收到(请求)应答协议
+ OnPush_                   收到推送协议
+ ====================      ==================================
 
+------------------
 
-FOAC_Basic - 基础通道
----------------------
+FTAPI_Client - 基础通道
+-----------------------------------
 
-..  cpp:class:: FTAPI_Client : public FOAC_ConnectSink
+..  cpp:class:: FTAPI_Client : public FTAPI_ConnectSink
 
-提供的通道，与OpenD建议通信
+提供的通道，与OpenD建立通信，可通过派生其进行调用，详情 FTAPI_Sample_
 
 ------------------------------------
 
@@ -37,14 +63,6 @@ SetClientInfo
   :param strClientID: const char*, client的标识
   :param nClientVer: i32_t, client的版本号
   :return: void
-
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.SetClientInfo("FOAC_Test", 100);
-   client.InitConnect("127.0.0.1", 11111);
 	
 --------------------------------------------
 
@@ -58,14 +76,6 @@ SetProtoFormatType
   :param nProtoFmtType: u8_t, 协议格式类型
   :return: void
 
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.SetProtoFormatType(0);
-   client.InitConnect("127.0.0.1", 11111);
-
 --------------------------------------------
 
 SetRSAPrivateKey
@@ -77,14 +87,6 @@ SetRSAPrivateKey
 
   :param strRSAPrivateKey:  const char*, RSA私钥
   :return: void
-
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.SetRSAPrivateKey("");
-   client.InitConnect("127.0.0.1", 11111);
 
 --------------------------------------------
 
@@ -99,13 +101,6 @@ InitConnect
   :param nPort:  u16_t, OpenD服务的端口号
   :return: bool 是否启动了执行，不代表连接结果，结果通过OnInitConnect回调
 
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
-
 --------------------------------------------
 
 OnInitConnect
@@ -119,20 +114,6 @@ OnInitConnect
   :param strDesc:  const char*，结果描述
   :return: void
 
-  :example:
-
-  .. code:: cpp
-   
-   class FTAPI_Sample : public FTAPI_Client
-   {
-	   void OnInitConnect(bool bRet, const char* strDesc)
-	   {
-		//通知初始化连接结果
-	   }
-   };
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
-
 --------------------------------------------
 
 IsConnected
@@ -140,17 +121,9 @@ IsConnected
 
 ..  cpp:function:: bool IsConnected()
 
-  是否与OpenD连接着
+  是否与OpenD连接成功
 
-  :return: bool 是否连接着
-
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
-   client.IsConnected();
+  :return: bool 是否连接成功
 
 --------------------------------------------
 
@@ -162,14 +135,6 @@ Close
   执行关闭与OpenD的连接，异步关闭
 
   :return: bool 是否启动了执行
-
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
-   client.Close();
 
 --------------------------------------------
 
@@ -186,18 +151,6 @@ Send
   :param nDataLen:  i32_t，协议数据长度
   :return: u32_t 0为失败，非0为包序列号
 
-  :example:
-
-  .. code:: cpp
-
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
-   GetGlobalState::C2S *pC2S = new GetGlobalState::C2S();
-   pC2S->set_userid(userID);
-   GetGlobalState::Request req;
-   req.set_allocated_c2s(pC2S);
-   Send(FTAPI_ProtoID_GetGlobalState, req);
-
 --------------------------------------------
 
 OnConnect
@@ -205,25 +158,11 @@ OnConnect
 
 ..  cpp:function:: virtual void OnConnect(u32_t nConnectID, i64_t nErrCode)
 
-  连接结果回调函数，在回调函数中响应处理
+  连接结果(成功或失败)回调，错误码为0代表连接成功，其他为失败
 
-  :param nConnectID:  u32_t， 连接标识
-  :param nErrCode:  i64_t，连接结果描述
+  :param nConnectID:  u32_t， 连接ID
+  :param nErrCode:  i64_t，错误码，可通过OMTcpGetErrDesc得到具体错误描述
   :return: void
-
-  :example:
-
-  .. code:: cpp
-
-   class FTAPI_Sample : public FTAPI_Client
-   {
-	   void OnConnect(u32_t nConnectID, i64_t nErrCode)
-	   {
-		//通知连接结果
-	   }
-   };
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
 
 --------------------------------------------
 
@@ -232,26 +171,12 @@ OnDisConnect
 
 ..  cpp:function:: virtual void OnDisConnect(u32_t nConnectID, i64_t nErrCode, OMTcpDisConnectType enDisConnType)
 
-  断开连接回调函数，在回调函数中响应处理
+  发生断线回调
 
-  :param nConnectID:  u32_t， 连接标识
-  :param nErrCode:  i64_t，连接结果描述
-  :param enDisConnType:  OMTcpDisConnectType，连接断开原因类型枚举
+  :param nConnectID:  u32_t， 连接ID
+  :param nErrCode:  i64_t，错误码，可通过OMTcpGetErrDesc得到具体错误描述
+  :param enDisConnType:  OMTcpDisConnectType，断线类型
   :return: void
-
-  :example:
-
-  .. code:: cpp
-
-   class FTAPI_Sample : public FTAPI_Client
-   {
-	   OnDisConnect(u32_t nConnectID, i64_t nErrCode, OMTcpDisConnectType enDisConnType)
-	   {
-		//通知断开连接结果
-	   }
-   };
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
 
 --------------------------------------------
 
@@ -260,24 +185,10 @@ OnTimeTicker
 
 ..  cpp:function:: virtual void OnTimeTicker(u32_t nConnectID)
 
-  计时器，在回调函数中响应处理
+  每秒定时回调，供上层使用者当秒级定时器使用，处理如超时判断等
 
-  :param nConnectID:  u32_t， 连接标识
+  :param nConnectID:  u32_t， 连接ID
   :return: void
-
-  :example:
-
-  .. code:: cpp
-
-   class FTAPI_Sample : public FTAPI_Client
-   {
-	   OnTimeTicker(u32_t nConnectID)
-	   {
-		//计时器
-	   }
-   };
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
 
 --------------------------------------------
 
@@ -286,28 +197,14 @@ OnReply
 
 ..  cpp:function:: virtual void OnReply(u32_t nConnectID, FTAPI_ReqReplyType enReqReplyType, const FTAPI_ProtoHeader& protoHeader, const i8_t* pProtoData, i32_t nDataLen)
 
-  回复请求的连接，在回调函数中响应处理
+  收到(请求)应答协议
 
-  :param nConnectID:  u32_t， 连接标识
-  :param enReqReplyType:  FTAPI_ReqReplyType，FTAPI请求应答类型枚举
-  :param protoHeader:  const FTAPI_ProtoHeader&，FTAPI协议包头结构定义
+  :param nConnectID:  u32_t， 连接ID
+  :param enReqReplyType:  FTAPI_ReqReplyType，应答类型
+  :param protoHeader:  const FTAPI_ProtoHeader&，协议头
   :param pProtoData:  const i8_t*， 协议数据起地址
   :param nDataLen:  i32_t，协议数据长度
   :return: void
-
-  :example:
-
-  .. code:: cpp
-
-   class FTAPI_Sample : public FTAPI_Client
-   {
-	   OnReply(u32_t nConnectID, FTAPI_ReqReplyType enReqReplyType, const FTAPI_ProtoHeader& protoHeader, const i8_t* pProtoData, i32_t nDataLen)
-	   {
-		//请求连接的回复
-	   }
-   };
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
 
 --------------------------------------------
 
@@ -316,33 +213,12 @@ OnPush
 
 ..  cpp:function:: virtual void OnPush(u32_t nConnectID, const FTAPI_ProtoHeader& protoHeader, const i8_t* pProtoData, i32_t nDataLen)
 
-  推送请求的连接数据，在回调函数中响应处理
+  收到推送协议
 
-  :param nConnectID:  u32_t， 连接标识
-  :param protoHeader:  const FTAPI_ProtoHeader&，FTAPI协议包头结构定义
+  :param nConnectID:  u32_t， 连接ID
+  :param protoHeader:  const FTAPI_ProtoHeader&，协议头
   :param pProtoData:  const i8_t*， 协议数据起地址
   :param nDataLen:  i32_t，协议数据长度
   :return: void
 
-  :example:
-
-  .. code:: cpp
-
-   class FTAPI_Sample : public FTAPI_Client
-   {
-	   OnPush(u32_t nConnectID, const FTAPI_ProtoHeader& protoHeader, const i8_t* pProtoData, i32_t nDataLen)
-	   {
-		//推送请求的连接数据
-	   }
-   };
-   FTAPI_Client client;
-   client.InitConnect("127.0.0.1", 11111);
-
 --------------------------------------------
-
-FOAC_Sample - 范例
----------------------
-
-..  cpp:class:: FOAC_Sample : public FOAC_Basic
-
-提供的范例，包含一些接口的组装和使用
