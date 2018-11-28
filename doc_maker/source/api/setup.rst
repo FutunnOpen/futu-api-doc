@@ -11,7 +11,7 @@
 .. note::
 
     *   Windows 7/10 ，64位操作系统
-    *   安装要求使用Anaconda python 3编程环境，以避免因为环境问题出现运行失败的情况
+    *   安装尽量使用Anaconda python 3编程环境，以避免因为环境问题出现运行失败的情况
     *   如果安装过程中遇到了问题，先阅读该文档下面的 Q&A 章节来尝试着解决
 
 * 安装 Annacoda
@@ -55,21 +55,21 @@ Anaconda python是Python科学技术包的合集，提供了很多用于科学�
     conda -V
     
 
-* 安装 futuquant 库
+* 安装 futu-api 库
 
 方式1：
 
 .. code-block:: bash
 
-    $ pip install futuquant
-    
+    $ pip install futu-api
+
     
 方式2：直接在GitHub下面下载FutunnOpen包，进行安装
 
 
 .. note::
 
-    *   下载地址：https://github.com/FutunnOpen/futuquant
+    *   下载地址：https://github.com/FutunnOpen/py-futu-api
        .. image:: ../_static/git-download.png    
     *   解压，在解压文件夹按住Shift右键打开PowerShell或命令窗口，执行 :code:`pip install .` 进行安装
        .. image:: ../_static/powershell-install-futuquant.png
