@@ -360,9 +360,13 @@ SubType - 实时数据定阅类型
  ..  py:attribute:: K_1M
  
   1分钟K线
-  
+
+ ..  py:attribute:: K_3M
+
+  3分钟K线
+
  ..  py:attribute:: K_5M
- 
+
   5分钟K线
   
  ..  py:attribute:: K_15M
@@ -388,9 +392,17 @@ SubType - 实时数据定阅类型
  ..  py:attribute:: K_MON
  
   月K线
+
+ ..  py:attribute:: K_QUARTER
+
+  季K线
+
+ ..  py:attribute:: K_YEAR
+
+  年K线
   
  ..  py:attribute:: RT_DATA
- 
+
   分时
   
  ..  py:attribute:: BROKER
@@ -414,6 +426,10 @@ k线类型定义
  ..  py:attribute:: K_1M
  
   1分钟K线
+
+ ..  py:attribute:: K_3M
+
+  3分钟K线
   
  ..  py:attribute:: K_5M
  
@@ -443,6 +459,13 @@ k线类型定义
  
   月K线
   
+ ..  py:attribute:: K_QUARTER
+
+  季K线
+
+ ..  py:attribute:: K_YEAR
+
+  年K线
 
 --------------------------------------
 
