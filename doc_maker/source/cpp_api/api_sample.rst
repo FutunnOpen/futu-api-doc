@@ -197,8 +197,8 @@ FTAPI_Sample - 范例
  ==============   =========================
  参数              前置接口
  ==============   =========================
- packetID         OnInitConnect
- userID           OnInitConnect
+ packetID         连接成功
+ userID           连接成功
  nextReqKey       request_history_kl
  accIDList        get_acc_list
  header           get_acc_list
