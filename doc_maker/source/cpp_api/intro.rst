@@ -23,8 +23,30 @@ github: url
 代码结构
 ---------------
 
-参考这里的样式 https://openapi.itiger.com/docs/intro/sdk/
+.. code:: structure
 
+    .
+    |-- OM  #基础库
+    |   |-- Include
+    |   |-- Lib
+    |   |-- Proj
+    |   `-- Src
+    |
+    |-- ThirdLib    #第三方库
+    |   |-- Include
+    |   |-- Lib
+    |   |-- Proj
+    |   `-- Src
+    |
+    `-- FTAPI   #富途API
+        |-- Include #头文件
+        |-- Lib     #静态数据连接库
+        |-- Proj    #动态链接库文件
+        `-- Src
+            |-- Proto   #协议
+            |
+            `-- FTAPI_Sample    #范例
+ 
 
 -----------------------------------------------------------------------------
 
