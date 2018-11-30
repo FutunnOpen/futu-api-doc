@@ -749,7 +749,7 @@
 	
 -------------------------------------
 
-`Qot_GetHistoryKLPoints.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto>`_  - 3101从本地下载历史数据获取多只股票多点历史K线
+`Qot_GetHistoryKLPoints.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto>`_  - :strike:`3101从本地下载历史数据获取多只股票多点历史K线`
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -834,7 +834,7 @@
 	
 -------------------------------------
 
-`Qot_GetRehab.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto>`_ - 3102从本地下载历史数据获取复权信息
+`Qot_GetRehab.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto>`_ - :strike:`3102从本地下载历史数据获取复权信息`
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
@@ -1163,7 +1163,7 @@
 .. note::
 
 	* 股票结构参考 `Security <base_define.html#security>`_
-	* 限频以及每次请求最大个数参考OpenAPI用户等级权限
+	* 接口限制请参见 `获取股票快照限制 <intro.html#id31>`_
 	
 -------------------------------------
 

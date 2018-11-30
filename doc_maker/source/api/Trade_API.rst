@@ -220,9 +220,9 @@ place_order - 下单
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 order-list-query_ (获取订单列表)相同。
  
 	如果是OpenHKCCTradeContext，返回数据中order_type仅有OrderType.NORMAL
- 
+
  :example:
- 
+	
  .. code:: python
  
  	from futu import *
@@ -231,7 +231,11 @@ place_order - 下单
 	print(trd_ctx.unlock_trade(pwd_unlock))
 	print(trd_ctx.place_order(price=700.0, qty=100, code="HK.00700", trd_side=TrdSide.SELL))
 	trd_ctx.close()
+	
+.. note::
 
+	* 接口限制请参见 `下单限制 <../protocol/intro.html#id24>`_
+	
 ----------------------------
 
 order_list_query - 获取订单列表
@@ -319,7 +323,11 @@ modify_order - 修改订单
   order_id = "12345"
   print(trd_ctx.modify_order(ModifyOrderOp.CANCEL, order_id, 0, 0))
   trd_ctx.close()
+  
+.. note::
 
+	* 接口限制请参见 `改单限制 <../protocol/intro.html#id25>`_
+	
 ----------------------------
 
 change_order - 改单(老接口，兼容以前)
@@ -351,6 +359,10 @@ change_order - 改单(老接口，兼容以前)
   print(trd_ctx.change_order(order_id, 100.0, 1))
   trd_ctx.close()
   
+.. note::
+
+	* 接口限制请参见 `改单限制 <intro.html#id25>`_
+	
 ----------------------------
 
 deal_list_query - 获取成交列表
@@ -423,6 +435,10 @@ history_order_list_query - 获取历史订单列表
   print(trd_ctx.history_order_list_query([OrderStatus.FILLED_ALL, OrderStatus.FILLED_PART], 'HK.00700'))
   trd_ctx.close()
   
+.. note::
+
+	* 接口限制请参见 `获取历史订单列表限制 <intro.html#id26>`_
+	
 ----------------------------
 
 history_deal_list_query - 获取历史成交列表
@@ -452,7 +468,10 @@ history_deal_list_query - 获取历史成交列表
   print(trd_ctx.history_deal_list_query('HK.00700'))
   trd_ctx.close()
 
- 
+.. note::
+
+	* 接口限制请参见 `获取历史成交列表限制 <intro.html#id27>`_
+	
 ----------------------------
 
 acctradinginfo_query - 查询账户下最大可买卖数量
@@ -497,6 +516,10 @@ max_buy_back              float         卖空后，需要买回的最大整手�
   print(trd_ctx.acctradinginfo_query(OrderType.NORMAL, 'HK.00700', 400, order_id, 0.01))
   trd_ctx.close()
 
+.. note::
+
+	* 接口限制请参见 `获取最大交易数量限制 <intro.html#id23>`_
+	
 ----------------------------
 
 TradeOrderHandlerBase - 响应订单推送基类
