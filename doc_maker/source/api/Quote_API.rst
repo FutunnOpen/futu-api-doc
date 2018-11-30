@@ -242,9 +242,6 @@ get_stock_basicinfo
     print(quote_ctx.get_multiple_history_kline(['HK.00700'], '2017-06-20', '2017-06-25', KL_FIELD.ALL, KLType.K_DAY, AuType.QFQ))
     quote_ctx.close()
 
-
-
-
 request_history_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -306,8 +303,11 @@ request_history_kline
     print(ret, data)
     quote_ctx.close()
 
+.. note::
 
-get_autype_list
+    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id30>`_
+	
+:strike:`get_autype_list`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_autype_list(self, code_list)
@@ -432,6 +432,10 @@ get_market_snapshot
     print(quote_ctx.get_market_snapshot(['US.AAPL', 'HK.00700']))
     quote_ctx.close()
 
+.. note::
+
+    * 接口限制请参见 `获取股票快照限制 <../protocol/intro.html#id31>`_
+	
 get_rt_data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -499,12 +503,11 @@ get_plate_stock
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_plate_stock('HK.BK1001'))
     quote_ctx.close()		
-    
-   
+    	
 .. note::
 
     *   该接口也可用于获取指数成份股, 如获取上证指数成份股:
-    
+    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id33>`_
 		 .. code:: python
 		
 		    from futu import *
@@ -573,7 +576,11 @@ get_plate_list
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_plate_list(Market.HK, Plate.ALL))
     quote_ctx.close()
-        
+	
+.. note::
+
+    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id32>`_    
+	
 get_broker_queue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -644,7 +651,11 @@ subscribe
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE]))
     quote_ctx.close()
-		
+
+.. note::
+
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+	
 		
 unsubscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -669,7 +680,11 @@ unsubscribe
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE]))
     quote_ctx.close()	 
-        
+  
+.. note::
+
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+  
 query_subscription
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -837,7 +852,11 @@ get_rt_ticker
     quote_ctx.subscribe(['HK.00700'], [SubType.TICKER])
     print(quote_ctx.get_rt_ticker('HK.00700', 10))
     quote_ctx.close()
+	
+.. note::
 
+    * 接口限制请参见 `获取逐笔限制 <../protocol/intro.html#id29>`_
+	
 get_cur_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -883,7 +902,7 @@ get_cur_kline
 
 .. note::
 
-    * 市盈率,换手率字段只有日K及日K以上周期的正股才有数据。
+    * 接口限制请参见 `获取K线限制 <../protocol/intro.html#k>`_
 	
 get_order_book
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1043,6 +1062,10 @@ get_owner_plate
     print(quote_ctx.get_owner_plate(code_list))
     quote_ctx.close()
 
+.. note::
+
+    * 	接口限制请参见 `获取股票所属板块限制 <../protocol/intro.html#id35>`_  
+	
 get_holding_change_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1091,6 +1114,10 @@ get_holding_change_list
     print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2016-10-01'))
     quote_ctx.close()
 
+.. note::
+
+    * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
+	
 get_order_detail
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1180,6 +1207,11 @@ get_option_chain
     print(quote_ctx.get_option_chain('US.AAPL', '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
     quote_ctx.close()
 
+	
+.. note::
+
+    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_  
+	
 ---------------------------------------------------------------------    
 
 
