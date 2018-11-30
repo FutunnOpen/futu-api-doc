@@ -93,8 +93,6 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _SubType: base_define.html#subtype
   
   .. role:: red-strengthen
-  :class: red-strengthen
-  
 
 特点
 -------
