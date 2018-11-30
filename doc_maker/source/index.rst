@@ -15,7 +15,7 @@ futuapi documentation
 	:hidden:
 
 	intro/intro
-	setup/FutuOpenDGuide
+	intro/FutuOpenDGuide
 
 .. toctree::
 	:caption: PROTOCOL

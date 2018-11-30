@@ -108,23 +108,5 @@ TA-Lib 用中文可以称作技术分析库，是一种广泛用在程序化交�
     
 
 
---------------
-
---------
-安装 FutuOpenD
---------
-
-方式1：`富途官网下载 <https://www.futunn.com/download/index/>`_ 
-
-.. image:: ../_static/futunn.com.png
-
-
-方式2：QQ群文件下载（群号：108534288）
-
-.. image:: ../_static/download-QQ.png
-
---------------
-
-
 
 
