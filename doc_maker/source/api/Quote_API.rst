@@ -1,3 +1,9 @@
+.. role:: strike
+    :class: strike
+.. role:: red-strengthen
+    :class: red-strengthen
+
+
 ========
 行情API
 ========
@@ -62,7 +68,7 @@
 接口类对象
 ==========
 
-OpenQuoteContext - 行情上下文对象类
+OpenQuoteContext - 行情上下文
 -------------------------------------------
 
 
@@ -192,9 +198,9 @@ get_stock_basicinfo
     print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.WARRANT))
     print(quote_ctx.get_stock_basicinfo(Market.US, SecurityType.STOCK, 'US.AAPL'))
     quote_ctx.close()
-    
-    
-get_multiple_history_kline
+
+
+:strike:`get_multiple_history_kline`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_multiple_history_kline(self, codelist, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ)
@@ -235,9 +241,61 @@ get_multiple_history_kline
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_multiple_history_kline(['HK.00700'], '2017-06-20', '2017-06-25', KL_FIELD.ALL, KLType.K_DAY, AuType.QFQ))
     quote_ctx.close()
+:strike:`get_history_kline`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+..  py:function:: get_history_kline(self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL])
 
+ :strike:`得到本地历史k线，需先参照帮助文档下载k线`
 
+ :param code: 股票代码
+ :param start: 开始时间，例如'2017-06-20'。
+ :param end:  结束时间，例如'2017-06-30'。
+            start和end的组合如下：
+			
+              ==========    ==========    ========================================
+              start类型      end类型       说明
+              ==========    ==========    ========================================
+                str            str           start和end分别为指定的日期
+                None           str           start为end往前365天
+                str            None          end为start往后365天
+                None           None          end为当前日期，start为end往前365天
+              ==========    ==========    ========================================
+ :param ktype: k线类型， 参见 KLType_ 定义
+ :param autype: 复权类型, 参见 AuType_ 定义
+ :param fields: 需返回的字段列表，参见 KL_FIELD_ 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....
+ :return: (ret, data)
+
+        ret == RET_OK 返回pd Dataframe数据, 数据列格式如下
+
+        ret != RET_OK 返回错误字符串
+
+    =================   ===========   ==============================================================================
+    参数                  类型                        说明
+    =================   ===========   ==============================================================================
+    code                str            股票代码
+    time_key            str            k线时间（美股默认是美东时间，港股A股默认是北京时间）
+    open                float          开盘价
+    close               float          收盘价
+    high                float          最高价
+    low                 float          最低价
+    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
+    turnover_rate       float          换手率
+    volume              int            成交量
+    turnover            float          成交额
+    change_rate         float          涨跌幅
+    last_close          float          昨收价
+    =================   ===========   ==============================================================================
+
+	
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_history_kline('HK.00700', start='2017-06-20', end='2017-06-22'))
+    quote_ctx.close()
 
 request_history_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,8 +358,11 @@ request_history_kline
     print(ret, data)
     quote_ctx.close()
 
+.. note::
 
-get_autype_list
+    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id30>`_
+	
+:strike:`get_autype_list`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_autype_list(self, code_list)
@@ -426,6 +487,10 @@ get_market_snapshot
     print(quote_ctx.get_market_snapshot(['US.AAPL', 'HK.00700']))
     quote_ctx.close()
 
+.. note::
+
+    * 接口限制请参见 `获取股票快照限制 <../protocol/intro.html#id31>`_
+	
 get_rt_data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -493,12 +558,11 @@ get_plate_stock
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_plate_stock('HK.BK1001'))
     quote_ctx.close()		
-    
-   
+    	
 .. note::
 
     *   该接口也可用于获取指数成份股, 如获取上证指数成份股:
-    
+    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id33>`_
 		 .. code:: python
 		
 		    from futu import *
@@ -567,7 +631,11 @@ get_plate_list
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_plate_list(Market.HK, Plate.ALL))
     quote_ctx.close()
-        
+	
+.. note::
+
+    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id32>`_    
+	
 get_broker_queue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -638,7 +706,11 @@ subscribe
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE]))
     quote_ctx.close()
-		
+
+.. note::
+
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+	
 		
 unsubscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -663,7 +735,11 @@ unsubscribe
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE]))
     quote_ctx.close()	 
-        
+  
+.. note::
+
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+  
 query_subscription
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -831,7 +907,11 @@ get_rt_ticker
     quote_ctx.subscribe(['HK.00700'], [SubType.TICKER])
     print(quote_ctx.get_rt_ticker('HK.00700', 10))
     quote_ctx.close()
+	
+.. note::
 
+    * 接口限制请参见 `获取逐笔限制 <../protocol/intro.html#id29>`_
+	
 get_cur_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -877,7 +957,7 @@ get_cur_kline
 
 .. note::
 
-    * 市盈率,换手率字段只有日K及日K以上周期的正股才有数据。
+    * 接口限制请参见 `获取K线限制 <../protocol/intro.html#k>`_
 	
 get_order_book
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -915,9 +995,9 @@ get_order_book
     quote_ctx.close()
 
 
-        
-get_multi_points_history_kline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:strike:`get_multi_points_history_kline`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_multi_points_history_kline(self, code_list, dates, fields, ktype=KLType.K_DAY, autype=AuType.QFQ, no_data_mode=KLNoDataMode.FORWARD)
 
@@ -960,7 +1040,7 @@ get_multi_points_history_kline
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_multi_points_history_kline(['HK.00700'], '2017-06-20', '2017-06-25', KL_FIELD.ALL, KLType.K_DAY, AuType.QFQ))
+    print(quote_ctx.get_multi_points_history_kline(['HK.00700'], ['2017-06-20', '2017-06-25'], KL_FIELD.ALL, KLType.K_DAY, AuType.QFQ))
     quote_ctx.close()	
 	
 	
@@ -1037,6 +1117,10 @@ get_owner_plate
     print(quote_ctx.get_owner_plate(code_list))
     quote_ctx.close()
 
+.. note::
+
+    * 	接口限制请参见 `获取股票所属板块限制 <../protocol/intro.html#id35>`_  
+	
 get_holding_change_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1085,6 +1169,10 @@ get_holding_change_list
     print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2016-10-01'))
     quote_ctx.close()
 
+.. note::
+
+    * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
+	
 get_order_detail
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1174,10 +1262,15 @@ get_option_chain
     print(quote_ctx.get_option_chain('US.AAPL', '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
     quote_ctx.close()
 
+	
+.. note::
+
+    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_  
+	
 ---------------------------------------------------------------------    
 
 
-SysNotifyHandlerBase - OpenD通知回调处理类
+SysNotifyHandlerBase - OpenD通知回调
 -------------------------------------------
 
 通知OpenD一些重要消息，类似连接断开等。
@@ -1224,7 +1317,7 @@ msg              	 str           消息描述
   
 ----------------------------
 
-StockQuoteHandlerBase - 实时报价回调处理类
+StockQuoteHandlerBase - 实时报价回调
 -------------------------------------------
 
 异步处理推送的订阅股票的报价。
@@ -1268,7 +1361,7 @@ on_recv_rsp
     
 ----------------------------
 
-OrderBookHandlerBase - 实时摆盘回调处理类
+OrderBookHandlerBase - 实时摆盘回调
 -------------------------------------------
 
 异步处理推送的实时摆盘。
@@ -1313,7 +1406,7 @@ on_recv_rsp
     
 ----------------------------
 
-CurKlineHandlerBase - 实时k线推送回调处理类
+CurKlineHandlerBase - 实时k线推送回调
 -------------------------------------------
 
 异步处理推送的k线数据。
@@ -1358,7 +1451,7 @@ on_recv_rsp
     
 ----------------------------
 
-TickerHandlerBase - 实时逐笔推送回调处理类
+TickerHandlerBase - 实时逐笔推送回调
 -------------------------------------------
 
 异步处理推送的逐笔数据。
@@ -1407,7 +1500,7 @@ on_recv_rsp
 
 ----------------------------
 
-RTDataHandlerBase - 实时分时推送回调处理类
+RTDataHandlerBase - 实时分时推送回调
 -------------------------------------------
 
 异步处理推送的分时数据。
@@ -1452,7 +1545,7 @@ on_recv_rsp
 
 ----------------------------
 
-BrokerHandlerBase - 实时经纪推送回调处理类
+BrokerHandlerBase - 实时经纪推送回调
 -------------------------------------------
 
 异步处理推送的经纪数据。
@@ -1497,7 +1590,7 @@ on_recv_rsp
 
 ----------------------------    
 
-OrderDetailHandlerBase - A股委托明细推送回调处理类
+OrderDetailHandlerBase - A股委托明细推送回调
 --------------------------------------------------
 
 异步处理推送的A股委托明细数据。
@@ -1539,75 +1632,6 @@ on_recv_rsp
  :return: 参见 get_order_detail_ 的返回值说明
 
 ----------------------------    
-
-
-接口入参限制
-============ 
-
- ===============================        =====================================================
- 接口名称                               入参限制
- ===============================        =====================================================
- get_market_snapshot                    参考 `OpenAPI用户等级权限 <Quote_API.html#id12>`_
- get_rt_ticker				            可获取逐笔最多最近1000个
- get_cur_kline				            可获取K线最多最近1000根
- get_multi_points_history_kline         时间点最多5个
- get_owner_plate                        传入股票最多200个
- ===============================        =====================================================
-
-----------------------------
-
-接口限频
-========
-
-低频数据接口
-------------
-
-低频数据接口是指不需要订阅就可以请求数据的接口， api的请求到达网关客户端后， 会转发请求到futu后台服务器，为控制流量，会对请求频率加以控制，
-目前的频率限制是以连续30秒内，限制请求次数，有限制的接口以及限制次数如下:
-
- ==========================        ==================================================
- 接口名称                          连续30秒内次数限制
- ==========================        ==================================================
- get_market_snapshot               参考 `OpenAPI用户等级权限 <Quote_API.html#id12>`_
- get_plate_list                    10
- get_plate_stock                   10
- get_option_chain                  10
- get_holding_change_list           10
- get_owner_plate                   10
- request_history_kline             10
- ==========================        ==================================================
-
----------------------------------------------------------------------
-
-高频数据接口
-------------
-
-为控制订阅产生推送数据流量，股票订阅总量有额度控制，规则如下:
-
-1.使用高频数据接口前，需要订阅（调用subscribe），订阅有额度限制：订阅类型数量*股票数量不可超过订阅额度。
- 
-2.用户总额度与用户等级相关，参考 `OpenAPI用户等级权限 <Quote_API.html#id12>`_。
-
-3.订阅至少一分钟才可以反订阅。
-
----------------------------------------------------------------------
-
-OpenAPI用户等级权限
-----------------------
- 
- 用户净资产大于10000港币为二级用户，小于10000港币为三级用户。一级用户需要与富途联系获取。
-
- ======================================        =========================        =========================        =========================
- 协议限制                                      三级用户                         二级用户                         一级用户
- ======================================        =========================        =========================        =========================
- 订阅额度                                      100                              300                              1000
- 30秒内快照请求次数                            10                               20                               30 
- 快照每次请求股票数                            200                              300                              400
- 30天内非本地历史K线最多可请求股票数           100                              300                              1000                                                                  
- ======================================        =========================        =========================        =========================
-
-
-
 
 
 

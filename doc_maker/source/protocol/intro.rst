@@ -22,6 +22,7 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _Trd_GetPositionList.proto:  trade_protocol.html#trd-getpositionlist-proto-2102
   
   .. _Trd_GetMaxTrdQtys.proto:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
+  .. _2111:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   
   .. _Trd_GetOrderList.proto:  trade_protocol.html#trd-getorderlist-proto-2201
   
@@ -41,7 +42,7 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   
   .. _Trd_GetHistoryOrderFillList.proto:  trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
   .. _2222:  trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
-  
+ 
   .. _Qot_Sub.proto:  quote_protocol.html#qot-sub-proto-3001
   .. _3001:  quote_protocol.html#qot-sub-proto-3001
   .. _Qot_RegQotPush.proto:  quote_protocol.html#qot-regqotpush-proto-3002
@@ -50,11 +51,12 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _Qot_UpdateBasicQot.proto:  quote_protocol.html#qot-updatebasicqot-proto-3005
   
   .. _Qot_GetKL.proto:  quote_protocol.html#qot-getkl-proto-3006k
+  .. _3006:  quote_protocol.html#qot-getkl-proto-3006k
   .. _Qot_UpdateKL.proto:  quote_protocol.html#qot-updatekl-proto-3007k
   .. _Qot_GetRT.proto:  quote_protocol.html#qot-getrt-proto-3008
   .. _Qot_UpdateRT.proto:  quote_protocol.html#qot-updatert-proto-3009
   .. _Qot_GetTicker.proto:  quote_protocol.html#qot-getticker-proto-3010
-  
+  .. _3010:  quote_protocol.html#qot-getticker-proto-3010
   .. _Qot_UpdateTicker.proto:  quote_protocol.html#qot-updateticker-proto-3011
   .. _Qot_GetOrderBook.proto:  quote_protocol.html#qot-getorderbook-proto-3012
   .. _Qot_UpdateOrderBook.proto:  quote_protocol.html#qot-updateorderbook-proto-3013
@@ -77,12 +79,21 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
   .. _3203:  quote_protocol.html#qot-getsecuritysnapshot-proto-3203
   
   .. _Qot_GetPlateSet.proto:  quote_protocol.html#qot-getplateset-proto-3204
+  .. _3204:  quote_protocol.html#qot-getplateset-proto-3204
   .. _Qot_GetPlateSecurity.proto:  quote_protocol.html#qot-getplatesecurity-proto-3205
+  .. _3205:  quote_protocol.html#qot-getplatesecurity-proto-3205
   .. _Qot_GetReference.proto:  quote_protocol.html#qot-getreference-proto-3206
+  .. _3206:  quote_protocol.html#qot-getreference-proto-3206
   .. _Qot_GetOwnerPlate.proto:  quote_protocol.html#qot-getownerplate-proto-3207
+  .. _3207:  quote_protocol.html#qot-getownerplate-proto-3207
   .. _Qot_GetHoldingChangeList.proto:  quote_protocol.html#qot-getholdingchangelist-proto-3208
+  .. _3208:  quote_protocol.html#qot-getholdingchangelist-proto-3208
   .. _Qot_GetOptionChain.proto:  quote_protocol.html#qot-getoptionchain-proto-3209
+  .. _3209:  quote_protocol.html#qot-getoptionchain-proto-3209
+  .. _SubType: base_define.html#subtype
   
+  .. role:: red-strengthen
+
 特点
 -------
 
@@ -158,33 +169,116 @@ FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后�
 ---------------------------------------------------
  
 协议请求限制
-----------
+---------------
 
 API用户等级
 ~~~~~~~~~~~~~~~~~~~~~~
  
- 部分协议的请求限制与API用户等级相关，划分如下：用户净资产大于10000港币为二级用户，小于10000港币为三级用户，一级用户需要与富途联系获取。
- 
-具体限制
-~~~~~~~~~~~
+ 部分协议的请求限制与API用户等级相关，划分如下：
+	+ 用户净资产大于10000港币为二级用户
+	+ 小于10000港币为三级用户
+	+ 一级用户提供给有一定交易额的实盘交易团队，可与富途联系获取
 
- =========================        ======================================        =========================        =========================        =========================
- 协议ID                           限制内容                                      三级用户                         二级用户                         一级用户
- =========================        ======================================        =========================        =========================        =========================
- 2005_                            30秒内解锁交易请求次数                        10                               10                               10
- 2202_                            30秒内下单请求次数(1秒内不可超过5次)          15                               15                               15
- 2205_                            30秒内改单请求次数(1秒内不可超过5次)          20                               20                               20
- 2221_                            30秒内历史订单请求次数                        10                               10                               10
- 2222_                            30秒内历史成交请求次数                        10                               10                               10
- 3001_                            订阅额度上限                                  100                              300                              1000
- 3103_                            30天在线获取历史K线最多可请求股票数           100                              300                              1000                     
- 3203_                            30秒内快照请求次数                            10                               20                               30 
- 3203_                            快照每次请求股票数                            200                              300                              400
- =========================        ======================================        =========================        =========================        =========================
+解锁或锁定交易
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	* 协议ID: 2005_
+	* :red-strengthen:`30` 秒内请求次数最多 :red-strengthen:`10` 次
+
+获取最大交易数量
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 协议ID: 2111_
+	* :red-strengthen:`30` 秒内请求次数最多 :red-strengthen:`10` 次
+
+下单
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2202_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次
+	
+	
+修改订单
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2205_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次
+	
+
+获取历史订单列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2221_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 
 
+获取历史成交列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2222_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 
 
+订阅反订阅
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * 请求协议ID: 3001_
+  * 支持多种实时数据类型的定阅，参见 SubType_ , 每支股票订阅一个类型占用一个额度。
+  * 订阅额度上限与用户等级相关，一级: :red-strengthen:`1000`, 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100`
+  * 至少订阅一分钟才可以反订阅。
+	
+获取K线
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3006_
+	* 最多能获取最近 :red-strengthen:`1000` 根
+	* 市盈率，换手率字段只有日K及日K以上周期的正股才有数据。
+	
+获取逐笔
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3010_
+	* 最多能获取最近 :red-strengthen:`1000` 根
+	
+在线获取单只股票一段历史K线
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * 请求协议ID: 3103_
+  * 30天内在线获取历史K线最多可请求股票数与用户等级相关，一级: :red-strengthen:`1000` , 二级: :red-strengthen:`300` , 三级:  :red-strengthen:`100`
+  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次，可分页的请求，第1页限频，后续页请求不限频
+  
+获取股票快照
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * 请求协议ID: 3203_
+  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100` 
+  * 30秒内快照最多请求次数与用户等级相关，一级: :red-strengthen:`30` , 二级: :red-strengthen:`20` , 三级: :red-strengthen:`10` 
+
+获取板块集合下的板块
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3204_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	
+获取板块下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3205_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	
+获取板块下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3205_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+		
+获取股票所属板块
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3207_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 传入股票最多 :red-strengthen:`200` 个
+	* 仅支持正股和指数
+	
+获取持股变化列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3208_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 最多返回前 :red-strengthen:`100` 大股东的变化
+	* 仅支持美股
+
+获取期权链
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3209_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 传入时间跨度最多 :red-strengthen:`30` 天
+	
 ---------------------------------------------------
 
 协议请求流程 

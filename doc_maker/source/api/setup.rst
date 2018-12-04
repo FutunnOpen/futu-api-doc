@@ -11,7 +11,7 @@
 .. note::
 
     *   Windows 7/10 ，64位操作系统
-    *   安装要求使用Anaconda python 3编程环境，以避免因为环境问题出现运行失败的情况
+    *   安装尽量使用Anaconda python 3编程环境，以避免因为环境问题出现运行失败的情况
     *   如果安装过程中遇到了问题，先阅读该文档下面的 Q&A 章节来尝试着解决
 
 * 安装 Annacoda
@@ -62,7 +62,7 @@ Anaconda python是Python科学技术包的合集，提供了很多用于科学�
 .. code-block:: bash
 
     $ pip install futu-api
-    
+
     
 方式2：直接在GitHub下面下载FutunnOpen包，进行安装
 
@@ -106,24 +106,6 @@ TA-Lib 用中文可以称作技术分析库，是一种广泛用在程序化交�
     *   选择community版本即可，如您有需要也可以购买专业版（可免费试用）
   
     
-
-
---------------
-
---------
-安装 FutuOpenD
---------
-
-方式1：`富途官网下载 <https://www.futunn.com/download/index/>`_ 
-
-.. image:: ../_static/futunn.com.png
-
-
-方式2：QQ群文件下载
-
-.. image:: ../_static/download-QQ.png
-
---------------
 
 
 
