@@ -1,7 +1,7 @@
 范例工程
 ==========
 
- .. _cpp-futu-api: https://github.com/FutunnOpen/cpp-futu-api
+ .. _cpp-futu-api: https://github.com/FutunnOpen/cpp-futu-api 
 
  .. _SetClientInfo: api_base.html#id3
  .. _SetProtoFormatType: api_base.html#id4
@@ -17,19 +17,19 @@
  .. _OnReply: api_base.html#id14
  .. _OnPush: api_base.html#id15
 
- .. _Example-SetClientInfo: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-SetProtoFormatType: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-SetRSAPrivateKey: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-InitConnect: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-OnInitConnect: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-IsConnected: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-Close: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-Send: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-OnConnect: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-OnDisConnect: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-OnTimeTicker: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-OnReply: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
- .. _Example-OnPush: https://github.com/FutunnOpen/C-For-FutuOpenD/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-SetClientInfo: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-SetProtoFormatType: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-SetRSAPrivateKey: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-InitConnect: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-OnInitConnect: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-IsConnected: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-Close: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-Send: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-OnConnect: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-OnDisConnect: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-OnTimeTicker: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-OnReply: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
+ .. _Example-OnPush: https://github.com/FutunnOpen/cpp-futu-api/blob/master/FutuOpenDClient/QuoteHandler.cpp#L30
 
  .. _GetGlobalState.proto: ../protocol/base_define.html#getglobalstate-proto-1002
  .. _Qot_Sub.proto: ../protocol/quote_protocol.html#qot-sub-proto-3001
@@ -68,11 +68,11 @@
  .. _Trd_GetHistoryOrderList.proto: ../protocol/trade_protocol.html#trd-gethistoryorderlist-proto-2221
  .. _Trd_GetHistoryOrderFillList.proto: ../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
 
- .. _FutuOpenD: ../setup/FutuOpenDGuide.html
+ .. _FutuOpenD: ../intro/FutuOpenDGuide.html
 
 -------------------------------------------------------------
 
-该工程是对 cpp-futu-api_ 接口通道的具体应用，在实现上二次封装futu-api的协议的业务接口，
+该工程是对 cpp-futu-api_ (暂未开源) 接口通道的具体应用，在实现上二次封装futu-api的协议的业务接口，
 在交互体验上采取简便的命令行模式，直观展现了协议接口的输入参数及输出数据。 
 
 FTAPI_Sample - 范例
@@ -105,7 +105,7 @@ FTAPI_Sample - 范例
 如何运行
 ------------
 
- 1. 支持windows， mac, linux下运行（已经编译好的relase文件默认存在， 说明一下文件目录）
+ 1.  暂时只支持windows平台
 
  2. 运行前需先启动 FutuOpenD_
  
@@ -114,9 +114,9 @@ FTAPI_Sample - 范例
   **参数项：**
 
   ====================   ===================   ===========================================
-  键值                    说明				   是否可选参数项
+  键值                    说明				          是否可选参数项
   ====================   ===================   ===========================================
-  host                   主机地址			   是，不设置则默认127.0.0.1
+  host                   主机地址			          是，不设置则默认127.0.0.1
   port                   端口                   是，不设置则默认11111
   ====================   ===================   ===========================================
 

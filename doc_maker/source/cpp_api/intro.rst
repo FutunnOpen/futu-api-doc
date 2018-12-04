@@ -15,7 +15,7 @@
 下载地址
 ---------------
 
-github: cpp-futu-api_
+github: cpp-futu-api_ (即将开源)
 
 
 -----------------------------------------------------------------------------
@@ -25,7 +25,6 @@ github: cpp-futu-api_
 
 .. code:: structure
 
-    .
     |-- OM  #基础库
     |   |-- Include
     |   |-- Lib     #各平台静态数据连接库
@@ -38,47 +37,51 @@ github: cpp-futu-api_
     |   |-- Proj    #各平台工程配置及编译目录
     |   `-- Src
     |
-    `-- FTAPI   #富途API
-        |-- Include #头文件
-        |-- Lib     #各平台静态数据连接库
-        |   |-- Windows
-        |   |-- Linux
-        |   `-- Mac
+    `-- FTAPI       #富途API
         |-- Proj    #各平台工程配置及编译目录
-        |   |-- Windows
-        |   |-- Linux
-        |   `-- Mac
-        `-- Src
-            |-- Proto   #协议
-            |
-            `-- FTAPI_Sample    #范例
- 
-
+            |-- Windows
+                |-- VS2013
+                    |-- FTAPI.sln  #解决方案
+                    |-- Build
+                        |-- Bin    #dll/exe
+                        |-- Lib
+        |-- Src
+            |-- FTAPI              # FTAPI源代码
+            |-- FTAPI_Sample       # Sample源代码
+            |-- include_FTAPI.h    # FTAPI 对外头文件
+            
+         
 -----------------------------------------------------------------------------
 
 工程编译
 -----------
 
-Windows
------------
+ + OM目录是富途自研的跨平台基础开发库， 封装了异步事件处理，网络请求，文件读写，字符串，解压缩，日志等基础操作公共接口，后续将开源到github。
+ 
+ + ThirdLib目录是目前用到的第三方开源库， 包括curl , Google protobuf, jsoncpp, minizip, openssl, pugixml, regex, sqlite3, zlib, Google Breakpad等，后续将开源到github。
+ 
+ + FTAPI目录包含futu-api的c++接口及sample开源工程。
+ 
+ + 当前工程配置要求OM, ThirdLib, FTAPI在同一级目录!
+ 
+ + c++接口仅提供基础的协议请求通道，强烈建议在使用前先参考FTAPI_Sample开源工程。
 
- 1. 环境要求
-    Windows 7/10 ，64位操作系统
-    有众多C++ IDE（集成开发环境）可以供您选择，但我们推荐您使用Visual Studio 2013开发环境
  
- 2. 项目工程文件
- 
- 3. 编译后的头文件, dll文件说明 
- 
- 4. 其它
+Windows
+~~~~~~~~~~~~~
+
+ 1. 推荐Windows 7/10，Visual Studio 2013 IDE开发环境。
+ 2. 编译方法: 用vs2013打开"./FTAPI/Src/FTAPI/Proj/Windows/VS2013/FTAPI.sln" 编译即可。
+ 3. 外部使用Include 头文件: "./FTAPI/Src/Include_FTAPI.h"， Lib 库文件: "./FTAPI/Proj/Windows/VS2013/Build/Lib/Release(Debug)/FTAPI.lib"，Dll动态链接库文件: "./FTAPI/Proj/Windows/VS2013/Build/Bin/Release(Debug)/FTAPI.dll(OM.dll)"。
+ 4. FTAPI 项目编译后同时生成了可执行范例文件: "./FTAPI/Proj/Windows/VS2013/Build/Bin/Release(Debug)/FTAPI_Sample.exe"，具体运行参见 Sample_ 说明。
  
 Mac
------------
+~~~~~~~~~~~~~
 
- 1. 与Windows相同
+ 1. 即将支持
  
 linux
------------
+~~~~~~~~~~~~~
 
- 1. 与Windows相同
+ 1. 即将支持
     
