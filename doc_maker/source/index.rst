@@ -15,7 +15,7 @@ futuapi documentation
 	:hidden:
 
 	intro/intro
-	setup/FutuOpenDGuide
+	intro/FutuOpenDGuide
 
 .. toctree::
 	:caption: PROTOCOL
@@ -31,7 +31,9 @@ futuapi documentation
 	:caption: Python API
 	:maxdepth: 4
 	:hidden:
-	
+
+	api/intro
+	api/setup
 	api/Base_API
 	api/Quote_API
 	api/Trade_API
