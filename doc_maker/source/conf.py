@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# futu-api documentation build configuration file, created by
+# futu-api-doc documentation build configuration file, created by
 # sphinx-quickstart on Thu Aug 31 10:00:54 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -60,7 +60,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'futu-api'
+project = 'futu-api-doc'
 copyright = '2018, futu'
 author = 'futu'
 
@@ -195,7 +195,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'futu-api.tex', 'utu-api Documentation',
+    (master_doc, 'futu-api-doc.tex', 'futu-api-doc Documentation',
      'futu', 'manual'),
 ]
 
@@ -205,7 +205,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'utu-api', 'utu-api Documentation',
+    (master_doc, 'futu-api-doc', 'futu-api-doc Documentation',
      [author], 1)
 ]
 
@@ -216,8 +216,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'utu-api', 'utu-api Documentation',
-     author, 'utu-api', 'One line description of project.',
+    (master_doc, 'futu-api-doc', 'futu-api-doc Documentation',
+     author, 'futu-api-doc', 'One line description of project.',
      'Miscellaneous'),
 ]
 

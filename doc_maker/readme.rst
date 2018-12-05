@@ -2,7 +2,7 @@
 futu-api 文档指南
 ==================
 
-futu-api使用Sphinx进行文档编写。
+futu-api-doc使用Sphinx进行文档编写。
 
 Requirements
 ------------
