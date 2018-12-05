@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; futu-api 3.4 documentation</title>
+  <title>Index &mdash; futu-api 3.6 documentation</title>
   
 
   
@@ -27,6 +27,8 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/myStyle.css" type="text/css" />
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
 
@@ -57,7 +59,7 @@
             
             
               <div class="version">
-                3.4
+                3.6
               </div>
             
           
@@ -84,21 +86,22 @@
               <p class="caption"><span class="caption-text">基础</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup/setup.html">安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/Base_API.html">基础API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/Quote_API.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PROTOCOL</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="protocol/intro.html">协议接口指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/intro.html">协议接口</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol/base_define.html">基础定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol/quote_protocol.html">行情协议</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/Trade_API.html">交易API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -422,6 +425,8 @@
 </li>
       <li><a href="api/Quote_API.html#get_global_state">get_global_state() (built-in function)</a>
 </li>
+      <li><a href="api/Quote_API.html#get_history_kline">get_history_kline() (built-in function)</a>
+</li>
       <li><a href="api/Quote_API.html#get_holding_change_list">get_holding_change_list() (built-in function)</a>
 </li>
       <li><a href="api/Quote_API.html#get_market_snapshot">get_market_snapshot() (built-in function)</a>
@@ -538,6 +543,12 @@
         <li><a href="api/Base_API.html#SubType.K_30M">(SubType attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/Base_API.html#KLType.K_3M">K_3M (KLType attribute)</a>
+
+      <ul>
+        <li><a href="api/Base_API.html#SubType.K_3M">(SubType attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/Base_API.html#KLType.K_5M">K_5M (KLType attribute)</a>
 
       <ul>
@@ -550,24 +561,36 @@
         <li><a href="api/Base_API.html#SubType.K_60M">(SubType attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Base_API.html#KLType.K_DAY">K_DAY (KLType attribute)</a>
 
       <ul>
         <li><a href="api/Base_API.html#SubType.K_DAY">(SubType attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/Base_API.html#KLType.K_MON">K_MON (KLType attribute)</a>
 
       <ul>
         <li><a href="api/Base_API.html#SubType.K_MON">(SubType attribute)</a>
 </li>
       </ul></li>
+      <li><a href="api/Base_API.html#KLType.K_QUARTER">K_QUARTER (KLType attribute)</a>
+
+      <ul>
+        <li><a href="api/Base_API.html#SubType.K_QUARTER">(SubType attribute)</a>
+</li>
+      </ul></li>
       <li><a href="api/Base_API.html#KLType.K_WEEK">K_WEEK (KLType attribute)</a>
 
       <ul>
         <li><a href="api/Base_API.html#SubType.K_WEEK">(SubType attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api/Base_API.html#KLType.K_YEAR">K_YEAR (KLType attribute)</a>
+
+      <ul>
+        <li><a href="api/Base_API.html#SubType.K_YEAR">(SubType attribute)</a>
 </li>
       </ul></li>
       <li><a href="api/Base_API.html#GtwEventType.KickedOut">KickedOut (GtwEventType attribute)</a>
@@ -977,17 +1000,7 @@
 
     
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'3.4',
-              LANGUAGE:'en',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>

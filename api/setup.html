@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>安装指南 &mdash; futu-api 3.4 documentation</title>
+  <title>安装指南 &mdash; futu-api 3.6 documentation</title>
   
 
   
@@ -26,10 +26,12 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FutuOpenD使用说明" href="FutuOpenDGuide.html" />
-    <link rel="prev" title="介绍" href="../intro/intro.html" /> 
+    <link rel="next" title="基础API" href="Base_API.html" />
+    <link rel="prev" title="介绍" href="intro.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                3.4
+                3.6
               </div>
             
           
@@ -83,27 +85,27 @@
             
             
               <p class="caption"><span class="caption-text">基础</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">安装指南</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">环境搭建</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#futuopend">安装 FutuOpenD</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PROTOCOL</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">安装指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">环境搭建</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Trade_API.html">交易API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -159,7 +161,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/setup/setup.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/setup.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -200,7 +202,7 @@
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>Windows 7/10 ，64位操作系统</li>
-<li>安装要求使用Anaconda python 3编程环境，以避免因为环境问题出现运行失败的情况</li>
+<li>安装尽量使用Anaconda python 3编程环境，以避免因为环境问题出现运行失败的情况</li>
 <li>如果安装过程中遇到了问题，先阅读该文档下面的 Q&amp;A 章节来尝试着解决</li>
 </ul>
 </div>
@@ -234,14 +236,14 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 .. image:: ../_static/version-Switching-pycharm.png</p>
 </div>
 <p>当安装成功后，执行如下命令来查看是否安装成功:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>conda -V
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda -V
 </pre></div>
 </div>
 <ul class="simple">
 <li>安装 futu-api 库</li>
 </ul>
 <p>方式1：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install futu-api
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install futu-api
 </pre></div>
 </div>
 <p>方式2：直接在GitHub下面下载FutunnOpen包，进行安装</p>
@@ -254,7 +256,7 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 <div><img alt="../_images/git-download.png" src="../_images/git-download.png" />
 </div></blockquote>
 <ul class="simple">
-<li>解压，在解压文件夹按住Shift右键打开PowerShell或命令窗口，执行 <code class="code docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> 进行安装</li>
+<li>解压，在解压文件夹按住Shift右键打开PowerShell或命令窗口，执行 <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> 进行安装</li>
 </ul>
 <blockquote class="last">
 <div><img alt="../_images/powershell-install-futuquant.png" src="../_images/powershell-install-futuquant.png" />
@@ -264,11 +266,11 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 <li>安装 TA-Lib</li>
 </ul>
 <p>TA-Lib 用中文可以称作技术分析库，是一种广泛用在程序化交易中进行金融市场数据的技术分析的函数库。它提供了多种技术分析的函数，方便我们量化投资中编程工作。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install TA-Lib
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install TA-Lib
 </pre></div>
 </div>
 <p>如果发现无法通过 pip 安装，请访问 <a class="reference external" href="https://mrjbq7.github.io/ta-lib/install.html">https://mrjbq7.github.io/ta-lib/install.html</a> 解决。</p>
-<p>对于 Windows 用户，如果编译困难，可以根据您本地的Python版本下载指定的whl包，然后 <code class="code docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">TA_Lib-0.4.9-cp27-none-win_amd64.whl</span></code> 来完成安装。</p>
+<p>对于 Windows 用户，如果编译困难，可以根据您本地的Python版本下载指定的whl包，然后 <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">TA_Lib-0.4.9-cp27-none-win_amd64.whl</span></code> 来完成安装。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -288,15 +290,6 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 </ul>
 </div>
 </div>
-<hr class="docutils" />
-<div class="section" id="futuopend">
-<h2>安装 FutuOpenD<a class="headerlink" href="#futuopend" title="Permalink to this headline">¶</a></h2>
-<p>方式1：<a class="reference external" href="https://www.futunn.com/download/index/">富途官网下载</a></p>
-<img alt="../_images/futunn.com.png" src="../_images/futunn.com.png" />
-<p>方式2：QQ群文件下载</p>
-<img alt="../_images/download-QQ.png" src="../_images/download-QQ.png" />
-<hr class="docutils" />
-</div>
 </div>
 
 
@@ -307,10 +300,10 @@ bin;%ANACONDA3_HOME%Scripts;</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="FutuOpenDGuide.html" class="btn btn-neutral float-right" title="FutuOpenD使用说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Base_API.html" class="btn btn-neutral float-right" title="基础API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../intro/intro.html" class="btn btn-neutral" title="介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral" title="介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -339,17 +332,7 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 
     
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'3.4',
-              LANGUAGE:'en',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>

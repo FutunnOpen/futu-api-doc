@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易API &mdash; futu-api 3.4 documentation</title>
+  <title>交易API &mdash; futu-api 3.6 documentation</title>
   
 
   
@@ -26,9 +26,11 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="协议接口指南" href="../protocol/intro.html" />
+    <link rel="next" title="Q&amp;A" href="../q&amp;a/Q&amp;A.html" />
     <link rel="prev" title="行情API" href="Quote_API.html" /> 
 
   
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                3.4
+                3.6
               </div>
             
           
@@ -85,11 +87,19 @@
               <p class="caption"><span class="caption-text">基础</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API</span></p>
+<p class="caption"><span class="caption-text">PROTOCOL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">安装指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Quote_API.html">行情API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">交易API</a><ul>
@@ -102,10 +112,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#accinfo-query">accinfo_query - 获取账户资金数据</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#position-list-query">position_list_query - 获取账户持仓列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#place-order">place_order - 下单</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">order_list_query - 获取订单列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">order_list_query - 获取订单列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#modify-order">modify_order - 修改订单</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#change-order">change_order - 改单(老接口，兼容以前)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">deal_list_query - 获取成交列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">deal_list_query - 获取成交列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#history-order-list-query">history_order_list_query - 获取历史订单列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#history-deal-list-query">history_deal_list_query - 获取历史成交列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#acctradinginfo-query">acctradinginfo_query - 查询账户下最大可买卖数量</a></li>
@@ -116,24 +126,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedealhandlerbase">TradeDealHandlerBase - 响应成交推送基类</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id5">on_recv_rsp - 响应成交推送</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">on_recv_rsp - 响应成交推送</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">暗盘交易</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">模拟交易</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">真实交易</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">接口频率限制</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">PROTOCOL</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -229,7 +228,7 @@
 <h2>一分钟上手<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>如下范例，创建api交易对象，先调用unlock_trade对交易解锁，然后调用place_order下单，以700.0价格，买100股腾讯00700，最后关闭对象。</p>
 <p>注意交易对象区分港股美股。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -249,8 +248,8 @@
 <code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd></dd></dl>
 
-<p>关闭上下文对象。默认情况下，futuquant内部创建的线程会阻止进程退出，只有当所有context都close后，进程才能正常退出。但通过SysConfig.set_all_thread_daemon可以设置所有内部线程为daemon线程，这时即使没有调用context的close，进程也可以正常退出。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<p>关闭上下文对象。默认情况下，futu-api内部创建的线程会阻止进程退出，只有当所有context都close后，进程才能正常退出。但通过SysConfig.set_all_thread_daemon可以设置所有内部线程为daemon线程，这时即使没有调用context的close，进程也可以正常退出。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -302,7 +301,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">get_acc_list</span><span class="p">())</span>
 <span class="n">trd_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -337,7 +336,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -418,7 +417,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">)</span>
@@ -551,7 +550,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">)</span>
@@ -596,7 +595,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -606,10 +605,16 @@
 </div>
 </dd></dl>
 
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id24">下单限制</a></li>
+</ul>
+</div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h4>order_list_query - 获取订单列表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>order_list_query - 获取订单列表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="order_list_query">
 <code class="descname">order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_id=&quot;&quot;</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em><span class="sig-paren">)</span><a class="headerlink" href="#order_list_query" title="Permalink to this definition">¶</a></dt>
@@ -711,7 +716,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -783,7 +788,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -794,6 +799,12 @@
 </div>
 </dd></dl>
 
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id25">改单限制</a></li>
+</ul>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="change-order">
@@ -825,7 +836,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -836,10 +847,16 @@
 </div>
 </dd></dl>
 
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference external" href="intro.html#id25">改单限制</a></li>
+</ul>
+</div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h4>deal_list_query - 获取成交列表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>deal_list_query - 获取成交列表<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="deal_list_query">
 <code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="Permalink to this definition">¶</a></dt>
@@ -925,7 +942,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -967,7 +984,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -978,6 +995,12 @@
 </div>
 </dd></dl>
 
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference external" href="intro.html#id26">获取历史订单列表限制</a></li>
+</ul>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="history-deal-list-query">
@@ -1008,7 +1031,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -1019,6 +1042,12 @@
 </div>
 </dd></dl>
 
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference external" href="intro.html#id27">获取历史成交列表限制</a></li>
+</ul>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="acctradinginfo-query">
@@ -1096,7 +1125,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">pwd_unlock</span> <span class="o">=</span> <span class="s1">&#39;123456&#39;</span>
 <span class="n">trd_ctx</span> <span class="o">=</span> <span class="n">OpenHKTradeContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">trd_ctx</span><span class="o">.</span><span class="n">unlock_trade</span><span class="p">(</span><span class="n">pwd_unlock</span><span class="p">))</span>
@@ -1106,6 +1135,12 @@
 </pre></div>
 </div>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference external" href="intro.html#id23">获取最大交易数量限制</a></li>
+</ul>
+</div>
 </div>
 </div>
 <hr class="docutils" />
@@ -1131,7 +1166,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="k">class</span> <span class="nc">TradeOrderTest</span><span class="p">(</span><span class="n">TradeOrderHandlerBase</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot; order update push&quot;&quot;&quot;</span>
@@ -1160,8 +1195,8 @@
 <hr class="docutils" />
 <div class="section" id="tradedealhandlerbase">
 <h3>TradeDealHandlerBase - 响应成交推送基类<a class="headerlink" href="#tradedealhandlerbase" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id5">
-<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -1180,7 +1215,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="k">class</span> <span class="nc">TradeDealTest</span><span class="p">(</span><span class="n">TradeDealHandlerBase</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot; order update push&quot;&quot;&quot;</span>
@@ -1204,121 +1239,8 @@
 </div>
 </dd></dl>
 
-</div>
-</div>
-</div>
 <hr class="docutils" />
-<div class="section" id="id6">
-<h2>暗盘交易<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>已开户用户需要确认 <a class="reference external" href="https://help.futu5.com/darktrade/">暗盘交易风险</a> 才可以进行暗盘交易。</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>暗盘目前仅支持限价单</li>
-</ul>
 </div>
-</div>
-<hr class="docutils" />
-<div class="section" id="id8">
-<h2>模拟交易<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>支持港美A股三大市场模拟交易，对比真实交易有以下区别：</p>
-<p>1.订单的状态不支持删除、部分成交、生效、失效状态</p>
-<p>2.不支持生效失效、删除订单操作，仅支持支持改单， 撤单</p>
-<p>3.不支持成交数据，包括今日成交，历史成交，成交推送</p>
-<p>4.下单仅支持Normal类型</p>
-<p>5.模拟交易不需要解锁交易</p>
-<p>可视数据可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate/">模拟交易</a>，该页面仅支持手机浏览器访问。</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="id10">
-<h2>真实交易<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
-<p>真实交易支持港股、美股、A股通市场，区别如下</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="21%" />
-<col width="21%" />
-<col width="19%" />
-<col width="19%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">区别</th>
-<th class="head">交易方向</th>
-<th class="head">订单类型</th>
-<th class="head">股票代码</th>
-<th class="head">订单操作</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>港股</td>
-<td>只支持买入和卖出</td>
-<td><p class="first">支持增强限价单，竞价单，</p>
-<p>竞价限价单，绝对限价单，</p>
-<p class="last">特别限价单</p>
-</td>
-<td>5位数字</td>
-<td><p class="first">支持改单、撤单、生效</p>
-<p class="last">失效、删除</p>
-</td>
-</tr>
-<tr class="row-odd"><td>美股</td>
-<td><p class="first">下单只支持传入买入和卖出</p>
-<p>但产生的订单类型可能会出</p>
-<p class="last">现卖空和买回</p>
-</td>
-<td>支持限价单，市价单</td>
-<td>无限制</td>
-<td>仅支持改单和撤单</td>
-</tr>
-<tr class="row-even"><td>A股通</td>
-<td>只支持买入和卖出</td>
-<td>仅支持A股限价委托</td>
-<td>6位数字</td>
-<td>仅支持改单和撤单</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr class="docutils" />
-<div class="section" id="id11">
-<h2>接口频率限制<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
-<p>交易相关请求到达网关客户端后， 会转发请求到futu后台服务器，为防止恶意频繁请求，保护服务器负载，会对一些交易接口进行请求频率限制，
-目前的频率限制是以连续30秒内，限制请求次数，具体那些接口有限制以及限制次数如下:</p>
-<blockquote>
-<div><table border="1" class="docutils">
-<colgroup>
-<col width="55%" />
-<col width="45%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">接口名称</th>
-<th class="head">连续30秒内次数限制</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>unlock_trade</td>
-<td>10</td>
-</tr>
-<tr class="row-odd"><td>place_order</td>
-<td>15</td>
-</tr>
-<tr class="row-even"><td>modify_order，change_order</td>
-<td>20</td>
-</tr>
-<tr class="row-odd"><td>history_order_list_query</td>
-<td>10</td>
-</tr>
-<tr class="row-even"><td>history_deal_list_query</td>
-<td>10</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>后台另外限制了下单频率，1秒内下单不可超过5次</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1331,7 +1253,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../protocol/intro.html" class="btn btn-neutral float-right" title="协议接口指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../q&amp;a/Q&amp;A.html" class="btn btn-neutral float-right" title="Q&amp;A" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Quote_API.html" class="btn btn-neutral" title="行情API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1363,17 +1285,7 @@
 
     
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'3.4',
-              LANGUAGE:'en',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>

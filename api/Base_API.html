@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api 3.4 documentation</title>
+  <title>基础API &mdash; futu-api 3.6 documentation</title>
   
 
   
@@ -26,10 +26,12 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="行情API" href="Quote_API.html" />
-    <link rel="prev" title="FutuOpenD使用说明" href="../setup/FutuOpenDGuide.html" /> 
+    <link rel="prev" title="安装指南" href="setup.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                3.4
+                3.6
               </div>
             
           
@@ -85,11 +87,19 @@
               <p class="caption"><span class="caption-text">基础</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API</span></p>
+<p class="caption"><span class="caption-text">PROTOCOL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">安装指南</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">基础API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sysconfig">SysConfig - 系统配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#set-client-info">set_client_info</a></li>
@@ -136,13 +146,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Trade_API.html">交易API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">PROTOCOL</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -267,7 +270,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_client_info</span><span class="p">(</span><span class="s2">&quot;MyFutuAPI&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -295,7 +298,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_proto_fmt</span><span class="p">(</span><span class="n">ProtoFMT</span><span class="o">.</span><span class="n">Protobuf</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -323,7 +326,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">enable_proto_encrypt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_init_rsa_file</span><span class="p">(</span><span class="s2">&quot;conn_key.txt&quot;</span><span class="p">)</span>   <span class="c1"># rsa 私钥文件路径</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
@@ -352,7 +355,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">enable_proto_encrypt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_init_rsa_file</span><span class="p">(</span><span class="s2">&quot;conn_key.txt&quot;</span><span class="p">)</span>   <span class="c1"># rsa 私钥文件路径</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
@@ -381,7 +384,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_all_thread_daemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="c1"># 不调用quote_ctx.close()，进程也会退出</span>
@@ -728,6 +731,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="SubType.K_3M">
+<code class="descname">K_3M</code><a class="headerlink" href="#SubType.K_3M" title="Permalink to this definition">¶</a></dt>
+<dd><p>3分钟K线</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="SubType.K_5M">
 <code class="descname">K_5M</code><a class="headerlink" href="#SubType.K_5M" title="Permalink to this definition">¶</a></dt>
 <dd><p>5分钟K线</p>
@@ -770,6 +779,18 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="SubType.K_QUARTER">
+<code class="descname">K_QUARTER</code><a class="headerlink" href="#SubType.K_QUARTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>季K线</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SubType.K_YEAR">
+<code class="descname">K_YEAR</code><a class="headerlink" href="#SubType.K_YEAR" title="Permalink to this definition">¶</a></dt>
+<dd><p>年K线</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="SubType.RT_DATA">
 <code class="descname">RT_DATA</code><a class="headerlink" href="#SubType.RT_DATA" title="Permalink to this definition">¶</a></dt>
 <dd><p>分时</p>
@@ -801,6 +822,12 @@
 <dt id="KLType.K_1M">
 <code class="descname">K_1M</code><a class="headerlink" href="#KLType.K_1M" title="Permalink to this definition">¶</a></dt>
 <dd><p>1分钟K线</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KLType.K_3M">
+<code class="descname">K_3M</code><a class="headerlink" href="#KLType.K_3M" title="Permalink to this definition">¶</a></dt>
+<dd><p>3分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -843,6 +870,18 @@
 <dt id="KLType.K_MON">
 <code class="descname">K_MON</code><a class="headerlink" href="#KLType.K_MON" title="Permalink to this definition">¶</a></dt>
 <dd><p>月K线</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KLType.K_QUARTER">
+<code class="descname">K_QUARTER</code><a class="headerlink" href="#KLType.K_QUARTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>季K线</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="KLType.K_YEAR">
+<code class="descname">K_YEAR</code><a class="headerlink" href="#KLType.K_YEAR" title="Permalink to this definition">¶</a></dt>
+<dd><p>年K线</p>
 </dd></dl>
 
 </dd></dl>
@@ -1900,7 +1939,7 @@
         <a href="Quote_API.html" class="btn btn-neutral float-right" title="行情API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../setup/FutuOpenDGuide.html" class="btn btn-neutral" title="FutuOpenD使用说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="setup.html" class="btn btn-neutral" title="安装指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1929,17 +1968,7 @@
 
     
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'3.4',
-              LANGUAGE:'en',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>

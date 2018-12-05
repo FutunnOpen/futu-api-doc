@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api 3.4 documentation</title>
+  <title>介绍 &mdash; futu-api 3.6 documentation</title>
   
 
   
@@ -26,10 +26,12 @@
 
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="安装指南" href="../setup/setup.html" />
-    <link rel="prev" title="futu-api 3.4 指南" href="../index.html" /> 
+    <link rel="next" title="FutuOpenD使用说明" href="FutuOpenDGuide.html" />
+    <link rel="prev" title="futu-api 3.6 指南" href="../index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -58,7 +60,7 @@
             
             
               <div class="version">
-                3.4
+                3.6
               </div>
             
           
@@ -85,31 +87,31 @@
               <p class="caption"><span class="caption-text">基础</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id4">特点</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#futu-api">futu-api安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">技术架构</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#python-apifutuopend">Python API与FutuOpenD通讯架构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#futuopendfutu">FutuOpenD与Futu后台通讯架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">主要功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">特点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">系统架构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">第三方应用与 FutuOpenD 通讯架构</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../setup/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PROTOCOL</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -199,18 +201,24 @@
 </style>
 <div class="section" id="id1">
 <h1>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://futunnopen.github.io/py-futu-api/">富途开放接口</a> 提供了基于Python的交易和行情API接口，可以满足您使用富途牛牛软件进行量化投资的需求。</p>
-<p>Futu Open API 项目，涵盖了常规交易品种（证券、衍生品）：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.港股：正股、涡轮、牛熊证
-2.美股：正股、ETF
+<p>futu-api提供了交易和行情接口，可以满足个人开发者和机构客户使用富途牛牛软件进行程序化投资的需求。</p>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>主要功能<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>交易品种:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.港股：正股、ETF、窝轮、牛熊证
+2.美股：正股、ETF、期权
 </pre></div>
 </div>
-<p>您可获取对应行情权限级别的报价、K线数据，拥有高级行情权限的客户可获取逐笔、买卖档、买卖经纪等深度数据。</p>
-<hr class="docutils" />
-<blockquote>
-<div></div></blockquote>
-<div class="section" id="id4">
-<h2>特点<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>行情数据:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.支持A股、港股、美股三大市场
+2.支持定阅并接收实时报价、逐笔、买卖档，买卖经纪（仅港股)等深度数据
+3.支持获取历史K线数据
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>特点<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
@@ -218,7 +226,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>高效的执行</td>
-<td>配合FutuOpenD，一行简单的命令就可以执行您的策略</td>
+<td>配合 <a class="reference external" href="FutuOpenDGuide.html">FutuOpenD</a> ，一行简单的命令就可以执行您的策略</td>
 </tr>
 <tr class="row-even"><td>活跃的社区</td>
 <td>富途牛牛圈、QQ群和众多牛人一起分享心得</td>
@@ -233,35 +241,16 @@
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="futu-api">
-<h2>futu-api安装<a class="headerlink" href="#futu-api" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install futu-api
-</pre></div>
+<div class="section" id="id4">
+<h2>系统架构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>简介<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>使用futu-api时，需在本地或云端启动网关程序 <a class="reference external" href="FutuOpenDGuide.html">FutuOpenD</a>，该程序以自定义TCP协议的方式对外暴露接口,
+该协议接口与编程语言无关, 为方便使用，针对不同编程语言，富途封装了对应语言的API SDK供第三方使用(暂时仅支持python)</p>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>我们强烈建议您使用Anaconda python 3，要求python3.5及以上版本, 必要的基础库包括 talib,protobuf,simplejson,pycryptodome 等</li>
-<li>FutuOpenD网关客户端 <a class="reference external" href="https://www.futunn.com/download/index">下载</a></li>
-<li>FutuOpenD可依业务需要在本机或云端服务器运行</li>
-<li>如您安装遇到问题请访问 : <a class="reference external" href="../setup/setup.html">安装指南</a></li>
-</ul>
-</div>
-</div>
-<hr class="docutils" />
 <div class="section" id="id6">
-<h2>技术架构<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id7">
-<h3>简介<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>FutuOpenD是指富途开放API网关程序，以TCP协议接口的方式，对外开放了富途的行情交易基础能力, 该程序由用户自行在本地或云端部署运行。</p>
-</div>
-<div class="section" id="python-apifutuopend">
-<h3>Python API与FutuOpenD通讯架构<a class="headerlink" href="#python-apifutuopend" title="Permalink to this headline">¶</a></h3>
+<h3>第三方应用与 <a class="reference external" href="FutuOpenDGuide.html">FutuOpenD</a> 通讯架构<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/API.png" src="../_images/API.png" />
-</div>
-<div class="section" id="futuopendfutu">
-<h3>FutuOpenD与Futu后台通讯架构<a class="headerlink" href="#futuopendfutu" title="Permalink to this headline">¶</a></h3>
-<img alt="../_images/FutuOpenD.png" src="../_images/FutuOpenD.png" />
 <hr class="docutils" />
 </div>
 </div>
@@ -275,10 +264,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../setup/setup.html" class="btn btn-neutral float-right" title="安装指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="FutuOpenDGuide.html" class="btn btn-neutral float-right" title="FutuOpenD使用说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="futu-api 3.4 指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index.html" class="btn btn-neutral" title="futu-api 3.6 指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -307,17 +296,7 @@
 
     
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'3.4',
-              LANGUAGE:'en',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
