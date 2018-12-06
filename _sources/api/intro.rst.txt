@@ -3,9 +3,12 @@
 .. role:: red-strengthen
     :class: red-strengthen
 
+.. _FutuOpenD: ../intro/FutuOpenDGuide.html
+
 介绍
 ====================
-FutuOpen是futu-api项目的网关客户端，在本机或云端成功运行后，第三方应用即可通过约定的TCP协议与之通讯， 达到调用指定行情和交易接口的目的。
+python-api依赖FutuOpen网关客户端，需要先运行登录 FutuOpenD_
+
 
 
 交易品种:
