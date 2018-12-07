@@ -7,7 +7,7 @@
 
 介绍
 ====================
-python-api依赖FutuOpen网关客户端，需要先运行登录 FutuOpenD_
+py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 
 
 
