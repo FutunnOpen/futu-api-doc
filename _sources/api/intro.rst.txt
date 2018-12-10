@@ -71,7 +71,7 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 get_trading_days_                   获取交易日
 get_stock_basicinfo_                获取指定市场中特定类型的股票基本信息
 get_multiple_history_kline_         :strike:`获取多只股票的本地历史k线数据`
-get_autype_list_                    获取给定股票列表的复权因子
+get_autype_list_                    :strike:`获取给定股票列表的复权因子`
 get_market_snapshot_                获取市场快照
 get_rt_data_                        获取指定股票的分时数据
 get_plate_stock_                    获取特定板块下的股票列表
