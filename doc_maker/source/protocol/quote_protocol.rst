@@ -722,6 +722,7 @@
 		required Qot_Common.Security security = 1;
 		repeated Qot_Common.KLine klList = 2; //K线数据
 		optional string nextKLTime = 3; //如请求不指定maxAckKLNum值，则不会返回该字段，该字段表示超过指定限制的下一K线时间字符串
+		optional double nextKLTimestamp = 4; //时间戳，如请求不指定maxAckKLNum值，则不会返回该字段，该字段表示超过指定限制的下一K线时间戳
 	}
 
 	message Request
@@ -887,6 +888,7 @@
 		optional double addPrice = 20;	
 		optional double dividend = 21; //现金分红(eg.每10股派现0.5元,则该字段值为0.05)
 		optional double spDividend = 22; //特别股息(eg.每10股派特别股息0.5元,则该字段值为0.05)
+		optional double timestamp = 23; //时间戳
 	}
 
 	message SecurityRehab
@@ -997,6 +999,8 @@
 	message TradeDate
 	{
 		required string time = 1; //时间字符串
+		optional double timestamp = 2; //时间戳
+		optional int32 tradeDateType = 3; //Qot_Common.TradeDateType,交易时间类型
 	}
 
 	message S2C
@@ -1080,10 +1084,10 @@
 		repeated Qot_Common.Security securityList = 1; //股票
 	}
 
-	 // 正股类型额外数据
+	// 正股类型额外数据
 	message EquitySnapshotExData
 	{
-		required int64 issuedShares = 1; // 发行股本,即总股本
+		repeated Qot_Common.Security securityList = 1; //股票
 		required double issuedMarketVal = 2; // 总市值 =总股本*当前价格
 		required double netAsset = 3; // 资产净值
 		required double netProfit = 4; // 盈利（亏损）
@@ -1094,9 +1098,10 @@
 		required double eyRate = 9; // 收益率
 		required double peRate = 10; // 市盈率
 		required double pbRate = 11; // 市净率
+		required double peTTMRate = 12; // 市盈率TTM
 	}
 
-	 // 涡轮类型额外数据
+	// 涡轮类型额外数据
 	message WarrantSnapshotExData
 	{
 		required double conversionRate = 1; //换股比率
@@ -1112,9 +1117,30 @@
 		required double delta = 11; //对冲值
 		required double impliedVolatility = 12; //引申波幅
 		required double premium = 13; //溢价
+		optional double maturityTimestamp = 14; //到期日时间戳
+		optional double endTradeTimestamp = 15; //最后交易日时间戳
 	}
 
-	 //基本快照数据
+	// 期权类型额外数据
+	message OptionSnapshotExData
+	{
+		required int32 type = 1; //Qot_Common.OptionType,期权
+		required Qot_Common.Security owner = 2; //标的股
+		required string strikeTime = 3; //行权日
+		required double strikePrice = 4; //行权价
+		required int32 contractSize = 5; //每份合约数
+		required int32 openInterest = 6; //未平仓合约数
+		required double impliedVolatility = 7; //隐含波动率
+		required double premium = 8; //溢价
+		required double delta = 9; //希腊值 Delta
+		required double gamma = 10; //希腊值 Gamma
+		required double vega = 11; //希腊值 Vega
+		required double theta = 12; //希腊值 Theta
+		required double rho = 13; //希腊值 Rho
+		optional double strikeTimestamp = 14; //行权日时间戳		
+	}
+
+	// 基本快照数据
 	message SnapshotBasicData
 	{
 		required Qot_Common.Security security = 1; //股票
@@ -1122,7 +1148,7 @@
 		required bool isSuspend = 3; //是否停牌
 		required string listTime = 4; //上市时间字符串
 		required int32 lotSize = 5; //每手数量
-		required double priceSpread = 6; //向上价差
+		required double priceSpread = 6; //价差
 		required string updateTime = 7; //更新时间字符串
 		required double highPrice = 8; //最新价
 		required double openPrice = 9; //开盘价
@@ -1132,6 +1158,12 @@
 		required int64 volume = 13; //成交量
 		required double turnover = 14; //成交额
 		required double turnoverRate = 15; //换手率
+		optional double listTimestamp = 16; //上市时间戳
+		optional double updateTimestamp = 17; //更新时间戳
+		optional double askPrice = 18;//卖价
+		optional double bidPrice = 19;//买价
+		optional int64 askVol = 20;//卖量
+		optional int64 bidVol = 21;//买量		
 	}
 
 	message Snapshot
@@ -1139,6 +1171,7 @@
 		required SnapshotBasicData basic = 1; //快照基本数据
 		optional EquitySnapshotExData equityExData = 2; //正股快照额外数据
 		optional WarrantSnapshotExData warrantExData = 3; //窝轮快照额外数据
+		optional OptionSnapshotExData optionExData = 4; //期权快照额外数据
 	}
 
 	message S2C
@@ -1442,6 +1475,7 @@
 	{
 		required string strikeTime = 1; //行权日
 		repeated OptionItem option = 2; //期权信息
+		optional double strikeTimestamp = 3; //行权日时间戳
 	}
 
 	message S2C

@@ -578,6 +578,7 @@ KLine - K线数据点
 		optional double turnoverRate = 10; //换手率
 		optional double pe = 11; //市盈率
 		optional double changeRate = 12; //涨跌幅
+		optional double timestamp = 13; //时间戳
 	}
 		
 -----------------------------------------------
@@ -618,6 +619,8 @@ BasicQot - 基础报价
 		required double turnoverRate = 13; //换手率
 		required double amplitude = 14; //振幅
 		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态
+		optional double listTimestamp = 17; //上市日期时间戳
+		optional double updateTimestamp = 18; //更新时间戳
 		
 		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 	}
@@ -639,6 +642,7 @@ TimeShare - 分时数据点
 		optional double avgPrice = 6; //均价
 		optional int64 volume = 7; //成交量
 		optional double turnover = 8; //成交额
+		optional double timestamp = 9; //时间戳
 	}
 
 -----------------------------------------------
@@ -652,10 +656,12 @@ SecurityStaticBasic - 证券基本静态信息
 	{
 		required Qot_Common.Security security = 1; //股票
 		required int64 id = 2; //股票ID
-		required int32 lotSize = 3; //每手数量
+		required int32 lotSize = 3; //每手数量,期权类型表示一份合约的股数
 		required int32 secType = 4; //Qot_Common.SecurityType,股票类型
 		required string name = 5; //股票名字
 		required string listTime = 6; //上市时间字符串
+		optional bool delisting = 7; //是否退市
+		optional double listTimestamp = 8; //上市时间戳
 	}
 
 -----------------------------------------------
@@ -686,6 +692,7 @@ OptionStaticExData - 期权额外静态信息
 		required double strikePrice = 4; //行权价
 		required bool suspend = 5; //是否停牌
 		required string market = 6; //发行市场名字
+		optional double strikeTimestamp = 7; //行权日时间戳
 	}
 			
 -----------------------------------------------
@@ -736,6 +743,7 @@ Ticker - 逐笔成交
 		optional int32 type = 8; //TickerType, 逐笔类型
 		optional int32 typeSign = 9; //逐笔类型符号
 		optional int32 pushDataType = 10; //用于区分推送情况，仅推送时有该字段
+		optional double timestamp = 11; //时间戳
 	}
 	
 -----------------------------------------------
@@ -782,6 +790,7 @@ ShareHoldingChange - 持股变动
 		required double changeQty = 4; //较上一次变动数量
 		required double changeRatio = 5; //较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
 		required string time = 6; //发布时间(YYYY-MM-DD HH:MM:SS字符串)
+		optional double timestamp = 7; //时间戳,发布时间(YYYY-MM-DD HH:MM:SS字符串)
 	}
 	
 -----------------------------------------------
@@ -1075,6 +1084,9 @@ Order - 订单
 		optional double fillQty = 12; //成交数量，2位精度，期权单位是"张"
 		optional double fillAvgPrice = 13; //成交均价，无精度限制
 		optional string lastErrMsg = 14; //最后的错误描述，如果有错误，会有此描述最后一次错误的原因，无错误为空
+		optional int32 secMarket = 15; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
+		optional double createTimestamp = 16; //创建时间戳,严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+		optional double updateTimestamp = 17; //最后更新时间戳，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
 	}
 
 -----------------------------------------------
@@ -1098,6 +1110,8 @@ OrderFill - 成交
 		required string createTime = 10; //创建时间（成交时间），严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
 		optional int32 counterBrokerID = 11; //对手经纪号，港股有效
 		optional string counterBrokerName = 12; //对手经纪名称，港股有效
+		optional int32 secMarket = 13; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
+		optional double createTimestamp = 14; //时间戳
 	}
 
 -----------------------------------------------
