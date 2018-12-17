@@ -790,7 +790,7 @@ ShareHoldingChange - 持股变动
 		required double changeQty = 4; //较上一次变动数量
 		required double changeRatio = 5; //较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
 		required string time = 6; //发布时间(YYYY-MM-DD HH:MM:SS字符串)
-		optional double timestamp = 7; //时间戳,发布时间(YYYY-MM-DD HH:MM:SS字符串)
+		optional double timestamp = 7; //时间戳
 	}
 	
 -----------------------------------------------
@@ -1085,8 +1085,8 @@ Order - 订单
 		optional double fillAvgPrice = 13; //成交均价，无精度限制
 		optional string lastErrMsg = 14; //最后的错误描述，如果有错误，会有此描述最后一次错误的原因，无错误为空
 		optional int32 secMarket = 15; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
-		optional double createTimestamp = 16; //创建时间戳,严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
-		optional double updateTimestamp = 17; //最后更新时间戳，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+		optional double createTimestamp = 16; //创建时间戳
+		optional double updateTimestamp = 17; //最后更新时间戳
 	}
 
 -----------------------------------------------
