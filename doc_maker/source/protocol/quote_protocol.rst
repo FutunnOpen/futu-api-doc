@@ -1148,7 +1148,7 @@
 		required bool isSuspend = 3; //是否停牌
 		required string listTime = 4; //上市时间字符串
 		required int32 lotSize = 5; //每手数量
-		required double priceSpread = 6; //价差
+		required double priceSpread = 6; //向上价差
 		required string updateTime = 7; //更新时间字符串
 		required double highPrice = 8; //最新价
 		required double openPrice = 9; //开盘价
