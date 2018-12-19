@@ -1635,3 +1635,4 @@
 	* 窝轮状态类型参考 `WarrantStatus <base_define.html#warrantstatus>`_
 	* 接口限制请参见 `获取涡轮限制 <intro.html#id39>`_
 	* 目前仅支持港股
+	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
