@@ -878,9 +878,254 @@ OptionCondType - 价内价外
  ..  py:attribute:: OUTSIDE
  
   价外
-  
+
+--------------------------------------
+
+WarrantType - 涡轮类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+价内价外定义
+
+..  py:class:: WarrantType
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: Buy
+
+  认购
+
+ ..  py:attribute:: Sell
+
+  认沽
+
+ ..  py:attribute:: Bull
+
+  牛
+
+ ..  py:attribute:: Bear
+
+  熊
   
 --------------------------------------
+
+
+Issuer - 发行人过滤列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+发行人过滤列表
+
+..  py:class:: Issuer
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: SG
+
+  法兴
+
+ ..  py:attribute:: BP
+
+  法巴
+
+ ..  py:attribute:: CS
+
+  瑞信
+
+ ..  py:attribute:: CT
+
+  花旗
+
+ ..  py:attribute:: EA 
+
+  东亚
+
+ ..  py:attribute:: GS 
+
+  高盛
+
+ ..  py:attribute:: HS 
+
+  汇丰
+
+
+ ..  py:attribute:: JP 
+
+  摩通
+
+
+ ..  py:attribute:: MB 
+
+  麦银
+
+ ..  py:attribute:: SC 
+
+  渣打
+
+ ..  py:attribute:: UB 
+
+  瑞银
+
+ ..  py:attribute:: BI 
+
+  中银
+
+ ..  py:attribute:: DB 
+
+  德银
+
+ ..  py:attribute:: DC 
+
+  大和
+
+ ..  py:attribute:: ML 
+
+  美林
+
+ ..  py:attribute:: NM 
+
+  野村
+
+ ..  py:attribute:: RB 
+
+  荷合
+
+ ..  py:attribute:: RS 
+
+  苏皇
+
+ ..  py:attribute:: BC 
+
+  巴克莱
+
+ ..  py:attribute:: HT 
+
+  海通
+
+ ..  py:attribute:: VT 
+
+  瑞通
+
+ ..  py:attribute:: KC 
+
+  比联
+
+--------------------------------------
+
+
+IpoPeriod - 上市日
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+上市日
+
+..  py:class:: IpoPeriod
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: Today
+
+  今日上市
+
+ ..  py:attribute:: Tomorrow
+
+  明日上市
+
+ ..  py:attribute:: Nextweek
+
+  未来一周上市
+
+ ..  py:attribute:: Lastweek
+
+  过去一周上市
+
+ ..  py:attribute:: Lastmonth
+
+  过去一月上市
+
+--------------------------------------
+
+
+
+
+WarrantStatus - 涡轮状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+上市日
+
+..  py:class:: WarrantStatus
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: Normal
+
+  正常状态
+
+ ..  py:attribute:: Suspend
+
+  停牌
+
+ ..  py:attribute:: StopTrade
+
+  终止交易
+
+ ..  py:attribute:: PendingListing
+
+  等待上市
+
+--------------------------------------
+
+
+
+
+PriceType - 涡轮价内价外
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+上市日
+
+..  py:class:: PriceType
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: Outside
+
+  价外
+
+ ..  py:attribute:: WithIn
+
+  价内
+
+--------------------------------------
+
+
+
+
+TradeDateType - 交易时间类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易时间类型定义
+
+..  py:class:: TradeDateType
+
+ ..  py:attribute:: 0
+ 
+  全天交易
+  
+ ..  py:attribute:: 1
+ 
+  上午交易，下午休市
+
+ ..  py:attribute:: 2
+
+  上午休市，下午交易
+ --------------------------------------
 
 SysNotifyType - 系统异步通知类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -890,13 +1135,12 @@ SysNotifyType - 系统异步通知类型
 ..  py:class:: SysNotifyType
 
  ..  py:attribute:: NONE
- 
+
   未知
-  
+
  ..  py:attribute:: GTW_EVENT
- 
+
   网关事件
-  
 
 --------------------------------------
 

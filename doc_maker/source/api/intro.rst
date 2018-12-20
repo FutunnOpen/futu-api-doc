@@ -20,7 +20,7 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 ::
           1.支持A股、港股、美股三大市场
           2.支持定阅并接收实时报价、逐笔、买卖档，买卖经纪（仅港股)等深度数据
-          3.支持获取历史K线数据
+          3.:strike:`支持获取历史K线数据`
 
 --------------
 
@@ -42,8 +42,11 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
   .. _get_referencestock_list:  Quote_API.html#get_referencestock_list
   .. _get_owner_plate:  Quote_API.html#get_owner_plate
   .. _get_holding_change_list:  Quote_API.html#get_holding_change_list
-  .. _get_get_order_detail:  Quote_API.html#get_order_detail
+  .. _get_order_detail:  Quote_API.html#get_order_detail
   .. _get_option_chain:  Quote_API.html#get_option_chain
+  .. _request_history_kline: Quote_API.html#request_history_kline
+  .. _query_subscription: Quote_API.html#query_subscription
+  .. _get_warrant: Quote_API.html#get_warrant
 
   .. _get_acc_list:  Trade_API.html#get_acc_list
   .. _unlock_trade:  Trade_API.html#unlock_trade
@@ -72,6 +75,8 @@ get_trading_days_                   获取交易日
 get_stock_basicinfo_                获取指定市场中特定类型的股票基本信息
 get_multiple_history_kline_         :strike:`获取多只股票的本地历史k线数据`
 get_autype_list_                    :strike:`获取给定股票列表的复权因子`
+request_history_kline_              获取k线，不需要事先下载k线数据
+query_subscription_                 查询已订阅的实时信息
 get_market_snapshot_                获取市场快照
 get_rt_data_                        获取指定股票的分时数据
 get_plate_stock_                    获取特定板块下的股票列表
@@ -88,6 +93,7 @@ get_holding_change_list_            获取大股东持股变动列表,只提供�
 get_order_detail_                   查询A股Level 2权限下提供的委托明细
 get_option_chain_                   通过标的股查询期权
 get_multi_points_history_kline_     :strike:`从本地历史K线中获取多支股票多个时间点的指定数据列`
+get_warrant_                        拉取涡轮和相关衍生品数据接口
 ================================    ============================================================================
 
 交易函数:

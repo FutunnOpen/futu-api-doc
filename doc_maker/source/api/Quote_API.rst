@@ -41,6 +41,8 @@
  .. _SysNotifyType: Base_API.html#sysnotifytype
  
  .. _GtwEventType: Base_API.html#gtweventtype
+
+ .. _TradeDateType: Base_API.html#tradedatetype
  
  .. _SecurityReferenceType: Base_API.html#securityreferencetype
  
@@ -49,6 +51,16 @@
  .. _TickerType: Base_API.html#tickertype
 
  .. _DarkStatus: Base_API.html#darkstatus
+
+ .. _WarrantType: Base_API.html#warranttype
+
+ .. _Issuer: Base_API.html#issuer
+
+ .. _IpoPeriod: Base_API.html#ipoperiod
+
+ .. _PriceType: Base_API.html#pricetype
+
+ .. _WarrantStatus: Base_API.html#warrantstatus
 
 一分钟上手
 ============
@@ -146,7 +158,29 @@ get_trading_days
             str            None          end为start往后365天
             None           None          end为当前日期，start为end往前365天
             ==========    ==========    ========================================
- :return: 成功时返回(RET_OK, data)，data是字符串数组；失败时返回(RET_ERROR, data)，其中data是错误描述字符串
+ :return: (ret_code, content)
+
+        成功时返回(RET_OK, data)，data为字典列表，失败时返回(RET_ERROR, data)，其中data是错误描述字符串
+
+
+        =================   ===========   ==============================================================================
+        参数                  类型                        说明
+        =================   ===========   ==============================================================================
+        time                str            时间
+        trade_date_type     int            标志是一天、上午半天、下午半天，参见 TradeDateType_
+        =================   ===========   ==============================================================================
+
+ .. code:: python
+
+         {'trade_date_type': 0, 'time': '2018-01-02'},
+         {'trade_date_type': 0, 'time': '2018-01-03'},
+         {'trade_date_type': 0, 'time': '2018-01-04'},
+         {'trade_date_type': 0, 'time': '2018-01-05'}
+
+..
+
+
+
         
  :Example:
 
@@ -343,7 +377,6 @@ request_history_kline
     volume              int            成交量
     turnover            float          成交额
     change_rate         float          涨跌幅
-    last_close          float          昨收价
     =================   ===========   ==============================================================================
 
 	
@@ -476,6 +509,10 @@ get_market_snapshot
  option_vega                     float          希腊值 Vega
  option_theta                    float          希腊值 Theta
  option_rho                      float          希腊值 Rho
+ ask_price                       float          卖价
+ bid_price                       float          买价
+ ask_vol                         float          卖量
+ bid_vol                         float          买量
  ============================   =============   ======================================================================
         
  :Example:
@@ -942,7 +979,6 @@ get_cur_kline
         turnover                 float          成交额
         pe_ratio                 float          市盈率（该字段为比例字段，默认不展示%）
         turnover_rate            float          换手率
-        last_close               float          昨收价
         =====================   ===========   ==============================================================
 		
  :Example:
@@ -1265,8 +1301,133 @@ get_option_chain
 	
 .. note::
 
-    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_  
-	
+    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_
+
+
+get_warrant
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_warrant(self, code, req=None)
+
+ 通过标的股查询涡轮
+
+ :param code: 股票代码,例如：'HK.02318'
+ :param req: 请求参数组合，from futu.quote.quote_get_warrant import Request
+
+
+==========================  ==============    ========================================
+参数                          类型               说明
+==========================  ==============    ========================================
+begin                       int               数据起始点
+num                         int               请求数据个数，最大200
+sort_field                  SortField         根据哪个字段排序
+ascend                      bool              升序ture, 降序false
+owner                       str               所属正股
+type_list                   list              窝轮类型过滤列表 参见 WarrantType_
+issuer_list                 list              发行人过滤列表 参见 Issuer_
+maturity_time_min           str               到期日, 到期日范围的开始时间戳
+maturity_time_max           str               到期日范围的结束时间戳
+ipo_period                  IpoPeriod         上市日 参见 IpoPeriod_
+price_type                  PriceType         价内/价外 参见 PriceType_
+status                      WarrantStatus     窝轮状态 参见 WarrantStatus_
+cur_price_min               double            最新价过滤起点
+cur_price_max               double            最新价过滤终点
+strike_price_min            double            行使价过滤起点
+strike_price_max            double            行使价过滤终点
+street_min                  double            街货占比 % 过滤起点
+street_max                  double            街货占比 % 过滤终点
+conversion_min              double            换股比率过滤起点
+conversion_max              double            换股比率过滤终点
+vol_min                     int               成交量过滤起点
+vol_max                     int               成交量过滤终点
+premium_min                 double            溢价 % 过滤起点
+premium_max                 double            溢价 % 过滤终点
+leverage_ratio_min          double            杠杆比率过滤起点
+leverage_ratio_max          double            杠杆比率过滤终点
+delta_min                   double            对冲值过滤起点, 仅认购认沽支持该字段过滤
+delta_max                   double            对冲值过滤终点, 仅认购认沽支持该字段过滤
+implied_min                 double            引伸波幅过滤起点, 仅认购认沽支持该字段过滤
+implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
+recovery_price_min          double            回收价过滤起点, 仅牛熊证支持该字段过滤
+recovery_price_max          double            回收价过滤终点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_min    double            正股距回收价 % 过滤起点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_max    double            正股距回收价 % 过滤终点, 仅牛熊证支持该字段过滤
+==========================  ==============    ========================================
+
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回（warrant_data_list,last_page, all_count）数据列格式如下：
+
+        warrant_data_list pd dataframe数据，数据列格式如下
+
+        last_page 是否是最后一页
+
+        all_count 列表总数量
+
+
+==========================    ================    ===================================
+参数                            类型                        说明
+==========================    ================    ===================================
+stock                          str                涡轮代码
+owner                          str                所属正股
+type                           WarrantType        窝轮类型 参见 WarrantType_
+issuer                         Issuer             发行人 参见 Issuer_
+maturity_time                  str                到期日
+maturity_timestamp             double             到期日时间戳
+list_time                      str                上市时间
+list_timestamp                 double             上市时间戳
+last_trade_time                str                最后交易日
+last_trade_timestamp           double             最后交易日时间戳
+recovery_price                 double             回收价,仅牛熊证支持该字段
+conversion_ratio               double             换股比率
+lot_size                       int                每手数量
+strike_price                   double             行使价
+last_close_price               double             昨收价
+name                           str                名称
+cur_price                      double             当前价
+price_change_val               double             涨跌额
+status                         WarrantStatus      窝轮状态 参见 WarrantStatus_
+bid_price                      double             买入价
+ask_price                      double             卖出价
+bid_vol                        int                买量
+ask_vol                        int                卖量
+volume                         int                成交量
+turnover                       double             成交额
+score                          double             综合评分
+premium                        double             溢价%
+break_even_point               double             打和点
+leverage                       double             杠杆比例（倍）
+ipop                           double             价内/价外%
+price_recovery_ratio           double             正股距回收价%，仅牛熊证支持该字段
+conversion_price               double             换股价
+street_rate                    double             街货占比
+street_vol                     int                街货量
+amplitude                      double             振幅%
+issue_size                     int                发行量
+high_price                     double             最高价
+low_price                      double             最低价
+implied_volatility             double             引申波幅,仅认购认沽支持该字段
+delta                          double             对冲值,仅认购认沽支持该字段
+effective_leverage             double             有效杠杆
+==========================    ================    ===================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_warrant("HK.00700"))
+    quote_ctx.close()
+
+
+.. note::
+
+    * 	接口限制请参见 `获取涡轮限制 <../protocol/intro.html#id37>`_
+
 ---------------------------------------------------------------------    
 
 
