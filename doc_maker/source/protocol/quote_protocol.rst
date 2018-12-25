@@ -722,6 +722,7 @@
 		required Qot_Common.Security security = 1;
 		repeated Qot_Common.KLine klList = 2; //K线数据
 		optional string nextKLTime = 3; //如请求不指定maxAckKLNum值，则不会返回该字段，该字段表示超过指定限制的下一K线时间字符串
+		optional double nextKLTimestamp = 4; //时间戳，如请求不指定maxAckKLNum值，则不会返回该字段，该字段表示超过指定限制的下一K线时间戳
 	}
 
 	message Request
@@ -887,6 +888,7 @@
 		optional double addPrice = 20;	
 		optional double dividend = 21; //现金分红(eg.每10股派现0.5元,则该字段值为0.05)
 		optional double spDividend = 22; //特别股息(eg.每10股派特别股息0.5元,则该字段值为0.05)
+		optional double timestamp = 23; //时间戳
 	}
 
 	message SecurityRehab
@@ -997,6 +999,8 @@
 	message TradeDate
 	{
 		required string time = 1; //时间字符串
+		optional double timestamp = 2; //时间戳
+		optional int32 tradeDateType = 3; //Qot_Common.TradeDateType,交易时间类型
 	}
 
 	message S2C
@@ -1080,7 +1084,7 @@
 		repeated Qot_Common.Security securityList = 1; //股票
 	}
 
-	 // 正股类型额外数据
+	// 正股类型额外数据
 	message EquitySnapshotExData
 	{
 		required int64 issuedShares = 1; // 发行股本,即总股本
@@ -1094,9 +1098,10 @@
 		required double eyRate = 9; // 收益率
 		required double peRate = 10; // 市盈率
 		required double pbRate = 11; // 市净率
+		required double peTTMRate = 12; // 市盈率TTM
 	}
 
-	 // 涡轮类型额外数据
+	// 涡轮类型额外数据
 	message WarrantSnapshotExData
 	{
 		required double conversionRate = 1; //换股比率
@@ -1112,9 +1117,30 @@
 		required double delta = 11; //对冲值
 		required double impliedVolatility = 12; //引申波幅
 		required double premium = 13; //溢价
+		optional double maturityTimestamp = 14; //到期日时间戳
+		optional double endTradeTimestamp = 15; //最后交易日时间戳
 	}
 
-	 //基本快照数据
+	// 期权类型额外数据
+	message OptionSnapshotExData
+	{
+		required int32 type = 1; //Qot_Common.OptionType,期权
+		required Qot_Common.Security owner = 2; //标的股
+		required string strikeTime = 3; //行权日
+		required double strikePrice = 4; //行权价
+		required int32 contractSize = 5; //每份合约数
+		required int32 openInterest = 6; //未平仓合约数
+		required double impliedVolatility = 7; //隐含波动率
+		required double premium = 8; //溢价
+		required double delta = 9; //希腊值 Delta
+		required double gamma = 10; //希腊值 Gamma
+		required double vega = 11; //希腊值 Vega
+		required double theta = 12; //希腊值 Theta
+		required double rho = 13; //希腊值 Rho
+		optional double strikeTimestamp = 14; //行权日时间戳		
+	}
+
+	// 基本快照数据
 	message SnapshotBasicData
 	{
 		required Qot_Common.Security security = 1; //股票
@@ -1132,6 +1158,12 @@
 		required int64 volume = 13; //成交量
 		required double turnover = 14; //成交额
 		required double turnoverRate = 15; //换手率
+		optional double listTimestamp = 16; //上市时间戳
+		optional double updateTimestamp = 17; //更新时间戳
+		optional double askPrice = 18;//卖价
+		optional double bidPrice = 19;//买价
+		optional int64 askVol = 20;//卖量
+		optional int64 bidVol = 21;//买量		
 	}
 
 	message Snapshot
@@ -1139,6 +1171,7 @@
 		required SnapshotBasicData basic = 1; //快照基本数据
 		optional EquitySnapshotExData equityExData = 2; //正股快照额外数据
 		optional WarrantSnapshotExData warrantExData = 3; //窝轮快照额外数据
+		optional OptionSnapshotExData optionExData = 4; //期权快照额外数据
 	}
 
 	message S2C
@@ -1442,6 +1475,7 @@
 	{
 		required string strikeTime = 1; //行权日
 		repeated OptionItem option = 2; //期权信息
+		optional double strikeTimestamp = 3; //行权日时间戳
 	}
 
 	message S2C
@@ -1470,14 +1504,135 @@
 	* 限频接口：30秒内最多10次
 	* 目前仅支持美股
 
+`Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取涡轮
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+.. code-block:: protobuf
 
+	syntax = "proto2";
+	package Qot_GetWarrant;
 
+	import "Common.proto";
+	import "Qot_Common.proto";
 
+	message C2S
+	{
+		required int32 begin = 1; //数据起始点
+		required int32 num =  2; //请求数据个数，最大200
+		required int32 sortField = 3;//Qot_Common.SortField,根据哪个字段排序
+		required bool ascend = 4;//升序ture, 降序false
+		
+		//以下为筛选条件，可选字段，不填表示不过滤
+		optional Qot_Common.Security owner = 5;	//所属正股
+		repeated int32 typeList = 6; //Qot_Common.WarrantType,窝轮类型过滤列表
+		repeated int32 issuerList = 7; //Qot_Common.Issuer,发行人过滤列表
+		optional string maturityTimeMin = 8; //到期日, 到期日范围的开始时间戳
+		optional string maturityTimeMax = 9; //到期日范围的结束时间戳
+		optional int32 ipoPeriod = 10; //Qot_Common.IpoPeriod,上市日
+		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外
+		optional int32 status = 12; //Qot_Common.WarrantStatus, 窝轮状态
+		optional double curPriceMin = 13; //最新价过滤起点 
+		optional double curPriceMax = 14; //最新价过滤终点 	
+		optional double strikePriceMin = 15; //行使价过滤起点
+		optional double strikePriceMax = 16; //行使价过滤终点  
+		optional double streetMin = 17; //街货占比%过滤起点
+		optional double streetMax = 18; //街货占比%过滤终点
+		optional double conversionMin = 19; //换股比率过滤起点
+		optional double conversionMax = 20; //换股比率过滤终点	
+		optional uint64 volMin = 21; //成交量过滤起点
+		optional uint64 volMax = 22; //成交量过滤终点
+		optional double premiumMin = 23; //溢价%过滤起点
+		optional double premiumMax = 24; //溢价%过滤终点
+		optional double leverageRatioMin = 25; //杠杆比率过滤起点
+		optional double leverageRatioMax = 26; //杠杆比率过滤终点	
+		optional double deltaMin = 27;//对冲值过滤起点,仅认购认沽支持该字段过滤
+		optional double deltaMax = 28;//对冲值过滤终点,仅认购认沽支持该字段过滤
+		optional double impliedMin = 29; //引伸波幅过滤起点,仅认购认沽支持该字段过滤
+		optional double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
+		optional double recoveryPriceMin = 31; //回收价过滤起点,仅牛熊证支持该字段过滤
+		optional double recoveryPriceMax = 32; //回收价过滤终点,仅牛熊证支持该字段过滤
+		optional double priceRecoveryRatioMin = 33;//正股距回收价%过滤起点,仅牛熊证支持该字段过滤
+		optional double priceRecoveryRatioMax = 34;//正股距回收价%过滤终点,仅牛熊证支持该字段过滤		
+	}
 
+	message WarrantData
+	{
+		//静态数据项
+		required Qot_Common.Security stock = 1; //股票
+		required Qot_Common.Security owner = 2; //所属正股
+		required int32 type = 3; //Qot_Common.WarrantType,窝轮类型
+		required int32 issuer = 4; //Qot_Common.Issuer,发行人
+		required string maturityTime = 5; //到期日
+		optional double maturityTimestamp = 6; //到期日时间戳
+		required string listTime = 7; //上市时间
+		optional double listTimestamp = 8; //上市时间戳
+		required string lastTradeTime = 9; //最后交易日
+		optional double lastTradeTimestamp = 10; //最后交易日时间戳
+		optional double recoveryPrice = 11; //回收价,仅牛熊证支持该字段
+		required double conversionRatio = 12; //换股比率
+		required int32 lotSize = 13; //每手数量
+		required double strikePrice = 14; //行使价	
+		required double lastClosePrice = 15; //昨收价		
+		required string name = 16; //名称	
+		
+		//动态数据项
+		required double curPrice = 17; //当前价
+		required double priceChangeVal = 18; //涨跌额
+		required double changeRate = 19; //涨跌幅%	
+		required int32 status = 20; //Qot_Common.WarrantStatus, 窝轮状态	
+		required double bidPrice = 21; //买入价	
+		required double askPrice = 22; //卖出价
+		required int64 bidVol = 23; //买量
+		required int64 askVol = 24; //卖量
+		required int64 volume = 25; //成交量
+		required double turnover = 26; //成交额	
+		required double score = 27; //综合评分
+		required double premium = 28; //溢价%
+		required double breakEvenPoint = 29; //打和点	
+		required double leverage = 30; //杠杆比例（倍）
+		required double ipop = 31; //价内/价外%			
+		optional double priceRecoveryRatio = 32; //正股距回收价%，仅牛熊证支持该字段
+		required double conversionPrice = 33; //换股价
+		required double streetRate = 34; //街货占比	
+		required int64 streetVol = 35; //街货量
+		required double amplitude = 36; //振幅%
+		required int64 issueSize = 37; //发行量	        
+		required double highPrice = 39; //最高价
+		required double lowPrice = 40; //最低价	
+		optional double impliedVolatility = 41; //引申波幅,仅认购认沽支持该字段
+		optional double delta = 42; //对冲值,仅认购认沽支持该字段
+		required double effectiveLeverage = 43; //有效杠杆		
+	}
 
+	message S2C
+	{
+		required bool lastPage = 1; //是否最后一页了,false:非最后一页,还有窝轮记录未返回; true:已是最后一页
+		required int32 allCount = 2; //该条件请求所有数据的个数
+		repeated WarrantData warrantDataList = 3; //窝轮数据
+	}
 
+	message Request
+	{
+		required C2S c2s = 1;
+	}
 
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		optional S2C s2c = 4;
+	}
 
-
-
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 排序类型参考 `SortField <base_define.html#sortfield>`_
+	* 窝轮类型过滤列表参考 `WarrantType <base_define.html#warranttype>`_
+	* 发行人过滤列表参考 `Issuer <base_define.html#issuer>`_
+	* 上市日类型参考 `IpoPeriod <base_define.html#ipoperiod>`_
+	* 价内价外类型参考 `PriceType <base_define.html#pricetype>`_
+	* 窝轮状态类型参考 `WarrantStatus <base_define.html#warrantstatus>`_
+	* 接口限制请参见 `获取涡轮限制 <intro.html#id39>`_
+	* 目前仅支持港股
+	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。

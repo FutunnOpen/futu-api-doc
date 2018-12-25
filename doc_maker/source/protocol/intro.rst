@@ -96,6 +96,8 @@
   .. _Qot_GetOptionChain.proto:  quote_protocol.html#qot-getoptionchain-proto-3209
   .. _3209:  quote_protocol.html#qot-getoptionchain-proto-3209
   .. _SubType: base_define.html#subtype
+  .. _Qot_GetWarrant.proto:  quote_protocol.html#qot-getwarrant-proto-3210
+  .. _3210:  quote_protocol.html#qot-getwarrant-proto-3210
   
   .. role:: red-strengthen
 
@@ -163,6 +165,7 @@
  3207             Qot_GetOwnerPlate.proto_                获取股票所属板块
  3208             Qot_GetHoldingChangeList.proto_         获取持股变化列表
  3209             Qot_GetOptionChain.proto_               获取期权链
+ 3210             Qot_GetWarrant.proto_                   获取涡轮
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -246,7 +249,7 @@ API用户等级
 获取股票快照
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3203_
-  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`200`
+  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100` 
   * 30秒内快照最多请求次数与用户等级相关，一级: :red-strengthen:`30` , 二级: :red-strengthen:`20` , 三级: :red-strengthen:`10` 
 
 获取板块集合下的板块
@@ -283,7 +286,14 @@ API用户等级
 	* 请求协议ID: 3209_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 传入时间跨度最多 :red-strengthen:`30` 天
-	
+
+获取涡轮
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3210_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 每次请求的数据个数最多 :red-strengthen:`200` 个
+	* 仅支持港股
+		
 ---------------------------------------------------
 
 协议请求流程 
