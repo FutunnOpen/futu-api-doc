@@ -246,7 +246,7 @@ API用户等级
 获取股票快照
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3203_
-  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100` 
+  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`200`
   * 30秒内快照最多请求次数与用户等级相关，一级: :red-strengthen:`30` , 二级: :red-strengthen:`20` , 三级: :red-strengthen:`10` 
 
 获取板块集合下的板块

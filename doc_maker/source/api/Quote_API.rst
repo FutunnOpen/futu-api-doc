@@ -444,7 +444,7 @@ get_market_snapshot
 
 获取市场快照
 
- :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <Quote_API.html#id12>`_
+ :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <../protocol/intro.html#id31>`_
  :return: (ret, data)
 
         ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
@@ -1307,7 +1307,7 @@ get_option_chain
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_warrant(self, code, req=None)
+..  py:function:: get_warrant(self, stock_owner, req=None)
 
  通过标的股查询涡轮
 
@@ -1322,11 +1322,11 @@ begin                       int               数据起始点
 num                         int               请求数据个数，最大200
 sort_field                  SortField         根据哪个字段排序
 ascend                      bool              升序ture, 降序false
-owner                       str               所属正股
+stock_owner                 str               :strike:`所属正股`
 type_list                   list              窝轮类型过滤列表 参见 WarrantType_
 issuer_list                 list              发行人过滤列表 参见 Issuer_
-maturity_time_min           str               到期日, 到期日范围的开始时间戳
-maturity_time_max           str               到期日范围的结束时间戳
+maturity_time_min           str               到期日, 到期日范围的开始时间
+maturity_time_max           str               到期日范围的结束时间
 ipo_period                  IpoPeriod         上市日 参见 IpoPeriod_
 price_type                  PriceType         价内/价外 参见 PriceType_
 status                      WarrantStatus     窝轮状态 参见 WarrantStatus_
@@ -1372,15 +1372,15 @@ price_recovery_ratio_max    double            正股距回收价 % 过滤终点,
 参数                            类型                        说明
 ==========================    ================    ===================================
 stock                          str                涡轮代码
-owner                          str                所属正股
+stock_owner                    str                所属正股
 type                           WarrantType        窝轮类型 参见 WarrantType_
 issuer                         Issuer             发行人 参见 Issuer_
 maturity_time                  str                到期日
-maturity_timestamp             double             到期日时间戳
+maturity_timestamp             double             :strike:`到期日时间戳`
 list_time                      str                上市时间
-list_timestamp                 double             上市时间戳
+list_timestamp                 double             :strike:`上市时间戳`
 last_trade_time                str                最后交易日
-last_trade_timestamp           double             最后交易日时间戳
+last_trade_timestamp           double             :strike:`最后交易日时间戳`
 recovery_price                 double             回收价,仅牛熊证支持该字段
 conversion_ratio               double             换股比率
 lot_size                       int                每手数量
@@ -1427,6 +1427,8 @@ effective_leverage             double             有效杠杆
 .. note::
 
     * 	接口限制请参见 `获取涡轮限制 <../protocol/intro.html#id37>`_
+    * 	参数stock_owner和req里的stock_owner重合，如果stock_owner不为None，则覆盖req的里的成员变量
+    * 	时间戳返回值暂时不启用
 
 ---------------------------------------------------------------------    
 

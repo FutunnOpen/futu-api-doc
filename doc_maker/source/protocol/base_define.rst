@@ -1063,7 +1063,7 @@ Order - 订单
 	{
 		required int32 trdSide = 1; //交易方向, 参见TrdSide的枚举定义
 		required int32 orderType = 2; //订单类型, 参见OrderType的枚举定义
-		required int32 orderStatus = 3; //订单状态, 参见OrderStatus的枚举定义
+		required int32 orderStatus = 3; //订单状态, 参见 OrderStatus_  的枚举定义
 		required uint64 orderID = 4; //订单号
 		required string orderIDEx = 5; //扩展订单号(仅查问题时备用)
 		required string code = 6; //代码
