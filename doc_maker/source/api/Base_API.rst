@@ -126,33 +126,410 @@ set_all_thread_daemon
 枚举常量
 ---------
 
-ret_code - 接口返回值
-~~~~~~~~~~~~~~~~~~~~~~
+AuType - K线复权类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-接口返回值定义
+K线复权定义
 
- ..  py:attribute:: RET_OK = 0
+..  py:class:: AuType
+
+ ..  py:attribute:: QFQ
  
- ..  py:attribute:: RET_ERROR = -1
+  前复权
+  
+ ..  py:attribute:: HFQ
+ 
+  后复权
+  
+ ..  py:attribute:: NONE
+ 
+  不复权
+  
+--------------------------------------
 
-------------------------------------
+DarkStatus - 暗盘状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ProtoFMT - 协议格式
-~~~~~~~~~~~~~~~~~~~~~~
+暗盘状态定义
 
-    协议格式类型
-    
-    ..  py:class:: ProtoFMT
-    
-     ..  py:attribute:: Protobuf
-     
-      google的protobuf格式
-      
-     ..  py:attribute:: Json
-     
-      json格式
-      
-------------------------------------
+..  py:class:: DarkStatus
+
+ ..  py:attribute:: NONE
+ 
+  无暗盘交易
+  
+ ..  py:attribute:: TRADING
+ 
+  暗盘交易中
+  
+ ..  py:attribute:: END
+ 
+  暗盘交易结束
+  
+--------------------------------------
+
+GtwEventType - 网关异步通知类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+网关异步通知类型定义
+
+..  py:class:: GtwEventType
+
+ ..  py:attribute:: LocalCfgLoadFailed
+ 
+  本地配置文件加载失败
+  
+ ..  py:attribute:: APISvrRunFailed
+ 
+  网关监听服务运行失败
+  
+ ..  py:attribute:: ForceUpdate
+ 
+  强制升级网关
+  
+ ..  py:attribute:: LoginFailed
+ 
+  登录牛牛服务器失败
+  
+ ..  py:attribute:: UnAgreeDisclaimer
+ 
+  未同意免责声明，无法加运行
+  
+ ..  py:attribute:: NetCfgMissing
+ 
+  缺少网络连接配置
+  
+ ..  py:attribute:: KickedOut
+ 
+  登录被踢下线
+  
+ ..  py:attribute:: LoginPwdChanged
+ 
+  登陆密码变更
+  
+ ..  py:attribute:: BanLogin
+ 
+  牛牛后台不允许该账号登陆
+  
+ ..  py:attribute:: NeedPicVerifyCode
+ 
+  登录需要输入图形验证码
+  
+ ..  py:attribute:: NeedPhoneVerifyCode
+ 
+  登录需要输入手机验证码
+  
+ ..  py:attribute:: AppDataNotExist
+ 
+  程序打包数据丢失
+  
+ ..  py:attribute:: NessaryDataMissing
+ 
+  必要的数据没同步成功
+  
+ ..  py:attribute:: TradePwdChanged
+ 
+  交易密码变更通知
+  
+ ..  py:attribute:: EnableDeviceLock
+ 
+  需启用设备锁
+  
+--------------------------------------  
+
+IpoPeriod - 上市日
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+上市日
+
+..  py:class:: IpoPeriod
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: Today
+
+  今日上市
+
+ ..  py:attribute:: Tomorrow
+
+  明日上市
+
+ ..  py:attribute:: Nextweek
+
+  未来一周上市
+
+ ..  py:attribute:: Lastweek
+
+  过去一周上市
+
+ ..  py:attribute:: Lastmonth
+
+  过去一月上市
+
+--------------------------------------
+
+Issuer - 发行人过滤列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+发行人过滤列表
+
+..  py:class:: Issuer
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: SG
+
+  法兴
+
+ ..  py:attribute:: BP
+
+  法巴
+
+ ..  py:attribute:: CS
+
+  瑞信
+
+ ..  py:attribute:: CT
+
+  花旗
+
+ ..  py:attribute:: EA 
+
+  东亚
+
+ ..  py:attribute:: GS 
+
+  高盛
+
+ ..  py:attribute:: HS 
+
+  汇丰
+
+
+ ..  py:attribute:: JP 
+
+  摩通
+
+
+ ..  py:attribute:: MB 
+
+  麦银
+
+ ..  py:attribute:: SC 
+
+  渣打
+
+ ..  py:attribute:: UB 
+
+  瑞银
+
+ ..  py:attribute:: BI 
+
+  中银
+
+ ..  py:attribute:: DB 
+
+  德银
+
+ ..  py:attribute:: DC 
+
+  大和
+
+ ..  py:attribute:: ML 
+
+  美林
+
+ ..  py:attribute:: NM 
+
+  野村
+
+ ..  py:attribute:: RB 
+
+  荷合
+
+ ..  py:attribute:: RS 
+
+  苏皇
+
+ ..  py:attribute:: BC 
+
+  巴克莱
+
+ ..  py:attribute:: HT 
+
+  海通
+
+ ..  py:attribute:: VT 
+
+  瑞通
+
+ ..  py:attribute:: KC 
+
+  比联
+
+--------------------------------------
+
+KLDataStatus - k线数据状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+指定时间点取历史k线， 获得数据的实际状态
+
+..  py:class:: KLDataStatus
+
+ ..  py:attribute:: NONE
+ 
+  无效数据
+  
+ ..  py:attribute:: CURRENT
+ 
+  当前时间周期数据
+  
+ ..  py:attribute:: PREVIOUS
+ 
+  前一时间周期数据
+  
+ ..  py:attribute:: BACK
+ 
+  后一时间周期数据
+  
+  
+--------------------------------------
+
+KL_FIELD - K线数据字段
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+获取K线数据, 可指定需返回的字段
+
+..  py:class:: KL_FIELD
+
+ ..  py:attribute:: ALL
+ 
+  所有字段
+  
+ ..  py:attribute:: DATE_TIME
+ 
+  日期时间
+  
+ ..  py:attribute:: OPEN
+ 
+  开盘价
+  
+ ..  py:attribute:: CLOSE
+ 
+  收盘价
+  
+ ..  py:attribute:: HIGH
+ 
+  最高价
+  
+ ..  py:attribute:: LOW
+ 
+  最低价
+  
+ ..  py:attribute:: PE_RATIO
+ 
+  市盈率
+  
+ ..  py:attribute:: TURNOVER_RATE
+ 
+  换手率
+  
+ ..  py:attribute:: TRADE_VOL
+ 
+  成交量
+  
+ ..  py:attribute:: TRADE_VAL
+ 
+  成交额
+  
+ ..  py:attribute:: CHANGE_RATE
+ 
+  涨跌比率
+  
+ ..  py:attribute:: LAST_CLOSE
+ 
+  昨收价
+  
+--------------------------------------
+
+KLNoDataMode - K线数据取值模式
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+指定时间为非交易日时，对应的k线数据取值模式
+
+..  py:class:: KLNoDataMode
+
+ ..  py:attribute:: NONE
+ 
+  返回无数据
+  
+ ..  py:attribute:: FORWARD
+ 
+  往前取数据
+  
+ ..  py:attribute:: BACKWARD
+ 
+  往后取数据
+
+
+--------------------------------------
+
+KLType - k线类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+k线类型定义
+
+..  py:class:: KLType
+
+ ..  py:attribute:: K_1M
+ 
+  1分钟K线
+
+ ..  py:attribute:: K_3M
+
+  3分钟K线
+  
+ ..  py:attribute:: K_5M
+ 
+  5分钟K线
+  
+ ..  py:attribute:: K_15M
+ 
+  15分钟K线
+  
+ ..  py:attribute:: K_30M
+ 
+  30分钟K线
+  
+ ..  py:attribute:: K_60M
+ 
+  60分钟K线
+  
+ ..  py:attribute:: K_DAY
+ 
+  日K线
+  
+ ..  py:attribute:: K_WEEK
+ 
+  周K线
+  
+ ..  py:attribute:: K_MON
+ 
+  月K线
+  
+ ..  py:attribute:: K_QUARTER
+
+  季K线
+
+ ..  py:attribute:: K_YEAR
+
+  年K线
+
+--------------------------------------
 
 Market - 行情市场
 ~~~~~~~~~~~~~~~~~
@@ -272,6 +649,304 @@ MarketState - 行情市场状态
   
 --------------------------------------
 
+ModifyOrderOp - 修改订单操作类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+修改订单操作类型定义
+
+..  py:class:: ModifyOrderOp
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: NORMAL
+  
+  修改订单的数量、价格
+  
+ ..  py:attribute:: CANCEL
+ 
+  取消订单
+  
+ ..  py:attribute:: DISABLE
+ 
+  使订单失效
+  
+ ..  py:attribute:: ENABLE
+ 
+  使订单生效
+  
+ ..  py:attribute:: DELETE
+ 
+  删除订单
+  
+--------------------------------------
+
+OptionCondType - 价内价外
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+价内价外定义
+
+..  py:class:: OptionType
+
+ ..  py:attribute:: ALL
+ 
+  全部
+  
+ ..  py:attribute:: WITHIN
+ 
+  价内
+  
+ ..  py:attribute:: OUTSIDE
+ 
+  价外
+
+--------------------------------------
+
+OptionType - 期权类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+期权类型定义
+
+..  py:class:: OptionType
+
+ ..  py:attribute:: ALL
+ 
+  全部
+  
+ ..  py:attribute:: CALL
+ 
+  涨
+  
+ ..  py:attribute:: PUT
+ 
+  跌
+  
+--------------------------------------
+
+OrderType - 订单类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+订单类型定义
+
+..  py:class:: OrderType
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: NORMAL
+  
+  普通订单(港股的增强限价单、A股限价委托、美股的限价单)
+  
+ ..  py:attribute:: MARKET
+ 
+  市价，目前仅美股
+  
+ ..  py:attribute:: ABSOLUTE_LIMIT
+ 
+  港股限价单(只有价格完全匹配才成交)
+  
+ ..  py:attribute:: AUCTION
+ 
+  港股竞价单
+  
+ ..  py:attribute:: AUCTION_LIMIT
+ 
+  港股竞价限价单
+  
+ ..  py:attribute:: SPECIAL_LIMIT
+ 
+  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)
+  
+
+--------------------------------------
+
+OrderStatus - 订单状态定义
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+订单状态定义
+
+..  py:class:: OrderStatus
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: UNSUBMITTED
+  
+  未提交
+  
+ ..  py:attribute:: WAITING_SUBMIT
+ 
+  等待提交
+  
+ ..  py:attribute:: SUBMITTING
+ 
+  提交中
+  
+ ..  py:attribute:: SUBMIT_FAILED
+ 
+  提交失败，下单失败
+  
+ ..  py:attribute:: SUBMITTED
+ 
+  已提交，等待成交
+  
+ ..  py:attribute:: FILLED_PART
+ 
+  部分成交
+  
+ ..  py:attribute:: FILLED_ALL
+ 
+  全部已成
+  
+ ..  py:attribute:: CANCELLING_PART
+ 
+  正在撤单部分(部分已成交，正在撤销剩余部分)
+  
+ ..  py:attribute:: CANCELLING_ALL
+ 
+  正在撤单全部
+  
+ ..  py:attribute:: CANCELLED_PART
+ 
+  部分成交，剩余部分已撤单
+  
+ ..  py:attribute:: CANCELLED_ALL
+ 
+  全部已撤单，无成交
+  
+ ..  py:attribute:: FAILED
+ 
+  下单失败，服务拒绝
+  
+ ..  py:attribute:: DISABLED
+ 
+  已失效
+  
+ ..  py:attribute:: DELETED
+ 
+  已删除(无成交的订单才能删除)
+  
+--------------------------------------
+
+Plate - 板块集合分类
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+板块集合分类定义
+
+..  py:class:: Plate
+
+ ..  py:attribute:: ALL
+ 
+  所有板块
+  
+ ..  py:attribute:: INDUSTRY
+ 
+  行业板块
+  
+ ..  py:attribute:: REGION
+ 
+  地域板块
+  
+ ..  py:attribute:: CONCEPT
+ 
+  概念板块
+
+--------------------------------------
+
+PositionSide - 持仓方向类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+持仓方向类型定义
+
+..  py:class:: PositionSide
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: LONG
+ 
+  多仓
+  
+ ..  py:attribute:: SHORT
+ 
+  空仓
+  
+--------------------------------------
+
+PriceType - 涡轮价内价外
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+上市日
+
+..  py:class:: PriceType
+
+ ..  py:attribute:: Unknown
+
+  未知
+
+ ..  py:attribute:: Outside
+
+  价外
+
+ ..  py:attribute:: WithIn
+
+  价内
+
+--------------------------------------
+
+ProtoFMT - 协议格式
+~~~~~~~~~~~~~~~~~~~~~~
+
+    协议格式类型
+    
+    ..  py:class:: ProtoFMT
+    
+     ..  py:attribute:: Protobuf
+     
+      google的protobuf格式
+      
+     ..  py:attribute:: Json
+     
+      json格式
+      
+------------------------------------
+
+PushDataType - 推送数据类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+推送数据类型定义
+
+..  py:class:: PushDataType
+
+ ..  py:attribute:: REALTIME
+ 
+  实时推送数据
+  
+ ..  py:attribute:: BYDISCONN
+ 
+  行情连接断开重连后，OpenD拉取补充断开期间的数据，最多50根
+  
+ ..  py:attribute:: CACHE
+ 
+  非实时推送数据，非连接断开补充数据
+  
+--------------------------------------
+
+ret_code - 接口返回值
+~~~~~~~~~~~~~~~~~~~~~~
+
+接口返回值定义
+
+ ..  py:attribute:: RET_OK = 0
+ 
+ ..  py:attribute:: RET_ERROR = -1
+
+------------------------------------
+
 SecurityType - 证券类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
@@ -309,32 +984,41 @@ SecurityType - 证券类型
   
 --------------------------------------
 
-WrtType - 港股窝轮类型
+SecurityReferenceType - 股票关联数据类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+股票关联数据类型
+
+ ..  py:class:: SecurityReferenceType
+ 
+  ..  py:attribute:: NONE
+  
+   未知
+   
+  ..  py:attribute:: WARRANT
+  
+   相关窝轮
+
+--------------------------------------
+
+StockHolder - 持有者类别
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
-港股窝轮类型定义
 
-..  py:class:: WrtType
+持有者类别定义
 
- ..  py:attribute:: CALL
+..  py:class:: StockHolder
+
+ ..  py:attribute:: INSTITUTE
  
-  认购
+  机构
   
- ..  py:attribute:: PUT
+ ..  py:attribute:: FUND
  
-  认沽
+  基金
   
- ..  py:attribute:: BULL
+ ..  py:attribute:: EXECUTIVE
  
-  牛证
-  
- ..  py:attribute:: BEAR
- 
-  熊证
-  
- ..  py:attribute:: NONE
- 
-  未知
+  高管
   
 --------------------------------------
 
@@ -413,188 +1097,23 @@ SubType - 实时数据定阅类型
  
   委托摆盘明细
   
-
 --------------------------------------
 
-KLType - k线类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SysNotifyType - 系统异步通知类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-k线类型定义
+系统异步通知类型定义
 
-..  py:class:: KLType
-
- ..  py:attribute:: K_1M
- 
-  1分钟K线
-
- ..  py:attribute:: K_3M
-
-  3分钟K线
-  
- ..  py:attribute:: K_5M
- 
-  5分钟K线
-  
- ..  py:attribute:: K_15M
- 
-  15分钟K线
-  
- ..  py:attribute:: K_30M
- 
-  30分钟K线
-  
- ..  py:attribute:: K_60M
- 
-  60分钟K线
-  
- ..  py:attribute:: K_DAY
- 
-  日K线
-  
- ..  py:attribute:: K_WEEK
- 
-  周K线
-  
- ..  py:attribute:: K_MON
- 
-  月K线
-  
- ..  py:attribute:: K_QUARTER
-
-  季K线
-
- ..  py:attribute:: K_YEAR
-
-  年K线
-
---------------------------------------
-
-KLDataStatus - k线数据状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-指定时间点取历史k线， 获得数据的实际状态
-
-..  py:class:: KLDataStatus
+..  py:class:: SysNotifyType
 
  ..  py:attribute:: NONE
- 
-  无效数据
-  
- ..  py:attribute:: CURRENT
- 
-  当前时间周期数据
-  
- ..  py:attribute:: PREVIOUS
- 
-  前一时间周期数据
-  
- ..  py:attribute:: BACK
- 
-  后一时间周期数据
-  
-  
---------------------------------------
 
-AuType - K线复权类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  未知
 
-K线复权定义
+ ..  py:attribute:: GTW_EVENT
 
-..  py:class:: AuType
+  网关事件
 
- ..  py:attribute:: QFQ
- 
-  前复权
-  
- ..  py:attribute:: HFQ
- 
-  后复权
-  
- ..  py:attribute:: NONE
- 
-  不复权
-  
-
---------------------------------------
-
-KLNoDataMode - K线数据取值模式
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-指定时间为非交易日时，对应的k线数据取值模式
-
-..  py:class:: KLNoDataMode
-
- ..  py:attribute:: NONE
- 
-  返回无数据
-  
- ..  py:attribute:: FORWARD
- 
-  往前取数据
-  
- ..  py:attribute:: BACKWARD
- 
-  往后取数据
-
-
---------------------------------------
-
-KL_FIELD - K线数据字段
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-获取K线数据, 可指定需返回的字段
-
-..  py:class:: KL_FIELD
-
- ..  py:attribute:: ALL
- 
-  所有字段
-  
- ..  py:attribute:: DATE_TIME
- 
-  日期时间
-  
- ..  py:attribute:: OPEN
- 
-  开盘价
-  
- ..  py:attribute:: CLOSE
- 
-  收盘价
-  
- ..  py:attribute:: HIGH
- 
-  最高价
-  
- ..  py:attribute:: LOW
- 
-  最低价
-  
- ..  py:attribute:: PE_RATIO
- 
-  市盈率
-  
- ..  py:attribute:: TURNOVER_RATE
- 
-  换手率
-  
- ..  py:attribute:: TRADE_VOL
- 
-  成交量
-  
- ..  py:attribute:: TRADE_VAL
- 
-  成交额
-  
- ..  py:attribute:: CHANGE_RATE
- 
-  涨跌比率
-  
- ..  py:attribute:: LAST_CLOSE
- 
-  昨收价
-  
-  
 --------------------------------------
 
 TickerDirect - 逐笔方向
@@ -748,136 +1267,128 @@ TickerType - 逐笔类型
   
 --------------------------------------
 
-DarkStatus - 暗盘状态
+TradeDateType - 交易时间类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易时间类型定义
+
+..  py:class:: TradeDateType
+
+ ..  py:attribute:: 0
+ 
+  全天交易
+  
+ ..  py:attribute:: 1
+ 
+  上午交易，下午休市
+
+ ..  py:attribute:: 2
+
+  上午休市，下午交易
+  
+--------------------------------------
+
+TrdEnv - 交易环境类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-暗盘状态定义
+交易环境类型定义
 
-..  py:class:: DarkStatus
+..  py:class:: TrdEnv
+
+ ..  py:attribute:: REAL
+ 
+  真实环境
+  
+ ..  py:attribute:: SIMULATE
+ 
+  模拟环境
+
+--------------------------------------
+
+TrdMarket - 交易市场类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易市场类型定义
+
+..  py:class:: TrdMarket
 
  ..  py:attribute:: NONE
  
-  无暗盘交易
+  未知
   
- ..  py:attribute:: TRADING
+ ..  py:attribute:: HK
  
-  暗盘交易中
+  港股交易
   
- ..  py:attribute:: END
- 
-  暗盘交易结束
-  
+ ..  py:attribute:: US
 
+  美股交易
+  
+ ..  py:attribute:: CN
+
+  A股交易
+  
+ ..  py:attribute:: HKCC
+
+  香港的A股通交易  
+ 
 --------------------------------------
 
-Plate - 板块集合分类
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TrdSide - 交易方向类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-板块集合分类定义
+交易方向类型定义(客户端下单只传Buy或Sell即可，SELL_SHORT / BUY_BACK 服务器可能会传回)
 
-..  py:class:: Plate
+..  py:class:: TrdSide
 
- ..  py:attribute:: ALL
+ ..  py:attribute:: NONE
  
-  所有板块
+  未知
   
- ..  py:attribute:: INDUSTRY
+ ..  py:attribute:: BUY
+  
+  买
+  
+ ..  py:attribute:: SELL
  
-  行业板块
+  卖
   
- ..  py:attribute:: REGION
+ ..  py:attribute:: SELL_SHORT
  
-  地域板块
+  卖空
   
- ..  py:attribute:: CONCEPT
+ ..  py:attribute:: BUY_BACK
  
-  概念板块
-  
-
---------------------------------------
-
-StockHolder - 持有者类别
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-持有者类别定义
-
-..  py:class:: StockHolder
-
- ..  py:attribute:: INSTITUTE
- 
-  机构
-  
- ..  py:attribute:: FUND
- 
-  基金
-  
- ..  py:attribute:: EXECUTIVE
- 
-  高管
-  
+  买回
   
 --------------------------------------
 
-OptionType - 期权类型
+WarrantStatus - 涡轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-期权类型定义
+上市日
 
-..  py:class:: OptionType
+..  py:class:: WarrantStatus
 
- ..  py:attribute:: ALL
- 
-  全部
-  
- ..  py:attribute:: CALL
- 
-  涨
-  
- ..  py:attribute:: PUT
- 
-  跌
-  
---------------------------------------
+ ..  py:attribute:: Unknown
 
-PushDataType - 推送数据类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  未知
 
-推送数据类型定义
+ ..  py:attribute:: Normal
 
-..  py:class:: PushDataType
+  正常状态
 
- ..  py:attribute:: REALTIME
- 
-  实时推送数据
-  
- ..  py:attribute:: BYDISCONN
- 
-  行情连接断开重连后，OpenD拉取补充断开期间的数据，最多50根
-  
- ..  py:attribute:: CACHE
- 
-  非实时推送数据，非连接断开补充数据
-  
---------------------------------------
+ ..  py:attribute:: Suspend
 
-OptionCondType - 价内价外
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  停牌
 
-价内价外定义
+ ..  py:attribute:: StopTrade
 
-..  py:class:: OptionType
+  终止交易
 
- ..  py:attribute:: ALL
- 
-  全部
-  
- ..  py:attribute:: WITHIN
- 
-  价内
-  
- ..  py:attribute:: OUTSIDE
- 
-  价外
+ ..  py:attribute:: PendingListing
+
+  等待上市
 
 --------------------------------------
 
@@ -910,569 +1421,31 @@ WarrantType - 涡轮类型
   
 --------------------------------------
 
-
-Issuer - 发行人过滤列表
+WrtType - 港股窝轮类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-发行人过滤列表
-
-..  py:class:: Issuer
-
- ..  py:attribute:: Unknown
-
-  未知
-
- ..  py:attribute:: SG
-
-  法兴
-
- ..  py:attribute:: BP
-
-  法巴
-
- ..  py:attribute:: CS
-
-  瑞信
-
- ..  py:attribute:: CT
-
-  花旗
-
- ..  py:attribute:: EA 
-
-  东亚
-
- ..  py:attribute:: GS 
-
-  高盛
-
- ..  py:attribute:: HS 
-
-  汇丰
-
-
- ..  py:attribute:: JP 
-
-  摩通
-
-
- ..  py:attribute:: MB 
-
-  麦银
-
- ..  py:attribute:: SC 
-
-  渣打
-
- ..  py:attribute:: UB 
-
-  瑞银
-
- ..  py:attribute:: BI 
-
-  中银
-
- ..  py:attribute:: DB 
-
-  德银
-
- ..  py:attribute:: DC 
-
-  大和
-
- ..  py:attribute:: ML 
-
-  美林
-
- ..  py:attribute:: NM 
-
-  野村
-
- ..  py:attribute:: RB 
-
-  荷合
-
- ..  py:attribute:: RS 
-
-  苏皇
-
- ..  py:attribute:: BC 
-
-  巴克莱
-
- ..  py:attribute:: HT 
-
-  海通
-
- ..  py:attribute:: VT 
-
-  瑞通
-
- ..  py:attribute:: KC 
-
-  比联
-
---------------------------------------
-
-
-IpoPeriod - 上市日
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-上市日
-
-..  py:class:: IpoPeriod
-
- ..  py:attribute:: Unknown
-
-  未知
-
- ..  py:attribute:: Today
-
-  今日上市
-
- ..  py:attribute:: Tomorrow
-
-  明日上市
-
- ..  py:attribute:: Nextweek
-
-  未来一周上市
-
- ..  py:attribute:: Lastweek
-
-  过去一周上市
-
- ..  py:attribute:: Lastmonth
-
-  过去一月上市
-
---------------------------------------
-
-
-
-
-WarrantStatus - 涡轮状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-上市日
-
-..  py:class:: WarrantStatus
-
- ..  py:attribute:: Unknown
-
-  未知
-
- ..  py:attribute:: Normal
-
-  正常状态
-
- ..  py:attribute:: Suspend
-
-  停牌
-
- ..  py:attribute:: StopTrade
-
-  终止交易
-
- ..  py:attribute:: PendingListing
-
-  等待上市
-
---------------------------------------
-
-
-
-
-PriceType - 涡轮价内价外
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-上市日
-
-..  py:class:: PriceType
-
- ..  py:attribute:: Unknown
-
-  未知
-
- ..  py:attribute:: Outside
-
-  价外
-
- ..  py:attribute:: WithIn
-
-  价内
-
---------------------------------------
-
-
-
-
-TradeDateType - 交易时间类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易时间类型定义
-
-..  py:class:: TradeDateType
-
- ..  py:attribute:: 0
- 
-  全天交易
   
- ..  py:attribute:: 1
+港股窝轮类型定义
+
+..  py:class:: WrtType
+
+ ..  py:attribute:: CALL
  
-  上午交易，下午休市
-
- ..  py:attribute:: 2
-
-  上午休市，下午交易
- --------------------------------------
-
-SysNotifyType - 系统异步通知类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-系统异步通知类型定义
-
-..  py:class:: SysNotifyType
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: GTW_EVENT
-
-  网关事件
-
---------------------------------------
-
-GtwEventType - 网关异步通知类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-网关异步通知类型定义
-
-..  py:class:: GtwEventType
-
- ..  py:attribute:: LocalCfgLoadFailed
+  认购
+  
+ ..  py:attribute:: PUT
  
-  本地配置文件加载失败
+  认沽
   
- ..  py:attribute:: APISvrRunFailed
+ ..  py:attribute:: BULL
  
-  网关监听服务运行失败
+  牛证
   
- ..  py:attribute:: ForceUpdate
+ ..  py:attribute:: BEAR
  
-  强制升级网关
+  熊证
   
- ..  py:attribute:: LoginFailed
- 
-  登录牛牛服务器失败
-  
- ..  py:attribute:: UnAgreeDisclaimer
- 
-  未同意免责声明，无法加运行
-  
- ..  py:attribute:: NetCfgMissing
- 
-  缺少网络连接配置
-  
- ..  py:attribute:: KickedOut
- 
-  登录被踢下线
-  
- ..  py:attribute:: LoginPwdChanged
- 
-  登陆密码变更
-  
- ..  py:attribute:: BanLogin
- 
-  牛牛后台不允许该账号登陆
-  
- ..  py:attribute:: NeedPicVerifyCode
- 
-  登录需要输入图形验证码
-  
- ..  py:attribute:: NeedPhoneVerifyCode
- 
-  登录需要输入手机验证码
-  
- ..  py:attribute:: AppDataNotExist
- 
-  程序打包数据丢失
-  
- ..  py:attribute:: NessaryDataMissing
- 
-  必要的数据没同步成功
-  
- ..  py:attribute:: TradePwdChanged
- 
-  交易密码变更通知
-  
- ..  py:attribute:: EnableDeviceLock
- 
-  需启用设备锁
-  
---------------------------------------  
-  
-SecurityReferenceType - 股票关联数据类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-股票关联数据类型
-
- ..  py:class:: SecurityReferenceType
- 
-  ..  py:attribute:: NONE
-  
-   未知
-   
-  ..  py:attribute:: WARRANT
-  
-   相关窝轮
-
---------------------------------------
-
-TrdEnv - 交易环境类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易环境类型定义
-
-..  py:class:: TrdEnv
-
- ..  py:attribute:: REAL
- 
-  真实环境
-  
- ..  py:attribute:: SIMULATE
- 
-  模拟环境
-
-
---------------------------------------
-
-TrdMarket - 交易市场类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易市场类型定义
-
-..  py:class:: TrdMarket
-
  ..  py:attribute:: NONE
  
   未知
   
- ..  py:attribute:: HK
- 
-  港股交易
-  
- ..  py:attribute:: US
-
-  美股交易
-  
- ..  py:attribute:: CN
-
-  A股交易
-  
- ..  py:attribute:: HKCC
-
-  香港的A股通交易  
- 
-
 --------------------------------------
-
-PositionSide - 持仓方向类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-持仓方向类型定义
-
-..  py:class:: PositionSide
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: LONG
- 
-  多仓
-  
- ..  py:attribute:: SHORT
- 
-  空仓
-  
-
---------------------------------------
-
-
-OrderType - 订单类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-订单类型定义
-
-..  py:class:: OrderType
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: NORMAL
-  
-  普通订单(港股的增强限价单、A股限价委托、美股的限价单)
-  
- ..  py:attribute:: MARKET
- 
-  市价，目前仅美股
-  
- ..  py:attribute:: ABSOLUTE_LIMIT
- 
-  港股限价单(只有价格完全匹配才成交)
-  
- ..  py:attribute:: AUCTION
- 
-  港股竞价单
-  
- ..  py:attribute:: AUCTION_LIMIT
- 
-  港股竞价限价单
-  
- ..  py:attribute:: SPECIAL_LIMIT
- 
-  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)
-  
-
---------------------------------------
-
-
-OrderStatus - 订单状态定义
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-订单状态定义
-
-..  py:class:: OrderStatus
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: UNSUBMITTED
-  
-  未提交
-  
- ..  py:attribute:: WAITING_SUBMIT
- 
-  等待提交
-  
- ..  py:attribute:: SUBMITTING
- 
-  提交中
-  
- ..  py:attribute:: SUBMIT_FAILED
- 
-  提交失败，下单失败
-  
- ..  py:attribute:: SUBMITTED
- 
-  已提交，等待成交
-  
- ..  py:attribute:: FILLED_PART
- 
-  部分成交
-  
- ..  py:attribute:: FILLED_ALL
- 
-  全部已成
-  
- ..  py:attribute:: CANCELLING_PART
- 
-  正在撤单部分(部分已成交，正在撤销剩余部分)
-  
- ..  py:attribute:: CANCELLING_ALL
- 
-  正在撤单全部
-  
- ..  py:attribute:: CANCELLED_PART
- 
-  部分成交，剩余部分已撤单
-  
- ..  py:attribute:: CANCELLED_ALL
- 
-  全部已撤单，无成交
-  
- ..  py:attribute:: FAILED
- 
-  下单失败，服务拒绝
-  
- ..  py:attribute:: DISABLED
- 
-  已失效
-  
- ..  py:attribute:: DELETED
- 
-  已删除(无成交的订单才能删除)
-  
-  
-
---------------------------------------
-
-
-ModifyOrderOp - 修改订单操作类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-修改订单操作类型定义
-
-..  py:class:: ModifyOrderOp
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: NORMAL
-  
-  修改订单的数量、价格
-  
- ..  py:attribute:: CANCEL
- 
-  取消订单
-  
- ..  py:attribute:: DISABLE
- 
-  使订单失效
-  
- ..  py:attribute:: ENABLE
- 
-  使订单生效
-  
- ..  py:attribute:: DELETE
- 
-  删除订单
-  
-
---------------------------------------
-
-
-TrdSide - 交易方向类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易方向类型定义(客户端下单只传Buy或Sell即可，SELL_SHORT / BUY_BACK 服务器可能会传回)
-
-..  py:class:: TrdSide
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: BUY
-  
-  买
-  
- ..  py:attribute:: SELL
- 
-  卖
-  
- ..  py:attribute:: SELL_SHORT
- 
-  卖空
-  
- ..  py:attribute:: BUY_BACK
- 
-  买回
-  
-
-
