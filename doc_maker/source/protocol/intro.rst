@@ -71,7 +71,7 @@
   .. _Qot_UpdateOrderDetail.proto:  quote_protocol.html#qot-updateorderdetail-proto-3017
   
   .. _Qot_GetHistoryKL.proto:  quote_protocol.html#qot-gethistorykl-proto-3100k
-  .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-k
+  .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-3101k
   .. _Qot_GetRehab.proto:  quote_protocol.html#qot-getrehab-proto-3102
   
   .. _Qot_RequestHistoryKL.proto:  quote_protocol.html#qot-requesthistorykl-proto-3103k
@@ -138,8 +138,8 @@
  3001             Qot_Sub.proto_                          订阅或者反订阅
  3002             Qot_RegQotPush.proto_                   注册推送
  3003             Qot_GetSubInfo.proto_                   获取订阅信息
- 3004             Qot_GetBasicQot.proto_                  获取股票基本行情
- 3005             Qot_UpdateBasicQot.proto_               推送股票基本行情
+ 3004             Qot_GetBasicQot.proto_                  获取股票基本报价
+ 3005             Qot_UpdateBasicQot.proto_               推送股票基本报价
  3006             Qot_GetKL.proto_                        获取K线
  3007             Qot_UpdateKL.proto_                     推送K线
  3008             Qot_GetRT.proto_                        获取分时
@@ -249,7 +249,7 @@ API用户等级
 获取股票快照
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3203_
-  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100` 
+  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`200` 
   * 30秒内快照最多请求次数与用户等级相关，一级: :red-strengthen:`30` , 二级: :red-strengthen:`20` , 三级: :red-strengthen:`10` 
 
 获取板块集合下的板块

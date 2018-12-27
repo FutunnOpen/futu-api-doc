@@ -234,7 +234,7 @@ place_order - 下单
 	
 .. note::
 
-	* 接口限制请参见 `下单限制 <../protocol/intro.html#id24>`_
+	* 接口限制请参见 `下单限制 <../protocol/intro.html#id25>`_
 	
 ----------------------------
 
@@ -326,7 +326,7 @@ modify_order - 修改订单
   
 .. note::
 
-	* 接口限制请参见 `改单限制 <../protocol/intro.html#id25>`_
+	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
 	
 ----------------------------
 
@@ -361,7 +361,7 @@ change_order - 改单(老接口，兼容以前)
   
 .. note::
 
-	* 接口限制请参见 `改单限制 <intro.html#id25>`_
+	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
 	
 ----------------------------
 
@@ -437,7 +437,7 @@ history_order_list_query - 获取历史订单列表
   
 .. note::
 
-	* 接口限制请参见 `获取历史订单列表限制 <intro.html#id26>`_
+	* 接口限制请参见 `获取历史订单列表限制 <../protocol/intro.html#id27>`_
 	
 ----------------------------
 
@@ -470,7 +470,7 @@ history_deal_list_query - 获取历史成交列表
 
 .. note::
 
-	* 接口限制请参见 `获取历史成交列表限制 <intro.html#id27>`_
+	* 接口限制请参见 `获取历史成交列表限制 <../protocol/intro.html#id28>`_
 	
 ----------------------------
 
@@ -518,7 +518,7 @@ max_buy_back              float         卖空后，需要买回的最大整手�
 
 .. note::
 
-	* 接口限制请参见 `获取最大交易数量限制 <intro.html#id23>`_
+	* 接口限制请参见 `获取最大交易数量限制 <../protocol/intro.html#id24>`_
 	
 ----------------------------
 

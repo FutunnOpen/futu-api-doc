@@ -661,7 +661,7 @@
 	
 -------------------------------------
 
-`Qot_UpdateDetail.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateDetail.proto>`_ - 3017推送委托明细
+`Qot_UpdateOrderDetail.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateDetail.proto>`_ - 3017推送委托明细
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
