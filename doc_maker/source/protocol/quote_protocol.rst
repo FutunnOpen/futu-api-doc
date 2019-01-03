@@ -1022,6 +1022,11 @@
 		optional S2C s2c = 4;
 	}
 
+.. note::
+
+	* 市场类型参考 `QotMarket <base_define.html#qotmarket>`_
+	* 交易时间类型参考 `TradeDateType <base_define.html#tradedatetype>`_
+
 -------------------------------------
 
 `Qot_GetStaticInfo.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetStaticInfo.proto>`_ - 3202获取股票静态信息

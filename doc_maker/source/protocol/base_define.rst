@@ -374,6 +374,21 @@ QotMarketState - 行情市场状态
 		QotMarketState_HkCas = 19; // 盘后竞价,港股市场增加CAS机制对应的市场状态
 	}
 	
+
+-----------------------------------------------
+
+TradeDateType - 交易时间类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum TradeDateType
+	{
+		TradeDateType_Whole = 0; //全天交易
+		TradeDateType_Morning = 1; //上午交易，下午休市
+		TradeDateType_Afternoon = 2; //下午交易，上午休市
+	}
+
 -----------------------------------------------
 
 RehabType - K线复权类型
