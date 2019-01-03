@@ -1307,7 +1307,7 @@ get_option_chain
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_warrant(self, stock_owner, req=None)
+..  py:function:: get_warrant(self, stock_owner='', req=None)
 
  通过标的股查询涡轮
 
@@ -1321,8 +1321,8 @@ get_warrant
 begin                       int               数据起始点
 num                         int               请求数据个数，最大200
 sort_field                  SortField         根据哪个字段排序
-ascend                      bool              升序ture, 降序false
-stock_owner                 str               :strike:`所属正股`
+ascend                      bool              升序Ture, 降序False
+stock_owner                 str               :strike:`所属正股，强烈不建议在这里设置，会和stock_owner参数冲突`
 type_list                   list              窝轮类型过滤列表 参见 WarrantType_
 issuer_list                 list              发行人过滤列表 参见 Issuer_
 maturity_time_min           str               到期日, 到期日范围的开始时间
