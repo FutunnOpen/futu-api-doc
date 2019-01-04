@@ -77,7 +77,6 @@
 	message S2C
 	{
 		required int32 marketHK = 1; //Qot_Common.QotMarketState,港股主板市场状态 
-		required int32 marketUS = 2; //Qot_Common.QotMarketState,美股Nasdaq市场状态 
 		required int32 marketSH = 3; //Qot_Common.QotMarketState,沪市状态 
 		required int32 marketSZ = 4; //Qot_Common.QotMarketState,深市状态 
 		required int32 marketHKFuture = 5; 	//Qot_Common.QotMarketState,港股期货市场状态 
@@ -264,7 +263,6 @@ QotMarket - 行情市场
 		QotMarket_Unknown = 0; //未知市场
 		QotMarket_HK_Security = 1; //港股
 		QotMarket_HK_Future = 2; //港期货(目前是恒指的当月、下月期货行情)
-		QotMarket_US_Security = 11; //美股
 		QotMarket_CNSH_Security = 21; //沪股
 		QotMarket_CNSZ_Security = 22; //深股
 	}

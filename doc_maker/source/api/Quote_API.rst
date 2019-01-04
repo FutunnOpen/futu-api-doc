@@ -215,7 +215,7 @@ get_stock_basicinfo
         stock_child_type    str            窝轮子类型，参见 WrtType_
         stock_owner         str            涡轮所属正股的代码，或期权标的股的代码
         option_type         str            期权类型，查看 OptionType_
-        strike_time         str            期权行权日（美股默认是美东时间，港股A股默认是北京时间）
+        strike_time         str            期权行权日（港股A股默认是北京时间）
         strike_price        float          期权行权价
         suspension          bool           期权是否停牌(True表示停牌)
         listing_date        str            上市时间
@@ -252,7 +252,7 @@ get_stock_basicinfo
     参数                  类型                        说明
     =================   ===========   ==============================================================================
     code                str            股票代码
-    time_key            str            k线时间（美股默认是美东时间，港股A股默认是北京时间）
+    time_key            str            k线时间（港股A股默认是北京时间）
     open                float          开盘价
     close               float          收盘价
     high                float          最高价
@@ -308,7 +308,7 @@ get_stock_basicinfo
     参数                  类型                        说明
     =================   ===========   ==============================================================================
     code                str            股票代码
-    time_key            str            k线时间（美股默认是美东时间，港股A股默认是北京时间）
+    time_key            str            k线时间（港股A股默认是北京时间）
     open                float          开盘价
     close               float          收盘价
     high                float          最高价
@@ -367,7 +367,7 @@ request_history_kline
     参数                  类型                        说明
     =================   ===========   ==============================================================================
     code                str            股票代码
-    time_key            str            k线时间（美股默认是美东时间，港股A股默认是北京时间）
+    time_key            str            k线时间（港股A股默认是北京时间）
     open                float          开盘价
     close               float          收盘价
     high                float          最高价
@@ -455,7 +455,7 @@ get_market_snapshot
  参数                             类型                       说明
  ============================   =============   ======================================================================
  code                            str            股票代码
- update_time                     str            更新时间(yyyy-MM-dd HH:mm:ss)（美股默认是美东时间，港股A股默认是北京时间）
+ update_time                     str            更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
  last_price                      float          最新价格
  open_price                      float          今日开盘价
  high_price                      float          最高价格
@@ -498,7 +498,7 @@ get_market_snapshot
  price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
  option_valid                    bool           是否是期权（为true时以下期权相关的字段才有合法数值）
  option_type                     str            期权类型，参见 OptionType_
- strike_time                     str            期权行权日（美股默认是美东时间，港股A股默认是北京时间）
+ strike_time                     str            期权行权日（港股A股默认是北京时间）
  option_strike_price             float          行权价
  option_contract_size            int            每份合约数
  option_open_interest            int            未平仓合约数
@@ -544,7 +544,7 @@ get_rt_data
 参数                      类型                        说明
 =====================   ===========   ===================================================================
 code                    str            股票代码
-time                    str            时间(yyyy-MM-dd HH:mm:ss)（美股默认是美东时间，港股A股默认是北京时间）
+time                    str            时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
 is_blank                bool           数据状态；正常数据为False，伪造数据为True
 opened_mins             int            零点到当前多少分钟
 cur_price               float          当前价格
@@ -583,7 +583,7 @@ get_plate_stock
         lot_size                int            每手股数
         stock_name              str            股票名称
         stock_type              str            股票类型，参见 SecurityType_
-        list_time               str            上市时间（美股默认是美东时间，港股A股默认是北京时间）
+        list_time               str            上市时间（港股A股默认是北京时间）
         stock_id                int            股票id
         =====================   ===========   ==============================================================
 
@@ -629,13 +629,6 @@ get_plate_stock
         SZ.3000001                 深证主板
         SZ.3000003                 中小企业板块
         SZ.3000004                 深证创业板
-        US.BK2600                  富途热门(美)
-        US.USAALL                  全部美股(正股)
-        US.NYSE                    纽交所
-        US.NASDAQ                  纳斯达克
-        US.AMEX                    美交所
-        US.RPCCS                   美中概股
-        US.STARCS                  美明星股
         =====================  ==============================================================
    
         
@@ -831,10 +824,9 @@ get_global_state
 		key                      value类型                        说明
 		=====================   ===========   ==============================================================
 		market_sz               str            深圳市场状态，参见 MarketState_
-		market_us               str            美国市场状态，参见 MarketState_
 		market_sh               str            上海市场状态，参见 MarketState_
 		market_hk               str            香港市场状态，参见 MarketState_
-		market_hkfuture           str            香港期货市场状态，参见 MarketState_
+		market_hkfuture         str            香港期货市场状态，参见 MarketState_
 		server_ver              str            FutuOpenD版本号
 		trd_logined             str            '1'：已登录交易服务器，'0': 未登录交易服务器
 		qot_logined             str            '1'：已登录行情服务器，'0': 未登录行情服务器
@@ -870,7 +862,7 @@ get_stock_quote
         =====================   ===========   ==============================================================
         code                    str            股票代码
         data_date               str            日期
-        data_time               str            时间（美股默认是美东时间，港股A股默认是北京时间）
+        data_time               str            时间（港股A股默认是北京时间）
         last_price              float          最新价格
         open_price              float          今日开盘价
         high_price              float          最高价格
@@ -927,7 +919,7 @@ get_rt_ticker
         =====================   ===========   ==============================================================
         code                     str            股票代码
         sequence                 int            逐笔序号
-        time                     str            成交时间（美股默认是美东时间，港股A股默认是北京时间）
+        time                     str            成交时间（港股A股默认是北京时间）
         price                    float          成交价格
         volume                   int            成交数量（股数）
         turnover                 float          成交金额
@@ -970,7 +962,7 @@ get_cur_kline
         参数                      类型                        说明
         =====================   ===========   ==============================================================
         code                     str            股票代码
-        time_key                 str            时间（美股默认是美东时间，港股A股默认是北京时间）
+        time_key                 str            时间（港股A股默认是北京时间）
         open                     float          开盘价
         close                    float          收盘价
         high                     float          最高价
@@ -1055,9 +1047,9 @@ get_order_book
     参数                  类型                        说明
     =================   ===========   ==============================================================================
     code                str            股票代码
-    time_point          str            请求的时间（美股默认是美东时间，港股A股默认是北京时间）
+    time_point          str            请求的时间（港股A股默认是北京时间）
     data_status         str            数据点是否有效，参见 KLDataStatus_
-    time_key            str            k线时间（美股默认是美东时间，港股A股默认是北京时间）
+    time_key            str            k线时间（港股A股默认是北京时间）
     open                float          开盘价
     close               float          收盘价
     high                float          最高价
@@ -1104,7 +1096,7 @@ get_referencestock_list
 		lot_size            int            每手数量
 		stock_type          str            证券类型，参见 SecurityType_
 		stock_name          str            证券名字
-		list_time           str            上市时间（美股默认是美东时间，港股A股默认是北京时间）
+		list_time           str            上市时间（港股A股默认是北京时间）
 		wrt_valid           bool           是否是窝轮，如果为True，下面wrt开头的字段有效
 		wrt_type            str            窝轮类型，参见 WrtType_
 		wrt_code            str            所属正股
@@ -1283,7 +1275,7 @@ get_option_chain
         stock_type           str           股票类型，参见 SecurityType_
         option_type          str           期权类型，查看 OptionType_
         stock_owner          str           标的股
-        strike_time          str           行权日（美股默认是美东时间，港股A股默认是北京时间）
+        strike_time          str           行权日（港股A股默认是北京时间）
         strike_price         float         行权价
         suspension           bool          是否停牌(True表示停牌)
         stock_id             int           股票id
