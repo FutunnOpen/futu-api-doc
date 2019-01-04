@@ -119,14 +119,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#id34">获取板块下的股票</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">获取股票所属板块</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id36">获取持股变化列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">获取期权链</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id38">协议请求流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id39">协议设计</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id40">协议头结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id41">协议体结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id42">加密通信流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id37">协议请求流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id38">协议设计</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id39">协议头结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">协议体结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">加密通信流程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rsa">RSA加解密</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#aes">AES加解密</a></li>
 </ul>
@@ -444,10 +443,6 @@
 <td><a class="reference external" href="quote_protocol.html#qot-getholdingchangelist-proto-3208">Qot_GetHoldingChangeList.proto</a></td>
 <td>获取持股变化列表</td>
 </tr>
-<tr class="row-odd"><td>3209</td>
-<td><a class="reference external" href="quote_protocol.html#qot-getoptionchain-proto-3209">Qot_GetOptionChain.proto</a></td>
-<td>获取期权链</td>
-</tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -628,20 +623,10 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id37">
-<h3>获取期权链<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getoptionchain-proto-3209">3209</a></li>
-<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
-<li>传入时间跨度最多 <span class="red-strengthen">30</span> 天</li>
-</ul>
-</div></blockquote>
-</div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id38">
-<h2>协议请求流程<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id37">
+<h2>协议请求流程<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>建立连接</li>
@@ -653,12 +638,12 @@
 <img alt="../_images/proto.png" src="../_images/proto.png" />
 </div>
 <hr class="docutils" />
-<div class="section" id="id39">
-<h2>协议设计<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id38">
+<h2>协议设计<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>协议数据包括协议头以及协议体，协议头固定字段，协议体根据具体协议决定。</div></blockquote>
-<div class="section" id="id40">
-<h3>协议头结构<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>协议头结构<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>struct APIProtoHeader
 <span class="o">{</span>
     u8_t szHeaderFlag<span class="o">[</span>2<span class="o">]</span><span class="p">;</span>
@@ -721,8 +706,8 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id41">
-<h3>协议体结构<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>协议体结构<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <p><strong>Protobuf协议请求包体结构</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>message C2S
 <span class="o">{</span>
@@ -817,8 +802,8 @@ message Response
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id42">
-<h3>加密通信流程<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>加密通信流程<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>若FutuOpenD配置了加密, <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 初始化连接协议必须使用RSA公钥加密，后续其他协议使用 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 返回的随机密钥进行AES加密通信。</li>

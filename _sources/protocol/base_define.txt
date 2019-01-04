@@ -328,20 +328,6 @@ WarrantType - 窝轮类型
 		WarrantType_Bull = 3; //牛
 		WarrantType_Bear = 4; //熊
 	};
-
------------------------------------------------
- 
-OptionType - 期权类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	enum OptionType
-	{
-		OptionType_Unknown = 0; //未知
-		OptionType_Call = 1; //认购
-		OptionType_Put = 2; //认沽
-	};
  
 -----------------------------------------------
 
@@ -615,8 +601,6 @@ BasicQot - 基础报价
 		required double turnoverRate = 13; //换手率
 		required double amplitude = 14; //振幅
 		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态
-		
-		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 	}
 		
 -----------------------------------------------
@@ -666,23 +650,6 @@ WarrantStaticExData - 窝轮额外静态信息
 	{
 		required int32 type = 1; //Qot_Common.WarrantType,涡轮类型
 		required Qot_Common.Security owner = 2; //所属正股
-	}
-			
------------------------------------------------
-
-OptionStaticExData - 期权额外静态信息
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	message OptionStaticExData
-	{
-		required int32 type = 1; //Qot_Common.OptionType,期权
-		required Qot_Common.Security owner = 2; //标的股
-		required string strikeTime = 3; //行权日
-		required double strikePrice = 4; //行权价
-		required bool suspend = 5; //是否停牌
-		required string market = 6; //发行市场名字
 	}
 			
 -----------------------------------------------

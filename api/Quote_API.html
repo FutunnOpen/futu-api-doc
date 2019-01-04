@@ -139,7 +139,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-referencestock-list">get_referencestock_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-owner-plate">get_owner_plate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-holding-change-list">get_holding_change_list</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-option-chain">get_option_chain</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sysnotifyhandlerbase-opend">SysNotifyHandlerBase - OpenD通知回调</a><ul>
@@ -147,27 +146,27 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id14">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id15">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id16">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id17">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -491,23 +490,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>stock_owner</td>
 <td>str</td>
-<td>涡轮所属正股的代码，或期权标的股的代码</td>
-</tr>
-<tr class="row-even"><td>option_type</td>
-<td>str</td>
-<td>期权类型，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
-</tr>
-<tr class="row-odd"><td>strike_time</td>
-<td>str</td>
-<td>期权行权日（港股A股默认是北京时间）</td>
-</tr>
-<tr class="row-even"><td>strike_price</td>
-<td>float</td>
-<td>期权行权价</td>
-</tr>
-<tr class="row-odd"><td>suspension</td>
-<td>bool</td>
-<td>期权是否停牌(True表示停牌)</td>
+<td>涡轮所属正股的代码</td>
 </tr>
 <tr class="row-even"><td>listing_date</td>
 <td>str</td>
@@ -533,7 +516,7 @@ start和end的组合如下：</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_basicinfo</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="n">SecurityType</span><span class="o">.</span><span class="n">WARRANT</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_basicinfo</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">US</span><span class="p">,</span> <span class="n">SecurityType</span><span class="o">.</span><span class="n">STOCK</span><span class="p">,</span> <span class="s1">&#39;US.AAPL&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_basicinfo</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="n">SecurityType</span><span class="o">.</span><span class="n">STOCK</span><span class="p">,</span> <span class="s1">&#39;HK.00700&#39;</span><span class="p">))</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1173,7 +1156,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>stock_owner</td>
 <td>str</td>
-<td>涡轮所属正股的代码或期权的标的股代码</td>
+<td>涡轮所属正股的代码</td>
 </tr>
 <tr class="row-even"><td>wrt_valid</td>
 <td>bool</td>
@@ -1239,58 +1222,6 @@ start和end的组合如下：</p>
 <td>float</td>
 <td>当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差</td>
 </tr>
-<tr class="row-even"><td>option_valid</td>
-<td>bool</td>
-<td>是否是期权（为true时以下期权相关的字段才有合法数值）</td>
-</tr>
-<tr class="row-odd"><td>option_type</td>
-<td>str</td>
-<td>期权类型，参见 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
-</tr>
-<tr class="row-even"><td>strike_time</td>
-<td>str</td>
-<td>期权行权日（港股A股默认是北京时间）</td>
-</tr>
-<tr class="row-odd"><td>option_strike_price</td>
-<td>float</td>
-<td>行权价</td>
-</tr>
-<tr class="row-even"><td>option_contract_size</td>
-<td>int</td>
-<td>每份合约数</td>
-</tr>
-<tr class="row-odd"><td>option_open_interest</td>
-<td>int</td>
-<td>未平仓合约数</td>
-</tr>
-<tr class="row-even"><td>option_implied_volatility</td>
-<td>float</td>
-<td>隐含波动率</td>
-</tr>
-<tr class="row-odd"><td>option_premium</td>
-<td>float</td>
-<td>溢价</td>
-</tr>
-<tr class="row-even"><td>option_delta</td>
-<td>float</td>
-<td>希腊值 Delta</td>
-</tr>
-<tr class="row-odd"><td>option_gamma</td>
-<td>float</td>
-<td>希腊值 Gamma</td>
-</tr>
-<tr class="row-even"><td>option_vega</td>
-<td>float</td>
-<td>希腊值 Vega</td>
-</tr>
-<tr class="row-odd"><td>option_theta</td>
-<td>float</td>
-<td>希腊值 Theta</td>
-</tr>
-<tr class="row-even"><td>option_rho</td>
-<td>float</td>
-<td>希腊值 Rho</td>
-</tr>
 </tbody>
 </table>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1303,7 +1234,7 @@ start和end的组合如下：</p>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_market_snapshot</span><span class="p">([</span><span class="s1">&#39;US.AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.00700&#39;</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_market_snapshot</span><span class="p">([</span><span class="s1">&#39;SZ.600000&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.00700&#39;</span><span class="p">]))</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1325,7 +1256,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>code</strong> &#8211; 股票代码，例如，HK.00700，US.AAPL</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>code</strong> &#8211; 股票代码，例如，HK.00700</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return (ret, data):</th></tr>
@@ -1376,7 +1307,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>avg_price</td>
 <td>float</td>
-<td>平均价格（对于期权，该字段为None）</td>
+<td>平均价格</td>
 </tr>
 <tr class="row-odd"><td>volume</td>
 <td>float</td>
@@ -2070,7 +2001,7 @@ start和end的组合如下：</p>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="n">code_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;US.AAPL210115C185000&#39;</span><span class="p">]</span>
+<span class="n">code_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">code_list</span><span class="p">,</span> <span class="p">[</span><span class="n">SubType</span><span class="o">.</span><span class="n">QUOTE</span><span class="p">]))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_quote</span><span class="p">(</span><span class="n">code_list</span><span class="p">))</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -2591,7 +2522,7 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码. 例如：&#8217;US.AAPL&#8217;</li>
+<li><strong>code</strong> &#8211; 股票代码.</li>
 <li><strong>holder_type</strong> &#8211; 持有者类别，查看 <a class="reference external" href="Base_API.html#stockholder">StockHolder</a></li>
 <li><strong>start</strong> &#8211; 开始时间. 例如：&#8216;2016-10-01&#8217;</li>
 <li><strong>end</strong> &#8211; <p>结束时间，例如：&#8216;2017-10-01&#8217;。
@@ -2695,142 +2626,7 @@ start与end的组合如下：</p>
 </ul>
 </div>
 </div>
-<div class="section" id="get-option-chain">
-<h4>get_option_chain<a class="headerlink" href="#get-option-chain" title="Permalink to this headline">¶</a></h4>
-<dl class="function">
-<dt id="get_option_chain">
-<code class="descname">get_option_chain</code><span class="sig-paren">(</span><em>self</em>, <em>code</em>, <em>start</em>, <em>end=None</em>, <em>option_type=OptionType.ALL</em>, <em>option_cond_type=OptionCondType.ALL</em><span class="sig-paren">)</span><a class="headerlink" href="#get_option_chain" title="Permalink to this definition">¶</a></dt>
-<dd><p>通过标的股查询期权</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> &#8211; 股票代码,例如：&#8217;HK.02318&#8217;</li>
-<li><strong>start</strong> &#8211; 开始日期，该日期指到期日，例如&#8216;2017-08-01&#8217;</li>
-<li><strong>end</strong> &#8211; <p>结束日期（包括这一天），该日期指到期日，例如&#8216;2017-08-30&#8217;。 注意，时间范围最多30天。
-start和end的组合如下：</p>
-<blockquote>
-<div><table border="1" class="docutils">
-<colgroup>
-<col width="17%" />
-<col width="17%" />
-<col width="67%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">start类型</th>
-<th class="head">end类型</th>
-<th class="head">说明</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>str</td>
-<td>str</td>
-<td>start和end分别为指定的日期</td>
-</tr>
-<tr class="row-odd"><td>None</td>
-<td>str</td>
-<td>start为end往前30天</td>
-</tr>
-<tr class="row-even"><td>str</td>
-<td>None</td>
-<td>end为start往后30天</td>
-</tr>
-<tr class="row-odd"><td>None</td>
-<td>None</td>
-<td>start为当前日期，end往后30天</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-</li>
-<li><strong>option_type</strong> &#8211; 期权类型,,默认全部,全部/看涨/看跌，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></li>
-<li><strong>option_cond_type</strong> &#8211; 默认全部,全部/价内/价外，查看 <a class="reference external" href="Base_API.html#optioncondtype">OptionCondType</a></li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>(ret, data)</p>
-<p>ret == RET_OK 返回pd dataframe数据，数据列格式如下</p>
-<p>ret != RET_OK 返回错误字符串</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="12%" />
-<col width="68%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">参数</th>
-<th class="head">类型</th>
-<th class="head">说明</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>code</td>
-<td>str</td>
-<td>股票代码</td>
-</tr>
-<tr class="row-odd"><td>name</td>
-<td>str</td>
-<td>名字</td>
-</tr>
-<tr class="row-even"><td>lot_size</td>
-<td>int</td>
-<td>每手数量</td>
-</tr>
-<tr class="row-odd"><td>stock_type</td>
-<td>str</td>
-<td>股票类型，参见 <a class="reference external" href="Base_API.html#securitytype">SecurityType</a></td>
-</tr>
-<tr class="row-even"><td>option_type</td>
-<td>str</td>
-<td>期权类型，查看 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
-</tr>
-<tr class="row-odd"><td>stock_owner</td>
-<td>str</td>
-<td>标的股</td>
-</tr>
-<tr class="row-even"><td>strike_time</td>
-<td>str</td>
-<td>行权日（港股A股默认是北京时间）</td>
-</tr>
-<tr class="row-odd"><td>strike_price</td>
-<td>float</td>
-<td>行权价</td>
-</tr>
-<tr class="row-even"><td>suspension</td>
-<td>bool</td>
-<td>是否停牌(True表示停牌)</td>
-</tr>
-<tr class="row-odd"><td>stock_id</td>
-<td>int</td>
-<td>股票id</td>
-</tr>
-</tbody>
-</table>
-</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_option_chain</span><span class="p">(</span><span class="s1">&#39;US.AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-18&#39;</span><span class="p">,</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">OptionCondType</span><span class="o">.</span><span class="n">OUTSIDE</span><span class="p">))</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
 </div>
-</dd></dl>
-
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id37">获取期权链限制</a></li>
-</ul>
-</div>
-</div>
-</div>
-<hr class="docutils" />
 <div class="section" id="sysnotifyhandlerbase-opend">
 <h3>SysNotifyHandlerBase - OpenD通知回调<a class="headerlink" href="#sysnotifyhandlerbase-opend" title="Permalink to this headline">¶</a></h3>
 <p>通知OpenD一些重要消息，类似连接断开等。</p>
@@ -2927,8 +2723,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id13">
-<h4>on_recv_rsp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id12">
+<h4>on_recv_rsp<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -2975,8 +2771,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id14">
-<h4>on_recv_rsp<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id13">
+<h4>on_recv_rsp<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -3023,8 +2819,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id15">
-<h4>on_recv_rsp<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id14">
+<h4>on_recv_rsp<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -3077,8 +2873,8 @@ start和end的组合如下：</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id16">
-<h4>on_recv_rsp<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id15">
+<h4>on_recv_rsp<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -3125,8 +2921,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id17">
-<h4>on_recv_rsp<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id16">
+<h4>on_recv_rsp<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -3171,8 +2967,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id18">
-<h4>on_recv_rsp<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id17">
+<h4>on_recv_rsp<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
