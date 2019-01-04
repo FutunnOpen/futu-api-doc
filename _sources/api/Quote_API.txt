@@ -1165,42 +1165,6 @@ get_holding_change_list
 
     * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
 	
-get_order_detail
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_order_detail(self, code)
-
- 查询A股Level 2权限下提供的委托明细
-
- :param code: 股票代码,例如：'SZ.000001'
- :return: (ret, data)
-
-          ret == RET_OK data为1个dict，包含以下数据::
-		
-           {
-            "code": 股票代码,
-            "Ask": [ order_num, [order_volume1, order_volume2, ...] ]
-            "Bid": [ order_num, [order_volume1, order_volume2, ...] ]
-           }
-
-          | "Ask": 卖盘 
-          | "Bid": 买盘
-          | order_num：委托订单数量
-          | order_volume：是每笔委托的委托量，当前最多返回前50笔委托的委托数量。即order_num有可能多于后面的order_volume
-
-          ret != RET_OK data为错误字符串
-        
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe('SZ.000001', SubType.ORDER_DETAIL)
-    print(quote_ctx.get_order_detail('SZ.000001')
-    quote_ctx.close()
-
-	
 get_option_chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1579,49 +1543,6 @@ on_recv_rsp
  :return: 成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 get_broker_queue_ 的返回值说明
 
           失败时返回(RET_ERROR, ERR_MSG, None)
-
-----------------------------    
-
-OrderDetailHandlerBase - A股委托明细推送回调
---------------------------------------------------
-
-异步处理推送的A股委托明细数据。
-
-.. code:: python
-    
-    class OrderDetailTest(OrderDetailHandlerBase):
-        def on_recv_rsp(self, rsp_str):
-            ret_code, err_or_stock_code, data = super(OrderDetailTest, self).on_recv_rsp(rsp_str)
-            if ret_code != RET_OK:
-                print("OrderDetailTest: error, msg: {}".format(err_or_stock_code))
-                return RET_ERROR, data
-
-            print("OrderDetailTest: stock: {} data: {} ".format(err_or_stock_code, data))  # OrderDetailTest
-
-            return RET_OK, data
-
-
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    handler = OrderDetailTest()
-    quote_ctx.set_handler(handler)
-    quote_ctx.subscribe(['SZ.000001'], [SubType.ORDER_DETAIL])
-    time.sleep(15)
-    quote_ctx.close()
-	
--------------------------------------------
-
-on_recv_rsp
-~~~~~~~~~~~
-
-..  py:function:: on_recv_rsp(self, rsp_pb)
-
-
- 在收到委托明细数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法
-
- 注意该回调是在独立子线程中
-
- :param rsp_pb: 派生类中不需要直接处理该参数
- :return: 参见 get_order_detail_ 的返回值说明
 
 ----------------------------    
 

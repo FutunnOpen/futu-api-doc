@@ -116,8 +116,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-updateorderbook-proto-3013">Qot_UpdateOrderBook.proto - 3013推送买卖盘</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getbroker-proto-3014">Qot_GetBroker.proto - 3014获取经纪队列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-updatebroker-proto-3015">Qot_UpdateBroker.proto - 3015推送经纪队列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qot-getorderdetail-proto-3016">Qot_GetOrderDetail.proto - 3016获取委托明细</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qot-updatedetail-proto-3017">Qot_UpdateDetail.proto - 3017推送委托明细</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-gethistorykl-proto-3100k">Qot_GetHistoryKL.proto - <span class="strike">3100从本地下载历史数据获取单只股票一段历史K线</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-gethistoryklpoints-proto-3101k">Qot_GetHistoryKLPoints.proto  - <span class="strike">3101从本地下载历史数据获取多只股票多点历史K线</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getrehab-proto-3102">Qot_GetRehab.proto - <span class="strike">3102从本地下载历史数据获取复权信息</span></a></li>
@@ -843,83 +841,6 @@
 <ul class="last simple">
 <li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
 <li>经纪队列结构参考 <a class="reference external" href="base_define.html#broker">Broker</a></li>
-</ul>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="qot-getorderdetail-proto-3016">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetDetail.proto">Qot_GetOrderDetail.proto</a> - 3016获取委托明细<a class="headerlink" href="#qot-getorderdetail-proto-3016" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
-<span class="kn">package</span> <span class="nn">Qot_GetOrderDetail</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
-
-<span class="kd">message</span> <span class="nc">C2S</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">S2C</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.OrderDetail</span> <span class="na">orderDetailAsk</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//卖盘</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.OrderDetail</span> <span class="na">orderDetailBid</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//买盘</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Request</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Response</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
-        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>委托明细结构参考 <a class="reference external" href="base_define.html#orderdetail">OrderDetail</a></li>
-</ul>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="qot-updatedetail-proto-3017">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateDetail.proto">Qot_UpdateDetail.proto</a> - 3017推送委托明细<a class="headerlink" href="#qot-updatedetail-proto-3017" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
-<span class="kn">package</span> <span class="nn">Qot_UpdateOrderDetail</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
-
-<span class="kd">message</span> <span class="nc">S2C</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.OrderDetail</span> <span class="na">orderDetailAsk</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//卖盘</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.OrderDetail</span> <span class="na">orderDetailBid</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//买盘</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Response</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
-        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-
-        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>委托明细结构参考 <a class="reference external" href="base_define.html#orderdetail">OrderDetail</a></li>
 </ul>
 </div>
 </div>

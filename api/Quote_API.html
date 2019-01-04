@@ -139,7 +139,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-referencestock-list">get_referencestock_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-owner-plate">get_owner_plate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-holding-change-list">get_holding_change_list</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-order-detail">get_order_detail</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-option-chain">get_option_chain</a></li>
 </ul>
 </li>
@@ -169,10 +168,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id18">on_recv_rsp</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#orderdetailhandlerbase-a">OrderDetailHandlerBase - A股委托明细推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id19">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -2700,49 +2695,6 @@ start与end的组合如下：</p>
 </ul>
 </div>
 </div>
-<div class="section" id="get-order-detail">
-<h4>get_order_detail<a class="headerlink" href="#get-order-detail" title="Permalink to this headline">¶</a></h4>
-<dl class="function">
-<dt id="get_order_detail">
-<code class="descname">get_order_detail</code><span class="sig-paren">(</span><em>self</em>, <em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#get_order_detail" title="Permalink to this definition">¶</a></dt>
-<dd><p>查询A股Level 2权限下提供的委托明细</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> &#8211; 股票代码,例如：&#8217;SZ.000001&#8217;</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK data为1个dict，包含以下数据:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
- <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">股票代码</span><span class="p">,</span>
- <span class="s2">&quot;Ask&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="n">order_num</span><span class="p">,</span> <span class="p">[</span><span class="n">order_volume1</span><span class="p">,</span> <span class="n">order_volume2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="p">]</span>
- <span class="s2">&quot;Bid&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="n">order_num</span><span class="p">,</span> <span class="p">[</span><span class="n">order_volume1</span><span class="p">,</span> <span class="n">order_volume2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line">&#8220;Ask&#8221;: 卖盘</div>
-<div class="line">&#8220;Bid&#8221;: 买盘</div>
-<div class="line">order_num：委托订单数量</div>
-<div class="line">order_volume：是每笔委托的委托量，当前最多返回前50笔委托的委托数量。即order_num有可能多于后面的order_volume</div>
-</div>
-<p>ret != RET_OK data为错误字符串</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s1">&#39;SZ.000001&#39;</span><span class="p">,</span> <span class="n">SubType</span><span class="o">.</span><span class="n">ORDER_DETAIL</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_order_detail</span><span class="p">(</span><span class="s1">&#39;SZ.000001&#39;</span><span class="p">)</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
 <div class="section" id="get-option-chain">
 <h4>get_option_chain<a class="headerlink" href="#get-option-chain" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
@@ -3234,52 +3186,6 @@ start和end的组合如下：</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 <a class="reference internal" href="#get_broker_queue">get_broker_queue</a> 的返回值说明<p>失败时返回(RET_ERROR, ERR_MSG, None)</p>
 </td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="orderdetailhandlerbase-a">
-<h3>OrderDetailHandlerBase - A股委托明细推送回调<a class="headerlink" href="#orderdetailhandlerbase-a" title="Permalink to this headline">¶</a></h3>
-<p>异步处理推送的A股委托明细数据。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OrderDetailTest</span><span class="p">(</span><span class="n">OrderDetailHandlerBase</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">on_recv_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rsp_str</span><span class="p">):</span>
-        <span class="n">ret_code</span><span class="p">,</span> <span class="n">err_or_stock_code</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">OrderDetailTest</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_recv_rsp</span><span class="p">(</span><span class="n">rsp_str</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">ret_code</span> <span class="o">!=</span> <span class="n">RET_OK</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;OrderDetailTest: error, msg: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err_or_stock_code</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">RET_ERROR</span><span class="p">,</span> <span class="n">data</span>
-
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;OrderDetailTest: stock: {} data: {} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err_or_stock_code</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>  <span class="c1"># OrderDetailTest</span>
-
-        <span class="k">return</span> <span class="n">RET_OK</span><span class="p">,</span> <span class="n">data</span>
-
-
-<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="n">handler</span> <span class="o">=</span> <span class="n">OrderDetailTest</span><span class="p">()</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">set_handler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">subscribe</span><span class="p">([</span><span class="s1">&#39;SZ.000001&#39;</span><span class="p">],</span> <span class="p">[</span><span class="n">SubType</span><span class="o">.</span><span class="n">ORDER_DETAIL</span><span class="p">])</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-<hr class="docutils" />
-<div class="section" id="id19">
-<h4>on_recv_rsp<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
-<dl class="function">
-<dt>
-<code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
-<dd><p>在收到委托明细数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法</p>
-<p>注意该回调是在独立子线程中</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">参见 <a class="reference internal" href="#get_order_detail">get_order_detail</a> 的返回值说明</td>
 </tr>
 </tbody>
 </table>

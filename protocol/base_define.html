@@ -136,7 +136,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#broker">Broker - 买卖经纪摆盘</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ticker">Ticker - 逐笔成交</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#orderbook">OrderBook - 买卖十档摆盘</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#orderdetail">OrderDetail - 委托明细</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shareholdingchange">ShareHoldingChange - 持股变动</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#subinfo">SubInfo - 单个定阅类型信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connsubinfo">ConnSubInfo - 单条连接定阅信息</a></li>
@@ -711,7 +710,6 @@
         <span class="na">SubType_KL_Qurater</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//季K</span>
         <span class="na">SubType_KL_Year</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//年K</span>
         <span class="na">SubType_KL_3Min</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">//3分K</span>
-        <span class="na">SubType_OrderDetail</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//委托明细</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -999,19 +997,6 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">price</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//委托价格</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//委托数量</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">orederCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//委托订单个数</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<hr class="docutils" />
-<div class="section" id="orderdetail">
-<h3>OrderDetail - 委托明细<a class="headerlink" href="#orderdetail" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderDetail</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">orderCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//委托订单个数</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">orderVol</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量</span>
 <span class="p">}</span>
 </pre></div>
 </div>

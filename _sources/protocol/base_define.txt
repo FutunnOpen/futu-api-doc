@@ -459,7 +459,6 @@ SubType - 行情定阅类型
 		SubType_KL_Qurater = 15; //季K
 		SubType_KL_Year = 16; //年K
 		SubType_KL_3Min = 17; //3分K
-		SubType_OrderDetail = 18; //委托明细              
 	}
 	
 -----------------------------------------------
@@ -738,7 +737,6 @@ Ticker - 逐笔成交
 	
 -----------------------------------------------
 
-
 OrderBook - 买卖十档摆盘
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -749,20 +747,6 @@ OrderBook - 买卖十档摆盘
 		required double price = 1; //委托价格
 		required int64 volume = 2; //委托数量
 		required int32 orederCount = 3; //委托订单个数
-	}
-	
------------------------------------------------
-
-
-OrderDetail - 委托明细
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	message OrderDetail
-	{
-		required int32 orderCount = 1; //委托订单个数
-		required double orderVol = 2; //每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
 	}
 	
 -----------------------------------------------

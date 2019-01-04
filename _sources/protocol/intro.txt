@@ -67,8 +67,6 @@
   .. _Qot_UpdateOrderBook.proto:  quote_protocol.html#qot-updateorderbook-proto-3013
   .. _Qot_GetBroker.proto:  quote_protocol.html#qot-getbroker-proto-3014
   .. _Qot_UpdateBroker.proto:  quote_protocol.html#qot-updatebroker-proto-3015
-  .. _Qot_GetOrderDetail.proto:  quote_protocol.html#qot-getorderdetail-proto-3016
-  .. _Qot_UpdateOrderDetail.proto:  quote_protocol.html#qot-updateorderdetail-proto-3017
   
   .. _Qot_GetHistoryKL.proto:  quote_protocol.html#qot-gethistorykl-proto-3100k
   .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-k
@@ -148,8 +146,6 @@
  3013             Qot_UpdateOrderBook.proto_              推送买卖盘
  3014             Qot_GetBroker.proto_                    获取经纪队列
  3015             Qot_UpdateBroker.proto_                 推送经纪队列
- 3016             Qot_GetOrderDetail.proto_               获取委托明细
- 3017             Qot_UpdateOrderDetail.proto_            推送委托明细
  3100             Qot_GetHistoryKL.proto_                 从本地下载历史数据获取单只股票一段历史K线
  3101             Qot_GetHistoryKLPoints.proto_           从本地下载历史数据获取多只股票多点历史K线
  3102             Qot_GetRehab.proto_                     从本地下载历史数据获取复权信息
