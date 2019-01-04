@@ -42,13 +42,11 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
   .. _get_referencestock_list:  Quote_API.html#get_referencestock_list
   .. _get_owner_plate:  Quote_API.html#get_owner_plate
   .. _get_holding_change_list:  Quote_API.html#get_holding_change_list
-  .. _get_order_detail:  Quote_API.html#get_order_detail
-  .. _get_option_chain:  Quote_API.html#get_option_chain
   .. _request_history_kline: Quote_API.html#request_history_kline
   .. _query_subscription: Quote_API.html#query_subscription
   .. _get_warrant: Quote_API.html#get_warrant
-
-  .. _get_acc_list:  Trade_API.html#get_acc_list
+  
+  .. _get_acc_list:  Trade_API.html#get_acc_list 
   .. _unlock_trade:  Trade_API.html#unlock_trade
   .. _accinfo_query:  Trade_API.html#accinfo_query
   .. _position_list_query:  Trade_API.html#position_list_query
@@ -90,8 +88,6 @@ get_order_book_                     获取实时摆盘数据
 get_referencestock_list_            获取证券的关联数据
 get_owner_plate_                    获取单支或多支股票的所属板块信息列表
 get_holding_change_list_            获取大股东持股变动列表,只提供美股数据,并最多只返回前100个
-get_order_detail_                   查询A股Level 2权限下提供的委托明细
-get_option_chain_                   通过标的股查询期权
 get_multi_points_history_kline_     :strike:`从本地历史K线中获取多支股票多个时间点的指定数据列`
 get_warrant_                        拉取涡轮和相关衍生品数据接口
 ================================    ============================================================================

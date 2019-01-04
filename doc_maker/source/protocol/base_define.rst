@@ -328,20 +328,6 @@ WarrantType - 窝轮类型
 		WarrantType_Bull = 3; //牛
 		WarrantType_Bear = 4; //熊
 	};
-
------------------------------------------------
- 
-OptionType - 期权类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	enum OptionType
-	{
-		OptionType_Unknown = 0; //未知
-		OptionType_Call = 1; //认购
-		OptionType_Put = 2; //认沽
-	};
  
 -----------------------------------------------
 
@@ -474,7 +460,6 @@ SubType - 行情定阅类型
 		SubType_KL_Qurater = 15; //季K
 		SubType_KL_Year = 16; //年K
 		SubType_KL_3Min = 17; //3分K
-		SubType_OrderDetail = 18; //委托明细              
 	}
 	
 -----------------------------------------------
@@ -761,8 +746,6 @@ BasicQot - 基础报价
 		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态
 		optional double listTimestamp = 17; //上市日期时间戳
 		optional double updateTimestamp = 18; //更新时间戳
-		
-		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 	}
 		
 -----------------------------------------------
@@ -819,24 +802,6 @@ WarrantStaticExData - 窝轮额外静态信息
 			
 -----------------------------------------------
 
-OptionStaticExData - 期权额外静态信息
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	message OptionStaticExData
-	{
-		required int32 type = 1; //Qot_Common.OptionType,期权
-		required Qot_Common.Security owner = 2; //标的股
-		required string strikeTime = 3; //行权日
-		required double strikePrice = 4; //行权价
-		required bool suspend = 5; //是否停牌
-		required string market = 6; //发行市场名字
-		optional double strikeTimestamp = 7; //行权日时间戳
-	}
-			
------------------------------------------------
-
 SecurityStaticInfo - 证券静态信息
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -888,7 +853,6 @@ Ticker - 逐笔成交
 	
 -----------------------------------------------
 
-
 OrderBook - 买卖十档摆盘
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -899,20 +863,6 @@ OrderBook - 买卖十档摆盘
 		required double price = 1; //委托价格
 		required int64 volume = 2; //委托数量
 		required int32 orederCount = 3; //委托订单个数
-	}
-	
------------------------------------------------
-
-
-OrderDetail - 委托明细
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	message OrderDetail
-	{
-		required int32 orderCount = 1; //委托订单个数
-		required double orderVol = 2; //每笔委托的委托量，注意：当前只会返回最多前50笔委托的委托数量
 	}
 	
 -----------------------------------------------

@@ -1088,12 +1088,9 @@ SubType - 实时数据定阅类型
  ..  py:attribute:: BROKER
  
    买卖经纪
-  
- ..  py:attribute:: ORDER_DETAIL
- 
-  委托摆盘明细
-  
+
 --------------------------------------
+
 
 SysNotifyType - 系统异步通知类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

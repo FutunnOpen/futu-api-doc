@@ -213,11 +213,7 @@ get_stock_basicinfo
         lot_size            int            每手数量
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
-        stock_owner         str            涡轮所属正股的代码，或期权标的股的代码
-        option_type         str            期权类型，查看 OptionType_
-        strike_time         str            期权行权日（港股A股默认是北京时间）
-        strike_price        float          期权行权价
-        suspension          bool           期权是否停牌(True表示停牌)
+        stock_owner         str            涡轮所属正股的代码
         listing_date        str            上市时间
         stock_id            int            股票id
         delisting           bool           是否退市
@@ -230,7 +226,7 @@ get_stock_basicinfo
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.WARRANT))
-    print(quote_ctx.get_stock_basicinfo(Market.US, SecurityType.STOCK, 'US.AAPL'))
+    print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.STOCK, 'HK.00700'))
     quote_ctx.close()
 
 
@@ -479,7 +475,7 @@ get_market_snapshot
  pe_ratio                        float          市盈率（该字段为比例字段，默认不展示%）
  pb_ratio                        float          市净率（该字段为比例字段，默认不展示%）
  pe_ttm_ratio                    float          市盈率TTM（该字段为比例字段，默认不展示%）
- stock_owner                     str            涡轮所属正股的代码或期权的标的股代码
+ stock_owner                     str            涡轮所属正股的代码
  wrt_valid                       bool           是否是窝轮（为true时以下涡轮相关的字段才有合法数据）
  wrt_conversion_ratio            float          换股比率（该字段为比例字段，默认不展示%）
  wrt_type                        str            窝轮类型，参见 WrtType_
@@ -496,19 +492,6 @@ get_market_snapshot
  wrt_premium                     float          窝轮溢价
  lot_size                        int            每手股数
  price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
- option_valid                    bool           是否是期权（为true时以下期权相关的字段才有合法数值）
- option_type                     str            期权类型，参见 OptionType_
- strike_time                     str            期权行权日（港股A股默认是北京时间）
- option_strike_price             float          行权价
- option_contract_size            int            每份合约数
- option_open_interest            int            未平仓合约数
- option_implied_volatility       float          隐含波动率
- option_premium                  float          溢价
- option_delta                    float          希腊值 Delta
- option_gamma                    float          希腊值 Gamma
- option_vega                     float          希腊值 Vega
- option_theta                    float          希腊值 Theta
- option_rho                      float          希腊值 Rho
  ask_price                       float          卖价
  bid_price                       float          买价
  ask_vol                         float          卖量
@@ -521,7 +504,7 @@ get_market_snapshot
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_market_snapshot(['US.AAPL', 'HK.00700']))
+    print(quote_ctx.get_market_snapshot(['SZ.600000', 'HK.00700']))
     quote_ctx.close()
 
 .. note::
@@ -535,7 +518,7 @@ get_rt_data
 
  获取指定股票的分时数据
 
- :param code: 股票代码，例如，HK.00700，US.AAPL
+ :param code: 股票代码，例如，HK.00700
  :return (ret, data): ret == RET_OK 返回pd Dataframe数据, 数据列格式如下
 
         ret != RET_OK 返回错误字符串
@@ -549,7 +532,7 @@ is_blank                bool           数据状态；正常数据为False，伪
 opened_mins             int            零点到当前多少分钟
 cur_price               float          当前价格
 last_close              float          昨天收盘的价格
-avg_price               float          平均价格（对于期权，该字段为None）
+avg_price               float          平均价格
 volume                  float          成交量
 turnover                float          成交金额
 =====================   ===========   ===================================================================
@@ -894,7 +877,7 @@ get_stock_quote
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    code_list = ['US.AAPL210115C185000']
+    code_list = ['HK.00700']
     print(quote_ctx.subscribe(code_list, [SubType.QUOTE]))
     print(quote_ctx.get_stock_quote(code_list))
     quote_ctx.close()
@@ -1156,7 +1139,7 @@ get_holding_change_list
 
  获取大股东持股变动列表,只提供美股数据,并最多只返回前100个
 
- :param code: 股票代码. 例如：'US.AAPL'
+ :param code: 股票代码.
  :param holder_type: 持有者类别，查看 StockHolder_
  :param start: 开始时间. 例如：'2016-10-01'
  :param end: 结束时间，例如：'2017-10-01'。
@@ -1200,101 +1183,6 @@ get_holding_change_list
 .. note::
 
     * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
-	
-get_order_detail
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_order_detail(self, code)
-
- 查询A股Level 2权限下提供的委托明细
-
- :param code: 股票代码,例如：'SZ.000001'
- :return: (ret, data)
-
-          ret == RET_OK data为1个dict，包含以下数据::
-		
-           {
-            "code": 股票代码,
-            "Ask": [ order_num, [order_volume1, order_volume2, ...] ]
-            "Bid": [ order_num, [order_volume1, order_volume2, ...] ]
-           }
-
-          | "Ask": 卖盘 
-          | "Bid": 买盘
-          | order_num：委托订单数量
-          | order_volume：是每笔委托的委托量，当前最多返回前50笔委托的委托数量。即order_num有可能多于后面的order_volume
-
-          ret != RET_OK data为错误字符串
-        
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe('SZ.000001', SubType.ORDER_DETAIL)
-    print(quote_ctx.get_order_detail('SZ.000001')
-    quote_ctx.close()
-
-	
-get_option_chain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_option_chain(self, code, start, end=None, option_type=OptionType.ALL, option_cond_type=OptionCondType.ALL)
-
- 通过标的股查询期权
-
- :param code: 股票代码,例如：'HK.02318'
- :param start: 开始日期，该日期指到期日，例如'2017-08-01'
- :param end: 结束日期（包括这一天），该日期指到期日，例如'2017-08-30'。 注意，时间范围最多30天。
-             start和end的组合如下：
-			 
-                ==========    ==========    ========================================
-                 start类型      end类型       说明
-                ==========    ==========    ========================================
-                 str            str           start和end分别为指定的日期
-                 None           str           start为end往前30天
-                 str            None          end为start往后30天
-                 None           None          start为当前日期，end往后30天
-                ==========    ==========    ========================================
-				
- :param option_type: 期权类型,,默认全部,全部/看涨/看跌，查看 OptionType_
- :param option_cond_type: 默认全部,全部/价内/价外，查看 OptionCondType_
- :return: (ret, data)
-
-        ret == RET_OK 返回pd dataframe数据，数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
-        ==================   ===========   ==============================================================
-        参数                      类型                        说明
-        ==================   ===========   ==============================================================
-        code                 str           股票代码
-        name                 str           名字
-        lot_size             int           每手数量
-        stock_type           str           股票类型，参见 SecurityType_
-        option_type          str           期权类型，查看 OptionType_
-        stock_owner          str           标的股
-        strike_time          str           行权日（港股A股默认是北京时间）
-        strike_price         float         行权价
-        suspension           bool          是否停牌(True表示停牌)
-        stock_id             int           股票id
-        ==================   ===========   ==============================================================
-
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_option_chain('US.AAPL', '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
-    quote_ctx.close()
-
-	
-.. note::
-
-    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_
-
 
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1423,7 +1311,6 @@ effective_leverage             double             有效杠杆
     * 	时间戳返回值暂时不启用
 
 ---------------------------------------------------------------------    
-
 
 SysNotifyHandlerBase - OpenD通知回调
 -------------------------------------------
@@ -1742,49 +1629,6 @@ on_recv_rsp
  :return: 成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 get_broker_queue_ 的返回值说明
 
           失败时返回(RET_ERROR, ERR_MSG, None)
-
-----------------------------    
-
-OrderDetailHandlerBase - A股委托明细推送回调
---------------------------------------------------
-
-异步处理推送的A股委托明细数据。
-
-.. code:: python
-    
-    class OrderDetailTest(OrderDetailHandlerBase):
-        def on_recv_rsp(self, rsp_str):
-            ret_code, err_or_stock_code, data = super(OrderDetailTest, self).on_recv_rsp(rsp_str)
-            if ret_code != RET_OK:
-                print("OrderDetailTest: error, msg: {}".format(err_or_stock_code))
-                return RET_ERROR, data
-
-            print("OrderDetailTest: stock: {} data: {} ".format(err_or_stock_code, data))  # OrderDetailTest
-
-            return RET_OK, data
-
-
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    handler = OrderDetailTest()
-    quote_ctx.set_handler(handler)
-    quote_ctx.subscribe(['SZ.000001'], [SubType.ORDER_DETAIL])
-    time.sleep(15)
-    quote_ctx.close()
-	
--------------------------------------------
-
-on_recv_rsp
-~~~~~~~~~~~
-
-..  py:function:: on_recv_rsp(self, rsp_pb)
-
-
- 在收到委托明细数据推送后会回调到该函数，使用者需要在派生类中覆盖此方法
-
- 注意该回调是在独立子线程中
-
- :param rsp_pb: 派生类中不需要直接处理该参数
- :return: 参见 get_order_detail_ 的返回值说明
 
 ----------------------------    
 
