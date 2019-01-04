@@ -165,10 +165,6 @@ Market - 行情市场
     
   港股
   
- ..  py:attribute:: US
-    
-  美股
-  
  ..  py:attribute:: SH  
     
   沪市
