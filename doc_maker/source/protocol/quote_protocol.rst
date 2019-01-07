@@ -1039,7 +1039,7 @@
 		required string maturityTime = 4; //到期日时间字符串
 		required string endTradeTime = 5; //最后交易日时间字符串
 		required Qot_Common.Security owner = 6; //所属正股 
-		required double recoveryPrice = 7; //回收价
+		required double recoveryPrice = 7; //收回价
 		required int64 streetVolumn = 8; //街货量
 		required int64 issueVolumn = 9; //发行量
 		required double streetRate = 10; //街货占比
@@ -1412,10 +1412,10 @@
 		optional double deltaMax = 28;//对冲值过滤终点,仅认购认沽支持该字段过滤
 		optional double impliedMin = 29; //引伸波幅过滤起点,仅认购认沽支持该字段过滤
 		optional double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
-		optional double recoveryPriceMin = 31; //回收价过滤起点,仅牛熊证支持该字段过滤
-		optional double recoveryPriceMax = 32; //回收价过滤终点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMin = 33;//正股距回收价%过滤起点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMax = 34;//正股距回收价%过滤终点,仅牛熊证支持该字段过滤		
+		optional double recoveryPriceMin = 31; //收回价过滤起点,仅牛熊证支持该字段过滤
+		optional double recoveryPriceMax = 32; //收回价过滤终点,仅牛熊证支持该字段过滤
+		optional double priceRecoveryRatioMin = 33;//正股距收回价%过滤起点,仅牛熊证支持该字段过滤
+		optional double priceRecoveryRatioMax = 34;//正股距收回价%过滤终点,仅牛熊证支持该字段过滤		
 	}
 
 	message WarrantData
@@ -1431,7 +1431,7 @@
 		optional double listTimestamp = 8; //上市时间戳
 		required string lastTradeTime = 9; //最后交易日
 		optional double lastTradeTimestamp = 10; //最后交易日时间戳
-		optional double recoveryPrice = 11; //回收价,仅牛熊证支持该字段
+		optional double recoveryPrice = 11; //收回价,仅牛熊证支持该字段
 		required double conversionRatio = 12; //换股比率
 		required int32 lotSize = 13; //每手数量
 		required double strikePrice = 14; //行使价	
@@ -1454,7 +1454,7 @@
 		required double breakEvenPoint = 29; //打和点	
 		required double leverage = 30; //杠杆比例（倍）
 		required double ipop = 31; //价内/价外%			
-		optional double priceRecoveryRatio = 32; //正股距回收价%，仅牛熊证支持该字段
+		optional double priceRecoveryRatio = 32; //正股距收回价%，仅牛熊证支持该字段
 		required double conversionPrice = 33; //换股价
 		required double streetRate = 34; //街货占比	
 		required int64 streetVol = 35; //街货量

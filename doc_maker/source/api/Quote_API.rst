@@ -483,7 +483,7 @@ get_market_snapshot
  wrt_maturity_date               str            格式化窝轮到期时间
  wrt_end_trade                   str            格式化窝轮最后交易时间
  wrt_code                        str            窝轮对应的正股（此字段已废除,修改为stock_owner）
- wrt_recovery_price              float          窝轮回收价
+ wrt_recovery_price              float          窝轮收回价
  wrt_street_vol                  float          窝轮街货量
  wrt_issue_vol                   float          窝轮发行量
  wrt_street_ratio                float          窝轮街货占比（该字段为比例字段，默认不展示%）
@@ -1228,10 +1228,10 @@ delta_min                   double            对冲值过滤起点, 仅认购�
 delta_max                   double            对冲值过滤终点, 仅认购认沽支持该字段过滤
 implied_min                 double            引伸波幅过滤起点, 仅认购认沽支持该字段过滤
 implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
-recovery_price_min          double            回收价过滤起点, 仅牛熊证支持该字段过滤
-recovery_price_max          double            回收价过滤终点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_min    double            正股距回收价 % 过滤起点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_max    double            正股距回收价 % 过滤终点, 仅牛熊证支持该字段过滤
+recovery_price_min          double            收回价过滤起点, 仅牛熊证支持该字段过滤
+recovery_price_max          double            收回价过滤终点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_min    double            正股距收回价 % 过滤起点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_max    double            正股距收回价 % 过滤终点, 仅牛熊证支持该字段过滤
 ==========================  ==============    ========================================
 
 
@@ -1261,7 +1261,7 @@ list_time                      str                上市时间
 list_timestamp                 double             :strike:`上市时间戳`
 last_trade_time                str                最后交易日
 last_trade_timestamp           double             :strike:`最后交易日时间戳`
-recovery_price                 double             回收价,仅牛熊证支持该字段
+recovery_price                 double             收回价,仅牛熊证支持该字段
 conversion_ratio               double             换股比率
 lot_size                       int                每手数量
 strike_price                   double             行使价
@@ -1281,7 +1281,7 @@ premium                        double             溢价%
 break_even_point               double             打和点
 leverage                       double             杠杆比例（倍）
 ipop                           double             价内/价外%
-price_recovery_ratio           double             正股距回收价%，仅牛熊证支持该字段
+price_recovery_ratio           double             正股距收回价%，仅牛熊证支持该字段
 conversion_price               double             换股价
 street_rate                    double             街货占比
 street_vol                     int                街货量
