@@ -407,7 +407,7 @@ get_market_snapshot
 
 获取市场快照
 
- :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <Quote_API.html#id12>`_
+ :param code_list: 股票列表
  :return: (ret, data)
 
         ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
