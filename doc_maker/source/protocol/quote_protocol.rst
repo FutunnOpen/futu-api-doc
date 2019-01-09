@@ -1452,7 +1452,7 @@
 		required double score = 27; //综合评分
 		required double premium = 28; //溢价%
 		required double breakEvenPoint = 29; //打和点	
-		required double leverage = 30; //杠杆比例（倍）
+		required double leverage = 30; //杠杆比率（倍）
 		required double ipop = 31; //价内/价外%			
 		optional double priceRecoveryRatio = 32; //正股距收回价%，仅牛熊证支持该字段
 		required double conversionPrice = 33; //换股价

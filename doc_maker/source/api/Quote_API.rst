@@ -1279,7 +1279,7 @@ turnover                       double             成交额
 score                          double             综合评分
 premium                        double             溢价%
 break_even_point               double             打和点
-leverage                       double             杠杆比例（倍）
+leverage                       double             杠杆比率（倍）
 ipop                           double             价内/价外%
 price_recovery_ratio           double             正股距收回价%，仅牛熊证支持该字段
 conversion_price               double             换股价
