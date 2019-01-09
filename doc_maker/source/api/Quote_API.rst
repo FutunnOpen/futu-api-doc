@@ -160,7 +160,7 @@ get_trading_days
             ==========    ==========    ========================================
  :return: (ret_code, content)
 
-        成功时返回(RET_OK, data)，data为字典列表，失败时返回(RET_ERROR, data)，其中data是错误描述字符串
+        成功时返回(RET_OK, [content])，[content]为字典列表，失败时返回(RET_ERROR, content)，其中content是错误描述字符串
 
 
         =================   ===========   ==============================================================================
@@ -172,10 +172,10 @@ get_trading_days
 
  .. code:: python
 
-         {'trade_date_type': 0, 'time': '2018-01-02'},
-         {'trade_date_type': 0, 'time': '2018-01-03'},
-         {'trade_date_type': 0, 'time': '2018-01-04'},
-         {'trade_date_type': 0, 'time': '2018-01-05'}
+         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-02'},
+         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-03'},
+         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-04'},
+         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-05'}
 
 ..
 
@@ -1261,7 +1261,7 @@ list_time                      str                上市时间
 list_timestamp                 double             :strike:`上市时间戳`
 last_trade_time                str                最后交易日
 last_trade_timestamp           double             :strike:`最后交易日时间戳`
-recovery_price                 double             收回价,仅牛熊证支持该字段
+recovery_price                 double             收回价，仅牛熊证支持该字段
 conversion_ratio               double             换股比率
 lot_size                       int                每手数量
 strike_price                   double             行使价
@@ -1283,14 +1283,14 @@ leverage                       double             杠杆比率（倍）
 ipop                           double             价内/价外%
 price_recovery_ratio           double             正股距收回价%，仅牛熊证支持该字段
 conversion_price               double             换股价
-street_rate                    double             街货占比
+street_rate                    double             街货占比%
 street_vol                     int                街货量
 amplitude                      double             振幅%
 issue_size                     int                发行量
 high_price                     double             最高价
 low_price                      double             最低价
-implied_volatility             double             引申波幅,仅认购认沽支持该字段
-delta                          double             对冲值,仅认购认沽支持该字段
+implied_volatility             double             引伸波幅，仅认购认沽支持该字段
+delta                          double             对冲值，仅认购认沽支持该字段
 effective_leverage             double             有效杠杆
 ==========================    ================    ===================================
 
@@ -1307,8 +1307,7 @@ effective_leverage             double             有效杠杆
 .. note::
 
     * 	接口限制请参见 `获取涡轮限制 <../protocol/intro.html#id37>`_
-    * 	参数stock_owner和req里的stock_owner重合，如果stock_owner不为None，则覆盖req的里的成员变量
-    * 	时间戳返回值暂时不启用
+    * 	req里的stock_owner不可填写
 
 ---------------------------------------------------------------------    
 
