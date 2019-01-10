@@ -80,6 +80,7 @@ FutuOpenD配置
   push_proto_type        API协议支持PB以及Json格式，PB：0，Json：1，推送类协议通过该配置决定包体格式                          是，不设置则默认Json格式
   qot_push_frequency     API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时                                               是，不设置则不限制频率
   rsa_private_key        API协议RSA加密私钥（PKCS#1）文件绝对路径                                                             是，不设置则协议不加密
+  telnet_ip              远程操作命令监听地址		                                                                          是，不设置则默认127.0.0.1	
   telnet_port            远程操作命令监听端口                                                                                 是，不设置则启用远程命令
   login_account          登录帐号                                                                                             是，可以使用证书登录或命令行输入
   login_pwd              登录密码明文                                                                                         是，可以使用密文、证书登录或命令行输入
