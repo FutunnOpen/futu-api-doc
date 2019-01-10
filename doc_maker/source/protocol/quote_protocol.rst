@@ -1044,7 +1044,7 @@
 		required int64 issueVolumn = 9; //发行量
 		required double streetRate = 10; //街货占比
 		required double delta = 11; //对冲值
-		required double impliedVolatility = 12; //引申波幅
+		required double impliedVolatility = 12; //引伸波幅
 		required double premium = 13; //溢价
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
@@ -1462,7 +1462,7 @@
 		required int64 issueSize = 37; //发行量	        
 		required double highPrice = 39; //最高价
 		required double lowPrice = 40; //最低价	
-		optional double impliedVolatility = 41; //引申波幅,仅认购认沽支持该字段
+		optional double impliedVolatility = 41; //引伸波幅,仅认购认沽支持该字段
 		optional double delta = 42; //对冲值,仅认购认沽支持该字段
 		required double effectiveLeverage = 43; //有效杠杆		
 	}
