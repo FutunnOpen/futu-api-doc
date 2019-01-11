@@ -14,9 +14,9 @@
  
  .. _TrdSide: Base_API.html#trdside
  
- .. _order-list-query: #id3
+ .. _order-list-query: #id4
  
- .. _deal-list-query: #id4
+ .. _deal-list-query: #id7
  
  .. _ModifyOrderOp: Base_API.html#ModifyOrderOp
  
