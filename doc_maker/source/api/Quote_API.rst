@@ -13,7 +13,7 @@
  .. _MarketState: Base_API.html#marketstate
  
  .. _SecurityType: Base_API.html#securitytype
- 
+
  .. _WrtType: Base_API.html#wrttype
  
  .. _SubType: Base_API.html#subtype
@@ -1191,7 +1191,7 @@ get_warrant
 
  通过标的股查询涡轮
 
- :param code: 股票代码,例如：'HK.02318'
+ :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的涡轮，注意有些股票没有对应涡轮牛熊。
  :param req: 请求参数组合，from futu.quote.quote_get_warrant import Request
 
 
@@ -1201,7 +1201,7 @@ get_warrant
 begin                       int               数据起始点
 num                         int               请求数据个数，最大200
 sort_field                  SortField         根据哪个字段排序
-ascend                      bool              升序Ture, 降序False
+ascend                      bool              Ture, 降序False
 stock_owner                 str               :strike:`所属正股，强烈不建议在这里设置，会和stock_owner参数冲突`
 type_list                   list              窝轮类型过滤列表 参见 WarrantType_
 issuer_list                 list              发行人过滤列表 参见 Issuer_
