@@ -1359,7 +1359,7 @@ TrdSide - 交易方向类型
 WarrantStatus - 涡轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-上市日
+涡轮状态
 
 ..  py:class:: WarrantStatus
 
@@ -1388,7 +1388,7 @@ WarrantStatus - 涡轮状态
 WarrantType - 涡轮类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-价内价外定义
+涡轮类型
 
 ..  py:class:: WarrantType
 
