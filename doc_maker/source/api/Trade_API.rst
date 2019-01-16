@@ -445,7 +445,7 @@ history_order_list_query - 获取历史订单列表
 history_deal_list_query - 获取历史成交列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: history_deal_list_query(self, code, start='', end='', trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+..  py:function:: history_deal_list_query(self, code='', start='', end='', trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
 
  获取历史成交列表。获取账户的历史交易成交列表。
 
