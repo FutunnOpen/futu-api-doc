@@ -237,34 +237,34 @@ GtwEventType - 网关异步通知类型
   
 --------------------------------------  
 
-IpoPeriod - 上市日
+IpoPeriod - 涡轮上市日
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-上市日
+涡轮上市日定义
 
 ..  py:class:: IpoPeriod
 
- ..  py:attribute:: Unknown
+ ..  py:attribute:: NONE
 
   未知
 
- ..  py:attribute:: Today
+ ..  py:attribute:: TODAY
 
   今日上市
 
- ..  py:attribute:: Tomorrow
+ ..  py:attribute:: TOMORROW
 
   明日上市
 
- ..  py:attribute:: Nextweek
+ ..  py:attribute:: NEXTWEEK
 
   未来一周上市
 
- ..  py:attribute:: Lastweek
+ ..  py:attribute:: LASTWEEK
 
   过去一周上市
 
- ..  py:attribute:: Lastmonth
+ ..  py:attribute:: LASTMONTH
 
   过去一月上市
 
@@ -277,7 +277,7 @@ Issuer - 发行人过滤列表
 
 ..  py:class:: Issuer
 
- ..  py:attribute:: Unknown
+ ..  py:attribute:: NONE
 
   未知
 
@@ -1261,23 +1261,23 @@ TickerType - 逐笔类型
 --------------------------------------
 
 TradeDateType - 交易时间类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 交易时间类型定义
 
 ..  py:class:: TradeDateType
 
- ..  py:attribute:: 0
- 
+ ..  py:attribute:: WHOLE
+
   全天交易
-  
- ..  py:attribute:: 1
- 
+
+ ..  py:attribute:: MORNING
+
   上午交易，下午休市
 
- ..  py:attribute:: 2
+ ..  py:attribute:: AFTERNOON
 
-  上午休市，下午交易
+  下午交易，上午休市
   
 --------------------------------------
 
@@ -1359,60 +1359,32 @@ TrdSide - 交易方向类型
 WarrantStatus - 涡轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-涡轮状态
+涡轮状态定义
 
 ..  py:class:: WarrantStatus
 
- ..  py:attribute:: Unknown
+ ..  py:attribute:: NONE
 
   未知
 
- ..  py:attribute:: Normal
+ ..  py:attribute:: NORMAL
 
   正常状态
 
- ..  py:attribute:: Suspend
+ ..  py:attribute:: SUSPEND
 
   停牌
 
- ..  py:attribute:: StopTrade
+ ..  py:attribute:: STOP_TRADE
 
   终止交易
 
- ..  py:attribute:: PendingListing
+ ..  py:attribute:: PENDING_LISTING
 
   等待上市
 
 --------------------------------------
 
-WarrantType - 涡轮类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-涡轮类型
-
-..  py:class:: WarrantType
-
- ..  py:attribute:: Unknown
-
-  未知
-
- ..  py:attribute:: Buy
-
-  认购
-
- ..  py:attribute:: Sell
-
-  认沽
-
- ..  py:attribute:: Bull
-
-  牛
-
- ..  py:attribute:: Bear
-
-  熊
-  
---------------------------------------
 
 WrtType - 港股窝轮类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1441,4 +1413,155 @@ WrtType - 港股窝轮类型
  
   未知
   
+--------------------------------------
+
+
+SortField - 涡轮排序
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+涡轮排序定义
+
+..  py:class:: SortField
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: CODE
+
+  代码
+
+ ..  py:attribute:: CUR_PRICE
+
+  最新价
+
+ ..  py:attribute:: PRICE_CHANGE_VAL
+
+  涨跌额
+
+ ..  py:attribute:: CHANGE_RATE
+
+  涨跌幅%
+
+ ..  py:attribute:: STATUS
+
+  状态
+
+ ..  py:attribute:: BID_PRICE
+
+  买入价
+
+ ..  py:attribute:: ASK_PRICE
+
+  卖出价
+
+ ..  py:attribute:: BID_VOL
+
+  买量
+
+ ..  py:attribute:: ASK_VOL
+
+  卖量
+
+ ..  py:attribute:: VOLUME
+
+  成交量
+
+ ..  py:attribute:: TURNOVER
+
+  成交额
+
+ ..  py:attribute:: SCORE
+
+  综合评分
+
+ ..  py:attribute:: PREMIUM
+
+  溢价%
+
+ ..  py:attribute:: EFFECTIVE_LEVERAGE
+
+  有效杠杆
+
+ ..  py:attribute:: DELTA
+
+  对冲值,仅认购认沽支持该字段
+
+ ..  py:attribute:: IMPLIED_VOLATILITY
+
+  引伸波幅,仅认购认沽支持该字段
+
+ ..  py:attribute:: TYPE
+
+  类型
+
+ ..  py:attribute:: STRIKE_PRICE
+
+  行权价
+
+ ..  py:attribute:: BREAK_EVEN_POINT
+
+  打和点
+
+ ..  py:attribute:: MATURITY_TIME
+
+  到期日
+
+ ..  py:attribute:: LIST_TIME
+
+  上市日期
+
+ ..  py:attribute:: LAST_TRADE_TIME
+
+  最后交易日
+
+ ..  py:attribute:: LEVERAGE
+
+  杠杆比率
+
+ ..  py:attribute:: IN_OUT_MONEY
+
+  价内/价外%
+
+ ..  py:attribute:: RECOVERY_PRICE
+
+  收回价,仅牛熊证支持该字段
+
+ ..  py:attribute:: CHANGE_PRICE
+
+  换股价
+
+ ..  py:attribute:: CHANGE
+
+  换股比率
+
+ ..  py:attribute:: STREET_RATE
+
+  街货比%
+
+ ..  py:attribute:: STREET_VOL
+
+  街货量
+
+ ..  py:attribute:: AMPLITUDE
+
+  振幅%
+
+ ..  py:attribute:: WARRANT_NAME
+
+  名称
+
+ ..  py:attribute:: ISSUER
+
+  发行人
+
+ ..  py:attribute:: LOT_SIZE
+
+  每手
+
+ ..  py:attribute:: ISSUE_SIZE
+
+  发行量
+
+
 --------------------------------------
