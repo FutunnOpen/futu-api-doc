@@ -174,10 +174,9 @@ get_trading_days
 
  .. code:: python
 
-         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-02'},
-         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-03'},
-         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-04'},
-         {'trade_date_type': <TradeDateType.Whole: 0>, 'time': '2018-01-05'}
+         {'time': '2018-02-01', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-02-02', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-02-02', 'trade_date_type': 'MORNING'}
 
 ..
 
