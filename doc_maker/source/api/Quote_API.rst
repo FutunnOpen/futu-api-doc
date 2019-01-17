@@ -162,21 +162,21 @@ get_trading_days
             ==========    ==========    ========================================
  :return: (ret_code, content)
 
-        成功时返回(RET_OK, [content])，[content]为字典列表，失败时返回(RET_ERROR, content)，其中content是错误描述字符串
+        成功时返回(RET_OK, content)，content为字典列表，失败时返回(RET_ERROR, content)，其中content是错误描述字符串
 
 
         =================   ===========   ==============================================================================
         参数                  类型                        说明
         =================   ===========   ==============================================================================
         time                str            时间
-        trade_date_type     int            标志是一天、上午半天、下午半天，参见 TradeDateType_
+        trade_date_type     str            标志是一天、上午半天、下午半天，参见 TradeDateType_
         =================   ===========   ==============================================================================
 
  .. code:: python
 
-         {'time': '2018-02-01', 'trade_date_type': 'WHOLE'},
+        [{'time': '2018-02-01', 'trade_date_type': 'WHOLE'},
          {'time': '2018-02-02', 'trade_date_type': 'WHOLE'},
-         {'time': '2018-02-02', 'trade_date_type': 'MORNING'}
+         {'time': '2018-02-02', 'trade_date_type': 'MORNING'}]
 
 ..
 
