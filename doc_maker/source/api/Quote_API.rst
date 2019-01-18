@@ -174,9 +174,9 @@ get_trading_days
 
  .. code:: python
 
-        [{'time': '2018-02-01', 'trade_date_type': 'WHOLE'},
-         {'time': '2018-02-02', 'trade_date_type': 'WHOLE'},
-         {'time': '2018-02-02', 'trade_date_type': 'MORNING'}]
+        [{'time': '2018-12-22', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-12-23', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-12-24', 'trade_date_type': 'MORNING'}]
 
 ..
 
@@ -1204,13 +1204,13 @@ begin                       int               数据起始点
 num                         int               请求数据个数，最大200
 sort_field                  SortField         根据哪个字段排序 SortField_
 ascend                      bool              升序True, 降序False
-type_list                   list              窝轮类型过滤列表 参见 WarrantType_
+type_list                   list              窝轮类型过滤列表 参见 WrtType_
 issuer_list                 list              发行人过滤列表 参见 Issuer_
 maturity_time_min           str               到期日, 到期日范围的开始时间
 maturity_time_max           str               到期日范围的结束时间
-ipo_period                  IpoPeriod         上市日 参见 IpoPeriod_
-price_type                  PriceType         价内/价外 参见 PriceType_
-status                      WarrantStatus     窝轮状态 参见 WarrantStatus_
+ipo_period                  str               上市日 参见 IpoPeriod_
+price_type                  str               价内/价外 参见 PriceType_
+status                      str               窝轮状态 参见 WarrantStatus_
 cur_price_min               double            最新价过滤起点
 cur_price_max               double            最新价过滤终点
 strike_price_min            double            行使价过滤起点
@@ -1249,12 +1249,13 @@ price_recovery_ratio_max    double            正股距收回价 % 过滤终点,
         all_count 列表总数量
 
 
+
 ==========================    ================    ===================================
 参数                            类型                        说明
 ==========================    ================    ===================================
 stock                          str                涡轮代码
 stock_owner                    str                所属正股
-type                           WrtType        窝轮类型 参见 WrtType_
+type                           str                窝轮类型 参见 WrtType_
 issuer                         Issuer             发行人 参见 Issuer_
 maturity_time                  str                到期日
 maturity_timestamp             double             :strike:`到期日时间戳`
@@ -1270,7 +1271,7 @@ last_close_price               double             昨收价
 name                           str                名称
 cur_price                      double             当前价
 price_change_val               double             涨跌额
-status                         WarrantStatus      窝轮状态 参见 WarrantStatus_
+status                         str                窝轮状态 参见 WarrantStatus_
 bid_price                      double             买入价
 ask_price                      double             卖出价
 bid_vol                        int                买量
