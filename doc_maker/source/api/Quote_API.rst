@@ -505,7 +505,7 @@ get_market_snapshot
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_market_snapshot(['SZ.600000', 'HK.00700']))
+    print(quote_ctx.get_market_snapshot(['SH.600000', 'HK.00700']))
     quote_ctx.close()
 
 .. note::
