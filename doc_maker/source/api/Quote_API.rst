@@ -374,6 +374,7 @@ request_history_kline
     volume              int            成交量
     turnover            float          成交额
     change_rate         float          涨跌幅
+	last_close          float          昨收价
     =================   ===========   ==============================================================================
 
 	
