@@ -38,10 +38,12 @@ Anaconda python是Python科学技术包的合集，提供了很多用于科学�
     .. image:: ../_static/version-Switching-paste.png
 	
     Step3、再次验证anaconda3环境是否生效。
-    .. image:: ../_static/version-Switching-verification.png   
+	
+    .. image:: ../_static/version-Switching-verification.png
 	
     *   方式二
     配置pyChram使用的环境为anaconda3。
+	
     .. image:: ../_static/version-Switching-pycharm.png
 
 
