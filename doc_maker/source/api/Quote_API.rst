@@ -498,6 +498,13 @@ get_market_snapshot
  bid_price                       float          买价
  ask_vol                         float          卖量
  bid_vol                         float          买量
+ enable_margin                   bool           是否可融资，如果为true，后两个字段（mortgage）才有意义
+ mortgage_ratio                  float          股票抵押率,是不带百分号的数字，例如50%是50
+ long_margin_initial_ratio       float          融资初始保证金率,是不带百分号的数字，例如50%是50
+ enable_short_sell               bool           是否可卖空
+ short_sell_rate                 float          卖空参考利率,是不带百分号的数字，例如50%是50
+ short_available_volume          int            剩余可卖空数量
+ short_margin_initial_ratio      float          卖空（融券）初始保证金率,是不带百分号的数字，例如50%是50
  ============================   =============   ======================================================================
         
  :Example:
@@ -1185,7 +1192,41 @@ get_holding_change_list
 
 .. note::
 
-    * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
+    * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_
+
+get_history_kl_quota
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_history_kl_quota(self, get_detail)
+
+ 已使用过的额度，即当前周期内已经下载过多少只股票
+
+ :param get_detail: 是否返回详细拉取过的历史纪录.
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回(used_quota, detail_list)
+
+        used_quota（int32），已使用过的额度，即当前周期内已经下载过多少只股票
+
+        detail_list get_detail为True时返回，每只拉取过的股票的下载时间[{'code':code, 'request_time':request_time}...]
+
+        =====================   ===========   ==============================================================
+        参数                      类型                        说明
+        =====================   ===========   ==============================================================
+        code                    str           拉取的股票证券代码
+        request_time            str           拉取的时间字符串
+        =====================   ===========   ==============================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_history_kl_quota())
+    quote_ctx.close()
 
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
