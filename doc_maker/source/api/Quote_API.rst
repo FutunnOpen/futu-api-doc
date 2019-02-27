@@ -50,6 +50,8 @@
 
  .. _DarkStatus: Base_API.html#darkstatus
 
+ .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
+
 一分钟上手
 ============
 
@@ -70,6 +72,23 @@
 
 OpenQuoteContext - 行情上下文
 -------------------------------------------
+
+__init__
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: __init__(host='127.0.0.1', port=11111, is_encrypt=None)
+
+ 构造函数
+
+ :param host: str FutuOpenD监听的ip地址
+ :param port: int FutuOpenD监听的ip端口
+ :param is_encrypt: bool 是否启用加密。默认为None，表示使用 SysConfig.enable_proto_encrypt_ 的设置。
+
+.. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111, is_encrypt=False)
+    quote_ctx.close()
 
 
 close
