@@ -1206,9 +1206,11 @@ get_history_kl_quota
 
         ret != RET_OK 返回错误字符串
 
-        ret == RET_OK 返回(used_quota, detail_list)
+        ret == RET_OK 返回(used_quota, remain_quota, detail_list)
 
         used_quota（int32），已使用过的额度，即当前周期内已经下载过多少只股票
+
+        remain_quota（int32），剩余额度
 
         detail_list get_detail为True时返回，每只拉取过的股票的下载时间[{'code':code, 'request_time':request_time}...]
 
