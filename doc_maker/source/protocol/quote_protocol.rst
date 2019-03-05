@@ -1039,12 +1039,12 @@
 		required string maturityTime = 4; //到期日时间字符串
 		required string endTradeTime = 5; //最后交易日时间字符串
 		required Qot_Common.Security owner = 6; //所属正股 
-		required double recoveryPrice = 7; //收回价
+		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段过滤
 		required int64 streetVolumn = 8; //街货量
 		required int64 issueVolumn = 9; //发行量
 		required double streetRate = 10; //街货占比
-		required double delta = 11; //对冲值
-		required double impliedVolatility = 12; //引伸波幅
+		required double delta = 11; //对冲值,仅认购认沽支持该字段过滤
+		required double impliedVolatility = 12; //引伸波幅,仅认购认沽支持该字段过滤
 		required double premium = 13; //溢价
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
