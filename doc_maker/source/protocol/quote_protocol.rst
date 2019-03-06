@@ -1506,3 +1506,47 @@
 	* 接口限制请参见 `获取涡轮限制 <intro.html#id39>`_
 	* 目前仅支持港股
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
+
+`Qot_RequestHistoryKLQuota.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKLQuota.proto>`_ - 3104拉取历史K线已经用掉的额度
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_RequestHistoryKLQuota;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message DetailItem
+	{
+		required Qot_Common.Security security = 1;  //拉取的股票
+		required string requestTime = 2;            //拉取的时间字符串
+		optional int64 requestTimeStamp = 3;        //拉取的时间戳
+	}
+
+	message C2S
+	{
+		optional bool bGetDetail = 2;  //是否返回详细拉取过的历史纪录
+	}
+
+	message S2C
+	{
+		required int32 usedQuota = 1;	      //已使用过的额度，即当前周期内已经下载过多少只股票。
+	    required int32 remainQuota = 2;       //剩余额度
+	    repeated DetailItem detailList = 3;	  //每只拉取过的股票的下载时间
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
