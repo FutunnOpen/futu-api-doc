@@ -53,8 +53,8 @@ __init__
 
  构造函数
 
- :param host: str FutuOpenD监听的ip地址
- :param port: int FutuOpenD监听的ip端口
+ :param host: str FutuOpenD监听的IP地址
+ :param port: int FutuOpenD监听的IP端口
  :param is_encrypt: bool 是否启用加密。默认为None，表示使用 SysConfig.enable_proto_encrypt_ 的设置。
 
 .. code:: python
