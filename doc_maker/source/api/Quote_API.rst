@@ -464,7 +464,7 @@ get_market_snapshot
  :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <../protocol/intro.html#id31>`_
  :return: (ret, data)
 
-        ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
+        ret == RET_OK ,返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
 
         ret != RET_OK 返回错误字符串
 
@@ -687,7 +687,7 @@ get_broker_queue
  :param code: 股票代码
  :return: (ret, bid_frame_table, ask_frame_table)或(ret, err_message)
 
-        ret == RET_OK 返回pd dataframe数据，数据列格式如下
+        ret == RET_OK，bid_frame_table，ask_frame_table 返回pd dataframe数据，数据列格式如下
 
         ret != RET_OK 返回错误字符串
 
