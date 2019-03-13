@@ -61,7 +61,11 @@ enable_proto_encrypt
 
 ..  py:function:: enable_proto_encrypt(cls, is_encrypt)
 
-  设置通讯协议是否加密, 网关客户端和api需配置相同的RSA私钥文件,在连接初始化成功后，网关会下发随机生成的AES 加密密钥
+  设置通讯协议是否加密，网关客户端和api需配置相同的RSA私钥文件，在连接初始化成功后，网关会下发随机生成的AES 加密密钥。
+
+  每种context（例如OpenQuoteContext）可以单独设置自己是否加密。如果不设置，则使用这里的全局设置。即Context的加密设置优先级更高。
+
+  如果FutuOpenD配置了RSA私钥文件（rsa_private_key），那么客户端不管是否在这里启用全局加密，还是每个context自己设置加密，都需要调用SysConfig.set_init_rsa_file来设置RSA私钥文件。
 
   :param is_encrypt: bool
   :return: None

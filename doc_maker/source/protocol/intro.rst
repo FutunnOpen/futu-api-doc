@@ -71,6 +71,8 @@
   .. _Qot_GetHistoryKL.proto:  quote_protocol.html#qot-gethistorykl-proto-3100k
   .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-3101k
   .. _Qot_GetRehab.proto:  quote_protocol.html#qot-getrehab-proto-3102
+  .. _Qot_RequestRehab.proto:  quote_protocol.html#qot-requestrehab-proto-3105
+  .. _3105:  quote_protocol.html#qot-requestrehab-proto-3105
   
   .. _Qot_RequestHistoryKL.proto:  quote_protocol.html#qot-requesthistorykl-proto-3103k
   .. _3103:  quote_protocol.html#qot-requesthistorykl-proto-3103k
@@ -96,7 +98,6 @@
   .. _SubType: base_define.html#subtype
   .. _Qot_GetWarrant.proto:  quote_protocol.html#qot-getwarrant-proto-3210
   .. _3210:  quote_protocol.html#qot-getwarrant-proto-3210
-  
   .. role:: red-strengthen
 
 特点
@@ -152,6 +153,7 @@
  3101             Qot_GetHistoryKLPoints.proto_           从本地下载历史数据获取多只股票多点历史K线
  3102             Qot_GetRehab.proto_                     从本地下载历史数据获取复权信息
  3103             Qot_RequestHistoryKL.proto_             在线获取单只股票一段历史K线
+ 3105             Qot_RequestRehab.proto_             	  在线获取单只股票复权信息
  3200             Qot_GetTradeDate.proto_                 获取市场交易日
  3202             Qot_GetStaticInfo.proto_                获取股票静态信息
  3203             Qot_GetSecuritySnapshot.proto_          获取股票快照
@@ -241,6 +243,11 @@ API用户等级
   * 30天内在线获取历史K线最多可请求股票数与用户等级相关，一级: :red-strengthen:`1000` , 二级: :red-strengthen:`300` , 三级:  :red-strengthen:`100`
   * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次，可分页的请求，第1页限频，后续页请求不限频
   
+在线获取单只股票复权信息
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * 请求协议ID: 3105_
+  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+
 获取股票快照
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3203_
