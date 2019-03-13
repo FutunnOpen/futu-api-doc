@@ -606,11 +606,7 @@ MarketState - 行情市场状态
  ..  py:attribute:: AFTER_HOURS_BEGIN
  
   盘后开始
-  
- ..  py:attribute:: AFTER_HOURS_END
- 
-  盘后结束
-  
+
  ..  py:attribute:: AFTER_HOURS_END
  
   盘后结束

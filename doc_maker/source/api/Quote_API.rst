@@ -1197,28 +1197,31 @@ get_holding_change_list
 get_history_kl_quota
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_history_kl_quota(self, get_detail)
+..  py:function:: get_history_kl_quota(self, get_detail=False)
 
- 已使用过的额度，即当前周期内已经下载过多少只股票
+ 获取已使用过的额度，即当前周期内已经下载过多少只股票
 
  :param get_detail: 是否返回详细拉取过的历史纪录.
+
+        =====================   ===========   ==============================================================
+        参数                      类型                        说明
+        =====================   ===========   ==============================================================
+        code                    str           拉取的股票代码
+        request_time            str           最后一次拉取的时间字符串
+        =====================   ===========   ==============================================================
+
  :return: (ret, data)
 
         ret != RET_OK 返回错误字符串
 
         ret == RET_OK 返回(used_quota, remain_quota, detail_list)
 
-        used_quota（int32），已使用过的额度，即当前周期内已经下载过多少只股票
-
-        remain_quota（int32），剩余额度
-
-        detail_list get_detail为True时返回，每只拉取过的股票的下载时间[{'code':code, 'request_time':request_time}...]
-
         =====================   ===========   ==============================================================
         参数                      类型                        说明
         =====================   ===========   ==============================================================
-        code                    str           拉取的股票证券代码
-        request_time            str           拉取的时间字符串
+        used_quota              int32           已使用过的额度，即当前周期内已经下载过多少只股票
+        remain_quota            int32           剩余额度
+        detail_list             dict list       get_detail为True时返回，每只拉取过的股票的下载时间
         =====================   ===========   ==============================================================
 
  :Example:
@@ -1229,6 +1232,53 @@ get_history_kl_quota
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_history_kl_quota())
     quote_ctx.close()
+
+
+get_rehab
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_rehab(self, code)
+
+ 获取给定股票的复权因子
+
+ :param code: 需要查询的股票代码.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+=====================   ===========   ====================================================================================
+参数                      类型                        说明
+=====================   ===========   ====================================================================================
+ex_div_date             str            除权除息日
+split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为1/5，对于1股拆5股为5/1
+per_cash_div            float          每股派现
+per_share_div_ratio     float          每股送股比例（该字段为比例字段，默认不展示%）
+per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，默认不展示%）
+allotment_ratio         float          每股配股比例（该字段为比例字段，默认不展示%）
+allotment_price         float          配股价
+stk_spo_ratio           float          增发比例（该字段为比例字段，默认不展示%）
+stk_spo_price           float          增发价格
+forward_adj_factorA     float          前复权因子A
+forward_adj_factorB     float          前复权因子B
+backward_adj_factorA    float          后复权因子A
+backward_adj_factorB    float          后复权因子B
+=====================   ===========   ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_rehab("HK.00700"))
+    quote_ctx.close()
+
+.. note::
+
+    * 	接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id31>`_
 
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
