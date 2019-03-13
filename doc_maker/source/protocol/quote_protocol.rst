@@ -1098,12 +1098,12 @@
 		optional int64 askVol = 20;//卖量
 		optional int64 bidVol = 21;//买量
 		optional bool enableMargin = 22; // 是否可融资，如果为true，后两个字段才有意义
-		optional double mortgageRatio = 23; // 股票抵押率,是不带百分号的数字，例如50%是50
-		optional double longMarginInitialRatio = 24; // 融资初始保证金率,是不带百分号的数字，例如50%是50
+		optional double mortgageRatio = 23; // 股票抵押率（该字段为比例字段，默认不展示%）
+		optional double longMarginInitialRatio = 24; // 融资初始保证金率（该字段为比例字段，默认不展示%）
 		optional bool enableShortSell = 25; // 是否可卖空，如果为true，后三个字段才有意义
-		optional double shortSellRate = 26; // 卖空参考利率,是不带百分号的数字，例如50%是50
+		optional double shortSellRate = 26; // 卖空参考利率（该字段为比例字段，默认不展示%）
 		optional int64 shortAvailableVolume = 27; // 剩余可卖空数量（股）
-		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率,是不带百分号的数字，例如50%是50		
+		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为比例字段，默认不展示%）	
 	}
 
 	message Snapshot

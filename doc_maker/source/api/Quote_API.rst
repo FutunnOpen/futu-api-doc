@@ -517,13 +517,13 @@ get_market_snapshot
  bid_price                       float          买价
  ask_vol                         float          卖量
  bid_vol                         float          买量
- enable_margin                   bool           是否可融资，如果为true，后两个字段（mortgage）才有意义
- mortgage_ratio                  float          股票抵押率,是不带百分号的数字，例如50%是50
- long_margin_initial_ratio       float          融资初始保证金率,是不带百分号的数字，例如50%是50
- enable_short_sell               bool           是否可卖空
- short_sell_rate                 float          卖空参考利率,是不带百分号的数字，例如50%是50
+ enable_margin                   bool           是否可融资，如果为true，后两个字段才有意义
+ mortgage_ratio                  float          股票抵押率（该字段为比例字段，默认不展示%）
+ long_margin_initial_ratio       float          融资初始保证金率（该字段为比例字段，默认不展示%）
+ enable_short_sell               bool           是否可卖空，如果为true，后三个字段才有意义
+ short_sell_rate                 float          卖空参考利率（该字段为比例字段，默认不展示%）
  short_available_volume          int            剩余可卖空数量
- short_margin_initial_ratio      float          卖空（融券）初始保证金率,是不带百分号的数字，例如50%是50
+ short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为比例字段，默认不展示%）
  ============================   =============   ======================================================================
         
  :Example:
