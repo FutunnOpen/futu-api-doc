@@ -431,7 +431,7 @@ request_history_kline
  =====================   ===========   ====================================================================================
  code                    str            股票代码
  ex_div_date             str            除权除息日
- split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为1/5，对于1股拆5股为5/1
+ split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为5/1，对于1股拆5股为1/5
  per_cash_div            float          每股派现
  per_share_div_ratio     float          每股送股比例（该字段为比例字段，默认不展示%）
  per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，默认不展示%）
@@ -1220,7 +1220,7 @@ get_history_kl_quota
 
  获取已使用过的额度，即当前周期内已经下载过多少只股票
 
- :param get_detail: 是否返回详细拉取过的历史纪录.
+ :param get_detail: 是否返回详细拉取过的历史纪录
 
         =====================   ===========   ==============================================================
         参数                      类型                        说明
@@ -1239,7 +1239,7 @@ get_history_kl_quota
         参数                      类型                        说明
         =====================   ===========   ==============================================================
         used_quota              int32           已使用过的额度，即当前周期内已经下载过多少只股票
-        remain_quota            int32           剩余额度
+        remain_quota            int32           剩余额度，30天后额度会恢复
         detail_list             dict list       get_detail为True时返回，每只拉取过的股票的下载时间
         =====================   ===========   ==============================================================
 
@@ -1272,7 +1272,7 @@ get_rehab
 参数                      类型                        说明
 =====================   ===========   ====================================================================================
 ex_div_date             str            除权除息日
-split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为1/5，对于1股拆5股为5/1
+split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为5/1，对于1股拆5股为1/5
 per_cash_div            float          每股派现
 per_share_div_ratio     float          每股送股比例（该字段为比例字段，默认不展示%）
 per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，默认不展示%）
@@ -1415,7 +1415,9 @@ effective_leverage             double             有效杠杆
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_warrant("HK.00700"))
+    req=Request()
+    req.sort_field=SortField.TURNOVER
+    print(quote_ctx.get_warrant("HK.00700",req))
     quote_ctx.close()
 
 
