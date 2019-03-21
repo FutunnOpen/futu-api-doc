@@ -1297,7 +1297,7 @@ backward_adj_factorB    float          后复权因子B
 
 .. note::
 
-    * 	接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id31>`_
+    * 	接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id33>`_
 
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
