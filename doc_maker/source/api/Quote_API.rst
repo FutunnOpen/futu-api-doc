@@ -733,7 +733,7 @@ subscribe
  :param code_list: 需要订阅的股票代码列表
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
  :param is_first_push: 订阅成功之后是否马上推送一次数据
- :param subscribe_push: 订阅后不推送
+ :param subscribe_push: 订阅后推送
  :return: (ret, err_message)
 
         ret == RET_OK err_message为None
