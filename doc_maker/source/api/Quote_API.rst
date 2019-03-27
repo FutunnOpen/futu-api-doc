@@ -685,7 +685,7 @@ get_broker_queue
  获取股票的经纪队列
 
  :param code: 股票代码
- :return: (ret, bid_frame_table, ask_frame_table)或(ret, err_message)
+ :return: (ret, bid_frame_table, ask_frame_table)或(ret, err_message, err_message)
 
         ret == RET_OK，bid_frame_table，ask_frame_table 返回pd dataframe数据，数据列格式如下
 
