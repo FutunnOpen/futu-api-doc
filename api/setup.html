@@ -24,28 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.6 documentation" href="../index.html"/>
-        <link rel="next" title="基础API" href="Base_API.html"/>
-        <link rel="prev" title="介绍" href="intro.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="基础API" href="Base_API.html" />
+    <link rel="prev" title="介绍" href="intro.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -128,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -136,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -167,7 +161,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/setup.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/setup.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -233,23 +227,23 @@ Step1、进入环境变量配置界面，创建变量ANACONDA3_HOME，变量值�
 %ANACONDA3_HOME%;%ANACONDA3_HOME%Lib;%ANACONDA3_HOME%Librarymingw-w64bin;%ANACONDA3_HOME%Libraryusrbin;%ANACONDA3_HOME%Library
 bin;%ANACONDA3_HOME%Scripts;</p>
 <img alt="../_images/version-Switching-paste.png" src="../_images/version-Switching-paste.png" />
-<p>Step3、再次验证anaconda3环境是否生效。
-.. image:: ../_static/version-Switching-verification.png</p>
+<p>Step3、再次验证anaconda3环境是否生效。</p>
+<img alt="../_images/version-Switching-verification.png" src="../_images/version-Switching-verification.png" />
 <ul class="simple">
 <li>方式二</li>
 </ul>
-<p class="last">配置pyChram使用的环境为anaconda3。
-.. image:: ../_static/version-Switching-pycharm.png</p>
+<p>配置pyChram使用的环境为anaconda3。</p>
+<img alt="../_images/version-Switching-pycharm.png" class="last" src="../_images/version-Switching-pycharm.png" />
 </div>
 <p>当安装成功后，执行如下命令来查看是否安装成功:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>conda -V
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda -V
 </pre></div>
 </div>
 <ul class="simple">
 <li>安装 futu-api 库</li>
 </ul>
 <p>方式1：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install futu-api
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install futu-api
 </pre></div>
 </div>
 <p>方式2：直接在GitHub下面下载FutunnOpen包，进行安装</p>
@@ -262,7 +256,7 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 <div><img alt="../_images/git-download.png" src="../_images/git-download.png" />
 </div></blockquote>
 <ul class="simple">
-<li>解压，在解压文件夹按住Shift右键打开PowerShell或命令窗口，执行 <code class="code docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> 进行安装</li>
+<li>解压，在解压文件夹按住Shift右键打开PowerShell或命令窗口，执行 <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> 进行安装</li>
 </ul>
 <blockquote class="last">
 <div><img alt="../_images/powershell-install-futuquant.png" src="../_images/powershell-install-futuquant.png" />
@@ -272,11 +266,11 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 <li>安装 TA-Lib</li>
 </ul>
 <p>TA-Lib 用中文可以称作技术分析库，是一种广泛用在程序化交易中进行金融市场数据的技术分析的函数库。它提供了多种技术分析的函数，方便我们量化投资中编程工作。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install TA-Lib
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install TA-Lib
 </pre></div>
 </div>
 <p>如果发现无法通过 pip 安装，请访问 <a class="reference external" href="https://mrjbq7.github.io/ta-lib/install.html">https://mrjbq7.github.io/ta-lib/install.html</a> 解决。</p>
-<p>对于 Windows 用户，如果编译困难，可以根据您本地的Python版本下载指定的whl包，然后 <code class="code docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">TA_Lib-0.4.9-cp27-none-win_amd64.whl</span></code> 来完成安装。</p>
+<p>对于 Windows 用户，如果编译困难，可以根据您本地的Python版本下载指定的whl包，然后 <code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">TA_Lib-0.4.9-cp27-none-win_amd64.whl</span></code> 来完成安装。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -300,9 +294,7 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -320,7 +312,7 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -338,35 +330,23 @@ bin;%ANACONDA3_HOME%Scripts;</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.6',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-  
  
 <script type="text/javascript">
     console.log("Layout By futu-api");

@@ -67,12 +67,12 @@
   .. _Qot_UpdateOrderBook.proto:  quote_protocol.html#qot-updateorderbook-proto-3013
   .. _Qot_GetBroker.proto:  quote_protocol.html#qot-getbroker-proto-3014
   .. _Qot_UpdateBroker.proto:  quote_protocol.html#qot-updatebroker-proto-3015
-  .. _Qot_GetOrderDetail.proto:  quote_protocol.html#qot-getorderdetail-proto-3016
-  .. _Qot_UpdateOrderDetail.proto:  quote_protocol.html#qot-updateorderdetail-proto-3017
   
   .. _Qot_GetHistoryKL.proto:  quote_protocol.html#qot-gethistorykl-proto-3100k
-  .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-k
+  .. _Qot_GetHistoryKLPoints.proto:  quote_protocol.html#qot-gethistoryklpoints-proto-3101k
   .. _Qot_GetRehab.proto:  quote_protocol.html#qot-getrehab-proto-3102
+  .. _Qot_RequestRehab.proto:  quote_protocol.html#qot-requestrehab-proto-3105
+  .. _3105:  quote_protocol.html#qot-requestrehab-proto-3105
   
   .. _Qot_RequestHistoryKL.proto:  quote_protocol.html#qot-requesthistorykl-proto-3103k
   .. _3103:  quote_protocol.html#qot-requesthistorykl-proto-3103k
@@ -96,7 +96,8 @@
   .. _Qot_GetOptionChain.proto:  quote_protocol.html#qot-getoptionchain-proto-3209
   .. _3209:  quote_protocol.html#qot-getoptionchain-proto-3209
   .. _SubType: base_define.html#subtype
-  
+  .. _Qot_GetWarrant.proto:  quote_protocol.html#qot-getwarrant-proto-3210
+  .. _3210:  quote_protocol.html#qot-getwarrant-proto-3210
   .. role:: red-strengthen
 
 特点
@@ -136,8 +137,8 @@
  3001             Qot_Sub.proto_                          订阅或者反订阅
  3002             Qot_RegQotPush.proto_                   注册推送
  3003             Qot_GetSubInfo.proto_                   获取订阅信息
- 3004             Qot_GetBasicQot.proto_                  获取股票基本行情
- 3005             Qot_UpdateBasicQot.proto_               推送股票基本行情
+ 3004             Qot_GetBasicQot.proto_                  获取股票基本报价
+ 3005             Qot_UpdateBasicQot.proto_               推送股票基本报价
  3006             Qot_GetKL.proto_                        获取K线
  3007             Qot_UpdateKL.proto_                     推送K线
  3008             Qot_GetRT.proto_                        获取分时
@@ -148,12 +149,11 @@
  3013             Qot_UpdateOrderBook.proto_              推送买卖盘
  3014             Qot_GetBroker.proto_                    获取经纪队列
  3015             Qot_UpdateBroker.proto_                 推送经纪队列
- 3016             Qot_GetOrderDetail.proto_               获取委托明细
- 3017             Qot_UpdateOrderDetail.proto_            推送委托明细
  3100             Qot_GetHistoryKL.proto_                 从本地下载历史数据获取单只股票一段历史K线
  3101             Qot_GetHistoryKLPoints.proto_           从本地下载历史数据获取多只股票多点历史K线
  3102             Qot_GetRehab.proto_                     从本地下载历史数据获取复权信息
  3103             Qot_RequestHistoryKL.proto_             在线获取单只股票一段历史K线
+ 3105             Qot_RequestRehab.proto_             	  在线获取单只股票复权信息
  3200             Qot_GetTradeDate.proto_                 获取市场交易日
  3202             Qot_GetStaticInfo.proto_                获取股票静态信息
  3203             Qot_GetSecuritySnapshot.proto_          获取股票快照
@@ -162,7 +162,7 @@
  3206             Qot_GetReference.proto_                 获取正股相关股票 
  3207             Qot_GetOwnerPlate.proto_                获取股票所属板块
  3208             Qot_GetHoldingChangeList.proto_         获取持股变化列表
- 3209             Qot_GetOptionChain.proto_               获取期权链
+ 3210             Qot_GetWarrant.proto_                   获取涡轮
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -182,7 +182,7 @@ API用户等级
  部分协议的请求限制与API用户等级相关，划分如下：
 	+ 用户净资产大于10000港币为二级用户
 	+ 小于10000港币为三级用户
-	+ 一级用户提供给有一定交易额的实盘交易团队，可与富途联系获取
+	+ 一级用户提供给有一定交易额的实盘交易用户，可与富途联系获取
 
 解锁或锁定交易
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -243,10 +243,15 @@ API用户等级
   * 30天内在线获取历史K线最多可请求股票数与用户等级相关，一级: :red-strengthen:`1000` , 二级: :red-strengthen:`300` , 三级:  :red-strengthen:`100`
   * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次，可分页的请求，第1页限频，后续页请求不限频
   
+在线获取单只股票复权信息
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * 请求协议ID: 3105_
+  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+
 获取股票快照
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3203_
-  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100` 
+  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`200` 
   * 30秒内快照最多请求次数与用户等级相关，一级: :red-strengthen:`30` , 二级: :red-strengthen:`20` , 三级: :red-strengthen:`10` 
 
 获取板块集合下的板块
@@ -278,12 +283,13 @@ API用户等级
 	* 最多返回前 :red-strengthen:`100` 大股东的变化
 	* 仅支持美股
 
-获取期权链
+获取涡轮
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 3209_
+	* 请求协议ID: 3210_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 传入时间跨度最多 :red-strengthen:`30` 天
-	
+	* 每次请求的数据个数最多 :red-strengthen:`200` 个
+	* 仅支持港股
+
 ---------------------------------------------------
 
 协议请求流程 

@@ -24,27 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.6 documentation" href="../index.html"/>
-        <link rel="prev" title="交易API" href="../api/Trade_API.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="交易API" href="../api/Trade_API.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -121,12 +114,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#q5">Q5:是否支持其他编程语言</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q6">Q6:在同一设备多次验证设备锁</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q7-futuopenddocker">Q7:FutuOpenD是否有提供Docker镜像</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q8-futuopend">Q8:一个账号可以登录多个FutuOpenD吗？</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">连接相关</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#q1-futuopend">Q1:脚本连接不上FutuOpenD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Q2:脚本连接上之后没反应</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q3">Q3:连接上一段时间后断开</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q4-linuxmultiprocessingpythonfutuopend">Q4:Linux下通过multiprocessing模块以多进程方式运行Python脚本可能会连不上FutuOpenD</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">行情相关</a><ul>
@@ -141,10 +136,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#id12">交易相关</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id13">Q1:如何使用模拟交易</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id14">Q2:模拟与真实交易是否有区别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">Q3:是否模拟交易可视化数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Q3:是否模拟交易可视化数据</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q4-a">Q4:是否支持A股交易</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">Q5:是否支持暗盘交易</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">Q6:各市场支持的交易方向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Q5:是否支持暗盘交易</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Q6:各市场支持的交易方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q7">Q7:各市场支持的订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q8">Q8:各市场支持的订单操作</a></li>
 </ul>
@@ -162,7 +157,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -170,9 +165,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -201,7 +197,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/q&amp;a/Q&amp;A.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/q&amp;a/Q&amp;A.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -261,6 +257,8 @@
 <div class="section" id="q4">
 <h3>Q4:如何验证手机验证码<a class="headerlink" href="#q4" title="Permalink to this headline">¶</a></h3>
 <p>A: 在FutuOpenD界面上或远程到Telnet端口输入命令input_phone_verify_code -code=123456（手机验证码）。</p>
+<blockquote>
+<div>注 ：【-code=123456】前有空格</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="q5">
@@ -284,6 +282,11 @@
 <div class="section" id="q7-futuopenddocker">
 <h3>Q7:FutuOpenD是否有提供Docker镜像<a class="headerlink" href="#q7-futuopenddocker" title="Permalink to this headline">¶</a></h3>
 <p>A: 目前没有。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="q8-futuopend">
+<h3>Q8:一个账号可以登录多个FutuOpenD吗？<a class="headerlink" href="#q8-futuopend" title="Permalink to this headline">¶</a></h3>
+<p>A: 一个账号可以在多台机器上登录FutuOpenD或者其他客户终端，最多10个终端同时登录。同时有“行情互踢”的限制，只能有一个最高权限行情。例如：两个终端登录同一个账号，只能有一个A股Level2行情，另一个是A股Level1行情。</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -309,6 +312,17 @@
 <h3>Q3:连接上一段时间后断开<a class="headerlink" href="#q3" title="Permalink to this headline">¶</a></h3>
 <p>A: 如果是自己对接协议，检查下是否有定时发送心跳维持连接。</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="q4-linuxmultiprocessingpythonfutuopend">
+<h3>Q4:Linux下通过multiprocessing模块以多进程方式运行Python脚本可能会连不上FutuOpenD<a class="headerlink" href="#q4-linuxmultiprocessingpythonfutuopend" title="Permalink to this headline">¶</a></h3>
+<p>A: Linux/Mac环境下以默认方式创建进程后，父进程中py-futu-api内部创建的线程将会在子进程中消失，导致程序内部状态错误。可以用spawn方式来启动进程：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">set_start_method</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id4">
@@ -320,6 +334,7 @@
 <div><ol class="arabic simple">
 <li>帐号无港股Lv2权限</li>
 <li>帐号有港股Lv2权限，但被其他终端踢掉行情权限</li>
+<li>帐号有赠送的港股Lv2权限，但赠送的港股Lv2权限只能在大陆IP机器使用。</li>
 <li>订阅额度不足，订阅额度规则参见  <a class="reference external" href="../protocol/intro.html#id28">订阅限制</a></li>
 </ol>
 </div></blockquote>
@@ -347,7 +362,7 @@
 <hr class="docutils" />
 <div class="section" id="id11">
 <h3>Q6:如何获取一级用户权限<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>A: 目前仅提供给有一定交易额的实盘交易团队，有需要可加入QQ群108534288联系管理员。</p>
+<p>A: 目前仅提供给有一定交易额的实盘交易用户，有需要可加入QQ群108534288联系管理员。</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -369,11 +384,12 @@
 <li>下单仅支持Normal类型</li>
 <li>模拟交易不需要解锁交易</li>
 </ol>
+<p>更多模拟交易规则可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate#/rule">模拟交易规则</a>。</p>
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id15">
-<h3>Q3:是否模拟交易可视化数据<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Q3:是否模拟交易可视化数据<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>A: 可视数据可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate/">模拟炒股页面</a>，该页面仅支持手机浏览器访问。</p>
 </div>
 <hr class="docutils" />
@@ -382,13 +398,13 @@
 <p>A: 支持A股模拟交易，真实交易可通过A股通交易部分A股。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id17">
-<h3>Q5:是否支持暗盘交易<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Q5:是否支持暗盘交易<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <p>A: 支持，仅支持限价单，且需要确认 <a class="reference external" href="https://help.futu5.com/darktrade/">暗盘交易风险</a> 才可以进行暗盘交易。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id19">
-<h3>Q6:各市场支持的交易方向<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>Q6:各市场支持的交易方向<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <p>A: 都只支持买入和卖出，但美股产生的订单类型可能会出现卖空和买回。</p>
 </div>
 <hr class="docutils" />
@@ -423,9 +439,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -441,7 +455,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -459,35 +473,23 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.6',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
-  
  
 <script type="text/javascript">
     console.log("Layout By futu-api");
