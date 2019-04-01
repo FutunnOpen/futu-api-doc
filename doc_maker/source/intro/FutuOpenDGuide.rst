@@ -8,13 +8,23 @@ FutuOpenD使用说明
 
   FutuOpenD是futu-api的网关程序，运行于客户本机或服务器，负责中转协议请求到富途后台，并将处理后的数据返回给协议请求连接。
  
+  FutuOpenD目前提供两种安装执行形式，用户可根据自身需求选择任一方式。
+  
+  1. 命令行形式：提供命令行执行程序，需自行进行部分配置，适合熟悉度高或无界面化需求的用户； 
+  
+  2. 可视化形式：提供界面化应用程序，操作便捷，尤其适合入门用户。 
+  
 ----------------------------
 
 
 下载安装
 ----------
-  * FutuOpenD目前直接提供程序压缩包，解压后即可运行。 
+
+命令行FutuOpenD
+~~~~~~~~~~~~~~~~~~~~
+  * 命令行FutuOpenD目前直接提供程序压缩包，解压后即可运行。 
   
+ 
   
   * 压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml）,程序打包数据（Appdata.dat）。
   
@@ -23,7 +33,14 @@ FutuOpenD使用说明
   
   
   * FutuOpenD.xml 用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动，支持用户自定义文件路径, 详见 `启动命令行参数 <./FutuOpenDGuide.html#id10>`_
+
+可视化FutuOpenD  
+~~~~~~~~~~~~~~~~~~
+  * 可视化OpenD提供程序安装包，可一键安装运行，安装在%appdata%目录下。
   
+  * 下载方式同命令行FutuOpenD，暂仅提供Windows版。
+  
+  .. image:: ../_static/installer.png
 
 方式1：`富途官网下载 <https://www.futunn.com/download/index/>`_ 
 
@@ -35,13 +52,6 @@ FutuOpenD使用说明
 .. image:: ../_static/download-QQ.png
 
 --------------
-
-免责声明
----------
-  已开户用户需要同意 `免责声明 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
-
-----------------------------
-
 
 登录参数使用优先级
 ----------------
@@ -58,15 +68,13 @@ FutuOpenD使用说明
   6.配置文件帐号密码明文登录
 
 ----------------------------
-
   
-配置文件
----------
-
 FutuOpenD配置
-~~~~~~~~~~~~~~
+--------------
 
-  FutuOpenD启动配置文件使用XML格式，如下图所示：
+命令行FutuOpenD
+~~~~~~~~~~~~~~~~~~~~
+  * 命令行FutuOpenD启动配置文件使用XML格式，如下图所示：
 
   .. image:: ../_static/FTOpenDConfig.png
 
@@ -89,50 +97,39 @@ FutuOpenD配置
   log_level              日志级别，可填no,debug,info,warning,error,fatal                                                      是，默认info级别
   ====================   ==================================================================================================   ===========================================
 
-.. note::
-  密文是明文经过32位MD5加密后用16进制表示的数据，搜索在线MD5加密（注意，通过第三方网站计算可能有记录撞库的风险）或下载MD5计算工具可计算得到。
+可视化FutuOpenD  
+~~~~~~~~~~~~~~~~~~ 
+  * 可视化FutuOpenD配置以界面化表单形式展现，代替命令行版本的XML配置文件方式。
+	
+  .. image:: ../_static/UIConfig.png
+  
+  **配置项说明如下表所示：**
+  
+  ====================   ==================================================================================
+  配置项                 说明						                                                       
+  ====================   ==================================================================================
+  监听地址               API协议监听地址
+  监听端口               API协议监听端口
+  日志级别               FutuOpenD日志级别
+  API推送协议格式        API协议支持PB以及json格式，推送类协议通过该配置决定包体格式
+  API推送频率            API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时
+  Telnet地址             远程操作命令监听地址
+  Telnet端口             远程操作命令监听端口
+  加密私钥路径           API协议PSA加密私钥（PKCS#1）文件绝对路径
+  ====================   ==================================================================================
+  
+.. note::	
+  * 密文是明文经过32位MD5加密后用16进制表示的数据，搜索在线MD5加密（注意，通过第三方网站计算可能有记录撞库的风险）或下载MD5计算工具可计算得到。
   
   32位MD5密文如下图红框区域（e10adc3949ba59abbe56e057f20f883e）：
   
   .. image:: ../_static/MD5.png
 
-  FutuOpenD默认读取同目录下的FutuOpenD.xml。在MacOS上，由于系统保护机制，FutuOpenD.app在运行时会被分配一个随机路径，导致无法找到原本的路径。此时有以下方法：
+  * FutuOpenD默认读取同目录下的FutuOpenD.xml。在MacOS上，由于系统保护机制，FutuOpenD.app在运行时会被分配一个随机路径，导致无法找到原本的路径。此时有以下方法：
 
   1. 执行tar包下的fixrun.sh
   2. 用命令行参数-cfg_file指定配置文件路径，见下面说明
- 
-  
-RSA私钥文件
-~~~~~~~~~~~~~~
-  
- 参考文件格式：
-  
- .. code-block:: bash
 
-		-----BEGIN RSA PRIVATE KEY-----
-	MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
-	+uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
-	0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
-	AoGAHep/s2vKmKcjWNf6DZQ3xXZzCoLcK4WS5YlSCglCHAL7EmYQjguGLbYGGS9P
-	jYR7Pxi8YpiUcao5otQqnCh1GRFouU397D3h+bf/bQXINZcv3sxKFrXm9MNVaBJD
-	W4BcC3HGfnlaIVTKU+qGkeA1BydP5AQyxsGOq00IUeGK4uECQQD/5xHLDwhwYFyc
-	MK4xMnlrvne8TSlPBciWfrxQ7V/X0eP/HQ20VkVxc0tFD91aLrCap6OYcNV9jwJN
-	wTQLt5wbAkEAse7C75LKW0+cMcROvAR3qLV2LbGjLW+cH6WmEP9CEGxi0aJg4Gs3
-	oSRYfaC/RLI87sSb0DC5+mTswXduLGpB0QJAJk0ec6cHW1KA6fu7Rq/ITqEOaMef
-	xC0YbbYAV5h/vNy0ZE2j7HbxI97eyDJsrf/I/QzURo+01HsgHCUrtglAOwJBAKiW
-	cA7sh1zS5kxlErCkjvfDz1BmIhT3zfZSTjGGmYLUHyE/eAjKra+5rzqA5xjgxEj6
-	8iLlOCFeJND+Jt5gYzECQH+HtFilF1SxGS4AHrJomHaMhk/IazjtUnLuFM/DuZ/h
-	sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w=
-	-----END RSA PRIVATE KEY-----
-	
- .. note::
-
-  * RSA 密钥的填充方式为 PKCS1, 位数1024
-  * 密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索"RSA 在线生成"
-  * 将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项
-  * 公钥可通过私钥计算得到，但生成私钥时不要设置密码
-  
----------------
 
 启动命令行参数
 ---------------
@@ -262,4 +259,46 @@ show_delay_report - 展示延迟统计报告
   **Paramters detail_report_path:** str，报告输出的绝对路径，可选参数，若不指定则输出到OpenD界面
   
   **Paramters push_count_type:** str，推送延迟的类型(sr2ss,ss2cr,cr2cs,ss2cs,sr2cs)，默认sr2cs，sr指服务器接收时间(目前只有港股支持该时间)，ss指服务器发出时间，cr指OpenD接收时间，cs指OpenD发出时间
-	  
+
+---------------------------- 
+
+补充说明
+--------------
+ 
+免责声明
+~~~~~~~~~~~~~~
+  已开户用户需要同意 `免责声明 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
+
+----------------------------
+  
+RSA私钥文件
+~~~~~~~~~~~~~~
+  
+ 参考文件格式：
+  
+ .. code-block:: bash
+
+		-----BEGIN RSA PRIVATE KEY-----
+	MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
+	+uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
+	0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
+	AoGAHep/s2vKmKcjWNf6DZQ3xXZzCoLcK4WS5YlSCglCHAL7EmYQjguGLbYGGS9P
+	jYR7Pxi8YpiUcao5otQqnCh1GRFouU397D3h+bf/bQXINZcv3sxKFrXm9MNVaBJD
+	W4BcC3HGfnlaIVTKU+qGkeA1BydP5AQyxsGOq00IUeGK4uECQQD/5xHLDwhwYFyc
+	MK4xMnlrvne8TSlPBciWfrxQ7V/X0eP/HQ20VkVxc0tFD91aLrCap6OYcNV9jwJN
+	wTQLt5wbAkEAse7C75LKW0+cMcROvAR3qLV2LbGjLW+cH6WmEP9CEGxi0aJg4Gs3
+	oSRYfaC/RLI87sSb0DC5+mTswXduLGpB0QJAJk0ec6cHW1KA6fu7Rq/ITqEOaMef
+	xC0YbbYAV5h/vNy0ZE2j7HbxI97eyDJsrf/I/QzURo+01HsgHCUrtglAOwJBAKiW
+	cA7sh1zS5kxlErCkjvfDz1BmIhT3zfZSTjGGmYLUHyE/eAjKra+5rzqA5xjgxEj6
+	8iLlOCFeJND+Jt5gYzECQH+HtFilF1SxGS4AHrJomHaMhk/IazjtUnLuFM/DuZ/h
+	sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w=
+	-----END RSA PRIVATE KEY-----
+	
+ .. note::
+
+  * RSA 密钥的填充方式为 PKCS1, 位数1024
+  * 密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索"RSA 在线生成"
+  * 将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项
+  * 公钥可通过私钥计算得到，但生成私钥时不要设置密码
+  
+---------------
