@@ -24,21 +24,28 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="基础定义" href="base_define.html" />
-    <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="futu-api-doc 3.8 documentation" href="../index.html"/>
+        <link rel="next" title="基础定义" href="base_define.html"/>
+        <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -153,7 +160,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -161,10 +168,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -193,7 +199,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/protocol/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/protocol/intro.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -668,16 +674,16 @@
 <div>协议数据包括协议头以及协议体，协议头固定字段，协议体根据具体协议决定。</div></blockquote>
 <div class="section" id="id43">
 <h3>协议头结构<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>struct APIProtoHeader
+<div class="highlight-bash"><div class="highlight"><pre><span></span>struct APIProtoHeader
 <span class="o">{</span>
-    u8_t szHeaderFlag<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="p">;</span>
+    u8_t szHeaderFlag<span class="o">[</span>2<span class="o">]</span><span class="p">;</span>
     u32_t nProtoID<span class="p">;</span>
     u8_t nProtoFmtType<span class="p">;</span>
     u8_t nProtoVer<span class="p">;</span>
     u32_t nSerialNo<span class="p">;</span>
     u32_t nBodyLen<span class="p">;</span>
-    u8_t arrBodySHA1<span class="o">[</span><span class="m">20</span><span class="o">]</span><span class="p">;</span>
-    u8_t arrReserved<span class="o">[</span><span class="m">8</span><span class="o">]</span><span class="p">;</span>
+    u8_t arrBodySHA1<span class="o">[</span>20<span class="o">]</span><span class="p">;</span>
+    u8_t arrReserved<span class="o">[</span>8<span class="o">]</span><span class="p">;</span>
 <span class="o">}</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -733,49 +739,49 @@
 <div class="section" id="id44">
 <h3>协议体结构<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <p><strong>Protobuf协议请求包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>message C2S
+<div class="highlight-bash"><div class="highlight"><pre><span></span>message C2S
 <span class="o">{</span>
-    required int64 <span class="nv">req</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+    required int64 <span class="nv">req</span> <span class="o">=</span> 1<span class="p">;</span>
 <span class="o">}</span>
 
 message Request
 <span class="o">{</span>
-    required C2S <span class="nv">c2s</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+    required C2S <span class="nv">c2s</span> <span class="o">=</span> 1<span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Protobuf协议回应包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>message S2C
+<div class="highlight-bash"><div class="highlight"><pre><span></span>message S2C
 <span class="o">{</span>
-    required int64 <span class="nv">data</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+    required int64 <span class="nv">data</span> <span class="o">=</span> 1<span class="p">;</span>
 <span class="o">}</span>
 
 message Response
 <span class="o">{</span>
     required int32 <span class="nv">retType</span> <span class="o">=</span> <span class="m">1</span> <span class="o">[</span><span class="nv">default</span> <span class="o">=</span> -400<span class="o">]</span><span class="p">;</span> //RetType,返回结果
-    optional string <span class="nv">retMsg</span> <span class="o">=</span> <span class="m">2</span><span class="p">;</span>
-    optional int32 <span class="nv">errCode</span> <span class="o">=</span> <span class="m">3</span><span class="p">;</span>
-    optional S2C <span class="nv">s2c</span> <span class="o">=</span> <span class="m">4</span><span class="p">;</span>
+    optional string <span class="nv">retMsg</span> <span class="o">=</span> 2<span class="p">;</span>
+    optional int32 <span class="nv">errCode</span> <span class="o">=</span> 3<span class="p">;</span>
+    optional S2C <span class="nv">s2c</span> <span class="o">=</span> 4<span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Json协议请求包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{</span>
     <span class="s2">&quot;c2s&quot;</span>:
     <span class="o">{</span>
-         <span class="s2">&quot;req&quot;</span>: <span class="m">0</span>
+         <span class="s2">&quot;req&quot;</span>: 0
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Json协议回应包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
-    <span class="s2">&quot;retType&quot;</span> : <span class="m">0</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s2">&quot;retType&quot;</span> : 0
     <span class="s2">&quot;retMsg&quot;</span> : <span class="s2">&quot;&quot;</span>
-    <span class="s2">&quot;errCode&quot;</span> : <span class="m">0</span>
+    <span class="s2">&quot;errCode&quot;</span> : 0
     <span class="s2">&quot;s2c&quot;</span>:
     <span class="o">{</span>
-        <span class="s2">&quot;data&quot;</span>: <span class="m">0</span>
+        <span class="s2">&quot;data&quot;</span>: 0
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -832,7 +838,7 @@ message Response
 <div><ul class="simple">
 <li>若FutuOpenD配置了加密, <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 初始化连接协议必须使用RSA公钥加密，后续其他协议使用 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 返回的随机密钥进行AES加密通信。</li>
 <li>FutuOpenD的加密流程借鉴了SSL协议，但考虑到一般是本地部署服务和应用，简化了相关流程，FutuOpenD与接入Client共用了同一个RSA 私钥文件，请妥善保存和分发私钥文件。</li>
-<li>可到”<a class="reference external" href="http://web.chacuo.net/netrsakeypair">http://web.chacuo.net/netrsakeypair</a>”这个网址在线生成随机RSA密钥对，密钥格式必须为PCKS#1，密钥长度512，1024都可以，不要设置密码，将生成的私钥复制保存到文件中，然后将私钥文件路径配置到 <a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定的 “rsa_private_key”配置项中</li>
+<li>可到&#8221;<a class="reference external" href="http://web.chacuo.net/netrsakeypair">http://web.chacuo.net/netrsakeypair</a>&#8220;这个网址在线生成随机RSA密钥对，密钥格式必须为PCKS#1，密钥长度512，1024都可以，不要设置密码，将生成的私钥复制保存到文件中，然后将私钥文件路径配置到 <a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定的 “rsa_private_key”配置项中</li>
 <li></li>
 <li><strong>强烈建议有实盘交易的用户配置加密，避免账户和交易信息泄露</strong></li>
 </ul>
@@ -845,7 +851,7 @@ message Response
 <blockquote>
 <div><blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定”rsa_private_key”为私钥文件路径</li>
+<li><a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定&#8221;rsa_private_key&#8221;为私钥文件路径</li>
 <li>FutuOpenD 与接入客户端共用相同的私钥文件</li>
 <li>RSA加解密仅用于 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 请求，用于安全获取其它请求协议的对称加密Key</li>
 <li>FutuOpenD的RSA密钥为1024位, 填充方式PKCS1, 公钥加密，私钥解密，公钥可通过私钥生成</li>
@@ -882,8 +888,8 @@ message Response
 <p><strong>发送数据加密</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>AES加密要求源数据长度必须是16的整数倍,  故需补‘0’对齐后再加密，记录mod_len为源数据长度与16取模值</li>
-<li>因加密前有可能对源数据作修改， 故需在加密后的数据尾再增加一个16字节的填充数据块，其最后一个字节赋值mod_len, 其余字节赋值‘0’， 将加密数据和额外的填充数据块拼接作为最终要发送协议的body数据</li>
+<li>AES加密要求源数据长度必须是16的整数倍,  故需补‘0&#8217;对齐后再加密，记录mod_len为源数据长度与16取模值</li>
+<li>因加密前有可能对源数据作修改， 故需在加密后的数据尾再增加一个16字节的填充数据块，其最后一个字节赋值mod_len, 其余字节赋值&#8216;0&#8217;， 将加密数据和额外的填充数据块拼接作为最终要发送协议的body数据</li>
 </ul>
 </div></blockquote>
 <p><strong>接收数据解密</strong></p>
@@ -902,7 +908,9 @@ message Response
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -920,7 +928,7 @@ message Response
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu
+        &copy; Copyright 2018, futu.
 
     </p>
   </div> 
@@ -938,23 +946,35 @@ message Response
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.8',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
   </script>
+  
  
 <script type="text/javascript">
     console.log("Layout By futu-api");

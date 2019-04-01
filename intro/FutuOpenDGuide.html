@@ -24,21 +24,28 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="协议接口" href="../protocol/intro.html" />
-    <link rel="prev" title="介绍" href="intro.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="futu-api-doc 3.8 documentation" href="../index.html"/>
+        <link rel="next" title="协议接口" href="../protocol/intro.html"/>
+        <link rel="prev" title="介绍" href="intro.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -89,16 +96,19 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FutuOpenD使用说明</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">基本介绍</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">下载安装</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">免责声明</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">登录参数使用优先级</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">配置文件</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">FutuOpenD配置</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rsa">RSA私钥文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">下载安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">命令行FutuOpenD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">可视化FutuOpenD</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">启动命令行参数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">运维命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id7">登录参数使用优先级</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">FutuOpenD配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">命令行FutuOpenD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">可视化FutuOpenD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">启动命令行参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">运维命令</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#help">help - 命令帮助</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exit">exit - 退出程序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#req-phone-verify-code">req_phone_verify_code - 请求手机验证码</a></li>
@@ -108,6 +118,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#relogin">relogin - 重登录</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ping">ping - 检测与连接点之间的时延</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#show-delay-report">show_delay_report - 展示延迟统计报告</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">补充说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">免责声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rsa">RSA私钥文件</a></li>
 </ul>
 </li>
 </ul>
@@ -142,7 +157,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -150,10 +165,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -182,7 +196,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/intro/FutuOpenDGuide.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/intro/FutuOpenDGuide.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -219,29 +233,42 @@
 <div class="section" id="id1">
 <h2>基本介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>FutuOpenD是futu-api的网关程序，运行于客户本机或服务器，负责中转协议请求到富途后台，并将处理后的数据返回给协议请求连接。</div></blockquote>
+<div><p>FutuOpenD是futu-api的网关程序，运行于客户本机或服务器，负责中转协议请求到富途后台，并将处理后的数据返回给协议请求连接。</p>
+<p>FutuOpenD目前提供两种安装执行形式，用户可根据自身需求选择任一方式。</p>
+<ol class="arabic simple">
+<li>命令行形式：提供命令行执行程序，需自行进行部分配置，适合熟悉度高或无界面化需求的用户；</li>
+<li>可视化形式：提供界面化应用程序，操作便捷，尤其适合入门用户。</li>
+</ol>
+</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="id2">
 <h2>下载安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>命令行FutuOpenD<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li>FutuOpenD目前直接提供程序压缩包，解压后即可运行。</li>
+<li>命令行FutuOpenD目前直接提供程序压缩包，解压后即可运行。</li>
 <li>压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml）,程序打包数据（Appdata.dat）。</li>
 <li>Appdata.dat是程序需要用到的一些数据量较大的信息，打包数据减少启动下载该数据用时，若不存在则程序无法正常启动。</li>
 <li>FutuOpenD.xml 用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动，支持用户自定义文件路径, 详见 <a class="reference external" href="./FutuOpenDGuide.html#id10">启动命令行参数</a></li>
 </ul>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>可视化FutuOpenD<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>可视化OpenD提供程序安装包，可一键安装运行，安装在%appdata%目录下。</li>
+<li>下载方式同命令行FutuOpenD，暂仅提供Windows版。</li>
+</ul>
+<img alt="../_images/installer.png" src="../_images/installer.png" />
 </div></blockquote>
 <p>方式1：<a class="reference external" href="https://www.futunn.com/download/index/">富途官网下载</a></p>
 <img alt="../_images/futunn.com.png" src="../_images/futunn.com.png" />
 <p>方式2：QQ群文件下载</p>
 <img alt="../_images/download-QQ.png" src="../_images/download-QQ.png" />
 </div>
-<hr class="docutils" />
-<div class="section" id="id5">
-<h2>免责声明<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>已开户用户需要同意 <a class="reference external" href="https://www.futunn.com/about/api-disclaimer/">免责声明</a> 才可以使用FutuOpenD。</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="id7">
@@ -257,11 +284,13 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id8">
-<h2>配置文件<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2>FutuOpenD配置<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
-<h3>FutuOpenD配置<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>命令行FutuOpenD<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>FutuOpenD启动配置文件使用XML格式，如下图所示：</p>
+<div><ul class="simple">
+<li>命令行FutuOpenD启动配置文件使用XML格式，如下图所示：</li>
+</ul>
 <img alt="../_images/FTOpenDConfig.png" src="../_images/FTOpenDConfig.png" />
 <p><strong>配置项：</strong></p>
 <table border="1" class="docutils">
@@ -328,54 +357,72 @@
 </tbody>
 </table>
 </div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>可视化FutuOpenD<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>可视化FutuOpenD配置以界面化表单形式展现，代替命令行版本的XML配置文件方式。</li>
+</ul>
+<img alt="../_images/UIConfig.png" src="../_images/UIConfig.png" />
+<p><strong>配置项说明如下表所示：</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">配置项</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>监听地址</td>
+<td>API协议监听地址</td>
+</tr>
+<tr class="row-odd"><td>监听端口</td>
+<td>API协议监听端口</td>
+</tr>
+<tr class="row-even"><td>日志级别</td>
+<td>FutuOpenD日志级别</td>
+</tr>
+<tr class="row-odd"><td>API推送协议格式</td>
+<td>API协议支持PB以及json格式，推送类协议通过该配置决定包体格式</td>
+</tr>
+<tr class="row-even"><td>API推送频率</td>
+<td>API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时</td>
+</tr>
+<tr class="row-odd"><td>Telnet地址</td>
+<td>远程操作命令监听地址</td>
+</tr>
+<tr class="row-even"><td>Telnet端口</td>
+<td>远程操作命令监听端口</td>
+</tr>
+<tr class="row-odd"><td>加密私钥路径</td>
+<td>API协议PSA加密私钥（PKCS#1）文件绝对路径</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>密文是明文经过32位MD5加密后用16进制表示的数据，搜索在线MD5加密（注意，通过第三方网站计算可能有记录撞库的风险）或下载MD5计算工具可计算得到。</p>
+<ul class="simple">
+<li>密文是明文经过32位MD5加密后用16进制表示的数据，搜索在线MD5加密（注意，通过第三方网站计算可能有记录撞库的风险）或下载MD5计算工具可计算得到。</li>
+</ul>
 <p>32位MD5密文如下图红框区域（e10adc3949ba59abbe56e057f20f883e）：</p>
 <img alt="../_images/MD5.png" src="../_images/MD5.png" />
-<p>FutuOpenD默认读取同目录下的FutuOpenD.xml。在MacOS上，由于系统保护机制，FutuOpenD.app在运行时会被分配一个随机路径，导致无法找到原本的路径。此时有以下方法：</p>
+<ul class="simple">
+<li>FutuOpenD默认读取同目录下的FutuOpenD.xml。在MacOS上，由于系统保护机制，FutuOpenD.app在运行时会被分配一个随机路径，导致无法找到原本的路径。此时有以下方法：</li>
+</ul>
 <ol class="last arabic simple">
 <li>执行tar包下的fixrun.sh</li>
 <li>用命令行参数-cfg_file指定配置文件路径，见下面说明</li>
 </ol>
 </div>
 </div>
-<div class="section" id="rsa">
-<h3>RSA私钥文件<a class="headerlink" href="#rsa" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>参考文件格式：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>        -----BEGIN RSA PRIVATE KEY-----
-MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
-+uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
-0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
-AoGAHep/s2vKmKcjWNf6DZQ3xXZzCoLcK4WS5YlSCglCHAL7EmYQjguGLbYGGS9P
-jYR7Pxi8YpiUcao5otQqnCh1GRFouU397D3h+bf/bQXINZcv3sxKFrXm9MNVaBJD
-W4BcC3HGfnlaIVTKU+qGkeA1BydP5AQyxsGOq00IUeGK4uECQQD/5xHLDwhwYFyc
-MK4xMnlrvne8TSlPBciWfrxQ7V/X0eP/HQ20VkVxc0tFD91aLrCap6OYcNV9jwJN
-wTQLt5wbAkEAse7C75LKW0+cMcROvAR3qLV2LbGjLW+cH6WmEP9CEGxi0aJg4Gs3
-oSRYfaC/RLI87sSb0DC5+mTswXduLGpB0QJAJk0ec6cHW1KA6fu7Rq/ITqEOaMef
-xC0YbbYAV5h/vNy0ZE2j7HbxI97eyDJsrf/I/QzURo+01HsgHCUrtglAOwJBAKiW
-cA7sh1zS5kxlErCkjvfDz1BmIhT3zfZSTjGGmYLUHyE/eAjKra+5rzqA5xjgxEj6
-8iLlOCFeJND+Jt5gYzECQH+HtFilF1SxGS4AHrJomHaMhk/IazjtUnLuFM/DuZ/h
-sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
------END RSA PRIVATE KEY-----
-</pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>RSA 密钥的填充方式为 PKCS1, 位数1024</li>
-<li>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索”RSA 在线生成”</li>
-<li>将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项</li>
-<li>公钥可通过私钥计算得到，但生成私钥时不要设置密码</li>
-</ul>
-</div>
-</div></blockquote>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="id10">
-<h2>启动命令行参数<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>启动命令行参数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>命令行部分参数与配置文件相同，同样参数若存在于命令行与配置文件，使用命令行参数。</p>
 <img alt="../_images/login-command.png" src="../_images/login-command.png" />
@@ -456,8 +503,8 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id11">
-<h2>运维命令<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>运维命令<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>通过命令行或者Telent发送命令可以对FutuOpenD做运维操作。</p>
 <p>命令格式：<strong>cmd -param_key1=param_value1 -param_key2=param_value2</strong></p>
@@ -542,11 +589,56 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 </div></blockquote>
 </div>
 </div>
+<hr class="docutils" />
+<div class="section" id="id13">
+<h2>补充说明<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h3>免责声明<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>已开户用户需要同意 <a class="reference external" href="https://www.futunn.com/about/api-disclaimer/">免责声明</a> 才可以使用FutuOpenD。</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="rsa">
+<h3>RSA私钥文件<a class="headerlink" href="#rsa" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>参考文件格式：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>        -----BEGIN RSA PRIVATE KEY-----
+MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
++uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
+0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
+AoGAHep/s2vKmKcjWNf6DZQ3xXZzCoLcK4WS5YlSCglCHAL7EmYQjguGLbYGGS9P
+jYR7Pxi8YpiUcao5otQqnCh1GRFouU397D3h+bf/bQXINZcv3sxKFrXm9MNVaBJD
+W4BcC3HGfnlaIVTKU+qGkeA1BydP5AQyxsGOq00IUeGK4uECQQD/5xHLDwhwYFyc
+MK4xMnlrvne8TSlPBciWfrxQ7V/X0eP/HQ20VkVxc0tFD91aLrCap6OYcNV9jwJN
+wTQLt5wbAkEAse7C75LKW0+cMcROvAR3qLV2LbGjLW+cH6WmEP9CEGxi0aJg4Gs3
+oSRYfaC/RLI87sSb0DC5+mTswXduLGpB0QJAJk0ec6cHW1KA6fu7Rq/ITqEOaMef
+xC0YbbYAV5h/vNy0ZE2j7HbxI97eyDJsrf/I/QzURo+01HsgHCUrtglAOwJBAKiW
+cA7sh1zS5kxlErCkjvfDz1BmIhT3zfZSTjGGmYLUHyE/eAjKra+5rzqA5xjgxEj6
+8iLlOCFeJND+Jt5gYzECQH+HtFilF1SxGS4AHrJomHaMhk/IazjtUnLuFM/DuZ/h
+sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
+-----END RSA PRIVATE KEY-----
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>RSA 密钥的填充方式为 PKCS1, 位数1024</li>
+<li>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索&#8221;RSA 在线生成&#8221;</li>
+<li>将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项</li>
+<li>公钥可通过私钥计算得到，但生成私钥时不要设置密码</li>
+</ul>
+</div>
+</div></blockquote>
+<hr class="docutils" />
+</div>
+</div>
 </div>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -564,7 +656,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu
+        &copy; Copyright 2018, futu.
 
     </p>
   </div> 
@@ -582,23 +674,35 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.8',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
   </script>
+  
  
 <script type="text/javascript">
     console.log("Layout By futu-api");

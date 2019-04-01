@@ -24,21 +24,28 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="交易协议" href="trade_protocol.html" />
-    <link rel="prev" title="基础定义" href="base_define.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="futu-api-doc 3.8 documentation" href="../index.html"/>
+        <link rel="next" title="交易协议" href="trade_protocol.html"/>
+        <link rel="prev" title="基础定义" href="base_define.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -150,7 +157,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -158,10 +165,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -190,7 +196,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/protocol/quote_protocol.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/protocol/quote_protocol.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -237,7 +243,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-sub-proto-3001">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_Sub.proto">Qot_Sub.proto</a> - 3001订阅或者反订阅<a class="headerlink" href="#qot-sub-proto-3001" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_Sub</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -286,7 +292,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-regqotpush-proto-3002">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RegQotPush.proto">Qot_RegQotPush.proto</a> - 3002注册行情推送<a class="headerlink" href="#qot-regqotpush-proto-3002" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RegQotPush</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -333,7 +339,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getsubinfo-proto-3003">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetSubInfo.proto">Qot_GetSubInfo.proto</a> - 3003获取订阅信息<a class="headerlink" href="#qot-getsubinfo-proto-3003" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetSubInfo</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -376,7 +382,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getbasicqot-proto-3004">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetBasicQot.proto">Qot_GetBasicQot.proto</a> - 3004获取股票基本行情<a class="headerlink" href="#qot-getbasicqot-proto-3004" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetBasicQot</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -418,7 +424,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-updatebasicqot-proto-3005">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateBasicQot.proto">Qot_UpdateBasicQot.proto</a> - 3005推送股票基本报价<a class="headerlink" href="#qot-updatebasicqot-proto-3005" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateBasicQot</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -449,7 +455,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getkl-proto-3006k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetKL.proto">Qot_GetKL.proto</a> - 3006获取K线<a class="headerlink" href="#qot-getkl-proto-3006k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -498,7 +504,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-updatekl-proto-3007k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateKL.proto">Qot_UpdateKL.proto</a> - 3007推送K线<a class="headerlink" href="#qot-updatekl-proto-3007k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -535,7 +541,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getrt-proto-3008">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRT.proto">Qot_GetRT.proto</a> - 3008获取分时<a class="headerlink" href="#qot-getrt-proto-3008" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetRT</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -578,7 +584,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-updatert-proto-3009">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateRT.proto">Qot_UpdateRT.proto</a> - 3009推送分时<a class="headerlink" href="#qot-updatert-proto-3009" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateRT</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -611,7 +617,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getticker-proto-3010">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTicker.proto">Qot_GetTicker.proto</a> - 3010获取逐笔<a class="headerlink" href="#qot-getticker-proto-3010" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetTicker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -655,7 +661,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-updateticker-proto-3011">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateTicker.proto">Qot_UpdateTicker.proto</a> - 3011推送逐笔<a class="headerlink" href="#qot-updateticker-proto-3011" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateTicker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -688,7 +694,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getorderbook-proto-3012">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetOrderBook.proto">Qot_GetOrderBook.proto</a> - 3012获取买卖盘<a class="headerlink" href="#qot-getorderbook-proto-3012" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetOrderBook</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -732,7 +738,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-updateorderbook-proto-3013">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateOrderBook.proto">Qot_UpdateOrderBook.proto</a> - 3013推送买卖盘<a class="headerlink" href="#qot-updateorderbook-proto-3013" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateOrderBook</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -766,7 +772,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getbroker-proto-3014">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetBroker.proto">Qot_GetBroker.proto</a> - 3014获取经纪队列<a class="headerlink" href="#qot-getbroker-proto-3014" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetBroker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -809,7 +815,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-updatebroker-proto-3015">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateBroker.proto">Qot_UpdateBroker.proto</a> - 3015推送经纪队列<a class="headerlink" href="#qot-updatebroker-proto-3015" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateBroker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -843,7 +849,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-gethistorykl-proto-3100k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto">Qot_GetHistoryKL.proto</a> - <span class="strike">3100从本地下载历史数据获取单只股票一段历史K线</span><a class="headerlink" href="#qot-gethistorykl-proto-3100k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetHistoryKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -898,7 +904,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-gethistoryklpoints-proto-3101k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto">Qot_GetHistoryKLPoints.proto</a>  - <span class="strike">3101从本地下载历史数据获取多只股票多点历史K线</span><a class="headerlink" href="#qot-gethistoryklpoints-proto-3101k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetHistoryKLPoints</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -982,7 +988,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getrehab-proto-3102">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto">Qot_GetRehab.proto</a> - <span class="strike">3102从本地下载历史数据获取复权信息</span><a class="headerlink" href="#qot-getrehab-proto-3102" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetRehab</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1031,7 +1037,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-requestrehab-proto-3105">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestRehab.proto">Qot_RequestRehab.proto</a> - 3105在线获取单只股票复权信息<a class="headerlink" href="#qot-requestrehab-proto-3105" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RequestRehab</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1074,7 +1080,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-requesthistorykl-proto-3103k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKL.proto">Qot_RequestHistoryKL.proto</a> - 3103在线获取单只股票一段历史K线<a class="headerlink" href="#qot-requesthistorykl-proto-3103k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RequestHistoryKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1130,7 +1136,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-gettradedate-proto-3200">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto">Qot_GetTradeDate.proto</a> - 3200获取市场交易日<a class="headerlink" href="#qot-gettradedate-proto-3200" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetTradeDate</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1181,7 +1187,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getstaticinfo-proto-3202">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetStaticInfo.proto">Qot_GetStaticInfo.proto</a> - 3202获取股票静态信息<a class="headerlink" href="#qot-getstaticinfo-proto-3202" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetStaticInfo</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1226,7 +1232,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getsecuritysnapshot-proto-3203">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetSecuritySnapshot.proto">Qot_GetSecuritySnapshot.proto</a> - 3203获取股票快照<a class="headerlink" href="#qot-getsecuritysnapshot-proto-3203" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetSecuritySnapshot</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1365,7 +1371,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getplateset-proto-3204">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPlateSet.proto">Qot_GetPlateSet.proto</a> - 3204获取板块集合下的板块<a class="headerlink" href="#qot-getplateset-proto-3204" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetPlateSet</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1411,7 +1417,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getplatesecurity-proto-3205">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPlateSecurity.proto">Qot_GetPlateSecurity.proto</a> - 3205获取板块下的股票<a class="headerlink" href="#qot-getplatesecurity-proto-3205" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetPlateSecurity</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1454,7 +1460,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getreference-proto-3206">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetReference.proto">Qot_GetReference.proto</a> - 3206 获取正股相关股票<a class="headerlink" href="#qot-getreference-proto-3206" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetReference</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1503,7 +1509,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getownerplate-proto-3207">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetOwnerPlate.proto">Qot_GetOwnerPlate.proto</a> - 3207获取股票所属板块<a class="headerlink" href="#qot-getownerplate-proto-3207" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetOwnerPlate</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1554,7 +1560,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getholdingchangelist-proto-3208">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHoldingChangeList.proto">Qot_GetHoldingChangeList.proto</a> - 3208获取持股变化列表<a class="headerlink" href="#qot-getholdingchangelist-proto-3208" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetHoldingChangeList</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1603,7 +1609,7 @@
 </div>
 <div class="section" id="qot-getwarrant-proto-3210">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto">Qot_GetWarrant.proto</a> - 3210获取涡轮<a class="headerlink" href="#qot-getwarrant-proto-3210" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetWarrant</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1737,7 +1743,7 @@
 </div>
 <div class="section" id="qot-requesthistoryklquota-proto-3104k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKLQuota.proto">Qot_RequestHistoryKLQuota.proto</a> - 3104拉取历史K线已经用掉的额度<a class="headerlink" href="#qot-requesthistoryklquota-proto-3104k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RequestHistoryKLQuota</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1782,7 +1788,9 @@
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1800,7 +1808,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu
+        &copy; Copyright 2018, futu.
 
     </p>
   </div> 
@@ -1818,23 +1826,35 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.8',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
   </script>
+  
  
 <script type="text/javascript">
     console.log("Layout By futu-api");
