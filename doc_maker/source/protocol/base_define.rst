@@ -1195,7 +1195,7 @@ Position - 账户持仓
 		optional double costPrice = 8; //成本价，无精度限制，如果没传，代表此时此值无效
 		required double val = 9; //市值，3位精度
 		required double plVal = 10; //盈亏金额，3位精度
-		optional double plRatio = 11; //盈亏比例，无精度限制，如果没传，代表此时此值无效
+		optional double plRatio = 11; //盈亏比例，无精度限制，如果没传，代表此时此值无效（该字段为百分比字段，默认不展示%）
 	  
 		//以下是此持仓今日统计
 		optional double td_plVal = 21; //今日盈亏金额，3位精度，下同
