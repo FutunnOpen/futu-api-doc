@@ -721,9 +721,9 @@ KLine - K线数据点
 		optional double lastClosePrice = 7; //昨收价
 		optional int64 volume = 8; //成交量
 		optional double turnover = 9; //成交额
-		optional double turnoverRate = 10; //换手率
+		optional double turnoverRate = 10; //换手率（该字段为百分比字段，展示为小数表示）
 		optional double pe = 11; //市盈率
-		optional double changeRate = 12; //涨跌幅
+		optional double changeRate = 12; //涨跌幅（该字段为百分比字段，默认不展示%）
 		optional double timestamp = 13; //时间戳
 	}
 		
@@ -739,8 +739,8 @@ BasicQot - 基础报价
 		required double strikePrice = 1; //行权价
 		required int32 contractSize = 2; //每份合约数
 		required int32 openInterest = 3; //未平仓合约数
-		required double impliedVolatility = 4; //隐含波动率
-		required double premium = 5; //溢价
+		required double impliedVolatility = 4; //隐含波动率（该字段为百分比字段，默认不展示%）
+		required double premium = 5; //溢价（该字段为百分比字段，默认不展示%）
 		required double delta = 6; //希腊值 Delta
 		required double gamma = 7; //希腊值 Gamma
 		required double vega = 8; //希腊值 Vega
@@ -762,8 +762,8 @@ BasicQot - 基础报价
 		required double lastClosePrice = 10; //昨收价
 		required int64 volume = 11; //成交量
 		required double turnover = 12; //成交额
-		required double turnoverRate = 13; //换手率
-		required double amplitude = 14; //振幅
+		required double turnoverRate = 13; //换手率（该字段为百分比字段，默认不展示%）
+		required double amplitude = 14; //振幅（该字段为百分比字段，默认不展示%）
 		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态
 		optional double listTimestamp = 17; //上市日期时间戳
 		optional double updateTimestamp = 18; //更新时间戳
@@ -897,9 +897,9 @@ ShareHoldingChange - 持股变动
 	{
 		required string holderName = 1; //持有者名称（机构名称 或 基金名称 或 高管姓名）
 		required double holdingQty = 2; //当前持股数量
-		required double holdingRatio = 3; //当前持股百分比
+		required double holdingRatio = 3; //当前持股百分比（该字段为百分比字段，默认不展示%）
 		required double changeQty = 4; //较上一次变动数量
-		required double changeRatio = 5; //较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+		required double changeRatio = 5; //较上一次变动百分比（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
 		required string time = 6; //发布时间(YYYY-MM-DD HH:MM:SS字符串)
 		optional double timestamp = 7; //时间戳
 	}

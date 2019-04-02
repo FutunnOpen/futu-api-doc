@@ -1028,7 +1028,7 @@
 		required int64 outstandingShares = 6; // 流通股本
 		required double outstandingMarketVal = 7; // 流通市值 =流通股本*当前价格
 		required double netAssetPershare = 8; // 每股净资产
-		required double eyRate = 9; // 收益率
+		required double eyRate = 9; // 收益率（该字段为百分比字段，默认不展示%）
 		required double peRate = 10; // 市盈率
 		required double pbRate = 11; // 市净率
 		required double peTTMRate = 12; // 市盈率TTM
@@ -1046,10 +1046,10 @@
 		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段过滤
 		required int64 streetVolumn = 8; //街货量
 		required int64 issueVolumn = 9; //发行量
-		required double streetRate = 10; //街货占比
+		required double streetRate = 10; //街货占比（该字段为百分比字段，默认不展示%）
 		required double delta = 11; //对冲值,仅认购认沽支持该字段过滤
 		required double impliedVolatility = 12; //引伸波幅,仅认购认沽支持该字段过滤
-		required double premium = 13; //溢价
+		required double premium = 13; //溢价（该字段为百分比字段，默认不展示%）
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
 	}
@@ -1063,8 +1063,8 @@
 		required double strikePrice = 4; //行权价
 		required int32 contractSize = 5; //每份合约数
 		required int32 openInterest = 6; //未平仓合约数
-		required double impliedVolatility = 7; //隐含波动率
-		required double premium = 8; //溢价
+		required double impliedVolatility = 7; //隐含波动率（该字段为百分比字段，默认不展示%）
+		required double premium = 8; //溢价（该字段为百分比字段，默认不展示%）
 		required double delta = 9; //希腊值 Delta
 		required double gamma = 10; //希腊值 Gamma
 		required double vega = 11; //希腊值 Vega
@@ -1090,7 +1090,7 @@
 		required double curPrice = 12; //最新价
 		required int64 volume = 13; //成交量
 		required double turnover = 14; //成交额
-		required double turnoverRate = 15; //换手率
+		required double turnoverRate = 15; //换手率（该字段为百分比字段，默认不展示%）
 		optional double listTimestamp = 16; //上市时间戳
 		optional double updateTimestamp = 17; //更新时间戳
 		optional double askPrice = 18;//卖价
@@ -1098,12 +1098,12 @@
 		optional int64 askVol = 20;//卖量
 		optional int64 bidVol = 21;//买量
 		optional bool enableMargin = 22; // 是否可融资，如果为true，后两个字段才有意义
-		optional double mortgageRatio = 23; // 股票抵押率（该字段为比例字段，默认不展示%）
-		optional double longMarginInitialRatio = 24; // 融资初始保证金率（该字段为比例字段，默认不展示%）
+		optional double mortgageRatio = 23; // 股票抵押率（该字段为百分比字段，默认不展示%）
+		optional double longMarginInitialRatio = 24; // 融资初始保证金率（该字段为百分比字段，默认不展示%）
 		optional bool enableShortSell = 25; // 是否可卖空，如果为true，后三个字段才有意义
-		optional double shortSellRate = 26; // 卖空参考利率（该字段为比例字段，默认不展示%）
+		optional double shortSellRate = 26; // 卖空参考利率（该字段为百分比字段，默认不展示%）
 		optional int64 shortAvailableVolume = 27; // 剩余可卖空数量（股）
-		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为比例字段，默认不展示%）	
+		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）	
 	}
 
 	message Snapshot
@@ -1400,23 +1400,23 @@
 		optional Qot_Common.Security owner = 5;	//所属正股
 		repeated int32 typeList = 6; //Qot_Common.WarrantType,窝轮类型过滤列表
 		repeated int32 issuerList = 7; //Qot_Common.Issuer,发行人过滤列表
-		optional string maturityTimeMin = 8; //到期日, 到期日范围的开始时间戳
+		optional string maturityTimeMin = 8; //到期日,到期日范围的开始时间戳
 		optional string maturityTimeMax = 9; //到期日范围的结束时间戳
 		optional int32 ipoPeriod = 10; //Qot_Common.IpoPeriod,上市日
-		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外
+		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外（该字段为百分比字段，默认不展示%）
 		optional int32 status = 12; //Qot_Common.WarrantStatus, 窝轮状态
 		optional double curPriceMin = 13; //最新价过滤起点 
 		optional double curPriceMax = 14; //最新价过滤终点 	
 		optional double strikePriceMin = 15; //行使价过滤起点
 		optional double strikePriceMax = 16; //行使价过滤终点  
-		optional double streetMin = 17; //街货占比%过滤起点
-		optional double streetMax = 18; //街货占比%过滤终点
+		optional double streetMin = 17; //街货占比,过滤起点（该字段为百分比字段，默认不展示%）
+		optional double streetMax = 18; //街货占比,过滤终点（该字段为百分比字段，默认不展示%）
 		optional double conversionMin = 19; //换股比率过滤起点
 		optional double conversionMax = 20; //换股比率过滤终点	
 		optional uint64 volMin = 21; //成交量过滤起点
 		optional uint64 volMax = 22; //成交量过滤终点
-		optional double premiumMin = 23; //溢价%过滤起点
-		optional double premiumMax = 24; //溢价%过滤终点
+		optional double premiumMin = 23; //溢价,过滤起点（该字段为百分比字段，默认不展示%）
+		optional double premiumMax = 24; //溢价,过滤终点（该字段为百分比字段，默认不展示%）
 		optional double leverageRatioMin = 25; //杠杆比率过滤起点
 		optional double leverageRatioMax = 26; //杠杆比率过滤终点	
 		optional double deltaMin = 27;//对冲值过滤起点,仅认购认沽支持该字段过滤
@@ -1425,8 +1425,8 @@
 		optional double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
 		optional double recoveryPriceMin = 31; //收回价过滤起点,仅牛熊证支持该字段过滤
 		optional double recoveryPriceMax = 32; //收回价过滤终点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMin = 33;//正股距收回价%过滤起点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMax = 34;//正股距收回价%过滤终点,仅牛熊证支持该字段过滤		
+		optional double priceRecoveryRatioMin = 33;//正股距收回价,过滤起点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+		optional double priceRecoveryRatioMax = 34;//正股距收回价,过滤终点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）		
 	}
 
 	message WarrantData
@@ -1452,7 +1452,7 @@
 		//动态数据项
 		required double curPrice = 17; //当前价
 		required double priceChangeVal = 18; //涨跌额
-		required double changeRate = 19; //涨跌幅%	
+		required double changeRate = 19; //涨跌幅（该字段为百分比字段，默认不展示%）	
 		required int32 status = 20; //Qot_Common.WarrantStatus, 窝轮状态	
 		required double bidPrice = 21; //买入价	
 		required double askPrice = 22; //卖出价
@@ -1461,15 +1461,15 @@
 		required int64 volume = 25; //成交量
 		required double turnover = 26; //成交额	
 		required double score = 27; //综合评分
-		required double premium = 28; //溢价%
+		required double premium = 28; //溢价（该字段为百分比字段，默认不展示%）
 		required double breakEvenPoint = 29; //打和点	
 		required double leverage = 30; //杠杆比率（倍）
-		required double ipop = 31; //价内/价外%			
-		optional double priceRecoveryRatio = 32; //正股距收回价%，仅牛熊证支持该字段
+		required double ipop = 31; //价内/价外（该字段为百分比字段，默认不展示%）			
+		optional double priceRecoveryRatio = 32; //正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
 		required double conversionPrice = 33; //换股价
-		required double streetRate = 34; //街货占比	
+		required double streetRate = 34; //街货占比（该字段为百分比字段，默认不展示%）	
 		required int64 streetVol = 35; //街货量
-		required double amplitude = 36; //振幅%
+		required double amplitude = 36; //振幅（该字段为百分比字段，默认不展示%）
 		required int64 issueSize = 37; //发行量	        
 		required double highPrice = 39; //最高价
 		required double lowPrice = 40; //最低价	

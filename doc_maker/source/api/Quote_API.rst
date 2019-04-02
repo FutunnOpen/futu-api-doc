@@ -480,7 +480,7 @@ get_market_snapshot
  prev_close_price                float          昨收盘价格
  volume                          int            成交数量
  turnover                        float          成交金额
- turnover_rate                   float          换手率
+ turnover_rate                   float          换手率（该字段为百分比字段，默认不展示%）
  suspension                      bool           是否停牌(True表示停牌)
  listing_date                    str            上市日期 (yyyy-MM-dd)
  equity_valid                    bool           是否正股（为true时以下正股相关字段才有合法数值）
@@ -492,13 +492,13 @@ get_market_snapshot
  outstanding_shares              int            流通股本
  net_asset_per_share             float          每股净资产
  circular_market_val             float          流通市值
- ey_ratio                        float          收益率（该字段为比例字段，默认不展示%）
- pe_ratio                        float          市盈率（该字段为比例字段，默认不展示%）
- pb_ratio                        float          市净率（该字段为比例字段，默认不展示%）
- pe_ttm_ratio                    float          市盈率TTM（该字段为比例字段，默认不展示%）
+ ey_ratio                        float          收益率（该字段为百分比字段，默认不展示%）
+ pe_ratio                        float          市盈率
+ pb_ratio                        float          市净率
+ pe_ttm_ratio                    float          市盈率TTM
  stock_owner                     str            涡轮所属正股的代码
  wrt_valid                       bool           是否是窝轮（为true时以下涡轮相关的字段才有合法数据）
- wrt_conversion_ratio            float          换股比率（该字段为比例字段，默认不展示%）
+ wrt_conversion_ratio            float          换股比率
  wrt_type                        str            窝轮类型，参见 WrtType_
  wrt_strike_price                float          行使价格
  wrt_maturity_date               str            格式化窝轮到期时间
@@ -507,10 +507,10 @@ get_market_snapshot
  wrt_recovery_price              float          窝轮收回价
  wrt_street_vol                  float          窝轮街货量
  wrt_issue_vol                   float          窝轮发行量
- wrt_street_ratio                float          窝轮街货占比（该字段为比例字段，默认不展示%）
+ wrt_street_ratio                float          窝轮街货占比（该字段为百分比字段，默认不展示%）
  wrt_delta                       float          窝轮对冲值
  wrt_implied_volatility          float          窝轮引伸波幅
- wrt_premium                     float          窝轮溢价
+ wrt_premium                     float          窝轮溢价（该字段为百分比字段，默认不展示%）
  lot_size                        int            每手股数
  price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
  ask_price                       float          卖价
@@ -518,12 +518,12 @@ get_market_snapshot
  ask_vol                         float          卖量
  bid_vol                         float          买量
  enable_margin                   bool           是否可融资，如果为true，后两个字段才有意义
- mortgage_ratio                  float          股票抵押率（该字段为比例字段，默认不展示%）
- long_margin_initial_ratio       float          融资初始保证金率（该字段为比例字段，默认不展示%）
+ mortgage_ratio                  float          股票抵押率（该字段为百分比字段，默认不展示%）
+ long_margin_initial_ratio       float          融资初始保证金率（该字段为百分比字段，默认不展示%）
  enable_short_sell               bool           是否可卖空，如果为true，后三个字段才有意义
- short_sell_rate                 float          卖空参考利率（该字段为比例字段，默认不展示%）
+ short_sell_rate                 float          卖空参考利率（该字段为百分比字段，默认不展示%）
  short_available_volume          int            剩余可卖空数量
- short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为比例字段，默认不展示%）
+ short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）
  ============================   =============   ======================================================================
         
  :Example:
@@ -882,8 +882,8 @@ get_stock_quote
         prev_close_price        float          昨收盘价格
         volume                  int            成交数量
         turnover                float          成交金额
-        turnover_rate           float          换手率
-        amplitude               int            振幅
+        turnover_rate           float          换手率（该字段为百分比字段，默认不展示%）
+        amplitude               int            振幅（该字段为百分比字段，默认不展示%）
         suspension              bool           是否停牌(True表示停牌)
         listing_date            str            上市日期 (yyyy-MM-dd)
         price_spread            float          当前向上的价差，亦即摆盘数据的卖档的相邻档位的报价差
@@ -891,8 +891,8 @@ get_stock_quote
         strike_price            float          行权价
         contract_size           int            每份合约数
         open_interest           int            未平仓合约数
-        implied_volatility      float          隐含波动率
-        premium                 float          溢价
+        implied_volatility      float          隐含波动率（该字段为百分比字段，默认不展示%）
+        premium                 float          溢价（该字段为百分比字段，默认不展示%）
         delta                   float          希腊值 Delta
         gamma                   float          希腊值 Gamma
         vega                    float          希腊值 Vega
@@ -981,8 +981,8 @@ get_cur_kline
         low                      float          最低价
         volume                   int            成交量
         turnover                 float          成交额
-        pe_ratio                 float          市盈率（该字段为比例字段，默认不展示%）
-        turnover_rate            float          换手率
+        pe_ratio                 float          市盈率
+        turnover_rate            float          换手率（该字段为百分比字段，展示为小数表示）
         =====================   ===========   ==============================================================
 		
  :Example:
@@ -1196,7 +1196,7 @@ get_holding_change_list
         holding_qty             float         持股数
         holding_ratio           float         持股比例（该字段为比例字段，默认不展示%）
         change_qty              float         变动数
-        change_ratio            float         变动比例（该字段为比例字段，默认不展示%）
+        change_ratio            float         变动比例（该字段为比例字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
         time                    str           发布时间（美股的时间默认是美东）
         =====================   ===========   ==============================================================
 
@@ -1206,7 +1206,7 @@ get_holding_change_list
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2016-10-01'))
+    print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2018-10-01'))
     quote_ctx.close()
 
 .. note::
@@ -1322,20 +1322,20 @@ issuer_list                 list              发行人过滤列表 参见 Issue
 maturity_time_min           str               到期日, 到期日范围的开始时间
 maturity_time_max           str               到期日范围的结束时间
 ipo_period                  str               上市日 参见 IpoPeriod_
-price_type                  str               价内/价外 参见 PriceType_
+price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_
 status                      str               窝轮状态 参见 WarrantStatus_
 cur_price_min               double            最新价过滤起点
 cur_price_max               double            最新价过滤终点
 strike_price_min            double            行使价过滤起点
 strike_price_max            double            行使价过滤终点
-street_min                  double            街货占比 % 过滤起点
-street_max                  double            街货占比 % 过滤终点
+street_min                  double            街货占比, 过滤起点（该字段为百分比字段，默认不展示%）
+street_max                  double            街货占比, 过滤终点（该字段为百分比字段，默认不展示%）
 conversion_min              double            换股比率过滤起点
 conversion_max              double            换股比率过滤终点
 vol_min                     int               成交量过滤起点
 vol_max                     int               成交量过滤终点
-premium_min                 double            溢价 % 过滤起点
-premium_max                 double            溢价 % 过滤终点
+premium_min                 double            溢价, 过滤起点（该字段为百分比字段，默认不展示%）
+premium_max                 double            溢价, 过滤终点（该字段为百分比字段，默认不展示%）
 leverage_ratio_min          double            杠杆比率过滤起点
 leverage_ratio_max          double            杠杆比率过滤终点
 delta_min                   double            对冲值过滤起点, 仅认购认沽支持该字段过滤
@@ -1344,8 +1344,8 @@ implied_min                 double            引伸波幅过滤起点, 仅认�
 implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
 recovery_price_min          double            收回价过滤起点, 仅牛熊证支持该字段过滤
 recovery_price_max          double            收回价过滤终点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_min    double            正股距收回价 % 过滤起点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_max    double            正股距收回价 % 过滤终点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_min    double            正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+price_recovery_ratio_max    double            正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
 ==========================  ==============    ========================================
 
 
@@ -1392,15 +1392,15 @@ ask_vol                        int                卖量
 volume                         int                成交量
 turnover                       double             成交额
 score                          double             综合评分
-premium                        double             溢价%
+premium                        double             溢价（该字段为百分比字段，默认不展示%）
 break_even_point               double             打和点
 leverage                       double             杠杆比率（倍）
-ipop                           double             价内/价外%
-price_recovery_ratio           double             正股距收回价%，仅牛熊证支持该字段
+ipop                           double             价内/价外（该字段为百分比字段，默认不展示%）
+price_recovery_ratio           double             正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
 conversion_price               double             换股价
-street_rate                    double             街货占比%
+street_rate                    double             街货占比（该字段为百分比字段，默认不展示%）
 street_vol                     int                街货量
-amplitude                      double             振幅%
+amplitude                      double             振幅（该字段为百分比字段，默认不展示%）
 issue_size                     int                发行量
 high_price                     double             最高价
 low_price                      double             最低价
@@ -1414,6 +1414,7 @@ effective_leverage             double             有效杠杆
  .. code:: python
 
     from futu import *
+    from futu.quote.quote_get_warrant import Request
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     req=Request()
     req.sort_field=SortField.TURNOVER
