@@ -32,7 +32,7 @@ FutuOpenD使用说明
   * Appdata.dat是程序需要用到的一些数据量较大的信息，打包数据减少启动下载该数据用时，若不存在则程序无法正常启动。
   
   
-  * FutuOpenD.xml 用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动，支持用户自定义文件路径, 详见 `启动命令行参数 <./FutuOpenDGuide.html#id10>`_
+  * FutuOpenD.xml 用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动，支持用户自定义文件路径, 详见 `启动命令行参数 <./FutuOpenDGuide.html#id11>`_
 
 可视化FutuOpenD  
 ~~~~~~~~~~~~~~~~~~
