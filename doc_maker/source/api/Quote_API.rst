@@ -273,11 +273,11 @@ get_stock_basicinfo
     close               float          收盘价
     high                float          最高价
     low                 float          最低价
-    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
-    turnover_rate       float          换手率
+    pe_ratio            float          市盈率
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
 
@@ -329,11 +329,11 @@ get_stock_basicinfo
     close               float          收盘价
     high                float          最高价
     low                 float          最低价
-    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
-    turnover_rate       float          换手率
+    pe_ratio            float          市盈率
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
 
@@ -431,13 +431,13 @@ request_history_kline
  =====================   ===========   ====================================================================================
  code                    str            股票代码
  ex_div_date             str            除权除息日
- split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为5/1，对于1股拆5股为1/5
+ split_ratio             float          拆合股比例（该字段为比例字段，展示为小数表示）例如，对于5股合1股为5.0，对于1股拆5股为0.2
  per_cash_div            float          每股派现
- per_share_div_ratio     float          每股送股比例（该字段为比例字段，默认不展示%）
- per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，默认不展示%）
- allotment_ratio         float          每股配股比例（该字段为比例字段，默认不展示%）
+ per_share_div_ratio     float          每股送股比例（该字段为比例字段，展示为小数表示）
+ per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，展示为小数表示）
+ allotment_ratio         float          每股配股比例（该字段为比例字段，展示为小数表示）
  allotment_price         float          配股价
- stk_spo_ratio           float          增发比例（该字段为比例字段，默认不展示%）
+ stk_spo_ratio           float          增发比例（该字段为比例字段，展示为小数表示）
  stk_spo_price           float          增发价格
  forward_adj_factorA     float          前复权因子A
  forward_adj_factorB     float          前复权因子B
@@ -1066,11 +1066,11 @@ get_order_book
     close               float          收盘价
     high                float          最高价
     low                 float          最低价
-    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
-    turnover_rate       float          换手率
+    pe_ratio            float          市盈率
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
     
@@ -1194,9 +1194,9 @@ get_holding_change_list
         =====================   ===========   ==============================================================
         holder_name             str            高管名称
         holding_qty             float         持股数
-        holding_ratio           float         持股比例（该字段为比例字段，默认不展示%）
+        holding_ratio           float         持股比例（该字段为百分比字段，默认不展示%）
         change_qty              float         变动数
-        change_ratio            float         变动比例（该字段为比例字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+        change_ratio            float         变动比例（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
         time                    str           发布时间（美股的时间默认是美东）
         =====================   ===========   ==============================================================
 
@@ -1272,13 +1272,13 @@ get_rehab
 参数                      类型                        说明
 =====================   ===========   ====================================================================================
 ex_div_date             str            除权除息日
-split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为5/1，对于1股拆5股为1/5
+split_ratio             float          拆合股比例（该字段为比例字段，展示为小数表示）例如，对于5股合1股为5.0，对于1股拆5股为0.2
 per_cash_div            float          每股派现
-per_share_div_ratio     float          每股送股比例（该字段为比例字段，默认不展示%）
-per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，默认不展示%）
-allotment_ratio         float          每股配股比例（该字段为比例字段，默认不展示%）
+per_share_div_ratio     float          每股送股比例（该字段为比例字段，展示为小数表示）
+per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，展示为小数表示）
+allotment_ratio         float          每股配股比例（该字段为比例字段，展示为小数表示）
 allotment_price         float          配股价
-stk_spo_ratio           float          增发比例（该字段为比例字段，默认不展示%）
+stk_spo_ratio           float          增发比例（该字段为比例字段，展示为小数表示）
 stk_spo_price           float          增发价格
 forward_adj_factorA     float          前复权因子A
 forward_adj_factorB     float          前复权因子B

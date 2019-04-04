@@ -964,22 +964,22 @@ Rehab - 复权信息
 		required double fwdFactorB = 4; //前复权因子B
 		required double bwdFactorA = 5; //后复权因子A
 		required double bwdFactorB = 6; //后复权因子B
-		optional int32 splitBase = 7; //拆股(eg.1拆5，Base为1，Ert为5)
+		optional int32 splitBase = 7; //拆股(例如，1拆5，Base为1，Ert为5)
 		optional int32 splitErt = 8;	
-		optional int32 joinBase = 9; //合股(eg.50合1，Base为50，Ert为1)
+		optional int32 joinBase = 9; //合股(例如，50合1，Base为50，Ert为1)
 		optional int32 joinErt = 10;	
-		optional int32 bonusBase = 11; //送股(eg.10送3, Base为10,Ert为3)
+		optional int32 bonusBase = 11; //送股(例如，10送3, Base为10,Ert为3)
 		optional int32 bonusErt = 12;	
-		optional int32 transferBase = 13; //转赠股(eg.10转3, Base为10,Ert为3)
+		optional int32 transferBase = 13; //转赠股(例如，10转3, Base为10,Ert为3)
 		optional int32 transferErt = 14;	
-		optional int32 allotBase = 15; //配股(eg.10送2, 配股价为6.3元, Base为10, Ert为2, Price为6.3)
+		optional int32 allotBase = 15; //配股(例如，10送2, 配股价为6.3元, Base为10, Ert为2, Price为6.3)
 		optional int32 allotErt = 16;	
 		optional double allotPrice = 17;	
-		optional int32 addBase = 18; //增发股(eg.10送2, 增发股价为6.3元, Base为10, Ert为2, Price为6.3)
+		optional int32 addBase = 18; //增发股(例如，10送2, 增发股价为6.3元, Base为10, Ert为2, Price为6.3)
 		optional int32 addErt = 19;	
 		optional double addPrice = 20;	
-		optional double dividend = 21; //现金分红(eg.每10股派现0.5元,则该字段值为0.05)
-		optional double spDividend = 22; //特别股息(eg.每10股派特别股息0.5元,则该字段值为0.05)
+		optional double dividend = 21; //现金分红(例如，每10股派现0.5元,则该字段值为0.05)
+		optional double spDividend = 22; //特别股息(例如，每10股派特别股息0.5元,则该字段值为0.05)
 		optional double timestamp = 23; //时间戳
 	}
 	
