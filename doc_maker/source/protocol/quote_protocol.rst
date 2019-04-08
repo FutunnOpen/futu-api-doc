@@ -1386,6 +1386,8 @@
 	* 最多返回前100大股东的变化
 	* 目前仅支持美股
 
+-------------------------------------
+
 `Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取涡轮
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1562,3 +1564,103 @@
 		
 		optional S2C s2c = 4;
 	}
+
+-------------------------------------
+
+`Qot_GetCapitalFlow.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCapitalFlow.proto>`_ - 3211获取资金流向
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetCapitalFlow;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		required Qot_Common.Security security = 1; //股票
+	}
+
+	message CapitalFlowItem
+	{	
+		required double inFlow = 1; //净流入的资金额度
+		optional string time = 2; //开始时间字符串,以分钟为单位
+		optional double timestamp = 3; //开始时间戳
+	}
+
+	message S2C
+	{
+		repeated CapitalFlowItem flowItemList = 1; //资金流向
+		optional string lastValidTime = 2; //数据最后有效时间字符串
+		optional double lastValidTimestamp = 3; //数据最后有效时间戳
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 限频接口：30秒内最多10次	
+
+-------------------------------------
+
+`Qot_GetCapitalDistribution.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCapitalDistribution.proto>`_ - 3212获取资金分布
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetCapitalDistribution;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		required Qot_Common.Security security = 1; //股票
+	}
+
+	message S2C
+	{
+		required double capitalInBig = 1; //流入资金额度，大单
+		required double capitalInMid = 2; //流入资金额度，中单
+		required double capitalInSmall = 3; //流入资金额度，小单
+		required double capitalOutBig = 4; //流出资金额度，大单
+		required double capitalOutMid = 5; //流出资金额度，中单
+		required double capitalOutSmall = 6; //流出资金额度，小单
+		optional string updateTime = 7; //更新时间字符串
+		optional double updateTimestamp = 8; //更新时间戳
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 限频接口：30秒内最多10次	
+
+-------------------------------------
