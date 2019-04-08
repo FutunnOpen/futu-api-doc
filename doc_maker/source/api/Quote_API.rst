@@ -1013,6 +1013,8 @@ get_order_book
  
   {
   'code': 股票代码
+  'svr_recv_time_bid': 富途服务器从交易所收到数据的时间(for bid) 以秒为单位，提供毫秒时间精度。部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
+  'svr_recv_time_ask': 富途服务器从交易所收到数据的时间(for ask)
   'Ask':[ (ask_price1, ask_volume1，order_num), (ask_price2, ask_volume2, order_num),…]
   'Bid': [ (bid_price1, bid_volume1, order_num), (bid_price2, bid_volume2, order_num),…]
   }
@@ -1425,6 +1427,84 @@ effective_leverage             double             有效杠杆
 .. note::
 
     * 	接口限制请参见 `获取涡轮限制 <../protocol/intro.html#id37>`_
+
+
+get_capital_distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_capital_distribution(self, code)
+
+ 获取个股资金分布
+
+ :param code: 需要查询的股票代码.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+=====================   ===========   ====================================================================================
+参数                      类型                        说明
+=====================   ===========   ====================================================================================
+capital_in_big          double         流入资金额度，大单
+capital_in_mid          double         流入资金额度，中单
+capital_in_small        double         流入资金额度，小单
+capital_out_big         double         流出资金额度，大单
+capital_out_mid         double         流出资金额度，中单
+capital_out_small       double         流出资金额度，小单
+update_time             str            更新时间字符串
+=====================   ===========   ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_capital_distribution("HK.00700"))
+    quote_ctx.close()
+
+.. note::
+
+    * 	接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id33>`_
+
+get_capital_flow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_capital_flow(self, code)
+
+ 获取个股资金流向
+
+ :param code: 需要查询的股票代码.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+=====================   ===========   ====================================================================================
+参数                      类型                        说明
+=====================   ===========   ====================================================================================
+in_flow                 double         净流入的资金额度
+capital_flow_item_time  string         开始时间字符串,以分钟为单位
+last_valid_time         string         数据最后有效时间字符串
+=====================   ===========   ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_rehab("HK.00700"))
+    quote_ctx.close()
+
+.. note::
+
+    * 	接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id33>`_
+
 
 ---------------------------------------------------------------------    
 
