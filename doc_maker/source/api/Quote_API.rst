@@ -1013,7 +1013,7 @@ get_order_book
  
   {
   'code': 股票代码
-  'svr_recv_time_bid': 富途服务器从交易所收到数据的时间(for bid) 以秒为单位，提供毫秒时间精度。部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
+  'svr_recv_time_bid': 富途服务器从交易所收到数据的时间(for bid) 部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
   'svr_recv_time_ask': 富途服务器从交易所收到数据的时间(for ask)
   'Ask':[ (ask_price1, ask_volume1，order_num), (ask_price2, ask_volume2, order_num),…]
   'Bid': [ (bid_price1, bid_volume1, order_num), (bid_price2, bid_volume2, order_num),…]
