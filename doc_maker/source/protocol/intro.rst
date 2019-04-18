@@ -96,8 +96,15 @@
   .. _Qot_GetOptionChain.proto:  quote_protocol.html#qot-getoptionchain-proto-3209
   .. _3209:  quote_protocol.html#qot-getoptionchain-proto-3209
   .. _SubType: base_define.html#subtype
+
   .. _Qot_GetWarrant.proto:  quote_protocol.html#qot-getwarrant-proto-3210
   .. _3210:  quote_protocol.html#qot-getwarrant-proto-3210
+
+  .. _Qot_GetCapitalFlow.proto:  quote_protocol.html#qot-getcapitalflow-proto-3211
+  .. _3211:  quote_protocol.html#qot-getcapitalflow-proto-3211
+  .. _Qot_GetCapitalDistribution.proto:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
+  .. _3212:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
+
   .. role:: red-strengthen
 
 特点
@@ -163,6 +170,8 @@
  3207             Qot_GetOwnerPlate.proto_                获取股票所属板块
  3208             Qot_GetHoldingChangeList.proto_         获取持股变化列表
  3210             Qot_GetWarrant.proto_                   获取涡轮
+ 3211             Qot_GetCapitalFlow.proto_               获取资金流向
+ 3212             Qot_GetCapitalDistribution.proto_       获取资金分布
  ==============   ==================================     ==================================================================
 
 .. note::
