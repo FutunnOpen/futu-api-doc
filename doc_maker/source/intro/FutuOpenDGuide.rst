@@ -36,11 +36,11 @@ FutuOpenD使用说明
 
 可视化FutuOpenD  
 ~~~~~~~~~~~~~~~~~~
-  * 可视化OpenD提供程序安装包，可一键安装运行，安装在%appdata%目录下。
+  * 可视化OpenD提供程序安装包，可一键安装运行，
   
-  * 下载方式同命令行FutuOpenD，暂仅提供Windows版。
+  * Windows安装在%appdata%目录下。
   
-  .. image:: ../_static/installer.png
+  * 下载方式同命令行FutuOpenD。
 
 方式1：`富途官网下载 <https://www.futunn.com/download/index/>`_ 
 
@@ -115,7 +115,7 @@ FutuOpenD配置
   API推送频率            API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时
   Telnet地址             远程操作命令监听地址
   Telnet端口             远程操作命令监听端口
-  加密私钥路径           API协议PSA加密私钥（PKCS#1）文件绝对路径
+  加密私钥路径           API协议RSA加密私钥（PKCS#1）文件绝对路径
   ====================   ==================================================================================
   
 .. note::	
