@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Q&amp;A &mdash; futu-api-doc 3.8 documentation</title>
+  <title>Q&amp;A &mdash; futu-api-doc 3.9 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.8 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
         <link rel="prev" title="交易API" href="../api/Trade_API.html"/> 
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.8
+                3.9
               </div>
             
           
@@ -149,6 +149,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id20">Q6:各市场支持的交易方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q7">Q7:各市场支持的订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q8">Q8:各市场支持的订单操作</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">其他</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Q1:注释&#8221;该字段为百分比字段，默认不展示%&#8221;和&#8221;该字段为百分比字段，展示为小数表示&#8221;和&#8221;该字段为比例字段，展示为小数表示&#8221;的详细解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Q2:请求限制说明</a></li>
 </ul>
 </li>
 </ul>
@@ -438,6 +443,26 @@
 </ul>
 </dd>
 </dl>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id21">
+<h2>其他<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id22">
+<h3>Q1:注释&#8221;该字段为百分比字段，默认不展示%&#8221;和&#8221;该字段为百分比字段，展示为小数表示&#8221;和&#8221;该字段为比例字段，展示为小数表示&#8221;的详细解释<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>A: 协议百分比和比例字段的注释，分为以下三种情况</p>
+<blockquote>
+<div><ul class="simple">
+<li>该字段为百分比字段，默认不展示%。例如，涨跌幅数值是20%，则显示为20。</li>
+<li>该字段为百分比字段，展示为小数表示。例如，换手率数值是0.23%，则显示为0.0023。</li>
+<li>该字段为比例字段，展示为小数表示。例如，拆合股比例：对于5股合1股为5.0，对于1股拆5股为0.2。</li>
+</ul>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="id23">
+<h3>Q2:请求限制说明<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>A: 请求限制说明请参见 <a class="reference external" href="../protocol/intro.html#id23">协议请求限制</a></p>
 <hr class="docutils" />
 </div>
 </div>
@@ -484,7 +509,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.8',
+            VERSION:'3.9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

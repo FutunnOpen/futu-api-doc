@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.8 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.9 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.8 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.8
+                3.9
               </div>
             
           
@@ -114,6 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#securitytype">SecurityType - 证券类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#platesettype">PlateSetType - 板块集合类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#warranttype">WarrantType - 窝轮类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optiontype">OptionType - 期权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">QotMarketState - 行情市场状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedatetype">TradeDateType - 交易时间类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rehabtype-k">RehabType - K线复权类型</a></li>
@@ -137,6 +138,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#timeshare">TimeShare - 分时数据点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#securitystaticbasic">SecurityStaticBasic - 证券基本静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#warrantstaticexdata">WarrantStaticExData - 窝轮额外静态信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optionstaticexdata">OptionStaticExData - 期权额外静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#securitystaticinfo">SecurityStaticInfo - 证券静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#broker">Broker - 买卖经纪摆盘</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ticker">Ticker - 逐笔成交</a></li>
@@ -590,6 +592,20 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="optiontype">
+<h3>OptionType - 期权类型<a class="headerlink" href="#optiontype" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OptionType</span>
+<span class="p">{</span>
+        <span class="na">OptionType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
+        <span class="na">OptionType_Call</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//认购</span>
+        <span class="na">OptionType_Put</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//认沽</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="id4">
 <h3>QotMarketState - 行情市场状态<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -977,9 +993,9 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">lastClosePrice</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//昨收价</span>
         <span class="k">optional</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//成交量</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//成交额</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//换手率</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//换手率（该字段为百分比字段，展示为小数表示）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">pe</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//市盈率</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//涨跌幅</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//涨跌幅（该字段为百分比字段，默认不展示%）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">timestamp</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//时间戳</span>
 <span class="p">}</span>
 </pre></div>
@@ -995,8 +1011,8 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">strikePrice</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//行权价</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">contractSize</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//每份合约数</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">openInterest</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//未平仓合约数</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//隐含波动率</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">premium</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//溢价</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//隐含波动率（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">premium</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//溢价（该字段为百分比字段，默认不展示%）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">delta</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//希腊值 Delta</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">gamma</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//希腊值 Gamma</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">vega</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//希腊值 Vega</span>
@@ -1018,9 +1034,10 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">lastClosePrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//昨收价</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//成交量</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//成交额</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//换手率</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//振幅</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//换手率（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//振幅（该字段为百分比字段，默认不展示%）</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">darkStatus</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//DarkStatus, 暗盘交易状态</span>
+        <span class="k">optional</span> <span class="n">OptionBasicQotExData</span> <span class="na">optionExData</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//期权特有字段</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">listTimestamp</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">//上市日期时间戳</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">updateTimestamp</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//更新时间戳</span>
 <span class="p">}</span>
@@ -1075,6 +1092,23 @@
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.WarrantType,涡轮类型</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//所属正股</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="optionstaticexdata">
+<h3>OptionStaticExData - 期权额外静态信息<a class="headerlink" href="#optionstaticexdata" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OptionStaticExData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.OptionType,期权</span>
+        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//标的股</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">strikeTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//行权日</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">strikePrice</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//行权价</span>
+        <span class="k">required</span> <span class="kt">bool</span> <span class="na">suspend</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//是否停牌</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">market</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//发行市场名字</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1152,9 +1186,9 @@
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">holderName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//持有者名称（机构名称 或 基金名称 或 高管姓名）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingQty</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//当前持股数量</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingRatio</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//当前持股百分比</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingRatio</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//当前持股百分比（该字段为百分比字段，默认不展示%）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">changeQty</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//较上一次变动数量</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">changeRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//较上一次变动百分比（是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">changeRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//较上一次变动百分比（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//发布时间(YYYY-MM-DD HH:MM:SS字符串)</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">timestamp</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//时间戳</span>
 <span class="p">}</span>
@@ -1220,22 +1254,22 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">fwdFactorB</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//前复权因子B</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">bwdFactorA</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//后复权因子A</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">bwdFactorB</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//后复权因子B</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">splitBase</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//拆股(eg.1拆5，Base为1，Ert为5)</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">splitBase</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//拆股(例如，1拆5，Base为1，Ert为5)</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">splitErt</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">joinBase</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//合股(eg.50合1，Base为50，Ert为1)</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">joinBase</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//合股(例如，50合1，Base为50，Ert为1)</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">joinErt</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">bonusBase</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//送股(eg.10送3, Base为10,Ert为3)</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">bonusBase</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//送股(例如，10送3, Base为10,Ert为3)</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">bonusErt</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">transferBase</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//转赠股(eg.10转3, Base为10,Ert为3)</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">transferBase</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//转赠股(例如，10转3, Base为10,Ert为3)</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">transferErt</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">allotBase</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//配股(eg.10送2, 配股价为6.3元, Base为10, Ert为2, Price为6.3)</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">allotBase</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//配股(例如，10送2, 配股价为6.3元, Base为10, Ert为2, Price为6.3)</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">allotErt</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">allotPrice</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">addBase</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//增发股(eg.10送2, 增发股价为6.3元, Base为10, Ert为2, Price为6.3)</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">addBase</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//增发股(例如，10送2, 增发股价为6.3元, Base为10, Ert为2, Price为6.3)</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">addErt</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">addPrice</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">dividend</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//现金分红(eg.每10股派现0.5元,则该字段值为0.05)</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">spDividend</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//特别股息(eg.每10股派特别股息0.5元,则该字段值为0.05)</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">dividend</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//现金分红(例如，每10股派现0.5元,则该字段值为0.05)</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">spDividend</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//特别股息(例如，每10股派特别股息0.5元,则该字段值为0.05)</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">timestamp</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">//时间戳</span>
 <span class="p">}</span>
 </pre></div>
@@ -1446,7 +1480,7 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">costPrice</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//成本价，无精度限制，如果没传，代表此时此值无效</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">val</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//市值，3位精度</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">plVal</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//盈亏金额，3位精度</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">plRatio</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//盈亏比例，无精度限制，如果没传，代表此时此值无效</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">plRatio</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//盈亏比例，无精度限制，如果没传，代表此时此值无效（该字段为百分比字段，默认不展示%）</span>
 
         <span class="c1">//以下是此持仓今日统计</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">td_plVal</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//今日盈亏金额，3位精度，下同</span>
@@ -1593,7 +1627,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.8',
+            VERSION:'3.9',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
