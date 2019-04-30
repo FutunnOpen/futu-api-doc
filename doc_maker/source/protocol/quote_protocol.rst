@@ -59,7 +59,7 @@
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 订阅数据类型参考 `SubType <base_define.html#subtype>`_
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
-	* 为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 `高频数据接口 <../api/Quote_API.html#id10>`_
+	* 为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 `高频数据接口 <../api/Quote_API.html#id32>`_
 	* 高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送
 	
 -------------------------------------
@@ -1146,7 +1146,7 @@
 .. note::
 
 	* 股票结构参考 `Security <base_define.html#security>`_
-	* 接口限制请参见 `获取股票快照限制 <intro.html#id31>`_
+	* 接口限制请参见 `获取股票快照限制 <intro.html#id36>`_
 	
 -------------------------------------
 
@@ -1390,6 +1390,73 @@
 
 -------------------------------------
 
+`Qot_GetOptionChain.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetOptionChain.proto>`_ - 3209获取期权链
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+    syntax = "proto2";
+    package Qot_GetOptionChain;
+
+    import "Common.proto";
+    import "Qot_Common.proto";
+
+    enum OptionCondType
+    {
+        OptionCondType_Unknow = 0;
+        OptionCondType_WithIn = 1; //价内
+        OptionCondType_Outside = 2; //价外
+    }
+
+    message C2S
+    {
+        required Qot_Common.Security owner = 1; //期权标的股
+        optional int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
+        optional int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
+        required string beginTime = 4; //期权到期日开始时间
+        required string endTime = 5; //期权到期日结束时间,时间跨度最多一个月
+    }
+
+    message OptionItem
+    {
+        optional Qot_Common.SecurityStaticInfo call = 1; //看涨,不一定有该字段,由请求条件决定
+        optional Qot_Common.SecurityStaticInfo put = 2; //看跌,不一定有该字段,由请求条件决定
+    }
+
+    message OptionChain
+    {
+        required string strikeTime = 1; //行权日
+        repeated OptionItem option = 2; //期权信息
+    }
+
+    message S2C
+    {
+        repeated OptionChain optionChain = 1; //期权链
+    }
+
+    message Request
+    {
+        required C2S c2s = 1;
+    }
+
+    message Response
+    {
+        required int32 retType = 1 [default = -400]; //RetType,返回结果
+        optional string retMsg = 2;
+        optional int32 errCode = 3;
+        optional S2C s2c = 4;
+    }
+
+.. note::
+    
+    * 股票结构参考 `Security <base_define.html#security>`_
+    * 期权类型参考 `OptionType <base_define.html#optiontype>`_
+    * 股票静态信息结构参考 `SecurityStaticInfo <base_define.html#securitystaticbasic>`_
+    * 限频接口：30秒内最多10次
+    * 目前仅支持美股
+
+------------------------------------------
+
 `Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取涡轮
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1519,7 +1586,7 @@
 	* 上市日类型参考 `IpoPeriod <base_define.html#ipoperiod>`_
 	* 价内价外类型参考 `PriceType <base_define.html#pricetype>`_
 	* 窝轮状态类型参考 `WarrantStatus <base_define.html#warrantstatus>`_
-	* 接口限制请参见 `获取涡轮限制 <intro.html#id39>`_
+	* 接口限制请参见 `获取涡轮限制 <intro.html#id43>`_
 	* 目前仅支持港股
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
 

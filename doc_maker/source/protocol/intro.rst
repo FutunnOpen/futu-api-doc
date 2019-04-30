@@ -169,6 +169,7 @@
  3206             Qot_GetReference.proto_                 获取正股相关股票 
  3207             Qot_GetOwnerPlate.proto_                获取股票所属板块
  3208             Qot_GetHoldingChangeList.proto_         获取持股变化列表
+ 3209             Qot_GetOptionChain.proto_               获取期权链
  3210             Qot_GetWarrant.proto_                   获取涡轮
  3211             Qot_GetCapitalFlow.proto_               获取资金流向
  3212             Qot_GetCapitalDistribution.proto_       获取资金分布
@@ -291,7 +292,13 @@ API用户等级
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 最多返回前 :red-strengthen:`100` 大股东的变化
 	* 仅支持美股
-
+	
+获取期权链
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3209_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 传入时间跨度最多 :red-strengthen:`30` 天
+	
 获取涡轮
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3210_
@@ -310,8 +317,6 @@ API用户等级
 	* 请求协议ID: 3212_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持正股、涡轮和基金
-
----------------------------------------------------
 
 协议请求流程 
 -------------
