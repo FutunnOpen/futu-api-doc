@@ -13,7 +13,7 @@
  .. _MarketState: Base_API.html#marketstate
  
  .. _SecurityType: Base_API.html#securitytype
- 
+
  .. _WrtType: Base_API.html#wrttype
  
  .. _SubType: Base_API.html#subtype
@@ -41,6 +41,8 @@
  .. _SysNotifyType: Base_API.html#sysnotifytype
  
  .. _GtwEventType: Base_API.html#gtweventtype
+
+ .. _TradeDateType: Base_API.html#tradedatetype
  
  .. _SecurityReferenceType: Base_API.html#securityreferencetype
  
@@ -50,6 +52,18 @@
 
  .. _DarkStatus: Base_API.html#darkstatus
 
+ .. _WarrantType: Base_API.html#warranttype
+
+ .. _Issuer: Base_API.html#issuer
+
+ .. _IpoPeriod: Base_API.html#ipoperiod
+
+ .. _PriceType: Base_API.html#pricetype
+
+ .. _WarrantStatus: Base_API.html#warrantstatus
+
+ .. _SortField: Base_API.html#sortfield
+ 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
 一分钟上手
@@ -80,8 +94,8 @@ __init__
 
  构造函数
 
- :param host: str FutuOpenD监听的ip地址
- :param port: int FutuOpenD监听的ip端口
+ :param host: str FutuOpenD监听的IP地址
+ :param port: int FutuOpenD监听的IP端口
  :param is_encrypt: bool 是否启用加密。默认为None，表示使用 SysConfig.enable_proto_encrypt_ 的设置。
 
 .. code:: python
@@ -165,7 +179,28 @@ get_trading_days
             str            None          end为start往后365天
             None           None          end为当前日期，start为end往前365天
             ==========    ==========    ========================================
- :return: 成功时返回(RET_OK, data)，data是字符串数组；失败时返回(RET_ERROR, data)，其中data是错误描述字符串
+ :return: (ret_code, content)
+
+        成功时返回(RET_OK, content)，content为字典列表，失败时返回(RET_ERROR, content)，其中content是错误描述字符串
+
+
+        =================   ===========   ==============================================================================
+        参数                  类型                        说明
+        =================   ===========   ==============================================================================
+        time                str            时间
+        trade_date_type     str            标志是一天、上午半天、下午半天，参见 TradeDateType_
+        =================   ===========   ==============================================================================
+
+ .. code:: python
+
+        [{'time': '2018-12-22', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-12-23', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-12-24', 'trade_date_type': 'MORNING'}]
+
+..
+
+
+
         
  :Example:
 
@@ -198,7 +233,11 @@ get_stock_basicinfo
         lot_size            int            每手数量
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
-        stock_owner         str            涡轮所属正股的代码
+        stock_owner         str            涡轮所属正股的代码，或期权标的股的代码
+        option_type         str            期权类型，查看 OptionType_
+        strike_time         str            期权行权日（港股A股默认是北京时间）
+        strike_price        float          期权行权价
+        suspension          bool           期权是否停牌(True表示停牌)
         listing_date        str            上市时间
         stock_id            int            股票id
         delisting           bool           是否退市
@@ -211,7 +250,7 @@ get_stock_basicinfo
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.WARRANT))
-    print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.STOCK, 'HK.00700'))
+    print(quote_ctx.get_stock_basicinfo(Market.US, SecurityType.STOCK, 'US.AAPL'))
     quote_ctx.close()
 
 
@@ -238,11 +277,11 @@ get_stock_basicinfo
     close               float          收盘价
     high                float          最高价
     low                 float          最低价
-    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
-    turnover_rate       float          换手率
+    pe_ratio            float          市盈率
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
 
@@ -294,11 +333,11 @@ get_stock_basicinfo
     close               float          收盘价
     high                float          最高价
     low                 float          最低价
-    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
-    turnover_rate       float          换手率
+    pe_ratio            float          市盈率
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
 
@@ -358,7 +397,7 @@ request_history_kline
     volume              int            成交量
     turnover            float          成交额
     change_rate         float          涨跌幅
-    last_close          float          昨收价
+	last_close          float          昨收价
     =================   ===========   ==============================================================================
 
 	
@@ -396,13 +435,13 @@ request_history_kline
  =====================   ===========   ====================================================================================
  code                    str            股票代码
  ex_div_date             str            除权除息日
- split_ratio             float          拆合股比例（该字段为比例字段，默认不展示%），例如，对于5股合1股为1/5，对于1股拆5股为5/1
+ split_ratio             float          拆合股比例（该字段为比例字段，展示为小数表示）例如，对于5股合1股为5.0，对于1股拆5股为0.2
  per_cash_div            float          每股派现
- per_share_div_ratio     float          每股送股比例（该字段为比例字段，默认不展示%）
- per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，默认不展示%）
- allotment_ratio         float          每股配股比例（该字段为比例字段，默认不展示%）
+ per_share_div_ratio     float          每股送股比例（该字段为比例字段，展示为小数表示）
+ per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，展示为小数表示）
+ allotment_ratio         float          每股配股比例（该字段为比例字段，展示为小数表示）
  allotment_price         float          配股价
- stk_spo_ratio           float          增发比例（该字段为比例字段，默认不展示%）
+ stk_spo_ratio           float          增发比例（该字段为比例字段，展示为小数表示）
  stk_spo_price           float          增发价格
  forward_adj_factorA     float          前复权因子A
  forward_adj_factorB     float          前复权因子B
@@ -426,10 +465,10 @@ get_market_snapshot
 
 获取市场快照
 
- :param code_list: 股票列表
+ :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <../protocol/intro.html#id31>`_
  :return: (ret, data)
 
-        ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
+        ret == RET_OK ,返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
 
         ret != RET_OK 返回错误字符串
 
@@ -445,7 +484,7 @@ get_market_snapshot
  prev_close_price                float          昨收盘价格
  volume                          int            成交数量
  turnover                        float          成交金额
- turnover_rate                   float          换手率
+ turnover_rate                   float          换手率（该字段为百分比字段，默认不展示%）
  suspension                      bool           是否停牌(True表示停牌)
  listing_date                    str            上市日期 (yyyy-MM-dd)
  equity_valid                    bool           是否正股（为true时以下正股相关字段才有合法数值）
@@ -461,23 +500,47 @@ get_market_snapshot
  pe_ratio                        float          市盈率（该字段为比例字段，默认不展示%）
  pb_ratio                        float          市净率（该字段为比例字段，默认不展示%）
  pe_ttm_ratio                    float          市盈率TTM（该字段为比例字段，默认不展示%）
- stock_owner                     str            涡轮所属正股的代码
+ stock_owner                     str            涡轮所属正股的代码或期权的标的股代码
  wrt_valid                       bool           是否是窝轮（为true时以下涡轮相关的字段才有合法数据）
- wrt_conversion_ratio            float          换股比率（该字段为比例字段，默认不展示%）
+ wrt_conversion_ratio            float          换股比率
  wrt_type                        str            窝轮类型，参见 WrtType_
  wrt_strike_price                float          行使价格
  wrt_maturity_date               str            格式化窝轮到期时间
  wrt_end_trade                   str            格式化窝轮最后交易时间
  wrt_code                        str            窝轮对应的正股（此字段已废除,修改为stock_owner）
- wrt_recovery_price              float          窝轮回收价
+ wrt_recovery_price              float          窝轮收回价
  wrt_street_vol                  float          窝轮街货量
  wrt_issue_vol                   float          窝轮发行量
- wrt_street_ratio                float          窝轮街货占比（该字段为比例字段，默认不展示%）
+ wrt_street_ratio                float          窝轮街货占比（该字段为百分比字段，默认不展示%）
  wrt_delta                       float          窝轮对冲值
  wrt_implied_volatility          float          窝轮引伸波幅
- wrt_premium                     float          窝轮溢价
+ wrt_premium                     float          窝轮溢价（该字段为百分比字段，默认不展示%）
  lot_size                        int            每手股数
  price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
+ ask_price                       float          卖价
+ bid_price                       float          买价
+ ask_vol                         float          卖量
+ bid_vol                         float          买量
+ enable_margin                   bool           是否可融资，如果为true，后两个字段才有意义
+ mortgage_ratio                  float          股票抵押率（该字段为百分比字段，默认不展示%）
+ long_margin_initial_ratio       float          融资初始保证金率（该字段为百分比字段，默认不展示%）
+ enable_short_sell               bool           是否可卖空，如果为true，后三个字段才有意义
+ short_sell_rate                 float          卖空参考利率（该字段为百分比字段，默认不展示%）
+ short_available_volume          int            剩余可卖空数量
+ short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）
+ option_valid                    bool           是否是期权（为true时以下期权相关的字段才有合法数值）
+ option_type                     str            期权类型，参见 OptionType_
+ strike_time                     str            期权行权日（港股A股默认是北京时间）
+ option_strike_price             float          行权价
+ option_contract_size            int            每份合约数
+ option_open_interest            int            未平仓合约数
+ option_implied_volatility       float          隐含波动率
+ option_premium                  float          溢价
+ option_delta                    float          希腊值 Delta
+ option_gamma                    float          希腊值 Gamma
+ option_vega                     float          希腊值 Vega
+ option_theta                    float          希腊值 Theta
+ option_rho                      float          希腊值 Rho
  ============================   =============   ======================================================================
         
  :Example:
@@ -486,7 +549,7 @@ get_market_snapshot
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_market_snapshot(['SZ.600000', 'HK.00700']))
+    print(quote_ctx.get_market_snapshot(['SH.600000', 'HK.00700']))
     quote_ctx.close()
 
 .. note::
@@ -500,7 +563,7 @@ get_rt_data
 
  获取指定股票的分时数据
 
- :param code: 股票代码，例如，HK.00700
+ :param code: 股票代码，例如，HK.00700，US.AAPL
  :return (ret, data): ret == RET_OK 返回pd Dataframe数据, 数据列格式如下
 
         ret != RET_OK 返回错误字符串
@@ -514,7 +577,7 @@ is_blank                bool           数据状态；正常数据为False，伪
 opened_mins             int            零点到当前多少分钟
 cur_price               float          当前价格
 last_close              float          昨天收盘的价格
-avg_price               float          平均价格
+avg_price               float          平均价格（对于期权，该字段为None）
 volume                  float          成交量
 turnover                float          成交金额
 =====================   ===========   ===================================================================
@@ -577,18 +640,18 @@ get_plate_stock
         =====================  ==============================================================
             代码                      说明
         =====================  ==============================================================
-        HK.999901                  恒指成份股
-        HK.999902                  国指成份股
-        HK.999910                  港股主板
-        HK.999911                  港股创业板
+        HK.HSI Constituent         恒指成份股
+        HK.HSCEI Stock             国指成份股
+        HK.Motherboard             港股主板
+        HK.GEM                     港股创业板
         HK.BK1911                  主板H股
         HK.BK1912                  创业板H股
-        HK.900075                  港股基金
+        HK.Fund                    港股基金
         HK.BK1600                  富途热门(港)
         SH.3000000                 上海主板
         SH.BK0901                  上证B股
         SH.BK0902                  深证B股 
-        SH.3000002				   沪深指数
+        SH.3000002                 沪深指数
         SH.3000005                 沪深全部A股
         SH.BK0600                  富途热门(沪深)
         SZ.3000001                 深证主板
@@ -639,9 +702,9 @@ get_broker_queue
  获取股票的经纪队列
 
  :param code: 股票代码
- :return: (ret, bid_frame_table, ask_frame_table)或(ret, err_message)
+ :return: (ret, bid_frame_table, ask_frame_table)或(ret, err_message, err_message)
 
-        ret == RET_OK 返回pd dataframe数据，数据列格式如下
+        ret == RET_OK，bid_frame_table，ask_frame_table 返回pd dataframe数据，数据列格式如下
 
         ret != RET_OK 返回错误字符串
 
@@ -680,13 +743,14 @@ get_broker_queue
 subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True)
+..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True)
 
  订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。 
 
  :param code_list: 需要订阅的股票代码列表
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
  :param is_first_push: 订阅成功之后是否马上推送一次数据
+ :param subscribe_push: 订阅后推送
  :return: (ret, err_message)
 
         ret == RET_OK err_message为None
@@ -792,6 +856,7 @@ get_global_state
 		market_sh               str            上海市场状态，参见 MarketState_
 		market_hk               str            香港市场状态，参见 MarketState_
 		market_hkfuture         str            香港期货市场状态，参见 MarketState_
+		market_us               str            美国市场状态，参见 MarketState_
 		server_ver              str            FutuOpenD版本号
 		trd_logined             str            '1'：已登录交易服务器，'0': 未登录交易服务器
 		qot_logined             str            '1'：已登录行情服务器，'0': 未登录行情服务器
@@ -835,8 +900,8 @@ get_stock_quote
         prev_close_price        float          昨收盘价格
         volume                  int            成交数量
         turnover                float          成交金额
-        turnover_rate           float          换手率
-        amplitude               int            振幅
+        turnover_rate           float          换手率（该字段为百分比字段，默认不展示%）
+        amplitude               int            振幅（该字段为百分比字段，默认不展示%）
         suspension              bool           是否停牌(True表示停牌)
         listing_date            str            上市日期 (yyyy-MM-dd)
         price_spread            float          当前向上的价差，亦即摆盘数据的卖档的相邻档位的报价差
@@ -844,8 +909,8 @@ get_stock_quote
         strike_price            float          行权价
         contract_size           int            每份合约数
         open_interest           int            未平仓合约数
-        implied_volatility      float          隐含波动率
-        premium                 float          溢价
+        implied_volatility      float          隐含波动率（该字段为百分比字段，默认不展示%）
+        premium                 float          溢价（该字段为百分比字段，默认不展示%）
         delta                   float          希腊值 Delta
         gamma                   float          希腊值 Gamma
         vega                    float          希腊值 Vega
@@ -859,7 +924,7 @@ get_stock_quote
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    code_list = ['HK.00700']
+    code_list = ['US.AAPL210115C185000']
     print(quote_ctx.subscribe(code_list, [SubType.QUOTE]))
     print(quote_ctx.get_stock_quote(code_list))
     quote_ctx.close()
@@ -934,9 +999,8 @@ get_cur_kline
         low                      float          最低价
         volume                   int            成交量
         turnover                 float          成交额
-        pe_ratio                 float          市盈率（该字段为比例字段，默认不展示%）
-        turnover_rate            float          换手率
-        last_close               float          昨收价
+        pe_ratio                 float          市盈率
+        turnover_rate            float          换手率（该字段为百分比字段，展示为小数表示）
         =====================   ===========   ==============================================================
 		
  :Example:
@@ -967,12 +1031,14 @@ get_order_book
  
   {
   'code': 股票代码
-  'Ask':[ (ask_price1, ask_volume1，order_num), (ask_price2, ask_volume2, order_num),…]
+  'svr_recv_time_bid': 富途服务器从交易所收到数据的时间(for bid) 部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
+  'svr_recv_time_ask': 富途服务器从交易所收到数据的时间(for ask)
+  'Ask': [ (ask_price1, ask_volume1，order_num), (ask_price2, ask_volume2, order_num),…]
   'Bid': [ (bid_price1, bid_volume1, order_num), (bid_price2, bid_volume2, order_num),…]
   }
 
  | 'Ask'：卖盘
- | 'Bid'买盘
+ | 'Bid': 买盘
  | 每个元组的含义是(委托价格，委托数量，委托订单数)
 
  ret != RET_OK 返回错误字符串
@@ -1020,11 +1086,11 @@ get_order_book
     close               float          收盘价
     high                float          最高价
     low                 float          最低价
-    pe_ratio            float          市盈率（该字段为比例字段，默认不展示%）
-    turnover_rate       float          换手率
+    pe_ratio            float          市盈率
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
     
@@ -1122,7 +1188,7 @@ get_holding_change_list
 
  获取大股东持股变动列表,只提供美股数据,并最多只返回前100个
 
- :param code: 股票代码.
+ :param code: 股票代码. 例如：'US.AAPL'
  :param holder_type: 持有者类别，查看 StockHolder_
  :param start: 开始时间. 例如：'2016-10-01'
  :param end: 结束时间，例如：'2017-10-01'。
@@ -1148,9 +1214,9 @@ get_holding_change_list
         =====================   ===========   ==============================================================
         holder_name             str            高管名称
         holding_qty             float         持股数
-        holding_ratio           float         持股比例（该字段为比例字段，默认不展示%）
+        holding_ratio           float         持股比例（该字段为百分比字段，默认不展示%）
         change_qty              float         变动数
-        change_ratio            float         变动比例（该字段为比例字段，默认不展示%）
+        change_ratio            float         变动比例（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
         time                    str           发布时间（美股的时间默认是美东）
         =====================   ===========   ==============================================================
 
@@ -1160,12 +1226,352 @@ get_holding_change_list
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2016-10-01'))
+    print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2018-10-01'))
+    quote_ctx.close()
+
+.. note::
+	* 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
+	
+get_option_chain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_option_chain(self, code, start, end=None, option_type=OptionType.ALL, option_cond_type=OptionCondType.ALL)
+
+ 通过标的股查询期权
+
+ :param code: 股票代码,例如：'HK.02318'
+ :param start: 开始日期，该日期指到期日，例如'2017-08-01'
+ :param end: 结束日期（包括这一天），该日期指到期日，例如'2017-08-30'。 注意，时间范围最多30天。
+             start和end的组合如下：
+			 
+                ==========    ==========    ========================================
+                 start类型      end类型       说明
+                ==========    ==========    ========================================
+                 str            str           start和end分别为指定的日期
+                 None           str           start为end往前30天
+                 str            None          end为start往后30天
+                 None           None          start为当前日期，end往后30天
+                ==========    ==========    ========================================
+				
+ :param option_type: 期权类型,,默认全部,全部/看涨/看跌，查看 OptionType_
+ :param option_cond_type: 默认全部,全部/价内/价外，查看 OptionCondType_
+ :return: (ret, data)
+
+        ret == RET_OK 返回pd dataframe数据，数据列格式如下
+
+        ret != RET_OK 返回错误字符串
+
+        ==================   ===========   ==============================================================
+        参数                      类型                        说明
+        ==================   ===========   ==============================================================
+        code                 str           股票代码
+        name                 str           名字
+        lot_size             int           每手数量
+        stock_type           str           股票类型，参见 SecurityType_
+        option_type          str           期权类型，查看 OptionType_
+        stock_owner          str           标的股
+        strike_time          str           行权日（港股A股默认是北京时间）
+        strike_price         float         行权价
+        suspension           bool          是否停牌(True表示停牌)
+        stock_id             int           股票id
+        ==================   ===========   ==============================================================
+    print(quote_ctx.get_option_chain('US.AAPL', '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
+    quote_ctx.close()
+
+	
+.. note::
+
+    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_  
+
+get_history_kl_quota
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_history_kl_quota(self, get_detail=False)
+
+ 获取已使用过的额度，即当前周期内已经下载过多少只股票
+
+ :param get_detail: 是否返回详细拉取过的历史纪录
+
+        =====================   ===========   ==============================================================
+        参数                      类型                        说明
+        =====================   ===========   ==============================================================
+        code                    str           拉取的股票代码
+        request_time            str           最后一次拉取的时间字符串
+        =====================   ===========   ==============================================================
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回(used_quota, remain_quota, detail_list)
+
+        =====================   ===========   ==============================================================
+        参数                      类型                        说明
+        =====================   ===========   ==============================================================
+        used_quota              int32           已使用过的额度，即当前周期内已经下载过多少只股票
+        remain_quota            int32           剩余额度，30天后额度会恢复
+        detail_list             dict list       get_detail为True时返回，每只拉取过的股票的下载时间
+        =====================   ===========   ==============================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_history_kl_quota())
+    quote_ctx.close()
+
+
+get_rehab
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_rehab(self, code)
+
+ 获取给定股票的复权因子
+
+ :param code: 需要查询的股票代码.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+=====================   ===========   ====================================================================================
+参数                      类型                        说明
+=====================   ===========   ====================================================================================
+ex_div_date             str            除权除息日
+split_ratio             float          拆合股比例（该字段为比例字段，展示为小数表示）例如，对于5股合1股为5.0，对于1股拆5股为0.2
+per_cash_div            float          每股派现
+per_share_div_ratio     float          每股送股比例（该字段为比例字段，展示为小数表示）
+per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，展示为小数表示）
+allotment_ratio         float          每股配股比例（该字段为比例字段，展示为小数表示）
+allotment_price         float          配股价
+stk_spo_ratio           float          增发比例（该字段为比例字段，展示为小数表示）
+stk_spo_price           float          增发价格
+forward_adj_factorA     float          前复权因子A
+forward_adj_factorB     float          前复权因子B
+backward_adj_factorA    float          后复权因子A
+backward_adj_factorB    float          后复权因子B
+=====================   ===========   ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_rehab("HK.00700"))
     quote_ctx.close()
 
 .. note::
 
-    * 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
+    * 	接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id33>`_
+
+get_warrant
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_warrant(self, stock_owner='', req=None)
+
+ 通过标的股查询涡轮
+
+ :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的涡轮，注意有些股票没有对应涡轮牛熊。
+ :param req: 请求参数组合，from futu.quote.quote_get_warrant import Request
+
+
+==========================  ==============    ====================================================================================
+参数                          类型               说明
+==========================  ==============    ====================================================================================
+begin                       int               数据起始点
+num                         int               请求数据个数，最大200
+sort_field                  SortField         根据哪个字段排序 SortField_
+ascend                      bool              升序True, 降序False
+type_list                   list              窝轮类型过滤列表 参见 WrtType_
+issuer_list                 list              发行人过滤列表 参见 Issuer_
+maturity_time_min           str               到期日, 到期日范围的开始时间
+maturity_time_max           str               到期日范围的结束时间
+ipo_period                  str               上市日 参见 IpoPeriod_
+price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_
+status                      str               窝轮状态 参见 WarrantStatus_
+cur_price_min               double            最新价过滤起点
+cur_price_max               double            最新价过滤终点
+strike_price_min            double            行使价过滤起点
+strike_price_max            double            行使价过滤终点
+street_min                  double            街货占比, 过滤起点（该字段为百分比字段，默认不展示%）
+street_max                  double            街货占比, 过滤终点（该字段为百分比字段，默认不展示%）
+conversion_min              double            换股比率过滤起点
+conversion_max              double            换股比率过滤终点
+vol_min                     int               成交量过滤起点
+vol_max                     int               成交量过滤终点
+premium_min                 double            溢价, 过滤起点（该字段为百分比字段，默认不展示%）
+premium_max                 double            溢价, 过滤终点（该字段为百分比字段，默认不展示%）
+leverage_ratio_min          double            杠杆比率过滤起点
+leverage_ratio_max          double            杠杆比率过滤终点
+delta_min                   double            对冲值过滤起点, 仅认购认沽支持该字段过滤
+delta_max                   double            对冲值过滤终点, 仅认购认沽支持该字段过滤
+implied_min                 double            引伸波幅过滤起点, 仅认购认沽支持该字段过滤
+implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
+recovery_price_min          double            收回价过滤起点, 仅牛熊证支持该字段过滤
+recovery_price_max          double            收回价过滤终点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_min    double            正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+price_recovery_ratio_max    double            正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+==========================  ==============    ====================================================================================
+
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回（warrant_data_list,last_page, all_count）数据列格式如下：
+
+        warrant_data_list pd dataframe数据，数据列格式如下
+
+        last_page 是否是最后一页
+
+        all_count 列表总数量
+
+
+
+==========================    ================    ====================================================================================
+参数                            类型                        说明
+==========================    ================    ====================================================================================
+stock                          str                涡轮代码
+stock_owner                    str                所属正股
+type                           str                窝轮类型 参见 WrtType_
+issuer                         Issuer             发行人 参见 Issuer_
+maturity_time                  str                到期日
+maturity_timestamp             double             :strike:`到期日时间戳`
+list_time                      str                上市时间
+list_timestamp                 double             :strike:`上市时间戳`
+last_trade_time                str                最后交易日
+last_trade_timestamp           double             :strike:`最后交易日时间戳`
+recovery_price                 double             收回价，仅牛熊证支持该字段
+conversion_ratio               double             换股比率
+lot_size                       int                每手数量
+strike_price                   double             行使价
+last_close_price               double             昨收价
+name                           str                名称
+cur_price                      double             当前价
+price_change_val               double             涨跌额
+status                         str                窝轮状态 参见 WarrantStatus_
+bid_price                      double             买入价
+ask_price                      double             卖出价
+bid_vol                        int                买量
+ask_vol                        int                卖量
+volume                         int                成交量
+turnover                       double             成交额
+score                          double             综合评分
+premium                        double             溢价（该字段为百分比字段，默认不展示%）
+break_even_point               double             打和点
+leverage                       double             杠杆比率（倍）
+ipop                           double             价内/价外（该字段为百分比字段，默认不展示%）
+price_recovery_ratio           double             正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
+conversion_price               double             换股价
+street_rate                    double             街货占比（该字段为百分比字段，默认不展示%）
+street_vol                     int                街货量
+amplitude                      double             振幅（该字段为百分比字段，默认不展示%）
+issue_size                     int                发行量
+high_price                     double             最高价
+low_price                      double             最低价
+implied_volatility             double             引伸波幅，仅认购认沽支持该字段
+delta                          double             对冲值，仅认购认沽支持该字段
+effective_leverage             double             有效杠杆
+==========================    ================    ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    from futu.quote.quote_get_warrant import Request
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    req=Request()
+    req.sort_field=SortField.TURNOVER
+    print(quote_ctx.get_warrant("HK.00700",req))
+    quote_ctx.close()
+
+
+.. note::
+    * 	接口限制请参见 `获取涡轮限制 <../protocol/intro.html#id42>`_
+
+get_capital_flow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_capital_flow(self, code)
+
+ 获取个股资金流向
+
+ :param code: 需要查询的股票代码.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+========================   ===========   ====================================================================================
+参数                       类型                        说明
+========================   ===========   ====================================================================================
+in_flow                    double         净流入的资金额度
+capital_flow_item_time     string         开始时间字符串,以分钟为单位
+last_valid_time            string         数据最后有效时间字符串
+========================   ===========   ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_capital_flow("HK.00700"))
+    quote_ctx.close()
+
+.. note::
+
+    * 	接口限制请参见 `获取资金流向限制 <../protocol/intro.html#id43>`_
+
+get_capital_distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_capital_distribution(self, code)
+
+ 获取个股资金分布
+
+ :param code: 需要查询的股票代码.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+=====================   ===========   ====================================================================================
+参数                      类型                        说明
+=====================   ===========   ====================================================================================
+capital_in_big          double         流入资金额度，大单
+capital_in_mid          double         流入资金额度，中单
+capital_in_small        double         流入资金额度，小单
+capital_out_big         double         流出资金额度，大单
+capital_out_mid         double         流出资金额度，中单
+capital_out_small       double         流出资金额度，小单
+update_time             str            更新时间字符串
+=====================   ===========   ====================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_capital_distribution("HK.00700"))
+    quote_ctx.close()
+
+.. note::
+
+    * 	接口限制请参见 `获取资金分布限制 <../protocol/intro.html#id44>`_
+
+---------------------------------------------------------------------    
 
 SysNotifyHandlerBase - OpenD通知回调
 -------------------------------------------
