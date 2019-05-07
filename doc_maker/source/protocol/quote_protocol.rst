@@ -1770,3 +1770,99 @@
 	* 限频接口：30秒内最多10次	
 
 -------------------------------------
+
+`Qot_GetUserSecurity.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurity.proto>`_ - 3213获取自选股分组下的股票
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetUserSecurity;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		required string groupName = 1; //分组名,有同名的返回最先创建的
+	}
+
+	message S2C
+	{
+		repeated Qot_Common.SecurityStaticInfo staticInfoList = 1; //自选股分组下的股票列表
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票静态信息结构参考 `SecurityStaticInfo <base_define.html#securitystaticbasic>`_
+	* 限频接口：30秒内最多10次	
+	* 仅支持自定义分组
+	
+-------------------------------------
+
+`Qot_ModifyUserSecurity.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_ModifyUserSecurity.proto>`_ - 3214修改自选股分组下的股票
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_ModifyUserSecurity;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum ModifyUserSecurityOp
+	{
+		ModifyUserSecurityOp_Unknown = 0;
+		ModifyUserSecurityOp_Add = 1; //新增
+		ModifyUserSecurityOp_Del = 2; //删除
+	}
+
+	message C2S
+	{
+		required string groupName = 1; //分组名,有同名的返回最先创建的
+		required int32 op = 2; //ModifyUserSecurityOp,操作类型
+		repeated Qot_Common.Security securityList = 3; //新增或删除该分组下的股票
+	}
+
+	message S2C
+	{
+		
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 限频接口：30秒内最多10次	
+	* 仅支持自定义分组
+	
+-------------------------------------

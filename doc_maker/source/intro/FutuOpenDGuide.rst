@@ -260,6 +260,13 @@ show_delay_report - 展示延迟统计报告
   
   **Paramters push_count_type:** str，推送延迟的类型(sr2ss,ss2cr,cr2cs,ss2cs,sr2cs)，默认sr2cs，sr指服务器接收时间(目前只有港股支持该时间)，ss指服务器发出时间，cr指OpenD接收时间，cs指OpenD发出时间
 
+close_api_conn - 关闭所有API连接
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  close_api_conn 
+
+  关闭所有API连接
+  
 ---------------------------- 
 
 补充说明

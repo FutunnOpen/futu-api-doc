@@ -113,10 +113,19 @@
 
 .. code-block:: protobuf
 
+	syntax = "proto2";
+	package Notify;
+
+	import "Common.proto";
+
 	enum NotifyType
 	{
 		NotifyType_None = 0; //无
-		NotifyType_GtwEvent = 1; //Gateway运行事件通知
+		NotifyType_GtwEvent = 1; //OpenD运行事件通知
+		NotifyType_ProgramStatus = 2; //程序状态
+		NotifyType_ConnStatus = 3; //连接状态
+		NotifyType_QotRight = 4; //行情权限
+		NotifyType_APILevel = 5; //用户等级
 	}
 
 	enum GtwEventType
@@ -127,7 +136,7 @@
 		GtwEventType_ForceUpdate = 3; //客户端版本过低
 		GtwEventType_LoginFailed = 4; //登录失败
 		GtwEventType_UnAgreeDisclaimer = 5; //未同意免责声明
-		GtwEventType_NetCfgMissing = 6; //缺少必要网络配置信息;例如控制订阅额度
+		GtwEventType_NetCfgMissing = 6; //缺少必要网络配置信息;例如控制订阅额度 //已优化，不会再出现该情况
 		GtwEventType_KickedOut = 7; //牛牛帐号在别处登录
 		GtwEventType_LoginPwdChanged = 8; //登录密码被修改
 		GtwEventType_BanLogin = 9; //用户被禁止登录
@@ -145,10 +154,37 @@
 		required string desc = 2; //事件描述
 	}
 
+	message ProgramStatus
+	{
+		required Common.ProgramStatus programStatus = 1; //当前程序状态
+	}
+
+	message ConnectStatus
+	{
+		required bool qotLogined = 1; //是否登陆行情服务器
+		required bool trdLogined = 2; //是否登陆交易服务器
+	}
+
+	message QotRight
+	{
+		required int32 hkQotRight = 4; //港股行情权限, QotRight
+		required int32 usQotRight = 5; //美股行情权限, QotRight
+		required int32 cnQotRight = 6; //A股行情权限, QotRight
+	}
+
+	message APILevel
+	{
+		required string apiLevel = 3; //api用户等级描述
+	}
+
 	message S2C
 	{
-		required int32 type = 1; //NotifyType,通知类型 
+		required int32 type = 1; //通知类型
 		optional GtwEvent event = 2; //事件通息
+		optional ProgramStatus programStatus = 3; //程序状态
+		optional ConnectStatus connectStatus = 4; //连接状态
+		optional QotRight qotRight = 5; //行情权限
+		optional APILevel apiLevel = 6; //用户等级
 	}
 
 	message Response
@@ -159,13 +195,13 @@
 		
 		optional S2C s2c = 4;
 	}
+
 	
 .. note::
 
-    *   Notify是系统推送协议，目前仅支持NotifyType_GtwEvent类型推送  
+    *   Notify是系统推送协议
     *   FutuOpenD将内部的一些重要运行状态通知到client前端，可用于前端的管理平台监控处理
    
-
 ---------------------------------------------
 	
 	
@@ -246,6 +282,40 @@ PacketID - 请求包标识
 
     *   PacketID 用于唯一标识一次请求
     *   serailNO 由请求方自定义填入包头，为防回放攻击要求自增，否则新的请求将被忽略
+ 
+-------------------------------------
+
+ProgramStatus - 程序的当前状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: protobuf
+
+	//程序的当前状态
+	enum ProgramStatusType
+	{
+		ProgramStatusType_None = 0;
+		ProgramStatusType_Loaded = 1; //已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回
+
+		ProgramStatusType_Loging = 2; //登录中
+		ProgramStatusType_NeedPicVerifyCode = 3; //需要图形验证码
+		ProgramStatusType_NeedPhoneVerifyCode = 4; //需要手机验证码
+		ProgramStatusType_LoginFailed = 5; //登录失败,详细原因在描述返回
+		ProgramStatusType_ForceUpdate = 6; //客户端版本过低
+
+		ProgramStatusType_NessaryDataPreparing = 7; //正在拉取类似免责声明等一些必要信息
+		ProgramStatusType_NessaryDataMissing = 8; //缺少必要信息
+		ProgramStatusType_UnAgreeDisclaimer = 9; //未同意免责声明
+		ProgramStatusType_Ready = 10; //可以接收业务协议收发,正常可用状态
+		
+		//OpenD登录后被强制退出登录，会导致连接全部断开,需要重连后才能得到以下该状态（并且需要在ui模式下）
+		ProgramStatusType_ForceLogout = 11; //被强制退出登录,例如修改了登录密码,中途打开设备锁等,详细原因在描述返回
+	}
+
+	message ProgramStatus
+	{
+		required ProgramStatusType type = 1; //当前状态
+		optional string strExtDesc = 2; // 额外描述
+	}
  
 -------------------------------------
 
@@ -704,6 +774,21 @@ WarrantStatus - 涡轮状态
 		WarrantStatus_PendingListing = 4; //等待上市
 	}
 			
+-----------------------------------------------
+
+QotRight - 行情权限
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum QotRight
+	{
+		QotRight_Unknow = 0; //未知
+		QotRight_Bmp = 1; //Bmp，无法订阅
+		QotRight_Level1 = 2; //Level1
+		QotRight_Level2 = 3; //Level2
+	}
+		
 -----------------------------------------------
 
 Security - 证券标识

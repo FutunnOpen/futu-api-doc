@@ -105,6 +105,12 @@
   .. _Qot_GetCapitalDistribution.proto:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
   .. _3212:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
 
+  .. _Qot_GetUserSecurity.proto:  quote_protocol.html#qot-getusersecurity-proto-3213
+  .. 3213:  quote_protocol.html#qot-getusersecurity-proto-3213
+  
+  .. _Qot_ModifyUserSecurity.proto:  quote_protocol.html#qot-modifyusersecurity-proto-3214
+  .. _3214:  quote_protocol.html#qot-modifyusersecurity-proto-3214
+  
   .. role:: red-strengthen
 
 特点
@@ -173,6 +179,8 @@
  3210             Qot_GetWarrant.proto_                   获取涡轮
  3211             Qot_GetCapitalFlow.proto_               获取资金流向
  3212             Qot_GetCapitalDistribution.proto_       获取资金分布
+ 3213             Qot_GetUserSecurity.proto_       		  获取自选股分组下的股票
+ 3214             Qot_ModifyUserSecurity.proto_       	  修改自选股分组下的股票
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -318,6 +326,18 @@ API用户等级
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持正股、涡轮和基金
 
+获取自选股分组下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3213_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅支持自定义分组
+	
+修改自选股分组下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3214_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅支持自定义分组
+	
 协议请求流程 
 -------------
 	* 建立连接
