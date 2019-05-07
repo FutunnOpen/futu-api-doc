@@ -1043,6 +1043,10 @@
 		required double peRate = 10; // 市盈率
 		required double pbRate = 11; // 市净率
 		required double peTTMRate = 12; // 市盈率TTM
+		optional double dividendTTM = 13; // 股息TTM，派息
+		optional double dividendRatioTTM = 14; // 股息率TTM（该字段为百分比字段，默认不展示%）
+		optional double dividendLFY = 15; // 股息LFY，上一年度派息
+		optional double dividendLFYRatio = 16; // 股息率LFY（该字段为百分比字段，默认不展示%）
 	}
 
 	// 涡轮类型额外数据
@@ -1063,6 +1067,12 @@
 		required double premium = 13; //溢价（该字段为百分比字段，默认不展示%）
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
+		optional double leverage = 16;  // 杠杆比率（倍）
+		optional double itmOtmRatio = 17; // 价内/价外（该字段为百分比字段，默认不展示%）
+		optional double breakEvenPointPrice = 18; // 打和点
+		optional double entitlementPrice = 19;  // 换股价
+		optional double priceCallRatio = 20; // 距收回价（该字段为百分比字段，默认不展示%）
+		optional double score = 21; // 综合评分
 	}
 
 	// 期权类型额外数据
@@ -1082,6 +1092,22 @@
 		required double theta = 12; //希腊值 Theta
 		required double rho = 13; //希腊值 Rho
 		optional double strikeTimestamp = 14; //行权日时间戳		
+	}
+
+	// 指数类型额外数据
+	message IndexSnapshotExData
+	{
+	    required int32 raiseCount = 1;  // 上涨支数
+	    required int32 fallCount = 2;  // 下跌支数
+	    required int32 equalCount = 3;  // 平盘支数
+	}
+	
+	// 板块类型额外数据
+	message PlateSnapshotExData
+	{
+	    required int32 raiseCount = 1;  // 上涨支数
+	    required int32 fallCount = 2;  // 下跌支数
+	    required int32 equalCount = 3;  // 平盘支数
 	}
 
 	// 基本快照数据
@@ -1114,7 +1140,15 @@
 		optional bool enableShortSell = 25; // 是否可卖空，如果为true，后三个字段才有意义
 		optional double shortSellRate = 26; // 卖空参考利率（该字段为百分比字段，默认不展示%）
 		optional int64 shortAvailableVolume = 27; // 剩余可卖空数量（股）
-		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）	
+		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）
+		optional double amplitudePrice = 29; // 振幅（该字段为百分比字段，默认不展示%）
+		optional double averagePrice = 30; // 平均价
+		optional double bidAskRatio = 31; // 委比（该字段为百分比字段，默认不展示%）
+		optional double volumeRatio = 32;  // 量比
+		optional double highest52weekPrice = 33;  // 52周最高价
+		optional double lowest52weekPrice = 34;  // 52周最低价
+		optional double highestHistoryPrice = 35;  // 历史最高价
+		optional double lowestHistoryPrice = 36;  // 历史最低价
 	}
 
 	message Snapshot
@@ -1123,6 +1157,8 @@
 		optional EquitySnapshotExData equityExData = 2; //正股快照额外数据
 		optional WarrantSnapshotExData warrantExData = 3; //窝轮快照额外数据
 		optional OptionSnapshotExData optionExData = 4; //期权快照额外数据
+		optional IndexSnapshotExData indexExData = 5; //指数快照额外数据
+		optional PlateSnapshotExData plateExData = 6; //板块快照额外数据
 	}
 
 	message S2C
