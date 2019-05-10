@@ -1388,31 +1388,31 @@ WarrantStatus - 涡轮状态
 
 WrtType - 港股窝轮类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
+
 港股窝轮类型定义
 
 ..  py:class:: WrtType
 
  ..  py:attribute:: CALL
- 
+
   认购
-  
+
  ..  py:attribute:: PUT
- 
+
   认沽
-  
+
  ..  py:attribute:: BULL
- 
+
   牛证
-  
+
  ..  py:attribute:: BEAR
- 
+
   熊证
-  
+
  ..  py:attribute:: NONE
- 
+
   未知
-  
+
 --------------------------------------
 
 
@@ -1562,6 +1562,28 @@ SortField - 涡轮排序
  ..  py:attribute:: ISSUE_SIZE
 
   发行量
+
+
+--------------------------------------
+
+ModifyUserSecurityOp -
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+定义
+
+..  py:class:: ModifyUserSecurityOp
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: ADD
+
+  新增
+
+ ..  py:attribute:: DEL
+
+  删除
 
 
 --------------------------------------

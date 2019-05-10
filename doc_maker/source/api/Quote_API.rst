@@ -63,6 +63,8 @@
  .. _WarrantStatus: Base_API.html#warrantstatus
 
  .. _SortField: Base_API.html#sortfield
+
+ .. _ModifyUserSecurityOp: Base_API.html#modifyusersecurityop
  
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
@@ -774,12 +776,13 @@ subscribe
 unsubscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: unsubscribe(self, code_list, subtype_list)
+..  py:function:: unsubscribe(self, code_list, subtype_list, unsubscribe_all=False)
 
  取消订阅
  
  :param code_list: 取消订阅的股票代码列表
  :param subtype_list: 取消订阅的类型，参见 SubType_
+ :param unsubscribe_all: 取消所有订阅，为True时其他参数不起效
  :return: (ret, err_message)
         
         ret == RET_OK err_message为None
@@ -795,6 +798,32 @@ unsubscribe
     print(quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE]))
     quote_ctx.close()	 
   
+.. note::
+
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+
+unsubscribe_all
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: unsubscribe_all(self)
+
+ 取消所有订阅订阅
+
+ :return: (ret, err_message)
+
+        ret == RET_OK err_message为None
+
+        ret != RET_OK err_message为错误描述字符串
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.unsubscribe_all())
+    quote_ctx.close()
+
 .. note::
 
     * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
@@ -1570,6 +1599,83 @@ update_time             str            更新时间字符串
 .. note::
 
     * 	接口限制请参见 `获取资金分布限制 <../protocol/intro.html#id44>`_
+
+get_user_security
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_user_security(self, group_name)
+
+ 获取指定分组的自选股列表（不支持系统分组）
+
+ :param group_name: 需要查询的自选股分组名称.
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 返回pd dataframe数据
+
+        =================   ===========   ==============================================================================
+        参数                  类型                        说明
+        =================   ===========   ==============================================================================
+        code                str            股票代码
+        name                str            名字
+        lot_size            int            每手数量
+        stock_type          str            股票类型，参见 SecurityType_
+        stock_child_type    str            窝轮子类型，参见 WrtType_
+        stock_owner         str            涡轮所属正股的代码，或期权标的股的代码
+        option_type         str            期权类型，查看 OptionType_
+        strike_time         str            期权行权日（港股A股默认是北京时间）
+        strike_price        float          期权行权价
+        suspension          bool           期权是否停牌(True表示停牌)
+        listing_date        str            上市时间
+        stock_id            int            股票id
+        delisting           bool           是否退市
+        =================   ===========   ==============================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_user_security("MyGroup"))
+    quote_ctx.close()
+
+.. note::
+
+    * 	接口限制请参见 `获取指定分组的自选股列表 <../protocol/intro.html#id47>`_
+
+modify_user_security
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: modify_user_security(self, group_name, op, code_list)
+
+ 修改指定分组的自选股列表（不支持系统分组）
+
+ :param group_name: 需要修改的自选股分组名称.
+ :param op: 操作枚举值.查看 ModifyUserSecurityOp_
+ :param code_list: 股票列表，['HK.00700','HK.00701']
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 'success'
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.modify_user_security("MyGroup", ModifyUserSecurityOp.ADD, ['HK.00700']))
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id48>`_
+    * 操作枚举值类型参考 `ModifyUserSecurityOp <base_define.html#modifyusersecurityop>`_
 
 ---------------------------------------------------------------------    
 
