@@ -502,6 +502,11 @@ get_market_snapshot
  pe_ratio                        float          市盈率（该字段为比例字段，默认不展示%）
  pb_ratio                        float          市净率（该字段为比例字段，默认不展示%）
  pe_ttm_ratio                    float          市盈率TTM（该字段为比例字段，默认不展示%）
+ dividend_ttm                    float          股息TTM，派息
+ dividend_ratio_ttm              float          股息率TTM（该字段为百分比字段，默认不展示%）
+ dividend_lfy                    float          股息LFY，上一年度派息
+ dividend_lfy_ratio              float          股息率LFY（该字段为百分比字段，默认不展示%）
+
  stock_owner                     str            涡轮所属正股的代码或期权的标的股代码
  wrt_valid                       bool           是否是窝轮（为true时以下涡轮相关的字段才有合法数据）
  wrt_conversion_ratio            float          换股比率
@@ -509,6 +514,12 @@ get_market_snapshot
  wrt_strike_price                float          行使价格
  wrt_maturity_date               str            格式化窝轮到期时间
  wrt_end_trade                   str            格式化窝轮最后交易时间
+ leverage                        float          杠杆比率（倍）
+ itm_otm_ratio                   float          价内/价外（该字段为百分比字段，默认不展示%）
+ break_even_point_price          float          打和点
+ entitlement_price               float          换股价
+ price_call_ratio                float          距收回价（该字段为百分比字段，默认不展示%）
+ score                           float          窝轮综合评分
  wrt_code                        str            窝轮对应的正股（此字段已废除,修改为stock_owner）
  wrt_recovery_price              float          窝轮收回价
  wrt_street_vol                  float          窝轮街货量
@@ -559,16 +570,6 @@ get_market_snapshot
  index_raise_count               int            指数类型上涨支数
  index_fall_count                int            指数类型下跌支数
  index_equal_count               int            指数类型平盘支数
- dividend_ttm                    float          股息TTM，派息
- dividend_ratio_ttm              float          股息率TTM（该字段为百分比字段，默认不展示%）
- dividend_lfy                    float          股息LFY，上一年度派息
- dividend_lfy_ratio              float          股息率LFY（该字段为百分比字段，默认不展示%）
- leverage                        float          杠杆比率（倍）
- itm_otm_ratio                   float          价内/价外（该字段为百分比字段，默认不展示%）
- break_even_point_price          float          打和点
- entitlement_price               float          换股价
- price_call_ratio                float          距收回价（该字段为百分比字段，默认不展示%）
- score                           float          综合评分
  ============================   =============   ======================================================================
 
  :Example:
