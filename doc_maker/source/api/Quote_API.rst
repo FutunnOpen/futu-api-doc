@@ -62,10 +62,10 @@
 
  .. _WarrantStatus: Base_API.html#warrantstatus
 
+ .. _ModifyUserSecurity: Base_API.html#modifyusersecurityop
+
  .. _SortField: Base_API.html#sortfield
 
- .. _ModifyUserSecurityOp: Base_API.html#modifyusersecurityop
- 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
 一分钟上手
@@ -1654,7 +1654,7 @@ modify_user_security
  修改指定分组的自选股列表（不支持系统分组）
 
  :param group_name: 需要修改的自选股分组名称.
- :param op: 操作枚举值.查看 ModifyUserSecurityOp_
+ :param op: 操作枚举值.查看 ModifyUserSecurity_
  :param code_list: 股票列表，['HK.00700','HK.00701']
 
  :return: (ret, data)
@@ -1675,7 +1675,7 @@ modify_user_security
 .. note::
 
     * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id48>`_
-    * 操作枚举值类型参考 `ModifyUserSecurityOp <base_define.html#modifyusersecurityop>`_
+    * 操作枚举值类型参考 `ModifyUserSecurityOp <Base_API.html#modifyusersecurityop>`_
 
 ---------------------------------------------------------------------    
 

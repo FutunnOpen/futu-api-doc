@@ -1566,7 +1566,7 @@ SortField - 涡轮排序
 
 --------------------------------------
 
-ModifyUserSecurityOp -
+ModifyUserSecurityOp - 自选股操作类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 定义
