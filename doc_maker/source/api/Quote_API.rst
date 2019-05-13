@@ -515,10 +515,10 @@ get_market_snapshot
  wrt_maturity_date               str            格式化窝轮到期时间
  wrt_end_trade                   str            格式化窝轮最后交易时间
  leverage                        float          杠杆比率（倍）
- itm_otm_ratio                   float          价内/价外（该字段为百分比字段，默认不展示%）
- break_even_point_price          float          打和点
- entitlement_price               float          换股价
- price_call_ratio                float          距收回价（该字段为百分比字段，默认不展示%）
+ ipop                            float          价内/价外（该字段为百分比字段，默认不展示%）
+ break_even_point                float          打和点
+ conversion_price                float          换股价
+ price_recovery_ratio            float          正股距收回价（该字段为百分比字段，默认不展示%）
  score                           float          窝轮综合评分
  wrt_code                        str            窝轮对应的正股（此字段已废除,修改为stock_owner）
  wrt_recovery_price              float          窝轮收回价
@@ -555,11 +555,11 @@ get_market_snapshot
  option_theta                    float          希腊值 Theta
  option_rho                      float          希腊值 Rho
  amplitude_price                 float          振幅（该字段为百分比字段，默认不展示%）
- average_price                   float          平均价
+ avg_price                       float          平均价
  bid_ask_ratio                   float          委比（该字段为百分比字段，默认不展示%）
  volume_ratio                    float          量比
- highest52week_price             float          52周最高价
- lowest52week_price              float          52周最低价
+ highest52weeks_price            float          52周最高价
+ lowest52weeks_price             float          52周最低价
  highest_history_price           float          历史最高价
  lowest_history_price            float          历史最低价
  plate_valid                     bool           是否为板块类型（为true时以下板块类型字段才有合法数值）

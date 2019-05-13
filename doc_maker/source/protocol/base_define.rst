@@ -578,6 +578,29 @@ TickerType - 逐笔类型
 		TickerType_InterNoneAutomatch = 5; //同一证券商非自动对盘
 		TickerType_OddLot = 6; //碎股交易
 		TickerType_Auction = 7; //竞价交易
+		TickerType_Bulk = 8; //批量交易
+		TickerType_Crash = 9; //现金交易
+		TickerType_CrossMarket = 10; //跨市场交易
+		TickerType_BulkSold = 11; //批量卖出
+		TickerType_FreeOnBoard = 12; //离价交易
+		TickerType_Rule127Or155 = 13; //第127条交易（纽交所规则）或第155条交易
+		TickerType_Delay = 14; //延迟交易
+		TickerType_MarketCenterClosePrice = 15; //中央收市价
+		TickerType_NextDay = 16; //隔日交易
+		TickerType_MarketCenterOpening = 17; //中央开盘价交易
+		TickerType_PriorReferencePrice = 18; //前参考价
+		TickerType_MarketCenterOpenPrice = 19; //中央开盘价
+		TickerType_Seller = 20; //卖方
+		TickerType_T = 21; //T类交易(盘前和盘后交易)
+		TickerType_ExtendedTradingHours = 22; //延长交易时段
+		TickerType_Contingent = 23; //合单交易
+		TickerType_AvgPrice = 24; //平均价成交
+		TickerType_OTCSold = 25; //场外售出
+		TickerType_OddLotCrossMarket = 26; //碎股跨市场交易
+		TickerType_DerivativelyPriced = 27; //衍生工具定价
+		TickerType_ReOpeningPriced = 28; //再开盘定价
+		TickerType_ClosingPriced = 29; //收盘定价
+		TickerType_ComprehensiveDelayPrice = 30; //综合延迟价格
 	}
 	
 -----------------------------------------------
