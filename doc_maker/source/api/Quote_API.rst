@@ -4,7 +4,7 @@
     :class: red-strengthen
 
 
-========
+
 行情API
 ========
 
@@ -41,6 +41,8 @@
  .. _SysNotifyType: Base_API.html#sysnotifytype
  
  .. _GtwEventType: Base_API.html#gtweventtype
+
+ .. _ProgramStatusType: Base_API.html#programstatustype
 
  .. _TradeDateType: Base_API.html#tradedatetype
  
@@ -297,6 +299,7 @@ get_stock_basicinfo
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_multiple_history_kline(['HK.00700'], '2017-06-20', '2017-06-25', KLType.K_DAY, AuType.QFQ))
     quote_ctx.close()
+
 :strike:`get_history_kline`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1720,7 +1723,7 @@ SysNotifyHandlerBase - OpenD通知回调
             ret_code, data = super(SysNotifyTest, self).on_recv_rsp(rsp_pb)
             notify_type, sub_type, msg = data
             if ret_code != RET_OK:
-                logger.debug("SysNotifyTest: error, msg: %s" % msg)
+                logger.debug("SysNotifyTest: error, msg: {}".format(msg))
                 return RET_ERROR, data
             print(msg)
             return RET_OK, data
@@ -1743,14 +1746,29 @@ on_recv_rsp
  :param rsp_pb: 派生类中不需要直接处理该参数
  :return: ret_code, notify_type, sub_type, msg
  
-==================   ===========   ===========
-参数                 类型          说明
-==================   ===========   ===========
-notify_type          int           通知类型
-sub_type             int           消息类型
-msg              	 str           消息描述
-==================   ===========   ===========
+==================   ===========   ===============================================
+参数                  类型           说明
+==================   ===========   ===============================================
+notify_type          str           通知类型，见 SysNotifyType_
+sub_type             str           消息类型，不同的notify_type，取值也不同，见下表
+msg                  str, dict     消息描述，不同的notify_type，取值也不同，见下表
+==================   ===========   ===============================================
   
+
+==============================   ================================   ==============================================
+notify_type                       sub_type                             msg
+==============================   ================================   ==============================================
+SysNotifyType.NONE                None                                 None
+SysNotifyType.GTW_EVENT           str, 取值见 GtwEventType_             str，通知描述信息
+SysNotifyType.PROGRAM_STATUS      str, 取值见 ProgramStatusType_        str，通知描述信息
+SysNotifyType.CONN_STATUS         None                                 | {'qot_logined': bool, 是否已登录行情连接 
+                                                                       | 'trd_logined': bool} 是否已登录交易连接 
+SysNotifyType.QOT_RIGHT           None                                 | {'hk_qot_right': str, 港股行情权限
+                                                                       | 'cn_qot_right': str, A股行情权限
+                                                                       | 'us_qot_right': str, 美股行情权限
+SysNotifyType.API_LEVEL           None                                 str, API用户等级
+==============================   ================================   ==============================================
+
 ----------------------------
 
 StockQuoteHandlerBase - 实时报价回调
@@ -2023,25 +2041,4 @@ on_recv_rsp
  :return: 成功时返回(RET_OK, stock_code, [bid_frame_table, ask_frame_table]), 相关frame table含义见 get_broker_queue_ 的返回值说明
 
           失败时返回(RET_ERROR, ERR_MSG, None)
-
-----------------------------    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
