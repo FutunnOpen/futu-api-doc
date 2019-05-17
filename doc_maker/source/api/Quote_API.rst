@@ -917,8 +917,8 @@ get_global_state
 		market_hkfuture         str            香港期货市场状态，参见 MarketState_
 		market_us               str            美国市场状态，参见 MarketState_
 		server_ver              str            FutuOpenD版本号
-		trd_logined             str            '1'：已登录交易服务器，'0': 未登录交易服务器
-		qot_logined             str            '1'：已登录行情服务器，'0': 未登录行情服务器
+		trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
+		qot_logined             bool           True：已登录行情服务器，False: 未登录行情服务器
 		timestamp               str            当前格林威治时间戳(秒）
 		local_timestamp         float          FutuOpenD运行机器的当前时间戳(秒)
 		=====================   ===========   ==============================================================
