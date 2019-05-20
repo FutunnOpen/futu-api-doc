@@ -558,7 +558,7 @@ get_market_snapshot
  option_vega                     float          希腊值 Vega
  option_theta                    float          希腊值 Theta
  option_rho                      float          希腊值 Rho
- amplitude_price                 float          振幅（该字段为百分比字段，默认不展示%）
+ amplitude                       float          振幅（该字段为百分比字段，默认不展示%）
  avg_price                       float          平均价
  bid_ask_ratio                   float          委比（该字段为百分比字段，默认不展示%）
  volume_ratio                    float          量比
