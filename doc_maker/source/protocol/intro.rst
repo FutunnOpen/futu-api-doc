@@ -106,7 +106,7 @@
   .. _3212:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
 
   .. _Qot_GetUserSecurity.proto:  quote_protocol.html#qot-getusersecurity-proto-3213
-  .. 3213:  quote_protocol.html#qot-getusersecurity-proto-3213
+  .. _3213:  quote_protocol.html#qot-getusersecurity-proto-3213
   
   .. _Qot_ModifyUserSecurity.proto:  quote_protocol.html#qot-modifyusersecurity-proto-3214
   .. _3214:  quote_protocol.html#qot-modifyusersecurity-proto-3214
@@ -338,6 +338,9 @@ API用户等级
 	* 请求协议ID: 3214_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持自定义分组
+	* 自选股的上限，一般最多是 :red-strengthen:`500` 支股票。
+	* 如果有同名的分组，会返回排序第一个分组的信息。
+	* 删除操作，只做本组的移除操作，所有股票的数量并不会减少。
 	
 协议请求流程 
 -------------
@@ -535,25 +538,3 @@ AES加解密
   * mod_len 为0时，上述解密后的数据即为协议返回的body数据, 否则需截掉尾部(16 - mod_len)长度的用于填充对齐的数据
 
   .. image:: ../_static/AES.png
-  
----------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-
-	
-	
-	
-
