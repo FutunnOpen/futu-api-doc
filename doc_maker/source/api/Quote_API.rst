@@ -1706,7 +1706,6 @@ modify_user_security
 .. note::
 
     * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id48>`_
-    * 操作枚举值类型参考 `ModifyUserSecurityOp <Base_API.html#modifyusersecurityop>`_
 
 ---------------------------------------------------------------------    
 
