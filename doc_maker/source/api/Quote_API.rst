@@ -813,7 +813,7 @@ unsubscribe
  
  :param code_list: 取消订阅的股票代码列表
  :param subtype_list: 取消订阅的类型，参见 SubType_
- :param unsubscribe_all: 取消所有订阅，为True时其他参数不起效
+ :param unsubscribe_all: 取消所有订阅，为True时忽略其他参数，或可使用 `unsubscribe_all <./Quote_API.html#unsubscribe_all>`_ 接口
  :return: (ret, err_message)
         
         ret == RET_OK err_message为None
@@ -838,7 +838,7 @@ unsubscribe_all
 
 ..  py:function:: unsubscribe_all(self)
 
- 取消所有订阅订阅
+ 取消所有订阅
 
  :return: (ret, err_message)
 
