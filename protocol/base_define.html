@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.9 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.10 documentation</title>
   
 
   
@@ -17,43 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
-        <link rel="next" title="行情协议" href="quote_protocol.html"/>
-        <link rel="prev" title="协议接口" href="intro.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="行情协议" href="quote_protocol.html" />
+    <link rel="prev" title="协议接口" href="intro.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +62,7 @@
             
             
               <div class="version">
-                3.9
+                3.10
               </div>
             
           
@@ -107,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id2">Common.proto - 通用定义</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rettype">RetType - 协议返回值</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#packetid">PacketID - 请求包标识</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#programstatus">ProgramStatus - 程序的当前状态</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">Qot_Common.proto - 行情通用定义</a><ul>
@@ -132,6 +128,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ipoperiod">IpoPeriod - 涡轮上市日</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价外/内</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 涡轮状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qotright">QotRight - 行情权限</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security - 证券标识</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kline-k">KLine - K线数据点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#basicqot">BasicQot - 基础报价</a></li>
@@ -196,7 +193,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -204,9 +201,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -235,7 +233,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/protocol/base_define.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/protocol/base_define.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -266,6 +264,11 @@
 .admonition > p:before {
     margin-right: 4px;  /* make room for the exclamation icon */
 }
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="section" id="id1">
 <h1>基础定义<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
@@ -282,7 +285,7 @@
 <hr class="docutils" />
 <div class="section" id="initconnect-proto-1001">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/InitConnect.proto">InitConnect.proto</a> - 1001初始化连接<a class="headerlink" href="#initconnect-proto-1001" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">clientVer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//客户端版本号，clientVer = &quot;.&quot;以前的数 * 100 + &quot;.&quot;以后的，举例：1.1版本的clientVer为1 * 100 + 1 = 101，2.21版本为2 * 100 + 21 = 221</span>
@@ -318,7 +321,7 @@
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>请求其它协议前必须等InitConnect协议先完成</li>
-<li>若FutuOpenD配置了加密， &#8220;connAESKey&#8221;将用于后续协议加密</li>
+<li>若FutuOpenD配置了加密， “connAESKey”将用于后续协议加密</li>
 <li>keepAliveInterval 为建议client发起心跳 <a class="reference external" href="#keepalive-proto-1004">KeepAlive</a> 的间隔</li>
 </ul>
 </div>
@@ -326,7 +329,7 @@
 <hr class="docutils" />
 <div class="section" id="getglobalstate-proto-1002">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/GetGlobalState.proto">GetGlobalState.proto</a> - 1002获取全局状态<a class="headerlink" href="#getglobalstate-proto-1002" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
 
 <span class="kd">message</span> <span class="nc">C2S</span>
@@ -372,10 +375,19 @@
 <hr class="docutils" />
 <div class="section" id="notify-proto-1003">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Notify.proto">Notify.proto</a> - 1003系统推送通知<a class="headerlink" href="#notify-proto-1003" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">NotifyType</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">Notify</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+
+<span class="kd">enum</span> <span class="n">NotifyType</span>
 <span class="p">{</span>
         <span class="na">NotifyType_None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//无</span>
-        <span class="na">NotifyType_GtwEvent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Gateway运行事件通知</span>
+        <span class="na">NotifyType_GtwEvent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//OpenD运行事件通知</span>
+        <span class="na">NotifyType_ProgramStatus</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//程序状态</span>
+        <span class="na">NotifyType_ConnStatus</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//连接状态</span>
+        <span class="na">NotifyType_QotRight</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//行情权限</span>
+        <span class="na">NotifyType_APILevel</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//用户等级</span>
 <span class="p">}</span>
 
 <span class="kd">enum</span> <span class="n">GtwEventType</span>
@@ -386,7 +398,7 @@
         <span class="na">GtwEventType_ForceUpdate</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//客户端版本过低</span>
         <span class="na">GtwEventType_LoginFailed</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//登录失败</span>
         <span class="na">GtwEventType_UnAgreeDisclaimer</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//未同意免责声明</span>
-        <span class="na">GtwEventType_NetCfgMissing</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//缺少必要网络配置信息;例如控制订阅额度</span>
+        <span class="na">GtwEventType_NetCfgMissing</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//缺少必要网络配置信息;例如控制订阅额度 //已优化，不会再出现该情况</span>
         <span class="na">GtwEventType_KickedOut</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//牛牛帐号在别处登录</span>
         <span class="na">GtwEventType_LoginPwdChanged</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//登录密码被修改</span>
         <span class="na">GtwEventType_BanLogin</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//用户被禁止登录</span>
@@ -404,10 +416,37 @@
         <span class="k">required</span> <span class="kt">string</span> <span class="na">desc</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//事件描述</span>
 <span class="p">}</span>
 
+<span class="kd">message</span> <span class="nc">ProgramStatus</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">Common.ProgramStatus</span> <span class="na">programStatus</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//当前程序状态</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">ConnectStatus</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">bool</span> <span class="na">qotLogined</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//是否登陆行情服务器</span>
+        <span class="k">required</span> <span class="kt">bool</span> <span class="na">trdLogined</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//是否登陆交易服务器</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">QotRight</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">hkQotRight</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//港股行情权限, QotRight</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">usQotRight</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//美股行情权限, QotRight</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">cnQotRight</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//A股行情权限, QotRight</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">APILevel</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">apiLevel</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//api用户等级描述</span>
+<span class="p">}</span>
+
 <span class="kd">message</span> <span class="nc">S2C</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//NotifyType,通知类型</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//通知类型</span>
         <span class="k">optional</span> <span class="n">GtwEvent</span> <span class="na">event</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//事件通息</span>
+        <span class="k">optional</span> <span class="n">ProgramStatus</span> <span class="na">programStatus</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//程序状态</span>
+        <span class="k">optional</span> <span class="n">ConnectStatus</span> <span class="na">connectStatus</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//连接状态</span>
+        <span class="k">optional</span> <span class="n">QotRight</span> <span class="na">qotRight</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//行情权限</span>
+        <span class="k">optional</span> <span class="n">APILevel</span> <span class="na">apiLevel</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//用户等级</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">Response</span>
@@ -423,7 +462,7 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>Notify是系统推送协议，目前仅支持NotifyType_GtwEvent类型推送</li>
+<li>Notify是系统推送协议</li>
 <li>FutuOpenD将内部的一些重要运行状态通知到client前端，可用于前端的管理平台监控处理</li>
 </ul>
 </div>
@@ -431,7 +470,7 @@
 <hr class="docutils" />
 <div class="section" id="keepalive-proto-1004">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/KeepAlive.proto">KeepAlive.proto</a> - 1004保活心跳<a class="headerlink" href="#keepalive-proto-1004" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//客户端发包时的格林威治时间戳，单位秒</span>
@@ -469,7 +508,7 @@
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Common.proto">Common.proto</a> - 通用定义<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="rettype">
 <h3>RetType - 协议返回值<a class="headerlink" href="#rettype" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//返回结果</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="c1">//返回结果</span>
 <span class="kd">enum</span> <span class="n">RetType</span>
 <span class="p">{</span>
         <span class="na">RetType_Succeed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//成功</span>
@@ -490,7 +529,7 @@
 <hr class="docutils" />
 <div class="section" id="packetid">
 <h3>PacketID - 请求包标识<a class="headerlink" href="#packetid" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//包的唯一标识，用于回放攻击的识别和保护</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="c1">//包的唯一标识，用于回放攻击的识别和保护</span>
 <span class="kd">message</span> <span class="nc">PacketID</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">uint64</span> <span class="na">connID</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//当前TCP连接的连接ID，一条连接的唯一标识，InitConnect协议会返回</span>
@@ -506,6 +545,38 @@
 </ul>
 </div>
 </div>
+<hr class="docutils" />
+<div class="section" id="programstatus">
+<h3>ProgramStatus - 程序的当前状态<a class="headerlink" href="#programstatus" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="c1">//程序的当前状态</span>
+<span class="kd">enum</span> <span class="n">ProgramStatusType</span>
+<span class="p">{</span>
+        <span class="na">ProgramStatusType_None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="na">ProgramStatusType_Loaded</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回</span>
+
+        <span class="na">ProgramStatusType_Loging</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//登录中</span>
+        <span class="na">ProgramStatusType_NeedPicVerifyCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//需要图形验证码</span>
+        <span class="na">ProgramStatusType_NeedPhoneVerifyCode</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//需要手机验证码</span>
+        <span class="na">ProgramStatusType_LoginFailed</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//登录失败,详细原因在描述返回</span>
+        <span class="na">ProgramStatusType_ForceUpdate</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//客户端版本过低</span>
+
+        <span class="na">ProgramStatusType_NessaryDataPreparing</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//正在拉取类似免责声明等一些必要信息</span>
+        <span class="na">ProgramStatusType_NessaryDataMissing</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//缺少必要信息</span>
+        <span class="na">ProgramStatusType_UnAgreeDisclaimer</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//未同意免责声明</span>
+        <span class="na">ProgramStatusType_Ready</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//可以接收业务协议收发,正常可用状态</span>
+
+        <span class="c1">//OpenD登录后被强制退出登录，会导致连接全部断开,需要重连后才能得到以下该状态（并且需要在ui模式下）</span>
+        <span class="na">ProgramStatusType_ForceLogout</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//被强制退出登录,例如修改了登录密码,中途打开设备锁等,详细原因在描述返回</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">ProgramStatus</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">ProgramStatusType</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//当前状态</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">strExtDesc</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 额外描述</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id3">
@@ -513,7 +584,7 @@
 <div class="section" id="qotmarket">
 <h3>QotMarket - 行情市场<a class="headerlink" href="#qotmarket" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotMarket</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotMarket</span>
 <span class="p">{</span>
         <span class="na">QotMarket_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知市场</span>
         <span class="na">QotMarket_HK_Security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//港股</span>
@@ -536,7 +607,7 @@
 <div class="section" id="securitytype">
 <h3>SecurityType - 证券类型<a class="headerlink" href="#securitytype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SecurityType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SecurityType</span>
 <span class="p">{</span>
         <span class="na">SecurityType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">SecurityType_Bond</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//债券</span>
@@ -557,7 +628,7 @@
 <div class="section" id="platesettype">
 <h3>PlateSetType - 板块集合类型<a class="headerlink" href="#platesettype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PlateSetType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PlateSetType</span>
 <span class="p">{</span>
         <span class="na">PlateSetType_All</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//所有板块</span>
         <span class="na">PlateSetType_Industry</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//行业板块</span>
@@ -579,7 +650,7 @@
 <div class="section" id="warranttype">
 <h3>WarrantType - 窝轮类型<a class="headerlink" href="#warranttype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantType</span>
 <span class="p">{</span>
         <span class="na">WarrantType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">WarrantType_Buy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//认购</span>
@@ -595,7 +666,7 @@
 <div class="section" id="optiontype">
 <h3>OptionType - 期权类型<a class="headerlink" href="#optiontype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OptionType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OptionType</span>
 <span class="p">{</span>
         <span class="na">OptionType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">OptionType_Call</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//认购</span>
@@ -609,7 +680,7 @@
 <div class="section" id="id4">
 <h3>QotMarketState - 行情市场状态<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotMarketState</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotMarketState</span>
 <span class="p">{</span>
         <span class="na">QotMarketState_None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 无交易,美股未开盘</span>
         <span class="na">QotMarketState_Auction</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 竞价</span>
@@ -638,7 +709,7 @@
 <div class="section" id="tradedatetype">
 <h3>TradeDateType - 交易时间类型<a class="headerlink" href="#tradedatetype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TradeDateType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TradeDateType</span>
 <span class="p">{</span>
         <span class="na">TradeDateType_Whole</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//全天交易</span>
         <span class="na">TradeDateType_Morning</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//上午交易，下午休市</span>
@@ -652,7 +723,7 @@
 <div class="section" id="rehabtype-k">
 <h3>RehabType - K线复权类型<a class="headerlink" href="#rehabtype-k" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">RehabType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">RehabType</span>
 <span class="p">{</span>
         <span class="na">RehabType_None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//不复权</span>
         <span class="na">RehabType_Forward</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//前复权</span>
@@ -666,7 +737,7 @@
 <div class="section" id="kltype-k">
 <h3>KLType - K线类型<a class="headerlink" href="#kltype-k" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//枚举值兼容旧协议定义</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="c1">//枚举值兼容旧协议定义</span>
  <span class="c1">//新类型季K,年K,3分K暂时没有支持历史K线</span>
 <span class="kd">enum</span> <span class="n">KLType</span>
 <span class="p">{</span>
@@ -690,7 +761,7 @@
 <div class="section" id="klfields-k">
 <h3>KLFields - K线数据字段<a class="headerlink" href="#klfields-k" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">KLFields</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">KLFields</span>
 <span class="p">{</span>
         <span class="na">KLFields_High</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//最高价</span>
         <span class="na">KLFields_Open</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//开盘价</span>
@@ -711,7 +782,7 @@
 <div class="section" id="subtype">
 <h3>SubType - 行情定阅类型<a class="headerlink" href="#subtype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//订阅类型</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="c1">//订阅类型</span>
  <span class="c1">//枚举值兼容旧协议定义</span>
 <span class="kd">enum</span> <span class="n">SubType</span>
 <span class="p">{</span>
@@ -741,7 +812,7 @@
 <div class="section" id="tickerdirection">
 <h3>TickerDirection - 逐笔方向<a class="headerlink" href="#tickerdirection" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TickerDirection</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TickerDirection</span>
 <span class="p">{</span>
         <span class="na">TickerDirection_Bid</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//外盘</span>
         <span class="na">TickerDirection_Ask</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//内盘</span>
@@ -755,7 +826,7 @@
 <div class="section" id="tickertype">
 <h3>TickerType - 逐笔类型<a class="headerlink" href="#tickertype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//逐笔类型</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="c1">//逐笔类型</span>
 <span class="kd">enum</span> <span class="n">TickerType</span>
 <span class="p">{</span>
         <span class="na">TickerType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
@@ -766,6 +837,29 @@
         <span class="na">TickerType_InterNoneAutomatch</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//同一证券商非自动对盘</span>
         <span class="na">TickerType_OddLot</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//碎股交易</span>
         <span class="na">TickerType_Auction</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//竞价交易</span>
+        <span class="na">TickerType_Bulk</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//批量交易</span>
+        <span class="na">TickerType_Crash</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//现金交易</span>
+        <span class="na">TickerType_CrossMarket</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//跨市场交易</span>
+        <span class="na">TickerType_BulkSold</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//批量卖出</span>
+        <span class="na">TickerType_FreeOnBoard</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//离价交易</span>
+        <span class="na">TickerType_Rule127Or155</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//第127条交易（纽交所规则）或第155条交易</span>
+        <span class="na">TickerType_Delay</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//延迟交易</span>
+        <span class="na">TickerType_MarketCenterClosePrice</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//中央收市价</span>
+        <span class="na">TickerType_NextDay</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//隔日交易</span>
+        <span class="na">TickerType_MarketCenterOpening</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">//中央开盘价交易</span>
+        <span class="na">TickerType_PriorReferencePrice</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//前参考价</span>
+        <span class="na">TickerType_MarketCenterOpenPrice</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span> <span class="c1">//中央开盘价</span>
+        <span class="na">TickerType_Seller</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//卖方</span>
+        <span class="na">TickerType_T</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//T类交易(盘前和盘后交易)</span>
+        <span class="na">TickerType_ExtendedTradingHours</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//延长交易时段</span>
+        <span class="na">TickerType_Contingent</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">//合单交易</span>
+        <span class="na">TickerType_AvgPrice</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span> <span class="c1">//平均价成交</span>
+        <span class="na">TickerType_OTCSold</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">//场外售出</span>
+        <span class="na">TickerType_OddLotCrossMarket</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span> <span class="c1">//碎股跨市场交易</span>
+        <span class="na">TickerType_DerivativelyPriced</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span> <span class="c1">//衍生工具定价</span>
+        <span class="na">TickerType_ReOpeningPriced</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span> <span class="c1">//再开盘定价</span>
+        <span class="na">TickerType_ClosingPriced</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span> <span class="c1">//收盘定价</span>
+        <span class="na">TickerType_ComprehensiveDelayPrice</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="c1">//综合延迟价格</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -775,7 +869,7 @@
 <div class="section" id="pushdatatype">
 <h3>PushDataType - 推送数据来源分类，目前只有逐笔在使用<a class="headerlink" href="#pushdatatype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//推送数据来源分类，目前只有逐笔在使用</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="c1">//推送数据来源分类，目前只有逐笔在使用</span>
 <span class="kd">enum</span> <span class="n">PushDataType</span>
 <span class="p">{</span>
         <span class="na">PushDataType_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -791,7 +885,7 @@
 <div class="section" id="darkstatus">
 <h3>DarkStatus - 暗盘交易状态<a class="headerlink" href="#darkstatus" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//暗盘交易状态</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="c1">//暗盘交易状态</span>
 <span class="kd">enum</span> <span class="n">DarkStatus</span>
 <span class="p">{</span>
         <span class="na">DarkStatus_None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//无暗盘交易</span>
@@ -806,7 +900,7 @@
 <div class="section" id="companyact">
 <h3>CompanyAct - 公司行动<a class="headerlink" href="#companyact" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//公司行动</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="c1">//公司行动</span>
 <span class="kd">enum</span> <span class="n">CompanyAct</span>
 <span class="p">{</span>
         <span class="na">CompanyAct_None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//无</span>
@@ -827,7 +921,7 @@
 <div class="section" id="holdercategory">
 <h3>HolderCategory - 持有者类别<a class="headerlink" href="#holdercategory" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">HolderCategory</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">HolderCategory</span>
 <span class="p">{</span>
         <span class="na">HolderCategory_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">HolderCategory_Agency</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//机构</span>
@@ -842,7 +936,7 @@
 <div class="section" id="sortfield">
 <h3>SortField - 涡轮排序<a class="headerlink" href="#sortfield" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SortField</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SortField</span>
 <span class="p">{</span>
         <span class="na">SortField_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="na">SortField_Code</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//代码</span>
@@ -888,7 +982,7 @@
 <div class="section" id="issuer">
 <h3>Issuer - 涡轮发行人<a class="headerlink" href="#issuer" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Issuer</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Issuer</span>
 <span class="p">{</span>
         <span class="na">Issuer_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">Issuer_SG</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//法兴</span>
@@ -922,7 +1016,7 @@
 <div class="section" id="ipoperiod">
 <h3>IpoPeriod - 涡轮上市日<a class="headerlink" href="#ipoperiod" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">IpoPeriod</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">IpoPeriod</span>
 <span class="p">{</span>
         <span class="na">IpoPeriod_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">IpoPeriod_Today</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//今日上市</span>
@@ -939,7 +1033,7 @@
 <div class="section" id="pricetype">
 <h3>PriceType - 涡轮价外/内<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PriceType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PriceType</span>
 <span class="p">{</span>
         <span class="na">PriceType_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="na">PriceType_Outside</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//价外</span>
@@ -953,7 +1047,7 @@
 <div class="section" id="warrantstatus">
 <h3>WarrantStatus - 涡轮状态<a class="headerlink" href="#warrantstatus" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantStatus</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantStatus</span>
 <span class="p">{</span>
         <span class="na">WarrantStatus_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
         <span class="na">WarrantStatus_Normal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//正常状态</span>
@@ -966,10 +1060,25 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="qotright">
+<h3>QotRight - 行情权限<a class="headerlink" href="#qotright" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotRight</span>
+<span class="p">{</span>
+        <span class="na">QotRight_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
+        <span class="na">QotRight_Bmp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Bmp，无法订阅</span>
+        <span class="na">QotRight_Level1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Level1</span>
+        <span class="na">QotRight_Level2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//Level2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="security">
 <h3>Security - 证券标识<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Security</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Security</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">market</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//QotMarket,股票市场</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">code</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//股票代码</span>
@@ -982,7 +1091,7 @@
 <div class="section" id="kline-k">
 <h3>KLine - K线数据点<a class="headerlink" href="#kline-k" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">KLine</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">KLine</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//时间戳字符串</span>
         <span class="k">required</span> <span class="kt">bool</span> <span class="na">isBlank</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//是否是空内容的点,若为ture则只有时间信息</span>
@@ -1006,7 +1115,7 @@
 <div class="section" id="basicqot">
 <h3>BasicQot - 基础报价<a class="headerlink" href="#basicqot" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="kd">message</span> <span class="nc">OptionBasicQotExData</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span> <span class="kd">message</span> <span class="nc">OptionBasicQotExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">strikePrice</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//行权价</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">contractSize</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//每份合约数</span>
@@ -1049,7 +1158,7 @@
 <div class="section" id="timeshare">
 <h3>TimeShare - 分时数据点<a class="headerlink" href="#timeshare" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TimeShare</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TimeShare</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//时间字符串</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">minute</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//距离0点过了多少分钟</span>
@@ -1069,7 +1178,7 @@
 <div class="section" id="securitystaticbasic">
 <h3>SecurityStaticBasic - 证券基本静态信息<a class="headerlink" href="#securitystaticbasic" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SecurityStaticBasic</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SecurityStaticBasic</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//股票ID</span>
@@ -1088,7 +1197,7 @@
 <div class="section" id="warrantstaticexdata">
 <h3>WarrantStaticExData - 窝轮额外静态信息<a class="headerlink" href="#warrantstaticexdata" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">WarrantStaticExData</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">WarrantStaticExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.WarrantType,涡轮类型</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//所属正股</span>
@@ -1101,7 +1210,7 @@
 <div class="section" id="optionstaticexdata">
 <h3>OptionStaticExData - 期权额外静态信息<a class="headerlink" href="#optionstaticexdata" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OptionStaticExData</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OptionStaticExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.OptionType,期权</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//标的股</span>
@@ -1118,7 +1227,7 @@
 <div class="section" id="securitystaticinfo">
 <h3>SecurityStaticInfo - 证券静态信息<a class="headerlink" href="#securitystaticinfo" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SecurityStaticInfo</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SecurityStaticInfo</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">SecurityStaticBasic</span> <span class="na">basic</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//基本股票静态信息</span>
         <span class="k">optional</span> <span class="n">WarrantStaticExData</span> <span class="na">warrantExData</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//窝轮额外股票静态信息</span>
@@ -1132,7 +1241,7 @@
 <div class="section" id="broker">
 <h3>Broker - 买卖经纪摆盘<a class="headerlink" href="#broker" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Broker</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Broker</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//经纪ID</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//经纪名称</span>
@@ -1146,7 +1255,7 @@
 <div class="section" id="ticker">
 <h3>Ticker - 逐笔成交<a class="headerlink" href="#ticker" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Ticker</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Ticker</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//时间字符串</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">sequence</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 唯一标识</span>
@@ -1168,7 +1277,7 @@
 <div class="section" id="orderbook">
 <h3>OrderBook - 买卖十档摆盘<a class="headerlink" href="#orderbook" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderBook</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderBook</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">price</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//委托价格</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//委托数量</span>
@@ -1182,7 +1291,7 @@
 <div class="section" id="shareholdingchange">
 <h3>ShareHoldingChange - 持股变动<a class="headerlink" href="#shareholdingchange" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">ShareHoldingChange</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">ShareHoldingChange</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">holderName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//持有者名称（机构名称 或 基金名称 或 高管姓名）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingQty</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//当前持股数量</span>
@@ -1200,7 +1309,7 @@
 <div class="section" id="subinfo">
 <h3>SubInfo - 单个定阅类型信息<a class="headerlink" href="#subinfo" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SubInfo</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SubInfo</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">subType</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//Qot_Common.SubType,订阅类型</span>
         <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">//订阅该类型行情的证券</span>
@@ -1213,7 +1322,7 @@
 <div class="section" id="connsubinfo">
 <h3>ConnSubInfo - 单条连接定阅信息<a class="headerlink" href="#connsubinfo" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">ConnSubInfo</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">ConnSubInfo</span>
 <span class="p">{</span>
         <span class="k">repeated</span> <span class="n">SubInfo</span> <span class="na">subInfoList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//该连接订阅信息</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">usedQuota</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//该连接已经使用的订阅额度</span>
@@ -1232,7 +1341,7 @@
 <div class="section" id="plateinfo">
 <h3>PlateInfo - 单条连接定阅信息<a class="headerlink" href="#plateinfo" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">PlateInfo</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">PlateInfo</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">plate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//板块</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//板块名字</span>
@@ -1246,7 +1355,7 @@
 <div class="section" id="rehab">
 <h3>Rehab - 复权信息<a class="headerlink" href="#rehab" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Rehab</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Rehab</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//时间字符串</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">companyActFlag</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//公司行动(CompanyAct)组合标志位,指定某些字段值是否有效</span>
@@ -1283,7 +1392,7 @@
 <div class="section" id="orderstatus">
 <h3>OrderStatus - 订单状态<a class="headerlink" href="#orderstatus" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderStatus</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderStatus</span>
 <span class="p">{</span>
         <span class="na">OrderStatus_Unsubmitted</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未提交</span>
         <span class="na">OrderStatus_Unknown</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//未知状态</span>
@@ -1310,7 +1419,7 @@
 <div class="section" id="trdenv">
 <h3>TrdEnv - 交易环境<a class="headerlink" href="#trdenv" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdEnv</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdEnv</span>
 <span class="p">{</span>
         <span class="na">TrdEnv_Simulate</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//仿真环境(模拟环境)</span>
         <span class="na">TrdEnv_Real</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//真实环境</span>
@@ -1323,7 +1432,7 @@
 <div class="section" id="trdmarket">
 <h3>TrdMarket - 交易市场<a class="headerlink" href="#trdmarket" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//交易市场，是大的市场，不是具体品种</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="c1">//交易市场，是大的市场，不是具体品种</span>
 <span class="kd">enum</span> <span class="n">TrdMarket</span>
 <span class="p">{</span>
         <span class="na">TrdMarket_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知市场</span>
@@ -1340,7 +1449,7 @@
 <div class="section" id="trdside">
 <h3>TrdSide - 交易方向<a class="headerlink" href="#trdside" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdSide</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdSide</span>
 <span class="p">{</span>
         <span class="c1">//客户端下单只传Buy或Sell即可，SellShort是美股订单时服务器返回有此方向，BuyBack目前不存在，但也不排除服务器会传</span>
         <span class="na">TrdSide_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知方向</span>
@@ -1357,7 +1466,7 @@
 <div class="section" id="ordertype">
 <h3>OrderType - 订单类型<a class="headerlink" href="#ordertype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderType</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderType</span>
 <span class="p">{</span>
         <span class="na">OrderType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知类型</span>
         <span class="na">OrderType_Normal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//普通订单(港股的增强限价订单、A股的限价委托、美股的限价订单)</span>
@@ -1376,7 +1485,7 @@
 <div class="section" id="positionside">
 <h3>PositionSide - 持仓方向类型<a class="headerlink" href="#positionside" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PositionSide</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PositionSide</span>
 <span class="p">{</span>
         <span class="na">PositionSide_Unknown</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//未知方向</span>
         <span class="na">PositionSide_Long</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//多仓，默认情况是多仓</span>
@@ -1390,7 +1499,7 @@
 <div class="section" id="modifyorderop">
 <h3>ModifyOrderOp - 修改订单操作类型<a class="headerlink" href="#modifyorderop" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">ModifyOrderOp</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">ModifyOrderOp</span>
 <span class="p">{</span>
         <span class="c1">//港股支持全部操作，美股目前仅支持ModifyOrderOp_Normal和ModifyOrderOp_Cancel</span>
         <span class="na">ModifyOrderOp_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知操作</span>
@@ -1408,7 +1517,7 @@
 <div class="section" id="reconfirmorderreason">
 <h3>ReconfirmOrderReason - 确认订单类型<a class="headerlink" href="#reconfirmorderreason" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">ReconfirmOrderReason</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">ReconfirmOrderReason</span>
 <span class="p">{</span>
         <span class="na">ReconfirmOrderReason_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知原因</span>
         <span class="na">ReconfirmOrderReason_QtyTooLarge</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//订单数量太大，确认继续下单并否拆分成多个小订单</span>
@@ -1422,7 +1531,7 @@
 <div class="section" id="trdheader">
 <h3>TrdHeader - 交易公共参数头<a class="headerlink" href="#trdheader" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TrdHeader</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TrdHeader</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">trdEnv</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易环境, 参见TrdEnv的枚举定义</span>
         <span class="k">required</span> <span class="kt">uint64</span> <span class="na">accID</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//业务账号, 业务账号与交易环境、市场权限需要匹配，否则会返回错误</span>
@@ -1436,7 +1545,7 @@
 <div class="section" id="trdacc">
 <h3>TrdAcc - 交易账户<a class="headerlink" href="#trdacc" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TrdAcc</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TrdAcc</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">trdEnv</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易环境，参见TrdEnv的枚举定义</span>
         <span class="k">required</span> <span class="kt">uint64</span> <span class="na">accID</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//业务账号</span>
@@ -1450,7 +1559,7 @@
 <div class="section" id="funds">
 <h3>Funds - 账户资金<a class="headerlink" href="#funds" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Funds</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Funds</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">power</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//购买力，3位精度，下同</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">totalAssets</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//资产净值</span>
@@ -1468,7 +1577,7 @@
 <div class="section" id="position">
 <h3>Position - 账户持仓<a class="headerlink" href="#position" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Position</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Position</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">uint64</span> <span class="na">positionID</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//持仓ID，一条持仓的唯一标识</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">positionSide</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//持仓方向，参见PositionSide的枚举定义</span>
@@ -1498,7 +1607,7 @@
 <div class="section" id="order">
 <h3>Order - 订单<a class="headerlink" href="#order" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Order</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Order</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">trdSide</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易方向, 参见TrdSide的枚举定义</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">orderType</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//订单类型, 参见OrderType的枚举定义</span>
@@ -1526,7 +1635,7 @@
 <div class="section" id="orderfill">
 <h3>OrderFill - 成交<a class="headerlink" href="#orderfill" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderFill</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderFill</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">trdSide</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易方向, 参见TrdSide的枚举定义</span>
         <span class="k">required</span> <span class="kt">uint64</span> <span class="na">fillID</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//成交号</span>
@@ -1551,7 +1660,7 @@
 <div class="section" id="maxtrdqtys">
 <h3>MaxTrdQtys - 最大交易数量<a class="headerlink" href="#maxtrdqtys" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">MaxTrdQtys</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">MaxTrdQtys</span>
 <span class="p">{</span>
         <span class="c1">//因目前服务器实现的问题，卖空需要先卖掉持仓才能再卖空，是分开两步卖的，买回来同样是逆向两步；而看多的买是可以现金加融资一起一步买的，请注意这个差异</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">maxCashBuy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//不使用融资，仅自己的现金最大可买整手股数</span>
@@ -1568,7 +1677,7 @@
 <div class="section" id="trdfilterconditions">
 <h3>TrdFilterConditions - 过滤条件<a class="headerlink" href="#trdfilterconditions" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//过滤条件，条件组合是&quot;与&quot;不是&quot;或&quot;，用于获取订单、成交、持仓等时二次过滤</span>
+<div><div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="c1">//过滤条件，条件组合是&quot;与&quot;不是&quot;或&quot;，用于获取订单、成交、持仓等时二次过滤</span>
 <span class="kd">message</span> <span class="nc">TrdFilterConditions</span>
 <span class="p">{</span>
         <span class="k">repeated</span> <span class="kt">string</span> <span class="na">codeList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//代码过滤，只返回包含这些代码的数据，没传不过滤</span>
@@ -1586,9 +1695,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1597,7 +1704,7 @@
         <a href="quote_protocol.html" class="btn btn-neutral float-right" title="行情协议" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral" title="协议接口" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="协议接口" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1606,7 +1713,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -1622,36 +1729,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.9',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
   
  
 <script type="text/javascript">

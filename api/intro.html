@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api-doc 3.9 documentation</title>
+  <title>介绍 &mdash; futu-api-doc 3.10 documentation</title>
   
 
   
@@ -17,43 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
-        <link rel="next" title="安装指南" href="setup.html"/>
-        <link rel="prev" title="交易协议" href="../protocol/trade_protocol.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="安装指南" href="setup.html" />
+    <link rel="prev" title="交易协议" href="../protocol/trade_protocol.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +62,7 @@
             
             
               <div class="version">
-                3.9
+                3.10
               </div>
             
           
@@ -128,7 +123,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -136,9 +131,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -167,7 +163,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/intro.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/intro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,17 +194,22 @@
 .admonition > p:before {
     margin-right: 4px;  /* make room for the exclamation icon */
 }
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="section" id="id1">
 <h1>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></p>
 <p>交易品种:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.港股：正股、ETF、窝轮、牛熊证
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.港股：正股、ETF、窝轮、牛熊证
 2.美股：正股、ETF
 </pre></div>
 </div>
 <p>行情数据:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.支持A股、港股
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.支持A股、港股
 2.支持定阅并接收实时报价、逐笔、买卖档，买卖经纪（仅港股)等深度数据
 3.:strike:`支持获取历史K线数据`
 </pre></div>
@@ -351,9 +352,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -362,7 +361,7 @@
         <a href="setup.html" class="btn btn-neutral float-right" title="安装指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../protocol/trade_protocol.html" class="btn btn-neutral" title="交易协议" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../protocol/trade_protocol.html" class="btn btn-neutral float-left" title="交易协议" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -371,7 +370,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -387,36 +386,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.9',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
   
  
 <script type="text/javascript">

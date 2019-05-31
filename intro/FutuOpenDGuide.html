@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.9 documentation</title>
+  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.10 documentation</title>
   
 
   
@@ -17,43 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
-        <link rel="next" title="协议接口" href="../protocol/intro.html"/>
-        <link rel="prev" title="介绍" href="intro.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="协议接口" href="../protocol/intro.html" />
+    <link rel="prev" title="介绍" href="intro.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +62,7 @@
             
             
               <div class="version">
-                3.9
+                3.10
               </div>
             
           
@@ -118,6 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#relogin">relogin - 重登录</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ping">ping - 检测与连接点之间的时延</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#show-delay-report">show_delay_report - 展示延迟统计报告</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#close-api-conn-api">close_api_conn - 关闭所有API连接</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">补充说明</a><ul>
@@ -157,7 +153,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -165,9 +161,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -196,7 +193,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/intro/FutuOpenDGuide.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/intro/FutuOpenDGuide.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -226,6 +223,11 @@
 
 .admonition > p:before {
     margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
 }
 </style>
 <div class="section" id="futuopend">
@@ -308,7 +310,7 @@
 <tbody valign="top">
 <tr class="row-even"><td>ip</td>
 <td>监听地址</td>
-<td>是，不设置则默认0.0.0.0</td>
+<td>是，不设置则默认127.0.0.1</td>
 </tr>
 <tr class="row-odd"><td>api_port</td>
 <td>API协议接收端口</td>
@@ -588,6 +590,13 @@
 <p><strong>Paramters push_count_type:</strong> str，推送延迟的类型(sr2ss,ss2cr,cr2cs,ss2cs,sr2cs)，默认sr2cs，sr指服务器接收时间(目前只有港股支持该时间)，ss指服务器发出时间，cr指OpenD接收时间，cs指OpenD发出时间</p>
 </div></blockquote>
 </div>
+<div class="section" id="close-api-conn-api">
+<h3>close_api_conn - 关闭所有API连接<a class="headerlink" href="#close-api-conn-api" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>close_api_conn</p>
+<p>关闭所有API连接</p>
+</div></blockquote>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id13">
@@ -602,7 +611,7 @@
 <h3>RSA私钥文件<a class="headerlink" href="#rsa" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>参考文件格式：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>        -----BEGIN RSA PRIVATE KEY-----
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>        -----BEGIN RSA PRIVATE KEY-----
 MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
 +uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
 0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
@@ -623,7 +632,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>RSA 密钥的填充方式为 PKCS1, 位数1024</li>
-<li>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索&#8221;RSA 在线生成&#8221;</li>
+<li>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索”RSA 在线生成”</li>
 <li>将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项</li>
 <li>公钥可通过私钥计算得到，但生成私钥时不要设置密码</li>
 </ul>
@@ -636,9 +645,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -647,7 +654,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
         <a href="../protocol/intro.html" class="btn btn-neutral float-right" title="协议接口" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral" title="介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -656,7 +663,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -672,36 +679,15 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.9',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
   
  
 <script type="text/javascript">

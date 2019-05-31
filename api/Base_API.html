@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.9 documentation</title>
+  <title>基础API &mdash; futu-api-doc 3.10 documentation</title>
   
 
   
@@ -17,43 +17,38 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
-        <link rel="next" title="行情API" href="Quote_API.html"/>
-        <link rel="prev" title="安装指南" href="setup.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="行情API" href="Quote_API.html" />
+    <link rel="prev" title="安装指南" href="setup.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -67,7 +62,7 @@
             
             
               <div class="version">
-                3.9
+                3.10
               </div>
             
           
@@ -120,6 +115,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#autype-k">AuType - K线复权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#darkstatus">DarkStatus - 暗盘状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gtweventtype">GtwEventType - 网关异步通知类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#programstatustype">ProgramStatusType - 程序运行状态通知类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ipoperiod">IpoPeriod - 涡轮上市日</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#issuer">Issuer - 发行人过滤列表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kldatastatus-k">KLDataStatus - k线数据状态</a></li>
@@ -153,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 涡轮状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wrttype">WrtType - 港股窝轮类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sortfield">SortField - 涡轮排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifyusersecurityop">ModifyUserSecurityOp - 自选股操作类型</a></li>
 </ul>
 </li>
 </ul>
@@ -174,7 +171,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -182,9 +179,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -213,7 +211,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/Base_API.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/Base_API.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -244,6 +242,11 @@
 .admonition > p:before {
     margin-right: 4px;  /* make room for the exclamation icon */
 }
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <div class="section" id="api">
 <h1>基础API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
@@ -270,8 +273,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>client_id</strong> &#8211; str, client的标识</li>
-<li><strong>client_ver</strong> &#8211; int, client的版本号</li>
+<li><strong>client_id</strong> – str, client的标识</li>
+<li><strong>client_ver</strong> – int, client的版本号</li>
 </ul>
 </td>
 </tr>
@@ -282,7 +285,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_client_info</span><span class="p">(</span><span class="s2">&quot;MyFutuAPI&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -302,7 +305,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proto_fmt</strong> &#8211; <a class="reference external" href="#id2">ProtoFMT</a></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proto_fmt</strong> – <a class="reference external" href="#id2">ProtoFMT</a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -310,7 +313,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_proto_fmt</span><span class="p">(</span><span class="n">ProtoFMT</span><span class="o">.</span><span class="n">Protobuf</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -332,7 +335,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_encrypt</strong> &#8211; bool</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_encrypt</strong> – bool</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -340,7 +343,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">enable_proto_encrypt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_init_rsa_file</span><span class="p">(</span><span class="s2">&quot;conn_key.txt&quot;</span><span class="p">)</span>   <span class="c1"># rsa 私钥文件路径</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
@@ -361,7 +364,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> &#8211; str, 文件路径</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> – str, 文件路径</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -369,7 +372,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">enable_proto_encrypt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_init_rsa_file</span><span class="p">(</span><span class="s2">&quot;conn_key.txt&quot;</span><span class="p">)</span>   <span class="c1"># rsa 私钥文件路径</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
@@ -390,7 +393,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_daemon</strong> &#8211; bool, 是否所有内部线程都是daemon线程</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_daemon</strong> – bool, 是否所有内部线程都是daemon线程</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
 </tr>
@@ -398,7 +401,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_all_thread_daemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="c1"># 不调用quote_ctx.close()，进程也会退出</span>
@@ -561,6 +564,82 @@
 <dt id="GtwEventType.EnableDeviceLock">
 <code class="descname">EnableDeviceLock</code><a class="headerlink" href="#GtwEventType.EnableDeviceLock" title="Permalink to this definition">¶</a></dt>
 <dd><p>需启用设备锁</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="programstatustype">
+<h3>ProgramStatusType - 程序运行状态通知类型<a class="headerlink" href="#programstatustype" title="Permalink to this headline">¶</a></h3>
+<p>程序运行状态通知类型定义</p>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descname">GtwEventType</code></dt>
+<dd><dl class="attribute">
+<dt id="GtwEventType.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#GtwEventType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.LOADED">
+<code class="descname">LOADED</code><a class="headerlink" href="#GtwEventType.LOADED" title="Permalink to this definition">¶</a></dt>
+<dd><p>已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.LOGING">
+<code class="descname">LOGING</code><a class="headerlink" href="#GtwEventType.LOGING" title="Permalink to this definition">¶</a></dt>
+<dd><p>登录中</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.NEED_PIC_VERIFY_CODE">
+<code class="descname">NEED_PIC_VERIFY_CODE</code><a class="headerlink" href="#GtwEventType.NEED_PIC_VERIFY_CODE" title="Permalink to this definition">¶</a></dt>
+<dd><p>需要图形验证码</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.NEED_PHONE_VERIFY_CODE">
+<code class="descname">NEED_PHONE_VERIFY_CODE</code><a class="headerlink" href="#GtwEventType.NEED_PHONE_VERIFY_CODE" title="Permalink to this definition">¶</a></dt>
+<dd><p>需要手机验证码</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.LOGIN_FAILED">
+<code class="descname">LOGIN_FAILED</code><a class="headerlink" href="#GtwEventType.LOGIN_FAILED" title="Permalink to this definition">¶</a></dt>
+<dd><p>登录失败,详细原因在描述返回</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.FORCE_UPDATE">
+<code class="descname">FORCE_UPDATE</code><a class="headerlink" href="#GtwEventType.FORCE_UPDATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>客户端版本过低</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.NESSARY_DATA_PREPARING">
+<code class="descname">NESSARY_DATA_PREPARING</code><a class="headerlink" href="#GtwEventType.NESSARY_DATA_PREPARING" title="Permalink to this definition">¶</a></dt>
+<dd><p>正在拉取类似免责声明等一些必要信息</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.NESSARY_DATA_MISSING">
+<code class="descname">NESSARY_DATA_MISSING</code><a class="headerlink" href="#GtwEventType.NESSARY_DATA_MISSING" title="Permalink to this definition">¶</a></dt>
+<dd><p>缺少必要信息</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.UN_AGREE_DISCLAIMER">
+<code class="descname">UN_AGREE_DISCLAIMER</code><a class="headerlink" href="#GtwEventType.UN_AGREE_DISCLAIMER" title="Permalink to this definition">¶</a></dt>
+<dd><p>未同意免责声明</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GtwEventType.READY">
+<code class="descname">READY</code><a class="headerlink" href="#GtwEventType.READY" title="Permalink to this definition">¶</a></dt>
+<dd><p>可以接收业务协议收发,正常可用状态</p>
 </dd></dl>
 
 </dd></dl>
@@ -983,7 +1062,7 @@
 <hr class="docutils" />
 <div class="section" id="market">
 <h3>Market - 行情市场<a class="headerlink" href="#market" title="Permalink to this headline">¶</a></h3>
-<p>标识不同的行情市场，股票名称的前缀复用该字符串,如 <strong>&#8216;HK.00700&#8217;</strong>, <strong>&#8216;HK_FUTURE.999010&#8217;</strong></p>
+<p>标识不同的行情市场，股票名称的前缀复用该字符串,如 <strong>‘HK.00700’</strong>, <strong>‘HK_FUTURE.999010’</strong></p>
 <dl class="class">
 <dt id="Market">
 <em class="property">class </em><code class="descname">Market</code><a class="headerlink" href="#Market" title="Permalink to this definition">¶</a></dt>
@@ -1780,6 +1859,30 @@
 <dd><p>网关事件</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="SysNotifyType.PROGRAM_STATUS">
+<code class="descname">PROGRAM_STATUS</code><a class="headerlink" href="#SysNotifyType.PROGRAM_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>程序状态变化</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SysNotifyType.CONN_STATUS">
+<code class="descname">CONN_STATUS</code><a class="headerlink" href="#SysNotifyType.CONN_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>与Server的连接状态变化</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SysNotifyType.QOT_RIGHT">
+<code class="descname">QOT_RIGHT</code><a class="headerlink" href="#SysNotifyType.QOT_RIGHT" title="Permalink to this definition">¶</a></dt>
+<dd><p>行情权限变化</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SysNotifyType.API_LEVEL">
+<code class="descname">API_LEVEL</code><a class="headerlink" href="#SysNotifyType.API_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>API等级变化</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2430,6 +2533,34 @@
 
 </dd></dl>
 
+</div>
+<hr class="docutils" />
+<div class="section" id="modifyusersecurityop">
+<h3>ModifyUserSecurityOp - 自选股操作类型<a class="headerlink" href="#modifyusersecurityop" title="Permalink to this headline">¶</a></h3>
+<p>定义</p>
+<dl class="class">
+<dt id="ModifyUserSecurityOp">
+<em class="property">class </em><code class="descname">ModifyUserSecurityOp</code><a class="headerlink" href="#ModifyUserSecurityOp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ModifyUserSecurityOp.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#ModifyUserSecurityOp.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ModifyUserSecurityOp.ADD">
+<code class="descname">ADD</code><a class="headerlink" href="#ModifyUserSecurityOp.ADD" title="Permalink to this definition">¶</a></dt>
+<dd><p>新增</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ModifyUserSecurityOp.DEL">
+<code class="descname">DEL</code><a class="headerlink" href="#ModifyUserSecurityOp.DEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>删除</p>
+</dd></dl>
+
+</dd></dl>
+
 <hr class="docutils" />
 </div>
 </div>
@@ -2437,9 +2568,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -2448,7 +2577,7 @@
         <a href="Quote_API.html" class="btn btn-neutral float-right" title="行情API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="setup.html" class="btn btn-neutral" title="安装指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="setup.html" class="btn btn-neutral float-left" title="安装指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -2457,7 +2586,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -2473,36 +2602,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.9',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
   
  
 <script type="text/javascript">

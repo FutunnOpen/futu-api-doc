@@ -195,7 +195,7 @@ position_list_query - 获取账户持仓列表
  cost_price                   float        	成本价，无精度限制
  cost_price_valid             bool          成本价是否有效，True有效，False无效
  market_val                   float         市值，3位精度(A股2位)
- pl_ratio                     float         盈亏比例，无精度限制
+ pl_ratio                     float         盈亏比例，无精度限制（该字段为百分比字段，默认不展示%）
  pl_ratio_valid               bool          盈亏比例是否有效，True有效，False无效
  pl_val                       float         盈亏金额，3位精度(A股2位)
  pl_val_valid                 bool          盈亏金额是否有效，True有效，False无效

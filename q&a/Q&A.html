@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Q&amp;A &mdash; futu-api-doc 3.9 documentation</title>
+  <title>Q&amp;A &mdash; futu-api-doc 3.10 documentation</title>
   
 
   
@@ -17,42 +17,37 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
-
-  
-    <link rel="top" title="futu-api-doc 3.9 documentation" href="../index.html"/>
-        <link rel="prev" title="交易API" href="../api/Trade_API.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="交易API" href="../api/Trade_API.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -66,7 +61,7 @@
             
             
               <div class="version">
-                3.9
+                3.10
               </div>
             
           
@@ -152,7 +147,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id21">其他</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id22">Q1:注释&#8221;该字段为百分比字段，默认不展示%&#8221;和&#8221;该字段为百分比字段，展示为小数表示&#8221;和&#8221;该字段为比例字段，展示为小数表示&#8221;的详细解释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Q1:注释”该字段为百分比字段，默认不展示%”和”该字段为百分比字段，展示为小数表示”和”该字段为比例字段，展示为小数表示”的详细解释</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id23">Q2:请求限制说明</a></li>
 </ul>
 </li>
@@ -169,7 +164,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">futu-api-doc</a>
@@ -177,9 +172,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -208,7 +204,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/q&amp;a/Q&amp;A.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/q&amp;a/Q&amp;A.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -238,6 +234,11 @@
 
 .admonition > p:before {
     margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
 }
 </style>
 <div class="section" id="q-a">
@@ -327,7 +328,7 @@
 <div class="section" id="q4-linuxmultiprocessingpythonfutuopend">
 <h3>Q4:Linux下通过multiprocessing模块以多进程方式运行Python脚本可能会连不上FutuOpenD<a class="headerlink" href="#q4-linuxmultiprocessingpythonfutuopend" title="Permalink to this headline">¶</a></h3>
 <p>A: Linux/Mac环境下以默认方式创建进程后，父进程中py-futu-api内部创建的线程将会在子进程中消失，导致程序内部状态错误。可以用spawn方式来启动进程：</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
 <span class="n">mp</span><span class="o">.</span><span class="n">set_start_method</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
 <span class="o">...</span>
@@ -449,7 +450,7 @@
 <div class="section" id="id21">
 <h2>其他<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id22">
-<h3>Q1:注释&#8221;该字段为百分比字段，默认不展示%&#8221;和&#8221;该字段为百分比字段，展示为小数表示&#8221;和&#8221;该字段为比例字段，展示为小数表示&#8221;的详细解释<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3>Q1:注释”该字段为百分比字段，默认不展示%”和”该字段为百分比字段，展示为小数表示”和”该字段为比例字段，展示为小数表示”的详细解释<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p>A: 协议百分比和比例字段的注释，分为以下三种情况</p>
 <blockquote>
 <div><ul class="simple">
@@ -470,16 +471,14 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../api/Trade_API.html" class="btn btn-neutral" title="交易API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../api/Trade_API.html" class="btn btn-neutral float-left" title="交易API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -488,7 +487,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; Copyright 2018, futu
 
     </p>
   </div> 
@@ -504,36 +503,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.9',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
   
  
 <script type="text/javascript">
