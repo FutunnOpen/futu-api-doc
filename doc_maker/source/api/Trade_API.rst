@@ -350,6 +350,42 @@ modify_order - 修改订单
 	
 ----------------------------
 
+cancel_all_order - 取消订单
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: cancel_all_order(self, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+
+ 撤消全部订单。
+
+ :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
+ :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
+
+ =====================        ===========   ===================================================================
+ 参数                         类型          说明
+ =====================        ===========   ===================================================================
+ trd_env                      str           交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ order_id                     str           str，订单号
+ =====================        ===========   ===================================================================
+
+ :example:
+
+ .. code:: python
+
+  from futu import *
+  pwd_unlock = '123456'
+  trd_ctx = OpenHKTradeContext(host='127.0.0.1', port=11111)
+  print(trd_ctx.unlock_trade(pwd_unlock))
+  print(trd_ctx.cancel_all_order())
+  trd_ctx.close()
+
+.. note::
+
+	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
+
+----------------------------
+
 change_order - 改单(老接口，兼容以前)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
