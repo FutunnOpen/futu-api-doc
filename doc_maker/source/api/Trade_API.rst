@@ -357,17 +357,11 @@ cancel_all_order - 取消订单
 
  撤消全部订单。
 
- :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)，当前测试环境不支持改协议。
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
+ :return(ret_code, ret_data): ret_code为RET_OK时，表示发送请求成功，具体撤单消息参考TradeOrderHandlerBase
 
- =====================        ===========   ===================================================================
- 参数                         类型          说明
- =====================        ===========   ===================================================================
- trd_env                      str           交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
- order_id                     str           str，订单号
- =====================        ===========   ===================================================================
 
  :example:
 
