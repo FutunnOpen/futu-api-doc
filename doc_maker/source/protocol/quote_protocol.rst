@@ -984,6 +984,7 @@
 		optional int32 market = 1; //Qot_Common.QotMarket,股票市场
 		optional int32 secType = 2; //Qot_Common.SecurityType,股票类型
 		repeated Qot_Common.Security securityList = 3; //股票，若该字段存在，忽略其他字段，只返回该字段股票的静态信息
+		//当传入程序无法识别的股票时（包括很久之前退市的股票和不存在的股票），仍然返回股票信息，用静态信息标志来该股票不存在。
 	}
 
 	message S2C
