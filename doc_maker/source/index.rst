@@ -37,6 +37,14 @@ futuapi documentation
 	api/Base_API
 	api/Quote_API
 	api/Trade_API
+
+.. toctree::
+	:caption: .Net API
+	:maxdepth: 4
+	:hidden:
+
+	net/intro
+	net/start
 	
 .. toctree::
 	:caption: Q&A
