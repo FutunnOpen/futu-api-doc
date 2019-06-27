@@ -40,7 +40,7 @@ futuapi documentation
 
 .. toctree::
 	:caption: .Net API
-	:maxdepth: 4
+	:maxdepth: 2
 	:hidden:
 
 	net/intro

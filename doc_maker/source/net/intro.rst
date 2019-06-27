@@ -12,11 +12,11 @@
 .. _intro: ../intro/intro.html
 
 
-FTAPI4Net介绍
+.NET API简介
 -------------
-  * FTAPI4Net依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
+  * .NET API依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 
-  * FTAPI4Net开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5，用户可以根据需要采用更新的VS版本升级源码后编译目标调用库
+  * .NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5，用户可以根据需要采用更新的VS版本升级源码后编译目标调用库
 
   * FTAPI4NetSample提供了几个简单的行情和交易获取demo，可以用于上手学习。
 
@@ -30,13 +30,27 @@ FTAPI4Net介绍
 .. note::
    因为涉及到底层Native线程和.NET线程回调的问题，回调时需要特别注意自己的代码所处的线程。
 
+代码结构
+-------------
+
+.. code-block:: text
+
+	|-- FTAPI4Net
+	|   |-- FTCAPI.cs  Native接口导入类
+	|   `-- pb  pb自动生成文件，用于组包解包pb
+	|   |-- FTAPI_Trd.cs 交易接口和交易操作函数
+	|   |-- FTAPI_Qot.cs 行情接口和交易操作函数
+	|   |-- FTAPI.cs 连接层接口
+	|    
+	`-- FTAPI4NetSample 演示demo
+
 调用须知
 -------------
   * FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。
 
   * 所有接口以异步回调方式完成
 
-  * FTAPI4Net\lib目录下的FTAPIChannel.dll、OM.dll文件记得拷贝到程序运行目录下
+  * FTAPI4Net\lib目录下的FTAPIChannel.dll件记得拷贝到程序运行目录下
 
 
 --------------
@@ -79,18 +93,18 @@ FTAPI4Net介绍
   .. _UpdateOrderBook: ../protocol/quote_protocol.html#qot-updateorderbook-proto-3013
   .. _UpdateBroker: ../protocol/quote_protocol.html#qot-updatebroker-proto-3015
   .. _UpdateOrderDetail: ../protocol/quote_protocol.html#qot-updateorderdetail-proto-3017
-  .. _GetAccList: ../protocol/quote_protocol.html#trd-getacclist-proto-2001
-  .. _UnlockTrade: ../protocol/quote_protocol.html#trd-unlocktrade-proto-2005
-  .. _SubAccPush: ../protocol/quote_protocol.html#trd-subaccpush-proto-2008
-  .. _GetFunds: ../protocol/quote_protocol.html#trd-getfunds-proto-2101
-  .. _GetPositionList: ../protocol/quote_protocol.html#trd-getpositionlist-proto-2102
-  .. _GetMaxTrdQtys: ../protocol/quote_protocol.html#trd-getmaxtrdqtys-proto-2111
-  .. _GetOrderList: ../protocol/quote_protocol.html#trd-getorderlist-proto-2201
-  .. _GetOrderFillList: ../protocol/quote_protocol.html#trd-getorderfilllist-proto-2211
-  .. _GetHistoryOrderList: ../protocol/quote_protocol.html#trd-gethistoryorderlist-proto-2221
-  .. _GetHistoryOrderFillList: ../protocol/quote_protocol.html#trd-gethistoryorderfilllist-proto-2222
-  .. _UpdateOrder: ../protocol/quote_protocol.html#trd-updateorder-proto-2208
-  .. _UpdateOrderFill: ../protocol/quote_protocol.html#trd-updateorderfill-proto-2218
+  .. _GetAccList: ../protocol/trade_protocol.html#trd-getacclist-proto-2001
+  .. _UnlockTrade: ../protocol/trade_protocol.html#trd-unlocktrade-proto-2005
+  .. _SubAccPush: ../protocol/trade_protocol.html#trd-subaccpush-proto-2008
+  .. _GetFunds: ../protocol/trade_protocol.html#trd-getfunds-proto-2101
+  .. _GetPositionList: ../protocol/trade_protocol.html#trd-getpositionlist-proto-2102
+  .. _GetMaxTrdQtys: ../protocol/trade_protocol.html#trd-getmaxtrdqtys-proto-2111
+  .. _GetOrderList: ../protocol/trade_protocol.html#trd-getorderlist-proto-2201
+  .. _GetOrderFillList: ../protocol/trade_protocol.html#trd-getorderfilllist-proto-2211
+  .. _GetHistoryOrderList: ../protocol/trade_protocol.html#trd-gethistoryorderlist-proto-2221
+  .. _GetHistoryOrderFillList: ../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
+  .. _UpdateOrder: ../protocol/trade_protocol.html#trd-updateorder-proto-2208
+  .. _UpdateOrderFill: ../protocol/trade_protocol.html#trd-updateorderfill-proto-2218
   
 ---------------------------------------------------
 
@@ -98,7 +112,7 @@ FTAPI4Net介绍
 主要函数列表
 ---------------
 
-行情类FTAPI_Qot:
+行情类FTAPI_Qot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ================================    ==============================================   ==============================
 函数名（点开链接可查看具体协议）        功能简介                                         回调函数(FTSPI_Qot)            
@@ -135,7 +149,7 @@ GetUserSecurity_                    获取自选股分组下的股票           
 ModifyUserSecurity_                 修改自选股分组下的股票                           OnReply_ModifyUserSecurity
 ================================    ==============================================   ==============================
 
-FTSPI_Qot行情推送接收接口函数:
+FTSPI_Qot行情推送接收接口函数
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ==================================    =================================================
 回调函数（点开链接可查看具体协议）                                功能简介          
@@ -151,7 +165,7 @@ UpdateOrderDetail_                    推送委托明细
 ==================================    ================================================= 
 
 
-交易类FTAPI_Trd:
+交易类FTAPI_Trd
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ================================    ==============================================   ==============================
 函数名（点开链接可查看具体协议）        功能简介                                         回调函数(FTSPI_Trd)            
@@ -168,7 +182,7 @@ GetHistoryOrderList_                获取历史订单列表                    
 GetHistoryOrderFillList_            获取历史成交列表                                 OnReply_GetHistoryOrderFillList
 ================================    ==============================================   ==============================
 
-FTSPI_Trd交易推送接收接口函数:
+FTSPI_Trd交易推送接收接口函数
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ==================================    =================================================
 回调函数（点开链接可查看具体协议）                                功能简介          
