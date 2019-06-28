@@ -346,21 +346,21 @@ modify_order - 修改订单
   
 .. note::
 
-	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
+   * 接口限制请参见 `改单限制 <../protocol/intro.html#id31>`_
 	
 ----------------------------
 
-cancel_all_order - 取消订单
+cancel_all_order - 撤消全部订单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: cancel_all_order(self, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
 
  撤消全部订单。
 
- :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)，当前测试环境不支持改协议。
+ :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)，仿真环境不支持该协议。
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，表示发送请求成功，具体撤单消息参考TradeOrderHandlerBase
+ :return(ret_code, ret_data): ret_code为RET_OK时，表示发送请求成功，具体撤单回调消息参考 `TradeOrderHandlerBase <./Trade_API.html?highlight=tradeorderhandlerbase#id12>`_
 
 
  :example:
@@ -376,7 +376,7 @@ cancel_all_order - 取消订单
 
 .. note::
 
-	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
+   * 接口限制请参见 `改单限制 <../protocol/intro.html#id31>`_
 
 ----------------------------
 
