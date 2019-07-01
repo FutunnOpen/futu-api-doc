@@ -45,6 +45,14 @@ futuapi documentation
 
 	net/intro
 	net/start
+
+.. toctree::
+	:caption: .Java API
+	:maxdepth: 2
+	:hidden:
+
+	java/intro
+	java/start
 	
 .. toctree::
 	:caption: Q&A
