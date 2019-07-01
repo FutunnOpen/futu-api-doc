@@ -354,6 +354,7 @@
 		//以下为调整价格使用，对港、A股有意义，因为港股有价位，A股2位精度，美股可不传
 		optional bool adjustPrice = 8; //是否调整价格，如果价格不合法，是否调整到合法价位，true调整，false不调整
 		optional double adjustSideAndLimit = 9; //调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
+		optional int32 secMarket = 10; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 	}
 
 	message S2C
