@@ -11,8 +11,8 @@
 .. note::
 
     *   Windows 7/10 ，64位操作系统
-    *   官方提供的SDK编译环境为Visual Studio 2013，.NET Framework 4.5
-    *   如需更高版本VS环境，可以升级FTAPI4Net.sln
+    *   官方提供的SDK编译环境为Visual Studio 2013
+    *   如需更高版本VS环境，可以升级FTAPI.sln
 
 ------------
 代码快速入门
@@ -21,39 +21,37 @@
 
 .. code-block:: cpp
 
-    FTAPI.Init(); //初始化环境
-    FTAPI_Qot client = new FTAPI_Qot(); //创建行情对象
-    client.SetConnCallback(new SampleConnCallback()); //创建连接回调类
-    client.SetQotCallback(new SampleQotCallback()); //创建行情数据回调类
-    client.SetClientInfo("FTAPI4NET_Sample", 1); //建立标识
-    client.InitConnect("127.0.0.1", 11111, false); //开始连接
+    InitFTApi(); //初始化环境
+    FTAPI_Qot *pQot = new CreateQotApi(); //创建行情对象
+    SampleConnCallback *pCallback = new SampleConnCallback();
+    pQot->RegisterConnSpi(pCallback); //创建连接回调类
+    pQot->RegisterQotSpi(pCallback); //创建行情数据回调类
+    pQot->SetClientInfo("FTAPI_Sample", 1); //建立标识
+    pQot->InitConnect("127.0.0.1", 11111, false); //开始连接
 
+    Sleep(10);//为了代码简单，休眠等待连接初始化完成
+    GetGlobalState.Request req;
+    req.mutable_c2s()->set_userid(100000);
+    pQot->GetGlobalState(req);//简单调用获取状态
 
+    ReleaseQotApi(pQot);
+    UnInitFTApi();
 
 .. code-block:: cpp
 
-    class SampleConnCallback : FTSPI_Conn
+    class SampleConnCallback : public FTSPI_Conn
     {
-        public void OnConnect(FTAPI client, long errCode)
+        public void OnInitConnect(FTAPI_Conn* pConn, FTAPI::i64_t nErrCode, const char* strDesc)
         {
-            Console.WriteLine("Connected");
+           if (nErrCode == 0)
+           {
+               cout << "InitConnected" << endl;
+           }
         }
 
-        public void OnInitConnect(FTAPI client, bool ret, string desc)
+        void OnDisConnect(FTAPI_Conn* pConn, FTAPI::i64_t nErrCode)
         {
-            Console.WriteLine("InitConnected");
-            //简单演示一下获取用户行情基本信息
-            FTAPI_Qot qot = client as FTAPI_Qot;
-            {
-                GetGlobalState.Request req = GetGlobalState.Request.CreateBuilder().SetC2S(GetGlobalState.C2S.CreateBuilder().SetUserID(900019)).Build();
-                uint serialNo = qot.GetGlobalState(req);
-                Console.WriteLine("Send GetGlobalState: {0}", serialNo);
-            }
-        }
-
-        public void OnDisconnect(FTAPI client, long errCode, TcpDisconnectType disConnType)
-        {
-            Console.WriteLine("DisConnected");
+           cout << "DisConnect" << endl;
         }
     }
 
