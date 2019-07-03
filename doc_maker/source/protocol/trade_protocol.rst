@@ -457,6 +457,7 @@
 	* 交易公共参数头结构参考 `TrdHeader <base_define.html#trdheader>`_
 	* 修改操作枚举参考 `ModifyOrderOp <base_define.html#modifyorderop>`_
 	* 限频接口：30秒内最多30次
+	* 模拟交易以及A股通暂不支持全部撤单
 	
 -------------------------------------
 
