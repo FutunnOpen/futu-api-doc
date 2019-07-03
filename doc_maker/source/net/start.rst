@@ -34,12 +34,8 @@
 
     class SampleConnCallback : FTSPI_Conn
     {
-        public void OnConnect(FTAPI client, long errCode)
-        {
-            Console.WriteLine("Connected");
-        }
 
-        public void OnInitConnect(FTAPI client, bool ret, string desc)
+        public void OnInitConnect(FTAPI client, long errCode, string desc)
         {
             Console.WriteLine("InitConnected");
             //简单演示一下获取用户行情基本信息
@@ -51,7 +47,7 @@
             }
         }
 
-        public void OnDisconnect(FTAPI client, long errCode, TcpDisconnectType disConnType)
+        public void OnDisconnect(FTAPI client, long errCode)
         {
             Console.WriteLine("DisConnected");
         }
