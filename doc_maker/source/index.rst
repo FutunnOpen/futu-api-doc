@@ -55,6 +55,14 @@ futuapi documentation
 	java/start
 	
 .. toctree::
+	:caption: CPP API
+	:maxdepth: 2
+	:hidden:
+
+	cpp/intro
+	cpp/start
+	
+.. toctree::
 	:caption: Q&A
 	:maxdepth: 2
 	:hidden:
