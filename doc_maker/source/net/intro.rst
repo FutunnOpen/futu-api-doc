@@ -16,7 +16,7 @@
 -------------
   * .NET API依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 
-  * .NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5，用户可以根据需要采用更新的VS版本升级源码后编译目标调用库
+  * .NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5。或者FTAPI4NetCore.sln采用VS2017编译，采用NetCore2.1。Windows下使用32位.Net，Linux和Mac使用64位.NET。 用户可以根据需要采用更新的VS版本升级源码后编译目标调用库
 
   * Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。
 
@@ -25,7 +25,7 @@
 接口框架
 -------------
  * 为了保证性能最大，我们的中间层采用C++编写，然后提供C#接口调用层
- 
+
  .. image:: ../_static/NETAPI.png
 
 .. note::

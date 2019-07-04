@@ -16,7 +16,7 @@ Java API简介
 -------------
   * Java API依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 
-  * Java API开源了调用库代码，FTAPI4J采用IntelliJ编译，要求平台JDK 8，用户可以根据需要采用更新的JDK版本升级源码后编译目标调用库
+  * Java API开源了调用库代码，FTAPI4J采用IntelliJ编译，要求OpenJDK 8（Windows下需要32位JDK，Linux和Mac需要64位JDK）。用户可以根据需要采用更新的JDK版本升级源码后编译目标调用库。
 
   * Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。
 
