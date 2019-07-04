@@ -4,9 +4,9 @@
 .. role:: red-strengthen
     :class: red-strengthen
 
-====
+=====
 介绍
-====
+=====
 
 .. _FutuOpenD: ../intro/FutuOpenDGuide.html
 .. _intro: ../intro/intro.html
@@ -18,13 +18,14 @@
 
   * .NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5，用户可以根据需要采用更新的VS版本升级源码后编译目标调用库
 
-  * FTAPI4NetSample提供了几个简单的行情和交易获取demo，可以用于上手学习。
+  * Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。
 
   * 具体支持交易和行情品种参考\ `FutuOpenD网关客户端简介 <../intro/intro.html>`_
 
 接口框架
 -------------
  * 为了保证性能最大，我们的中间层采用C++编写，然后提供C#接口调用层
+ 
  .. image:: ../_static/NETAPI.png
 
 .. note::
@@ -42,7 +43,7 @@
 	|   |-- FTAPI_Qot.cs 行情接口和交易操作函数
 	|   |-- FTAPI.cs 连接层接口
 	|    
-	`-- FTAPI4NetSample 演示demo
+	`-- Sample 演示demo
 
 调用须知
 -------------
@@ -108,6 +109,196 @@
   
 ---------------------------------------------------
 
+枚举常量
+---------
+
+ConnectFailType - 连接错误码
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+连接错误码
+
+..  cpp:enum:: ConnectFailType
+
+ ..  attribute:: Unknown
+ 
+  未知错误
+  
+ ..  attribute:: None
+ 
+  没有错误
+  
+ ..  attribute:: CreateFailed
+ 
+  socket创建失败
+
+ ..  attribute:: CloseFailed
+
+  socket close错误
+
+ ..  attribute:: ShutdownFailed
+
+ socket shutdown错误
+
+ ..  attribute:: GetHostByNameFailed
+
+ gethostbyname错误
+
+ ..  attribute:: GetHostByNameWrong
+
+ gethostbyname调用成功，但返回的结果错误
+
+ ..  attribute:: ConnectFailed
+
+ 连接失败
+
+ ..  attribute:: BindFailed
+
+ socket bind失败
+
+ ..  attribute:: ListenFailed 
+
+ socket listen失败
+
+ ..  attribute:: SelectReturnError
+
+ socket select错误
+
+ ..  attribute:: SendFailed
+
+ socket send失败
+
+ ..  attribute:: RecvFailed
+
+ socket recv失败
+  
+--------------------------------------
+
+InitFailType - 初始化连接协议失败
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+初始化连接协议失败，即InitConnect协议相关的错误
+
+..  cpp:enum:: InitFailType
+
+ ..  attribute:: Unknow
+
+ 未知错误
+
+ ..  attribute:: Timeout
+
+ 超时
+
+ ..  attribute:: DisConnect
+
+ 连接断开
+
+ ..  attribute:: SeriaNoNotMatch
+
+ 序列号不符
+
+ ..  attribute:: SendInitReqFailed
+
+ 发送初始化协议失败
+
+ ..  attribute:: OpenDReject
+
+ FutuOpenD回包指定错误，具体错误看描述
+
+--------------------------------------
+
+
+主要函数列表
+---------------
+
+FTAPI - API功能基类。
+--------------------------------------
+
+..  class:: FTAPI
+
+API功能基类，提供连接方面公用的功能。FTAPI_Qot（行情）和FTAPI_Trd（交易）都继承该类。
+
+-------------------------------------------------------------------------------------------------
+
+Init
+~~~~~~~~~~~~~~~~~
+
+..  method:: static void Init()
+
+  初始化底层通道，程序启动时首先调用
+
+  :return: void
+
+--------------------------------------------
+
+UnInit
+~~~~~~~~~~~~~~~~~
+
+..  method:: static void UnInit()
+
+  清理底层通道，程序结束时调用
+
+  :return: void
+
+--------------------------------------------
+
+SetConnSpi
+~~~~~~~~~~~~~~~~~
+
+..  method:: void SetConnSpi(FTSPI_Conn callback)
+
+  设置连接相关回调。
+
+  :param callback: 参加下面 `FTSPI_Conn` 的说明
+  :return: void
+
+--------------------------------------------
+
+Close
+~~~~~~~~~~~~~~~~~
+
+..  method:: void Close()
+
+  释放内存。当对象不再使用时调用，否则会有内存泄漏。
+
+  :return: void
+
+--------------------------------------------
+
+FTSPI_Conn - 连接状态回调接口
+------------------------------------------
+
+..  class:: interface FTSPI_Conn
+
+当与OpenD的连接状态变化时调用此接口。
+
+------------------------------------
+
+OnInitConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: void OnInitConnect(FTAPI client, long errCode, String desc)
+
+  初始化连接状态变化。
+
+  :param client: 对应的FTAPI实例
+  :param errCode: 错误码。0表示成功，可以进行后续请求。当高32位为 `ConnectFailType` 类型时，低32位为系统错误码；当高32位等于FTAPI.InitFail，则低32位为 `InitFailType` 类型。
+  :param desc: 错误描述
+  :return: void
+
+--------------------------------------------
+
+OnDisConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: void OnDisconnect(FTAPI client, long errCode)
+
+  初始化连接状态变化。
+
+  :param client: 对应的FTAPI实例
+  :param errCode: 错误码。高32位为 `ConnectFailType` 类型，低32位为系统错误码；
+  :return: void
+
+--------------------------------------------
 
 主要函数列表
 ---------------
