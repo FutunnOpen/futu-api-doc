@@ -21,6 +21,8 @@
   * Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。
 
   * 具体支持交易和行情品种参考\ `FutuOpenD网关客户端简介 <../intro/intro.html>`_
+  
+  * 下载地址: 暂时请到FUTU OPEN API的QQ开发群里下载（108534288，229850364）
 
 接口框架
 -------------
@@ -37,8 +39,9 @@
 .. code-block:: text
 
 	|-- FTAPI4Net
+	|   |-- lib 所有依赖的库，包含第3方库和API库。即用户不必自己生成API库。
 	|   |-- FTCAPI.cs  Native接口导入类
-	|   `-- pb  pb自动生成文件，用于组包解包pb
+	|   |-- pb  pb自动生成文件，用于组包解包pb
 	|   |-- FTAPI_Trd.cs 交易接口和交易操作函数
 	|   |-- FTAPI_Qot.cs 行情接口和交易操作函数
 	|   |-- FTAPI.cs 连接层接口
