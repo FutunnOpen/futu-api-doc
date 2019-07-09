@@ -5,10 +5,11 @@
     :class: red-strengthen
 
 ==========
-交易接口
+交易API
 ==========
 
 --------------
+
   .. _GetAccList: ../protocol/trade_protocol.html#trd-getacclist-proto-2001
   .. _UnlockTrade: ../protocol/trade_protocol.html#trd-unlocktrade-proto-2005
   .. _SubAccPush: ../protocol/trade_protocol.html#trd-subaccpush-proto-2008
@@ -26,8 +27,10 @@
   
 ---------------------------------------------------
 
-交易类FTAPI_Trd
+FTAPI_Trd成员函数
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ FTAPI_Trd继承自\ `FTAPI_Conn <./base.html#ftapi-conn>`_ ，连接层调用接口参考FTAPI_Conn说明。
+
 ================================    ==============================================   =================================
 函数名（点开链接可查看具体协议）        功能简介                                         回调函数(FTSPI_Trd)            
 ================================    ==============================================   =================================

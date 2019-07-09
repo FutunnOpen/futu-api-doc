@@ -5,7 +5,7 @@
     :class: red-strengthen
 
 ==========
-基础定义
+基础API
 ==========
 
 .. _FutuOpenD: ../intro/FutuOpenDGuide.html
