@@ -10,22 +10,22 @@
 
 --------------
 
-  .. _GetGlobalState: ../protocol/quote_protocol.html#getglobalstate-proto-1002
+  .. _GetGlobalState: ../protocol/base_define.html#getglobalstate-proto-1002
   .. _Sub: ../protocol/quote_protocol.html#qot-sub-proto-3001
   .. _RegQotPush: ../protocol/quote_protocol.html#qot-regqotpush-proto-3002
   .. _GetSubInfo: ../protocol/quote_protocol.html#qot-getsubinfo-proto-3003
   .. _GetTicker: ../protocol/quote_protocol.html#qot-getticker-proto-3010
   .. _GetBasicQot: ../protocol/quote_protocol.html#qot-getbasicqot-proto-3004
   .. _GetOrderBook: ../protocol/quote_protocol.html#qot-getorderbook-proto-3012
-  .. _GetKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006
+  .. _GetKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006k
   .. _GetRT: ../protocol/quote_protocol.html#qot-getrt-proto-3008
   .. _GetBroker: ../protocol/quote_protocol.html#qot-getbroker-proto-3014
-  .. _GetHistoryKL: ../protocol/quote_protocol.html#qot-gethistorykl-proto-3100
-  .. _GetHistoryKLPoints: ../protocol/quote_protocol.html#qot-gethistoryklpoints-proto-3101
+  .. _GetHistoryKL: ../protocol/quote_protocol.html#qot-gethistorykl-proto-3100k
+  .. _GetHistoryKLPoints: ../protocol/quote_protocol.html#qot-gethistoryklpoints-proto-3101k
   .. _GetRehab: ../protocol/quote_protocol.html#qot-getrehab-proto-3102
   .. _RequestRehab: ../protocol/quote_protocol.html#qot-requestrehab-proto-3105
-  .. _RequestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103
-  .. _RequestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104
+  .. _RequestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k
+  .. _RequestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k
   .. _GetTradeDate: ../protocol/quote_protocol.html#qot-gettradedate-proto-3200
   .. _GetStaticInfo: ../protocol/quote_protocol.html#qot-getstaticinfo-proto-3202
   .. _GetSecuritySnapshot: ../protocol/quote_protocol.html#qot-getsecuritysnapshot-proto-3203
@@ -40,14 +40,13 @@
   .. _GetCapitalDistribution: ../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212
   .. _GetUserSecurity: ../protocol/quote_protocol.html#qot-getusersecurity-proto-3213
   .. _ModifyUserSecurity: ../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214
-  .. _OnPush_Notify: ../protocol/quote_protocol.html#notify-proto-1003
+  .. _OnPush_Notify: ../protocol/base_define.html#notify-proto-1003
   .. _OnPush_UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
-  .. _OnPush_UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007
+  .. _OnPush_UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _OnPush_UpdateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
   .. _OnPush_UpdateTicker: ../protocol/quote_protocol.html#qot-updateticker-proto-3011
   .. _OnPush_UpdateOrderBook: ../protocol/quote_protocol.html#qot-updateorderbook-proto-3013
   .. _OnPush_UpdateBroker: ../protocol/quote_protocol.html#qot-updatebroker-proto-3015
-  .. _OnPush_UpdateOrderDetail: ../protocol/quote_protocol.html#qot-updateorderdetail-proto-3017
   
 ---------------------------------------------------
 主要函数列表
@@ -68,9 +67,6 @@ GetOrderBook_                       获取摆盘,调用该接口前需要先订�
 GetKL_                              获取K线，调用该接口前需要先订阅                    OnReply_GetKL
 GetRT_                              获取分时，调用该接口前需要先订阅                   OnReply_GetRT
 GetBroker_                          获取经纪队列，调用该接口前需要先订阅               OnReply_GetBroker
-GetHistoryKL_                       获取本地历史K线                                    OnReply_GetHistoryKL
-GetHistoryKLPoints_                 获取多股票多点本地历史K线                          OnReply_GetHistoryKLPoints
-GetRehab_                           获取本地历史复权信息                               OnReply_GetRehab
 RequestRehab_                       在线请求历史复权信息，不读本地历史数据DB           OnReply_RequestRehab
 RequestHistoryKL_                   在线请求历史K线，不读本地历史数据DB                OnReply_RequestHistoryKL
 RequestHistoryKLQuota_              获取历史K线已经用掉的额度                          OnReply_RequestHistoryKLQuota
