@@ -20,9 +20,9 @@
 
 
 .. code-block:: cpp
-
-    InitFTApi(); //初始化环境
-    FTAPI_Qot *pQot = new CreateQotApi(); //创建行情对象
+    
+    FTAPI::InitFTApi(); //初始化环境
+    FTAPI_Qot *pQot = FTAPI::CreateQotApi(); //创建行情对象
     SampleConnCallback *pCallback = new SampleConnCallback();
     pQot->RegisterConnSpi(pCallback); //创建连接回调类
     pQot->RegisterQotSpi(pCallback); //创建行情数据回调类
@@ -33,15 +33,16 @@
     GetGlobalState.Request req;
     req.mutable_c2s()->set_userid(100000);
     pQot->GetGlobalState(req);//简单调用获取状态
-
-    ReleaseQotApi(pQot);
-    UnInitFTApi();
+    
+    FTAPI::ReleaseQotApi(pQot);
+    delete pCallback;
+    FTAPI::UnInitFTApi();
 
 .. code-block:: cpp
 
-    class SampleConnCallback : public FTSPI_Conn
+    class SampleCallback : public FTSPI_Conn, public FTAPI_Qot
     {
-        public void OnInitConnect(FTAPI_Conn* pConn, FTAPI::i64_t nErrCode, const char* strDesc)
+        void OnInitConnect(FTAPI_Conn* pConn, FTAPI::i64_t nErrCode, const char* strDesc)
         {
            if (nErrCode == 0)
            {
@@ -49,10 +50,17 @@
            }
         }
 
-        void OnDisConnect(FTAPI_Conn* pConn, FTAPI::i64_t nErrCode)
-        {
+       void OnDisConnect(FTAPI_Conn* pConn, FTAPI::i64_t nErrCode)
+       {
            cout << "DisConnect" << endl;
-        }
+       }
+       
+	   
+       void OnReply_GetGlobalState(FTAPI::u32_t nSerialNo, const GetGlobalState::Response &stRsp) 
+       {
+            cout << "GetGlobalState Reply" << endl;
+       }
+	   //避免范例代码过长，其他行情回调在这里不列举
     }
 
 
