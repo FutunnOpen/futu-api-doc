@@ -63,6 +63,9 @@ futuapi documentation
 	:hidden:
 
 	cpp/intro
+	cpp/base
+	cpp/qot
+	cpp/trd
 	cpp/start
 	
 .. toctree::
