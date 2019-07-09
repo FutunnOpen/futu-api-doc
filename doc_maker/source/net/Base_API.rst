@@ -191,4 +191,112 @@ UnInit
 --------------------------------------------
 
 
+FTAPI_Conn连接层基类
+-----------------------
+
+..  class:: FTAPI
+
+API功能基类，提供连接方面公用的功能。FTAPI_Qot（行情）和FTAPI_Trd（交易）都继承该类。
+
+-------------------------------------------------------------------------------------------------
+
+
+SetConnSpi
+~~~~~~~~~~~~~~~~~
+
+..  method:: void SetConnSpi(FTSPI_Conn callback)
+
+  设置连接相关回调。
+
+  :param callback: 参加下面 `FTSPI_Conn` 的说明
+  :return: void
+
+--------------------------------------------
+
+SetClientInfo
+~~~~~~~~~~~~~~~~~
+
+..  method:: void SetClientInfo(string clientID, int clientVer)
+
+  初始化连接信息。
+
+  :param clientID: 连接标识符，请自定义独特的标识符
+  :param clientVer: 连接版本号，请参考opendapi版本号
+  :return: void
+
+--------------------------------------------
+
+InitConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: bool InitConnect(string ip, ushort port, bool isEnableEncrypt)
+
+  初始化连接信息。
+
+  :param ip: 连接地址
+  :param port: 连接端口号
+  :param isEnableEncrypt: 是否允许加密
+  :return: bool 初始化失败返回false，其他错误依据callback返回
+
+--------------------------------------------
+
+SetRSAPrivateKey
+~~~~~~~~~~~~~~~~~
+
+..  method:: bool SetRSAPrivateKey(string key)
+
+  设置密钥。
+
+  :param key: 加密密钥
+  :return: bool 初始化失败返回false，其他错误依据callback返回
+
+--------------------------------------------
+
+Close
+~~~~~~~~~~~~~~~~~
+
+..  method:: void Close()
+
+  释放内存。当对象不再使用时调用，否则会有内存泄漏。
+
+  :return: void
+
+--------------------------------------------
+
+FTSPI_Conn - 连接状态回调接口
+------------------------------------------
+
+..  class:: interface FTSPI_Conn
+
+当与OpenD的连接状态变化时调用此接口。
+
+------------------------------------
+
+OnInitConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: void OnInitConnect(FTAPI_Conn client, long errCode, String desc)
+
+  初始化连接状态变化。
+
+  :param client: 对应的FTAPI实例
+  :param errCode: 错误码。0表示成功，可以进行后续请求。当高32位为 `ConnectFailType` 类型时，低32位为系统错误码；当高32位等于FTAPI.InitFail，则低32位为 `InitFailType` 类型。
+  :param desc: 错误描述
+  :return: void
+
+--------------------------------------------
+
+OnDisConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: void OnDisconnect(FTAPI_Conn client, long errCode)
+
+  初始化连接状态变化。
+
+  :param client: 对应的FTAPI实例
+  :param errCode: 错误码。高32位为 `ConnectFailType` 类型，低32位为系统错误码；
+  :return: void
+
+--------------------------------------------
+
 
