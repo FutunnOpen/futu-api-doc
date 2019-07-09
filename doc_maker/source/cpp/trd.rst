@@ -16,6 +16,8 @@
   .. _GetPositionList: ../protocol/trade_protocol.html#trd-getpositionlist-proto-2102
   .. _GetMaxTrdQtys: ../protocol/trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   .. _GetOrderList: ../protocol/trade_protocol.html#trd-getorderlist-proto-2201
+  .. _PlaceOrder: ../protocol/trade_protocol.html#trd-placeorder-proto-2202
+  .. _ModifyOrder: ../protocol/trade_protocol.html#trd-modifyorder-proto-2205
   .. _GetOrderFillList: ../protocol/trade_protocol.html#trd-getorderfilllist-proto-2211
   .. _GetHistoryOrderList: ../protocol/trade_protocol.html#trd-gethistoryorderlist-proto-2221
   .. _GetHistoryOrderFillList: ../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
@@ -36,6 +38,8 @@ GetFunds_                           获取账户资金                          
 GetPositionList_                    获取账户持仓                                       OnReply_GetPositionList
 GetMaxTrdQtys_                      获取最大交易数量                                   OnReply_GetMaxTrdQtys
 GetOrderList_                       获取当日订单列表                                   OnReply_GetOrderList
+PlaceOrder_                         下单                                               OnReply_PlaceOrder
+ModifyOrder_                        改单                                               OnReply_ModifyOrder
 GetOrderFillList_                   获取当日成交列表                                   OnReply_GetOrderFillList
 GetHistoryOrderList_                获取历史订单列表                                   OnReply_GetHistoryOrderList
 GetHistoryOrderFillList_            获取历史成交列表                                   OnReply_GetHistoryOrderFillList
