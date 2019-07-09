@@ -10,6 +10,9 @@
 
 .. _FutuOpenD: ../intro/FutuOpenDGuide.html
 .. _intro: ../intro/intro.html
+.. _ConnectFailType: base.html#id3
+.. _InitFailType: base.html#id4
+.. _FTAPI_InitFail: base.html#id5
 
 枚举常量
 ---------
@@ -108,6 +111,12 @@ InitFailType - 初始化连接协议失败
 
 --------------------------------------
 
+FTAPI_InitFail - 初始化连接协议失败错误值
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+指定初始化连接协议失败，即InitConnect协议相关的错误，错误值：100。
+
+--------------------------------------
 
 FTAPI - API全局工具类。
 --------------------------------------
@@ -300,7 +309,7 @@ OnInitConnect
   初始化连接状态变化。
 
   :param pConn: 对应连接实例指针
-  :param nErrCode: 错误码。0表示成功，可以进行后续请求。当高32位为 `ConnectFailType` 类型时，低32位为系统错误码；当高32位等于FTAPI.InitFail，则低32位为 `InitFailType` 类型。
+  :param nErrCode: 错误码。0表示成功，可以进行后续请求。当高32位为 ConnectFailType_ 类型时，低32位为系统错误码；当高32位等于 FTAPI_InitFail_，则低32位为 InitFailType_ 类型。
   :param strDesc: 错误描述
   :return: void
 
@@ -314,7 +323,7 @@ OnDisConnect
   连接断开。
 
   :param pConn: 对应连接实例指针
-  :param nErrCode: 错误码。高32位为 `ConnectFailType` 类型，低32位为系统错误码；
+  :param nErrCode: 错误码。高32位为 ConnectFailType_ 类型，低32位为系统错误码；
   :return: void
 
 
