@@ -8,22 +8,20 @@
 基础API
 ========
 
-.. _getGlobalState: ../protocol/quote_protocol.html#getglobalstate-proto-1002
+  .. _getGlobalState: ../protocol/base_define.html#getglobalstate-proto-1002
   .. _sub: ../protocol/quote_protocol.html#qot-sub-proto-3001
   .. _regQotPush: ../protocol/quote_protocol.html#qot-regqotpush-proto-3002
   .. _getSubInfo: ../protocol/quote_protocol.html#qot-getsubinfo-proto-3003
   .. _getTicker: ../protocol/quote_protocol.html#qot-getticker-proto-3010
   .. _getBasicQot: ../protocol/quote_protocol.html#qot-getbasicqot-proto-3004
   .. _getOrderBook: ../protocol/quote_protocol.html#qot-getorderbook-proto-3012
-  .. _getKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006
+  .. _getKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006k
   .. _getRT: ../protocol/quote_protocol.html#qot-getrt-proto-3008
   .. _getBroker: ../protocol/quote_protocol.html#qot-getbroker-proto-3014
-  .. _getHistoryKL: ../protocol/quote_protocol.html#qot-gethistorykl-proto-3100
-  .. _getHistoryKLPoints: ../protocol/quote_protocol.html#qot-gethistoryklpoints-proto-3101
   .. _getRehab: ../protocol/quote_protocol.html#qot-getrehab-proto-3102
   .. _requestRehab: ../protocol/quote_protocol.html#qot-requestrehab-proto-3105
-  .. _requestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103
-  .. _requestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104
+  .. _requestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k
+  .. _requestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k
   .. _getTradeDate: ../protocol/quote_protocol.html#qot-gettradedate-proto-3200
   .. _getStaticInfo: ../protocol/quote_protocol.html#qot-getstaticinfo-proto-3202
   .. _getSecuritySnapshot: ../protocol/quote_protocol.html#qot-getsecuritysnapshot-proto-3203
@@ -38,7 +36,7 @@
   .. _getCapitalDistribution: ../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212
   .. _getUserSecurity: ../protocol/quote_protocol.html#qot-getusersecurity-proto-3213
   .. _modifyUserSecurity: ../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214
-  .. _notify: ../protocol/quote_protocol.html#notify-proto-1003
+  .. _notify: ../protocol/base_define.html#notify-proto-1003
   .. _updateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _updateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007
   .. _updateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -59,7 +57,8 @@
   .. _updateOrder: ../protocol/trade_protocol.html#trd-updateorder-proto-2208
   .. _updateOrderFill: ../protocol/trade_protocol.html#trd-updateorderfill-proto-2218
 
-  枚举常量
+
+枚举常量
 ---------
 
 ConnectFailType - 连接错误码
@@ -160,12 +159,12 @@ InitFailType - 初始化连接协议失败
 主要函数列表
 ---------------
 
-FTAPI - API功能基类。
+FTAPI - API全局功能。
 --------------------------------------
 
 ..  class:: FTAPI
 
-API功能基类，提供连接方面公用的功能。FTAPI_Qot（行情）和FTAPI_Trd（交易）都继承该类。
+API全局配置类，初始化和全局配置类。
 
 -------------------------------------------------------------------------------------------------
 
@@ -191,6 +190,16 @@ unInit
 
 --------------------------------------------
 
+
+FTAPI_Conn连接层基类
+-----------------------
+
+..  class:: FTAPI
+
+API功能基类，提供连接方面公用的功能。FTAPI_Qot（行情）和FTAPI_Trd（交易）都继承该类。
+
+-------------------------------------------------------------------------------------------------
+
 setConnSpi
 ~~~~~~~~~~~~~~~~~
 
@@ -200,6 +209,43 @@ setConnSpi
 
   :param callback: 参加下面 `FTSPI_Conn` 的说明
   :return: void
+
+--------------------------------------------
+
+initConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: boolean initConnect(String ip, short port, boolean isEnableEncrypt)
+
+  初始化连接信息。
+
+  :param ip: 连接地址
+  :param port: 连接端口号
+  :param isEnableEncrypt: 是否允许加密
+  :return: bool 初始化失败返回false，其他错误依据callback返回
+
+--------------------------------------------
+
+setRSAPrivateKey
+~~~~~~~~~~~~~~~~~
+
+..  method:: void setRSAPrivateKey(String key)
+
+  设置密钥。
+
+  :param key: 加密密钥。
+  :return: void
+
+--------------------------------------------
+
+getConnectID
+~~~~~~~~~~~~~~~~~
+
+..  method:: long getConnectID()
+
+  获取此连接的连接ID，连接的唯一标识，InitConnect协议返回，没有初始化前为0
+
+  :return: long
 
 --------------------------------------------
 
@@ -232,7 +278,7 @@ onInitConnect
   初始化连接状态变化。
 
   :param client: 对应的FTAPI实例
-  :param errCode: 错误码。0表示成功，可以进行后续请求。当高32位为 `ConnectFailType` 类型时，低32位为系统错误码；当高32位等于FTAPI.INIT_FAIL，则低32位为 `InitFailType` 类型。
+  :param errCode: 错误码。0表示成功，可以进行后续请求。当高32位为在`ConnectFailType` 范围内时，低32位为系统错误码；当高32位等于FTAPI_Conn.INIT_FAIL，则低32位为 `InitFailType` 类型。
   :param desc: 错误描述
   :return: void
 

@@ -9,22 +9,20 @@
 
 --------------
 
-.. _getGlobalState: ../protocol/quote_protocol.html#getglobalstate-proto-1002
+  .. _getGlobalState: ../protocol/base_define.html#getglobalstate-proto-1002
   .. _sub: ../protocol/quote_protocol.html#qot-sub-proto-3001
   .. _regQotPush: ../protocol/quote_protocol.html#qot-regqotpush-proto-3002
   .. _getSubInfo: ../protocol/quote_protocol.html#qot-getsubinfo-proto-3003
   .. _getTicker: ../protocol/quote_protocol.html#qot-getticker-proto-3010
   .. _getBasicQot: ../protocol/quote_protocol.html#qot-getbasicqot-proto-3004
   .. _getOrderBook: ../protocol/quote_protocol.html#qot-getorderbook-proto-3012
-  .. _getKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006
+  .. _getKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006k
   .. _getRT: ../protocol/quote_protocol.html#qot-getrt-proto-3008
   .. _getBroker: ../protocol/quote_protocol.html#qot-getbroker-proto-3014
-  .. _getHistoryKL: ../protocol/quote_protocol.html#qot-gethistorykl-proto-3100
-  .. _getHistoryKLPoints: ../protocol/quote_protocol.html#qot-gethistoryklpoints-proto-3101
   .. _getRehab: ../protocol/quote_protocol.html#qot-getrehab-proto-3102
   .. _requestRehab: ../protocol/quote_protocol.html#qot-requestrehab-proto-3105
-  .. _requestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103
-  .. _requestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104
+  .. _requestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k
+  .. _requestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k
   .. _getTradeDate: ../protocol/quote_protocol.html#qot-gettradedate-proto-3200
   .. _getStaticInfo: ../protocol/quote_protocol.html#qot-getstaticinfo-proto-3202
   .. _getSecuritySnapshot: ../protocol/quote_protocol.html#qot-getsecuritysnapshot-proto-3203
@@ -39,7 +37,7 @@
   .. _getCapitalDistribution: ../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212
   .. _getUserSecurity: ../protocol/quote_protocol.html#qot-getusersecurity-proto-3213
   .. _modifyUserSecurity: ../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214
-  .. _notify: ../protocol/quote_protocol.html#notify-proto-1003
+  .. _notify: ../protocol/base_define.html#notify-proto-1003
   .. _updateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _updateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007
   .. _updateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009

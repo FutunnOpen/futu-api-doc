@@ -40,7 +40,7 @@ futuapi documentation
 
 .. toctree::
 	:caption: .Net API
-	:maxdepth: 2
+	:maxdepth: 4
 	:hidden:
 
 	net/intro
@@ -51,7 +51,7 @@ futuapi documentation
 
 .. toctree::
 	:caption: .Java API
-	:maxdepth: 2
+	:maxdepth: 4
 	:hidden:
 
 	java/intro
@@ -62,7 +62,7 @@ futuapi documentation
 	
 .. toctree::
 	:caption: CPP API
-	:maxdepth: 2
+	:maxdepth: 4
 	:hidden:
 
 	cpp/intro
