@@ -56,6 +56,7 @@
   .. _getHistoryOrderFillList: ../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
   .. _updateOrder: ../protocol/trade_protocol.html#trd-updateorder-proto-2208
   .. _updateOrderFill: ../protocol/trade_protocol.html#trd-updateorderfill-proto-2218
+  .. _rsa: ../intro/FutuOpenDGuide.html#rsa
 
 
 枚举常量
@@ -233,7 +234,7 @@ setRSAPrivateKey
 
   设置密钥。
 
-  :param key: 加密密钥。
+  :param key: 加密密钥。格式见 rsa_
   :return: void
 
 --------------------------------------------

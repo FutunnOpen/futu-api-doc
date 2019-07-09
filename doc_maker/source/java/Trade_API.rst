@@ -77,6 +77,8 @@ getFunds_                           获取账户资金                          
 getPositionList_                    获取账户持仓                                       onReply_GetPositionList
 getMaxTrdQtys_                      获取最大交易数量                                   onReply_GetMaxTrdQtys
 getOrderList_                       获取当日订单列表                                   onReply_GetOrderList
+PlaceOrder_                         下单                                               OnReply_PlaceOrder
+ModifyOrder_                        改单                                               OnReply_ModifyOrder
 getOrderFillList_                   获取当日成交列表                                   onReply_GetOrderFillList
 getHistoryOrderList_                获取历史订单列表                                   onReply_GetHistoryOrderList
 getHistoryOrderFillList_            获取历史成交列表                                   onReply_GetHistoryOrderFillList

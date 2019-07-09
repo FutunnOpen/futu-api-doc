@@ -11,6 +11,7 @@
  .. _ConnectFailType: Base_API.html#id2
  .. _InitFailType: Base_API.html#id3
  .. _FTAPI_InitFail: Base_API.html#id4
+ .. _rsa: ../intro/FutuOpenDGuide.html#rsa
   
 ---------------------------------------------------
 
@@ -203,12 +204,12 @@ InitConnect
 SetRSAPrivateKey
 ~~~~~~~~~~~~~~~~~
 
-..  method:: bool SetRSAPrivateKey(string key)
+..  method:: void SetRSAPrivateKey(string key)
 
   设置密钥。
 
-  :param key: 加密密钥
-  :return: bool 初始化失败返回false，其他错误依据callback返回
+  :param key: 加密密钥。格式见 rsa_
+  :return: void
 
 --------------------------------------------
 
