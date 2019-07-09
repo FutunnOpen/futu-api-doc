@@ -283,6 +283,39 @@ UnregisterConnSpi
 
 --------------------------------------------
 
+FTSPI_Conn - 连接状态回调接口
+------------------------------------------
+
+..  class:: FTSPI_Conn
+
+当与OpenD的连接状态变化时调用此接口。
+
+------------------------------------
+
+OnInitConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: void OnInitConnect(FTAPI_Conn* pConn, Futu::i64_t nErrCode, const char* strDesc)
+
+  初始化连接状态变化。
+
+  :param pConn: 对应连接实例指针
+  :param nErrCode: 错误码。0表示成功，可以进行后续请求。当高32位为 `ConnectFailType` 类型时，低32位为系统错误码；当高32位等于FTAPI.InitFail，则低32位为 `InitFailType` 类型。
+  :param strDesc: 错误描述
+  :return: void
+
+--------------------------------------------
+
+OnDisConnect
+~~~~~~~~~~~~~~~~~
+
+..  method:: void OnDisConnect(FTAPI_Conn* pConn, Futu::i64_t nErrCode)
+
+  连接断开。
+
+  :param pConn: 对应连接实例指针
+  :param nErrCode: 错误码。高32位为 `ConnectFailType` 类型，低32位为系统错误码；
+  :return: void
 
 
 

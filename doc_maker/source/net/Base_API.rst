@@ -291,7 +291,7 @@ OnDisConnect
 
 ..  method:: void OnDisconnect(FTAPI_Conn client, long errCode)
 
-  初始化连接状态变化。
+  连接断开。
 
   :param client: 对应的FTAPI实例
   :param errCode: 错误码。高32位为 `ConnectFailType` 类型，低32位为系统错误码；
