@@ -54,5 +54,5 @@
 
   * 所有接口以异步回调方式完成
 
-  * FTAPI4Net\lib目录下的FTAPIChannel.dll件记得拷贝到程序运行目录下
+  * 运行时需要将lib下对应操作系统的FTAPIChannel动态库复制到程序运行目录下。
 

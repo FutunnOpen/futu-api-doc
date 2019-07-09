@@ -55,6 +55,9 @@ futuapi documentation
 	:hidden:
 
 	java/intro
+	java/Base_API
+	java/Quote_API
+	java/Trade_API
 	java/start
 	
 .. toctree::
