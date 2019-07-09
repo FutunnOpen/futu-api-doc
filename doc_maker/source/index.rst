@@ -44,6 +44,9 @@ futuapi documentation
 	:hidden:
 
 	net/intro
+	net/Base_API
+	net/Quote_API
+	net/Trade_API
 	net/start
 
 .. toctree::
