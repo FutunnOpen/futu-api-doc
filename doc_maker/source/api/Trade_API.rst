@@ -21,6 +21,8 @@
  .. _ModifyOrderOp: Base_API.html#ModifyOrderOp
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
+
+ .. _TrdAccType: Base_API.html#trdacctype
  
 一分钟上手
 ==============
@@ -92,6 +94,8 @@ get_acc_list - 获取交易业务账户列表
  ==============   ===========   ===================================================================
  acc_id           int           交易业务账户
  trd_env          str           交易环境， TrdEnv_ TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ acc_type         str           账户类型，见 TrdAccType_
+ card_num         str           卡号，同客户端内的展示
  ==============   ===========   ===================================================================
 
  :example:

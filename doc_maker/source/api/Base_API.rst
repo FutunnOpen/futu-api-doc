@@ -1656,3 +1656,22 @@ ModifyUserSecurityOp - 自选股操作类型
 
 
 --------------------------------------
+
+TrdAccType - 账户类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+定义
+
+..  py:class:: TrdAccType
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: CASH
+
+  现金账户
+
+ ..  py:attribute:: MARGIN
+
+  保证金账户
