@@ -1248,6 +1248,9 @@
 	message C2S
 	{
 		required Qot_Common.Security plate = 1; //板块
+		optional int32 sortField = 2;//Qot_Common.SortField,根据哪个字段排序,不填默认Code排序
+		optional bool ascend = 3;//升序ture, 降序false, 不填默认升序
+
 	}
 
 	message S2C

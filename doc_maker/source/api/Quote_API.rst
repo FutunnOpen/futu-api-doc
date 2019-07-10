@@ -637,6 +637,9 @@ get_plate_stock
  获取特定板块下的股票列表
 
  :param plate_code: 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码
+ :param sort_field: 排序字段，string，根据哪些字段排序 SortField_
+ :param ascend: 排序方向，string，True升序，False降序
+
  :return (ret, data): ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
 
         ret != RET_OK 返回错误字符串

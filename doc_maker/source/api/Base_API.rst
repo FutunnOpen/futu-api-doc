@@ -1632,6 +1632,46 @@ SortField - 涡轮排序
 
   发行量
 
+ ..  py:attribute:: PRE_CUR_PRICE
+
+  盘前最新价
+
+ ..  py:attribute:: AFTER_CUR_PRICE
+
+  盘后最新价
+
+ ..  py:attribute:: PRE_PRICE_CHANGE_VAL
+
+  盘前涨跌额
+
+ ..  py:attribute:: AFTER_PRICE_CHANGE_VAL
+
+  盘后涨跌额
+
+ ..  py:attribute:: PRE_CHANGE_RATE
+
+  盘前涨跌幅%
+
+ ..  py:attribute:: AFTER_CHANGE_RATE
+
+  盘后涨跌幅%
+
+ ..  py:attribute:: PRE_AMPLITUDE
+
+  盘前振幅%
+  
+ ..  py:attribute:: AFTER_AMPLITUDE
+
+  盘后振幅%
+
+ ..  py:attribute:: PRE_TURNOVER
+
+  盘前成交额
+  
+ ..  py:attribute:: AFTER_TURNOVER
+
+  盘后成交额
+
 
 --------------------------------------
 
