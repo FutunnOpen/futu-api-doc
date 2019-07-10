@@ -1258,6 +1258,20 @@ ModifyOrderOp - 修改订单操作类型
 
 -----------------------------------------------
 
+TrdAccType - 交易账户类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	enum TrdAccType
+	{
+		TrdAccType_Unknown = 0; //未知类型
+		TrdAccType_Cash = 1;    //现金账户
+		TrdAccType_Margin = 2;  //保证金账户
+	};
+
+-----------------------------------------------	
+
 ReconfirmOrderReason - 确认订单类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1271,6 +1285,7 @@ ReconfirmOrderReason - 确认订单类型
 	};
 
 -----------------------------------------------	
+
 
 TrdHeader - 交易公共参数头
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1296,6 +1311,8 @@ TrdAcc - 交易账户
 		required int32 trdEnv = 1; //交易环境，参见TrdEnv的枚举定义
 		required uint64 accID = 2; //业务账号
 		repeated int32 trdMarketAuthList = 3; //业务账户支持的交易市场权限，即此账户能交易那些市场, 可拥有多个交易市场权限，目前仅单个，取值参见TrdMarket的枚举定义
+		optional int32 accType = 4;   //账户类型，取值见TrdAccType
+		optional string cardNum = 5;  //卡号
 	}
 
 -----------------------------------------------
