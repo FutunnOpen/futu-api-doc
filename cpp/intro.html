@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>介绍 &mdash; futu-api-doc 3.11 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+        <link rel="next" title="基础API" href="base.html"/>
+        <link rel="prev" title="快速上手" href="../java/start.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> futu-api-doc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.11
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">基础</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PROTOCOL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">.Net API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../net/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">.Java API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../java/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CPP API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cpp-api">Cpp API简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">接口框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">代码结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">调用须知</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="base.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qot.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trd.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Q&amp;A</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../q&amp;a/Q&amp;A.html">Q&amp;A</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">futu-api-doc</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>介绍</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cpp/intro.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="id1">
+<h1>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cpp-api">
+<h2>Cpp API简介<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Cpp API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></li>
+<li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
+<li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
+<li>下载地址: 暂时请到FUTU OPEN API的QQ开发群里下载（108534288，229850364）</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>接口框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>FTAPIChannel模块是用于初始化连接，维护连接，该模块提供动态库不提供源码。</li>
+<li>FTAPI在FTAPIChannel基础上新增了一些业务上的收发接口，提供静态库以及源码。</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>代码结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text"><div class="highlight"><pre><span></span>|-- Bin        API所需的动态静态库，包括API通道动态库，pb静态库，API静态库。
+|-- Include    API头文件
+|-- Src        API源码
+`-- Sample     演示demo
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>调用须知<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</li>
+<li>所有接口以异步回调方式完成</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="base.html" class="btn btn-neutral float-right" title="基础API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../java/start.html" class="btn btn-neutral" title="快速上手" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, futu.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.11',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+    console.log("Layout By futu-api");
+</script>
+
+
+</body>
+</html>

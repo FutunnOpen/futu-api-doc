@@ -241,6 +241,59 @@ GtwEventType - 网关异步通知类型
   
 --------------------------------------  
 
+ProgramStatusType - 程序运行状态通知类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+程序运行状态通知类型定义
+
+..  py:class:: GtwEventType
+
+ ..  py:attribute:: NONE
+
+  未知类型
+
+ ..  py:attribute:: LOADED
+
+  已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回
+
+ ..  py:attribute:: LOGING
+
+  登录中
+
+ ..  py:attribute:: NEED_PIC_VERIFY_CODE
+
+  需要图形验证码
+
+ ..  py:attribute:: NEED_PHONE_VERIFY_CODE
+
+  需要手机验证码
+
+ ..  py:attribute:: LOGIN_FAILED
+
+  登录失败,详细原因在描述返回
+
+ ..  py:attribute:: FORCE_UPDATE
+
+  客户端版本过低
+
+ ..  py:attribute:: NESSARY_DATA_PREPARING
+
+  正在拉取类似免责声明等一些必要信息
+
+ ..  py:attribute:: NESSARY_DATA_MISSING
+
+  缺少必要信息
+
+ ..  py:attribute:: UN_AGREE_DISCLAIMER
+
+  未同意免责声明
+
+ ..  py:attribute:: READY
+
+  可以接收业务协议收发,正常可用状态
+
+--------------------------------------  
+
 IpoPeriod - 涡轮上市日
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1107,6 +1160,22 @@ SysNotifyType - 系统异步通知类型
 
   网关事件
 
+ ..  py:attribute:: PROGRAM_STATUS
+  
+  程序状态变化
+
+ ..  py:attribute:: CONN_STATUS
+
+  与Server的连接状态变化
+
+ ..  py:attribute:: QOT_RIGHT
+
+  行情权限变化
+
+ ..  py:attribute:: API_LEVEL
+
+  API等级变化
+
 --------------------------------------
 
 TickerDirect - 逐笔方向
@@ -1261,7 +1330,7 @@ TickerType - 逐笔类型
 --------------------------------------
 
 TradeDateType - 交易时间类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 交易时间类型定义
 
@@ -1388,31 +1457,31 @@ WarrantStatus - 涡轮状态
 
 WrtType - 港股窝轮类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
+
 港股窝轮类型定义
 
 ..  py:class:: WrtType
 
  ..  py:attribute:: CALL
- 
+
   认购
-  
+
  ..  py:attribute:: PUT
- 
+
   认沽
-  
+
  ..  py:attribute:: BULL
- 
+
   牛证
-  
+
  ..  py:attribute:: BEAR
- 
+
   熊证
-  
+
  ..  py:attribute:: NONE
- 
+
   未知
-  
+
 --------------------------------------
 
 
@@ -1562,6 +1631,28 @@ SortField - 涡轮排序
  ..  py:attribute:: ISSUE_SIZE
 
   发行量
+
+
+--------------------------------------
+
+ModifyUserSecurityOp - 自选股操作类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+定义
+
+..  py:class:: ModifyUserSecurityOp
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: ADD
+
+  新增
+
+ ..  py:attribute:: DEL
+
+  删除
 
 
 --------------------------------------

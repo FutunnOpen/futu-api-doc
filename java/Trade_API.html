@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>交易API &mdash; futu-api-doc 3.11 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+        <link rel="next" title="快速上手" href="start.html"/>
+        <link rel="prev" title="行情API" href="Quote_API.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> futu-api-doc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.11
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">基础</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PROTOCOL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">.Net API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../net/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">.Java API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quote_API.html">行情API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">交易API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ftapi-trd">FTAPI_Trd成员函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ftspi-trd">FTSPI_Trd交易推送接收接口函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CPP API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/base.html">基础API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Q&amp;A</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../q&amp;a/Q&amp;A.html">Q&amp;A</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">futu-api-doc</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>交易API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/java/Trade_API.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="api">
+<h1>交易API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<blockquote>
+<div></div></blockquote>
+<hr class="docutils" />
+<div class="section" id="ftapi-trd">
+<h2>FTAPI_Trd成员函数<a class="headerlink" href="#ftapi-trd" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>FTAPI_Trd继承自<a class="reference external" href="./Base_API.html#ftapi-conn">FTAPI_Conn</a> ，连接层调用接口参考FTAPI_Conn说明。</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="41%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">函数名（点开链接可查看具体协议）</th>
+<th class="head">功能简介</th>
+<th class="head">回调函数(FTSPI_Trd)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getacclist-proto-2001">getAccList</a></td>
+<td>获取交易账户列表</td>
+<td>onReply_GetAccList</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-unlocktrade-proto-2005">unlockTrade</a></td>
+<td>解锁</td>
+<td>onReply_UnlockTrade</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-subaccpush-proto-2008">subAccPush</a></td>
+<td>订阅接收推送数据的交易账户</td>
+<td>onReply_SubAccPush</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getfunds-proto-2101">getFunds</a></td>
+<td>获取账户资金</td>
+<td>onReply_GetFunds</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getpositionlist-proto-2102">getPositionList</a></td>
+<td>获取账户持仓</td>
+<td>onReply_GetPositionList</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getmaxtrdqtys-proto-2111">getMaxTrdQtys</a></td>
+<td>获取最大交易数量</td>
+<td>onReply_GetMaxTrdQtys</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getorderlist-proto-2201">getOrderList</a></td>
+<td>获取当日订单列表</td>
+<td>onReply_GetOrderList</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-placeorder-proto-2202">placeOrder</a></td>
+<td>下单</td>
+<td>OnReply_PlaceOrder</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-modifyorder-proto-2205">modifyOrder</a></td>
+<td>改单</td>
+<td>OnReply_ModifyOrder</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getorderfilllist-proto-2211">getOrderFillList</a></td>
+<td>获取当日成交列表</td>
+<td>onReply_GetOrderFillList</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-gethistoryorderlist-proto-2221">getHistoryOrderList</a></td>
+<td>获取历史订单列表</td>
+<td>onReply_GetHistoryOrderList</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">getHistoryOrderFillList</a></td>
+<td>获取历史成交列表</td>
+<td>onReply_GetHistoryOrderFillList</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ftspi-trd">
+<h2>FTSPI_Trd交易推送接收接口函数<a class="headerlink" href="#ftspi-trd" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">回调函数（点开链接可查看具体协议）</th>
+<th class="head">功能简介</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-updateorder-proto-2208">updateOrder</a></td>
+<td>订单状态变动通知(推送)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-updateorderfill-proto-2218">updateOrderFill</a></td>
+<td>成交通知(推送)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="start.html" class="btn btn-neutral float-right" title="快速上手" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Quote_API.html" class="btn btn-neutral" title="行情API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, futu.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.11',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+    console.log("Layout By futu-api");
+</script>
+
+
+</body>
+</html>
