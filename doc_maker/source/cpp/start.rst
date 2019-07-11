@@ -21,7 +21,7 @@
 
 .. code-block:: cpp
     
-    FTAPI::InitFTApi(); //初始化环境
+    FTAPI::Init(); //初始化环境
     FTAPI_Qot *pQot = FTAPI::CreateQotApi(); //创建行情对象
     SampleConnCallback *pCallback = new SampleConnCallback();
     pQot->RegisterConnSpi(pCallback); //创建连接回调类
@@ -36,7 +36,7 @@
     
     FTAPI::ReleaseQotApi(pQot);
     delete pCallback;
-    FTAPI::UnInitFTApi();
+    FTAPI::UnInit();
 
 .. code-block:: cpp
 

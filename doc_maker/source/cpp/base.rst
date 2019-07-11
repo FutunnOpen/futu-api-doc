@@ -130,7 +130,7 @@ API全局工具类，提供API初始化销毁以及接口实例创建销毁接�
 InitFTApi
 ~~~~~~~~~~~~~~~~~
 
-..  method:: static void InitFTApi()
+..  method:: static void Init()
 
   初始化底层通道，程序启动时首先调用
 
@@ -138,10 +138,10 @@ InitFTApi
 
 --------------------------------------------
 
-UnInitFTApi
+UnInit
 ~~~~~~~~~~~~~~~~~
 
-..  method:: static void InitFTApi()
+..  method:: static void UnInit()
 
   清理底层通道，程序结束时调用
 
