@@ -1233,8 +1233,23 @@ OrderType - 订单类型
 		OrderType_Auction = 6; //竞价订单(目前仅港股)，A股的早盘竞价订单类型不变还是OrderType_Normal
 		OrderType_AuctionLimit = 7; //竞价限价订单(目前仅港股)
 		OrderType_SpecialLimit = 8; //特别限价订单(目前仅港股)，成交规则同增强限价订单，且部分成交后，交易所自动撤销订单
+		OrderType_SpecialLimit_All = 9; //特别限价且要求全部成交订单(目前仅港股)，要么全部成交，要么自动撤单
 	}
 
+
+-----------------------------------------------
+
+OrderFillStatus - 一笔成交的状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum OrderFillStatus
+	{
+		OrderFillStatus_OK = 0; //正常
+		OrderFillStatus_Cancelled = 1; //成交被取消
+		OrderFillStatus_Changed = 2; //成交被更改
+	}
 
 -----------------------------------------------
 
@@ -1375,6 +1390,8 @@ Position - 账户持仓
 		optional double td_buyQty = 24; //今日买入总量
 		optional double td_sellVal = 25; //今日卖出总额
 		optional double td_sellQty = 26; //今日卖出总量
+
+		optional double avgPrice = 27; //平均买入价，平仓后重新计算
 	}
 
 -----------------------------------------------
@@ -1403,6 +1420,7 @@ Order - 订单
 		optional int32 secMarket = 15; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 		optional double createTimestamp = 16; //创建时间戳
 		optional double updateTimestamp = 17; //最后更新时间戳
+		optional string remark = 18; //用户备注字符串，最大长度64字节
 	}
 
 -----------------------------------------------
@@ -1428,6 +1446,8 @@ OrderFill - 成交
 		optional string counterBrokerName = 12; //对手经纪名称，港股有效
 		optional int32 secMarket = 13; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 		optional double createTimestamp = 14; //时间戳
+		optional double updateTimestamp = 15; //最后更新时间戳
+		optional int32 status = 16; //成交状态, 参见OrderFillStatus的枚举定义
 	}
 
 -----------------------------------------------

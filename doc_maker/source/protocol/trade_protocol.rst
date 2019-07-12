@@ -155,6 +155,9 @@
 	message C2S
 	{
 		required Trd_Common.TrdHeader header = 1; //交易公共参数头
+		optional bool refreshCache = 2; //立即刷新OpenD缓存的此数据，默认不填。true向服务器获取最新数据更新缓存并返回；flase或没填则返回OpenD缓存的数据，不会向服务器请求。
+	//正常情况下，服务器有更新就会立即推送到OpenD，OpenD缓存着数据，API请求过来，返回同步的缓存数据，一般不需要指定刷新缓存，保证快速返回且减少对服务器的压力
+	//如果遇到丢包等情况，可能出现缓存数据与服务器不一致，用户如果发现数据更新有异样，可指定刷新缓存，解决数据同步的问题。
 	}
 
 	message S2C
@@ -202,6 +205,9 @@
 		optional Trd_Common.TrdFilterConditions filterConditions = 2; //过滤条件
 		optional double filterPLRatioMin = 3; //过滤盈亏比例下限，高于此比例的会返回，如0.1，返回盈亏比例大于10%的持仓
 		optional double filterPLRatioMax = 4; //过滤盈亏比例上限，低于此比例的会返回，如0.2，返回盈亏比例小于20%的持仓
+		optional bool refreshCache = 5; //立即刷新OpenD缓存的此数据，默认不填。true向服务器获取最新数据更新缓存并返回；flase或没填则返回OpenD缓存的数据，不会向服务器请求。
+	//正常情况下，服务器有更新就会立即推送到OpenD，OpenD缓存着数据，API请求过来，返回同步的缓存数据，一般不需要指定刷新缓存，保证快速返回且减少对服务器的压力
+	//如果遇到丢包等情况，可能出现缓存数据与服务器不一致，用户如果发现数据更新有异样，可指定刷新缓存，解决数据同步的问题。
 	}
 
 	message S2C
@@ -300,6 +306,9 @@
 		required Trd_Common.TrdHeader header = 1; //交易公共参数头
 		optional Trd_Common.TrdFilterConditions filterConditions = 2; //过滤条件
 		repeated int32 filterStatusList = 3; //需要过滤的订单状态列表
+		optional bool refreshCache = 4; //立即刷新OpenD缓存的此数据，默认不填。true向服务器获取最新数据更新缓存并返回；flase或没填则返回OpenD缓存的数据，不会向服务器请求。
+	//正常情况下，服务器有更新就会立即推送到OpenD，OpenD缓存着数据，API请求过来，返回同步的缓存数据，一般不需要指定刷新缓存，保证快速返回且减少对服务器的压力
+	//如果遇到丢包等情况，可能出现缓存数据与服务器不一致，用户如果发现数据更新有异样，可指定刷新缓存，解决数据同步的问题。
 	}
 
 	message S2C
@@ -355,6 +364,7 @@
 		optional bool adjustPrice = 8; //是否调整价格，如果价格不合法，是否调整到合法价位，true调整，false不调整
 		optional double adjustSideAndLimit = 9; //调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
 		optional int32 secMarket = 10; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
+		optional string remark = 11; //用户备注字符串，最多只能传64字节。可用于标识订单唯一信息等，下单填上，订单结构就会带上。
 	}
 
 	message S2C
@@ -512,6 +522,9 @@
 	{
 		required Trd_Common.TrdHeader header = 1; //交易公共参数头
 		optional Trd_Common.TrdFilterConditions filterConditions = 2; //过滤条件
+		optional bool refreshCache = 3; //立即刷新OpenD缓存的此数据，默认不填。true向服务器获取最新数据更新缓存并返回；flase或没填则返回OpenD缓存的数据，不会向服务器请求。
+	//正常情况下，服务器有更新就会立即推送到OpenD，OpenD缓存着数据，API请求过来，返回同步的缓存数据，一般不需要指定刷新缓存，保证快速返回且减少对服务器的压力
+	//如果遇到丢包等情况，可能出现缓存数据与服务器不一致，用户如果发现数据更新有异样，可指定刷新缓存，解决数据同步的问题。
 	}
 
 	message S2C
