@@ -1390,8 +1390,6 @@ Position - 账户持仓
 		optional double td_buyQty = 24; //今日买入总量
 		optional double td_sellVal = 25; //今日卖出总额
 		optional double td_sellQty = 26; //今日卖出总量
-
-		optional double avgPrice = 27; //平均买入价，平仓后重新计算
 	}
 
 -----------------------------------------------

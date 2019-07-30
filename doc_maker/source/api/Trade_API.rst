@@ -14,10 +14,6 @@
  
  .. _TrdSide: Base_API.html#trdside
  
- .. _order-list-query: #id4
- 
- .. _deal-list-query: #id7
- 
  .. _ModifyOrderOp: Base_API.html#ModifyOrderOp
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
@@ -214,7 +210,6 @@ position_list_query - 获取账户持仓列表
  today_buy_val                float         今日买入总额
  today_sell_qty               float         今日卖出总量
  today_sell_val               float         今日卖出总额
- avg_buy_price                float         平均买入价，平仓后重新计算
  =====================        ===========   ===================================================================
  
  :example:
@@ -249,7 +244,7 @@ place_order - 下单
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
  :param remark: str，备注，转成utf8后的长度不能超过64字节。后面订单数据都会带上这个备注。用户自己使用，OpenD不做处理，仅作为订单数据存储。
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 order-list-query_ (获取订单列表)相同。
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 order_list_query_ (获取订单列表)相同。
  
 	如果是OpenHKCCTradeContext，返回数据中order_type仅有OrderType.NORMAL
 
@@ -441,7 +436,7 @@ deal_list_query - 获取成交列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :param refresh_cache: bool, refresh_cache :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，默认False。特殊情况导致缓存没有及时更新才需要刷新。
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   ===================================================================
@@ -488,7 +483,7 @@ history_order_list_query - 获取历史订单列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order-list-query_ (获取订单列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order_list_query_ (获取订单列表)相同
  
  :example:
  
@@ -521,7 +516,7 @@ history_deal_list_query - 获取历史成交列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal-list-query_ (获取成交列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal_list_query_ (获取成交列表)相同
  
  :example:
  
@@ -602,7 +597,7 @@ on_recv_rsp - 响应订单推送
  该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，订单推送协议pb对象
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order-list-query_ (获取订单列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order_list_query_ (获取订单列表)相同
 
  :example:
  
@@ -644,7 +639,7 @@ on_recv_rsp - 响应成交推送
  该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，成交推送协议pb对象
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal-list-query_ (获取成交列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal_list_query_ (获取成交列表)相同
 
  :example:
  
