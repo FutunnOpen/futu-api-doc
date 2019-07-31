@@ -597,7 +597,7 @@ on_recv_rsp - 响应订单推送
  该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，订单推送协议pb对象
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order_list_query_ (获取订单列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的  order_list_query_  (获取订单列表)相同
 
  :example:
  
