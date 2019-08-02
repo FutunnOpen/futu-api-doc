@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>快速上手 &mdash; futu-api-doc 3.11 documentation</title>
+  <title>快速上手 &mdash; futu-api-doc 3.12 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
         <link rel="next" title="Q&amp;A" href="../q&amp;a/Q&amp;A.html"/>
         <link rel="prev" title="交易API" href="trd.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.11
+                3.12
               </div>
             
           
@@ -240,7 +240,7 @@
 </div>
 <div class="section" id="id3">
 <h2>代码快速入门<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="o">::</span><span class="n">Init</span><span class="p">();</span> <span class="c1">//初始化环境</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="o">::</span><span class="n">InitFTApi</span><span class="p">();</span> <span class="c1">//初始化环境</span>
 <span class="n">FTAPI_Qot</span> <span class="o">*</span><span class="n">pQot</span> <span class="o">=</span> <span class="n">FTAPI</span><span class="o">::</span><span class="n">CreateQotApi</span><span class="p">();</span> <span class="c1">//创建行情对象</span>
 <span class="n">SampleConnCallback</span> <span class="o">*</span><span class="n">pCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleConnCallback</span><span class="p">();</span>
 <span class="n">pQot</span><span class="o">-&gt;</span><span class="n">RegisterConnSpi</span><span class="p">(</span><span class="n">pCallback</span><span class="p">);</span> <span class="c1">//创建连接回调类</span>
@@ -255,7 +255,7 @@
 
 <span class="n">FTAPI</span><span class="o">::</span><span class="n">ReleaseQotApi</span><span class="p">(</span><span class="n">pQot</span><span class="p">);</span>
 <span class="k">delete</span> <span class="n">pCallback</span><span class="p">;</span>
-<span class="n">FTAPI</span><span class="o">::</span><span class="n">UnInit</span><span class="p">();</span>
+<span class="n">FTAPI</span><span class="o">::</span><span class="n">UnInitFTApi</span><span class="p">();</span>
 </pre></div>
 </div>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SampleCallback</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FTSPI_Conn</span><span class="p">,</span> <span class="k">public</span> <span class="n">FTAPI_Qot</span>
@@ -328,7 +328,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.11',
+            VERSION:'3.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

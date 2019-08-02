@@ -632,11 +632,14 @@ turnover                float          成交金额
 get_plate_stock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_plate_stock(self, plate_code)
+..  py:function:: get_plate_stock(self, plate_code, sort_field=SortField.CODE, ascend=True)
 
  获取特定板块下的股票列表
 
  :param plate_code: 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码
+ :param sort_field: 排序字段，SortField，根据哪些字段排序 SortField_
+ :param ascend: 排序方向，bool，True升序，False降序
+
  :return (ret, data): ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
 
         ret != RET_OK 返回错误字符串
@@ -681,7 +684,7 @@ get_plate_stock
         HK.HSCEI Stock             国指成份股
         HK.Motherboard             港股主板
         HK.GEM                     港股创业板
-		HK.BK1910                  所有港股
+        HK.BK1910                  所有港股
         HK.BK1911                  主板H股
         HK.BK1912                  创业板H股
         HK.Fund                    港股基金
@@ -692,10 +695,11 @@ get_plate_stock
         SH.3000002                 沪深指数
         SH.3000005                 沪深全部A股
         SH.BK0600                  富途热门(沪深)
+        SH.BK0992                  科创板
         SZ.3000001                 深证主板
         SZ.3000003                 中小企业板块
         SZ.3000004                 深证创业板
-		US.USAALL				   所有美股
+        US.USAALL                  所有美股
         =====================  ==============================================================
    
         

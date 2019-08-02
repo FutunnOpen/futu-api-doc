@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.11 documentation</title>
+  <title>基础API &mdash; futu-api-doc 3.12 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.11
+                3.12
               </div>
             
           
@@ -134,6 +134,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#optiontype">OptionType - 期权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ordertype">OrderType - 订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#orderstatus">OrderStatus - 订单状态定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dealstatus">DealStatus - 成交状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plate">Plate - 板块集合分类</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#positionside">PositionSide - 持仓方向类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价内价外</a></li>
@@ -155,6 +156,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#wrttype">WrtType - 港股窝轮类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sortfield">SortField - 涡轮排序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modifyusersecurityop">ModifyUserSecurityOp - 自选股操作类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trdacctype">TrdAccType - 交易账户类型</a></li>
 </ul>
 </li>
 </ul>
@@ -1391,6 +1393,12 @@
 <dd><p>港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="OrderType.SPECIAL_LIMIT_ALL">
+<code class="descname">SPECIAL_LIMIT_ALL</code><a class="headerlink" href="#OrderType.SPECIAL_LIMIT_ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>港股特别限价(要么全部成交，否则下单失败)</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1489,6 +1497,34 @@
 <dt id="OrderStatus.DELETED">
 <code class="descname">DELETED</code><a class="headerlink" href="#OrderStatus.DELETED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已删除(无成交的订单才能删除)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="dealstatus">
+<h3>DealStatus - 成交状态<a class="headerlink" href="#dealstatus" title="Permalink to this headline">¶</a></h3>
+<p>成交状态</p>
+<dl class="class">
+<dt id="DealStatus">
+<em class="property">class </em><code class="descname">DealStatus</code><a class="headerlink" href="#DealStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="DealStatus.OK">
+<code class="descname">OK</code><a class="headerlink" href="#DealStatus.OK" title="Permalink to this definition">¶</a></dt>
+<dd><p>正常</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DealStatus.CANCELLED">
+<code class="descname">CANCELLED</code><a class="headerlink" href="#DealStatus.CANCELLED" title="Permalink to this definition">¶</a></dt>
+<dd><p>被取消</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="DealStatus.CHANGED">
+<code class="descname">CHANGED</code><a class="headerlink" href="#DealStatus.CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd><p>被更改</p>
 </dd></dl>
 
 </dd></dl>
@@ -2554,13 +2590,73 @@
 <dd><p>发行量</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="SortField.PRE_CUR_PRICE">
+<code class="descname">PRE_CUR_PRICE</code><a class="headerlink" href="#SortField.PRE_CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘前最新价</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.AFTER_CUR_PRICE">
+<code class="descname">AFTER_CUR_PRICE</code><a class="headerlink" href="#SortField.AFTER_CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后最新价</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.PRE_PRICE_CHANGE_VAL">
+<code class="descname">PRE_PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.PRE_PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘前涨跌额</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.AFTER_PRICE_CHANGE_VAL">
+<code class="descname">AFTER_PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.AFTER_PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后涨跌额</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.PRE_CHANGE_RATE">
+<code class="descname">PRE_CHANGE_RATE</code><a class="headerlink" href="#SortField.PRE_CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘前涨跌幅%</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.AFTER_CHANGE_RATE">
+<code class="descname">AFTER_CHANGE_RATE</code><a class="headerlink" href="#SortField.AFTER_CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后涨跌幅%</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.PRE_AMPLITUDE">
+<code class="descname">PRE_AMPLITUDE</code><a class="headerlink" href="#SortField.PRE_AMPLITUDE" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘前振幅%</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.AFTER_AMPLITUDE">
+<code class="descname">AFTER_AMPLITUDE</code><a class="headerlink" href="#SortField.AFTER_AMPLITUDE" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后振幅%</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.PRE_TURNOVER">
+<code class="descname">PRE_TURNOVER</code><a class="headerlink" href="#SortField.PRE_TURNOVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘前成交额</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.AFTER_TURNOVER">
+<code class="descname">AFTER_TURNOVER</code><a class="headerlink" href="#SortField.AFTER_TURNOVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后成交额</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
 <hr class="docutils" />
 <div class="section" id="modifyusersecurityop">
 <h3>ModifyUserSecurityOp - 自选股操作类型<a class="headerlink" href="#modifyusersecurityop" title="Permalink to this headline">¶</a></h3>
-<p>定义</p>
+<p>自选股操作类型定义</p>
 <dl class="class">
 <dt id="ModifyUserSecurityOp">
 <em class="property">class </em><code class="descname">ModifyUserSecurityOp</code><a class="headerlink" href="#ModifyUserSecurityOp" title="Permalink to this definition">¶</a></dt>
@@ -2584,7 +2680,34 @@
 
 </dd></dl>
 
+</div>
 <hr class="docutils" />
+<div class="section" id="trdacctype">
+<h3>TrdAccType - 交易账户类型<a class="headerlink" href="#trdacctype" title="Permalink to this headline">¶</a></h3>
+<p>交易账户类型定义</p>
+<dl class="class">
+<dt id="TrdAccType">
+<em class="property">class </em><code class="descname">TrdAccType</code><a class="headerlink" href="#TrdAccType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="TrdAccType.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#TrdAccType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="TrdAccType.CASH">
+<code class="descname">CASH</code><a class="headerlink" href="#TrdAccType.CASH" title="Permalink to this definition">¶</a></dt>
+<dd><p>现金账户</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="TrdAccType.MARGIN">
+<code class="descname">MARGIN</code><a class="headerlink" href="#TrdAccType.MARGIN" title="Permalink to this definition">¶</a></dt>
+<dd><p>保证金账户</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 </div>
@@ -2632,7 +2755,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.11',
+            VERSION:'3.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

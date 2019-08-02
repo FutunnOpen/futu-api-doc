@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>协议接口 &mdash; futu-api-doc 3.11 documentation</title>
+  <title>协议接口 &mdash; futu-api-doc 3.12 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
         <link rel="next" title="基础定义" href="base_define.html"/>
         <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.11
+                3.12
               </div>
             
           
@@ -126,13 +126,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#id47">获取资金分布</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id48">获取自选股分组下的股票</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id49">修改自选股分组下的股票</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">获取账户资金</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">获取账户持仓</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">获取成交列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">获取账户持仓</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id50">协议请求流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id51">协议设计</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id52">协议头结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id53">协议体结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id54">加密通信流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id54">协议请求流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id55">协议设计</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id56">协议头结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">协议体结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">加密通信流程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rsa">RSA加解密</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#aes">AES加解密</a></li>
 </ul>
@@ -756,9 +760,49 @@
 </ul>
 </div></blockquote>
 </div>
-</div>
 <div class="section" id="id50">
-<h2>协议请求流程<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
+<h3>获取账户资金<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>请求协议ID: <a href="#id61"><span class="problematic" id="id62">2101_</span></a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id51">
+<h3>获取账户持仓<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>请求协议ID: <a href="#id63"><span class="problematic" id="id64">2102_</span></a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id52">
+<h3>获取成交列表<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>请求协议ID: <a href="#id65"><span class="problematic" id="id66">2211_</span></a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id53">
+<h3>获取账户持仓<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>请求协议ID: <a href="#id67"><span class="problematic" id="id68">2102_</span></a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id54">
+<h2>协议请求流程<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>建立连接</li>
@@ -770,12 +814,12 @@
 <img alt="../_images/proto.png" src="../_images/proto.png" />
 </div>
 <hr class="docutils" />
-<div class="section" id="id51">
-<h2>协议设计<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id55">
+<h2>协议设计<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>协议数据包括协议头以及协议体，协议头固定字段，协议体根据具体协议决定。</div></blockquote>
-<div class="section" id="id52">
-<h3>协议头结构<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id56">
+<h3>协议头结构<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>struct APIProtoHeader
 <span class="o">{</span>
     u8_t szHeaderFlag<span class="o">[</span>2<span class="o">]</span><span class="p">;</span>
@@ -838,8 +882,8 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id53">
-<h3>协议体结构<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h3>协议体结构<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <p><strong>Protobuf协议请求包体结构</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>message C2S
 <span class="o">{</span>
@@ -934,8 +978,8 @@ message Response
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id54">
-<h3>加密通信流程<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id58">
+<h3>加密通信流程<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>若FutuOpenD配置了加密, <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 初始化连接协议必须使用RSA公钥加密，后续其他协议使用 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 返回的随机密钥进行AES加密通信。</li>
@@ -1050,7 +1094,7 @@ message Response
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.11',
+            VERSION:'3.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

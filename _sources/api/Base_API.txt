@@ -808,7 +808,9 @@ OrderType - 订单类型
  
   港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)
   
+ .. py:attribute:: SPECIAL_LIMIT_ALL
 
+  港股特别限价(要么全部成交，否则下单失败)
 --------------------------------------
 
 OrderStatus - 订单状态定义
@@ -878,6 +880,28 @@ OrderStatus - 订单状态定义
  
   已删除(无成交的订单才能删除)
   
+--------------------------------------
+
+
+DealStatus - 成交状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+成交状态
+
+..  py:class:: DealStatus
+
+ ..  py:attribute:: OK
+
+   正常
+
+ ..  py:attribute:: CANCELLED
+
+   被取消
+
+ ..  py:attribute:: CHANGED
+
+  被更改
+
 --------------------------------------
 
 Plate - 板块集合分类
@@ -1632,13 +1656,53 @@ SortField - 涡轮排序
 
   发行量
 
+ ..  py:attribute:: PRE_CUR_PRICE
+
+  盘前最新价
+
+ ..  py:attribute:: AFTER_CUR_PRICE
+
+  盘后最新价
+
+ ..  py:attribute:: PRE_PRICE_CHANGE_VAL
+
+  盘前涨跌额
+
+ ..  py:attribute:: AFTER_PRICE_CHANGE_VAL
+
+  盘后涨跌额
+
+ ..  py:attribute:: PRE_CHANGE_RATE
+
+  盘前涨跌幅%
+
+ ..  py:attribute:: AFTER_CHANGE_RATE
+
+  盘后涨跌幅%
+
+ ..  py:attribute:: PRE_AMPLITUDE
+
+  盘前振幅%
+  
+ ..  py:attribute:: AFTER_AMPLITUDE
+
+  盘后振幅%
+
+ ..  py:attribute:: PRE_TURNOVER
+
+  盘前成交额
+  
+ ..  py:attribute:: AFTER_TURNOVER
+
+  盘后成交额
+
 
 --------------------------------------
 
 ModifyUserSecurityOp - 自选股操作类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-定义
+自选股操作类型定义
 
 ..  py:class:: ModifyUserSecurityOp
 
@@ -1656,3 +1720,22 @@ ModifyUserSecurityOp - 自选股操作类型
 
 
 --------------------------------------
+
+TrdAccType - 交易账户类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易账户类型定义
+
+..  py:class:: TrdAccType
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: CASH
+
+  现金账户
+
+ ..  py:attribute:: MARGIN
+
+  保证金账户

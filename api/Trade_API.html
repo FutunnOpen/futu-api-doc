@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易API &mdash; futu-api-doc 3.11 documentation</title>
+  <title>交易API &mdash; futu-api-doc 3.12 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
         <link rel="next" title="介绍" href="../net/intro.html"/>
         <link rel="prev" title="行情API" href="Quote_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.11
+                3.12
               </div>
             
           
@@ -120,22 +120,22 @@
 <li class="toctree-l4"><a class="reference internal" href="#accinfo-query">accinfo_query - 获取账户资金数据</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#position-list-query">position_list_query - 获取账户持仓列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#place-order">place_order - 下单</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">order_list_query - 获取订单列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#order-list-query">order_list_query - 获取订单列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#modify-order">modify_order - 修改订单</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cancel-all-order">cancel_all_order - 撤消全部订单</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#change-order">change_order - 改单(老接口，兼容以前)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">deal_list_query - 获取成交列表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deal-list-query">deal_list_query - 获取成交列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#history-order-list-query">history_order_list_query - 获取历史订单列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#history-deal-list-query">history_deal_list_query - 获取历史成交列表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#acctradinginfo-query">acctradinginfo_query - 查询账户下最大可买卖数量</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">TradeOrderHandlerBase - 响应订单推送基类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">TradeOrderHandlerBase - 响应订单推送基类</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#on-recv-rsp">on_recv_rsp - 响应订单推送</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedealhandlerbase">TradeDealHandlerBase - 响应成交推送基类</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">on_recv_rsp - 响应成交推送</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">on_recv_rsp - 响应成交推送</a></li>
 </ul>
 </li>
 </ul>
@@ -350,6 +350,14 @@
 <td>str</td>
 <td>交易环境， <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</td>
 </tr>
+<tr class="row-even"><td>acc_type</td>
+<td>str</td>
+<td>账户类型，见 <a class="reference external" href="Base_API.html#trdacctype">TrdAccType</a></td>
+</tr>
+<tr class="row-odd"><td>card_num</td>
+<td>str</td>
+<td>卡号，同客户端内的展示</td>
+</tr>
 </tbody>
 </table>
 <table class="docutils field-list" frame="void" rules="none">
@@ -411,7 +419,7 @@
 <h4>accinfo_query - 获取账户资金数据<a class="headerlink" href="#accinfo-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="accinfo_query">
-<code class="descname">accinfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#accinfo_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">accinfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#accinfo_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取账户资金数据。获取账户的资产净值、证券市值、现金、购买力等资金数据。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -421,6 +429,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -432,9 +441,9 @@
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="21%" />
-<col width="11%" />
-<col width="68%" />
+<col width="17%" />
+<col width="9%" />
+<col width="74%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -493,7 +502,7 @@
 <h4>position_list_query - 获取账户持仓列表<a class="headerlink" href="#position-list-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="position_list_query">
-<code class="descname">position_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>pl_ratio_min=None</em>, <em>pl_ratio_max=None</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#position_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">position_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>pl_ratio_min=None</em>, <em>pl_ratio_max=None</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#position_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取账户持仓列表。获取账户的证券持仓列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -506,6 +515,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -626,7 +636,7 @@
 <h4>place_order - 下单<a class="headerlink" href="#place-order" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="place_order">
-<code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>remark=None</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>下单交易。</p>
 <p>注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -643,11 +653,12 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，  TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
+<li><strong>remark</strong> &#8211; str，备注，转成utf8后的长度不能超过64字节。后面订单数据都会带上这个备注。用户自己使用，OpenD不做处理，仅作为订单数据存储。</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 <a class="reference external" href="#id4">order-list-query</a> (获取订单列表)相同。</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 <a class="reference internal" href="#order_list_query">order_list_query</a> (获取订单列表)相同。</p>
 <p>如果是OpenHKCCTradeContext，返回数据中order_type仅有OrderType.NORMAL</p>
 </td>
 </tr>
@@ -673,11 +684,11 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h4>order_list_query - 获取订单列表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="order-list-query">
+<h4>order_list_query - 获取订单列表<a class="headerlink" href="#order-list-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="order_list_query">
-<code class="descname">order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_id=&quot;&quot;</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#order_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_id=&quot;&quot;</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#order_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取订单列表。获取账户的交易订单列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -692,6 +703,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -765,6 +777,10 @@
 <tr class="row-even"><td>last_err_msg</td>
 <td>str</td>
 <td>最后的错误描述，如果有错误，会有此描述最后一次错误的原因，无错误为空</td>
+</tr>
+<tr class="row-odd"><td>remark</td>
+<td>str</td>
+<td>备注，详见 <a class="reference internal" href="#place_order">place_order</a> 的说明。</td>
 </tr>
 </tbody>
 </table>
@@ -959,11 +975,11 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id8">
-<h4>deal_list_query - 获取成交列表<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="deal-list-query">
+<h4>deal_list_query - 获取成交列表<a class="headerlink" href="#deal-list-query" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="deal_list_query">
-<code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取成交列表。获取账户的交易成交列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -974,6 +990,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -1036,6 +1053,10 @@
 <td>str</td>
 <td>对手经纪名称，港股有效。OpenHKCCTradeContext无此字段</td>
 </tr>
+<tr class="row-even"><td>status</td>
+<td>str</td>
+<td>成交状态，见 <a class="reference external" href="Base_API.html#dealstatus">DealStatus</a></td>
+</tr>
 </tbody>
 </table>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1081,7 +1102,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference external" href="#id4">order-list-query</a> (获取订单列表)相同</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference internal" href="#order_list_query">order_list_query</a> (获取订单列表)相同</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
@@ -1128,7 +1149,7 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference external" href="#id7">deal-list-query</a> (获取成交列表)相同</p>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference internal" href="#deal_list_query">deal_list_query</a> (获取成交列表)相同</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
@@ -1246,8 +1267,8 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id12">
-<h3>TradeOrderHandlerBase - 响应订单推送基类<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>TradeOrderHandlerBase - 响应订单推送基类<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="on-recv-rsp">
 <h4>on_recv_rsp - 响应订单推送<a class="headerlink" href="#on-recv-rsp" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
@@ -1262,7 +1283,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; class，订单推送协议pb对象</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference external" href="#id4">order-list-query</a> (获取订单列表)相同</td>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的  <a class="reference internal" href="#order_list_query">order_list_query</a>  (获取订单列表)相同</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
@@ -1297,8 +1318,8 @@
 <hr class="docutils" />
 <div class="section" id="tradedealhandlerbase">
 <h3>TradeDealHandlerBase - 响应成交推送基类<a class="headerlink" href="#tradedealhandlerbase" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id13">
-<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -1311,7 +1332,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; class，成交推送协议pb对象</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference external" href="#id7">deal-list-query</a> (获取成交列表)相同</td>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference internal" href="#deal_list_query">deal_list_query</a> (获取成交列表)相同</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
@@ -1390,7 +1411,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.11',
+            VERSION:'3.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

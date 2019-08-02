@@ -691,6 +691,9 @@ SortField - 涡轮排序
 		SortField_AskVol = 9; //卖量
 		SortField_Volume = 10; //成交量
 		SortField_Turnover = 11; //成交额
+		SortField_Amplitude = 30; //振幅%
+
+		//以下排序字段只支持用于Qot_GetWarrant协议
 		SortField_Score = 12; //综合评分
 		SortField_Premium = 13; //溢价%
 		SortField_EffectiveLeverage = 14; //有效杠杆
@@ -709,11 +712,22 @@ SortField - 涡轮排序
 		SortField_Change = 27; //换股比率
 		SortField_StreetRate = 28; //街货比%
 		SortField_StreetVol = 29; //街货量
-		SortField_Amplitude = 30; //振幅%
-		SortField_WarrantName = 31; // 名称
+		SortField_WarrantName = 31; // 窝轮名称
 		SortField_Issuer = 32; //发行人
 		SortField_LotSize = 33; // 每手
 		SortField_IssueSize = 34; //发行量
+
+		//以下排序字段只支持用于Qot_GetPlateSecurity协议，并仅支持美股
+		SortField_PreCurPrice = 35; //盘前最新价
+		SortField_AfterCurPrice = 36; //盘后最新价
+		SortField_PrePriceChangeVal = 37; //盘前涨跌额
+		SortField_AfterPriceChangeVal = 38; //盘后涨跌额
+		SortField_PreChangeRate = 39; //盘前涨跌幅%
+		SortField_AfterChangeRate = 40; //盘后涨跌幅%
+		SortField_PreAmplitude = 41; //盘前振幅%
+		SortField_AfterAmplitude = 42; //盘后振幅%
+		SortField_PreTurnover = 43; //盘前成交额
+		SortField_AfterTurnover = 44; //盘后成交额
 	}
 	
 -----------------------------------------------
@@ -1219,8 +1233,23 @@ OrderType - 订单类型
 		OrderType_Auction = 6; //竞价订单(目前仅港股)，A股的早盘竞价订单类型不变还是OrderType_Normal
 		OrderType_AuctionLimit = 7; //竞价限价订单(目前仅港股)
 		OrderType_SpecialLimit = 8; //特别限价订单(目前仅港股)，成交规则同增强限价订单，且部分成交后，交易所自动撤销订单
+		OrderType_SpecialLimit_All = 9; //特别限价且要求全部成交订单(目前仅港股)，要么全部成交，要么自动撤单
 	}
 
+
+-----------------------------------------------
+
+OrderFillStatus - 一笔成交的状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum OrderFillStatus
+	{
+		OrderFillStatus_OK = 0; //正常
+		OrderFillStatus_Cancelled = 1; //成交被取消
+		OrderFillStatus_Changed = 2; //成交被更改
+	}
 
 -----------------------------------------------
 
@@ -1258,6 +1287,20 @@ ModifyOrderOp - 修改订单操作类型
 
 -----------------------------------------------
 
+TrdAccType - 交易账户类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	enum TrdAccType
+	{
+		TrdAccType_Unknown = 0; //未知类型
+		TrdAccType_Cash = 1;    //现金账户
+		TrdAccType_Margin = 2;  //保证金账户
+	};
+
+-----------------------------------------------	
+
 ReconfirmOrderReason - 确认订单类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1271,6 +1314,7 @@ ReconfirmOrderReason - 确认订单类型
 	};
 
 -----------------------------------------------	
+
 
 TrdHeader - 交易公共参数头
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1296,6 +1340,8 @@ TrdAcc - 交易账户
 		required int32 trdEnv = 1; //交易环境，参见TrdEnv的枚举定义
 		required uint64 accID = 2; //业务账号
 		repeated int32 trdMarketAuthList = 3; //业务账户支持的交易市场权限，即此账户能交易那些市场, 可拥有多个交易市场权限，目前仅单个，取值参见TrdMarket的枚举定义
+		optional int32 accType = 4;   //账户类型，取值见TrdAccType
+		optional string cardNum = 5;  //卡号
 	}
 
 -----------------------------------------------
@@ -1372,6 +1418,7 @@ Order - 订单
 		optional int32 secMarket = 15; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 		optional double createTimestamp = 16; //创建时间戳
 		optional double updateTimestamp = 17; //最后更新时间戳
+		optional string remark = 18; //用户备注字符串，最大长度64字节
 	}
 
 -----------------------------------------------
@@ -1397,6 +1444,8 @@ OrderFill - 成交
 		optional string counterBrokerName = 12; //对手经纪名称，港股有效
 		optional int32 secMarket = 13; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 		optional double createTimestamp = 14; //时间戳
+		optional double updateTimestamp = 15; //最后更新时间戳
+		optional int32 status = 16; //成交状态, 参见OrderFillStatus的枚举定义
 	}
 
 -----------------------------------------------

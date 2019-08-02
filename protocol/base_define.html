@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.11 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.12 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.11
+                3.12
               </div>
             
           
@@ -158,8 +158,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#trdmarket">TrdMarket - 交易市场</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdside">TrdSide - 交易方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ordertype">OrderType - 订单类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orderfillstatus">OrderFillStatus - 一笔成交的状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#positionside">PositionSide - 持仓方向类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modifyorderop">ModifyOrderOp - 修改订单操作类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trdacctype">TrdAccType - 交易账户类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reconfirmorderreason">ReconfirmOrderReason - 确认订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdheader">TrdHeader - 交易公共参数头</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdacc">TrdAcc - 交易账户</a></li>
@@ -973,6 +975,9 @@
         <span class="na">SortField_AskVol</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//卖量</span>
         <span class="na">SortField_Volume</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//成交量</span>
         <span class="na">SortField_Turnover</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//成交额</span>
+        <span class="na">SortField_Amplitude</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="c1">//振幅%</span>
+
+        <span class="c1">//以下排序字段只支持用于Qot_GetWarrant协议</span>
         <span class="na">SortField_Score</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//综合评分</span>
         <span class="na">SortField_Premium</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//溢价%</span>
         <span class="na">SortField_EffectiveLeverage</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//有效杠杆</span>
@@ -991,11 +996,22 @@
         <span class="na">SortField_Change</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span> <span class="c1">//换股比率</span>
         <span class="na">SortField_StreetRate</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span> <span class="c1">//街货比%</span>
         <span class="na">SortField_StreetVol</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span> <span class="c1">//街货量</span>
-        <span class="na">SortField_Amplitude</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="c1">//振幅%</span>
-        <span class="na">SortField_WarrantName</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span> <span class="c1">// 名称</span>
+        <span class="na">SortField_WarrantName</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span> <span class="c1">// 窝轮名称</span>
         <span class="na">SortField_Issuer</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span> <span class="c1">//发行人</span>
         <span class="na">SortField_LotSize</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span> <span class="c1">// 每手</span>
         <span class="na">SortField_IssueSize</span> <span class="o">=</span> <span class="mi">34</span><span class="p">;</span> <span class="c1">//发行量</span>
+
+        <span class="c1">//以下排序字段只支持用于Qot_GetPlateSecurity协议，并仅支持美股</span>
+        <span class="na">SortField_PreCurPrice</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span> <span class="c1">//盘前最新价</span>
+        <span class="na">SortField_AfterCurPrice</span> <span class="o">=</span> <span class="mi">36</span><span class="p">;</span> <span class="c1">//盘后最新价</span>
+        <span class="na">SortField_PrePriceChangeVal</span> <span class="o">=</span> <span class="mi">37</span><span class="p">;</span> <span class="c1">//盘前涨跌额</span>
+        <span class="na">SortField_AfterPriceChangeVal</span> <span class="o">=</span> <span class="mi">38</span><span class="p">;</span> <span class="c1">//盘后涨跌额</span>
+        <span class="na">SortField_PreChangeRate</span> <span class="o">=</span> <span class="mi">39</span><span class="p">;</span> <span class="c1">//盘前涨跌幅%</span>
+        <span class="na">SortField_AfterChangeRate</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="c1">//盘后涨跌幅%</span>
+        <span class="na">SortField_PreAmplitude</span> <span class="o">=</span> <span class="mi">41</span><span class="p">;</span> <span class="c1">//盘前振幅%</span>
+        <span class="na">SortField_AfterAmplitude</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="c1">//盘后振幅%</span>
+        <span class="na">SortField_PreTurnover</span> <span class="o">=</span> <span class="mi">43</span><span class="p">;</span> <span class="c1">//盘前成交额</span>
+        <span class="na">SortField_AfterTurnover</span> <span class="o">=</span> <span class="mi">44</span><span class="p">;</span> <span class="c1">//盘后成交额</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1499,6 +1515,21 @@
         <span class="na">OrderType_Auction</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//竞价订单(目前仅港股)，A股的早盘竞价订单类型不变还是OrderType_Normal</span>
         <span class="na">OrderType_AuctionLimit</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//竞价限价订单(目前仅港股)</span>
         <span class="na">OrderType_SpecialLimit</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//特别限价订单(目前仅港股)，成交规则同增强限价订单，且部分成交后，交易所自动撤销订单</span>
+        <span class="na">OrderType_SpecialLimit_All</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//特别限价且要求全部成交订单(目前仅港股)，要么全部成交，要么自动撤单</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="orderfillstatus">
+<h3>OrderFillStatus - 一笔成交的状态<a class="headerlink" href="#orderfillstatus" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderFillStatus</span>
+<span class="p">{</span>
+        <span class="na">OrderFillStatus_OK</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//正常</span>
+        <span class="na">OrderFillStatus_Cancelled</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//成交被取消</span>
+        <span class="na">OrderFillStatus_Changed</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//成交被更改</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1531,6 +1562,20 @@
         <span class="na">ModifyOrderOp_Disable</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//失效</span>
         <span class="na">ModifyOrderOp_Enable</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//生效</span>
         <span class="na">ModifyOrderOp_Delete</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//删除</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="trdacctype">
+<h3>TrdAccType - 交易账户类型<a class="headerlink" href="#trdacctype" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdAccType</span>
+<span class="p">{</span>
+        <span class="na">TrdAccType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知类型</span>
+        <span class="na">TrdAccType_Cash</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">//现金账户</span>
+        <span class="na">TrdAccType_Margin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">//保证金账户</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -1573,6 +1618,8 @@
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">trdEnv</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易环境，参见TrdEnv的枚举定义</span>
         <span class="k">required</span> <span class="kt">uint64</span> <span class="na">accID</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//业务账号</span>
         <span class="k">repeated</span> <span class="kt">int32</span> <span class="na">trdMarketAuthList</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//业务账户支持的交易市场权限，即此账户能交易那些市场, 可拥有多个交易市场权限，目前仅单个，取值参见TrdMarket的枚举定义</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">accType</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>   <span class="c1">//账户类型，取值见TrdAccType</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">cardNum</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">//卡号</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1649,6 +1696,7 @@
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">secMarket</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">createTimestamp</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//创建时间戳</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">updateTimestamp</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">//最后更新时间戳</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">remark</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//用户备注字符串，最大长度64字节</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1674,6 +1722,8 @@
         <span class="k">optional</span> <span class="kt">string</span> <span class="na">counterBrokerName</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//对手经纪名称，港股有效</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">secMarket</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">createTimestamp</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//时间戳</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">updateTimestamp</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//最后更新时间戳</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">status</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//成交状态, 参见OrderFillStatus的枚举定义</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1759,7 +1809,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.11',
+            VERSION:'3.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.11 documentation</title>
+  <title>行情API &mdash; futu-api-doc 3.12 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.11 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.11
+                3.12
               </div>
             
           
@@ -1664,13 +1664,17 @@ start和end的组合如下：</p>
 <h4>get_plate_stock<a class="headerlink" href="#get-plate-stock" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="get_plate_stock">
-<code class="descname">get_plate_stock</code><span class="sig-paren">(</span><em>self</em>, <em>plate_code</em><span class="sig-paren">)</span><a class="headerlink" href="#get_plate_stock" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_plate_stock</code><span class="sig-paren">(</span><em>self</em>, <em>plate_code</em>, <em>sort_field=SortField.CODE</em>, <em>ascend=True</em><span class="sig-paren">)</span><a class="headerlink" href="#get_plate_stock" title="Permalink to this definition">¶</a></dt>
 <dd><p>获取特定板块下的股票列表</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>plate_code</strong> &#8211; 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>plate_code</strong> &#8211; 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码</li>
+<li><strong>sort_field</strong> &#8211; 排序字段，SortField，根据哪些字段排序 <a class="reference external" href="Base_API.html#sortfield">SortField</a></li>
+<li><strong>ascend</strong> &#8211; 排序方向，bool，True升序，False降序</li>
+</ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return (ret, data):</th></tr>
@@ -1802,16 +1806,19 @@ start和end的组合如下：</p>
 <tr class="row-even"><td>SH.BK0600</td>
 <td>富途热门(沪深)</td>
 </tr>
-<tr class="row-odd"><td>SZ.3000001</td>
+<tr class="row-odd"><td>SH.BK0992</td>
+<td>科创板</td>
+</tr>
+<tr class="row-even"><td>SZ.3000001</td>
 <td>深证主板</td>
 </tr>
-<tr class="row-even"><td>SZ.3000003</td>
+<tr class="row-odd"><td>SZ.3000003</td>
 <td>中小企业板块</td>
 </tr>
-<tr class="row-odd"><td>SZ.3000004</td>
+<tr class="row-even"><td>SZ.3000004</td>
 <td>深证创业板</td>
 </tr>
-<tr class="row-even"><td>US.USAALL</td>
+<tr class="row-odd"><td>US.USAALL</td>
 <td>所有美股</td>
 </tr>
 </tbody>
@@ -4458,7 +4465,7 @@ quote_ctx.close()</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.11',
+            VERSION:'3.12',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
