@@ -397,6 +397,7 @@ WarrantType - 窝轮类型
 		WarrantType_Sell = 2; //认沽
 		WarrantType_Bull = 3; //牛
 		WarrantType_Bear = 4; //熊
+		WarrantType_InLine = 5; //界内证
 	};
 
 -----------------------------------------------
@@ -716,6 +717,9 @@ SortField - 涡轮排序
 		SortField_Issuer = 32; //发行人
 		SortField_LotSize = 33; // 每手
 		SortField_IssueSize = 34; //发行量
+		SortField_UpperStrikePrice = 45; //上限价，仅用于界内证
+		SortField_LowerStrikePrice = 46; //下限价，仅用于界内证
+		SortField_InLinePriceStatus = 47; //界内界外，仅用于界内证
 
 		//以下排序字段只支持用于Qot_GetPlateSecurity协议，并仅支持美股
 		SortField_PreCurPrice = 35; //盘前最新价
@@ -783,7 +787,7 @@ IpoPeriod - 涡轮上市日
 	
 -----------------------------------------------
 
-PriceType - 涡轮价外/内
+PriceType - 涡轮价(界)外/内
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -791,8 +795,8 @@ PriceType - 涡轮价外/内
 	enum PriceType
 	{
 		PriceType_Unknow = 0;
-		PriceType_Outside = 1; //价外
-		PriceType_WithIn = 2; //价内
+		PriceType_Outside = 1; //价外,界内证表示界外
+		PriceType_WithIn = 2; //价内,界内证表示界内
 	}
 	
 -----------------------------------------------

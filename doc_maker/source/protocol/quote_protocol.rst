@@ -1029,7 +1029,7 @@
 		repeated Qot_Common.Security securityList = 1; //股票
 	}
 
-	// 正股类型额外数据
+	 // 正股类型额外数据
 	message EquitySnapshotExData
 	{
 		required int64 issuedShares = 1; // 发行股本,即总股本
@@ -1050,7 +1050,7 @@
 		optional double dividendLFYRatio = 16; // 股息率LFY（该字段为百分比字段，默认不展示%）
 	}
 
-	// 涡轮类型额外数据
+	 // 涡轮类型额外数据
 	message WarrantSnapshotExData
 	{
 		required double conversionRate = 1; //换股比率
@@ -1059,12 +1059,12 @@
 		required string maturityTime = 4; //到期日时间字符串
 		required string endTradeTime = 5; //最后交易日时间字符串
 		required Qot_Common.Security owner = 6; //所属正股 
-		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段过滤
+		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段
 		required int64 streetVolumn = 8; //街货量
 		required int64 issueVolumn = 9; //发行量
 		required double streetRate = 10; //街货占比（该字段为百分比字段，默认不展示%）
-		required double delta = 11; //对冲值,仅认购认沽支持该字段过滤
-		required double impliedVolatility = 12; //引伸波幅,仅认购认沽支持该字段过滤
+		required double delta = 11; //对冲值,仅认购认沽支持该字段
+		required double impliedVolatility = 12; //引申波幅,仅认购认沽支持该字段
 		required double premium = 13; //溢价（该字段为百分比字段，默认不展示%）
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
@@ -1074,9 +1074,12 @@
 		optional double conversionPrice = 19;  // 换股价
 		optional double priceRecoveryRatio = 20; // 正股距收回价（该字段为百分比字段，默认不展示%）
 		optional double score = 21; // 综合评分
+		optional double upperStrikePrice = 22; //上限价，仅界内证支持该字段
+		optional double lowerStrikePrice = 23; //下限价，仅界内证支持该字段
+		optional int32 inLinePriceStatus = 24; //Qot_Common.PriceType, 界内界外，仅界内证支持该字段
 	}
 
-	// 期权类型额外数据
+	 // 期权类型额外数据
 	message OptionSnapshotExData
 	{
 		required int32 type = 1; //Qot_Common.OptionType,期权
@@ -1092,26 +1095,40 @@
 		required double vega = 11; //希腊值 Vega
 		required double theta = 12; //希腊值 Theta
 		required double rho = 13; //希腊值 Rho
-		optional double strikeTimestamp = 14; //行权日时间戳		
+		optional double strikeTimestamp = 14; //行权日时间戳  
 	}
 
 	// 指数类型额外数据
 	message IndexSnapshotExData
 	{
-	    required int32 raiseCount = 1;  // 上涨支数
-	    required int32 fallCount = 2;  // 下跌支数
-	    required int32 equalCount = 3;  // 平盘支数
+		required int32 raiseCount = 1;  // 上涨支数
+		required int32 fallCount = 2;  // 下跌支数
+		required int32 equalCount = 3;  // 平盘支数
 	}
-	
+
 	// 板块类型额外数据
 	message PlateSnapshotExData
 	{
-	    required int32 raiseCount = 1;  // 上涨支数
-	    required int32 fallCount = 2;  // 下跌支数
-	    required int32 equalCount = 3;  // 平盘支数
+		required int32 raiseCount = 1;  // 上涨支数
+		required int32 fallCount = 2;  // 下跌支数
+		required int32 equalCount = 3;  // 平盘支数
 	}
 
-	// 基本快照数据
+	//盘前盘后数据，仅支持美股以及科创板
+	//科创板只有盘后成交量，成交额
+	message PreAfterMarketData
+	{
+		optional double price = 1;  // 盘前或盘后 - 价格
+		optional double highPrice = 2;  // 盘前或盘后 - 最高价
+		optional double lowPrice = 3;  // 盘前或盘后 - 最低价
+		optional int64 volume = 4;  // 盘前或盘后 - 成交量
+		optional double turnover = 5;  // 盘前或盘后 - 成交额
+		optional double changeVal = 6;  // 盘前或盘后 - 涨跌额
+		optional double changeRate = 7;  // 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）
+		optional double amplitude = 8;  // 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）
+	}
+
+	 //基本快照数据
 	message SnapshotBasicData
 	{
 		required Qot_Common.Security security = 1; //股票
@@ -1119,9 +1136,9 @@
 		required bool isSuspend = 3; //是否停牌
 		required string listTime = 4; //上市时间字符串
 		required int32 lotSize = 5; //每手数量
-		required double priceSpread = 6; //向上价差
+		required double priceSpread = 6; //价差
 		required string updateTime = 7; //更新时间字符串
-		required double highPrice = 8; //最新价
+		required double highPrice = 8; //最高价
 		required double openPrice = 9; //开盘价
 		required double lowPrice = 10; //最低价
 		required double lastClosePrice = 11; //昨收价
@@ -1150,6 +1167,8 @@
 		optional double lowest52WeeksPrice = 34;  // 52周最低价
 		optional double highestHistoryPrice = 35;  // 历史最高价
 		optional double lowestHistoryPrice = 36;  // 历史最低价
+		optional PreAfterMarketData preMarket = 37; //盘前数据
+		optional PreAfterMarketData afterMarket = 38; //盘后数据
 	}
 
 	message Snapshot
@@ -1180,6 +1199,7 @@
 		
 		optional S2C s2c = 4;
 	}
+
 
 .. note::
 
@@ -1596,6 +1616,9 @@
 		optional double impliedVolatility = 41; //引伸波幅,仅认购认沽支持该字段
 		optional double delta = 42; //对冲值,仅认购认沽支持该字段
 		required double effectiveLeverage = 43; //有效杠杆		
+		optional double upperStrikePrice = 44; //上限价，仅界内证支持该字段
+		optional double lowerStrikePrice = 45; //下限价，仅界内证支持该字段
+		optional int32 inLinePriceStatus = 46; //Qot_Common.PriceType, 界内界外，仅界内证支持该字段
 	}
 
 	message S2C

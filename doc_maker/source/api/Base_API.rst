@@ -950,7 +950,7 @@ PositionSide - 持仓方向类型
   
 --------------------------------------
 
-PriceType - 涡轮价内价外
+PriceType - 涡轮价(界)内外
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 上市日
@@ -963,11 +963,11 @@ PriceType - 涡轮价内价外
 
  ..  py:attribute:: Outside
 
-  价外
+  价外,界内证表示界外
 
  ..  py:attribute:: WithIn
 
-  价内
+  价内,界内证表示界内
 
 --------------------------------------
 
@@ -1501,6 +1501,10 @@ WrtType - 港股窝轮类型
  ..  py:attribute:: BEAR
 
   熊证
+  
+ ..  py:attribute:: INLINE
+
+  界内证
 
  ..  py:attribute:: NONE
 
@@ -1696,6 +1700,17 @@ SortField - 涡轮排序
 
   盘后成交额
 
+ ..  py:attribute:: UPPER_STRIKE_PRICE
+
+  上限价，仅界内证支持该字段
+
+ ..  py:attribute:: LOWER_STRIKE_PRICE
+
+  下限价，仅界内证支持该字段
+  
+ ..  py:attribute:: INLINE_PRICE_STATUS
+
+  界内界外，仅界内证支持该字段
 
 --------------------------------------
 

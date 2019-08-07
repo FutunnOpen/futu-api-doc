@@ -514,7 +514,6 @@ get_market_snapshot
  dividend_ratio_ttm              float          股息率TTM（该字段为百分比字段，默认不展示%）
  dividend_lfy                    float          股息LFY，上一年度派息
  dividend_lfy_ratio              float          股息率LFY（该字段为百分比字段，默认不展示%）
-
  stock_owner                     str            涡轮所属正股的代码或期权的标的股代码
  wrt_valid                       bool           是否是窝轮（为true时以下涡轮相关的字段才有合法数据）
  wrt_conversion_ratio            float          换股比率
@@ -536,6 +535,9 @@ get_market_snapshot
  wrt_delta                       float          窝轮对冲值
  wrt_implied_volatility          float          窝轮引伸波幅
  wrt_premium                     float          窝轮溢价（该字段为百分比字段，默认不展示%）
+ wrt_upper_strike_price          float          上限价，仅界内证支持该字段
+ wrt_lower_strike_price          float          下限价，仅界内证支持该字段
+ wrt_inline_price_status         str            界内界外, 参见PriceType_，仅界内证支持该字段
  lot_size                        int            每手股数
  price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
  ask_price                       float          卖价
@@ -578,6 +580,8 @@ get_market_snapshot
  index_raise_count               int            指数类型上涨支数
  index_fall_count                int            指数类型下跌支数
  index_equal_count               int            指数类型平盘支数
+ after_volume                    int            盘后成交量，目前仅科创板支持该数据
+ after_turnover                  double         盘后成交额，目前仅科创板支持该数据
  ============================   =============   ======================================================================
 
  :Example:
@@ -1547,6 +1551,9 @@ low_price                      double             最低价
 implied_volatility             double             引伸波幅，仅认购认沽支持该字段
 delta                          double             对冲值，仅认购认沽支持该字段
 effective_leverage             double             有效杠杆
+upper_strike_price             double             上限价，仅界内证支持该字段
+lower_strike_price             double             下限价，仅界内证支持该字段
+inline_price_status            str                界内界外 参见 PriceType_，仅界内证支持该字段
 ==========================    ================    ====================================================================================
 
  :Example:
