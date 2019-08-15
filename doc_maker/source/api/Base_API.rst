@@ -1041,7 +1041,7 @@ SecurityType - 证券类型
   
  ..  py:attribute:: WARRANT
  
-  港股涡轮牛熊证
+  港股涡轮牛熊界内证
   
  ..  py:attribute:: BOND
  

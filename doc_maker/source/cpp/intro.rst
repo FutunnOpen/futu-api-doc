@@ -15,6 +15,8 @@
 Cpp API简介
 -------------
   * Cpp API依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
+  
+  * API使用VS2013编译，如需使用更高编译平台版本，需自行编译FTAPI以及\ `Google Protobuf <https://github.com/protocolbuffers/protobuf>`_ （3.5.1）静态库。
 
   * Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。
 
