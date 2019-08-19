@@ -1,4 +1,4 @@
-﻿基础API
+基础API
 ========
  .. _ProtoFMT : #id2
  
@@ -1734,7 +1734,76 @@ ModifyUserSecurityOp - 自选股操作类型
   删除
 
 
---------------------------------------
+-------------------------------------------------------------------------------
+
+StockField - 条件选股的简单属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+条件选股的筛选条件定义
+
+..  py:class:: StockField
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: STOCK_CODE
+
+  股票代码
+
+ ..  py:attribute:: STOCK_NAME
+
+  股票名称
+
+ ..  py:attribute:: CUR_PRICE
+
+  最新价
+
+ ..  py:attribute:: CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO
+
+  (现价 - 52周最高)/52周最高
+
+ ..  py:attribute:: CUR_PRICE_TO_LOWEST52_WEEKS_RATIO
+
+  (现价 - 52周最低)/52周最低
+
+ ..  py:attribute:: HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO
+
+  (今日最高 - 52周最高)/52周最高
+
+ ..  py:attribute:: LOW_PRICE_TO_LOWEST52_WEEKS_RATIO
+
+  (今日最低 - 52周最低)/52周最低
+
+ ..  py:attribute:: VOLUME_RATIO
+
+  量比
+
+ ..  py:attribute:: BID_ASK_RATIO
+
+  委比
+
+ ..  py:attribute:: LOT_PRICE
+
+  市值
+
+ ..  py:attribute:: MARKET_VAL
+
+  每手价格
+
+ ..  py:attribute:: PE_ANNUAL
+
+  市盈率 (静态)
+
+ ..  py:attribute:: PE_TTM
+
+  市盈率TTM
+
+ ..  py:attribute:: PB_RATE
+
+  市净率
+
+--------------------------------------------------------------------------------
 
 TrdAccType - 交易账户类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

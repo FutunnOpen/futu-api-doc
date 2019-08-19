@@ -829,8 +829,63 @@ QotRight - 行情权限
 		QotRight_Level1 = 2; //Level1
 		QotRight_Level2 = 3; //Level2
 	}
-		
------------------------------------------------
+			
+-----------------------------------------------------------------------------
+
+StockMarket - 条件选股的股票市场
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum StockMarket
+	{
+		StockMarket_Unknown = 0; // 未知
+		StockMarket_HK = 1; // 港股
+		StockMarket_US = 2; // 美股
+		StockMarket_CN = 3; // A股
+	}
+					
+-----------------------------------------------------------------------------
+
+StockField - 条件选股的简单属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum StockField
+	{
+		StockField_Unknown = 0; // 未知
+		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
+		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
+		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
+		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
+		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
+		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
+		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
+		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
+		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+SortDir - 条件选股的排序方向
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum SortDir
+	{
+		SortDir_No = 0; // 不排序
+		SortDir_Ascend = 1; // 升序
+		SortDir_Descend = 2; // 降序
+	}
+						
+-----------------------------------------------------------------------------
 
 Security - 证券标识
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

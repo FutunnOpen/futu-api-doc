@@ -70,6 +70,8 @@
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
+ .. _StockField: Base_API.html#stockfield
+
 一分钟上手
 ============
 
@@ -640,7 +642,7 @@ get_plate_stock
 
  获取特定板块下的股票列表
 
- :param plate_code: 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码
+ :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子版块列表函数获取子版块代码
  :param sort_field: 排序字段，SortField，根据哪些字段排序 SortField_
  :param ascend: 排序方向，bool，True升序，False降序
 
@@ -1723,6 +1725,48 @@ modify_user_security
 .. note::
 
     * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id48>`_
+
+get_stock_filter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_stock_filter(self, market, filter_list, plate_code=None, begin=0, num=200)
+
+ 获取条件选股
+
+ :param market: 市场类型，Market_
+ :param filter_list: 简单属性筛选条件的枚举值，查看 StockField_
+ :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子版块列表函数获取子版块代码
+ :param begin: 数据起始点
+ :param num: 请求数据个数，最大200
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+
+        ret == RET_OK 'success'
+
+ :Example:
+
+ .. code:: python
+
+    from futu.quote.quote_stockfilter_info import SimpleFilter    
+    field = SimpleFilter()
+    field.filter_min = 100
+    field.filter_max = 1000
+    field.stock_field = StockField.CUR_PRICE
+    field.is_no_filter = False
+    field.sort = SortDir.ASCEND
+
+    ret, ls = quote_ctx.get_stock_filter(StockMarket.HK, [field])
+    if ret == RET_OK:
+     last_page, all_count, ret_list = ls
+     print(len(ret_list), all_count, ret_list)
+    else:
+     print('error: ', ls)
+
+.. note::
+
+    * 接口限制请参见 `获取条件选股 <../protocol/intro.html#id51>`_
 
 ---------------------------------------------------------------------    
 
