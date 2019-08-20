@@ -70,6 +70,8 @@
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
+ .. _StockMarket: Base_API.html#stockmarket
+
  .. _StockField: Base_API.html#stockfield
 
 一分钟上手
@@ -1733,7 +1735,7 @@ get_stock_filter
 
  获取条件选股
 
- :param market: 市场类型，Market_
+ :param market: 市场类型，StockMarket_
  :param filter_list: 简单属性筛选条件的枚举值，查看 StockField_
  :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子版块列表函数获取子版块代码
  :param begin: 数据起始点
