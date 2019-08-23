@@ -1928,7 +1928,7 @@
 		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
 		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
 		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
-		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
+		StockField_MarketVal = 11; // 市值，单位是元 例如填写[50000000,3000000000]值区间
 		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
 		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
 		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
