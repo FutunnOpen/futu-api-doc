@@ -1470,7 +1470,7 @@ get_warrant
         maturity_time_min           str               到期日, 到期日范围的开始时间
         maturity_time_max           str               到期日范围的结束时间
         ipo_period                  str               上市日 参见 IpoPeriod_
-        price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_
+        price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_ , 界内证暂不支持界内外筛选
         status                      str               窝轮状态 参见 WarrantStatus_
         cur_price_min               double            最新价过滤起点
         cur_price_max               double            最新价过滤终点
