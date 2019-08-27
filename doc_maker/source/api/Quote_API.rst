@@ -1458,43 +1458,43 @@ get_warrant
  :param req: 请求参数组合，from futu.quote.quote_get_warrant import Request
 
 
-        ==========================  ==============    ====================================================================================
-        参数                          类型               说明
-        ==========================  ==============    ====================================================================================
-        begin                       int               数据起始点
-        num                         int               请求数据个数，最大200
-        sort_field                  SortField         根据哪个字段排序 SortField_
-        ascend                      bool              升序True, 降序False
-        type_list                   list              窝轮类型过滤列表 参见 WrtType_
-        issuer_list                 list              发行人过滤列表 参见 Issuer_
-        maturity_time_min           str               到期日, 到期日范围的开始时间
-        maturity_time_max           str               到期日范围的结束时间
-        ipo_period                  str               上市日 参见 IpoPeriod_
-        price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_ , 界内证暂不支持界内外筛选
-        status                      str               窝轮状态 参见 WarrantStatus_
-        cur_price_min               double            最新价过滤起点
-        cur_price_max               double            最新价过滤终点
-        strike_price_min            double            行使价过滤起点
-        strike_price_max            double            行使价过滤终点
-        street_min                  double            街货占比, 过滤起点（该字段为百分比字段，默认不展示%）
-        street_max                  double            街货占比, 过滤终点（该字段为百分比字段，默认不展示%）
-        conversion_min              double            换股比率过滤起点
-        conversion_max              double            换股比率过滤终点
-        vol_min                     int               成交量过滤起点
-        vol_max                     int               成交量过滤终点
-        premium_min                 double            溢价, 过滤起点（该字段为百分比字段，默认不展示%）
-        premium_max                 double            溢价, 过滤终点（该字段为百分比字段，默认不展示%）
-        leverage_ratio_min          double            杠杆比率过滤起点
-        leverage_ratio_max          double            杠杆比率过滤终点
-        delta_min                   double            对冲值过滤起点, 仅认购认沽支持该字段过滤
-        delta_max                   double            对冲值过滤终点, 仅认购认沽支持该字段过滤
-        implied_min                 double            引伸波幅过滤起点, 仅认购认沽支持该字段过滤
-        implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
-        recovery_price_min          double            收回价过滤起点, 仅牛熊证支持该字段过滤
-        recovery_price_max          double            收回价过滤终点, 仅牛熊证支持该字段过滤
-        price_recovery_ratio_min    double            正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
-        price_recovery_ratio_max    double            正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
-        ==========================  ==============    ====================================================================================
+==========================  ==============    ====================================================================================
+参数                          类型               说明
+==========================  ==============    ====================================================================================
+begin                       int               数据起始点
+num                         int               请求数据个数，最大200
+sort_field                  SortField         根据哪个字段排序 SortField_
+ascend                      bool              升序True, 降序False
+type_list                   list              窝轮类型过滤列表 参见 WrtType_
+issuer_list                 list              发行人过滤列表 参见 Issuer_
+maturity_time_min           str               到期日, 到期日范围的开始时间
+maturity_time_max           str               到期日范围的结束时间
+ipo_period                  str               上市日 参见 IpoPeriod_
+price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_ , 界内证暂不支持界内外筛选
+status                      str               窝轮状态 参见 WarrantStatus_
+cur_price_min               double            最新价过滤起点
+cur_price_max               double            最新价过滤终点
+strike_price_min            double            行使价过滤起点
+strike_price_max            double            行使价过滤终点
+street_min                  double            街货占比, 过滤起点（该字段为百分比字段，默认不展示%）
+street_max                  double            街货占比, 过滤终点（该字段为百分比字段，默认不展示%）
+conversion_min              double            换股比率过滤起点
+conversion_max              double            换股比率过滤终点
+vol_min                     int               成交量过滤起点
+vol_max                     int               成交量过滤终点
+premium_min                 double            溢价, 过滤起点（该字段为百分比字段，默认不展示%）
+premium_max                 double            溢价, 过滤终点（该字段为百分比字段，默认不展示%）
+leverage_ratio_min          double            杠杆比率过滤起点
+leverage_ratio_max          double            杠杆比率过滤终点
+delta_min                   double            对冲值过滤起点, 仅认购认沽支持该字段过滤
+delta_max                   double            对冲值过滤终点, 仅认购认沽支持该字段过滤
+implied_min                 double            引伸波幅过滤起点, 仅认购认沽支持该字段过滤
+implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
+recovery_price_min          double            收回价过滤起点, 仅牛熊证支持该字段过滤
+recovery_price_max          double            收回价过滤终点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_min    double            正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+price_recovery_ratio_max    double            正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+==========================  ==============    ====================================================================================
 
 
  :return: (ret, data)
@@ -1511,54 +1511,54 @@ get_warrant
 
 
 
-        ==========================    ================    ====================================================================================
-        参数                            类型                        说明
-        ==========================    ================    ====================================================================================
-        stock                          str                涡轮代码
-        stock_owner                    str                所属正股
-        type                           str                窝轮类型 参见 WrtType_
-        issuer                         Issuer             发行人 参见 Issuer_
-        maturity_time                  str                到期日
-        maturity_timestamp             double             :strike:`到期日时间戳`
-        list_time                      str                上市时间
-        list_timestamp                 double             :strike:`上市时间戳`
-        last_trade_time                str                最后交易日
-        last_trade_timestamp           double             :strike:`最后交易日时间戳`
-        recovery_price                 double             收回价，仅牛熊证支持该字段
-        conversion_ratio               double             换股比率
-        lot_size                       int                每手数量
-        strike_price                   double             行使价
-        last_close_price               double             昨收价
-        name                           str                名称
-        cur_price                      double             当前价
-        price_change_val               double             涨跌额
-        status                         str                窝轮状态 参见 WarrantStatus_
-        bid_price                      double             买入价
-        ask_price                      double             卖出价
-        bid_vol                        int                买量
-        ask_vol                        int                卖量
-        volume                         int                成交量
-        turnover                       double             成交额
-        score                          double             综合评分
-        premium                        double             溢价（该字段为百分比字段，默认不展示%）
-        break_even_point               double             打和点
-        leverage                       double             杠杆比率（倍）
-        ipop                           double             价内/价外（该字段为百分比字段，默认不展示%）
-        price_recovery_ratio           double             正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
-        conversion_price               double             换股价
-        street_rate                    double             街货占比（该字段为百分比字段，默认不展示%）
-        street_vol                     int                街货量
-        amplitude                      double             振幅（该字段为百分比字段，默认不展示%）
-        issue_size                     int                发行量
-        high_price                     double             最高价
-        low_price                      double             最低价
-        implied_volatility             double             引伸波幅，仅认购认沽支持该字段
-        delta                          double             对冲值，仅认购认沽支持该字段
-        effective_leverage             double             有效杠杆
-        upper_strike_price             double             上限价，仅界内证支持该字段
-        lower_strike_price             double             下限价，仅界内证支持该字段
-        inline_price_status            str                界内界外 参见 PriceType_ ，仅界内证支持该字段
-        ==========================    ================    ====================================================================================
+==========================    ================    ====================================================================================
+参数                            类型                        说明
+==========================    ================    ====================================================================================
+stock                          str                涡轮代码
+stock_owner                    str                所属正股
+type                           str                窝轮类型 参见 WrtType_
+issuer                         Issuer             发行人 参见 Issuer_
+maturity_time                  str                到期日
+maturity_timestamp             double             :strike:`到期日时间戳`
+list_time                      str                上市时间
+list_timestamp                 double             :strike:`上市时间戳`
+last_trade_time                str                最后交易日
+last_trade_timestamp           double             :strike:`最后交易日时间戳`
+recovery_price                 double             收回价，仅牛熊证支持该字段
+conversion_ratio               double             换股比率
+lot_size                       int                每手数量
+strike_price                   double             行使价
+last_close_price               double             昨收价
+name                           str                名称
+cur_price                      double             当前价
+price_change_val               double             涨跌额
+status                         str                窝轮状态 参见 WarrantStatus_
+bid_price                      double             买入价
+ask_price                      double             卖出价
+bid_vol                        int                买量
+ask_vol                        int                卖量
+volume                         int                成交量
+turnover                       double             成交额
+score                          double             综合评分
+premium                        double             溢价（该字段为百分比字段，默认不展示%）
+break_even_point               double             打和点
+leverage                       double             杠杆比率（倍）
+ipop                           double             价内/价外（该字段为百分比字段，默认不展示%）
+price_recovery_ratio           double             正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
+conversion_price               double             换股价
+street_rate                    double             街货占比（该字段为百分比字段，默认不展示%）
+street_vol                     int                街货量
+amplitude                      double             振幅（该字段为百分比字段，默认不展示%）
+issue_size                     int                发行量
+high_price                     double             最高价
+low_price                      double             最低价
+implied_volatility             double             引伸波幅，仅认购认沽支持该字段
+delta                          double             对冲值，仅认购认沽支持该字段
+effective_leverage             double             有效杠杆
+upper_strike_price             double             上限价，仅界内证支持该字段
+lower_strike_price             double             下限价，仅界内证支持该字段
+inline_price_status            str                界内界外 参见 PriceType_ ，仅界内证支持该字段
+==========================    ================    ====================================================================================
 
  :Example:
 
@@ -1753,24 +1753,24 @@ get_stock_filter
 
         stock_list pd dataframe数据，数据列格式如下:
 
-        ============================================   ===========   ==============================================================================
-        参数                                            类型           说明
-        ============================================   ===========   ==============================================================================
-        stock_code                                     str            股票代码
-        stock_name                                     str            股票名字
-        cur_price                                      double         最新价
-        cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比
-        cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比
-        high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高
-        low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低
-        volume_ratio                                   float          量比
-        bid_ask_ratio                                  float          委比
-        lot_price                                      double         每手价格
-        market_val                                     float          市值
-        pe_annual                                      float          市盈率
-        pe_ttm                                         float          市盈率TTM
-        pb_rate                                        float          市净率
-        ============================================   ===========   ==============================================================================
+============================================   ===========   ==============================================================================
+参数                                            类型           说明
+============================================   ===========   ==============================================================================
+stock_code                                     str            股票代码
+stock_name                                     str            股票名字
+cur_price                                      double         最新价
+cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比
+cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比
+high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高
+low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低
+volume_ratio                                   float          量比
+bid_ask_ratio                                  float          委比
+lot_price                                      double         每手价格
+market_val                                     float          市值
+pe_annual                                      float          市盈率
+pe_ttm                                         float          市盈率TTM
+pb_rate                                        float          市净率
+============================================   ===========   ==============================================================================
 
  :Example:
 
