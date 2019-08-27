@@ -644,7 +644,7 @@ get_plate_stock
 
  获取特定板块下的股票列表
 
- :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子版块列表函数获取子版块代码
+ :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码
  :param sort_field: 排序字段，SortField，根据哪些字段排序 SortField_
  :param ascend: 排序方向，bool，True升序，False降序
 
@@ -1741,7 +1741,7 @@ get_stock_filter
 
  :param market: 市场类型，StockMarket_
  :param filter_list: 简单属性筛选条件的枚举值，查看 StockField_
- :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子版块列表函数获取子版块代码。支持的板块代码详情请查看下面的Note。
+ :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。
  :param begin: 数据起始点
  :param num: 请求数据个数，最大200
 
@@ -1781,7 +1781,8 @@ pb_rate                                        float          市净率
  .. code:: python
 
     from futu import *
-    from futu.quote.quote_stockfilter_info import SimpleFilter    
+    from futu.quote.quote_stockfilter_info import SimpleFilter  
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)     
     field = SimpleFilter()
     field.filter_min = 100
     field.filter_max = 1000
@@ -1815,7 +1816,7 @@ pb_rate                                        float          市净率
         SZ.3000001                 深证主板
         SZ.3000004                 深证创业板
         =====================  ==============================================================
-    *   利用获取子版块列表函数get_plate_list获取子版块代码，条件选股支持的板块分别为1.港股的行业板块和概念板块。2.美股的行业板块。3.沪深的行业板块，概念板块和地域板块。
+    *   利用获取子板块列表函数get_plate_list获取子板块代码，条件选股支持的板块分别为1.港股的行业板块和概念板块。2.美股的行业板块。3.沪深的行业板块，概念板块和地域板块。
 
 
 ---------------------------------------------------------------------    
