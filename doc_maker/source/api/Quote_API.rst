@@ -74,6 +74,8 @@
 
  .. _StockField: Base_API.html#stockfield
 
+ .. _SortDir: Base_API.html#sortdir
+
 一分钟上手
 ============
 
@@ -1740,7 +1742,18 @@ get_stock_filter
  获取条件选股
 
  :param market: 市场类型，StockMarket_
- :param filter_list: 简单属性筛选条件的枚举值，查看 StockField_
+ :param filter_list: 简单属性筛选条件的枚举值，筛选条件是SimpleFilter类型数据的list对象field，对象field的相关参数如下：
+ 
+        ============================================   ===========   ================================================
+        参数                                            类型           说明
+        ============================================   ===========   ================================================
+        stock_field                                    str            StockField 简单属性，取值见 StockField_ 
+        filter_min                                     double         区间下限，闭区间
+        filter_max                                     double         区间上限，闭区间
+        is_no_filter                                   bool           该字段是否需要筛选。
+        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        ============================================   ===========   ================================================
+
  :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。
  :param begin: 数据起始点
  :param num: 请求数据个数，最大200
@@ -1749,13 +1762,13 @@ get_stock_filter
 
         ret != RET_OK 返回错误字符串
 
-        ret == RET_OK 返回（last_page, all_count, stock_list）。stock_list返回数据说明：其中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。对于不支持的板块，返回的数据是(True, 0, [])。
+        ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。
 
         last_page 是否是最后一页
 
         all_count 列表总数量
 
-        stock_list pd dataframe数据，数据列格式如下:
+        stock_list 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:
 
 ============================================   ===========   ==============================================================================
 参数                                            类型           说明
@@ -1792,10 +1805,10 @@ pb_rate                                        float          市净率
 
     ret, ls = quote_ctx.get_stock_filter(StockMarket.HK, [field])
     if ret == RET_OK:
-     last_page, all_count, ret_list = ls
-     print(len(ret_list), all_count, ret_list)
+        last_page, all_count, ret_list = ls
+        print(len(ret_list), all_count, ret_list)
     else:
-     print('error: ', ls)
+        print('error: ', ls)
 
 .. note::
 
