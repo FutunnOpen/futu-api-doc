@@ -428,7 +428,7 @@ request_history_kline
 
 .. note::
 
-    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id30>`_
+    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id37>`_
 	
 :strike:`get_autype_list`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -525,12 +525,12 @@ get_market_snapshot
  wrt_strike_price                float          行使价格
  wrt_maturity_date               str            格式化窝轮到期时间
  wrt_end_trade                   str            格式化窝轮最后交易时间
- leverage                        float          杠杆比率（倍）
- ipop                            float          价内/价外（该字段为百分比字段，默认不展示%）
- break_even_point                float          打和点
- conversion_price                float          换股价
- price_recovery_ratio            float          正股距收回价（该字段为百分比字段，默认不展示%）
- score                           float          窝轮综合评分
+ wrt_leverage                    float          杠杆比率（倍）
+ wrt_ipop                        float          价内/价外（该字段为百分比字段，默认不展示%）
+ wrt_break_even_point            float          打和点
+ wrt_conversion_price            float          换股价
+ wrt_price_recovery_ratio        float          正股距收回价（该字段为百分比字段，默认不展示%）
+ wrt_score                       float          窝轮综合评分
  wrt_code                        str            窝轮对应的正股（此字段已废除,修改为stock_owner）
  wrt_recovery_price              float          窝轮收回价
  wrt_street_vol                  float          窝轮街货量
@@ -541,7 +541,7 @@ get_market_snapshot
  wrt_premium                     float          窝轮溢价（该字段为百分比字段，默认不展示%）
  wrt_upper_strike_price          float          上限价，仅界内证支持该字段
  wrt_lower_strike_price          float          下限价，仅界内证支持该字段
- wrt_inline_price_status         str            界内界外, 参见PriceType_，仅界内证支持该字段
+ wrt_inline_price_status         str            界内界外, 参见 PriceType_ ，仅界内证支持该字段
  lot_size                        int            每手股数
  price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
  ask_price                       float          卖价
@@ -1557,7 +1557,7 @@ get_warrant
         effective_leverage             double             有效杠杆
         upper_strike_price             double             上限价，仅界内证支持该字段
         lower_strike_price             double             下限价，仅界内证支持该字段
-        inline_price_status            str                界内界外 参见 PriceType_，仅界内证支持该字段
+        inline_price_status            str                界内界外 参见 PriceType_ ，仅界内证支持该字段
         ==========================    ================    ====================================================================================
 
  :Example:
