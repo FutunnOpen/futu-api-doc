@@ -41,7 +41,7 @@ A: 在FutuOpenD界面上或远程到Telnet端口输入命令input_phone_verify_c
 Q5:是否支持其他编程语言
 --------------------------------
 
-A: FutuOpenD有对外提供基于socket的协议，目前我们提供并维护python，c++，java和.net接口。
+A: FutuOpenD有对外提供基于socket的协议，目前我们提供并维护python，c++，java和.net接口，文件请在QQ群文件下载，QQ群号为108534288。
 
 	注 ：QQ群部分用户已自行封装其他语言的接口。
 
