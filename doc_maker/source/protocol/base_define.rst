@@ -830,22 +830,7 @@ QotRight - 行情权限
 		QotRight_Level1 = 2; //Level1
 		QotRight_Level2 = 3; //Level2
 	}
-			
------------------------------------------------------------------------------
-
-StockMarket - 条件选股的股票市场
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
- .. code-block:: protobuf
-
-	enum StockMarket
-	{
-		StockMarket_Unknown = 0; // 未知
-		StockMarket_HK = 1; // 港股
-		StockMarket_US = 2; // 美股
-		StockMarket_CN = 3; // A股
-	}
-					
+				
 -----------------------------------------------------------------------------
 
 StockField - 条件选股的简单属性筛选条件
