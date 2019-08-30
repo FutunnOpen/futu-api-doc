@@ -53,7 +53,13 @@
  .. _TickerType: Base_API.html#tickertype
 
  .. _DarkStatus: Base_API.html#darkstatus
-
+ 
+ .. _SecurityStatus: Base_API.html#securitystatus
+ 
+ .. _OptionAreaType: Base_API.html#optionareatype
+ 
+ .. _IndexOptionType: Base_API.html#indexoptiontype
+ 
  .. _WarrantType: Base_API.html#warranttype
 
  .. _Issuer: Base_API.html#issuer
@@ -251,6 +257,7 @@ get_stock_basicinfo
         listing_date        str            上市时间
         stock_id            int            股票id
         delisting           bool           是否退市
+		index_option_type   str           指数期权类型
         =================   ===========   ==============================================================================
 
  :Example:
@@ -588,6 +595,13 @@ get_market_snapshot
  index_equal_count               int            指数类型平盘支数
  after_volume                    int            盘后成交量，目前仅科创板支持该数据
  after_turnover                  double         盘后成交额，目前仅科创板支持该数据
+ status                          str            股票状态，见 SecurityStatus_ 
+ net_open_interest               int            净未平仓合约数
+ expiry_date_distance            int            距离到期日天数
+ contract_nominal_value          float          合约名义金额
+ owner_lot_multiplier            float          相等正股手数，指数期权无该字段
+ option_area_type                str            期权地区类型，见 OptionAreaType_
+ contract_multiplier             float          合约乘数，指数期权特有字段
  ============================   =============   ======================================================================
 
  :Example:
@@ -985,7 +999,8 @@ get_stock_quote
         suspension              bool           是否停牌(True表示停牌)
         listing_date            str            上市日期 (yyyy-MM-dd)
         price_spread            float          当前向上的价差，亦即摆盘数据的卖档的相邻档位的报价差
-		dark_status             str            暗盘交易状态，见 DarkStatus_
+        dark_status             str            暗盘交易状态，见 DarkStatus_
+		status                  str            股票状态，见 SecurityStatus_ 
         strike_price            float          行权价
         contract_size           int            每份合约数
         open_interest           int            未平仓合约数
@@ -996,8 +1011,14 @@ get_stock_quote
         vega                    float          希腊值 Vega
         theta                   float          希腊值 Theta
         rho                     float          希腊值 Rho
+        net_open_interest       int            净未平仓合约数
+        expiry_date_distance    int            距离到期日天数
+        contract_nominal_value  float          合约名义金额
+        owner_lot_multiplier    float          相等正股手数，指数期权无该字段
+        option_area_type        str            期权地区类型，见 OptionAreaType_
+        contract_multiplier     float          合约乘数，指数期权特有字段
         =====================   ===========   ==============================================================
-		
+        
  :Example:
 
  .. code:: python
@@ -1320,6 +1341,7 @@ get_option_chain
  通过标的股查询期权
 
  :param code: 股票代码,例如：'HK.02318'
+ :param index_option_type: 指数期权类型，查看 IndexOptionType_
  :param start: 开始日期，该日期指到期日，例如'2017-08-01'
  :param end: 结束日期（包括这一天），该日期指到期日，例如'2017-08-30'。 注意，时间范围最多30天。
              start和end的组合如下：
@@ -1354,6 +1376,7 @@ get_option_chain
         strike_price         float         行权价
         suspension           bool          是否停牌(True表示停牌)
         stock_id             int           股票id
+		index_option_type    str           指数期权类型
         ==================   ===========   ==============================================================
 	
 .. code:: python
@@ -1891,6 +1914,8 @@ SysNotifyType.CONN_STATUS         None                                 | {'qot_l
 SysNotifyType.QOT_RIGHT           None                                 | {'hk_qot_right': str, 港股行情权限
                                                                        | 'cn_qot_right': str, A股行情权限
                                                                        | 'us_qot_right': str, 美股行情权限
+                                                                       | 'hk_option_qot_right': str, 港股期权行情权限
+                                                                       | 'has_us_option_qot_right': bool, 是否有美股期权行情权限
 SysNotifyType.API_LEVEL           None                                 str, API用户等级
 ==============================   ================================   ==============================================
 

@@ -776,6 +776,52 @@ OptionType - 期权类型
   
 --------------------------------------
 
+IndexOptionType - 指数期权类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+指数期权类型定义
+
+..  py:class:: IndexOptionType
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: NORMAL 
+ 
+  正常
+  
+ ..  py:attribute:: SMALL 
+ 
+  小型
+  
+--------------------------------------
+
+OptionAreaType - 期权地区类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+期权地区类型定义
+
+..  py:class:: OptionAreaType
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: AMERICAN
+ 
+  美式
+  
+ ..  py:attribute:: EUROPEAN
+ 
+  欧式
+  
+   ..  py:attribute:: BERMUDA
+ 
+  百慕大
+  
+--------------------------------------
+
 OrderType - 订单类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
