@@ -676,7 +676,7 @@ SecurityStatus - 股票状态
 	 //暗盘交易状态
 	enum SecurityStatus
 	{
-		SecurityStatus_Unkonw = 0; //未知
+		SecurityStatus_Unknown = 0; //未知
 		SecurityStatus_Normal = 1; //正常状态
 		SecurityStatus_Listing = 2; //待上市
 		SecurityStatus_Purchasing = 3; //申购中
