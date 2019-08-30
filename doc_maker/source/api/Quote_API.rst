@@ -76,8 +76,6 @@
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
- .. _StockMarket: Base_API.html#stockmarket
-
  .. _StockField: Base_API.html#stockfield
 
  .. _SortDir: Base_API.html#sortdir
@@ -1764,7 +1762,7 @@ get_stock_filter
 
  获取条件选股
 
- :param market: 市场类型，StockMarket_
+ :param market: 市场标识，注意这里不区分沪，深,输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
  :param filter_list: 简单属性筛选条件的枚举值，筛选条件是SimpleFilter类型数据的list对象field，对象field的相关参数如下：
  
         ============================================   ===========   ================================================

@@ -1900,15 +1900,6 @@
 
 	import "Common.proto";
 	import "Qot_Common.proto";
-
-	// 股票市场
-	enum StockMarket 
-	{
-		StockMarket_Unknown = 0; // 未知
-		StockMarket_HK = 1; // 港股
-		StockMarket_US = 2; // 美股
-		StockMarket_CN = 3; // A股
-	};
 	
 	// 简单属性
 	enum StockField 
@@ -1967,10 +1958,10 @@
 	{
 		required int32 begin = 1; // 数据起始点
 		required int32 num =  2;  // 请求数据个数，最大200		
-		required int32 market= 5; // StockMarket, 股票市场
+		required int32 market= 3; // Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
 		// 以下为筛选条件，可选字段，不填表示不过滤
-		optional Qot_Common.Security plate = 6; // 板块
-		repeated BaseFilter baseFilterList = 7; // 简单行情过滤器
+		optional Qot_Common.Security plate = 4; // 板块
+		repeated BaseFilter baseFilterList = 5; // 简单行情过滤器
 	}
 
 	message S2C
@@ -1998,7 +1989,7 @@
 .. note::
 	
 	* 股票结构参考 `Security <base_define.html#security>`_
-	* 股票市场参考 `StockMarket <base_define.html#stockmarket>`_
+	* 市场类型参考 `QotMarket <base_define.html#qotmarket>`_
 	* 简单属性筛选条件参考 `StockField <base_define.html#stockfield>`_
 	* 排序方向参考 `SortDir <base_define.html#sortdir>`_
 	* 限频接口：30秒内最多10次	
