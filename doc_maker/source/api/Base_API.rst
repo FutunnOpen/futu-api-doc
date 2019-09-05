@@ -172,6 +172,99 @@ DarkStatus - 暗盘状态
   
 --------------------------------------
 
+SecurityStatus - 股票状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+股票状态定义
+
+..  py:class:: SecurityStatus
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: NORMAL
+ 
+  正常状态
+  
+ ..  py:attribute:: PURCHASING 
+ 
+   申购中
+
+ ..  py:attribute:: SUBSCRIBING 
+ 
+   认购中
+  
+ ..  py:attribute:: BEFORE_DARK_TRADE_OPEING 
+ 
+   暗盘开盘前
+   
+ ..  py:attribute:: DARK_TRADING 
+ 
+   暗盘交易中
+   
+ ..  py:attribute:: DARK_TRAD_END 
+ 
+   暗盘已收盘
+   
+ ..  py:attribute:: TO_BE_OPEN 
+ 
+   待开盘
+   
+ ..  py:attribute:: SUSPENDED 
+ 
+   停牌
+   
+ ..  py:attribute:: CALLED  
+ 
+   已收回
+   
+ ..  py:attribute:: EXPIRED_LAST_TRADING_DATE 
+ 
+   已过最后交易日
+   
+ ..  py:attribute:: EXPIRED 
+ 
+   已过期
+   
+ ..  py:attribute:: DELISTED 
+ 
+   已退市
+   
+ ..  py:attribute:: CHANGE_TO_TEMPORARY_CODE 
+ 
+   公司行动中，交易关闭，转至临时代码交易
+   
+ ..  py:attribute:: TEMPORARY_CODE_TRADE_END 
+ 
+   临时代码交易结束，交易关闭
+   
+ ..  py:attribute:: CHANGED_PLATE_TRADE_END 
+ 
+   已转板，旧代码交易关闭
+   
+ ..  py:attribute:: CHANGED_CODE_TRAD_END 
+ 
+   已换代码，旧代码交易关闭
+   
+ ..  py:attribute:: RECOVERABLE_CIRCUIT_BREAKER 
+ 
+   可恢复性熔断
+   
+ ..  py:attribute:: UNRECOVERABLE_CIRCUIT_BREAKER 
+ 
+   不可恢复性熔断
+   
+ ..  py:attribute:: AFTER_COMBINATION 
+ 
+   盘后撮合
+   
+ ..  py:attribute:: AFTER_TRANSACTION 
+ 
+   盘后交易
+   
+--------------------------------------
+
 GtwEventType - 网关异步通知类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
