@@ -909,7 +909,7 @@ OptionAreaType - 期权地区类型
  
   欧式
   
-   ..  py:attribute:: BERMUDA
+ ..  py:attribute:: BERMUDA
  
   百慕大
   
