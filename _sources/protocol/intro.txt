@@ -111,6 +111,9 @@
   .. _Qot_ModifyUserSecurity.proto:  quote_protocol.html#qot-modifyusersecurity-proto-3214
   .. _3214:  quote_protocol.html#qot-modifyusersecurity-proto-3214
   
+  .. _Qot_StockFilter.proto:  quote_protocol.html#qot-stockfilter-proto-3215
+  .. _3215:  quote_protocol.html#qot-stockfilter-proto-3215
+  
   .. role:: red-strengthen
 
 特点
@@ -181,6 +184,7 @@
  3212             Qot_GetCapitalDistribution.proto_       获取资金分布
  3213             Qot_GetUserSecurity.proto_       		  获取自选股分组下的股票
  3214             Qot_ModifyUserSecurity.proto_       	  修改自选股分组下的股票
+ 3215             Qot_StockFilter.proto_                  获取条件选股
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -341,6 +345,12 @@ API用户等级
 	* 自选股的上限，一般最多是 :red-strengthen:`500` 支股票。
 	* 如果有同名的分组，会返回排序第一个分组的信息。
 	* 用户分组的删除操作，只做本组的移除操作，系统分组的“全部”分组下股票的数量并不会减少。
+
+获取条件选股
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3215_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 每次请求的数据个数最多 :red-strengthen:`200` 个
 
 获取账户资金
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

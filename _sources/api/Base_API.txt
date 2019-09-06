@@ -1,4 +1,4 @@
-﻿基础API
+基础API
 ========
  .. _ProtoFMT : #id2
  
@@ -428,6 +428,9 @@ Issuer - 发行人过滤列表
 
   比联
 
+ ..  py:attribute:: MS
+
+  摩利
 --------------------------------------
 
 KLDataStatus - k线数据状态
@@ -950,7 +953,7 @@ PositionSide - 持仓方向类型
   
 --------------------------------------
 
-PriceType - 涡轮价内价外
+PriceType - 涡轮价(界)内外
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 上市日
@@ -963,11 +966,11 @@ PriceType - 涡轮价内价外
 
  ..  py:attribute:: Outside
 
-  价外
+  价外,界内证表示界外
 
  ..  py:attribute:: WithIn
 
-  价内
+  价内,界内证表示界内
 
 --------------------------------------
 
@@ -1041,7 +1044,7 @@ SecurityType - 证券类型
   
  ..  py:attribute:: WARRANT
  
-  港股涡轮牛熊证
+  港股涡轮牛熊界内证
   
  ..  py:attribute:: BOND
  
@@ -1501,6 +1504,10 @@ WrtType - 港股窝轮类型
  ..  py:attribute:: BEAR
 
   熊证
+  
+ ..  py:attribute:: INLINE
+
+  界内证
 
  ..  py:attribute:: NONE
 
@@ -1696,6 +1703,17 @@ SortField - 涡轮排序
 
   盘后成交额
 
+ ..  py:attribute:: UPPER_STRIKE_PRICE
+
+  上限价，仅界内证支持该字段
+
+ ..  py:attribute:: LOWER_STRIKE_PRICE
+
+  下限价，仅界内证支持该字段
+  
+ ..  py:attribute:: INLINE_PRICE_STATUS
+
+  界内界外，仅界内证支持该字段
 
 --------------------------------------
 
@@ -1718,11 +1736,125 @@ ModifyUserSecurityOp - 自选股操作类型
 
   删除
 
-
 --------------------------------------
 
+StockMarket - 条件选股的股票市场
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+条件选股的股票市场定义
+
+..  py:class:: StockMarket
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HK
+
+  港股
+
+ ..  py:attribute:: US
+
+  美股
+
+ ..  py:attribute:: CN
+
+  A股
+
+-------------------------------------------------------------------------------
+
+StockField - 条件选股的简单属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+条件选股的筛选条件定义
+
+..  py:class:: StockField
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: STOCK_CODE
+
+  股票代码
+
+ ..  py:attribute:: STOCK_NAME
+
+  股票名称
+
+ ..  py:attribute:: CUR_PRICE
+
+  最新价
+
+ ..  py:attribute:: CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO
+
+  (现价 - 52周最高)/52周最高
+
+ ..  py:attribute:: CUR_PRICE_TO_LOWEST52_WEEKS_RATIO
+
+  (现价 - 52周最低)/52周最低
+
+ ..  py:attribute:: HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO
+
+  (今日最高 - 52周最高)/52周最高
+
+ ..  py:attribute:: LOW_PRICE_TO_LOWEST52_WEEKS_RATIO
+
+  (今日最低 - 52周最低)/52周最低
+
+ ..  py:attribute:: VOLUME_RATIO
+
+  量比
+
+ ..  py:attribute:: BID_ASK_RATIO
+
+  委比
+
+ ..  py:attribute:: LOT_PRICE
+
+  每手价格
+
+ ..  py:attribute:: MARKET_VAL
+
+  市值
+
+ ..  py:attribute:: PE_ANNUAL
+
+  市盈率 (静态)
+
+ ..  py:attribute:: PE_TTM
+
+  市盈率TTM
+
+ ..  py:attribute:: PB_RATE
+
+  市净率
+
+--------------------------------------------------------------------------------
+
+SortDir - 条件选股的排序方向
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+条件选股的排序方向定义
+
+..  py:class:: SortDir
+
+ ..  py:attribute:: NONE
+
+  不排序
+
+ ..  py:attribute:: ASCEND
+
+  升序
+
+ ..  py:attribute:: DESCEND
+
+  降序
+
+--------------------------------------------------------------------------------
+
 TrdAccType - 交易账户类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 交易账户类型定义
 
@@ -1739,3 +1871,5 @@ TrdAccType - 交易账户类型
  ..  py:attribute:: MARGIN
 
   保证金账户
+
+--------------------------------------------------------------------------------

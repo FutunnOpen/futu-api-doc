@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.12 documentation</title>
+  <title>行情API &mdash; futu-api-doc 3.13 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.13 documentation" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.12
+                3.13
               </div>
             
           
@@ -149,6 +149,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-capital-distribution">get_capital_distribution</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-user-security">get_user_security</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#modify-user-security">modify_user_security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-stock-filter">get_stock_filter</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sysnotifyhandlerbase-opend">SysNotifyHandlerBase - OpenD通知回调</a><ul>
@@ -156,27 +157,27 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id21">on_recv_rsp</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id22">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id23">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id24">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id25">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id26">on_recv_rsp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id27">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -1030,7 +1031,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id30">在线获取单只股票一段历史K线限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id37">在线获取单只股票一段历史K线限制</a></li>
 </ul>
 </div>
 </div>
@@ -1321,27 +1322,27 @@ start和end的组合如下：</p>
 <td>str</td>
 <td>格式化窝轮最后交易时间</td>
 </tr>
-<tr class="row-even"><td>leverage</td>
+<tr class="row-even"><td>wrt_leverage</td>
 <td>float</td>
 <td>杠杆比率（倍）</td>
 </tr>
-<tr class="row-odd"><td>ipop</td>
+<tr class="row-odd"><td>wrt_ipop</td>
 <td>float</td>
 <td>价内/价外（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-even"><td>break_even_point</td>
+<tr class="row-even"><td>wrt_break_even_point</td>
 <td>float</td>
 <td>打和点</td>
 </tr>
-<tr class="row-odd"><td>conversion_price</td>
+<tr class="row-odd"><td>wrt_conversion_price</td>
 <td>float</td>
 <td>换股价</td>
 </tr>
-<tr class="row-even"><td>price_recovery_ratio</td>
+<tr class="row-even"><td>wrt_price_recovery_ratio</td>
 <td>float</td>
 <td>正股距收回价（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>score</td>
+<tr class="row-odd"><td>wrt_score</td>
 <td>float</td>
 <td>窝轮综合评分</td>
 </tr>
@@ -1377,173 +1378,193 @@ start和end的组合如下：</p>
 <td>float</td>
 <td>窝轮溢价（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-even"><td>lot_size</td>
+<tr class="row-even"><td>wrt_upper_strike_price</td>
+<td>float</td>
+<td>上限价，仅界内证支持该字段</td>
+</tr>
+<tr class="row-odd"><td>wrt_lower_strike_price</td>
+<td>float</td>
+<td>下限价，仅界内证支持该字段</td>
+</tr>
+<tr class="row-even"><td>wrt_inline_price_status</td>
+<td>str</td>
+<td>界内界外, 参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a> ，仅界内证支持该字段</td>
+</tr>
+<tr class="row-odd"><td>lot_size</td>
 <td>int</td>
 <td>每手股数</td>
 </tr>
-<tr class="row-odd"><td>price_spread</td>
+<tr class="row-even"><td>price_spread</td>
 <td>float</td>
 <td>当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差</td>
 </tr>
-<tr class="row-even"><td>ask_price</td>
+<tr class="row-odd"><td>ask_price</td>
 <td>float</td>
 <td>卖价</td>
 </tr>
-<tr class="row-odd"><td>bid_price</td>
+<tr class="row-even"><td>bid_price</td>
 <td>float</td>
 <td>买价</td>
 </tr>
-<tr class="row-even"><td>ask_vol</td>
+<tr class="row-odd"><td>ask_vol</td>
 <td>float</td>
 <td>卖量</td>
 </tr>
-<tr class="row-odd"><td>bid_vol</td>
+<tr class="row-even"><td>bid_vol</td>
 <td>float</td>
 <td>买量</td>
 </tr>
-<tr class="row-even"><td>enable_margin</td>
+<tr class="row-odd"><td>enable_margin</td>
 <td>bool</td>
 <td>是否可融资，如果为true，后两个字段才有意义</td>
 </tr>
-<tr class="row-odd"><td>mortgage_ratio</td>
+<tr class="row-even"><td>mortgage_ratio</td>
 <td>float</td>
 <td>股票抵押率（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-even"><td>long_margin_initial_ratio</td>
+<tr class="row-odd"><td>long_margin_initial_ratio</td>
 <td>float</td>
 <td>融资初始保证金率（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>enable_short_sell</td>
+<tr class="row-even"><td>enable_short_sell</td>
 <td>bool</td>
 <td>是否可卖空，如果为true，后三个字段才有意义</td>
 </tr>
-<tr class="row-even"><td>short_sell_rate</td>
+<tr class="row-odd"><td>short_sell_rate</td>
 <td>float</td>
 <td>卖空参考利率（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>short_available_volume</td>
+<tr class="row-even"><td>short_available_volume</td>
 <td>int</td>
 <td>剩余可卖空数量</td>
 </tr>
-<tr class="row-even"><td>short_margin_initial_ratio</td>
+<tr class="row-odd"><td>short_margin_initial_ratio</td>
 <td>float</td>
 <td>卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>option_valid</td>
+<tr class="row-even"><td>option_valid</td>
 <td>bool</td>
 <td>是否是期权（为true时以下期权相关的字段才有合法数值）</td>
 </tr>
-<tr class="row-even"><td>option_type</td>
+<tr class="row-odd"><td>option_type</td>
 <td>str</td>
 <td>期权类型，参见 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
 </tr>
-<tr class="row-odd"><td>strike_time</td>
+<tr class="row-even"><td>strike_time</td>
 <td>str</td>
 <td>期权行权日（港股A股默认是北京时间）</td>
 </tr>
-<tr class="row-even"><td>option_strike_price</td>
+<tr class="row-odd"><td>option_strike_price</td>
 <td>float</td>
 <td>行权价</td>
 </tr>
-<tr class="row-odd"><td>option_contract_size</td>
+<tr class="row-even"><td>option_contract_size</td>
 <td>int</td>
 <td>每份合约数</td>
 </tr>
-<tr class="row-even"><td>option_open_interest</td>
+<tr class="row-odd"><td>option_open_interest</td>
 <td>int</td>
 <td>未平仓合约数</td>
 </tr>
-<tr class="row-odd"><td>option_implied_volatility</td>
+<tr class="row-even"><td>option_implied_volatility</td>
 <td>float</td>
 <td>隐含波动率</td>
 </tr>
-<tr class="row-even"><td>option_premium</td>
+<tr class="row-odd"><td>option_premium</td>
 <td>float</td>
 <td>溢价</td>
 </tr>
-<tr class="row-odd"><td>option_delta</td>
+<tr class="row-even"><td>option_delta</td>
 <td>float</td>
 <td>希腊值 Delta</td>
 </tr>
-<tr class="row-even"><td>option_gamma</td>
+<tr class="row-odd"><td>option_gamma</td>
 <td>float</td>
 <td>希腊值 Gamma</td>
 </tr>
-<tr class="row-odd"><td>option_vega</td>
+<tr class="row-even"><td>option_vega</td>
 <td>float</td>
 <td>希腊值 Vega</td>
 </tr>
-<tr class="row-even"><td>option_theta</td>
+<tr class="row-odd"><td>option_theta</td>
 <td>float</td>
 <td>希腊值 Theta</td>
 </tr>
-<tr class="row-odd"><td>option_rho</td>
+<tr class="row-even"><td>option_rho</td>
 <td>float</td>
 <td>希腊值 Rho</td>
 </tr>
-<tr class="row-even"><td>amplitude</td>
+<tr class="row-odd"><td>amplitude</td>
 <td>float</td>
 <td>振幅（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>avg_price</td>
+<tr class="row-even"><td>avg_price</td>
 <td>float</td>
 <td>平均价</td>
 </tr>
-<tr class="row-even"><td>bid_ask_ratio</td>
+<tr class="row-odd"><td>bid_ask_ratio</td>
 <td>float</td>
 <td>委比（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>volume_ratio</td>
+<tr class="row-even"><td>volume_ratio</td>
 <td>float</td>
 <td>量比</td>
 </tr>
-<tr class="row-even"><td>highest52weeks_price</td>
+<tr class="row-odd"><td>highest52weeks_price</td>
 <td>float</td>
 <td>52周最高价</td>
 </tr>
-<tr class="row-odd"><td>lowest52weeks_price</td>
+<tr class="row-even"><td>lowest52weeks_price</td>
 <td>float</td>
 <td>52周最低价</td>
 </tr>
-<tr class="row-even"><td>highest_history_price</td>
+<tr class="row-odd"><td>highest_history_price</td>
 <td>float</td>
 <td>历史最高价</td>
 </tr>
-<tr class="row-odd"><td>lowest_history_price</td>
+<tr class="row-even"><td>lowest_history_price</td>
 <td>float</td>
 <td>历史最低价</td>
 </tr>
-<tr class="row-even"><td>plate_valid</td>
+<tr class="row-odd"><td>plate_valid</td>
 <td>bool</td>
 <td>是否为板块类型（为true时以下板块类型字段才有合法数值）</td>
 </tr>
-<tr class="row-odd"><td>plate_raise_count</td>
+<tr class="row-even"><td>plate_raise_count</td>
 <td>int</td>
 <td>板块类型上涨支数</td>
 </tr>
-<tr class="row-even"><td>plate_fall_count</td>
+<tr class="row-odd"><td>plate_fall_count</td>
 <td>int</td>
 <td>板块类型下跌支数</td>
 </tr>
-<tr class="row-odd"><td>plate_equal_count</td>
+<tr class="row-even"><td>plate_equal_count</td>
 <td>int</td>
 <td>板块类型平盘支数</td>
 </tr>
-<tr class="row-even"><td>index_valid</td>
+<tr class="row-odd"><td>index_valid</td>
 <td>bool</td>
 <td>是否有指数类型（为true时以下指数类型字段才有合法数值）</td>
 </tr>
-<tr class="row-odd"><td>index_raise_count</td>
+<tr class="row-even"><td>index_raise_count</td>
 <td>int</td>
 <td>指数类型上涨支数</td>
 </tr>
-<tr class="row-even"><td>index_fall_count</td>
+<tr class="row-odd"><td>index_fall_count</td>
 <td>int</td>
 <td>指数类型下跌支数</td>
 </tr>
-<tr class="row-odd"><td>index_equal_count</td>
+<tr class="row-even"><td>index_equal_count</td>
 <td>int</td>
 <td>指数类型平盘支数</td>
+</tr>
+<tr class="row-odd"><td>after_volume</td>
+<td>int</td>
+<td>盘后成交量，目前仅科创板支持该数据</td>
+</tr>
+<tr class="row-even"><td>after_turnover</td>
+<td>double</td>
+<td>盘后成交额，目前仅科创板支持该数据</td>
 </tr>
 </tbody>
 </table>
@@ -1671,7 +1692,7 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>plate_code</strong> &#8211; 板块代码, string, 例如，”SH.BK0001”，”SH.BK0002”，先利用获取子版块列表函数获取子版块代码</li>
+<li><strong>plate_code</strong> &#8211; 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码</li>
 <li><strong>sort_field</strong> &#8211; 排序字段，SortField，根据哪些字段排序 <a class="reference external" href="Base_API.html#sortfield">SortField</a></li>
 <li><strong>ascend</strong> &#8211; 排序方向，bool，True升序，False降序</li>
 </ul>
@@ -1838,7 +1859,7 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>market</strong> &#8211; 市场标识，注意这里不区分沪，深,输入沪或者深都会返回沪深市场的子板块（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
+<li><strong>market</strong> &#8211; 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的子板块（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
 <li><strong>plate_class</strong> &#8211; 板块分类，参见 <a class="reference external" href="Base_API.html#plate">Plate</a></li>
 </ul>
 </td>
@@ -2935,9 +2956,16 @@ start与end的组合如下：</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>(ret, data)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>(ret, data)</p>
 <p>ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
@@ -2977,9 +3005,11 @@ start与end的组合如下：</p>
 </tr>
 </tbody>
 </table>
-</p>
-</td>
-</tr>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
 </tbody>
@@ -2990,8 +3020,7 @@ start与end的组合如下：</p>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</dd></dl>
-
+</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -3054,8 +3083,7 @@ start和end的组合如下：</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>(ret, data)</p>
-<blockquote>
-<div><p>ret == RET_OK 返回pd dataframe数据，数据列格式如下</p>
+<p>ret == RET_OK 返回pd dataframe数据，数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -3112,9 +3140,6 @@ start和end的组合如下：</p>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
-<p>print(quote_ctx.get_option_chain(&#8216;US.AAPL&#8217;, &#8216;2018-08-01&#8217;, &#8216;2018-08-18&#8217;, OptionType.ALL, OptionCondType.OUTSIDE))
-quote_ctx.close()</p>
 </p>
 </td>
 </tr>
@@ -3122,6 +3147,12 @@ quote_ctx.close()</p>
 </table>
 </dd></dl>
 
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_option_chain</span><span class="p">(</span><span class="s1">&#39;US.AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-18&#39;</span><span class="p">,</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">OptionCondType</span><span class="o">.</span><span class="n">OUTSIDE</span><span class="p">))</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -3390,7 +3421,7 @@ quote_ctx.close()</p>
 </tr>
 <tr class="row-odd"><td>price_type</td>
 <td>str</td>
-<td>价内/价外（该字段为百分比字段，默认不展示%）参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a></td>
+<td>价内/价外（该字段为百分比字段，默认不展示%）参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a> , 界内证暂不支持界内外筛选</td>
 </tr>
 <tr class="row-even"><td>status</td>
 <td>str</td>
@@ -3429,11 +3460,11 @@ quote_ctx.close()</p>
 <td>换股比率过滤终点</td>
 </tr>
 <tr class="row-odd"><td>vol_min</td>
-<td>int</td>
+<td>unsigned int</td>
 <td>成交量过滤起点</td>
 </tr>
 <tr class="row-even"><td>vol_max</td>
-<td>int</td>
+<td>unsigned int</td>
 <td>成交量过滤终点</td>
 </tr>
 <tr class="row-odd"><td>premium_min</td>
@@ -3493,8 +3524,8 @@ quote_ctx.close()</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">return:</th><td class="field-body"><p class="first">(ret, data)</p>
 <p>ret != RET_OK 返回错误字符串</p>
-<p>ret == RET_OK 返回（warrant_data_list,last_page, all_count）数据列格式如下：</p>
-<p>warrant_data_list pd dataframe数据，数据列格式如下</p>
+<p>ret == RET_OK 返回（warrant_data_list,last_page, all_count）</p>
+<p>warrant_data_list pd dataframe数据，数据列格式如下:</p>
 <p>last_page 是否是最后一页</p>
 <p class="last">all_count 列表总数量</p>
 </td>
@@ -3608,7 +3639,7 @@ quote_ctx.close()</p>
 <td>卖量</td>
 </tr>
 <tr class="row-odd"><td>volume</td>
-<td>int</td>
+<td>unsigned int</td>
 <td>成交量</td>
 </tr>
 <tr class="row-even"><td>turnover</td>
@@ -3679,6 +3710,18 @@ quote_ctx.close()</p>
 <td>double</td>
 <td>有效杠杆</td>
 </tr>
+<tr class="row-odd"><td>upper_strike_price</td>
+<td>double</td>
+<td>上限价，仅界内证支持该字段</td>
+</tr>
+<tr class="row-even"><td>lower_strike_price</td>
+<td>double</td>
+<td>下限价，仅界内证支持该字段</td>
+</tr>
+<tr class="row-odd"><td>inline_price_status</td>
+<td>str</td>
+<td>界内界外 参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a> ，仅界内证支持该字段</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
@@ -3703,7 +3746,7 @@ quote_ctx.close()</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id42">获取涡轮限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id46">获取涡轮限制</a></li>
 </ul>
 </div>
 </div>
@@ -3721,12 +3764,6 @@ quote_ctx.close()</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
 <p>ret == RET_OK 返回pd dataframe数据</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <table border="1" class="docutils">
 <colgroup>
 <col width="20%" />
@@ -3754,11 +3791,8 @@ quote_ctx.close()</p>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
+</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
 </tbody>
@@ -3769,7 +3803,8 @@ quote_ctx.close()</p>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -3791,12 +3826,6 @@ quote_ctx.close()</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
 <p>ret == RET_OK 返回pd dataframe数据</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -3840,11 +3869,8 @@ quote_ctx.close()</p>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
+</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
 </tbody>
@@ -3855,7 +3881,8 @@ quote_ctx.close()</p>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -4007,6 +4034,228 @@ quote_ctx.close()</p>
 </ul>
 </div>
 </div>
+<div class="section" id="get-stock-filter">
+<h4>get_stock_filter<a class="headerlink" href="#get-stock-filter" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="get_stock_filter">
+<code class="descname">get_stock_filter</code><span class="sig-paren">(</span><em>self</em>, <em>market</em>, <em>filter_list</em>, <em>plate_code=None</em>, <em>begin=0</em>, <em>num=200</em><span class="sig-paren">)</span><a class="headerlink" href="#get_stock_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取条件选股</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>market</strong> &#8211; 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
+<li><strong>filter_list</strong> &#8211; <p>简单属性筛选条件的枚举值，筛选条件是SimpleFilter类型数据的list对象field，对象field的相关参数如下：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="11%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stock_field</td>
+<td>str</td>
+<td>StockField 简单属性，取值见 <a class="reference external" href="Base_API.html#stockfield">StockField</a></td>
+</tr>
+<tr class="row-odd"><td>filter_min</td>
+<td>double</td>
+<td>区间下限，闭区间</td>
+</tr>
+<tr class="row-even"><td>filter_max</td>
+<td>double</td>
+<td>区间上限，闭区间</td>
+</tr>
+<tr class="row-odd"><td>is_no_filter</td>
+<td>bool</td>
+<td>该字段是否需要筛选。</td>
+</tr>
+<tr class="row-even"><td>sort</td>
+<td>str</td>
+<td>SortDir 排序方向，默认不排序，取值见 <a class="reference external" href="Base_API.html#sortdir">SortDir</a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>plate_code</strong> &#8211; 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。</li>
+<li><strong>begin</strong> &#8211; 数据起始点</li>
+<li><strong>num</strong> &#8211; 请求数据个数，最大200</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>(ret, data)</p>
+<p>ret != RET_OK 返回错误字符串</p>
+<p>ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。</p>
+<p>last_page 是否是最后一页</p>
+<p>all_count 列表总数量</p>
+<p>stock_list 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="8%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stock_code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr class="row-odd"><td>stock_name</td>
+<td>str</td>
+<td>股票名字</td>
+</tr>
+<tr class="row-even"><td>cur_price</td>
+<td>double</td>
+<td>最新价</td>
+</tr>
+<tr class="row-odd"><td>cur_price_to_highest_52weeks_ratio</td>
+<td>float</td>
+<td>(现价 - 52周最高)/52周最高，对应PC端离52周高点百分比</td>
+</tr>
+<tr class="row-even"><td>cur_price_to_lowest_52weeks_ratio</td>
+<td>float</td>
+<td>(现价 - 52周最低)/52周最低，对应PC端离52周低点百分比</td>
+</tr>
+<tr class="row-odd"><td>high_price_to_highest_52weeks_ratio</td>
+<td>float</td>
+<td>(今日最高 - 52周最高)/52周最高</td>
+</tr>
+<tr class="row-even"><td>low_price_to_lowest_52weeks_ratio</td>
+<td>float</td>
+<td>(今日最低 - 52周最低)/52周最低</td>
+</tr>
+<tr class="row-odd"><td>volume_ratio</td>
+<td>float</td>
+<td>量比</td>
+</tr>
+<tr class="row-even"><td>bid_ask_ratio</td>
+<td>float</td>
+<td>委比</td>
+</tr>
+<tr class="row-odd"><td>lot_price</td>
+<td>double</td>
+<td>每手价格</td>
+</tr>
+<tr class="row-even"><td>market_val</td>
+<td>float</td>
+<td>市值</td>
+</tr>
+<tr class="row-odd"><td>pe_annual</td>
+<td>float</td>
+<td>市盈率</td>
+</tr>
+<tr class="row-even"><td>pe_ttm</td>
+<td>float</td>
+<td>市盈率TTM</td>
+</tr>
+<tr class="row-odd"><td>pb_rate</td>
+<td>float</td>
+<td>市净率</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">futu.quote.quote_stockfilter_info</span> <span class="kn">import</span> <span class="n">SimpleFilter</span>
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">SimpleFilter</span><span class="p">()</span>
+<span class="n">field</span><span class="o">.</span><span class="n">filter_min</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">field</span><span class="o">.</span><span class="n">filter_max</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">field</span><span class="o">.</span><span class="n">stock_field</span> <span class="o">=</span> <span class="n">StockField</span><span class="o">.</span><span class="n">CUR_PRICE</span>
+<span class="n">field</span><span class="o">.</span><span class="n">is_no_filter</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">field</span><span class="o">.</span><span class="n">sort</span> <span class="o">=</span> <span class="n">SortDir</span><span class="o">.</span><span class="n">ASCEND</span>
+
+<span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_filter</span><span class="p">(</span><span class="n">StockMarket</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="p">[</span><span class="n">field</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">RET_OK</span><span class="p">:</span>
+    <span class="n">last_page</span><span class="p">,</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">ret_list</span> <span class="o">=</span> <span class="n">ls</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ret_list</span><span class="p">),</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">ret_list</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;error: &#39;</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last">
+<li><p class="first">接口限制请参见 <a class="reference external" href="../protocol/intro.html#id51">获取条件选股</a></p>
+</li>
+<li><p class="first">条件选股支持的板块或指数代码如下:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">代码</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>HK.Motherboard</td>
+<td>港股主板</td>
+</tr>
+<tr class="row-odd"><td>HK.GEM</td>
+<td>港股创业板</td>
+</tr>
+<tr class="row-even"><td>HK.BK1911</td>
+<td>主板H股</td>
+</tr>
+<tr class="row-odd"><td>HK.BK1912</td>
+<td>创业板H股</td>
+</tr>
+<tr class="row-even"><td>US.NYSE</td>
+<td>纽交所</td>
+</tr>
+<tr class="row-odd"><td>US.AMEX</td>
+<td>美交所</td>
+</tr>
+<tr class="row-even"><td>US.NASDAQ</td>
+<td>纳斯达克</td>
+</tr>
+<tr class="row-odd"><td>SH.3000000</td>
+<td>上海主板</td>
+</tr>
+<tr class="row-even"><td>SZ.3000001</td>
+<td>深证主板</td>
+</tr>
+<tr class="row-odd"><td>SZ.3000004</td>
+<td>深证创业板</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">利用获取子板块列表函数get_plate_list获取子板块代码，条件选股支持的板块分别为1.港股的行业板块和概念板块。2.美股的行业板块。3.沪深的行业板块，概念板块和地域板块。</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="sysnotifyhandlerbase-opend">
@@ -4153,8 +4402,8 @@ quote_ctx.close()</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id21">
-<h4>on_recv_rsp<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id22">
+<h4>on_recv_rsp<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4201,8 +4450,8 @@ quote_ctx.close()</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id22">
-<h4>on_recv_rsp<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id23">
+<h4>on_recv_rsp<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4249,8 +4498,8 @@ quote_ctx.close()</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id23">
-<h4>on_recv_rsp<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id24">
+<h4>on_recv_rsp<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4303,8 +4552,8 @@ quote_ctx.close()</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id24">
-<h4>on_recv_rsp<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id25">
+<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4351,8 +4600,8 @@ quote_ctx.close()</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id25">
-<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id26">
+<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4397,8 +4646,8 @@ quote_ctx.close()</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id26">
-<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id27">
+<h4>on_recv_rsp<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4465,7 +4714,7 @@ quote_ctx.close()</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.12',
+            VERSION:'3.13',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

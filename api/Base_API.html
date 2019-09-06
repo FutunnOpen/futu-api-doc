@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.12 documentation</title>
+  <title>基础API &mdash; futu-api-doc 3.13 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.13 documentation" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.12
+                3.13
               </div>
             
           
@@ -137,7 +137,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#dealstatus">DealStatus - 成交状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plate">Plate - 板块集合分类</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#positionside">PositionSide - 持仓方向类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价内价外</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价(界)内外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">ProtoFMT - 协议格式</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pushdatatype">PushDataType - 推送数据类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ret-code">ret_code - 接口返回值</a></li>
@@ -156,6 +156,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#wrttype">WrtType - 港股窝轮类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sortfield">SortField - 涡轮排序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modifyusersecurityop">ModifyUserSecurityOp - 自选股操作类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stockmarket">StockMarket - 条件选股的股票市场</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stockfield">StockField - 条件选股的简单属性筛选条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sortdir">SortDir - 条件选股的排序方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdacctype">TrdAccType - 交易账户类型</a></li>
 </ul>
 </li>
@@ -859,6 +862,12 @@
 <dt id="Issuer.KC">
 <code class="descname">KC</code><a class="headerlink" href="#Issuer.KC" title="Permalink to this definition">¶</a></dt>
 <dd><p>比联</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Issuer.MS">
+<code class="descname">MS</code><a class="headerlink" href="#Issuer.MS" title="Permalink to this definition">¶</a></dt>
+<dd><p>摩利</p>
 </dd></dl>
 
 </dd></dl>
@@ -1594,7 +1603,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="pricetype">
-<h3>PriceType - 涡轮价内价外<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
+<h3>PriceType - 涡轮价(界)内外<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
 <p>上市日</p>
 <dl class="class">
 <dt id="PriceType">
@@ -1608,13 +1617,13 @@
 <dl class="attribute">
 <dt id="PriceType.Outside">
 <code class="descname">Outside</code><a class="headerlink" href="#PriceType.Outside" title="Permalink to this definition">¶</a></dt>
-<dd><p>价外</p>
+<dd><p>价外,界内证表示界外</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PriceType.WithIn">
 <code class="descname">WithIn</code><a class="headerlink" href="#PriceType.WithIn" title="Permalink to this definition">¶</a></dt>
-<dd><p>价内</p>
+<dd><p>价内,界内证表示界内</p>
 </dd></dl>
 
 </dd></dl>
@@ -1717,7 +1726,7 @@
 <dl class="attribute">
 <dt id="SecurityType.WARRANT">
 <code class="descname">WARRANT</code><a class="headerlink" href="#SecurityType.WARRANT" title="Permalink to this definition">¶</a></dt>
-<dd><p>港股涡轮牛熊证</p>
+<dd><p>港股涡轮牛熊界内证</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -2365,6 +2374,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="WrtType.INLINE">
+<code class="descname">INLINE</code><a class="headerlink" href="#WrtType.INLINE" title="Permalink to this definition">¶</a></dt>
+<dd><p>界内证</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="WrtType.NONE">
 <code class="descname">NONE</code><a class="headerlink" href="#WrtType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
@@ -2650,6 +2665,24 @@
 <dd><p>盘后成交额</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="SortField.UPPER_STRIKE_PRICE">
+<code class="descname">UPPER_STRIKE_PRICE</code><a class="headerlink" href="#SortField.UPPER_STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>上限价，仅界内证支持该字段</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.LOWER_STRIKE_PRICE">
+<code class="descname">LOWER_STRIKE_PRICE</code><a class="headerlink" href="#SortField.LOWER_STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>下限价，仅界内证支持该字段</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortField.INLINE_PRICE_STATUS">
+<code class="descname">INLINE_PRICE_STATUS</code><a class="headerlink" href="#SortField.INLINE_PRICE_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>界内界外，仅界内证支持该字段</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2682,6 +2715,168 @@
 
 </div>
 <hr class="docutils" />
+<div class="section" id="stockmarket">
+<h3>StockMarket - 条件选股的股票市场<a class="headerlink" href="#stockmarket" title="Permalink to this headline">¶</a></h3>
+<p>条件选股的股票市场定义</p>
+<dl class="class">
+<dt id="StockMarket">
+<em class="property">class </em><code class="descname">StockMarket</code><a class="headerlink" href="#StockMarket" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="StockMarket.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#StockMarket.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockMarket.HK">
+<code class="descname">HK</code><a class="headerlink" href="#StockMarket.HK" title="Permalink to this definition">¶</a></dt>
+<dd><p>港股</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockMarket.US">
+<code class="descname">US</code><a class="headerlink" href="#StockMarket.US" title="Permalink to this definition">¶</a></dt>
+<dd><p>美股</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockMarket.CN">
+<code class="descname">CN</code><a class="headerlink" href="#StockMarket.CN" title="Permalink to this definition">¶</a></dt>
+<dd><p>A股</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="stockfield">
+<h3>StockField - 条件选股的简单属性筛选条件<a class="headerlink" href="#stockfield" title="Permalink to this headline">¶</a></h3>
+<p>条件选股的筛选条件定义</p>
+<dl class="class">
+<dt id="StockField">
+<em class="property">class </em><code class="descname">StockField</code><a class="headerlink" href="#StockField" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="StockField.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#StockField.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.STOCK_CODE">
+<code class="descname">STOCK_CODE</code><a class="headerlink" href="#StockField.STOCK_CODE" title="Permalink to this definition">¶</a></dt>
+<dd><p>股票代码</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.STOCK_NAME">
+<code class="descname">STOCK_NAME</code><a class="headerlink" href="#StockField.STOCK_NAME" title="Permalink to this definition">¶</a></dt>
+<dd><p>股票名称</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CUR_PRICE">
+<code class="descname">CUR_PRICE</code><a class="headerlink" href="#StockField.CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>最新价</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO">
+<code class="descname">CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>(现价 - 52周最高)/52周最高</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CUR_PRICE_TO_LOWEST52_WEEKS_RATIO">
+<code class="descname">CUR_PRICE_TO_LOWEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.CUR_PRICE_TO_LOWEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>(现价 - 52周最低)/52周最低</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO">
+<code class="descname">HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>(今日最高 - 52周最高)/52周最高</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.LOW_PRICE_TO_LOWEST52_WEEKS_RATIO">
+<code class="descname">LOW_PRICE_TO_LOWEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.LOW_PRICE_TO_LOWEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>(今日最低 - 52周最低)/52周最低</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.VOLUME_RATIO">
+<code class="descname">VOLUME_RATIO</code><a class="headerlink" href="#StockField.VOLUME_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>量比</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.BID_ASK_RATIO">
+<code class="descname">BID_ASK_RATIO</code><a class="headerlink" href="#StockField.BID_ASK_RATIO" title="Permalink to this definition">¶</a></dt>
+<dd><p>委比</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.LOT_PRICE">
+<code class="descname">LOT_PRICE</code><a class="headerlink" href="#StockField.LOT_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>每手价格</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.MARKET_VAL">
+<code class="descname">MARKET_VAL</code><a class="headerlink" href="#StockField.MARKET_VAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>市值</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PE_ANNUAL">
+<code class="descname">PE_ANNUAL</code><a class="headerlink" href="#StockField.PE_ANNUAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>市盈率 (静态)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PE_TTM">
+<code class="descname">PE_TTM</code><a class="headerlink" href="#StockField.PE_TTM" title="Permalink to this definition">¶</a></dt>
+<dd><p>市盈率TTM</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PB_RATE">
+<code class="descname">PB_RATE</code><a class="headerlink" href="#StockField.PB_RATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>市净率</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="sortdir">
+<h3>SortDir - 条件选股的排序方向<a class="headerlink" href="#sortdir" title="Permalink to this headline">¶</a></h3>
+<p>条件选股的排序方向定义</p>
+<dl class="class">
+<dt id="SortDir">
+<em class="property">class </em><code class="descname">SortDir</code><a class="headerlink" href="#SortDir" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="SortDir.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#SortDir.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>不排序</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortDir.ASCEND">
+<code class="descname">ASCEND</code><a class="headerlink" href="#SortDir.ASCEND" title="Permalink to this definition">¶</a></dt>
+<dd><p>升序</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SortDir.DESCEND">
+<code class="descname">DESCEND</code><a class="headerlink" href="#SortDir.DESCEND" title="Permalink to this definition">¶</a></dt>
+<dd><p>降序</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
 <div class="section" id="trdacctype">
 <h3>TrdAccType - 交易账户类型<a class="headerlink" href="#trdacctype" title="Permalink to this headline">¶</a></h3>
 <p>交易账户类型定义</p>
@@ -2708,6 +2903,7 @@
 
 </dd></dl>
 
+<hr class="docutils" />
 </div>
 </div>
 </div>
@@ -2755,7 +2951,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.12',
+            VERSION:'3.13',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -397,6 +397,7 @@ WarrantType - 窝轮类型
 		WarrantType_Sell = 2; //认沽
 		WarrantType_Bull = 3; //牛
 		WarrantType_Bear = 4; //熊
+		WarrantType_InLine = 5; //界内证
 	};
 
 -----------------------------------------------
@@ -716,6 +717,9 @@ SortField - 涡轮排序
 		SortField_Issuer = 32; //发行人
 		SortField_LotSize = 33; // 每手
 		SortField_IssueSize = 34; //发行量
+		SortField_UpperStrikePrice = 45; //上限价，仅用于界内证
+		SortField_LowerStrikePrice = 46; //下限价，仅用于界内证
+		SortField_InLinePriceStatus = 47; //界内界外，仅用于界内证
 
 		//以下排序字段只支持用于Qot_GetPlateSecurity协议，并仅支持美股
 		SortField_PreCurPrice = 35; //盘前最新价
@@ -762,6 +766,7 @@ Issuer - 涡轮发行人
 		Issuer_HT = 20; //海通
 		Issuer_VT = 21; //瑞通
 		Issuer_KC = 22; //比联
+		Issuer_MS = 23; //摩利
 	}
 	
 -----------------------------------------------
@@ -783,7 +788,7 @@ IpoPeriod - 涡轮上市日
 	
 -----------------------------------------------
 
-PriceType - 涡轮价外/内
+PriceType - 涡轮价(界)外/内
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -791,8 +796,8 @@ PriceType - 涡轮价外/内
 	enum PriceType
 	{
 		PriceType_Unknow = 0;
-		PriceType_Outside = 1; //价外
-		PriceType_WithIn = 2; //价内
+		PriceType_Outside = 1; //价外,界内证表示界外
+		PriceType_WithIn = 2; //价内,界内证表示界内
 	}
 	
 -----------------------------------------------
@@ -825,8 +830,48 @@ QotRight - 行情权限
 		QotRight_Level1 = 2; //Level1
 		QotRight_Level2 = 3; //Level2
 	}
-		
------------------------------------------------
+				
+-----------------------------------------------------------------------------
+
+StockField - 条件选股的简单属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum StockField
+	{
+		StockField_Unknown = 0; // 未知
+		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
+		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
+		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
+		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
+		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
+		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
+		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
+		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
+		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+SortDir - 条件选股的排序方向
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum SortDir
+	{
+		SortDir_No = 0; // 不排序
+		SortDir_Ascend = 1; // 升序
+		SortDir_Descend = 2; // 降序
+	}
+						
+-----------------------------------------------------------------------------
 
 Security - 证券标识
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

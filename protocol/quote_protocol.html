@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.12 documentation</title>
+  <title>行情协议 &mdash; futu-api-doc 3.13 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.13 documentation" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.12
+                3.13
               </div>
             
           
@@ -136,6 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-getcapitaldistribution-proto-3212">Qot_GetCapitalDistribution.proto - 3212获取资金分布</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getusersecurity-proto-3213">Qot_GetUserSecurity.proto - 3213获取自选股分组下的股票</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-modifyusersecurity-proto-3214">Qot_ModifyUserSecurity.proto - 3214修改自选股分组下的股票</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-stockfilter-proto-3215">Qot_StockFilter.proto - 3215获取条件选股</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trade_protocol.html">交易协议</a></li>
@@ -1284,7 +1285,7 @@
         <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
 <span class="p">}</span>
 
-<span class="c1">// 正股类型额外数据</span>
+ <span class="c1">// 正股类型额外数据</span>
 <span class="kd">message</span> <span class="nc">EquitySnapshotExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">issuedShares</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 发行股本,即总股本</span>
@@ -1305,7 +1306,7 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">dividendLFYRatio</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 股息率LFY（该字段为百分比字段，默认不展示%）</span>
 <span class="p">}</span>
 
-<span class="c1">// 涡轮类型额外数据</span>
+ <span class="c1">// 涡轮类型额外数据</span>
 <span class="kd">message</span> <span class="nc">WarrantSnapshotExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">conversionRate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//换股比率</span>
@@ -1314,12 +1315,12 @@
         <span class="k">required</span> <span class="kt">string</span> <span class="na">maturityTime</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//到期日时间字符串</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">endTradeTime</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//最后交易日时间字符串</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//所属正股</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">recoveryPrice</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//收回价,仅牛熊证支持该字段过滤</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">recoveryPrice</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//收回价,仅牛熊证支持该字段</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">streetVolumn</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//街货量</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">issueVolumn</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//发行量</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">streetRate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//街货占比（该字段为百分比字段，默认不展示%）</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">delta</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//对冲值,仅认购认沽支持该字段过滤</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//引伸波幅,仅认购认沽支持该字段过滤</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">delta</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//对冲值,仅认购认沽支持该字段</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//引申波幅,仅认购认沽支持该字段</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">premium</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//溢价（该字段为百分比字段，默认不展示%）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">maturityTimestamp</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//到期日时间戳</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">endTradeTimestamp</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//最后交易日时间戳</span>
@@ -1329,9 +1330,12 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">conversionPrice</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>  <span class="c1">// 换股价</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">priceRecoveryRatio</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 正股距收回价（该字段为百分比字段，默认不展示%）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">score</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">// 综合评分</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">upperStrikePrice</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//上限价，仅界内证支持该字段</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowerStrikePrice</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">//下限价，仅界内证支持该字段</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">inLinePriceStatus</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span> <span class="c1">//Qot_Common.PriceType, 界内界外，仅界内证支持该字段</span>
 <span class="p">}</span>
 
-<span class="c1">// 期权类型额外数据</span>
+ <span class="c1">// 期权类型额外数据</span>
 <span class="kd">message</span> <span class="nc">OptionSnapshotExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.OptionType,期权</span>
@@ -1353,20 +1357,34 @@
 <span class="c1">// 指数类型额外数据</span>
 <span class="kd">message</span> <span class="nc">IndexSnapshotExData</span>
 <span class="p">{</span>
-    <span class="k">required</span> <span class="kt">int32</span> <span class="na">raiseCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 上涨支数</span>
-    <span class="k">required</span> <span class="kt">int32</span> <span class="na">fallCount</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 下跌支数</span>
-    <span class="k">required</span> <span class="kt">int32</span> <span class="na">equalCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 平盘支数</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">raiseCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 上涨支数</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fallCount</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 下跌支数</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">equalCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 平盘支数</span>
 <span class="p">}</span>
 
 <span class="c1">// 板块类型额外数据</span>
 <span class="kd">message</span> <span class="nc">PlateSnapshotExData</span>
 <span class="p">{</span>
-    <span class="k">required</span> <span class="kt">int32</span> <span class="na">raiseCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 上涨支数</span>
-    <span class="k">required</span> <span class="kt">int32</span> <span class="na">fallCount</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 下跌支数</span>
-    <span class="k">required</span> <span class="kt">int32</span> <span class="na">equalCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 平盘支数</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">raiseCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 上涨支数</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fallCount</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 下跌支数</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">equalCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 平盘支数</span>
 <span class="p">}</span>
 
-<span class="c1">// 基本快照数据</span>
+<span class="c1">//盘前盘后数据，仅支持美股以及科创板</span>
+<span class="c1">//科创板只有盘后成交量，成交额</span>
+<span class="kd">message</span> <span class="nc">PreAfterMarketData</span>
+<span class="p">{</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">price</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 价格</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">highPrice</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 最高价</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 最低价</span>
+        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 成交量</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 成交额</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeVal</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌额</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）</span>
+<span class="p">}</span>
+
+ <span class="c1">//基本快照数据</span>
 <span class="kd">message</span> <span class="nc">SnapshotBasicData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
@@ -1374,9 +1392,9 @@
         <span class="k">required</span> <span class="kt">bool</span> <span class="na">isSuspend</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//是否停牌</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">listTime</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//上市时间字符串</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">lotSize</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//每手数量</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">priceSpread</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//向上价差</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">priceSpread</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//价差</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">updateTime</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//更新时间字符串</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">highPrice</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//最新价</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">highPrice</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//最高价</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">openPrice</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//开盘价</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">lowPrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//最低价</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">lastClosePrice</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//昨收价</span>
@@ -1405,6 +1423,8 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowest52WeeksPrice</span> <span class="o">=</span> <span class="mi">34</span><span class="p">;</span>  <span class="c1">// 52周最低价</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">highestHistoryPrice</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span>  <span class="c1">// 历史最高价</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowestHistoryPrice</span> <span class="o">=</span> <span class="mi">36</span><span class="p">;</span>  <span class="c1">// 历史最低价</span>
+        <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">preMarket</span> <span class="o">=</span> <span class="mi">37</span><span class="p">;</span> <span class="c1">//盘前数据</span>
+        <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">afterMarket</span> <span class="o">=</span> <span class="mi">38</span><span class="p">;</span> <span class="c1">//盘后数据</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">Snapshot</span>
@@ -1850,6 +1870,9 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">41</span><span class="p">;</span> <span class="c1">//引伸波幅,仅认购认沽支持该字段</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">delta</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="c1">//对冲值,仅认购认沽支持该字段</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">effectiveLeverage</span> <span class="o">=</span> <span class="mi">43</span><span class="p">;</span> <span class="c1">//有效杠杆</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">upperStrikePrice</span> <span class="o">=</span> <span class="mi">44</span><span class="p">;</span> <span class="c1">//上限价，仅界内证支持该字段</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowerStrikePrice</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span> <span class="c1">//下限价，仅界内证支持该字段</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">inLinePriceStatus</span> <span class="o">=</span> <span class="mi">46</span><span class="p">;</span> <span class="c1">//Qot_Common.PriceType, 界内界外，仅界内证支持该字段</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -2124,6 +2147,112 @@
 <li>仅支持自定义分组</li>
 </ul>
 </div>
+</div>
+<hr class="docutils" />
+<div class="section" id="qot-stockfilter-proto-3215">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_StockFilter.proto">Qot_StockFilter.proto</a> - 3215获取条件选股<a class="headerlink" href="#qot-stockfilter-proto-3215" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">Qot_StockFilter</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="c1">// 简单属性</span>
+<span class="kd">enum</span> <span class="n">StockField</span>
+<span class="p">{</span>
+        <span class="na">StockField_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">StockField_StockCode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 股票代码，不能填区间上下限值。</span>
+        <span class="na">StockField_StockName</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称，不能填区间上下限值。</span>
+        <span class="na">StockField_CurPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 最新价 例如填写[10,20]值区间</span>
+        <span class="na">StockField_CurPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间</span>
+        <span class="na">StockField_CurPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,0.52]值区间</span>
+        <span class="na">StockField_HighPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间</span>
+        <span class="na">StockField_LowPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// (今日最低 - 52周最低)/52周最低 例如填写[0,0.68]值区间</span>
+        <span class="na">StockField_VolumeRatio</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 量比 例如填写[0.5,30]值区间</span>
+        <span class="na">StockField_BidAskRatio</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 委比 例如填写[-20,85.01]值区间</span>
+        <span class="na">StockField_LotPrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 每手价格 例如填写[40,100]值区间</span>
+        <span class="na">StockField_MarketVal</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 市值，单位是元 例如填写[50000000,3000000000]值区间</span>
+        <span class="na">StockField_PeAnnual</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 市盈率 (静态) 例如填写[-8,65.3]值区间</span>
+        <span class="na">StockField_PeTTM</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 市盈率TTM 例如填写[-10,20.5]值区间</span>
+        <span class="na">StockField_PbRate</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">// 市净率 例如填写[0,0.8]值区间</span>
+<span class="p">};</span>
+
+<span class="c1">// 排序方向</span>
+<span class="kd">enum</span> <span class="n">SortDir</span>
+<span class="p">{</span>
+        <span class="na">SortDir_No</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 不排序</span>
+        <span class="na">SortDir_Ascend</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 升序</span>
+        <span class="na">SortDir_Descend</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 降序</span>
+<span class="p">};</span>
+
+<span class="c1">// 简单属性筛选</span>
+<span class="kd">message</span> <span class="nc">BaseFilter</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// StockField 简单属性</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 区间下限，闭区间</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMax</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 区间上限，闭区间</span>
+        <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isNoFilter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">sortDir</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// SortDir 排序方向，默认不排序。</span>
+<span class="p">};</span>
+
+<span class="c1">// 简单属性数据</span>
+<span class="kd">message</span> <span class="nc">BaseData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// StockField 简单属性</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 返回的股票数据</span>
+<span class="kd">message</span> <span class="nc">StockData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 股票</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称</span>
+        <span class="k">repeated</span> <span class="n">BaseData</span> <span class="na">baseDataList</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 筛选后的简单属性数据</span>
+<span class="p">};</span>
+
+<span class="kd">message</span> <span class="nc">C2S</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">begin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 数据起始点</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">num</span> <span class="o">=</span>  <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 请求数据个数，最大200</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">market</span><span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。</span>
+        <span class="c1">// 以下为筛选条件，可选字段，不填表示不过滤</span>
+        <span class="k">optional</span> <span class="n">Qot_Common.Security</span> <span class="na">plate</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 板块</span>
+        <span class="k">repeated</span> <span class="n">BaseFilter</span> <span class="na">baseFilterList</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 简单行情过滤器</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">S2C</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">bool</span> <span class="na">lastPage</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 是否最后一页了,false:非最后一页,还有窝轮记录未返回; true:已是最后一页</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">allCount</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 该条件请求所有数据的个数</span>
+        <span class="k">repeated</span> <span class="n">StockData</span> <span class="na">dataList</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 返回的股票数据列表</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Request</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Response</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
+<li>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></li>
+<li>简单属性筛选条件参考 <a class="reference external" href="base_define.html#stockfield">StockField</a></li>
+<li>排序方向参考 <a class="reference external" href="base_define.html#sortdir">SortDir</a></li>
+<li>限频接口：30秒内最多10次</li>
+<li>使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。</li>
+</ul>
+</div>
 <hr class="docutils" />
 </div>
 </div>
@@ -2171,7 +2300,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.12',
+            VERSION:'3.13',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.12 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.13 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.12 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.13 documentation" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.12
+                3.13
               </div>
             
           
@@ -131,9 +131,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#sortfield">SortField - 涡轮排序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#issuer">Issuer - 涡轮发行人</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ipoperiod">IpoPeriod - 涡轮上市日</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价外/内</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价(界)外/内</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 涡轮状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#qotright">QotRight - 行情权限</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stockfield">StockField - 条件选股的简单属性筛选条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sortdir">SortDir - 条件选股的排序方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security - 证券标识</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kline-k">KLine - K线数据点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#basicqot">BasicQot - 基础报价</a></li>
@@ -682,6 +684,7 @@
         <span class="na">WarrantType_Sell</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//认沽</span>
         <span class="na">WarrantType_Bull</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//牛</span>
         <span class="na">WarrantType_Bear</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//熊</span>
+        <span class="na">WarrantType_InLine</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//界内证</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -1000,6 +1003,9 @@
         <span class="na">SortField_Issuer</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span> <span class="c1">//发行人</span>
         <span class="na">SortField_LotSize</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span> <span class="c1">// 每手</span>
         <span class="na">SortField_IssueSize</span> <span class="o">=</span> <span class="mi">34</span><span class="p">;</span> <span class="c1">//发行量</span>
+        <span class="na">SortField_UpperStrikePrice</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span> <span class="c1">//上限价，仅用于界内证</span>
+        <span class="na">SortField_LowerStrikePrice</span> <span class="o">=</span> <span class="mi">46</span><span class="p">;</span> <span class="c1">//下限价，仅用于界内证</span>
+        <span class="na">SortField_InLinePriceStatus</span> <span class="o">=</span> <span class="mi">47</span><span class="p">;</span> <span class="c1">//界内界外，仅用于界内证</span>
 
         <span class="c1">//以下排序字段只支持用于Qot_GetPlateSecurity协议，并仅支持美股</span>
         <span class="na">SortField_PreCurPrice</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span> <span class="c1">//盘前最新价</span>
@@ -1046,6 +1052,7 @@
         <span class="na">Issuer_HT</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//海通</span>
         <span class="na">Issuer_VT</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//瑞通</span>
         <span class="na">Issuer_KC</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//比联</span>
+        <span class="na">Issuer_MS</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">//摩利</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1070,13 +1077,13 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="pricetype">
-<h3>PriceType - 涡轮价外/内<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
+<h3>PriceType - 涡轮价(界)外/内<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PriceType</span>
 <span class="p">{</span>
         <span class="na">PriceType_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="na">PriceType_Outside</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//价外</span>
-        <span class="na">PriceType_WithIn</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//价内</span>
+        <span class="na">PriceType_Outside</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//价外,界内证表示界外</span>
+        <span class="na">PriceType_WithIn</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//价内,界内证表示界内</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1108,6 +1115,46 @@
         <span class="na">QotRight_Bmp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Bmp，无法订阅</span>
         <span class="na">QotRight_Level1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Level1</span>
         <span class="na">QotRight_Level2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//Level2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="stockfield">
+<h3>StockField - 条件选股的简单属性筛选条件<a class="headerlink" href="#stockfield" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">StockField</span>
+<span class="p">{</span>
+        <span class="na">StockField_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">StockField_StockCode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 股票代码，不能填区间上下限值。</span>
+        <span class="na">StockField_StockName</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称，不能填区间上下限值。</span>
+        <span class="na">StockField_CurPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 最新价 例如填写[10,20]值区间</span>
+        <span class="na">StockField_CurPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]</span>
+        <span class="na">StockField_CurPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]</span>
+        <span class="na">StockField_HighPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]</span>
+        <span class="na">StockField_LowPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]</span>
+        <span class="na">StockField_VolumeRatio</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 量比 例如填写[0.5,30]值区间</span>
+        <span class="na">StockField_BidAskRatio</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 委比 例如填写[-20,85.01]值区间</span>
+        <span class="na">StockField_LotPrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 每手价格 例如填写[40,100]值区间</span>
+        <span class="na">StockField_MarketVal</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 市值 例如填写[50000000,3000000000]值区间</span>
+        <span class="na">StockField_PeAnnual</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 市盈率 (静态) 例如填写[-8,65.3]值区间</span>
+        <span class="na">StockField_PeTTM</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 市盈率TTM 例如填写[-10,20.5]值区间</span>
+        <span class="na">StockField_PbRate</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">// 市净率 例如填写[0,0.8]值区间</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="sortdir">
+<h3>SortDir - 条件选股的排序方向<a class="headerlink" href="#sortdir" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SortDir</span>
+<span class="p">{</span>
+        <span class="na">SortDir_No</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 不排序</span>
+        <span class="na">SortDir_Ascend</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 升序</span>
+        <span class="na">SortDir_Descend</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 降序</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1809,7 +1856,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.12',
+            VERSION:'3.13',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
