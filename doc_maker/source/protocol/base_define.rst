@@ -972,15 +972,15 @@ KLine - K线数据点
 		optional double changeRate = 12; //涨跌幅（该字段为百分比字段，默认不展示%）
 		optional double timestamp = 13; //时间戳
 	}
-		
------------------------------------------------
 
-BasicQot - 基础报价
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------------
+
+OptionBasicQotExData - 基础报价的期权特有字段
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
 
-	 message OptionBasicQotExData
+	message OptionBasicQotExData
 	{
 		required double strikePrice = 1; //行权价
 		required int32 contractSize = 2; //每份合约数
@@ -1000,8 +1000,15 @@ BasicQot - 基础报价
 		optional double ownerLotMultiplier = 14; //相等正股手数，指数期权无该字段
 		optional int32 optionAreaType = 15; //OptionAreaType, 期权地区类型
 		optional double contractMultiplier = 16; //合约乘数，指数期权特有字段
-	}
-	
+	}		
+
+----------------------------------------------------------------------------------------------
+
+BasicQot - 基础报价
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
 	message BasicQot
 	{
 		required Security security = 1; //股票
@@ -1022,28 +1029,33 @@ BasicQot - 基础报价
 		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 		optional double listTimestamp = 17; //上市日期时间戳
 		optional double updateTimestamp = 18; //更新时间戳
+		optional PreAfterMarketData preMarket = 19; //盘前数据
+		optional PreAfterMarketData afterMarket = 20; //盘后数据
+		optional int32 status = 21; //SecurityStats, 股票状态
 	}
 		
------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 
 PreAfterMarketData - 盘前盘后数据
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ .. code-block:: protobuf
+	
+	//美股支持盘前盘后数据
+	//科创板仅支持盘后数据：成交量，成交额
+	message PreAfterMarketData
+	{
+	    optional double price = 1;  // 盘前或盘后 - 价格
+	    optional double highPrice = 2;  // 盘前或盘后 - 最高价
+	    optional double lowPrice = 3;  // 盘前或盘后 - 最低价
+	    optional int64 volume = 4;  // 盘前或盘后 - 成交量
+	    optional double turnover = 5;  // 盘前或盘后 - 成交额
+	    optional double changeVal = 6;  // 盘前或盘后 - 涨跌额
+	    optional double changeRate = 7;  // 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）
+	    optional double amplitude = 8;  // 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）
+	}
 
-//美股支持盘前盘后数据
-//科创板仅支持盘后数据：成交量，成交额
-message PreAfterMarketData
-{
-	optional double price = 1;  // 盘前或盘后 - 价格
-    optional double highPrice = 2;  // 盘前或盘后 - 最高价
-    optional double lowPrice = 3;  // 盘前或盘后 - 最低价
-    optional int64 volume = 4;  // 盘前或盘后 - 成交量
-    optional double turnover = 5;  // 盘前或盘后 - 成交额
-    optional double changeVal = 6;  // 盘前或盘后 - 涨跌额
-    optional double changeRate = 7;  // 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）
-    optional double amplitude = 8;  // 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）
-}
-
------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 
 TimeShare - 分时数据点
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
