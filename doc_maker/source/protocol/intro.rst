@@ -352,6 +352,15 @@ API用户等级
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 每次请求的数据个数最多 :red-strengthen:`200` 个
 
+
+.. _get-ipo-list-limit:
+
+获取IPO列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3217_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+
+
 获取账户资金
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2101_
