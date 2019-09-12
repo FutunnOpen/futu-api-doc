@@ -591,8 +591,6 @@ get_market_snapshot
  index_raise_count               int            指数类型上涨支数
  index_fall_count                int            指数类型下跌支数
  index_equal_count               int            指数类型平盘支数
- after_volume                    int            盘后成交量，目前仅科创板支持该数据
- after_turnover                  double         盘后成交额，目前仅科创板支持该数据
  status                          str            股票状态，见 SecurityStatus_ 
  net_open_interest               int            净未平仓合约数
  expiry_date_distance            int            距离到期日天数
@@ -600,22 +598,22 @@ get_market_snapshot
  owner_lot_multiplier            float          相等正股手数，指数期权无该字段
  option_area_type                str            期权地区类型，见 OptionAreaType_
  contract_multiplier             float          合约乘数，指数期权特有字段
- pre_price                       float          盘前价格。 值不存在时为N/A
- pre_high_price                  float          盘前最高价。 值不存在时为N/A
- pre_low_price                   float          盘前最低价。 值不存在时为N/A
- pre_volume                      int            盘前成交量。 值不存在时为N/A
- pre_turnover                    float          盘前成交额。 值不存在时为N/A
- pre_change_val                  float          盘前涨跌额。 值不存在时为N/A
- pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
- pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
- after_price                       float          盘后价格。 值不存在时为N/A
- after_high_price                  float          盘后最高价。 值不存在时为N/A
- after_low_price                   float          盘后最低价。 值不存在时为N/A
- after_volume                      int            盘后成交量。 值不存在时为N/A
- after_turnover                    float          盘后成交额。 值不存在时为N/A
- after_change_val                  float          盘后涨跌额。 值不存在时为N/A
- after_change_rate                 float          盘后涨跌幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
- after_amplitude                   float          盘后振幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
+ pre_price                       float          盘前价格。 
+ pre_high_price                  float          盘前最高价。 
+ pre_low_price                   float          盘前最低价。 
+ pre_volume                      int            盘前成交量。 
+ pre_turnover                    float          盘前成交额。 
+ pre_change_val                  float          盘前涨跌额。 
+ pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%）。 
+ pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%）。 
+ after_price                       float          盘后价格。 
+ after_high_price                  float          盘后最高价。 
+ after_low_price                   float          盘后最低价。 
+ after_volume                      int            盘后成交量。 科创板支持该数据。
+ after_turnover                    float          盘后成交额。 科创板支持该数据。
+ after_change_val                  float          盘后涨跌额。 
+ after_change_rate                 float          盘后涨跌幅（该字段为百分比字段，默认不展示%）。 
+ after_amplitude                   float          盘后振幅（该字段为百分比字段，默认不展示%）。 
  ============================   =============   ===================================================================
 
  :Example:
@@ -1031,22 +1029,22 @@ get_stock_quote
         owner_lot_multiplier    float          相等正股手数，指数期权无该字段
         option_area_type        str            期权地区类型，见 OptionAreaType_
         contract_multiplier     float          合约乘数，指数期权特有字段
-        pre_price               float          盘前价格。 值不存在时为N/A
-        pre_high_price          float          盘前最高价。 值不存在时为N/A
-        pre_low_price           float          盘前最低价。 值不存在时为N/A
-        pre_volume              int            盘前成交量。 值不存在时为N/A
-        pre_turnover            float          盘前成交额。 值不存在时为N/A
-        pre_change_val          float          盘前涨跌额。 值不存在时为N/A
-        pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
-        pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
-        after_price             float          盘后价格。 值不存在时为N/A
-        after_high_price        float          盘后最高价。 值不存在时为N/A
-        after_low_price         float          盘后最低价。 值不存在时为N/A
-        after_volume            int            盘后成交量。 值不存在时为N/A
-        after_turnover          float          盘后成交额。 值不存在时为N/A
-        after_change_val        float          盘后涨跌额。 值不存在时为N/A
-        after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
-        after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%）。 值不存在时为N/A
+        pre_price               float          盘前价格。 
+        pre_high_price          float          盘前最高价。 
+        pre_low_price           float          盘前最低价。 
+        pre_volume              int            盘前成交量。 
+        pre_turnover            float          盘前成交额。 
+        pre_change_val          float          盘前涨跌额。 
+        pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%）。 
+        pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%）。 
+        after_price             float          盘后价格。 
+        after_high_price        float          盘后最高价。 
+        after_low_price         float          盘后最低价。 
+        after_volume            int            盘后成交量。 科创板支持此数据。
+        after_turnover          float          盘后成交额。 科创板支持此数据。
+        after_change_val        float          盘后涨跌额。 
+        after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%）。 
+        after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%）。 
         ======================  ===========   ==============================================================
         
  :Example:
@@ -1905,34 +1903,34 @@ get_ipo_list
 ==========================================   ===========   ==================================================================================================================================
 code                                         str            股票代码，例如'HK.12345'   
 name                                         str            股票名称
-list_time                                    str            上市日期，值不存在时为N/A
-list_timestamp                               float          上市日期时间戳，值不存在时为N/A
-apply_code                                   str            申购代码，A股适用，值不存在时为N/A
-issue_size                                   int            发行总数，A股适用，值不存在时为N/A
-online_issue_size                            int            网上发行量，A股适用，值不存在时为N/A
-apply_upper_limit                            int            申购上限，A股适用，值不存在时为N/A
-apply_limit_market_value                     int            顶格申购需配市值，A股适用，值不存在时为N/A
-is_estimate_ipo_price                        bool           是否预估发行价，A股适用，值不存在时为N/A
-ipo_price                                    float          发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，值不存在时为N/A
-industry_pe_rate                             float          行业市盈率，A股适用，值不存在时为N/A
-is_estimate_winning_ratio                    bool           是否预估中签率，A股适用，值不存在时为N/A
-winning_ratio                                float          中签率 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，值不存在时为N/A
-issue_pe_rate                                float          发行市盈率，A股适用，值不存在时为N/A
-apply_time                                   str            申购日期字符串，A股适用，值不存在时为N/A
-apply_timestamp                              float          申购日期时间戳，A股适用，值不存在时为N/A
-winning_time                                  str            公布中签日期字符串，A股适用，值不存在时为N/A
-winning_timestamp                             float          公布中签日期时间戳，A股适用，值不存在时为N/A
-is_has_won                                    bool           是否已经公布中签号，A股适用，值不存在时为N/A
-winning_name                                  str            分组名，A股适用，值不存在时为N/A
-winning_info                                  str            中签号信息，A股适用，值不存在时为N/A
-ipo_price_min                                 float          最低发售价，港股适用，值不存在时为N/A
-ipo_price_max                                 float          最高发售价，港股适用，值不存在时为N/A
-list_price                                    float          上市价，港股适用，值不存在时为N/A
-lot_size                                      int            每手股数，港股适用，值不存在时为N/A
-entrance_price                                float          入场费，港股适用，值不存在时为N/A
-is_support_ipo                                bool           是否支持认购，港股适用，值不存在时为N/A
-apply_end_time                                str            截止认购日期字符串，港股适用，值不存在时为N/A
-apply_end_timestamp                           float          截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用，值不存在时为N/A
+list_time                                    str            上市日期，
+list_timestamp                               float          上市日期时间戳，
+apply_code                                   str            申购代码，A股适用，
+issue_size                                   int            发行总数，A股适用，
+online_issue_size                            int            网上发行量，A股适用，
+apply_upper_limit                            int            申购上限，A股适用，
+apply_limit_market_value                     int            顶格申购需配市值，A股适用，
+is_estimate_ipo_price                        bool           是否预估发行价，A股适用，
+ipo_price                                    float          发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，
+industry_pe_rate                             float          行业市盈率，A股适用，
+is_estimate_winning_ratio                    bool           是否预估中签率，A股适用，
+winning_ratio                                float          中签率 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，
+issue_pe_rate                                float          发行市盈率，A股适用，
+apply_time                                   str            申购日期字符串，A股适用，
+apply_timestamp                              float          申购日期时间戳，A股适用，
+winning_time                                  str            公布中签日期字符串，A股适用，
+winning_timestamp                             float          公布中签日期时间戳，A股适用，
+is_has_won                                    bool           是否已经公布中签号，A股适用，
+winning_name                                  str            分组名，A股适用，
+winning_info                                  str            中签号信息，A股适用，
+ipo_price_min                                 float          最低发售价，港股适用，
+ipo_price_max                                 float          最高发售价，港股适用，
+list_price                                    float          上市价，港股适用，
+lot_size                                      int            每手股数，港股适用，
+entrance_price                                float          入场费，港股适用，
+is_support_ipo                                bool           是否支持认购，港股适用，
+apply_end_time                                str            截止认购日期字符串，港股适用，
+apply_end_timestamp                           float          截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用，
 ==========================================   ===========   ==================================================================================================================================
 
  :Example:
