@@ -114,6 +114,9 @@
   .. _Qot_StockFilter.proto:  quote_protocol.html#qot-stockfilter-proto-3215
   .. _3215:  quote_protocol.html#qot-stockfilter-proto-3215
   
+	.. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
+  .. _3217:  quote_protocol.html#qot-getipolist-proto-3217ipo
+
   .. role:: red-strengthen
 
 特点

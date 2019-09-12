@@ -1905,34 +1905,34 @@ get_ipo_list
 ==========================================   ===========   ==================================================================================================================================
 code                                         str            股票代码，例如'HK.12345'   
 name                                         str            股票名称
-list_time                                    str            上市日期，未知的话为N/A
-list_timestamp                               float          上市日期时间戳，未知的话为N/A
-apply_code                                   str            申购代码，A股适用，不存在的话为N/A
-issue_size                                   int            发行总数，A股适用，不存在的话为N/A
-online_issue_size                            int            网上发行量，A股适用，不存在的话为N/A
-apply_upper_limit                            int            申购上限，A股适用，不存在的话为N/A
-apply_limit_market_value                     int            顶格申购需配市值，A股适用，不存在的话为N/A
-is_estimate_ipo_price                        bool           是否预估发行价，A股适用，不存在的话为N/A
-ipo_price                                    float          发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，不存在的话为N/A
-industry_pe_rate                             float          行业市盈率，A股适用，不存在的话为N/A
-is_estimate_winning_ratio                    bool           是否预估中签率，A股适用，不存在的话为N/A
-winning_ratio                                float          中签率 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，不存在的话为N/A
-issue_pe_rate                                float          发行市盈率，A股适用，不存在的话为N/A
-apply_time                                   str            申购日期字符串，A股适用，不存在的话为N/A
-apply_timestamp                              float          申购日期时间戳，A股适用，不存在的话为N/A
-winning_time                                  str            公布中签日期字符串，A股适用，不存在的话为N/A
-winning_timestamp                             float          公布中签日期时间戳，A股适用，不存在的话为N/A
-is_has_won                                    bool           是否已经公布中签号，A股适用，不存在的话为N/A
-winning_name                                  str            分组名，A股适用，不存在的话为N/A
-winning_info                                  str            中签号信息，A股适用，不存在的话为N/A
-ipo_price_min                                 float          最低发售价，港股适用，不存在的话为N/A
-ipo_price_max                                 float          最高发售价，港股适用，不存在的话为N/A
-list_price                                    float          上市价，港股适用，不存在的话为N/A
-lot_size                                      int            每手股数，港股适用，不存在的话为N/A
-entrance_price                                float          入场费，港股适用，不存在的话为N/A
-is_support_ipo                                bool           是否支持认购，港股适用，不存在的话为N/A
-apply_end_time                                str            截止认购日期字符串，港股适用，不存在的话为N/A
-apply_end_timestamp                           float          截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用，不存在的话为N/A
+list_time                                    str            上市日期，值不存在时为N/A
+list_timestamp                               float          上市日期时间戳，值不存在时为N/A
+apply_code                                   str            申购代码，A股适用，值不存在时为N/A
+issue_size                                   int            发行总数，A股适用，值不存在时为N/A
+online_issue_size                            int            网上发行量，A股适用，值不存在时为N/A
+apply_upper_limit                            int            申购上限，A股适用，值不存在时为N/A
+apply_limit_market_value                     int            顶格申购需配市值，A股适用，值不存在时为N/A
+is_estimate_ipo_price                        bool           是否预估发行价，A股适用，值不存在时为N/A
+ipo_price                                    float          发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，值不存在时为N/A
+industry_pe_rate                             float          行业市盈率，A股适用，值不存在时为N/A
+is_estimate_winning_ratio                    bool           是否预估中签率，A股适用，值不存在时为N/A
+winning_ratio                                float          中签率 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用，值不存在时为N/A
+issue_pe_rate                                float          发行市盈率，A股适用，值不存在时为N/A
+apply_time                                   str            申购日期字符串，A股适用，值不存在时为N/A
+apply_timestamp                              float          申购日期时间戳，A股适用，值不存在时为N/A
+winning_time                                  str            公布中签日期字符串，A股适用，值不存在时为N/A
+winning_timestamp                             float          公布中签日期时间戳，A股适用，值不存在时为N/A
+is_has_won                                    bool           是否已经公布中签号，A股适用，值不存在时为N/A
+winning_name                                  str            分组名，A股适用，值不存在时为N/A
+winning_info                                  str            中签号信息，A股适用，值不存在时为N/A
+ipo_price_min                                 float          最低发售价，港股适用，值不存在时为N/A
+ipo_price_max                                 float          最高发售价，港股适用，值不存在时为N/A
+list_price                                    float          上市价，港股适用，值不存在时为N/A
+lot_size                                      int            每手股数，港股适用，值不存在时为N/A
+entrance_price                                float          入场费，港股适用，值不存在时为N/A
+is_support_ipo                                bool           是否支持认购，港股适用，值不存在时为N/A
+apply_end_time                                str            截止认购日期字符串，港股适用，值不存在时为N/A
+apply_end_timestamp                           float          截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用，值不存在时为N/A
 ==========================================   ===========   ==================================================================================================================================
 
  :Example:
