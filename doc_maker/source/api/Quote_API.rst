@@ -1854,7 +1854,7 @@ pb_rate                                        float          市净率
     field.is_no_filter = False
     field.sort = SortDir.ASCEND
 
-    ret, ls = quote_ctx.get_stock_filter(StockMarket.HK, [field])
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [field])
     if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
