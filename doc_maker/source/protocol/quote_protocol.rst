@@ -2065,6 +2065,7 @@
     {
         required double ipoPriceMin = 1; // 最低发行价
         required double ipoPriceMax = 2; // 最高发行价
+        required int64 issueSize = 3; // 发行量
     };
 
     // 新股Ipo数据
