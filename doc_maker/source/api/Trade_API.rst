@@ -195,9 +195,9 @@ position_list_query - 获取账户持仓列表
  position_side                str           持仓方向，PositionSide.LONG(多仓)或PositionSide.SHORT(空仓)
  code                         str           代码
  stock_name                   str           名称
- qty                          float         持有数量，2位精度，期权单位是"张"，下同
- can_sell_qty                 float         可卖数量
- nominal_price                float         市价，3位精度(A股2位)
+ qty                          float         持有数量，整数，期权单位是"张"，下同
+ can_sell_qty                 float         可卖数量，整数
+ nominal_price                float         市价，3位小数，超过四舍五入
  cost_price                   float        	成本价，无精度限制
  cost_price_valid             bool          成本价是否有效，True有效，False无效
  market_val                   float         市值，3位精度(A股2位)
@@ -206,9 +206,9 @@ position_list_query - 获取账户持仓列表
  pl_val                       float         盈亏金额，3位精度(A股2位)
  pl_val_valid                 bool          盈亏金额是否有效，True有效，False无效
  today_pl_val                 float         今日盈亏金额，3位精度(A股2位)，下同
- today_buy_qty                float         今日买入总量
+ today_buy_qty                float         今日买入总量，整数
  today_buy_val                float         今日买入总额
- today_sell_qty               float         今日卖出总量
+ today_sell_qty               float         今日卖出总量，整数
  today_sell_val               float         今日卖出总额
  =====================        ===========   ===================================================================
  
@@ -234,8 +234,8 @@ place_order - 下单
  
  注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。
 
- :param price: float，订单价格，3位精度(A股2位)，当订单是市价单或竞价单类型，忽略该参数传值
- :param qty: float，订单数量，2位精度，期权单位是"张"
+ :param price: float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值
+ :param qty: float，订单数量，整数，期权单位是"张"
  :param code: str，代码
  :param trd_side: str，交易方向，参考 TrdSide_ 类的定义
  :param order_type: str，订单类型，参考 OrderType_ 类的定义
@@ -292,11 +292,11 @@ order_list_query - 获取订单列表
  order_id                     str           订单号
  code                         str           代码
  stock_name                   str           名称
- qty                          float         订单数量，2位精度，期权单位是"张"
- price                        float         订单价格，3位精度(A股2位)
+ qty                          float         订单数量，整数，期权单位是"张"
+ price                        float         订单价格，3位小数，超过四舍五入
  create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
  updated_time                 str        	  最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- dealt_qty                    float         成交数量，2位精度，期权单位是"张"
+ dealt_qty                    float         成交数量，整数，期权单位是"张"
  dealt_avg_price              float         成交均价，无精度限制
  last_err_msg                 str           最后的错误描述，如果有错误，会有此描述最后一次错误的原因，无错误为空
  remark                       str           备注，详见 place_order_ 的说明。
@@ -326,8 +326,8 @@ modify_order - 修改订单
 
  :param modify_order_op: str，改单操作类型，参考 ModifyOrderOp_ 类的定义，有
  :param order_id: str，订单号
- :param qty: float，(改单有效)新的订单数量，2位精度，期权单位是"张"
- :param price: float，(改单有效)新的订单价格，3位精度(A股2位)
+ :param qty: float，(改单有效)新的订单数量，整数，期权单位是"张"
+ :param price: float，(改单有效)新的订单价格，3位小数，超过四舍五入
  :param adjust_limit: folat，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
@@ -398,8 +398,8 @@ change_order - 改单(老接口，兼容以前)
  改单(老接口，兼容以前)。改单，即修改订单的价格和数量，是modify_order修改订单的一种操作，为兼容以前，保留此接口，新写代码请使用modify_order。
 
  :param order_id: str，订单号
- :param qty: float，(改单有效)新的订单数量，2位精度，期权单位是"张"
- :param price: float，(改单有效)新的订单价格，3位精度(A股2位)
+ :param qty: float，(改单有效)新的订单数量，整数，期权单位是"张"
+ :param price: float，(改单有效)新的订单价格，3位小数，超过四舍五入
  :param adjust_limit: folat，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，传0默认第一个账户
@@ -447,8 +447,8 @@ deal_list_query - 获取成交列表
  order_id                     str           订单号
  code                         str           代码
  stock_name                   str           名称
- qty                          float         成交数量，2位精度，期权单位是"张"
- price                        float         成交价格，3位精度(A股2位)
+ qty                          float         成交数量，整数，期权单位是"张"
+ price                        float         成交价格，3位小数，超过四舍五入
  create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
  counter_broker_id            int           对手经纪号，港股有效。OpenHKCCTradeContext无此字段
  counter_broker_name          str         	对手经纪名称，港股有效。OpenHKCCTradeContext无此字段
@@ -545,7 +545,7 @@ acctradinginfo_query - 查询账户下最大可买卖数量
  
  :param order_type: 订单类型，参见 OrderType_
  :param code: 证券代码，例如'HK.00700'
- :param price: 报价，3位精度
+ :param price: 报价，3位小数，超过四舍五入
  :param order_id: 订单号。如果是新下单，则可以传None。如果是改单则要传单号，此时计算最大可买可卖时会包括该订单所消耗的购买力，新下订单需要等待半秒才可使用该接口。
  :param adjust_limit: 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整
  :param trd_env: 交易环境，参见 TrdEnv_
