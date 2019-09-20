@@ -24,7 +24,9 @@
   
   .. _Trd_SubAccPush.proto:  trade_protocol.html#trd-subaccpush-proto-2008
   .. _Trd_GetFunds.proto:  trade_protocol.html#trd-getfunds-proto-2101
+  .. _2101: trade_protocol.html#trd-getfunds-proto-2101
   .. _Trd_GetPositionList.proto:  trade_protocol.html#trd-getpositionlist-proto-2102
+  .. _2102:  trade_protocol.html#trd-getpositionlist-proto-2102
   
   .. _Trd_GetMaxTrdQtys.proto:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   .. _2111:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
@@ -40,6 +42,7 @@
   .. _Trd_UpdateOrder.proto:  trade_protocol.html#trd-updateorder-proto-2208
   
   .. _Trd_GetOrderFillList.proto:  trade_protocol.html#trd-getorderfilllist-proto-2211
+  .. _2211:  trade_protocol.html#trd-getorderfilllist-proto-2211
   .. _Trd_UpdateOrderFill.proto:  trade_protocol.html#trd-updateorderfill-proto-2218
   
   .. _Trd_GetHistoryOrderList.proto:  trade_protocol.html#trd-gethistoryorderlist-proto-2221
@@ -114,7 +117,7 @@
   .. _Qot_StockFilter.proto:  quote_protocol.html#qot-stockfilter-proto-3215
   .. _3215:  quote_protocol.html#qot-stockfilter-proto-3215
   
-	.. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
+  .. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _3217:  quote_protocol.html#qot-getipolist-proto-3217ipo
 
   .. role:: red-strengthen
@@ -309,6 +312,9 @@ API用户等级
 	* 最多返回前 :red-strengthen:`100` 大股东的变化
 	* 仅支持美股
 	
+
+.. _get-option-chain-limit:
+
 获取期权链
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3209_
@@ -379,13 +385,6 @@ API用户等级
 获取成交列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2211_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅当refreshCache为True时限制频率
-
-
-获取账户持仓
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 2102_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅当refreshCache为True时限制频率
 

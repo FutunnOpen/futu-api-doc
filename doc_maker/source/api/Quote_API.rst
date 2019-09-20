@@ -255,7 +255,7 @@ get_stock_basicinfo
         listing_date        str            上市时间
         stock_id            int            股票id
         delisting           bool           是否退市
-		index_option_type   str           指数期权类型
+        index_option_type   str            指数期权类型
         =================   ===========   ==============================================================================
 
  :Example:
@@ -1369,7 +1369,7 @@ get_option_chain
  通过标的股查询期权
 
  :param code: 股票代码,例如：'HK.02318'
- :param index_option_type: 指数期权类型，查看 IndexOptionType_
+ :param index_option_type: 指数期权类型，查看 IndexOptionType_。正股和其它类型股票忽略该参数。
  :param start: 开始日期，该日期指到期日，例如'2017-08-01'
  :param end: 结束日期（包括这一天），该日期指到期日，例如'2017-08-30'。 注意，时间范围最多30天。
              start和end的组合如下：
@@ -1404,19 +1404,19 @@ get_option_chain
         strike_price         float         行权价
         suspension           bool          是否停牌(True表示停牌)
         stock_id             int           股票id
-		index_option_type    str           指数期权类型
+        index_option_type    str           指数期权类型
         ==================   ===========   ==============================================================
 	
 .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_option_chain('US.AAPL', IndexOptionType.None,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
+    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.None,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
     quote_ctx.close()
 	
 .. note::
 
-    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_  
+    * 	接口限制请参见 :ref:`获取期权链限制 <get-option-chain-limit>`
 
 get_history_kl_quota
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1929,7 +1929,7 @@ ipo_price_max                                float          最高发售价，�
 list_price                                   float          上市价，港股适用
 lot_size                                     int            每手股数，港股适用
 entrance_price                               float          入场费，港股适用
-is_support_ipo                               bool           是否有认购阶段，港股适用
+is_subscribe_status                          bool           是否为认购状态，True-认购中，False-待上市
 apply_end_time                               str            截止认购日期字符串，港股适用
 apply_end_timestamp                          float          截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用
 ==========================================   ===========   ==================================================================================================================================================
