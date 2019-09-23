@@ -1,4 +1,4 @@
-﻿=================
+=================
 FutuOpenD使用说明
 =================
 
@@ -304,7 +304,7 @@ RSA私钥文件
   
  .. code-block:: bash
 
-		-----BEGIN RSA PRIVATE KEY-----
+	-----BEGIN RSA PRIVATE KEY-----
 	MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
 	+uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
 	0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
