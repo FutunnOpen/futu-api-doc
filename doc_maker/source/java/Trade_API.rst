@@ -7,7 +7,6 @@
 交易API
 =======
 
---------------
 
   .. _getAccList: ../protocol/trade_protocol.html#trd-getacclist-proto-2001
   .. _unlockTrade: ../protocol/trade_protocol.html#trd-unlocktrade-proto-2005

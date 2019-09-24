@@ -38,6 +38,8 @@
   .. _getUserSecurity: ../protocol/quote_protocol.html#qot-getusersecurity-proto-3213
   .. _modifyUserSecurity: ../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214
   .. _notify: ../protocol/base_define.html#notify-proto-1003
+  .. _getCodeChange: ../protocol/quote_protocol.html#qot-getcodechange-proto-3216
+  .. _getIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _updateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _updateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _updateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -95,8 +97,10 @@ getOptionChain_                     筛选期权                                
 getWarrant_                         筛选窝轮                                           onReply_GetWarrant
 getCapitalFlow_                     获取资金流向                                       onReply_GetCapitalFlow
 getCapitalDistribution_             获取资金分布                                       onReply_GetCapitalDistribution
-getUserSecurity_                    获取自选股分组下的股票                             onReply_GetUserSecurity
-modifyUserSecurity_                 修改自选股分组下的股票                             onReply_ModifyUserSecurity
+getUserSecurity_                    获取自选股分组下的股票                              onReply_GetUserSecurity
+modifyUserSecurity_                 修改自选股分组下的股票                              onReply_ModifyUserSecurity
+getIpolist_                         获取ipo数据                                        onReply_GetIpoList
+getCodeChange_                      获取股票代码变更                                    onReply_GetCodeChange
 ================================    ==============================================   ==============================
 
 FTSPI_Qot行情推送接收接口函数

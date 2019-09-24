@@ -8,7 +8,6 @@
 行情API
 =======
 
---------------
 
   .. _GetGlobalState: ../protocol/base_define.html#getglobalstate-proto-1002
   .. _Sub: ../protocol/quote_protocol.html#qot-sub-proto-3001
@@ -39,6 +38,8 @@
   .. _GetUserSecurity: ../protocol/quote_protocol.html#qot-getusersecurity-proto-3213
   .. _ModifyUserSecurity: ../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214
   .. _Notify: ../protocol/base_define.html#notify-proto-1003
+  .. _GetCodeChange: ../protocol/quote_protocol.html#qot-getcodechange-proto-3216
+  .. _GetIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _UpdateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -83,7 +84,9 @@ GetWarrant_                         筛选窝轮                                
 GetCapitalFlow_                     获取资金流向                                         OnReply_GetCapitalFlow
 GetCapitalDistribution_             获取资金分布                                         OnReply_GetCapitalDistribution
 GetUserSecurity_                    获取自选股分组下的股票                                OnReply_GetUserSecurity
-ModifyUserSecurity_                 修改自选股分组下的股票                                    OnReply_ModifyUserSecurity
+ModifyUserSecurity_                 修改自选股分组下的股票                                OnReply_ModifyUserSecurity
+GetIpolist_                         获取ipo数据                                          OnReply_GetIpoList
+GetCodeChange_                      获取股票代码变更                                      OnReply_GetCodeChange
 ================================    ==============================================   ==============================
 
 
