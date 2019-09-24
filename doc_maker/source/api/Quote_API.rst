@@ -1907,7 +1907,7 @@ name                                         str            股票名称
 list_time                                    str            上市日期
 list_timestamp                               float          上市日期时间戳
 apply_code                                   str            申购代码，A股适用
-issue_size                                   int            发行总数，A股适用
+issue_size                                   int            发行总数，A股适用；发行量，美股适用
 online_issue_size                            int            网上发行量，A股适用
 apply_upper_limit                            int            申购上限，A股适用
 apply_limit_market_value                     int            顶格申购需配市值，A股适用
@@ -1924,8 +1924,8 @@ winning_timestamp                            float          公布中签日期�
 is_has_won                                   bool           是否已经公布中签号，A股适用
 winning_name                                 str            分组名，A股适用
 winning_info                                 str            中签号信息，A股适用
-ipo_price_min                                float          最低发售价，港股适用
-ipo_price_max                                float          最高发售价，港股适用
+ipo_price_min                                float          最低发售价，港股适用；最低发行价，美股适用
+ipo_price_max                                float          最高发售价，港股适用；最高发行价，美股适用
 list_price                                   float          上市价，港股适用
 lot_size                                     int            每手股数，港股适用
 entrance_price                               float          入场费，港股适用
