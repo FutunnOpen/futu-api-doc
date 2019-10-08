@@ -70,6 +70,16 @@ futuapi documentation
 	cpp/qot
 	cpp/trd
 	cpp/start
+
+.. toctree::
+	:caption: JavaScript API
+	:maxdepth: 4
+	:hidden:
+
+	javascript/intro
+	javascript/Quote_API
+	javascript/Trade_API
+	javascript/start
 	
 .. toctree::
 	:caption: Q&A
