@@ -167,6 +167,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
 </ul>
+<p class="caption"><span class="caption-text">JavaScript API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../q&amp;a/Q&amp;A.html">Q&amp;A</a></li>
@@ -552,15 +559,15 @@
 </tr>
 <tr class="row-odd"><td>qty</td>
 <td>float</td>
-<td>持有数量，2位精度，期权单位是&#8221;张&#8221;，下同</td>
+<td>持有数量，整数，期权单位是&#8221;张&#8221;，下同</td>
 </tr>
 <tr class="row-even"><td>can_sell_qty</td>
 <td>float</td>
-<td>可卖数量</td>
+<td>可卖数量，整数</td>
 </tr>
 <tr class="row-odd"><td>nominal_price</td>
 <td>float</td>
-<td>市价，3位精度(A股2位)</td>
+<td>市价，3位小数，超过四舍五入</td>
 </tr>
 <tr class="row-even"><td>cost_price</td>
 <td>float</td>
@@ -596,7 +603,7 @@
 </tr>
 <tr class="row-even"><td>today_buy_qty</td>
 <td>float</td>
-<td>今日买入总量</td>
+<td>今日买入总量，整数</td>
 </tr>
 <tr class="row-odd"><td>today_buy_val</td>
 <td>float</td>
@@ -604,7 +611,7 @@
 </tr>
 <tr class="row-even"><td>today_sell_qty</td>
 <td>float</td>
-<td>今日卖出总量</td>
+<td>今日卖出总量，整数</td>
 </tr>
 <tr class="row-odd"><td>today_sell_val</td>
 <td>float</td>
@@ -644,8 +651,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>price</strong> &#8211; float，订单价格，3位精度(A股2位)，当订单是市价单或竞价单类型，忽略该参数传值</li>
-<li><strong>qty</strong> &#8211; float，订单数量，2位精度，期权单位是&#8221;张&#8221;</li>
+<li><strong>price</strong> &#8211; float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值</li>
+<li><strong>qty</strong> &#8211; float，订单数量，整数，期权单位是&#8221;张&#8221;</li>
 <li><strong>code</strong> &#8211; str，代码</li>
 <li><strong>trd_side</strong> &#8211; str，交易方向，参考 <a class="reference external" href="Base_API.html#trdside">TrdSide</a> 类的定义</li>
 <li><strong>order_type</strong> &#8211; str，订单类型，参考 <a class="reference external" href="Base_API.html#ordertype">OrderType</a> 类的定义</li>
@@ -752,11 +759,11 @@
 </tr>
 <tr class="row-even"><td>qty</td>
 <td>float</td>
-<td>订单数量，2位精度，期权单位是&#8221;张&#8221;</td>
+<td>订单数量，整数，期权单位是&#8221;张&#8221;</td>
 </tr>
 <tr class="row-odd"><td>price</td>
 <td>float</td>
-<td>订单价格，3位精度(A股2位)</td>
+<td>订单价格，3位小数，超过四舍五入</td>
 </tr>
 <tr class="row-even"><td>create_time</td>
 <td>str</td>
@@ -768,7 +775,7 @@
 </tr>
 <tr class="row-even"><td>dealt_qty</td>
 <td>float</td>
-<td>成交数量，2位精度，期权单位是&#8221;张&#8221;</td>
+<td>成交数量，整数，期权单位是&#8221;张&#8221;</td>
 </tr>
 <tr class="row-odd"><td>dealt_avg_price</td>
 <td>float</td>
@@ -818,8 +825,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>modify_order_op</strong> &#8211; str，改单操作类型，参考 <a class="reference external" href="Base_API.html#ModifyOrderOp">ModifyOrderOp</a> 类的定义，有</li>
 <li><strong>order_id</strong> &#8211; str，订单号</li>
-<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，2位精度，期权单位是&#8221;张&#8221;</li>
-<li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位精度(A股2位)</li>
+<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，整数，期权单位是&#8221;张&#8221;</li>
+<li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位小数，超过四舍五入</li>
 <li><strong>adjust_limit</strong> &#8211; folat，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%</li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
@@ -939,8 +946,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_id</strong> &#8211; str，订单号</li>
-<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，2位精度，期权单位是&#8221;张&#8221;</li>
-<li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位精度(A股2位)</li>
+<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，整数，期权单位是&#8221;张&#8221;</li>
+<li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位小数，超过四舍五入</li>
 <li><strong>adjust_limit</strong> &#8211; folat，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%</li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，传0默认第一个账户</li>
@@ -1035,11 +1042,11 @@
 </tr>
 <tr class="row-odd"><td>qty</td>
 <td>float</td>
-<td>成交数量，2位精度，期权单位是&#8221;张&#8221;</td>
+<td>成交数量，整数，期权单位是&#8221;张&#8221;</td>
 </tr>
 <tr class="row-even"><td>price</td>
 <td>float</td>
-<td>成交价格，3位精度(A股2位)</td>
+<td>成交价格，3位小数，超过四舍五入</td>
 </tr>
 <tr class="row-odd"><td>create_time</td>
 <td>str</td>
@@ -1188,7 +1195,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_type</strong> &#8211; 订单类型，参见 <a class="reference external" href="Base_API.html#ordertype">OrderType</a></li>
 <li><strong>code</strong> &#8211; 证券代码，例如&#8217;HK.00700&#8217;</li>
-<li><strong>price</strong> &#8211; 报价，3位精度</li>
+<li><strong>price</strong> &#8211; 报价，3位小数，超过四舍五入</li>
 <li><strong>order_id</strong> &#8211; 订单号。如果是新下单，则可以传None。如果是改单则要传单号，此时计算最大可买可卖时会包括该订单所消耗的购买力，新下订单需要等待半秒才可使用该接口。</li>
 <li><strong>adjust_limit</strong> &#8211; 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整</li>
 <li><strong>trd_env</strong> &#8211; 交易环境，参见 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a></li>
@@ -1206,9 +1213,9 @@
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="17%" />
-<col width="8%" />
-<col width="74%" />
+<col width="16%" />
+<col width="7%" />
+<col width="77%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -1219,23 +1226,23 @@
 <tbody valign="top">
 <tr class="row-even"><td>max_cash_buy</td>
 <td>float</td>
-<td>不使用融资，仅自己的现金最大可买整手股数</td>
+<td>不使用融资，仅自己的现金最大可买整手股数。对于期权，单位是张。</td>
 </tr>
 <tr class="row-odd"><td>max_cash_and_margin_buy</td>
 <td>float</td>
-<td>使用融资，自己的现金 + 融资资金总共的最大可买整手股数</td>
+<td>使用融资，自己的现金 + 融资资金总共的最大可买整手股数。对于期权，单位是张。</td>
 </tr>
 <tr class="row-even"><td>max_position_sell</td>
 <td>float</td>
-<td>不使用融券(卖空)，仅自己的持仓最大可卖整手股数</td>
+<td>不使用融券(卖空)，仅自己的持仓最大可卖整手股数。对于期权，单位是张。</td>
 </tr>
 <tr class="row-odd"><td>max_sell_short</td>
 <td>float</td>
-<td>使用融券(卖空)，最大可卖空整手股数，不包括多仓</td>
+<td>使用融券(卖空)，最大可卖空整手股数，不包括多仓。对于期权，单位是张。</td>
 </tr>
 <tr class="row-even"><td>max_buy_back</td>
 <td>float</td>
-<td>卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。</td>
+<td>卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。对于期权，单位是张。</td>
 </tr>
 </tbody>
 </table>

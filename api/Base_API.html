@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id1">枚举常量</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#autype-k">AuType - K线复权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#darkstatus">DarkStatus - 暗盘状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#securitystatus">SecurityStatus - 股票状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gtweventtype">GtwEventType - 网关异步通知类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#programstatustype">ProgramStatusType - 程序运行状态通知类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ipoperiod">IpoPeriod - 涡轮上市日</a></li>
@@ -132,6 +133,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#modifyorderop">ModifyOrderOp - 修改订单操作类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optioncondtype">OptionCondType - 价内价外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optiontype">OptionType - 期权类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indexoptiontype">IndexOptionType - 指数期权类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optionareatype">OptionAreaType - 期权地区类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ordertype">OrderType - 订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#orderstatus">OrderStatus - 订单状态定义</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dealstatus">DealStatus - 成交状态</a></li>
@@ -190,6 +193,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">JavaScript API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -492,6 +502,142 @@
 <dt id="DarkStatus.END">
 <code class="descname">END</code><a class="headerlink" href="#DarkStatus.END" title="Permalink to this definition">¶</a></dt>
 <dd><p>暗盘交易结束</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="securitystatus">
+<h3>SecurityStatus - 股票状态<a class="headerlink" href="#securitystatus" title="Permalink to this headline">¶</a></h3>
+<p>股票状态定义</p>
+<dl class="class">
+<dt id="SecurityStatus">
+<em class="property">class </em><code class="descname">SecurityStatus</code><a class="headerlink" href="#SecurityStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="SecurityStatus.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#SecurityStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.NORMAL">
+<code class="descname">NORMAL</code><a class="headerlink" href="#SecurityStatus.NORMAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>正常状态</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.PURCHASING">
+<code class="descname">PURCHASING</code><a class="headerlink" href="#SecurityStatus.PURCHASING" title="Permalink to this definition">¶</a></dt>
+<dd><p>申购中</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.SUBSCRIBING">
+<code class="descname">SUBSCRIBING</code><a class="headerlink" href="#SecurityStatus.SUBSCRIBING" title="Permalink to this definition">¶</a></dt>
+<dd><p>认购中</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.BEFORE_DARK_TRADE_OPEING">
+<code class="descname">BEFORE_DARK_TRADE_OPEING</code><a class="headerlink" href="#SecurityStatus.BEFORE_DARK_TRADE_OPEING" title="Permalink to this definition">¶</a></dt>
+<dd><p>暗盘开盘前</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.DARK_TRADING">
+<code class="descname">DARK_TRADING</code><a class="headerlink" href="#SecurityStatus.DARK_TRADING" title="Permalink to this definition">¶</a></dt>
+<dd><p>暗盘交易中</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.DARK_TRAD_END">
+<code class="descname">DARK_TRAD_END</code><a class="headerlink" href="#SecurityStatus.DARK_TRAD_END" title="Permalink to this definition">¶</a></dt>
+<dd><p>暗盘已收盘</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.TO_BE_OPEN">
+<code class="descname">TO_BE_OPEN</code><a class="headerlink" href="#SecurityStatus.TO_BE_OPEN" title="Permalink to this definition">¶</a></dt>
+<dd><p>待开盘</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.SUSPENDED">
+<code class="descname">SUSPENDED</code><a class="headerlink" href="#SecurityStatus.SUSPENDED" title="Permalink to this definition">¶</a></dt>
+<dd><p>停牌</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.CALLED">
+<code class="descname">CALLED</code><a class="headerlink" href="#SecurityStatus.CALLED" title="Permalink to this definition">¶</a></dt>
+<dd><p>已收回</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.EXPIRED_LAST_TRADING_DATE">
+<code class="descname">EXPIRED_LAST_TRADING_DATE</code><a class="headerlink" href="#SecurityStatus.EXPIRED_LAST_TRADING_DATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>已过最后交易日</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.EXPIRED">
+<code class="descname">EXPIRED</code><a class="headerlink" href="#SecurityStatus.EXPIRED" title="Permalink to this definition">¶</a></dt>
+<dd><p>已过期</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.DELISTED">
+<code class="descname">DELISTED</code><a class="headerlink" href="#SecurityStatus.DELISTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>已退市</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.CHANGE_TO_TEMPORARY_CODE">
+<code class="descname">CHANGE_TO_TEMPORARY_CODE</code><a class="headerlink" href="#SecurityStatus.CHANGE_TO_TEMPORARY_CODE" title="Permalink to this definition">¶</a></dt>
+<dd><p>公司行动中，交易关闭，转至临时代码交易</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.TEMPORARY_CODE_TRADE_END">
+<code class="descname">TEMPORARY_CODE_TRADE_END</code><a class="headerlink" href="#SecurityStatus.TEMPORARY_CODE_TRADE_END" title="Permalink to this definition">¶</a></dt>
+<dd><p>临时代码交易结束，交易关闭</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.CHANGED_PLATE_TRADE_END">
+<code class="descname">CHANGED_PLATE_TRADE_END</code><a class="headerlink" href="#SecurityStatus.CHANGED_PLATE_TRADE_END" title="Permalink to this definition">¶</a></dt>
+<dd><p>已转板，旧代码交易关闭</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.CHANGED_CODE_TRAD_END">
+<code class="descname">CHANGED_CODE_TRAD_END</code><a class="headerlink" href="#SecurityStatus.CHANGED_CODE_TRAD_END" title="Permalink to this definition">¶</a></dt>
+<dd><p>已换代码，旧代码交易关闭</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.RECOVERABLE_CIRCUIT_BREAKER">
+<code class="descname">RECOVERABLE_CIRCUIT_BREAKER</code><a class="headerlink" href="#SecurityStatus.RECOVERABLE_CIRCUIT_BREAKER" title="Permalink to this definition">¶</a></dt>
+<dd><p>可恢复性熔断</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.UNRECOVERABLE_CIRCUIT_BREAKER">
+<code class="descname">UNRECOVERABLE_CIRCUIT_BREAKER</code><a class="headerlink" href="#SecurityStatus.UNRECOVERABLE_CIRCUIT_BREAKER" title="Permalink to this definition">¶</a></dt>
+<dd><p>不可恢复性熔断</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.AFTER_COMBINATION">
+<code class="descname">AFTER_COMBINATION</code><a class="headerlink" href="#SecurityStatus.AFTER_COMBINATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后撮合</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SecurityStatus.AFTER_TRANSACTION">
+<code class="descname">AFTER_TRANSACTION</code><a class="headerlink" href="#SecurityStatus.AFTER_TRANSACTION" title="Permalink to this definition">¶</a></dt>
+<dd><p>盘后交易</p>
 </dd></dl>
 
 </dd></dl>
@@ -1354,6 +1500,68 @@
 
 </div>
 <hr class="docutils" />
+<div class="section" id="indexoptiontype">
+<h3>IndexOptionType - 指数期权类型<a class="headerlink" href="#indexoptiontype" title="Permalink to this headline">¶</a></h3>
+<p>指数期权类型定义</p>
+<dl class="class">
+<dt id="IndexOptionType">
+<em class="property">class </em><code class="descname">IndexOptionType</code><a class="headerlink" href="#IndexOptionType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="IndexOptionType.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#IndexOptionType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="IndexOptionType.NORMAL">
+<code class="descname">NORMAL</code><a class="headerlink" href="#IndexOptionType.NORMAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>正常</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="IndexOptionType.SMALL">
+<code class="descname">SMALL</code><a class="headerlink" href="#IndexOptionType.SMALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>小型</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="optionareatype">
+<h3>OptionAreaType - 期权地区类型<a class="headerlink" href="#optionareatype" title="Permalink to this headline">¶</a></h3>
+<p>期权地区类型定义</p>
+<dl class="class">
+<dt id="OptionAreaType">
+<em class="property">class </em><code class="descname">OptionAreaType</code><a class="headerlink" href="#OptionAreaType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="OptionAreaType.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#OptionAreaType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OptionAreaType.AMERICAN">
+<code class="descname">AMERICAN</code><a class="headerlink" href="#OptionAreaType.AMERICAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>美式</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OptionAreaType.EUROPEAN">
+<code class="descname">EUROPEAN</code><a class="headerlink" href="#OptionAreaType.EUROPEAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>欧式</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="OptionAreaType.BERMUDA">
+<code class="descname">BERMUDA</code><a class="headerlink" href="#OptionAreaType.BERMUDA" title="Permalink to this definition">¶</a></dt>
+<dd><p>百慕大</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
 <div class="section" id="ordertype">
 <h3>OrderType - 订单类型<a class="headerlink" href="#ordertype" title="Permalink to this headline">¶</a></h3>
 <p>订单类型定义</p>
@@ -1369,7 +1577,7 @@
 <dl class="attribute">
 <dt id="OrderType.NORMAL">
 <code class="descname">NORMAL</code><a class="headerlink" href="#OrderType.NORMAL" title="Permalink to this definition">¶</a></dt>
-<dd><p>普通订单(港股的增强限价单、A股限价委托、美股的限价单)</p>
+<dd><p>普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单)。目前港股期权只能指定此订单类型。</p>
 </dd></dl>
 
 <dl class="attribute">

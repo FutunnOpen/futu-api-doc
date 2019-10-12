@@ -255,7 +255,7 @@
 		required Trd_Common.TrdHeader header = 1; //交易公共参数头
 		required int32 orderType = 2; //订单类型, 参见Trd_Common.OrderType的枚举定义
 		required string code = 3; //代码，港股必须是5位数字，A股必须是6位数字，美股没限制
-		required double price = 4; //价格，3位精度。如果是竞价、市价单，请也填入一个当前价格，服务器才好计算
+		required double price = 4; //价格，3位小数，超过四舍五入。如果是竞价、市价单，请也填入一个当前价格，服务器才好计算
 		optional uint64 orderID = 5; //订单号，新下订单不需要，如果是修改订单就需要把原订单号带上才行，因为改单的最大买卖数量会包含原订单数量。
 		//为保证与下单的价格同步，也提供调整价格选项，对港、A股有意义，因为港股有价位，A股2位精度，美股可不传
 		optional bool adjustPrice = 6; //是否调整价格，如果价格不合法，是否调整到合法价位，true调整，false不调整
@@ -358,8 +358,8 @@
 		required int32 trdSide = 3; //交易方向, 参见Trd_Common.TrdSide的枚举定义
 		required int32 orderType = 4; //订单类型, 参见Trd_Common.OrderType的枚举定义
 		required string code = 5; //代码，港股必须是5位数字，A股必须是6位数字，美股没限制
-		required double qty = 6; //数量，2位精度，期权单位是"张"
-		optional double price = 7; //价格，3位精度
+		required double qty = 6; //数量，整数，期权单位是"张"
+		optional double price = 7; //价格，3位小数，超过四舍五入
 		//以下为调整价格使用，对港、A股有意义，因为港股有价位，A股2位精度，美股可不传
 		optional bool adjustPrice = 8; //是否调整价格，如果价格不合法，是否调整到合法价位，true调整，false不调整
 		optional double adjustSideAndLimit = 9; //调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
@@ -433,8 +433,8 @@
 		optional bool forAll = 5; //是否对此业务账户的全部订单操作，true是，false否(对单个订单)，无此字段代表false，仅对单个订单
 		
 		//下面的字段仅在modifyOrderOp为ModifyOrderOp_Normal有效
-		optional double qty = 8; //数量，2位精度，期权单位是"张"
-		optional double price = 9; //价格，3位精度(A股2位)
+		optional double qty = 8; //数量，整数，期权单位是"张"
+		optional double price = 9; //价格，3位小数，超过四舍五入
 		//以下为调整价格使用，对港、A股有意义，因为港股有价位，A股2位精度，美股可不传
 		optional bool adjustPrice = 10; //是否调整价格，如果价格不合法，是否调整到合法价位，true调整，false不调整
 		optional double adjustSideAndLimit = 11; //调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%

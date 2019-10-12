@@ -53,7 +53,13 @@
  .. _TickerType: Base_API.html#tickertype
 
  .. _DarkStatus: Base_API.html#darkstatus
-
+ 
+ .. _SecurityStatus: Base_API.html#securitystatus
+ 
+ .. _OptionAreaType: Base_API.html#optionareatype
+ 
+ .. _IndexOptionType: Base_API.html#indexoptiontype
+ 
  .. _WarrantType: Base_API.html#warranttype
 
  .. _Issuer: Base_API.html#issuer
@@ -249,6 +255,7 @@ get_stock_basicinfo
         listing_date        str            上市时间
         stock_id            int            股票id
         delisting           bool           是否退市
+        index_option_type   str            指数期权类型
         =================   ===========   ==============================================================================
 
  :Example:
@@ -486,9 +493,9 @@ get_market_snapshot
 
         ret != RET_OK 返回错误字符串
 
- ============================   =============   ======================================================================
+ ============================   =============   ===================================================================
  参数                             类型                       说明
- ============================   =============   ======================================================================
+ ============================   =============   ===================================================================
  code                            str            股票代码
  update_time                     str            更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
  last_price                      float          最新价格
@@ -584,9 +591,30 @@ get_market_snapshot
  index_raise_count               int            指数类型上涨支数
  index_fall_count                int            指数类型下跌支数
  index_equal_count               int            指数类型平盘支数
- after_volume                    int            盘后成交量，目前仅科创板支持该数据
- after_turnover                  double         盘后成交额，目前仅科创板支持该数据
- ============================   =============   ======================================================================
+ sec_status                      str            股票状态，见 SecurityStatus_ 
+ net_open_interest               int            净未平仓合约数
+ expiry_date_distance            int            距离到期日天数
+ contract_nominal_value          float          合约名义金额
+ owner_lot_multiplier            float          相等正股手数，指数期权无该字段
+ option_area_type                str            期权地区类型，见 OptionAreaType_
+ contract_multiplier             float          合约乘数，指数期权特有字段
+ pre_price                       float          盘前价格。 
+ pre_high_price                  float          盘前最高价。 
+ pre_low_price                   float          盘前最低价。 
+ pre_volume                      int            盘前成交量。 
+ pre_turnover                    float          盘前成交额。 
+ pre_change_val                  float          盘前涨跌额。 
+ pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%）。 
+ pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%）。 
+ after_price                       float          盘后价格。 
+ after_high_price                  float          盘后最高价。 
+ after_low_price                   float          盘后最低价。 
+ after_volume                      int            盘后成交量。 科创板支持该数据。
+ after_turnover                    float          盘后成交额。 科创板支持该数据。
+ after_change_val                  float          盘后涨跌额。 
+ after_change_rate                 float          盘后涨跌幅（该字段为百分比字段，默认不展示%）。 
+ after_amplitude                   float          盘后振幅（该字段为百分比字段，默认不展示%）。 
+ ============================   =============   ===================================================================
 
  :Example:
 
@@ -965,9 +993,9 @@ get_stock_quote
 
         ret != RET_OK 返回错误字符串
 
-        =====================   ===========   ==============================================================
+        ======================  ===========   ==============================================================
         参数                      类型                        说明
-        =====================   ===========   ==============================================================
+        ======================  ===========   ==============================================================
         code                    str            股票代码
         data_date               str            日期
         data_time               str            时间（港股A股默认是北京时间）
@@ -983,7 +1011,8 @@ get_stock_quote
         suspension              bool           是否停牌(True表示停牌)
         listing_date            str            上市日期 (yyyy-MM-dd)
         price_spread            float          当前向上的价差，亦即摆盘数据的卖档的相邻档位的报价差
-		dark_status             str            暗盘交易状态，见 DarkStatus_
+        dark_status             str            暗盘交易状态，见 DarkStatus_
+		sec_status              str            股票状态，见 SecurityStatus_ 
         strike_price            float          行权价
         contract_size           int            每份合约数
         open_interest           int            未平仓合约数
@@ -994,8 +1023,30 @@ get_stock_quote
         vega                    float          希腊值 Vega
         theta                   float          希腊值 Theta
         rho                     float          希腊值 Rho
-        =====================   ===========   ==============================================================
-		
+        net_open_interest       int            净未平仓合约数
+        expiry_date_distance    int            距离到期日天数
+        contract_nominal_value  float          合约名义金额
+        owner_lot_multiplier    float          相等正股手数，指数期权无该字段
+        option_area_type        str            期权地区类型，见 OptionAreaType_
+        contract_multiplier     float          合约乘数，指数期权特有字段
+        pre_price               float          盘前价格。 
+        pre_high_price          float          盘前最高价。 
+        pre_low_price           float          盘前最低价。 
+        pre_volume              int            盘前成交量。 
+        pre_turnover            float          盘前成交额。 
+        pre_change_val          float          盘前涨跌额。 
+        pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%）。 
+        pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%）。 
+        after_price             float          盘后价格。 
+        after_high_price        float          盘后最高价。 
+        after_low_price         float          盘后最低价。 
+        after_volume            int            盘后成交量。 科创板支持此数据。
+        after_turnover          float          盘后成交额。 科创板支持此数据。
+        after_change_val        float          盘后涨跌额。 
+        after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%）。 
+        after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%）。 
+        ======================  ===========   ==============================================================
+        
  :Example:
 
  .. code:: python
@@ -1313,11 +1364,12 @@ time                    str           发布时间（美股的时间默认是美
 get_option_chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_option_chain(self, code, start, end=None, option_type=OptionType.ALL, option_cond_type=OptionCondType.ALL)
+..  py:function:: get_option_chain(self, code, index_option_type=IndexOptionType.NORMAL, start=None, end=None, option_type=OptionType.ALL, option_cond_type=OptionCondType.ALL)
 
  通过标的股查询期权
 
  :param code: 股票代码,例如：'HK.02318'
+ :param index_option_type: 指数期权类型，查看 IndexOptionType_。正股和其它类型股票忽略该参数。
  :param start: 开始日期，该日期指到期日，例如'2017-08-01'
  :param end: 结束日期（包括这一天），该日期指到期日，例如'2017-08-30'。 注意，时间范围最多30天。
              start和end的组合如下：
@@ -1352,18 +1404,19 @@ get_option_chain
         strike_price         float         行权价
         suspension           bool          是否停牌(True表示停牌)
         stock_id             int           股票id
+        index_option_type    str           指数期权类型
         ==================   ===========   ==============================================================
 	
 .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_option_chain('US.AAPL', '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
+    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.None,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
     quote_ctx.close()
 	
 .. note::
 
-    * 	接口限制请参见 `获取期权链限制 <../protocol/intro.html#id37>`_  
+    * 	接口限制请参见 :ref:`获取期权链限制 <get-option-chain-limit>`
 
 get_history_kl_quota
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1801,7 +1854,7 @@ pb_rate                                        float          市净率
     field.is_no_filter = False
     field.sort = SortDir.ASCEND
 
-    ret, ls = quote_ctx.get_stock_filter(StockMarket.HK, [field])
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [field])
     if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
@@ -1830,10 +1883,73 @@ pb_rate                                        float          市净率
     *   利用获取子板块列表函数get_plate_list获取子板块代码，条件选股支持的板块分别为1.港股的行业板块和概念板块。2.美股的行业板块。3.沪深的行业板块，概念板块和地域板块。
 
 
----------------------------------------------------------------------    
+
+get_ipo_list
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_ipo_list(self, market)
+
+ 获取指定市场的ipo列表
+
+ :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
+
+ :return: (ret, data)
+
+        ret != RET_OK 返回错误字符串
+  
+        ret == RET_OK data为DataFrame类型，字段如下:
+
+==========================================   ===========   ==================================================================================================================================================
+参数                                          类型           说明
+==========================================   ===========   ==================================================================================================================================================
+code                                         str            股票代码，例如'HK.12345'   
+name                                         str            股票名称
+list_time                                    str            上市日期，美股是预计上市日期
+list_timestamp                               float          上市日期时间戳，美股是预计上市日期时间戳
+apply_code                                   str            申购代码，A股适用
+issue_size                                   int            发行总数，A股适用；发行量，美股适用
+online_issue_size                            int            网上发行量，A股适用
+apply_upper_limit                            int            申购上限，A股适用
+apply_limit_market_value                     int            顶格申购需配市值，A股适用
+is_estimate_ipo_price                        bool           是否预估发行价，A股适用
+ipo_price                                    float          发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用
+industry_pe_rate                             float          行业市盈率，A股适用
+is_estimate_winning_ratio                    bool           是否预估中签率，A股适用
+winning_ratio                                float          中签率 该字段为百分比字段，默认不展示%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用
+issue_pe_rate                                float          发行市盈率，A股适用
+apply_time                                   str            申购日期字符串，A股适用
+apply_timestamp                              float          申购日期时间戳，A股适用
+winning_time                                 str            公布中签日期字符串，A股适用
+winning_timestamp                            float          公布中签日期时间戳，A股适用
+is_has_won                                   bool           是否已经公布中签号，A股适用
+winning_num_data                             str            中签号，A股适用。格式为类似：末"五"位数:12345,12346\n末"六"位数:123456
+ipo_price_min                                float          最低发售价，港股适用；最低发行价，美股适用
+ipo_price_max                                float          最高发售价，港股适用；最高发行价，美股适用
+list_price                                   float          上市价，港股适用
+lot_size                                     int            每手股数，港股适用
+entrance_price                               float          入场费，港股适用
+is_subscribe_status                          bool           是否为认购状态，True-认购中，False-待上市
+apply_end_time                               str            截止认购日期字符串，港股适用
+apply_end_timestamp                          float          截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用
+==========================================   ===========   ==================================================================================================================================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_ipo_list(Market.HK))
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取IPO列表的限制 <get-ipo-list-limit>`
+
+-----------------------------------------------------------------------------------------------------    
 
 SysNotifyHandlerBase - OpenD通知回调
--------------------------------------------
+-----------------------------------------------------------------------------------------------------    
 
 通知OpenD一些重要消息，类似连接断开等。
 
@@ -1855,10 +1971,10 @@ SysNotifyHandlerBase - OpenD通知回调
     handler = SysNotifyTest()
     quote_ctx.set_handler(handler)
                 
--------------------------------------------
+-----------------------------------------------------------------------------------------------------
 
 on_recv_rsp
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: on_recv_rsp(self, rsp_pb)
 
@@ -1889,6 +2005,8 @@ SysNotifyType.CONN_STATUS         None                                 | {'qot_l
 SysNotifyType.QOT_RIGHT           None                                 | {'hk_qot_right': str, 港股行情权限
                                                                        | 'cn_qot_right': str, A股行情权限
                                                                        | 'us_qot_right': str, 美股行情权限
+                                                                       | 'hk_option_qot_right': str, 港股期权行情权限
+                                                                       | 'has_us_option_qot_right': bool, 是否有美股期权行情权限
 SysNotifyType.API_LEVEL           None                                 str, API用户等级
 ==============================   ================================   ==============================================
 

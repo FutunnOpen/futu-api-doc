@@ -150,6 +150,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-user-security">get_user_security</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#modify-user-security">modify_user_security</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-stock-filter">get_stock_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-ipo-list">get_ipo_list</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sysnotifyhandlerbase-opend">SysNotifyHandlerBase - OpenD通知回调</a><ul>
@@ -157,27 +158,27 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id22">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id23">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id24">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id25">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id26">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id27">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -209,6 +210,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">JavaScript API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -619,6 +627,10 @@ start和end的组合如下：</p>
 <tr class="row-even"><td>delisting</td>
 <td>bool</td>
 <td>是否退市</td>
+</tr>
+<tr class="row-odd"><td>index_option_type</td>
+<td>str</td>
+<td>指数期权类型</td>
 </tr>
 </tbody>
 </table>
@@ -1167,9 +1179,9 @@ start和end的组合如下：</p>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="25%" />
+<col width="26%" />
 <col width="12%" />
-<col width="63%" />
+<col width="62%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -1558,13 +1570,97 @@ start和end的组合如下：</p>
 <td>int</td>
 <td>指数类型平盘支数</td>
 </tr>
+<tr class="row-odd"><td>sec_status</td>
+<td>str</td>
+<td>股票状态，见 <a class="reference external" href="Base_API.html#securitystatus">SecurityStatus</a></td>
+</tr>
+<tr class="row-even"><td>net_open_interest</td>
+<td>int</td>
+<td>净未平仓合约数</td>
+</tr>
+<tr class="row-odd"><td>expiry_date_distance</td>
+<td>int</td>
+<td>距离到期日天数</td>
+</tr>
+<tr class="row-even"><td>contract_nominal_value</td>
+<td>float</td>
+<td>合约名义金额</td>
+</tr>
+<tr class="row-odd"><td>owner_lot_multiplier</td>
+<td>float</td>
+<td>相等正股手数，指数期权无该字段</td>
+</tr>
+<tr class="row-even"><td>option_area_type</td>
+<td>str</td>
+<td>期权地区类型，见 <a class="reference external" href="Base_API.html#optionareatype">OptionAreaType</a></td>
+</tr>
+<tr class="row-odd"><td>contract_multiplier</td>
+<td>float</td>
+<td>合约乘数，指数期权特有字段</td>
+</tr>
+<tr class="row-even"><td>pre_price</td>
+<td>float</td>
+<td>盘前价格。</td>
+</tr>
+<tr class="row-odd"><td>pre_high_price</td>
+<td>float</td>
+<td>盘前最高价。</td>
+</tr>
+<tr class="row-even"><td>pre_low_price</td>
+<td>float</td>
+<td>盘前最低价。</td>
+</tr>
+<tr class="row-odd"><td>pre_volume</td>
+<td>int</td>
+<td>盘前成交量。</td>
+</tr>
+<tr class="row-even"><td>pre_turnover</td>
+<td>float</td>
+<td>盘前成交额。</td>
+</tr>
+<tr class="row-odd"><td>pre_change_val</td>
+<td>float</td>
+<td>盘前涨跌额。</td>
+</tr>
+<tr class="row-even"><td>pre_change_rate</td>
+<td>float</td>
+<td>盘前涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+</tr>
+<tr class="row-odd"><td>pre_amplitude</td>
+<td>float</td>
+<td>盘前振幅（该字段为百分比字段，默认不展示%）。</td>
+</tr>
+<tr class="row-even"><td>after_price</td>
+<td>float</td>
+<td>盘后价格。</td>
+</tr>
+<tr class="row-odd"><td>after_high_price</td>
+<td>float</td>
+<td>盘后最高价。</td>
+</tr>
+<tr class="row-even"><td>after_low_price</td>
+<td>float</td>
+<td>盘后最低价。</td>
+</tr>
 <tr class="row-odd"><td>after_volume</td>
 <td>int</td>
-<td>盘后成交量，目前仅科创板支持该数据</td>
+<td>盘后成交量。 科创板支持该数据。</td>
 </tr>
 <tr class="row-even"><td>after_turnover</td>
-<td>double</td>
-<td>盘后成交额，目前仅科创板支持该数据</td>
+<td>float</td>
+<td>盘后成交额。 科创板支持该数据。</td>
+</tr>
+<tr class="row-odd"><td>after_change_val</td>
+<td>float</td>
+<td>盘后涨跌额。</td>
+</tr>
+<tr class="row-even"><td>after_change_rate</td>
+<td>float</td>
+<td>盘后涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+</tr>
+<tr class="row-odd"><td>after_amplitude</td>
+<td>float</td>
+<td>盘后振幅（该字段为百分比字段，默认不展示%）。</td>
 </tr>
 </tbody>
 </table>
@@ -2272,9 +2368,9 @@ start和end的组合如下：</p>
 <p>ret != RET_OK 返回错误字符串</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
+<col width="23%" />
 <col width="12%" />
-<col width="66%" />
+<col width="65%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -2347,45 +2443,137 @@ start和end的组合如下：</p>
 <td>str</td>
 <td>暗盘交易状态，见 <a class="reference external" href="Base_API.html#darkstatus">DarkStatus</a></td>
 </tr>
-<tr class="row-even"><td>strike_price</td>
+<tr class="row-even"><td>sec_status</td>
+<td>str</td>
+<td>股票状态，见 <a class="reference external" href="Base_API.html#securitystatus">SecurityStatus</a></td>
+</tr>
+<tr class="row-odd"><td>strike_price</td>
 <td>float</td>
 <td>行权价</td>
 </tr>
-<tr class="row-odd"><td>contract_size</td>
+<tr class="row-even"><td>contract_size</td>
 <td>int</td>
 <td>每份合约数</td>
 </tr>
-<tr class="row-even"><td>open_interest</td>
+<tr class="row-odd"><td>open_interest</td>
 <td>int</td>
 <td>未平仓合约数</td>
 </tr>
-<tr class="row-odd"><td>implied_volatility</td>
+<tr class="row-even"><td>implied_volatility</td>
 <td>float</td>
 <td>隐含波动率（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-even"><td>premium</td>
+<tr class="row-odd"><td>premium</td>
 <td>float</td>
 <td>溢价（该字段为百分比字段，默认不展示%）</td>
 </tr>
-<tr class="row-odd"><td>delta</td>
+<tr class="row-even"><td>delta</td>
 <td>float</td>
 <td>希腊值 Delta</td>
 </tr>
-<tr class="row-even"><td>gamma</td>
+<tr class="row-odd"><td>gamma</td>
 <td>float</td>
 <td>希腊值 Gamma</td>
 </tr>
-<tr class="row-odd"><td>vega</td>
+<tr class="row-even"><td>vega</td>
 <td>float</td>
 <td>希腊值 Vega</td>
 </tr>
-<tr class="row-even"><td>theta</td>
+<tr class="row-odd"><td>theta</td>
 <td>float</td>
 <td>希腊值 Theta</td>
 </tr>
-<tr class="row-odd"><td>rho</td>
+<tr class="row-even"><td>rho</td>
 <td>float</td>
 <td>希腊值 Rho</td>
+</tr>
+<tr class="row-odd"><td>net_open_interest</td>
+<td>int</td>
+<td>净未平仓合约数</td>
+</tr>
+<tr class="row-even"><td>expiry_date_distance</td>
+<td>int</td>
+<td>距离到期日天数</td>
+</tr>
+<tr class="row-odd"><td>contract_nominal_value</td>
+<td>float</td>
+<td>合约名义金额</td>
+</tr>
+<tr class="row-even"><td>owner_lot_multiplier</td>
+<td>float</td>
+<td>相等正股手数，指数期权无该字段</td>
+</tr>
+<tr class="row-odd"><td>option_area_type</td>
+<td>str</td>
+<td>期权地区类型，见 <a class="reference external" href="Base_API.html#optionareatype">OptionAreaType</a></td>
+</tr>
+<tr class="row-even"><td>contract_multiplier</td>
+<td>float</td>
+<td>合约乘数，指数期权特有字段</td>
+</tr>
+<tr class="row-odd"><td>pre_price</td>
+<td>float</td>
+<td>盘前价格。</td>
+</tr>
+<tr class="row-even"><td>pre_high_price</td>
+<td>float</td>
+<td>盘前最高价。</td>
+</tr>
+<tr class="row-odd"><td>pre_low_price</td>
+<td>float</td>
+<td>盘前最低价。</td>
+</tr>
+<tr class="row-even"><td>pre_volume</td>
+<td>int</td>
+<td>盘前成交量。</td>
+</tr>
+<tr class="row-odd"><td>pre_turnover</td>
+<td>float</td>
+<td>盘前成交额。</td>
+</tr>
+<tr class="row-even"><td>pre_change_val</td>
+<td>float</td>
+<td>盘前涨跌额。</td>
+</tr>
+<tr class="row-odd"><td>pre_change_rate</td>
+<td>float</td>
+<td>盘前涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+</tr>
+<tr class="row-even"><td>pre_amplitude</td>
+<td>float</td>
+<td>盘前振幅（该字段为百分比字段，默认不展示%）。</td>
+</tr>
+<tr class="row-odd"><td>after_price</td>
+<td>float</td>
+<td>盘后价格。</td>
+</tr>
+<tr class="row-even"><td>after_high_price</td>
+<td>float</td>
+<td>盘后最高价。</td>
+</tr>
+<tr class="row-odd"><td>after_low_price</td>
+<td>float</td>
+<td>盘后最低价。</td>
+</tr>
+<tr class="row-even"><td>after_volume</td>
+<td>int</td>
+<td>盘后成交量。 科创板支持此数据。</td>
+</tr>
+<tr class="row-odd"><td>after_turnover</td>
+<td>float</td>
+<td>盘后成交额。 科创板支持此数据。</td>
+</tr>
+<tr class="row-even"><td>after_change_val</td>
+<td>float</td>
+<td>盘后涨跌额。</td>
+</tr>
+<tr class="row-odd"><td>after_change_rate</td>
+<td>float</td>
+<td>盘后涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+</tr>
+<tr class="row-even"><td>after_amplitude</td>
+<td>float</td>
+<td>盘后振幅（该字段为百分比字段，默认不展示%）。</td>
 </tr>
 </tbody>
 </table>
@@ -3032,7 +3220,7 @@ start与end的组合如下：</p>
 <h4>get_option_chain<a class="headerlink" href="#get-option-chain" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="get_option_chain">
-<code class="descname">get_option_chain</code><span class="sig-paren">(</span><em>self</em>, <em>code</em>, <em>start</em>, <em>end=None</em>, <em>option_type=OptionType.ALL</em>, <em>option_cond_type=OptionCondType.ALL</em><span class="sig-paren">)</span><a class="headerlink" href="#get_option_chain" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_option_chain</code><span class="sig-paren">(</span><em>self</em>, <em>code</em>, <em>index_option_type=IndexOptionType.NORMAL</em>, <em>start=None</em>, <em>end=None</em>, <em>option_type=OptionType.ALL</em>, <em>option_cond_type=OptionCondType.ALL</em><span class="sig-paren">)</span><a class="headerlink" href="#get_option_chain" title="Permalink to this definition">¶</a></dt>
 <dd><p>通过标的股查询期权</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3040,6 +3228,7 @@ start与end的组合如下：</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; 股票代码,例如：&#8217;HK.02318&#8217;</li>
+<li><strong>index_option_type</strong> &#8211; 指数期权类型，查看 <a class="reference external" href="Base_API.html#indexoptiontype">IndexOptionType</a>。正股和其它类型股票忽略该参数。</li>
 <li><strong>start</strong> &#8211; 开始日期，该日期指到期日，例如&#8216;2017-08-01&#8217;</li>
 <li><strong>end</strong> &#8211; <p>结束日期（包括这一天），该日期指到期日，例如&#8216;2017-08-30&#8217;。 注意，时间范围最多30天。
 start和end的组合如下：</p>
@@ -3138,6 +3327,10 @@ start和end的组合如下：</p>
 <td>int</td>
 <td>股票id</td>
 </tr>
+<tr class="row-even"><td>index_option_type</td>
+<td>str</td>
+<td>指数期权类型</td>
+</tr>
 </tbody>
 </table>
 </p>
@@ -3149,14 +3342,14 @@ start和end的组合如下：</p>
 
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_option_chain</span><span class="p">(</span><span class="s1">&#39;US.AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-18&#39;</span><span class="p">,</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">OptionCondType</span><span class="o">.</span><span class="n">OUTSIDE</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_option_chain</span><span class="p">(</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="n">IndexOptionType</span><span class="o">.</span><span class="n">None</span><span class="p">,</span><span class="s1">&#39;2018-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-18&#39;</span><span class="p">,</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">OptionCondType</span><span class="o">.</span><span class="n">OUTSIDE</span><span class="p">))</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id37">获取期权链限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-option-chain-limit"><span class="std std-ref">获取期权链限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -4192,7 +4385,7 @@ start和end的组合如下：</p>
 <span class="n">field</span><span class="o">.</span><span class="n">is_no_filter</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">field</span><span class="o">.</span><span class="n">sort</span> <span class="o">=</span> <span class="n">SortDir</span><span class="o">.</span><span class="n">ASCEND</span>
 
-<span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_filter</span><span class="p">(</span><span class="n">StockMarket</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="p">[</span><span class="n">field</span><span class="p">])</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_filter</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="p">[</span><span class="n">field</span><span class="p">])</span>
 <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">RET_OK</span><span class="p">:</span>
     <span class="n">last_page</span><span class="p">,</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">ret_list</span> <span class="o">=</span> <span class="n">ls</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ret_list</span><span class="p">),</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">ret_list</span><span class="p">)</span>
@@ -4253,6 +4446,180 @@ start和end的组合如下：</p>
 </li>
 <li><p class="first">利用获取子板块列表函数get_plate_list获取子板块代码，条件选股支持的板块分别为1.港股的行业板块和概念板块。2.美股的行业板块。3.沪深的行业板块，概念板块和地域板块。</p>
 </li>
+</ul>
+</div>
+</div>
+<div class="section" id="get-ipo-list">
+<h4>get_ipo_list<a class="headerlink" href="#get-ipo-list" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="get_ipo_list">
+<code class="descname">get_ipo_list</code><span class="sig-paren">(</span><em>self</em>, <em>market</em><span class="sig-paren">)</span><a class="headerlink" href="#get_ipo_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>获取指定市场的ipo列表</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>market</strong> &#8211; 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
+<p>ret == RET_OK data为DataFrame类型，字段如下:</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="6%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>str</td>
+<td>股票代码，例如&#8217;HK.12345&#8217;</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr class="row-even"><td>list_time</td>
+<td>str</td>
+<td>上市日期，美股是预计上市日期</td>
+</tr>
+<tr class="row-odd"><td>list_timestamp</td>
+<td>float</td>
+<td>上市日期时间戳，美股是预计上市日期时间戳</td>
+</tr>
+<tr class="row-even"><td>apply_code</td>
+<td>str</td>
+<td>申购代码，A股适用</td>
+</tr>
+<tr class="row-odd"><td>issue_size</td>
+<td>int</td>
+<td>发行总数，A股适用；发行量，美股适用</td>
+</tr>
+<tr class="row-even"><td>online_issue_size</td>
+<td>int</td>
+<td>网上发行量，A股适用</td>
+</tr>
+<tr class="row-odd"><td>apply_upper_limit</td>
+<td>int</td>
+<td>申购上限，A股适用</td>
+</tr>
+<tr class="row-even"><td>apply_limit_market_value</td>
+<td>int</td>
+<td>顶格申购需配市值，A股适用</td>
+</tr>
+<tr class="row-odd"><td>is_estimate_ipo_price</td>
+<td>bool</td>
+<td>是否预估发行价，A股适用</td>
+</tr>
+<tr class="row-even"><td>ipo_price</td>
+<td>float</td>
+<td>发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用</td>
+</tr>
+<tr class="row-odd"><td>industry_pe_rate</td>
+<td>float</td>
+<td>行业市盈率，A股适用</td>
+</tr>
+<tr class="row-even"><td>is_estimate_winning_ratio</td>
+<td>bool</td>
+<td>是否预估中签率，A股适用</td>
+</tr>
+<tr class="row-odd"><td>winning_ratio</td>
+<td>float</td>
+<td>中签率 该字段为百分比字段，默认不展示%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用</td>
+</tr>
+<tr class="row-even"><td>issue_pe_rate</td>
+<td>float</td>
+<td>发行市盈率，A股适用</td>
+</tr>
+<tr class="row-odd"><td>apply_time</td>
+<td>str</td>
+<td>申购日期字符串，A股适用</td>
+</tr>
+<tr class="row-even"><td>apply_timestamp</td>
+<td>float</td>
+<td>申购日期时间戳，A股适用</td>
+</tr>
+<tr class="row-odd"><td>winning_time</td>
+<td>str</td>
+<td>公布中签日期字符串，A股适用</td>
+</tr>
+<tr class="row-even"><td>winning_timestamp</td>
+<td>float</td>
+<td>公布中签日期时间戳，A股适用</td>
+</tr>
+<tr class="row-odd"><td>is_has_won</td>
+<td>bool</td>
+<td>是否已经公布中签号，A股适用</td>
+</tr>
+<tr class="row-even"><td>winning_num_data</td>
+<td>str</td>
+<td>中签号，A股适用。格式为类似：末&#8221;五&#8221;位数:12345,12346n末&#8221;六&#8221;位数:123456</td>
+</tr>
+<tr class="row-odd"><td>ipo_price_min</td>
+<td>float</td>
+<td>最低发售价，港股适用；最低发行价，美股适用</td>
+</tr>
+<tr class="row-even"><td>ipo_price_max</td>
+<td>float</td>
+<td>最高发售价，港股适用；最高发行价，美股适用</td>
+</tr>
+<tr class="row-odd"><td>list_price</td>
+<td>float</td>
+<td>上市价，港股适用</td>
+</tr>
+<tr class="row-even"><td>lot_size</td>
+<td>int</td>
+<td>每手股数，港股适用</td>
+</tr>
+<tr class="row-odd"><td>entrance_price</td>
+<td>float</td>
+<td>入场费，港股适用</td>
+</tr>
+<tr class="row-even"><td>is_subscribe_status</td>
+<td>bool</td>
+<td>是否为认购状态，True-认购中，False-待上市</td>
+</tr>
+<tr class="row-odd"><td>apply_end_time</td>
+<td>str</td>
+<td>截止认购日期字符串，港股适用</td>
+</tr>
+<tr class="row-even"><td>apply_end_timestamp</td>
+<td>float</td>
+<td>截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期，港股适用</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_ipo_list</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">))</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-ipo-list-limit"><span class="std std-ref">获取IPO列表的限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -4327,9 +4694,9 @@ start和end的组合如下：</p>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="28%" />
-<col width="30%" />
-<col width="43%" />
+<col width="25%" />
+<col width="26%" />
+<col width="49%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">notify_type</th>
@@ -4364,6 +4731,8 @@ start和end的组合如下：</p>
 <div class="line">{&#8216;hk_qot_right&#8217;: str, 港股行情权限</div>
 <div class="line">&#8216;cn_qot_right&#8217;: str, A股行情权限</div>
 <div class="line">&#8216;us_qot_right&#8217;: str, 美股行情权限</div>
+<div class="line">&#8216;hk_option_qot_right&#8217;: str, 港股期权行情权限</div>
+<div class="line">&#8216;has_us_option_qot_right&#8217;: bool, 是否有美股期权行情权限</div>
 </div>
 </td>
 </tr>
@@ -4402,8 +4771,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id22">
-<h4>on_recv_rsp<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id21">
+<h4>on_recv_rsp<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4450,8 +4819,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id23">
-<h4>on_recv_rsp<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id22">
+<h4>on_recv_rsp<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4498,8 +4867,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id24">
-<h4>on_recv_rsp<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id23">
+<h4>on_recv_rsp<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4552,8 +4921,8 @@ start和end的组合如下：</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id25">
-<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id24">
+<h4>on_recv_rsp<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4600,8 +4969,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id26">
-<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id25">
+<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4646,8 +5015,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id27">
-<h4>on_recv_rsp<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id26">
+<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>

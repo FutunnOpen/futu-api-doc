@@ -123,7 +123,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">补充说明</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">免责声明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">日志级别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">免责声明</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rsa">RSA私钥文件</a></li>
 </ul>
 </li>
@@ -168,6 +169,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">JavaScript API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -416,17 +424,17 @@
 <tr class="row-even"><td>日志级别</td>
 <td>FutuOpenD日志级别</td>
 </tr>
-<tr class="row-odd"><td>API推送协议格式</td>
-<td>API协议支持PB以及json格式，推送类协议通过该配置决定包体格式</td>
-</tr>
-<tr class="row-even"><td>API推送频率</td>
+<tr class="row-odd"><td>API推送频率</td>
 <td>API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时</td>
 </tr>
-<tr class="row-odd"><td>Telnet地址</td>
+<tr class="row-even"><td>Telnet地址</td>
 <td>远程操作命令监听地址</td>
 </tr>
-<tr class="row-even"><td>Telnet端口</td>
+<tr class="row-odd"><td>Telnet端口</td>
 <td>远程操作命令监听端口</td>
+</tr>
+<tr class="row-even"><td>WebSocket端口</td>
+<td>WebSocket服务监听端口</td>
 </tr>
 <tr class="row-odd"><td>加密私钥路径</td>
 <td>API协议RSA加密私钥（PKCS#1）文件绝对路径</td>
@@ -644,7 +652,12 @@
 <div class="section" id="id13">
 <h2>补充说明<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id14">
-<h3>免责声明<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3>日志级别<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>默认info级别，在系统开发阶段建议不要关闭日志或者将日志修改到info以上（warning,error,fatal），避免出现问题无法确认以及定位问题。</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h3>免责声明<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>已开户用户需要同意 <a class="reference external" href="https://www.futunn.com/about/api-disclaimer/">免责声明</a> 才可以使用FutuOpenD。</div></blockquote>
 </div>
@@ -653,7 +666,7 @@
 <h3>RSA私钥文件<a class="headerlink" href="#rsa" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>参考文件格式：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>        -----BEGIN RSA PRIVATE KEY-----
+<div class="highlight-bash"><div class="highlight"><pre><span></span>-----BEGIN RSA PRIVATE KEY-----
 MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
 +uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
 0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
@@ -677,6 +690,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 <li>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索&#8221;RSA 在线生成&#8221;</li>
 <li>将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项</li>
 <li>公钥可通过私钥计算得到，但生成私钥时不要设置密码</li>
+<li>该密钥需要在OpenD配置文件中指定，且API接口也需要调用相关接口设置密钥信息</li>
 </ul>
 </div>
 </div></blockquote>

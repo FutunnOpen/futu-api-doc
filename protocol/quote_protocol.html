@@ -137,6 +137,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-getusersecurity-proto-3213">Qot_GetUserSecurity.proto - 3213获取自选股分组下的股票</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-modifyusersecurity-proto-3214">Qot_ModifyUserSecurity.proto - 3214修改自选股分组下的股票</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-stockfilter-proto-3215">Qot_StockFilter.proto - 3215获取条件选股</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-getipolist-proto-3217ipo">Qot_GetIpoList.proto - 3217获取IPO信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-getcodechange-proto-3216">Qot_GetCodeChange.proto - 3216获取股票代码变更信息</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trade_protocol.html">交易协议</a></li>
@@ -172,6 +174,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+</ul>
+<p class="caption"><span class="caption-text">JavaScript API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -1352,6 +1361,15 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">theta</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//希腊值 Theta</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">rho</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//希腊值 Rho</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">strikeTimestamp</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//行权日时间戳</span>
+
+        <span class="c1">//以下字段仅支持港股期权</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">indexOptionType</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//Qot_Common.IndexOptionType, 指数期权的类型，仅在指数期权有效</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">netOpenInterest</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//净未平仓合约数</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">expiryDateDistance</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">//距离到期日天数</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">contractNominalValue</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//合约名义金额</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">ownerLotMultiplier</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span> <span class="c1">//相等正股手数，指数期权无该字段</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">optionAreaType</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//OptionAreaType, 期权地区类型</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">contractMultiplier</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//合约乘数，指数期权特有字段</span>
 <span class="p">}</span>
 
 <span class="c1">// 指数类型额外数据</span>
@@ -1368,20 +1386,6 @@
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">raiseCount</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 上涨支数</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">fallCount</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 下跌支数</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">equalCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 平盘支数</span>
-<span class="p">}</span>
-
-<span class="c1">//盘前盘后数据，仅支持美股以及科创板</span>
-<span class="c1">//科创板只有盘后成交量，成交额</span>
-<span class="kd">message</span> <span class="nc">PreAfterMarketData</span>
-<span class="p">{</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">price</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 价格</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">highPrice</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 最高价</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 最低价</span>
-        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 成交量</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 成交额</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeVal</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌额</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）</span>
 <span class="p">}</span>
 
  <span class="c1">//基本快照数据</span>
@@ -1423,8 +1427,9 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowest52WeeksPrice</span> <span class="o">=</span> <span class="mi">34</span><span class="p">;</span>  <span class="c1">// 52周最低价</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">highestHistoryPrice</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span>  <span class="c1">// 历史最高价</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowestHistoryPrice</span> <span class="o">=</span> <span class="mi">36</span><span class="p">;</span>  <span class="c1">// 历史最低价</span>
-        <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">preMarket</span> <span class="o">=</span> <span class="mi">37</span><span class="p">;</span> <span class="c1">//盘前数据</span>
-        <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">afterMarket</span> <span class="o">=</span> <span class="mi">38</span><span class="p">;</span> <span class="c1">//盘后数据</span>
+        <span class="k">optional</span> <span class="n">Qot_Common.PreAfterMarketData</span> <span class="na">preMarket</span> <span class="o">=</span> <span class="mi">37</span><span class="p">;</span> <span class="c1">//Qot_Common::PreAfterMarketData 盘前数据</span>
+        <span class="k">optional</span> <span class="n">Qot_Common.PreAfterMarketData</span> <span class="na">afterMarket</span> <span class="o">=</span> <span class="mi">38</span><span class="p">;</span> <span class="c1">//Qot_Common::PreAfterMarketData 盘后数据</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">secStatus</span> <span class="o">=</span> <span class="mi">39</span><span class="p">;</span> <span class="c1">//Qot_Common::SecurityStatus 股票状态</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">Snapshot</span>
@@ -1726,6 +1731,7 @@
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
     <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//期权标的股</span>
+            <span class="k">optional</span> <span class="kt">int32</span> <span class="na">indexOptionType</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//Qot_Common.IndexOptionType, 指数期权的类型，仅用于恒指国指</span>
     <span class="k">optional</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回</span>
     <span class="k">optional</span> <span class="kt">int32</span> <span class="na">condition</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//OptionCondType,价内价外,可选字段,不指定则表示都返回</span>
     <span class="k">required</span> <span class="kt">string</span> <span class="na">beginTime</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//期权到期日开始时间</span>
@@ -2253,7 +2259,202 @@
 <li>使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。</li>
 </ul>
 </div>
+</div>
 <hr class="docutils" />
+<div class="section" id="qot-getipolist-proto-3217ipo">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetIpoList.proto">Qot_GetIpoList.proto</a> - 3217获取IPO信息<a class="headerlink" href="#qot-getipolist-proto-3217ipo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">Qot_GetIpoList</span><span class="p">;</span>
+<span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="c1">// Ipo基本数据</span>
+<span class="kd">message</span> <span class="nc">BasicIpoData</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Qot_Common::QotMarket 股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。</span>
+    <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称</span>
+    <span class="k">optional</span> <span class="kt">string</span> <span class="na">listTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 上市日期字符串</span>
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">listTimestamp</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 上市日期时间戳</span>
+<span class="p">};</span>
+
+<span class="c1">// A股Ipo列表额外数据</span>
+<span class="kd">message</span> <span class="nc">CNIpoExData</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">string</span> <span class="na">applyCode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 申购代码</span>
+    <span class="k">required</span> <span class="kt">int64</span> <span class="na">issueSize</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 发行总数</span>
+    <span class="k">required</span> <span class="kt">int64</span> <span class="na">onlineIssueSize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 网上发行量</span>
+    <span class="k">required</span> <span class="kt">int64</span> <span class="na">applyUpperLimit</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 申购上限</span>
+    <span class="k">required</span> <span class="kt">int64</span> <span class="na">applyLimitMarketValue</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 顶格申购需配市值</span>
+    <span class="k">required</span> <span class="kt">bool</span> <span class="na">isEstimateIpoPrice</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 是否预估发行价</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">ipoPrice</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">industryPeRate</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 行业市盈率</span>
+    <span class="k">required</span> <span class="kt">bool</span> <span class="na">isEstimateWinningRatio</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 是否预估中签率</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">winningRatio</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 中签率 该字段为百分比字段，默认不展示%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">issuePeRate</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 发行市盈率</span>
+    <span class="k">optional</span> <span class="kt">string</span> <span class="na">applyTime</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 申购日期字符串</span>
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">applyTimestamp</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 申购日期时间戳</span>
+    <span class="k">optional</span> <span class="kt">string</span> <span class="na">winningTime</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">// 公布中签日期字符串</span>
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">winningTimestamp</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 公布中签日期时间戳</span>
+    <span class="k">required</span> <span class="kt">bool</span> <span class="na">isHasWon</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 是否已经公布中签号</span>
+    <span class="k">repeated</span> <span class="n">WinningNumData</span> <span class="na">winningNumData</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">// Qot_GetIpoList::WinningNumData 中签号数据，对应PC中&quot;公布中签日期的已公布&quot;</span>
+<span class="p">};</span>
+
+<span class="c1">// 中签号数据</span>
+<span class="kd">message</span> <span class="nc">WinningNumData</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">string</span> <span class="na">winningName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 分组名</span>
+    <span class="k">required</span> <span class="kt">string</span> <span class="na">winningInfo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 中签号信息</span>
+<span class="p">}</span>
+
+<span class="c1">// 港股Ipo列表额外数据</span>
+<span class="kd">message</span> <span class="nc">HKIpoExData</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">ipoPriceMin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 最低发售价</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">ipoPriceMax</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 最高发售价</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">listPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 上市价</span>
+    <span class="k">required</span> <span class="kt">int32</span> <span class="na">lotSize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 每手股数</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">entrancePrice</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 入场费</span>
+    <span class="k">required</span> <span class="kt">bool</span> <span class="na">isSupportIpo</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 是否有认购阶段</span>
+    <span class="k">optional</span> <span class="kt">string</span> <span class="na">applyEndTime</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 截止认购日期字符串</span>
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">applyEndTimestamp</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期。</span>
+<span class="p">};</span>
+
+<span class="c1">// 美股Ipo列表额外数据</span>
+<span class="kd">message</span> <span class="nc">USIpoExData</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">ipoPriceMin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 最低发行价</span>
+    <span class="k">required</span> <span class="kt">double</span> <span class="na">ipoPriceMax</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 最高发行价</span>
+    <span class="k">required</span> <span class="kt">int64</span> <span class="na">issueSize</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 发行量</span>
+<span class="p">};</span>
+
+<span class="c1">// 新股Ipo数据</span>
+<span class="kd">message</span> <span class="nc">IpoData</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="n">BasicIpoData</span> <span class="na">basic</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// IPO基本数据</span>
+    <span class="k">optional</span> <span class="n">CNIpoExData</span> <span class="na">cnExData</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// A股IPO额外数据</span>
+    <span class="k">optional</span> <span class="n">HKIpoExData</span> <span class="na">hkExData</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 港股IPO额外数据</span>
+    <span class="k">optional</span> <span class="n">USIpoExData</span> <span class="na">usExData</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 美股IPO额外数据</span>
+<span class="p">};</span>
+
+<span class="kd">message</span> <span class="nc">C2S</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">int32</span> <span class="na">market</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">S2C</span>
+<span class="p">{</span>
+    <span class="k">repeated</span> <span class="n">IpoData</span> <span class="na">ipoList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 新股IPO数据</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Request</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Response</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
+    <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+    <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
+<li>限频接口：30秒内最多10次</li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="qot-getcodechange-proto-3216">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCodeChange.proto">Qot_GetCodeChange.proto</a> - 3216获取股票代码变更信息<a class="headerlink" href="#qot-getcodechange-proto-3216" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">Qot_GetCodeChange</span><span class="p">;</span>
+<span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="kd">enum</span> <span class="n">CodeChangeType</span>
+<span class="p">{</span>
+        <span class="na">CodeChangeType_Unkown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
+        <span class="na">CodeChangeType_GemToMain</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//创业板转主板</span>
+        <span class="na">CodeChangeType_Unpaid</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//买卖未缴款供股权</span>
+        <span class="na">CodeChangeType_ChangeLot</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//更改买卖单位</span>
+        <span class="na">CodeChangeType_Split</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//拆股</span>
+        <span class="na">CodeChangeType_Joint</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//合股</span>
+        <span class="na">CodeChangeType_JointSplit</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//股份先并后拆</span>
+        <span class="na">CodeChangeType_SplitJoint</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//股份先拆后并</span>
+        <span class="na">CodeChangeType_Other</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//其他</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">CodeChangeInfo</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//CodeChangeType,代码变化或者新增临时代码的事件类型</span>
+        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//主代码，在创业板转主板中表示主板</span>
+        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">relatedSecurity</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//关联代码，在创业板转主板中表示创业板，在剩余事件中表示临时代码</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">publicTime</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//公布时间</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">publicTimestamp</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//公布时间戳</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">effectiveTime</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//生效时间</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">effectiveTimestamp</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//生效时间戳</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">endTime</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//结束时间，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">endTimestamp</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//结束时间戳，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="n">TimeFilterType</span>
+<span class="p">{</span>
+        <span class="na">TimeFilterType_Unknow</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="na">TimeFilterType_Public</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//根据公布时间过滤</span>
+        <span class="na">TimeFilterType_Effective</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//根据生效时间过滤</span>
+        <span class="na">TimeFilterType_End</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//根据结束时间过滤</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">TimeFilter</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//TimeFilterType, 过滤类型</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">beginTime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//开始时间点</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">endTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//结束时间点</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">C2S</span>
+<span class="p">{</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">placeHolder</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//占位</span>
+        <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//根据股票筛选</span>
+        <span class="k">repeated</span> <span class="n">TimeFilter</span> <span class="na">timeFilterList</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//根据时间筛选</span>
+        <span class="k">repeated</span> <span class="kt">int32</span> <span class="na">typeList</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//CodeChangeType，根据类型筛选</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">S2C</span>
+<span class="p">{</span>
+        <span class="k">repeated</span> <span class="n">CodeChangeInfo</span> <span class="na">codeChangeList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票代码更换信息，目前仅有港股数据</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Request</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Response</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
+</ul>
+</div>
 </div>
 </div>
 
