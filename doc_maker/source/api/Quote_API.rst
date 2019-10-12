@@ -591,7 +591,7 @@ get_market_snapshot
  index_raise_count               int            指数类型上涨支数
  index_fall_count                int            指数类型下跌支数
  index_equal_count               int            指数类型平盘支数
- status                          str            股票状态，见 SecurityStatus_ 
+ sec_status                      str            股票状态，见 SecurityStatus_ 
  net_open_interest               int            净未平仓合约数
  expiry_date_distance            int            距离到期日天数
  contract_nominal_value          float          合约名义金额
@@ -1012,7 +1012,7 @@ get_stock_quote
         listing_date            str            上市日期 (yyyy-MM-dd)
         price_spread            float          当前向上的价差，亦即摆盘数据的卖档的相邻档位的报价差
         dark_status             str            暗盘交易状态，见 DarkStatus_
-		status                  str            股票状态，见 SecurityStatus_ 
+		sec_status              str            股票状态，见 SecurityStatus_ 
         strike_price            float          行权价
         contract_size           int            每份合约数
         open_interest           int            未平仓合约数

@@ -1031,7 +1031,7 @@ BasicQot - 基础报价
 		optional double updateTimestamp = 18; //更新时间戳
 		optional PreAfterMarketData preMarket = 19; //盘前数据
 		optional PreAfterMarketData afterMarket = 20; //盘后数据
-		optional int32 status = 21; //SecurityStats, 股票状态
+		optional int32 secStatus = 21; //SecurityStatus, 股票状态
 	}
 		
 -----------------------------------------------------------------------------------------------------------
