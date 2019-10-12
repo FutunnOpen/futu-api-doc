@@ -50,10 +50,8 @@
 ---------------------------------------------------
 
 
-FTAPI_Qot功能函数
+功能函数
 -------------------
-
-+ FTAPI_Qot继承自\ `FTAPI_Conn <./Base_API.html#ftapi-conn>`_ ，连接层调用接口参考FTAPI_Conn说明。
 
 ================================    ==============================================
 函数名（点开链接可查看具体协议）        功能简介
@@ -90,7 +88,7 @@ GetCodeChange_                      获取股票代码变更
 ================================    ==============================================
 
 
-FTSPI_Qot行情推送接收接口函数
+行情推送接收接口函数
 -----------------------------
 
 .. code-block:: js
@@ -99,6 +97,7 @@ FTSPI_Qot行情推送接收接口函数
 
     function onPush(cmd, response) {
           const obj = ftWebsocket.findCmdObj(cmd);
+          //通过cmd来区分具体的推送协议
           if (obj && obj.description) {
             console.log(obj.description, response);
           }

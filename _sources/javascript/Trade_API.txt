@@ -29,11 +29,8 @@
 
 
 
-FTAPI_Trd成员函数
+成员函数
 ---------------------
-
-+ FTAPI_Trd继承自\ `FTAPI_Conn <./Base_API.html#ftapi-conn>`_ ，连接层调用接口参考FTAPI_Conn说明。
-
 
 ================================    ==============================================
 函数名（点开链接可查看具体协议）        功能简介
@@ -52,7 +49,7 @@ GetHistoryOrderList_                获取历史订单列表
 GetHistoryOrderFillList_            获取历史成交列表
 ================================    ==============================================
 
-FTSPI_Trd交易推送接收接口函数
+交易推送接收接口函数
 -------------------------------
 
 .. code-block:: js
@@ -61,6 +58,7 @@ FTSPI_Trd交易推送接收接口函数
 
     function onPush(cmd, response) {
           const obj = ftWebsocket.findCmdObj(cmd);
+          //通过cmd来区分具体的推送协议
           if (obj && obj.description) {
             console.log(obj.description, response);
           }

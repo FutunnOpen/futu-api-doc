@@ -34,11 +34,11 @@ JavaScript WebSocket API简介
 .. code-block:: text
 
 	|-- js
-	|	|   |-- proto pb自动生成文件，用于组包解包pb。
-	|	|   |-- components
-	|	|	|   |-- ft-websocket
-	|	|	|   |   |-- main.js
-	|	|	|   |   |-- base.js
+	|   |-- src
+	|	|   |-- ft-websocket
+	|	|   |   |-- main.js
+	|	|   |   |-- base.js
+	|	|   |   |-- proto
 
 调用须知
 -------------
