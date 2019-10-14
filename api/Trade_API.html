@@ -994,7 +994,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
-<li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
+<li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
 <li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
@@ -1149,7 +1149,7 @@
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
 <li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
 <li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
-<li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
+<li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
 </ul>

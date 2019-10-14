@@ -433,7 +433,7 @@ deal_list_query - 获取成交列表
  获取成交列表。获取账户的交易成交列表。
 
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
- :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ :param trd_env: str，交易环境 TrdEnv_ ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
  :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
@@ -513,7 +513,7 @@ history_deal_list_query - 获取历史成交列表
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
  :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
  :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ :param trd_env: str，交易环境 TrdEnv_ ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal_list_query_ (获取成交列表)相同

@@ -1635,6 +1635,22 @@ TrdFilterConditions - 过滤条件
 	 
 -----------------------------------------------
 
+TrdSecMarket - 可交易证券所属市场
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	//可交易证券所属市场，目前主要是区分A股的沪市和深市，香港和美国暂不需要细分
+	enum TrdSecMarket
+	{
+		TrdSecMarket_Unknown = 0; //未知市场
+		TrdSecMarket_HK = 1; //香港的(正股、窝轮等)
+		TrdSecMarket_US = 2; //美国的(正股、期权等)
+		TrdSecMarket_CN_SH = 31; //沪市的(正股)
+		TrdSecMarket_CN_SZ = 32; //深市的(正股)
+	}
+	 
+-----------------------------------------------
 
 
 

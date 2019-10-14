@@ -178,6 +178,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#orderfill">OrderFill - 成交</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#maxtrdqtys">MaxTrdQtys - 最大交易数量</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdfilterconditions">TrdFilterConditions - 过滤条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trdsecmarket">TrdSecMarket - 可交易证券所属市场</a></li>
 </ul>
 </li>
 </ul>
@@ -1923,6 +1924,23 @@
         <span class="k">repeated</span> <span class="kt">uint64</span> <span class="na">idList</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//ID主键过滤，只返回包含这些ID的数据，没传不过滤，订单是orderID、成交是fillID、持仓是positionID</span>
         <span class="k">optional</span> <span class="kt">string</span> <span class="na">beginTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，对持仓无效，拉历史数据必须填</span>
         <span class="k">optional</span> <span class="kt">string</span> <span class="na">endTime</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，对持仓无效，拉历史数据必须填</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="trdsecmarket">
+<h3>TrdSecMarket - 可交易证券所属市场<a class="headerlink" href="#trdsecmarket" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//可交易证券所属市场，目前主要是区分A股的沪市和深市，香港和美国暂不需要细分</span>
+<span class="kd">enum</span> <span class="n">TrdSecMarket</span>
+<span class="p">{</span>
+        <span class="na">TrdSecMarket_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知市场</span>
+        <span class="na">TrdSecMarket_HK</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//香港的(正股、窝轮等)</span>
+        <span class="na">TrdSecMarket_US</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//美国的(正股、期权等)</span>
+        <span class="na">TrdSecMarket_CN_SH</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span> <span class="c1">//沪市的(正股)</span>
+        <span class="na">TrdSecMarket_CN_SZ</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span> <span class="c1">//深市的(正股)</span>
 <span class="p">}</span>
 </pre></div>
 </div>

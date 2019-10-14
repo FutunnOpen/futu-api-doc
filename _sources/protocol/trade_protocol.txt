@@ -401,6 +401,7 @@
 	* 交易公共参数头结构参考 `TrdHeader <base_define.html#trdheader>`_
 	* 交易方向枚举参考 `TrdSide <base_define.html#trdside>`_
 	* 订单类型枚举参考 `OrderType <base_define.html#ordertype>`_
+	* 股票行情市场参考 `TrdSecMarket <base_define.html#trdsecmarket>`_
 	* 限频接口：30秒内最多30次
 	
 	* 如果下单返回的retMsg没用描述清楚错误，可再查看errCode了解详情，errCode一些取值和对应的错误描述如下:
