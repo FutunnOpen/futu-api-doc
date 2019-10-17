@@ -79,6 +79,8 @@
  .. _StockField: Base_API.html#stockfield
 
  .. _SortDir: Base_API.html#sortdir
+ 
+ .. _FinancialQuarter: Base_API.html#financialquarter
 
 一分钟上手
 ============
@@ -1529,28 +1531,28 @@ maturity_time_max           str               到期日范围的结束时间
 ipo_period                  str               上市日 参见 IpoPeriod_
 price_type                  str               价内/价外（该字段为百分比字段，默认不展示%）参见 PriceType_ , 界内证暂不支持界内外筛选
 status                      str               窝轮状态 参见 WarrantStatus_
-cur_price_min               double            最新价过滤起点
-cur_price_max               double            最新价过滤终点
-strike_price_min            double            行使价过滤起点
-strike_price_max            double            行使价过滤终点
-street_min                  double            街货占比, 过滤起点（该字段为百分比字段，默认不展示%）
-street_max                  double            街货占比, 过滤终点（该字段为百分比字段，默认不展示%）
-conversion_min              double            换股比率过滤起点
-conversion_max              double            换股比率过滤终点
+cur_price_min               float             最新价过滤起点
+cur_price_max               float             最新价过滤终点
+strike_price_min            float             行使价过滤起点
+strike_price_max            float             行使价过滤终点
+street_min                  float             街货占比, 过滤起点（该字段为百分比字段，默认不展示%）
+street_max                  float             街货占比, 过滤终点（该字段为百分比字段，默认不展示%）
+conversion_min              float             换股比率过滤起点
+conversion_max              float             换股比率过滤终点
 vol_min                     unsigned int      成交量过滤起点
 vol_max                     unsigned int      成交量过滤终点
-premium_min                 double            溢价, 过滤起点（该字段为百分比字段，默认不展示%）
-premium_max                 double            溢价, 过滤终点（该字段为百分比字段，默认不展示%）
-leverage_ratio_min          double            杠杆比率过滤起点
-leverage_ratio_max          double            杠杆比率过滤终点
-delta_min                   double            对冲值过滤起点, 仅认购认沽支持该字段过滤
-delta_max                   double            对冲值过滤终点, 仅认购认沽支持该字段过滤
-implied_min                 double            引伸波幅过滤起点, 仅认购认沽支持该字段过滤
-implied_max                 double            引伸波幅过滤终点, 仅认购认沽支持该字段过滤
-recovery_price_min          double            收回价过滤起点, 仅牛熊证支持该字段过滤
-recovery_price_max          double            收回价过滤终点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_min    double            正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
-price_recovery_ratio_max    double            正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+premium_min                 float             溢价, 过滤起点（该字段为百分比字段，默认不展示%）
+premium_max                 float             溢价, 过滤终点（该字段为百分比字段，默认不展示%）
+leverage_ratio_min          float             杠杆比率过滤起点
+leverage_ratio_max          float             杠杆比率过滤终点
+delta_min                   float             对冲值过滤起点, 仅认购认沽支持该字段过滤
+delta_max                   float             对冲值过滤终点, 仅认购认沽支持该字段过滤
+implied_min                 float             引伸波幅过滤起点, 仅认购认沽支持该字段过滤
+implied_max                 float             引伸波幅过滤终点, 仅认购认沽支持该字段过滤
+recovery_price_min          float             收回价过滤起点, 仅牛熊证支持该字段过滤
+recovery_price_max          float             收回价过滤终点, 仅牛熊证支持该字段过滤
+price_recovery_ratio_min    float             正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
+price_recovery_ratio_max    float             正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
 ==========================  ==============    ====================================================================================
 
 
@@ -1576,44 +1578,44 @@ stock_owner                    str                所属正股
 type                           str                窝轮类型 参见 WrtType_
 issuer                         Issuer             发行人 参见 Issuer_
 maturity_time                  str                到期日
-maturity_timestamp             double             :strike:`到期日时间戳`
+maturity_timestamp             float              :strike:`到期日时间戳`
 list_time                      str                上市时间
-list_timestamp                 double             :strike:`上市时间戳`
+list_timestamp                 float              :strike:`上市时间戳`
 last_trade_time                str                最后交易日
-last_trade_timestamp           double             :strike:`最后交易日时间戳`
-recovery_price                 double             收回价，仅牛熊证支持该字段
-conversion_ratio               double             换股比率
+last_trade_timestamp           float              :strike:`最后交易日时间戳`
+recovery_price                 float              收回价，仅牛熊证支持该字段
+conversion_ratio               float              换股比率
 lot_size                       int                每手数量
-strike_price                   double             行使价
-last_close_price               double             昨收价
+strike_price                   float              行使价
+last_close_price               float              昨收价
 name                           str                名称
-cur_price                      double             当前价
-price_change_val               double             涨跌额
+cur_price                      float              当前价
+price_change_val               float              涨跌额
 status                         str                窝轮状态 参见 WarrantStatus_
-bid_price                      double             买入价
-ask_price                      double             卖出价
+bid_price                      float              买入价
+ask_price                      float              卖出价
 bid_vol                        int                买量
 ask_vol                        int                卖量
 volume                         unsigned int       成交量
-turnover                       double             成交额
-score                          double             综合评分
-premium                        double             溢价（该字段为百分比字段，默认不展示%）
-break_even_point               double             打和点
-leverage                       double             杠杆比率（倍）
-ipop                           double             价内/价外（该字段为百分比字段，默认不展示%）
-price_recovery_ratio           double             正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
-conversion_price               double             换股价
-street_rate                    double             街货占比（该字段为百分比字段，默认不展示%）
+turnover                       float              成交额
+score                          float              综合评分
+premium                        float              溢价（该字段为百分比字段，默认不展示%）
+break_even_point               float              打和点
+leverage                       float              杠杆比率（倍）
+ipop                           float              价内/价外（该字段为百分比字段，默认不展示%）
+price_recovery_ratio           float              正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
+conversion_price               float              换股价
+street_rate                    float              街货占比（该字段为百分比字段，默认不展示%）
 street_vol                     int                街货量
-amplitude                      double             振幅（该字段为百分比字段，默认不展示%）
+amplitude                      float              振幅（该字段为百分比字段，默认不展示%）
 issue_size                     int                发行量
-high_price                     double             最高价
-low_price                      double             最低价
-implied_volatility             double             引伸波幅，仅认购认沽支持该字段
-delta                          double             对冲值，仅认购认沽支持该字段
-effective_leverage             double             有效杠杆
-upper_strike_price             double             上限价，仅界内证支持该字段
-lower_strike_price             double             下限价，仅界内证支持该字段
+high_price                     float              最高价
+low_price                      float              最低价
+implied_volatility             float              引伸波幅，仅认购认沽支持该字段
+delta                          float              对冲值，仅认购认沽支持该字段
+effective_leverage             float              有效杠杆
+upper_strike_price             float              上限价，仅界内证支持该字段
+lower_strike_price             float              下限价，仅界内证支持该字段
 inline_price_status            str                界内界外 参见 PriceType_ ，仅界内证支持该字段
 ==========================    ================    ====================================================================================
 
@@ -1651,7 +1653,7 @@ get_capital_flow
         ========================   ===========   ====================================================================================
         参数                       类型                        说明
         ========================   ===========   ====================================================================================
-        in_flow                    double         净流入的资金额度
+        in_flow                    float          净流入的资金额度
         capital_flow_item_time     string         开始时间字符串,以分钟为单位
         last_valid_time            string         数据最后有效时间字符串
         ========================   ===========   ====================================================================================
@@ -1687,12 +1689,12 @@ get_capital_distribution
         =====================   ===========   ====================================================================================
         参数                      类型                        说明
         =====================   ===========   ====================================================================================
-        capital_in_big          double         流入资金额度，大单
-        capital_in_mid          double         流入资金额度，中单
-        capital_in_small        double         流入资金额度，小单
-        capital_out_big         double         流出资金额度，大单
-        capital_out_mid         double         流出资金额度，中单
-        capital_out_small       double         流出资金额度，小单
+        capital_in_big          float          流入资金额度，大单
+        capital_in_mid          float          流入资金额度，中单
+        capital_in_small        float          流入资金额度，小单
+        capital_out_big         float          流出资金额度，大单
+        capital_out_mid         float          流出资金额度，中单
+        capital_out_small       float          流出资金额度，小单
         update_time             str            更新时间字符串
         =====================   ===========   ====================================================================================
 
@@ -1793,68 +1795,118 @@ get_stock_filter
  获取条件选股
 
  :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
- :param filter_list: 简单属性筛选条件的枚举值，筛选条件是SimpleFilter类型数据的list对象field，对象field的相关参数如下：
- 
+ :param filter_list: 
+        | 简单属性筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter或FinancialFilter类型数据的list对象field。
+        
+        | SimpleFilter对象field的相关参数如下：
+        
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 简单属性，取值见 StockField_ 
-        filter_min                                     double         区间下限，闭区间
-        filter_max                                     double         区间上限，闭区间
+        filter_min                                     float          区间下限，闭区间
+        filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
         sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        ============================================   ===========   ================================================
+        
+        | AccumulateFilter对象field的相关参数如下：
+        
+        ============================================   ===========   ================================================
+        参数                                            类型           说明
+        ============================================   ===========   ================================================
+        stock_field                                    str            StockField 简单属性，取值见 StockField_ 
+        filter_min                                     float          区间下限，闭区间
+        filter_max                                     float          区间上限，闭区间
+        is_no_filter                                   bool           该字段是否需要筛选。
+        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        days                                           int            所筛选的数据的累计天数
+        ============================================   ===========   ================================================
+        
+        | FinancialFilter对象field的相关参数如下：
+        
+        ============================================   ===========   ================================================
+        参数                                            类型           说明
+        ============================================   ===========   ================================================
+        stock_field                                    str            StockField 简单属性，取值见 StockField_ 
+        filter_min                                     float          区间下限，闭区间
+        filter_max                                     float          区间上限，闭区间
+        is_no_filter                                   bool           该字段是否需要筛选。
+        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        quarter                                        str            财报累积时间，取值见 FinancialQuarter_ 
         ============================================   ===========   ================================================
 
  :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。
  :param begin: 数据起始点
  :param num: 请求数据个数，最大200
 
- :return: (ret, data)
+ :return: 
+        | (ret, data)
+        | **ret** - ret != RET_OK 返回错误字符串, ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。
+        | **last_page** - 是否是最后一页
+        | **all_count** - 列表总数量
+        | **stock_list** - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:
 
-        ret != RET_OK 返回错误字符串
-
-        ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。
-
-        last_page 是否是最后一页
-
-        all_count 列表总数量
-
-        stock_list 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:
-
-============================================   ===========   ==============================================================================
-参数                                            类型           说明
-============================================   ===========   ==============================================================================
-stock_code                                     str            股票代码
-stock_name                                     str            股票名字
-cur_price                                      double         最新价
-cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比
-cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比
-high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高
-low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低
-volume_ratio                                   float          量比
-bid_ask_ratio                                  float          委比
-lot_price                                      double         每手价格
-market_val                                     float          市值
-pe_annual                                      float          市盈率
-pe_ttm                                         float          市盈率TTM
-pb_rate                                        float          市净率
-============================================   ===========   ==============================================================================
+        ============================================   ===========   ==============================================================================
+        参数                                            类型           说明
+        ============================================   ===========   ==============================================================================
+        stock_code                                     str            股票代码
+        stock_name                                     str            股票名字
+        cur_price                                      float          最新价
+        cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高
+        cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低
+        high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高
+        low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低
+        volume_ratio                                   float          量比
+        bid_ask_ratio                                  float          委比
+        lot_price                                      float          每手价格
+        market_val                                     float          市值
+        pe_annual                                      float          市盈率
+        pe_ttm                                         float          市盈率TTM
+        pb_rate                                        float          市净率
+        change_rate_5min                               float          五分钟价格涨跌幅
+        change_rate_begin_year                         float          年初至今价格涨跌幅
+        \ 
+        change_rate                                    float          涨跌幅
+        amplitude                                      float          振幅
+        volume                                         float          成交量
+        turnover                                       float          成交额
+        turnover_rate                                  float          换手率
+        \ 
+        net_profit                                     float          净利润
+        net_profix_growth                              float          净利润增长率
+        gross_profit                                   float          毛利润
+        sum_of_business                                float          营业额
+        turnover_growth                                float          营业额增长率
+        net_profit_rate                                float          净利率
+        gross_profit_rate                              float          毛利率
+        debt_asset_rate                                float          资产负债率
+        return_on_equity_rate                          float          净资产收益率
+        ============================================   ===========   ==============================================================================
 
  :Example:
 
  .. code:: python
 
     from futu import *
-    from futu.quote.quote_stockfilter_info import SimpleFilter  
+    from futu.quote.quote_stockfilter_info import *  
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)     
-    field = SimpleFilter()
-    field.filter_min = 100
-    field.filter_max = 1000
-    field.stock_field = StockField.CUR_PRICE
-    field.is_no_filter = False
-    field.sort = SortDir.ASCEND
+    simple_filter = SimpleFilter()
+    simple_filter.filter_min = 100
+    simple_filter.filter_max = 1000
+    simple_filter.stock_field = StockField.CUR_PRICE
+    simple_filter.is_no_filter = False
+    simple_filter.sort = SortDir.ASCEND
+    
+    acc_filter = AccumulateFilter()
+    acc_filter.filter_min = 50
+    acc_filter.filter_max = 100
+    acc_filter.days = 2
+    acc_filter.stock_field = StockField.CHANGE_RATE
+    acc_filter.is_no_filter = False
+    acc_filter.sort = SortDir.None
 
-    ret, ls = quote_ctx.get_stock_filter(Market.HK, [field])
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter])
     if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
