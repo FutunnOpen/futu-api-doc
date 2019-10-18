@@ -1489,7 +1489,7 @@ StockField - 条件选股筛选条件字段(财务)
 
   营业额
 
- ..  py:attribute:: TURNOVER_GROWTH
+ ..  py:attribute:: SUM_OF_BUSINESS_GROWTH
 
   营业额增长率
 

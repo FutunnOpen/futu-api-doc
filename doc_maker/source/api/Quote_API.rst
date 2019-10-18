@@ -1877,7 +1877,7 @@ get_stock_filter
         net_profix_growth                              float          净利润增长率
         gross_profit                                   float          毛利润
         sum_of_business                                float          营业额
-        turnover_growth                                float          营业额增长率
+        sum_of_business_growth                         float          营业额增长率
         net_profit_rate                                float          净利率
         gross_profit_rate                              float          毛利率
         debt_asset_rate                                float          资产负债率
