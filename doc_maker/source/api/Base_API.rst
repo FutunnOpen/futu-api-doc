@@ -188,19 +188,19 @@ FinancialQuarter - 财务指标周期
   
  ..  py:attribute:: FIRST_QUARTER
  
-  Q1一季报
+  Q1一季报，不支持美股市场
   
  ..  py:attribute:: INTERIM
  
-  Q6中期报
+  Q6中期报，不支持美股市场
   
  ..  py:attribute:: THIRD_QUARTER
  
-  Q9三季报
+  Q9三季报，不支持美股市场
     
  ..  py:attribute:: MOST_RECENT_QUARTER
  
-  最近季报
+  最近季报，仅支持美股市场
   
 --------------------------------------
 
