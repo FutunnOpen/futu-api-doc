@@ -903,16 +903,16 @@ StockField - 条件选股的简单属性筛选条件
 
  .. code-block:: protobuf
 
-	enum StockField
+	enum StockField 
 	{
 		StockField_Unknown = 0; // 未知
 		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
 		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
 		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
-		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
-		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]
-		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
-		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间
 		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
 		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
 		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
@@ -920,6 +920,62 @@ StockField - 条件选股的简单属性筛选条件
 		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
 		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
 		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间
+		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+AccumulateField - 条件选股的累积属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum AccumulateField
+	{
+		AccumulateField_Unknown = 0; // 未知
+		AccumulateField_ChangeRate = 1; // 涨跌幅 例如填写[-10.2,20.4]值区间
+		AccumulateField_Amplitude = 2; // 振幅 例如填写[0.5,20.6]值区间
+		AccumulateField_Volume = 3; // 成交量 例如填写[2000,70000]值区间
+		AccumulateField_Turnover = 4; // 成交额 例如填写[1400,890000]值区间
+		AccumulateField_TurnoverRate = 5; // 换手率 例如填写[0.12,26.73]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+FinancialField - 条件选股的财务属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum FinancialField
+	{
+		FinancialField_Unknown = 0; // 未知
+		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
+		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-20.13,300]值区间
+		FinancialField_SumOfBusiness = 3; // 营业收入 例如填写[100000000,6400000000]值区间
+		FinancialField_SumOfBusinessGrowth = 4; // 营收同比增长率 例如填写[-5.13,200]值区间
+		FinancialField_NetProfitRate = 5; // 净利率 例如填写[0.01,113]值区间
+		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[0.12,65]值区间
+		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[0.05,470]值区间
+		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[0.01,230]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+FinancialQuarter - 条件选股的财报时间
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum FinancialQuarter
+	{
+		FinancialQuarter_Unknown = 0; // 未知
+		FinancialQuarter_Annual = 1; // 年报
+		FinancialQuarter_FirstQuarter = 2; // 一季报
+		FinancialQuarter_Interim = 3; // 中报
+		FinancialQuarter_ThirdQuarter = 4; // 三季报
+		FinancialQuarter_MostRecentQuarter = 5; // 最近季报
 	}
 			
 -----------------------------------------------------------------------------
