@@ -190,13 +190,17 @@ FinancialQuarter - 财务指标周期
  
   Q1一季报
   
- ..  py:attribute:: SIX_QUARTER
+ ..  py:attribute:: INTERIM
  
   Q6中期报
   
- ..  py:attribute:: NINE_QUARTER
+ ..  py:attribute:: THIRD_QUARTER
  
   Q9三季报
+    
+ ..  py:attribute:: MOST_RECENT_QUARTER
+ 
+  最近季报
   
 --------------------------------------
 
@@ -1483,11 +1487,11 @@ StockField - 条件选股筛选条件字段(财务)
 
  ..  py:attribute:: SUM_OF_BUSINESS
 
-  营业额
+  营业收入
 
  ..  py:attribute:: SUM_OF_BUSINESS_GROWTH
 
-  营业额增长率
+  营业同比增长率
 
  ..  py:attribute:: NET_PROFIT_RATE
 
