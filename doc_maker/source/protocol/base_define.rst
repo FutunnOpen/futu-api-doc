@@ -113,10 +113,19 @@
 
 .. code-block:: protobuf
 
+	syntax = "proto2";
+	package Notify;
+
+	import "Common.proto";
+
 	enum NotifyType
 	{
 		NotifyType_None = 0; //无
-		NotifyType_GtwEvent = 1; //Gateway运行事件通知
+		NotifyType_GtwEvent = 1; //OpenD运行事件通知
+		NotifyType_ProgramStatus = 2; //程序状态
+		NotifyType_ConnStatus = 3; //连接状态
+		NotifyType_QotRight = 4; //行情权限
+		NotifyType_APILevel = 5; //用户等级
 	}
 
 	enum GtwEventType
@@ -127,7 +136,7 @@
 		GtwEventType_ForceUpdate = 3; //客户端版本过低
 		GtwEventType_LoginFailed = 4; //登录失败
 		GtwEventType_UnAgreeDisclaimer = 5; //未同意免责声明
-		GtwEventType_NetCfgMissing = 6; //缺少必要网络配置信息;例如控制订阅额度
+		GtwEventType_NetCfgMissing = 6; //缺少必要网络配置信息;例如控制订阅额度 //已优化，不会再出现该情况
 		GtwEventType_KickedOut = 7; //牛牛帐号在别处登录
 		GtwEventType_LoginPwdChanged = 8; //登录密码被修改
 		GtwEventType_BanLogin = 9; //用户被禁止登录
@@ -145,10 +154,39 @@
 		required string desc = 2; //事件描述
 	}
 
+	message ProgramStatus
+	{
+		required Common.ProgramStatus programStatus = 1; //当前程序状态
+	}
+
+	message ConnectStatus
+	{
+		required bool qotLogined = 1; //是否登陆行情服务器
+		required bool trdLogined = 2; //是否登陆交易服务器
+	}
+
+	message QotRight
+	{
+		required int32 hkQotRight = 4; //港股行情权限, QotRight
+		required int32 usQotRight = 5; //美股行情权限, QotRight
+		required int32 cnQotRight = 6; //A股行情权限, QotRight
+		optional int32 hkOptionQotRight = 7; //港股期权行情权限, Qot_Common.QotRight
+		optional bool hasUSOptionQotRight = 8; //是否有美股期权行情权限
+	}
+
+	message APILevel
+	{
+		required string apiLevel = 3; //api用户等级描述
+	}
+
 	message S2C
 	{
-		required int32 type = 1; //NotifyType,通知类型 
+		required int32 type = 1; //通知类型
 		optional GtwEvent event = 2; //事件通息
+		optional ProgramStatus programStatus = 3; //程序状态
+		optional ConnectStatus connectStatus = 4; //连接状态
+		optional QotRight qotRight = 5; //行情权限
+		optional APILevel apiLevel = 6; //用户等级
 	}
 
 	message Response
@@ -159,13 +197,13 @@
 		
 		optional S2C s2c = 4;
 	}
+
 	
 .. note::
 
-    *   Notify是系统推送协议，目前仅支持NotifyType_GtwEvent类型推送  
+    *   Notify是系统推送协议
     *   FutuOpenD将内部的一些重要运行状态通知到client前端，可用于前端的管理平台监控处理
    
-
 ---------------------------------------------
 	
 	
@@ -249,6 +287,40 @@ PacketID - 请求包标识
  
 -------------------------------------
 
+ProgramStatus - 程序的当前状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: protobuf
+
+	//程序的当前状态
+	enum ProgramStatusType
+	{
+		ProgramStatusType_None = 0;
+		ProgramStatusType_Loaded = 1; //已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回
+
+		ProgramStatusType_Loging = 2; //登录中
+		ProgramStatusType_NeedPicVerifyCode = 3; //需要图形验证码
+		ProgramStatusType_NeedPhoneVerifyCode = 4; //需要手机验证码
+		ProgramStatusType_LoginFailed = 5; //登录失败,详细原因在描述返回
+		ProgramStatusType_ForceUpdate = 6; //客户端版本过低
+
+		ProgramStatusType_NessaryDataPreparing = 7; //正在拉取类似免责声明等一些必要信息
+		ProgramStatusType_NessaryDataMissing = 8; //缺少必要信息
+		ProgramStatusType_UnAgreeDisclaimer = 9; //未同意免责声明
+		ProgramStatusType_Ready = 10; //可以接收业务协议收发,正常可用状态
+		
+		//OpenD登录后被强制退出登录，会导致连接全部断开,需要重连后才能得到以下该状态（并且需要在ui模式下）
+		ProgramStatusType_ForceLogout = 11; //被强制退出登录,例如修改了登录密码,中途打开设备锁等,详细原因在描述返回
+	}
+
+	message ProgramStatus
+	{
+		required ProgramStatusType type = 1; //当前状态
+		optional string strExtDesc = 2; // 额外描述
+	}
+ 
+-------------------------------------
+
 
 `Qot_Common.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_Common.proto>`_ - 行情通用定义
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -327,6 +399,7 @@ WarrantType - 窝轮类型
 		WarrantType_Sell = 2; //认沽
 		WarrantType_Bull = 3; //牛
 		WarrantType_Bear = 4; //熊
+		WarrantType_InLine = 5; //界内证
 	};
 
 -----------------------------------------------
@@ -341,6 +414,35 @@ OptionType - 期权类型
 		OptionType_Unknown = 0; //未知
 		OptionType_Call = 1; //认购
 		OptionType_Put = 2; //认沽
+	};
+ 
+-----------------------------------------------
+ 
+IndexOptionType - 指数期权类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum IndexOptionType
+	{
+		IndexOptionType_Unknown = 0; //未知
+		IndexOptionType_Normal = 1; //正常普通的指数期权
+		IndexOptionType_Small = 2; //小型指数期权
+	};
+ 
+-----------------------------------------------
+ 
+OptionAreaType - 期权地区类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum OptionAreaType
+	{
+		OptionAreaType_Unknown = 0; //未知
+		OptionAreaType_American = 1; //美式
+		OptionAreaType_European = 2; //欧式
+		OptionAreaType_Bermuda = 3; //百慕大
 	};
  
 -----------------------------------------------
@@ -508,6 +610,29 @@ TickerType - 逐笔类型
 		TickerType_InterNoneAutomatch = 5; //同一证券商非自动对盘
 		TickerType_OddLot = 6; //碎股交易
 		TickerType_Auction = 7; //竞价交易
+		TickerType_Bulk = 8; //批量交易
+		TickerType_Crash = 9; //现金交易
+		TickerType_CrossMarket = 10; //跨市场交易
+		TickerType_BulkSold = 11; //批量卖出
+		TickerType_FreeOnBoard = 12; //离价交易
+		TickerType_Rule127Or155 = 13; //第127条交易（纽交所规则）或第155条交易
+		TickerType_Delay = 14; //延迟交易
+		TickerType_MarketCenterClosePrice = 15; //中央收市价
+		TickerType_NextDay = 16; //隔日交易
+		TickerType_MarketCenterOpening = 17; //中央开盘价交易
+		TickerType_PriorReferencePrice = 18; //前参考价
+		TickerType_MarketCenterOpenPrice = 19; //中央开盘价
+		TickerType_Seller = 20; //卖方
+		TickerType_T = 21; //T类交易(盘前和盘后交易)
+		TickerType_ExtendedTradingHours = 22; //延长交易时段
+		TickerType_Contingent = 23; //合单交易
+		TickerType_AvgPrice = 24; //平均价成交
+		TickerType_OTCSold = 25; //场外售出
+		TickerType_OddLotCrossMarket = 26; //碎股跨市场交易
+		TickerType_DerivativelyPriced = 27; //衍生工具定价
+		TickerType_ReOpeningPriced = 28; //再开盘定价
+		TickerType_ClosingPriced = 29; //收盘定价
+		TickerType_ComprehensiveDelayPrice = 30; //综合延迟价格
 	}
 	
 -----------------------------------------------
@@ -539,6 +664,40 @@ DarkStatus - 暗盘交易状态
 		DarkStatus_None = 0; //无暗盘交易
 		DarkStatus_Trading = 1; //暗盘交易中
 		DarkStatus_End = 2; //暗盘交易结束
+	}
+	
+-----------------------------------------------
+
+SecurityStatus - 股票状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	 //暗盘交易状态
+	enum SecurityStatus
+	{
+		SecurityStatus_Unknown = 0; //未知
+		SecurityStatus_Normal = 1; //正常状态
+		SecurityStatus_Listing = 2; //待上市
+		SecurityStatus_Purchasing = 3; //申购中
+		SecurityStatus_Subscribing = 4; //认购中
+		SecurityStatus_BeforeDrakTradeOpening = 5; //暗盘开盘前
+		SecurityStatus_DrakTrading = 6; //暗盘交易中
+		SecurityStatus_DrakTradeEnd = 7; //暗盘已收盘
+		SecurityStatus_ToBeOpen = 8; //待开盘
+		SecurityStatus_Suspended = 9; //停牌
+		SecurityStatus_Called = 10; //已收回
+		SecurityStatus_ExpiredLastTradingDate = 11; //已过最后交易日
+		SecurityStatus_Expired = 12; //已过期
+		SecurityStatus_Delisted = 13; //已退市
+		SecurityStatus_ChangeToTemporaryCode = 14; //公司行动中，交易关闭，转至临时代码交易
+		SecurityStatus_TemporaryCodeTradeEnd = 15; //临时买卖结束，交易关闭
+		SecurityStatus_ChangedPlateTradeEnd = 16; //已转板，旧代码交易关闭
+		SecurityStatus_ChangedCodeTradeEnd = 17; //已换代码，旧代码交易关闭
+		SecurityStatus_RecoverableCircuitBreaker = 18; //可恢复性熔断
+		SecurityStatus_UnRecoverableCircuitBreaker = 19; //不可恢复性熔断
+		SecurityStatus_AfterCombination = 20; //盘后撮合
+		SecurityStatus_AfterTransation = 21; //盘后交易
 	}
 	
 -----------------------------------------------
@@ -598,6 +757,9 @@ SortField - 涡轮排序
 		SortField_AskVol = 9; //卖量
 		SortField_Volume = 10; //成交量
 		SortField_Turnover = 11; //成交额
+		SortField_Amplitude = 30; //振幅%
+
+		//以下排序字段只支持用于Qot_GetWarrant协议
 		SortField_Score = 12; //综合评分
 		SortField_Premium = 13; //溢价%
 		SortField_EffectiveLeverage = 14; //有效杠杆
@@ -616,11 +778,25 @@ SortField - 涡轮排序
 		SortField_Change = 27; //换股比率
 		SortField_StreetRate = 28; //街货比%
 		SortField_StreetVol = 29; //街货量
-		SortField_Amplitude = 30; //振幅%
-		SortField_WarrantName = 31; // 名称
+		SortField_WarrantName = 31; // 窝轮名称
 		SortField_Issuer = 32; //发行人
 		SortField_LotSize = 33; // 每手
 		SortField_IssueSize = 34; //发行量
+		SortField_UpperStrikePrice = 45; //上限价，仅用于界内证
+		SortField_LowerStrikePrice = 46; //下限价，仅用于界内证
+		SortField_InLinePriceStatus = 47; //界内界外，仅用于界内证
+
+		//以下排序字段只支持用于Qot_GetPlateSecurity协议，并仅支持美股
+		SortField_PreCurPrice = 35; //盘前最新价
+		SortField_AfterCurPrice = 36; //盘后最新价
+		SortField_PrePriceChangeVal = 37; //盘前涨跌额
+		SortField_AfterPriceChangeVal = 38; //盘后涨跌额
+		SortField_PreChangeRate = 39; //盘前涨跌幅%
+		SortField_AfterChangeRate = 40; //盘后涨跌幅%
+		SortField_PreAmplitude = 41; //盘前振幅%
+		SortField_AfterAmplitude = 42; //盘后振幅%
+		SortField_PreTurnover = 43; //盘前成交额
+		SortField_AfterTurnover = 44; //盘后成交额
 	}
 	
 -----------------------------------------------
@@ -655,6 +831,7 @@ Issuer - 涡轮发行人
 		Issuer_HT = 20; //海通
 		Issuer_VT = 21; //瑞通
 		Issuer_KC = 22; //比联
+		Issuer_MS = 23; //摩利
 	}
 	
 -----------------------------------------------
@@ -676,7 +853,7 @@ IpoPeriod - 涡轮上市日
 	
 -----------------------------------------------
 
-PriceType - 涡轮价外/内
+PriceType - 涡轮价(界)外/内
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -684,8 +861,8 @@ PriceType - 涡轮价外/内
 	enum PriceType
 	{
 		PriceType_Unknow = 0;
-		PriceType_Outside = 1; //价外
-		PriceType_WithIn = 2; //价内
+		PriceType_Outside = 1; //价外,界内证表示界外
+		PriceType_WithIn = 2; //价内,界内证表示界内
 	}
 	
 -----------------------------------------------
@@ -705,6 +882,61 @@ WarrantStatus - 涡轮状态
 	}
 			
 -----------------------------------------------
+
+QotRight - 行情权限
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum QotRight
+	{
+		QotRight_Unknow = 0; //未知
+		QotRight_Bmp = 1; //Bmp，无法订阅
+		QotRight_Level1 = 2; //Level1
+		QotRight_Level2 = 3; //Level2
+	}
+				
+-----------------------------------------------------------------------------
+
+StockField - 条件选股的简单属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum StockField
+	{
+		StockField_Unknown = 0; // 未知
+		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
+		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
+		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
+		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
+		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
+		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
+		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
+		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
+		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+SortDir - 条件选股的排序方向
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum SortDir
+	{
+		SortDir_No = 0; // 不排序
+		SortDir_Ascend = 1; // 升序
+		SortDir_Descend = 2; // 降序
+	}
+						
+-----------------------------------------------------------------------------
 
 Security - 证券标识
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -740,15 +972,15 @@ KLine - K线数据点
 		optional double changeRate = 12; //涨跌幅（该字段为百分比字段，默认不展示%）
 		optional double timestamp = 13; //时间戳
 	}
-		
------------------------------------------------
 
-BasicQot - 基础报价
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------------------------------------------------
+
+OptionBasicQotExData - 基础报价的期权特有字段
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
 
-	 message OptionBasicQotExData
+	message OptionBasicQotExData
 	{
 		required double strikePrice = 1; //行权价
 		required int32 contractSize = 2; //每份合约数
@@ -760,8 +992,23 @@ BasicQot - 基础报价
 		required double vega = 8; //希腊值 Vega
 		required double theta = 9; //希腊值 Theta
 		required double rho = 10; //希腊值 Rho
-	}
-	
+		
+		//以下字段仅支持港股期权
+		optional int32 netOpenInterest = 11; //净未平仓合约数
+		optional int32 expiryDateDistance = 12; //距离到期日天数
+		optional double contractNominalValue = 13; //合约名义金额
+		optional double ownerLotMultiplier = 14; //相等正股手数，指数期权无该字段
+		optional int32 optionAreaType = 15; //OptionAreaType, 期权地区类型
+		optional double contractMultiplier = 16; //合约乘数，指数期权特有字段
+	}		
+
+----------------------------------------------------------------------------------------------
+
+BasicQot - 基础报价
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
 	message BasicQot
 	{
 		required Security security = 1; //股票
@@ -782,9 +1029,33 @@ BasicQot - 基础报价
 		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 		optional double listTimestamp = 17; //上市日期时间戳
 		optional double updateTimestamp = 18; //更新时间戳
+		optional PreAfterMarketData preMarket = 19; //盘前数据
+		optional PreAfterMarketData afterMarket = 20; //盘后数据
+		optional int32 secStatus = 21; //SecurityStatus, 股票状态
 	}
 		
------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+PreAfterMarketData - 盘前盘后数据
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ .. code-block:: protobuf
+	
+	//美股支持盘前盘后数据
+	//科创板仅支持盘后数据：成交量，成交额
+	message PreAfterMarketData
+	{
+	    optional double price = 1;  // 盘前或盘后 - 价格
+	    optional double highPrice = 2;  // 盘前或盘后 - 最高价
+	    optional double lowPrice = 3;  // 盘前或盘后 - 最低价
+	    optional int64 volume = 4;  // 盘前或盘后 - 成交量
+	    optional double turnover = 5;  // 盘前或盘后 - 成交额
+	    optional double changeVal = 6;  // 盘前或盘后 - 涨跌额
+	    optional double changeRate = 7;  // 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）
+	    optional double amplitude = 8;  // 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）
+	}
+
+-----------------------------------------------------------------------------------------------------------
 
 TimeShare - 分时数据点
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -851,6 +1122,9 @@ OptionStaticExData - 期权额外静态信息
 		required double strikePrice = 4; //行权价
 		required bool suspend = 5; //是否停牌
 		required string market = 6; //发行市场名字
+		optional double strikeTimestamp = 7; //行权日时间戳
+		optional int32 indexOptionType = 8; //Qot_Common.IndexOptionType, 指数期权的类型，仅在指数期权有效
+
 	}
 			
 -----------------------------------------------
@@ -1111,8 +1385,23 @@ OrderType - 订单类型
 		OrderType_Auction = 6; //竞价订单(目前仅港股)，A股的早盘竞价订单类型不变还是OrderType_Normal
 		OrderType_AuctionLimit = 7; //竞价限价订单(目前仅港股)
 		OrderType_SpecialLimit = 8; //特别限价订单(目前仅港股)，成交规则同增强限价订单，且部分成交后，交易所自动撤销订单
+		OrderType_SpecialLimit_All = 9; //特别限价且要求全部成交订单(目前仅港股)，要么全部成交，要么自动撤单
 	}
 
+
+-----------------------------------------------
+
+OrderFillStatus - 一笔成交的状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum OrderFillStatus
+	{
+		OrderFillStatus_OK = 0; //正常
+		OrderFillStatus_Cancelled = 1; //成交被取消
+		OrderFillStatus_Changed = 2; //成交被更改
+	}
 
 -----------------------------------------------
 
@@ -1150,6 +1439,20 @@ ModifyOrderOp - 修改订单操作类型
 
 -----------------------------------------------
 
+TrdAccType - 交易账户类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	enum TrdAccType
+	{
+		TrdAccType_Unknown = 0; //未知类型
+		TrdAccType_Cash = 1;    //现金账户
+		TrdAccType_Margin = 2;  //保证金账户
+	};
+
+-----------------------------------------------	
+
 ReconfirmOrderReason - 确认订单类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1163,6 +1466,7 @@ ReconfirmOrderReason - 确认订单类型
 	};
 
 -----------------------------------------------	
+
 
 TrdHeader - 交易公共参数头
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1188,6 +1492,8 @@ TrdAcc - 交易账户
 		required int32 trdEnv = 1; //交易环境，参见TrdEnv的枚举定义
 		required uint64 accID = 2; //业务账号
 		repeated int32 trdMarketAuthList = 3; //业务账户支持的交易市场权限，即此账户能交易那些市场, 可拥有多个交易市场权限，目前仅单个，取值参见TrdMarket的枚举定义
+		optional int32 accType = 4;   //账户类型，取值见TrdAccType
+		optional string cardNum = 5;  //卡号
 	}
 
 -----------------------------------------------
@@ -1264,6 +1570,7 @@ Order - 订单
 		optional int32 secMarket = 15; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 		optional double createTimestamp = 16; //创建时间戳
 		optional double updateTimestamp = 17; //最后更新时间戳
+		optional string remark = 18; //用户备注字符串，最大长度64字节
 	}
 
 -----------------------------------------------
@@ -1289,6 +1596,8 @@ OrderFill - 成交
 		optional string counterBrokerName = 12; //对手经纪名称，港股有效
 		optional int32 secMarket = 13; //（2018/07/17新增）证券所属市场，参见TrdSecMarket的枚举定义
 		optional double createTimestamp = 14; //时间戳
+		optional double updateTimestamp = 15; //最后更新时间戳
+		optional int32 status = 16; //成交状态, 参见OrderFillStatus的枚举定义
 	}
 
 -----------------------------------------------
@@ -1326,6 +1635,22 @@ TrdFilterConditions - 过滤条件
 	 
 -----------------------------------------------
 
+TrdSecMarket - 可交易证券所属市场
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	//可交易证券所属市场，目前主要是区分A股的沪市和深市，香港和美国暂不需要细分
+	enum TrdSecMarket
+	{
+		TrdSecMarket_Unknown = 0; //未知市场
+		TrdSecMarket_HK = 1; //香港的(正股、窝轮等)
+		TrdSecMarket_US = 2; //美国的(正股、期权等)
+		TrdSecMarket_CN_SH = 31; //沪市的(正股)
+		TrdSecMarket_CN_SZ = 32; //深市的(正股)
+	}
+	 
+-----------------------------------------------
 
 
 

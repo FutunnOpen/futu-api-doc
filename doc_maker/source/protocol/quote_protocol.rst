@@ -34,6 +34,7 @@
 		optional bool isRegOrUnRegPush = 4; //是否注册或反注册该连接上面行情的推送,该参数不指定不做注册反注册操作
 		repeated int32 regPushRehabTypeList = 5; //Qot_Common.RehabType,复权类型,注册推送并且是K线类型才生效,其他订阅类型忽略该参数,注册K线推送时该参数不指定默认前复权
 		optional bool isFirstPush = 6; //注册后如果本地已有数据是否首推一次已存在数据,该参数不指定则默认true
+		optional bool isUnsubAll = 7; //一键取消当前连接的所有订阅,当被设置为True时忽略其他参数。
 	}
 
 	message S2C
@@ -983,6 +984,7 @@
 		optional int32 market = 1; //Qot_Common.QotMarket,股票市场
 		optional int32 secType = 2; //Qot_Common.SecurityType,股票类型
 		repeated Qot_Common.Security securityList = 3; //股票，若该字段存在，忽略其他字段，只返回该字段股票的静态信息
+		//当传入程序无法识别的股票时（包括很久之前退市的股票和不存在的股票），仍然返回股票信息，用静态信息标志来该股票不存在。
 	}
 
 	message S2C
@@ -1027,7 +1029,7 @@
 		repeated Qot_Common.Security securityList = 1; //股票
 	}
 
-	// 正股类型额外数据
+	 // 正股类型额外数据
 	message EquitySnapshotExData
 	{
 		required int64 issuedShares = 1; // 发行股本,即总股本
@@ -1042,9 +1044,13 @@
 		required double peRate = 10; // 市盈率
 		required double pbRate = 11; // 市净率
 		required double peTTMRate = 12; // 市盈率TTM
+		optional double dividendTTM = 13; // 股息TTM，派息
+		optional double dividendRatioTTM = 14; // 股息率TTM（该字段为百分比字段，默认不展示%）
+		optional double dividendLFY = 15; // 股息LFY，上一年度派息
+		optional double dividendLFYRatio = 16; // 股息率LFY（该字段为百分比字段，默认不展示%）
 	}
 
-	// 涡轮类型额外数据
+	 // 涡轮类型额外数据
 	message WarrantSnapshotExData
 	{
 		required double conversionRate = 1; //换股比率
@@ -1053,18 +1059,27 @@
 		required string maturityTime = 4; //到期日时间字符串
 		required string endTradeTime = 5; //最后交易日时间字符串
 		required Qot_Common.Security owner = 6; //所属正股 
-		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段过滤
+		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段
 		required int64 streetVolumn = 8; //街货量
 		required int64 issueVolumn = 9; //发行量
 		required double streetRate = 10; //街货占比（该字段为百分比字段，默认不展示%）
-		required double delta = 11; //对冲值,仅认购认沽支持该字段过滤
-		required double impliedVolatility = 12; //引伸波幅,仅认购认沽支持该字段过滤
+		required double delta = 11; //对冲值,仅认购认沽支持该字段
+		required double impliedVolatility = 12; //引申波幅,仅认购认沽支持该字段
 		required double premium = 13; //溢价（该字段为百分比字段，默认不展示%）
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
+		optional double leverage = 16;  // 杠杆比率（倍）
+		optional double ipop = 17; // 价内/价外（该字段为百分比字段，默认不展示%）
+		optional double breakEvenPoint = 18; // 打和点
+		optional double conversionPrice = 19;  // 换股价
+		optional double priceRecoveryRatio = 20; // 正股距收回价（该字段为百分比字段，默认不展示%）
+		optional double score = 21; // 综合评分
+		optional double upperStrikePrice = 22; //上限价，仅界内证支持该字段
+		optional double lowerStrikePrice = 23; //下限价，仅界内证支持该字段
+		optional int32 inLinePriceStatus = 24; //Qot_Common.PriceType, 界内界外，仅界内证支持该字段
 	}
 
-	// 期权类型额外数据
+	 // 期权类型额外数据
 	message OptionSnapshotExData
 	{
 		required int32 type = 1; //Qot_Common.OptionType,期权
@@ -1080,10 +1095,35 @@
 		required double vega = 11; //希腊值 Vega
 		required double theta = 12; //希腊值 Theta
 		required double rho = 13; //希腊值 Rho
-		optional double strikeTimestamp = 14; //行权日时间戳		
+		optional double strikeTimestamp = 14; //行权日时间戳  
+		
+		//以下字段仅支持港股期权
+		optional int32 indexOptionType = 15; //Qot_Common.IndexOptionType, 指数期权的类型，仅在指数期权有效
+		optional int32 netOpenInterest = 16; //净未平仓合约数
+		optional int32 expiryDateDistance = 17; //距离到期日天数
+		optional double contractNominalValue = 18; //合约名义金额
+		optional double ownerLotMultiplier = 19; //相等正股手数，指数期权无该字段
+		optional int32 optionAreaType = 20; //OptionAreaType, 期权地区类型
+		optional double contractMultiplier = 21; //合约乘数，指数期权特有字段
 	}
 
-	// 基本快照数据
+	// 指数类型额外数据
+	message IndexSnapshotExData
+	{
+		required int32 raiseCount = 1;  // 上涨支数
+		required int32 fallCount = 2;  // 下跌支数
+		required int32 equalCount = 3;  // 平盘支数
+	}
+
+	// 板块类型额外数据
+	message PlateSnapshotExData
+	{
+		required int32 raiseCount = 1;  // 上涨支数
+		required int32 fallCount = 2;  // 下跌支数
+		required int32 equalCount = 3;  // 平盘支数
+	}
+
+	 //基本快照数据
 	message SnapshotBasicData
 	{
 		required Qot_Common.Security security = 1; //股票
@@ -1091,9 +1131,9 @@
 		required bool isSuspend = 3; //是否停牌
 		required string listTime = 4; //上市时间字符串
 		required int32 lotSize = 5; //每手数量
-		required double priceSpread = 6; //向上价差
+		required double priceSpread = 6; //价差
 		required string updateTime = 7; //更新时间字符串
-		required double highPrice = 8; //最新价
+		required double highPrice = 8; //最高价
 		required double openPrice = 9; //开盘价
 		required double lowPrice = 10; //最低价
 		required double lastClosePrice = 11; //昨收价
@@ -1113,7 +1153,18 @@
 		optional bool enableShortSell = 25; // 是否可卖空，如果为true，后三个字段才有意义
 		optional double shortSellRate = 26; // 卖空参考利率（该字段为百分比字段，默认不展示%）
 		optional int64 shortAvailableVolume = 27; // 剩余可卖空数量（股）
-		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）	
+		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）
+		optional double amplitude = 29; // 振幅（该字段为百分比字段，默认不展示%）
+		optional double avgPrice = 30; // 平均价
+		optional double bidAskRatio = 31; // 委比（该字段为百分比字段，默认不展示%）
+		optional double volumeRatio = 32;  // 量比
+		optional double highest52WeeksPrice = 33;  // 52周最高价
+		optional double lowest52WeeksPrice = 34;  // 52周最低价
+		optional double highestHistoryPrice = 35;  // 历史最高价
+		optional double lowestHistoryPrice = 36;  // 历史最低价
+		optional Qot_Common.PreAfterMarketData preMarket = 37; //Qot_Common::PreAfterMarketData 盘前数据
+		optional Qot_Common.PreAfterMarketData afterMarket = 38; //Qot_Common::PreAfterMarketData 盘后数据
+		optional int32 secStatus = 39; //Qot_Common::SecurityStatus 股票状态
 	}
 
 	message Snapshot
@@ -1122,6 +1173,8 @@
 		optional EquitySnapshotExData equityExData = 2; //正股快照额外数据
 		optional WarrantSnapshotExData warrantExData = 3; //窝轮快照额外数据
 		optional OptionSnapshotExData optionExData = 4; //期权快照额外数据
+		optional IndexSnapshotExData indexExData = 5; //指数快照额外数据
+		optional PlateSnapshotExData plateExData = 6; //板块快照额外数据
 	}
 
 	message S2C
@@ -1142,6 +1195,7 @@
 		
 		optional S2C s2c = 4;
 	}
+
 
 .. note::
 
@@ -1210,6 +1264,9 @@
 	message C2S
 	{
 		required Qot_Common.Security plate = 1; //板块
+		optional int32 sortField = 2;//Qot_Common.SortField,根据哪个字段排序,不填默认Code排序
+		optional bool ascend = 3;//升序ture, 降序false, 不填默认升序
+
 	}
 
 	message S2C
@@ -1411,6 +1468,7 @@
     message C2S
     {
         required Qot_Common.Security owner = 1; //期权标的股
+		optional int32 indexOptionType = 6; //Qot_Common.IndexOptionType, 指数期权的类型，仅用于恒指国指
         optional int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
         optional int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
         required string beginTime = 4; //期权到期日开始时间
@@ -1555,6 +1613,9 @@
 		optional double impliedVolatility = 41; //引伸波幅,仅认购认沽支持该字段
 		optional double delta = 42; //对冲值,仅认购认沽支持该字段
 		required double effectiveLeverage = 43; //有效杠杆		
+		optional double upperStrikePrice = 44; //上限价，仅界内证支持该字段
+		optional double lowerStrikePrice = 45; //下限价，仅界内证支持该字段
+		optional int32 inLinePriceStatus = 46; //Qot_Common.PriceType, 界内界外，仅界内证支持该字段
 	}
 
 	message S2C
@@ -1733,3 +1794,404 @@
 	* 限频接口：30秒内最多10次	
 
 -------------------------------------
+
+`Qot_GetUserSecurity.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurity.proto>`_ - 3213获取自选股分组下的股票
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetUserSecurity;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		required string groupName = 1; //分组名,有同名的返回最先创建的
+	}
+
+	message S2C
+	{
+		repeated Qot_Common.SecurityStaticInfo staticInfoList = 1; //自选股分组下的股票列表
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票静态信息结构参考 `SecurityStaticInfo <base_define.html#securitystaticbasic>`_
+	* 限频接口：30秒内最多10次	
+	* 仅支持自定义分组
+	
+-------------------------------------
+
+`Qot_ModifyUserSecurity.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_ModifyUserSecurity.proto>`_ - 3214修改自选股分组下的股票
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_ModifyUserSecurity;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum ModifyUserSecurityOp
+	{
+		ModifyUserSecurityOp_Unknown = 0;
+		ModifyUserSecurityOp_Add = 1; //新增
+		ModifyUserSecurityOp_Del = 2; //删除
+	}
+
+	message C2S
+	{
+		required string groupName = 1; //分组名,有同名的返回最先创建的
+		required int32 op = 2; //ModifyUserSecurityOp,操作类型
+		repeated Qot_Common.Security securityList = 3; //新增或删除该分组下的股票
+	}
+
+	message S2C
+	{
+		
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 限频接口：30秒内最多10次	
+	* 仅支持自定义分组
+	
+-------------------------------------
+
+`Qot_StockFilter.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_StockFilter.proto>`_ - 3215获取条件选股
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_StockFilter;
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+	
+	// 简单属性
+	enum StockField 
+	{
+		StockField_Unknown = 0; // 未知
+		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
+		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
+		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,0.52]值区间
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,0.68]值区间
+		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
+		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
+		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
+		StockField_MarketVal = 11; // 市值，单位是元 例如填写[50000000,3000000000]值区间
+		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
+		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
+		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+	};
+		
+	// 排序方向
+	enum SortDir
+	{
+		SortDir_No = 0; // 不排序
+		SortDir_Ascend = 1; // 升序
+		SortDir_Descend = 2; // 降序
+	};
+	
+	// 简单属性筛选
+	message BaseFilter 
+	{ 
+		required int32 field = 1; // StockField 简单属性
+		optional double filterMin = 2; // 区间下限，闭区间
+		optional double filterMax = 3; // 区间上限，闭区间
+		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
+	};
+
+	// 简单属性数据
+	message BaseData 
+	{ 
+		required int32 field = 1; // StockField 简单属性
+		required double value = 2;
+	};
+	
+	// 返回的股票数据
+	message StockData 
+	{
+		required Qot_Common.Security security = 1; // 股票
+		required string name = 2; // 股票名称
+		repeated BaseData baseDataList = 3; // 筛选后的简单属性数据
+	};
+	
+	message C2S
+	{
+		required int32 begin = 1; // 数据起始点
+		required int32 num =  2;  // 请求数据个数，最大200		
+		required int32 market= 3; // Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+		// 以下为筛选条件，可选字段，不填表示不过滤
+		optional Qot_Common.Security plate = 4; // 板块
+		repeated BaseFilter baseFilterList = 5; // 简单行情过滤器
+	}
+
+	message S2C
+	{
+		required bool lastPage = 1; // 是否最后一页了,false:非最后一页,还有窝轮记录未返回; true:已是最后一页
+		required int32 allCount = 2; // 该条件请求所有数据的个数
+		repeated StockData dataList = 3; // 返回的股票数据列表
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 市场类型参考 `QotMarket <base_define.html#qotmarket>`_
+	* 简单属性筛选条件参考 `StockField <base_define.html#stockfield>`_
+	* 排序方向参考 `SortDir <base_define.html#sortdir>`_
+	* 限频接口：30秒内最多10次	
+	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
+		
+-------------------------------------
+
+`Qot_GetIpoList.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetIpoList.proto>`_ - 3217获取IPO信息
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+    package Qot_GetIpoList;
+    option java_package = "com.futu.openapi.pb";
+
+    import "Common.proto";
+    import "Qot_Common.proto";
+
+    // Ipo基本数据
+    message BasicIpoData
+    {
+        required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+        required string name = 2; // 股票名称
+        optional string listTime = 3; // 上市日期字符串
+        optional double listTimestamp = 4; // 上市日期时间戳
+    };
+
+    // A股Ipo列表额外数据
+    message CNIpoExData 
+    {
+        required string applyCode = 1; // 申购代码
+        required int64 issueSize = 2; // 发行总数
+        required int64 onlineIssueSize = 3; // 网上发行量
+        required int64 applyUpperLimit = 4; // 申购上限
+        required int64 applyLimitMarketValue = 5; // 顶格申购需配市值
+        required bool isEstimateIpoPrice = 6; // 是否预估发行价
+        required double ipoPrice = 7; // 发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。
+        required double industryPeRate = 8; // 行业市盈率
+        required bool isEstimateWinningRatio = 9; // 是否预估中签率
+        required double winningRatio = 10; // 中签率 该字段为百分比字段，默认不展示%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。
+        required double issuePeRate = 11; // 发行市盈率
+        optional string applyTime = 12; // 申购日期字符串
+        optional double applyTimestamp = 13; // 申购日期时间戳
+        optional string winningTime = 14; // 公布中签日期字符串
+        optional double winningTimestamp = 15; // 公布中签日期时间戳
+        required bool isHasWon = 16; // 是否已经公布中签号
+        repeated WinningNumData winningNumData = 17; // Qot_GetIpoList::WinningNumData 中签号数据，对应PC中"公布中签日期的已公布"
+    };
+
+    // 中签号数据
+    message WinningNumData
+    {
+        required string winningName = 1; // 分组名
+        required string winningInfo = 2; // 中签号信息
+    }
+
+    // 港股Ipo列表额外数据
+    message HKIpoExData
+    {
+        required double ipoPriceMin = 1; // 最低发售价
+        required double ipoPriceMax = 2; // 最高发售价
+        required double listPrice = 3; // 上市价
+        required int32 lotSize = 4; // 每手股数
+        required double entrancePrice = 5; // 入场费
+        required bool isSupportIpo = 6; // 是否有认购阶段
+        optional string applyEndTime = 7; // 截止认购日期字符串
+        optional double applyEndTimestamp = 8; // 截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期。
+    };
+
+    // 美股Ipo列表额外数据
+    message USIpoExData  
+    {
+        required double ipoPriceMin = 1; // 最低发行价
+        required double ipoPriceMax = 2; // 最高发行价
+        required int64 issueSize = 3; // 发行量
+    };
+
+    // 新股Ipo数据
+    message IpoData
+    {    
+        required BasicIpoData basic = 1; // IPO基本数据    
+        optional CNIpoExData cnExData = 2; // A股IPO额外数据
+        optional HKIpoExData hkExData = 3; // 港股IPO额外数据
+        optional USIpoExData usExData = 4; // 美股IPO额外数据
+    };
+
+    message C2S
+    {
+        required int32 market = 1; // Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+    }
+
+    message S2C
+    {
+        repeated IpoData ipoList = 1; // 新股IPO数据
+    }
+
+    message Request
+    {
+        required C2S c2s = 1;
+    }
+
+    message Response
+    {
+        required int32 retType = 1 [default = -400]; //RetType,返回结果
+        optional string retMsg = 2;
+        optional int32 errCode = 3;
+        
+        optional S2C s2c = 4;
+    }
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 限频接口：30秒内最多10次	
+	
+-------------------------------------
+
+`Qot_GetCodeChange.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCodeChange.proto>`_ - 3216获取股票代码变更信息
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetCodeChange;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum CodeChangeType
+	{
+		CodeChangeType_Unkown = 0; //未知
+		CodeChangeType_GemToMain = 1; //创业板转主板
+		CodeChangeType_Unpaid = 2; //买卖未缴款供股权
+		CodeChangeType_ChangeLot = 3; //更改买卖单位
+		CodeChangeType_Split = 4; //拆股
+		CodeChangeType_Joint = 5; //合股
+		CodeChangeType_JointSplit = 6; //股份先并后拆
+		CodeChangeType_SplitJoint = 7; //股份先拆后并
+		CodeChangeType_Other = 8; //其他
+	}
+
+	message CodeChangeInfo
+	{
+		required int32 type = 1; //CodeChangeType,代码变化或者新增临时代码的事件类型
+		required Qot_Common.Security security = 2; //主代码，在创业板转主板中表示主板
+		required Qot_Common.Security relatedSecurity = 3; //关联代码，在创业板转主板中表示创业板，在剩余事件中表示临时代码
+		optional string publicTime = 4; //公布时间
+		optional double publicTimestamp = 5; //公布时间戳
+		optional string effectiveTime = 6; //生效时间
+		optional double effectiveTimestamp = 7; //生效时间戳
+		optional string endTime = 8; //结束时间，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间
+		optional double endTimestamp = 9; //结束时间戳，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间
+	}
+
+	enum TimeFilterType
+	{
+		TimeFilterType_Unknow = 0;
+		TimeFilterType_Public = 1; //根据公布时间过滤
+		TimeFilterType_Effective = 2; //根据生效时间过滤
+		TimeFilterType_End = 3; //根据结束时间过滤
+	}
+
+	message TimeFilter
+	{
+		required int32 type = 1; //TimeFilterType, 过滤类型
+		optional string beginTime = 2; //开始时间点
+		optional string endTime = 3; //结束时间点
+	}
+
+	message C2S
+	{
+		optional int32 placeHolder = 1; //占位
+		repeated Qot_Common.Security securityList = 2; //根据股票筛选
+		repeated TimeFilter timeFilterList = 3; //根据时间筛选
+		repeated int32 typeList = 4; //CodeChangeType，根据类型筛选
+	}
+
+	message S2C
+	{
+		repeated CodeChangeInfo codeChangeList = 1; //股票代码更换信息，目前仅有港股数据
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+
+.. note::
+  
+  * 股票结构参考 `Security <base_define.html#security>`_
+
+	

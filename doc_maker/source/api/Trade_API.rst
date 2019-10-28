@@ -14,13 +14,15 @@
  
  .. _TrdSide: Base_API.html#trdside
  
- .. _order-list-query: #id4
- 
- .. _deal-list-query: #id7
- 
  .. _ModifyOrderOp: Base_API.html#ModifyOrderOp
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
+
+ .. _TrdAccType: Base_API.html#trdacctype
+
+ .. _DealStatus: Base_API.html#dealstatus
+
+ .. _FreqLimit: ../protocol/intro.html#id27
  
 一分钟上手
 ==============
@@ -92,6 +94,8 @@ get_acc_list - 获取交易业务账户列表
  ==============   ===========   ===================================================================
  acc_id           int           交易业务账户
  trd_env          str           交易环境， TrdEnv_ TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ acc_type         str           账户类型，见 TrdAccType_
+ card_num         str           卡号，同客户端内的展示
  ==============   ===========   ===================================================================
 
  :example:
@@ -134,25 +138,26 @@ unlock_trade - 解锁交易
 accinfo_query - 获取账户资金数据
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: accinfo_query(self, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+..  py:function:: accinfo_query(self, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0, refresh_cache=False)
 
  获取账户资金数据。获取账户的资产净值、证券市值、现金、购买力等资金数据。
 
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
- =====================        ===========   ===================================================================
- 参数                         类型          说明
- =====================        ===========   ===================================================================
+ =====================        ===========   =============================================================================================
+ 参数                          类型          说明
+ =====================        ===========   =============================================================================================
  power                        float         购买力，即可使用用于买入的资金
  total_assets                 float         资产净值
  cash                         float         现金
  market_val                   float         证券市值
  frozen_cash                  float         冻结金额
  avl_withdrawal_cash          float         可提金额
- =====================        ===========   ===================================================================
+ =====================        ===========   =============================================================================================
  
  :example:
  
@@ -171,7 +176,7 @@ accinfo_query - 获取账户资金数据
 position_list_query - 获取账户持仓列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: position_list_query(self, code='', pl_ratio_min=None, pl_ratio_max=None, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+..  py:function:: position_list_query(self, code='', pl_ratio_min=None, pl_ratio_max=None, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0, refresh_cache=False)
 
  获取账户持仓列表。获取账户的证券持仓列表。
 
@@ -181,6 +186,7 @@ position_list_query - 获取账户持仓列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   ===================================================================
@@ -189,9 +195,9 @@ position_list_query - 获取账户持仓列表
  position_side                str           持仓方向，PositionSide.LONG(多仓)或PositionSide.SHORT(空仓)
  code                         str           代码
  stock_name                   str           名称
- qty                          float         持有数量，2位精度，期权单位是"张"，下同
- can_sell_qty                 float         可卖数量
- nominal_price                float         市价，3位精度(A股2位)
+ qty                          float         持有数量，整数，期权单位是"张"，下同
+ can_sell_qty                 float         可卖数量，整数
+ nominal_price                float         市价，3位小数，超过四舍五入
  cost_price                   float        	成本价，无精度限制
  cost_price_valid             bool          成本价是否有效，True有效，False无效
  market_val                   float         市值，3位精度(A股2位)
@@ -200,9 +206,9 @@ position_list_query - 获取账户持仓列表
  pl_val                       float         盈亏金额，3位精度(A股2位)
  pl_val_valid                 bool          盈亏金额是否有效，True有效，False无效
  today_pl_val                 float         今日盈亏金额，3位精度(A股2位)，下同
- today_buy_qty                float         今日买入总量
+ today_buy_qty                float         今日买入总量，整数
  today_buy_val                float         今日买入总额
- today_sell_qty               float         今日卖出总量
+ today_sell_qty               float         今日卖出总量，整数
  today_sell_val               float         今日卖出总额
  =====================        ===========   ===================================================================
  
@@ -222,14 +228,14 @@ position_list_query - 获取账户持仓列表
 place_order - 下单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: place_order(self, price, qty, code, trd_side, order_type=OrderType.NORMAL, adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+..  py:function:: place_order(self, price, qty, code, trd_side, order_type=OrderType.NORMAL, adjust_limit=0, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0, remark=None)
 
  下单交易。
  
  注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。
 
- :param price: float，订单价格，3位精度(A股2位)，当订单是市价单或竞价单类型，忽略该参数传值
- :param qty: float，订单数量，2位精度，期权单位是"张"
+ :param price: float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值
+ :param qty: float，订单数量，整数，期权单位是"张"
  :param code: str，代码
  :param trd_side: str，交易方向，参考 TrdSide_ 类的定义
  :param order_type: str，订单类型，参考 OrderType_ 类的定义
@@ -237,7 +243,8 @@ place_order - 下单
  :param trd_env: str，交易环境 TrdEnv_ ，  TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 order-list-query_ (获取订单列表)相同。
+ :param remark: str，备注，转成utf8后的长度不能超过64字节。后面订单数据都会带上这个备注。用户自己使用，OpenD不做处理，仅作为订单数据存储。
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟下面的 order_list_query_ (获取订单列表)相同。
  
 	如果是OpenHKCCTradeContext，返回数据中order_type仅有OrderType.NORMAL
 
@@ -261,7 +268,7 @@ place_order - 下单
 order_list_query - 获取订单列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: order_list_query(self, order_id="", status_filter_list=[], code='', start='', end='', trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+..  py:function:: order_list_query(self, order_id="", status_filter_list=[], code='', start='', end='', trd_env=TrdEnv.REAL, acc_id=0, acc_index=0, refresh_cache=False)
 
  获取订单列表。获取账户的交易订单列表。
 
@@ -273,6 +280,7 @@ order_list_query - 获取订单列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   =======================================================================
@@ -284,13 +292,14 @@ order_list_query - 获取订单列表
  order_id                     str           订单号
  code                         str           代码
  stock_name                   str           名称
- qty                          float         订单数量，2位精度，期权单位是"张"
- price                        float         订单价格，3位精度(A股2位)
+ qty                          float         订单数量，整数，期权单位是"张"
+ price                        float         订单价格，3位小数，超过四舍五入
  create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- updated_time                 str        	最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- dealt_qty                    float         成交数量，2位精度，期权单位是"张"
+ updated_time                 str        	  最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+ dealt_qty                    float         成交数量，整数，期权单位是"张"
  dealt_avg_price              float         成交均价，无精度限制
  last_err_msg                 str           最后的错误描述，如果有错误，会有此描述最后一次错误的原因，无错误为空
+ remark                       str           备注，详见 place_order_ 的说明。
  =====================        ===========   =======================================================================
  
  :example:
@@ -317,8 +326,8 @@ modify_order - 修改订单
 
  :param modify_order_op: str，改单操作类型，参考 ModifyOrderOp_ 类的定义，有
  :param order_id: str，订单号
- :param qty: float，(改单有效)新的订单数量，2位精度，期权单位是"张"
- :param price: float，(改单有效)新的订单价格，3位精度(A股2位)
+ :param qty: float，(改单有效)新的订单数量，整数，期权单位是"张"
+ :param price: float，(改单有效)新的订单价格，3位小数，超过四舍五入
  :param adjust_limit: folat，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
@@ -346,8 +355,39 @@ modify_order - 修改订单
   
 .. note::
 
-	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
+   * 接口限制请参见 `改单限制 <../protocol/intro.html#id31>`_
 	
+----------------------------
+
+cancel_all_order - 撤消全部订单
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: cancel_all_order(self, trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+
+ 撤消全部订单。
+
+ :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)，仿真环境不支持该协议。
+ :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
+ :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
+ :return(ret_code, ret_data): ret_code为RET_OK时，表示发送请求成功，具体撤单回调消息参考 `TradeOrderHandlerBase <./Trade_API.html?highlight=tradeorderhandlerbase#id12>`_
+
+
+ :example:
+
+ .. code:: python
+
+  from futu import *
+  pwd_unlock = '123456'
+  trd_ctx = OpenHKTradeContext(host='127.0.0.1', port=11111)
+  print(trd_ctx.unlock_trade(pwd_unlock))
+  print(trd_ctx.cancel_all_order())
+  trd_ctx.close()
+
+.. note::
+
+   * 接口限制请参见 `改单限制 <../protocol/intro.html#id31>`_
+   * 模拟交易以及A股通暂不支持全部撤单
+
 ----------------------------
 
 change_order - 改单(老接口，兼容以前)
@@ -358,8 +398,8 @@ change_order - 改单(老接口，兼容以前)
  改单(老接口，兼容以前)。改单，即修改订单的价格和数量，是modify_order修改订单的一种操作，为兼容以前，保留此接口，新写代码请使用modify_order。
 
  :param order_id: str，订单号
- :param qty: float，(改单有效)新的订单数量，2位精度，期权单位是"张"
- :param price: float，(改单有效)新的订单价格，3位精度(A股2位)
+ :param qty: float，(改单有效)新的订单数量，整数，期权单位是"张"
+ :param price: float，(改单有效)新的订单价格，3位小数，超过四舍五入
  :param adjust_limit: folat，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，传0默认第一个账户
@@ -388,14 +428,15 @@ change_order - 改单(老接口，兼容以前)
 deal_list_query - 获取成交列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: deal_list_query(self, code="", trd_env=TrdEnv.REAL, acc_id=0, acc_index=0)
+..  py:function:: deal_list_query(self, code="", trd_env=TrdEnv.REAL, acc_id=0, acc_index=0, refresh_cache=False)
 
  获取成交列表。获取账户的交易成交列表。
 
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
- :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ :param trd_env: str，交易环境 TrdEnv_ ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   ===================================================================
@@ -406,11 +447,12 @@ deal_list_query - 获取成交列表
  order_id                     str           订单号
  code                         str           代码
  stock_name                   str           名称
- qty                          float         成交数量，2位精度，期权单位是"张"
- price                        float         成交价格，3位精度(A股2位)
+ qty                          float         成交数量，整数，期权单位是"张"
+ price                        float         成交价格，3位小数，超过四舍五入
  create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
  counter_broker_id            int           对手经纪号，港股有效。OpenHKCCTradeContext无此字段
  counter_broker_name          str         	对手经纪名称，港股有效。OpenHKCCTradeContext无此字段
+ status                       str           成交状态，见 DealStatus_
  =====================        ===========   ===================================================================
  
  :example:
@@ -441,7 +483,7 @@ history_order_list_query - 获取历史订单列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order-list-query_ (获取订单列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order_list_query_ (获取订单列表)相同
  
  :example:
  
@@ -471,10 +513,10 @@ history_deal_list_query - 获取历史成交列表
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
  :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
  :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
+ :param trd_env: str，交易环境 TrdEnv_ ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal-list-query_ (获取成交列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal_list_query_ (获取成交列表)相同
  
  :example:
  
@@ -503,7 +545,7 @@ acctradinginfo_query - 查询账户下最大可买卖数量
  
  :param order_type: 订单类型，参见 OrderType_
  :param code: 证券代码，例如'HK.00700'
- :param price: 报价，3位精度
+ :param price: 报价，3位小数，超过四舍五入
  :param order_id: 订单号。如果是新下单，则可以传None。如果是改单则要传单号，此时计算最大可买可卖时会包括该订单所消耗的购买力，新下订单需要等待半秒才可使用该接口。
  :param adjust_limit: 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整
  :param trd_env: 交易环境，参见 TrdEnv_
@@ -517,11 +559,11 @@ acctradinginfo_query - 查询账户下最大可买卖数量
  =======================   ===========   ==================================================================================================
  参数                      类型          说明
  =======================   ===========   ==================================================================================================
- max_cash_buy              float         不使用融资，仅自己的现金最大可买整手股数
- max_cash_and_margin_buy   float         使用融资，自己的现金 + 融资资金总共的最大可买整手股数
- max_position_sell         float         不使用融券(卖空)，仅自己的持仓最大可卖整手股数
- max_sell_short            float         使用融券(卖空)，最大可卖空整手股数，不包括多仓
- max_buy_back              float         卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。
+ max_cash_buy              float         不使用融资，仅自己的现金最大可买整手股数。对于期权，单位是张。
+ max_cash_and_margin_buy   float         使用融资，自己的现金 + 融资资金总共的最大可买整手股数。对于期权，单位是张。
+ max_position_sell         float         不使用融券(卖空)，仅自己的持仓最大可卖整手股数。对于期权，单位是张。
+ max_sell_short            float         使用融券(卖空)，最大可卖空整手股数，不包括多仓。对于期权，单位是张。
+ max_buy_back              float         卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。对于期权，单位是张。
  =======================   ===========   ==================================================================================================
  
  :example:
@@ -555,7 +597,7 @@ on_recv_rsp - 响应订单推送
  该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，订单推送协议pb对象
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 order-list-query_ (获取订单列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的  order_list_query_  (获取订单列表)相同
 
  :example:
  
@@ -597,7 +639,7 @@ on_recv_rsp - 响应成交推送
  该类与place_order返回的顺序参见 place_order_ 的说明。
  
  :param rsp_pb: class，成交推送协议pb对象
- :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal-list-query_ (获取成交列表)相同
+ :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 deal_list_query_ (获取成交列表)相同
 
  :example:
  

@@ -24,7 +24,9 @@
   
   .. _Trd_SubAccPush.proto:  trade_protocol.html#trd-subaccpush-proto-2008
   .. _Trd_GetFunds.proto:  trade_protocol.html#trd-getfunds-proto-2101
+  .. _2101: trade_protocol.html#trd-getfunds-proto-2101
   .. _Trd_GetPositionList.proto:  trade_protocol.html#trd-getpositionlist-proto-2102
+  .. _2102:  trade_protocol.html#trd-getpositionlist-proto-2102
   
   .. _Trd_GetMaxTrdQtys.proto:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   .. _2111:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
@@ -40,6 +42,7 @@
   .. _Trd_UpdateOrder.proto:  trade_protocol.html#trd-updateorder-proto-2208
   
   .. _Trd_GetOrderFillList.proto:  trade_protocol.html#trd-getorderfilllist-proto-2211
+  .. _2211:  trade_protocol.html#trd-getorderfilllist-proto-2211
   .. _Trd_UpdateOrderFill.proto:  trade_protocol.html#trd-updateorderfill-proto-2218
   
   .. _Trd_GetHistoryOrderList.proto:  trade_protocol.html#trd-gethistoryorderlist-proto-2221
@@ -104,6 +107,18 @@
   .. _3211:  quote_protocol.html#qot-getcapitalflow-proto-3211
   .. _Qot_GetCapitalDistribution.proto:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
   .. _3212:  quote_protocol.html#qot-getcapitaldistribution-proto-3212
+
+  .. _Qot_GetUserSecurity.proto:  quote_protocol.html#qot-getusersecurity-proto-3213
+  .. _3213:  quote_protocol.html#qot-getusersecurity-proto-3213
+  
+  .. _Qot_ModifyUserSecurity.proto:  quote_protocol.html#qot-modifyusersecurity-proto-3214
+  .. _3214:  quote_protocol.html#qot-modifyusersecurity-proto-3214
+  
+  .. _Qot_StockFilter.proto:  quote_protocol.html#qot-stockfilter-proto-3215
+  .. _3215:  quote_protocol.html#qot-stockfilter-proto-3215
+  
+  .. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
+  .. _3217:  quote_protocol.html#qot-getipolist-proto-3217ipo
 
   .. role:: red-strengthen
 
@@ -173,6 +188,9 @@
  3210             Qot_GetWarrant.proto_                   获取涡轮
  3211             Qot_GetCapitalFlow.proto_               获取资金流向
  3212             Qot_GetCapitalDistribution.proto_       获取资金分布
+ 3213             Qot_GetUserSecurity.proto_       		  获取自选股分组下的股票
+ 3214             Qot_ModifyUserSecurity.proto_       	  修改自选股分组下的股票
+ 3215             Qot_StockFilter.proto_                  获取条件选股
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -252,6 +270,7 @@ API用户等级
   * 请求协议ID: 3103_
   * 30天内在线获取历史K线最多可请求股票数与用户等级相关，一级: :red-strengthen:`1000` , 二级: :red-strengthen:`300` , 三级:  :red-strengthen:`100`
   * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次，可分页的请求，第1页限频，后续页请求不限频
+  * 分K提供最近2年数据，日K及以上提供近10年数据。
   
 在线获取单只股票复权信息
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -293,6 +312,9 @@ API用户等级
 	* 最多返回前 :red-strengthen:`100` 大股东的变化
 	* 仅支持美股
 	
+
+.. _get-option-chain-limit:
+
 获取期权链
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3209_
@@ -318,6 +340,56 @@ API用户等级
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持正股、涡轮和基金
 
+获取自选股分组下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3213_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅支持自定义分组
+	
+修改自选股分组下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3214_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅支持自定义分组
+	* 自选股的上限，一般最多是 :red-strengthen:`500` 支股票。
+	* 如果有同名的分组，会返回排序第一个分组的信息。
+	* 用户分组的删除操作，只做本组的移除操作，系统分组的“全部”分组下股票的数量并不会减少。
+
+获取条件选股
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3215_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 每次请求的数据个数最多 :red-strengthen:`200` 个
+
+
+.. _get-ipo-list-limit:
+
+获取IPO列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3217_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+
+
+获取账户资金
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2101_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅当refreshCache为True时限制频率
+
+获取账户持仓
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2102_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅当refreshCache为True时限制频率
+
+获取成交列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2211_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅当refreshCache为True时限制频率
+
+
+	
 协议请求流程 
 -------------
 	* 建立连接
@@ -514,25 +586,3 @@ AES加解密
   * mod_len 为0时，上述解密后的数据即为协议返回的body数据, 否则需截掉尾部(16 - mod_len)长度的用于填充对齐的数据
 
   .. image:: ../_static/AES.png
-  
----------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-
-	
-	
-	
-
