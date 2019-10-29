@@ -1070,8 +1070,8 @@ BasicQot - 基础报价
 		required Security security = 1; //股票
 		required bool isSuspended = 2; //是否停牌
 		required string listTime = 3; //上市日期字符串
-		required double priceSpread = 4; //向上价差
-		required string updateTime = 5; //更新时间字符串
+		required double priceSpread = 4; //价差
+		required string updateTime = 5; //最新价的更新时间字符串，对其他字段不适用
 		required double highPrice = 6; //最高价
 		required double openPrice = 7; //开盘价
 		required double lowPrice = 8; //最低价
@@ -1081,10 +1081,10 @@ BasicQot - 基础报价
 		required double turnover = 12; //成交额
 		required double turnoverRate = 13; //换手率（该字段为百分比字段，默认不展示%）
 		required double amplitude = 14; //振幅（该字段为百分比字段，默认不展示%）
-		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态
+		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态	
 		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 		optional double listTimestamp = 17; //上市日期时间戳
-		optional double updateTimestamp = 18; //更新时间戳
+		optional double updateTimestamp = 18; //最新价的更新时间戳，对其他字段不适用
 		optional PreAfterMarketData preMarket = 19; //盘前数据
 		optional PreAfterMarketData afterMarket = 20; //盘后数据
 		optional int32 secStatus = 21; //SecurityStatus, 股票状态
