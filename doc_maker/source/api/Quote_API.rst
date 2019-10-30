@@ -180,7 +180,7 @@ get_trading_days
 
 ..  py:function:: get_trading_days(self, market, start=None, end=None)
 
- 获取交易日
+ 获取交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据
 
  :param market: 市场类型，Market_
  :param start: 起始日期。例如'2018-01-01'。

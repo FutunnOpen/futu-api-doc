@@ -944,7 +944,7 @@
 
 	message S2C
 	{
-		repeated TradeDate tradeDateList = 1; //交易日
+		repeated TradeDate tradeDateList = 1; //交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据
 	}
 
 	message Request
