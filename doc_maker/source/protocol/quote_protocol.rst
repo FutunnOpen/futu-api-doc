@@ -1930,8 +1930,8 @@
 		AccumulateField_Unknown = 0; // 未知
 		AccumulateField_ChangeRate = 1; // 涨跌幅 例如填写[-10.2,20.4]值区间
 		AccumulateField_Amplitude = 2; // 振幅 例如填写[0.5,20.6]值区间
-		AccumulateField_Volume = 3; // 成交量 例如填写[2000,70000]值区间
-		AccumulateField_Turnover = 4; // 成交额 例如填写[1400,890000]值区间
+		AccumulateField_Volume = 3; // 日均成交量 例如填写[2000,70000]值区间
+		AccumulateField_Turnover = 4; // 日均成交额 例如填写[1400,890000]值区间
 		AccumulateField_TurnoverRate = 5; // 换手率 例如填写[0.12,26.73]值区间
 	}
 	

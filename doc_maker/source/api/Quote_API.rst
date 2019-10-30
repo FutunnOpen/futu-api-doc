@@ -1869,8 +1869,8 @@ get_stock_filter
         \ 
         change_rate                                    float          涨跌幅
         amplitude                                      float          振幅
-        volume                                         float          成交量
-        turnover                                       float          成交额
+        volume                                         float          日均成交量
+        turnover                                       float          日均成交额
         turnover_rate                                  float          换手率
         \ 
         net_profit                                     float          净利润
