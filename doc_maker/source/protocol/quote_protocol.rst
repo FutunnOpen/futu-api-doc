@@ -1914,7 +1914,7 @@
 		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间
 		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间
 		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
-		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
+		StockField_BidAskRatio = 9; // 委比 例如填写[-0.2,0.56]值区间
 		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
 		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
 		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
