@@ -511,7 +511,7 @@
 
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 买卖盘结构参考 `OrderBook <base_define.html#orderbook>`_
-	* 富途服务器从交易所收到数据的时间字段，仅支持港股正股和涡轮，且仅开盘时间才有此数据。
+	* 富途服务器从交易所收到数据的时间字段，仅支持港股正股和窝轮，且仅开盘时间才有此数据。
 	* 富途服务器从交易所收到数据的时间字段，部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
 	
 -------------------------------------
@@ -1050,11 +1050,11 @@
 		optional double dividendLFYRatio = 16; // 股息率LFY（该字段为百分比字段，默认不展示%）
 	}
 
-	 // 涡轮类型额外数据
+	 // 窝轮类型额外数据
 	message WarrantSnapshotExData
 	{
 		required double conversionRate = 1; //换股比率
-		required int32 warrantType = 2; //Qot_Common.WarrantType,涡轮类型
+		required int32 warrantType = 2; //Qot_Common.WarrantType,窝轮类型
 		required double strikePrice = 3; //行使价
 		required string maturityTime = 4; //到期日时间字符串
 		required string endTradeTime = 5; //最后交易日时间字符串
@@ -1515,7 +1515,7 @@
 
 ------------------------------------------
 
-`Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取涡轮
+`Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取窝轮
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
@@ -1647,7 +1647,7 @@
 	* 上市日类型参考 `IpoPeriod <base_define.html#ipoperiod>`_
 	* 价内价外类型参考 `PriceType <base_define.html#pricetype>`_
 	* 窝轮状态类型参考 `WarrantStatus <base_define.html#warrantstatus>`_
-	* 接口限制请参见 `获取涡轮限制 <intro.html#id43>`_
+	* 接口限制请参见 `获取窝轮限制 <intro.html#id43>`_
 	* 目前仅支持港股
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
 

@@ -358,7 +358,7 @@ SecurityType - 证券类型
 		SecurityType_Bwrt = 2; //一揽子权证
 		SecurityType_Eqty = 3; //正股
 		SecurityType_Trust = 4; //信托,基金
-		SecurityType_Warrant = 5; //涡轮
+		SecurityType_Warrant = 5; //窝轮
 		SecurityType_Index = 6; //指数
 		SecurityType_Plate = 7; //板块
 		SecurityType_Drvt = 8; //期权
@@ -738,7 +738,7 @@ HolderCategory - 持有者类别
 	
 -----------------------------------------------
 
-SortField - 涡轮排序
+SortField - 窝轮排序
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -801,7 +801,7 @@ SortField - 涡轮排序
 	
 -----------------------------------------------
 
-Issuer - 涡轮发行人
+Issuer - 窝轮发行人
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -836,7 +836,7 @@ Issuer - 涡轮发行人
 	
 -----------------------------------------------
 
-IpoPeriod - 涡轮上市日
+IpoPeriod - 窝轮上市日
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -853,7 +853,7 @@ IpoPeriod - 涡轮上市日
 	
 -----------------------------------------------
 
-PriceType - 涡轮价(界)外/内
+PriceType - 窝轮价(界)外/内
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -867,7 +867,7 @@ PriceType - 涡轮价(界)外/内
 	
 -----------------------------------------------
 
-WarrantStatus - 涡轮状态
+WarrantStatus - 窝轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1159,7 +1159,7 @@ WarrantStaticExData - 窝轮额外静态信息
 
 	message WarrantStaticExData
 	{
-		required int32 type = 1; //Qot_Common.WarrantType,涡轮类型
+		required int32 type = 1; //Qot_Common.WarrantType,窝轮类型
 		required Qot_Common.Security owner = 2; //所属正股
 	}
 			

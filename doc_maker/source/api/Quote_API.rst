@@ -249,7 +249,7 @@ get_stock_basicinfo
         lot_size            int            每手数量
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
-        stock_owner         str            涡轮所属正股的代码，或期权标的股的代码
+        stock_owner         str            窝轮所属正股的代码，或期权标的股的代码
         option_type         str            期权类型，查看 OptionType_
         strike_time         str            期权行权日（港股A股默认是北京时间）
         strike_price        float          期权行权价
@@ -527,8 +527,8 @@ get_market_snapshot
  dividend_ratio_ttm              float          股息率TTM（该字段为百分比字段，默认不展示%）
  dividend_lfy                    float          股息LFY，上一年度派息
  dividend_lfy_ratio              float          股息率LFY（该字段为百分比字段，默认不展示%）
- stock_owner                     str            涡轮所属正股的代码或期权的标的股代码
- wrt_valid                       bool           是否是窝轮（为true时以下涡轮相关的字段才有合法数据）
+ stock_owner                     str            窝轮所属正股的代码或期权的标的股代码
+ wrt_valid                       bool           是否是窝轮（为true时以下窝轮相关的字段才有合法数据）
  wrt_conversion_ratio            float          换股比率
  wrt_type                        str            窝轮类型，参见 WrtType_
  wrt_strike_price                float          行使价格
@@ -1245,7 +1245,7 @@ get_referencestock_list
  获取证券的关联数据
  
  :param code: 证券id，str，例如HK.00700
- :param reference_type: 要获得的相关数据，参见 SecurityReferenceType_ 。例如WARRANT，表示获取正股相关的涡轮
+ :param reference_type: 要获得的相关数据，参见 SecurityReferenceType_ 。例如WARRANT，表示获取正股相关的窝轮
  :return: (ret, data)
 
 		ret == RET_OK 返回pd dataframe数据，数据列格式如下
@@ -1511,9 +1511,9 @@ get_warrant
 
 ..  py:function:: get_warrant(self, stock_owner='', req=None)
 
- 通过标的股查询涡轮
+ 通过标的股查询窝轮
 
- :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的涡轮，注意有些股票没有对应涡轮牛熊。
+ :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的窝轮，注意有些股票没有对应窝轮牛熊。
  :param req: 请求参数组合，from futu.quote.quote_get_warrant import Request
 
 
@@ -1573,7 +1573,7 @@ price_recovery_ratio_max    float             正股距收回价, 过滤终点, 
 ==========================    ================    ====================================================================================
 参数                            类型                        说明
 ==========================    ================    ====================================================================================
-stock                          str                涡轮代码
+stock                          str                窝轮代码
 stock_owner                    str                所属正股
 type                           str                窝轮类型 参见 WrtType_
 issuer                         Issuer             发行人 参见 Issuer_
@@ -1633,7 +1633,7 @@ inline_price_status            str                界内界外 参见 PriceType_
 
 
 .. note::
-    * 	接口限制请参见 `获取涡轮限制 <../protocol/intro.html#id46>`_
+    * 	接口限制请参见 `获取窝轮限制 <../protocol/intro.html#id46>`_
 
 get_capital_flow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1734,7 +1734,7 @@ get_user_security
         lot_size            int            每手数量
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
-        stock_owner         str            涡轮所属正股的代码，或期权标的股的代码
+        stock_owner         str            窝轮所属正股的代码，或期权标的股的代码
         option_type         str            期权类型，查看 OptionType_
         strike_time         str            期权行权日（港股A股默认是北京时间）
         strike_price        float          期权行权价
