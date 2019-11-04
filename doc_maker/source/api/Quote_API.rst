@@ -76,7 +76,11 @@
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
- .. _StockField: Base_API.html#stockfield
+ .. _StockField_Simple: Base_API.html#stockfield-simplefilter
+
+ .. _StockField_Accumulate: Base_API.html#stockfield-accumulatefilter
+
+ .. _StockField_Financial: Base_API.html#stockfield-financialfilter
 
  .. _SortDir: Base_API.html#sortdir
  
@@ -1803,7 +1807,7 @@ get_stock_filter
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
-        stock_field                                    str            StockField 简单属性，取值见 StockField_ 
+        stock_field                                    str            StockField 简单属性，取值见 StockField_Simple_ 
         filter_min                                     float          区间下限，闭区间
         filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
@@ -1815,7 +1819,7 @@ get_stock_filter
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
-        stock_field                                    str            StockField 简单属性，取值见 StockField_ 
+        stock_field                                    str            StockField 简单属性，取值见 StockField_Accumulate_ 
         filter_min                                     float          区间下限，闭区间
         filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
@@ -1828,7 +1832,7 @@ get_stock_filter
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
-        stock_field                                    str            StockField 简单属性，取值见 StockField_ 
+        stock_field                                    str            StockField 简单属性，取值见 StockField_Financial_ 
         filter_min                                     float          区间下限，闭区间
         filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
@@ -1847,41 +1851,41 @@ get_stock_filter
         | **all_count** - 列表总数量
         | **stock_list** - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:
 
-        ============================================   ===========   ==============================================================================
-        参数                                            类型           说明
-        ============================================   ===========   ==============================================================================
-        stock_code                                     str            股票代码
-        stock_name                                     str            股票名字
-        cur_price                                      float          最新价
-        cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高
-        cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低
-        high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高
-        low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低
-        volume_ratio                                   float          量比
-        bid_ask_ratio                                  float          委比
-        lot_price                                      float          每手价格
-        market_val                                     float          市值
-        pe_annual                                      float          市盈率
-        pe_ttm                                         float          市盈率TTM
-        pb_rate                                        float          市净率
-        change_rate_5min                               float          五分钟价格涨跌幅
-        change_rate_begin_year                         float          年初至今价格涨跌幅
-        \ 
-        change_rate                                    float          涨跌幅
-        amplitude                                      float          振幅
-        volume                                         float          日均成交量
-        turnover                                       float          日均成交额
-        turnover_rate                                  float          换手率
-        \ 
-        net_profit                                     float          净利润
-        net_profix_growth                              float          净利润增长率
-        sum_of_business                                float          营业收入
-        sum_of_business_growth                         float          营业同比增长率
-        net_profit_rate                                float          净利率
-        gross_profit_rate                              float          毛利率
-        debt_asset_rate                                float          资产负债率
-        return_on_equity_rate                          float          净资产收益率
-        ============================================   ===========   ==============================================================================
+============================================   ===========   ==============================================================================
+参数                                            类型           说明
+============================================   ===========   ==============================================================================
+stock_code                                     str            股票代码
+stock_name                                     str            股票名字
+cur_price                                      float          最新价
+cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+volume_ratio                                   float          量比
+bid_ask_ratio                                  float          委比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+lot_price                                      float          每手价格
+market_val                                     float          市值
+pe_annual                                      float          市盈率
+pe_ttm                                         float          市盈率TTM
+pb_rate                                        float          市净率
+change_rate_5min                               float          五分钟价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+change_rate_begin_year                         float          年初至今价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+\ 
+change_rate                                    float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+amplitude                                      float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+volume                                         float          日均成交量
+turnover                                       float          日均成交额
+turnover_rate                                  float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+\ 
+net_profit                                     float          净利润
+net_profix_growth                              float          净利润增长率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+sum_of_business                                float          营业收入
+sum_of_business_growth                         float          营业同比增长率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+net_profit_rate                                float          净利率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+gross_profit_rate                              float          毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+debt_asset_rate                                float          资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+return_on_equity_rate                          float          净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+============================================   ===========   ==============================================================================
 
  :Example:
 
