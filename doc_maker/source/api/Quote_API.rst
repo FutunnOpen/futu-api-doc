@@ -76,12 +76,6 @@
 
  .. _SysConfig.enable_proto_encrypt: Base_API.html#enable_proto_encrypt
 
- .. _StockField_Simple: Base_API.html#stockfield-simplefilter
-
- .. _StockField_Accumulate: Base_API.html#stockfield-accumulatefilter
-
- .. _StockField_Financial: Base_API.html#stockfield-financialfilter
-
  .. _SortDir: Base_API.html#sortdir
  
  .. _FinancialQuarter: Base_API.html#financialquarter
@@ -1807,7 +1801,7 @@ get_stock_filter
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
-        stock_field                                    str            StockField 简单属性，取值见 StockField_Simple_ 
+        stock_field                                    str            StockField 简单属性，取值见 `StockField <Base_API.html#stockfield-simplefilter>`_ 
         filter_min                                     float          区间下限，闭区间
         filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
@@ -1819,7 +1813,7 @@ get_stock_filter
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
-        stock_field                                    str            StockField 简单属性，取值见 StockField_Accumulate_ 
+        stock_field                                    str            StockField 累积字段，取值见 `StockField <Base_API.html#stockfield-accumulatefilter>`_ 
         filter_min                                     float          区间下限，闭区间
         filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
@@ -1832,7 +1826,7 @@ get_stock_filter
         ============================================   ===========   ================================================
         参数                                            类型           说明
         ============================================   ===========   ================================================
-        stock_field                                    str            StockField 简单属性，取值见 StockField_Financial_ 
+        stock_field                                    str            StockField 财务字段，取值见 `StockField <Base_API.html#stockfield-financialfilter>`_ 
         filter_min                                     float          区间下限，闭区间
         filter_max                                     float          区间上限，闭区间
         is_no_filter                                   bool           该字段是否需要筛选。
