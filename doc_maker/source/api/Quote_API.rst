@@ -297,10 +297,10 @@ get_stock_basicinfo
     high                float          最高价
     low                 float          最低价
     pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
 
@@ -354,10 +354,10 @@ get_stock_basicinfo
     high                float          最高价
     low                 float          最低价
     pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
 
@@ -505,7 +505,7 @@ get_market_snapshot
  prev_close_price                float          昨收盘价格
  volume                          int            成交数量
  turnover                        float          成交金额
- turnover_rate                   float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ turnover_rate                   float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  suspension                      bool           是否停牌(True表示停牌)
  listing_date                    str            上市日期 (yyyy-MM-dd)
  equity_valid                    bool           是否正股（为true时以下正股相关字段才有合法数值）
@@ -522,9 +522,9 @@ get_market_snapshot
  pb_ratio                        float          市净率（该字段为比例字段，默认不展示%）
  pe_ttm_ratio                    float          市盈率TTM（该字段为比例字段，默认不展示%）
  dividend_ttm                    float          股息TTM，派息
- dividend_ratio_ttm              float          股息率TTM（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ dividend_ratio_ttm              float          股息率TTM（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  dividend_lfy                    float          股息LFY，上一年度派息
- dividend_lfy_ratio              float          股息率LFY（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ dividend_lfy_ratio              float          股息率LFY（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  stock_owner                     str            窝轮所属正股的代码或期权的标的股代码
  wrt_valid                       bool           是否是窝轮（为true时以下窝轮相关的字段才有合法数据）
  wrt_conversion_ratio            float          换股比率
@@ -533,19 +533,19 @@ get_market_snapshot
  wrt_maturity_date               str            格式化窝轮到期时间
  wrt_end_trade                   str            格式化窝轮最后交易时间
  wrt_leverage                    float          杠杆比率（倍）
- wrt_ipop                        float          价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ wrt_ipop                        float          价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  wrt_break_even_point            float          打和点
  wrt_conversion_price            float          换股价
- wrt_price_recovery_ratio        float          正股距收回价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ wrt_price_recovery_ratio        float          正股距收回价（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  wrt_score                       float          窝轮综合评分
  wrt_code                        str            窝轮对应的正股（此字段已废除,修改为stock_owner）
  wrt_recovery_price              float          窝轮收回价
  wrt_street_vol                  float          窝轮街货量
  wrt_issue_vol                   float          窝轮发行量
- wrt_street_ratio                float          窝轮街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ wrt_street_ratio                float          窝轮街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  wrt_delta                       float          窝轮对冲值
  wrt_implied_volatility          float          窝轮引伸波幅
- wrt_premium                     float          窝轮溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ wrt_premium                     float          窝轮溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  wrt_upper_strike_price          float          上限价，仅界内证支持该字段
  wrt_lower_strike_price          float          下限价，仅界内证支持该字段
  wrt_inline_price_status         str            界内界外, 参见 PriceType_ ，仅界内证支持该字段
@@ -556,12 +556,12 @@ get_market_snapshot
  ask_vol                         float          卖量
  bid_vol                         float          买量
  enable_margin                   bool           是否可融资，如果为true，后两个字段才有意义
- mortgage_ratio                  float          股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
- long_margin_initial_ratio       float          融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ mortgage_ratio                  float          股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ long_margin_initial_ratio       float          融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  enable_short_sell               bool           是否可卖空，如果为true，后三个字段才有意义
- short_sell_rate                 float          卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ short_sell_rate                 float          卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  short_available_volume          int            剩余可卖空数量
- short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  option_valid                    bool           是否是期权（为true时以下期权相关的字段才有合法数值）
  option_type                     str            期权类型，参见 OptionType_
  strike_time                     str            期权行权日（港股A股默认是北京时间）
@@ -575,9 +575,9 @@ get_market_snapshot
  option_vega                     float          希腊值 Vega
  option_theta                    float          希腊值 Theta
  option_rho                      float          希腊值 Rho
- amplitude                       float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ amplitude                       float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  avg_price                       float          平均价
- bid_ask_ratio                   float          委比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ bid_ask_ratio                   float          委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  volume_ratio                    float          量比
  highest52weeks_price            float          52周最高价
  lowest52weeks_price             float          52周最低价
@@ -604,16 +604,16 @@ get_market_snapshot
  pre_volume                      int            盘前成交量。 
  pre_turnover                    float          盘前成交额。 
  pre_change_val                  float          盘前涨跌额。 
- pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
- pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
+ pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
+ pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
  after_price                       float          盘后价格。 
  after_high_price                  float          盘后最高价。 
  after_low_price                   float          盘后最低价。 
  after_volume                      int            盘后成交量。 科创板支持该数据。
  after_turnover                    float          盘后成交额。 科创板支持该数据。
  after_change_val                  float          盘后涨跌额。 
- after_change_rate                 float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
- after_amplitude                   float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
+ after_change_rate                 float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
+ after_amplitude                   float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
  ============================   =============   ===================================================================
 
  :Example:
@@ -1006,8 +1006,8 @@ get_stock_quote
         prev_close_price        float          昨收盘价格
         volume                  int            成交数量
         turnover                float          成交金额
-        turnover_rate           float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-        amplitude               int            振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+        turnover_rate           float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+        amplitude               int            振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
         suspension              bool           是否停牌(True表示停牌)
         listing_date            str            上市日期 (yyyy-MM-dd)
         price_spread            float          当前向上的价差，亦即摆盘数据的卖档的相邻档位的报价差
@@ -1016,8 +1016,8 @@ get_stock_quote
         strike_price            float          行权价
         contract_size           int            每份合约数
         open_interest           int            未平仓合约数
-        implied_volatility      float          隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-        premium                 float          溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+        implied_volatility      float          隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+        premium                 float          溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）
         delta                   float          希腊值 Delta
         gamma                   float          希腊值 Gamma
         vega                    float          希腊值 Vega
@@ -1035,16 +1035,16 @@ get_stock_quote
         pre_volume              int            盘前成交量。 
         pre_turnover            float          盘前成交额。 
         pre_change_val          float          盘前涨跌额。 
-        pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
-        pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
+        pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
+        pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
         after_price             float          盘后价格。 
         after_high_price        float          盘后最高价。 
         after_low_price         float          盘后最低价。 
         after_volume            int            盘后成交量。 科创板支持此数据。
         after_turnover          float          盘后成交额。 科创板支持此数据。
         after_change_val        float          盘后涨跌额。 
-        after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
-        after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）。 
+        after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
+        after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
         ======================  ===========   ==============================================================
         
  :Example:
@@ -1216,10 +1216,10 @@ get_order_book
     high                float          最高价
     low                 float          最低价
     pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
     volume              int            成交量
     turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
     last_close          float          昨收价
     =================   ===========   ==============================================================================
     
@@ -1343,9 +1343,9 @@ get_holding_change_list
 =====================   ===========   ==============================================================
 holder_name             str            高管名称
 holding_qty             float         持股数
-holding_ratio           float         持股比例（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+holding_ratio           float         持股比例（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 change_qty              float         变动数
-change_ratio            float         变动比例（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+change_ratio            float         变动比例（该字段为百分比字段，默认不展示%，如20实际对应20%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
 time                    str           发布时间（美股的时间默认是美东）
 =====================   ===========   ==============================================================
 
@@ -1527,20 +1527,20 @@ issuer_list                 list              发行人过滤列表 参见 Issue
 maturity_time_min           str               到期日, 到期日范围的开始时间
 maturity_time_max           str               到期日范围的结束时间
 ipo_period                  str               上市日 参见 IpoPeriod_
-price_type                  str               价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）参见 PriceType_ , 界内证暂不支持界内外筛选
+price_type                  str               价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）参见 PriceType_ , 界内证暂不支持界内外筛选
 status                      str               窝轮状态 参见 WarrantStatus_
 cur_price_min               float             最新价过滤起点
 cur_price_max               float             最新价过滤终点
 strike_price_min            float             行使价过滤起点
 strike_price_max            float             行使价过滤终点
-street_min                  float             街货占比, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-street_max                  float             街货占比, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+street_min                  float             街货占比, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+street_max                  float             街货占比, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 conversion_min              float             换股比率过滤起点
 conversion_max              float             换股比率过滤终点
 vol_min                     unsigned int      成交量过滤起点
 vol_max                     unsigned int      成交量过滤终点
-premium_min                 float             溢价, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-premium_max                 float             溢价, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+premium_min                 float             溢价, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+premium_max                 float             溢价, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 leverage_ratio_min          float             杠杆比率过滤起点
 leverage_ratio_max          float             杠杆比率过滤终点
 delta_min                   float             对冲值过滤起点, 仅认购认沽支持该字段过滤
@@ -1549,8 +1549,8 @@ implied_min                 float             引伸波幅过滤起点, 仅认�
 implied_max                 float             引伸波幅过滤终点, 仅认购认沽支持该字段过滤
 recovery_price_min          float             收回价过滤起点, 仅牛熊证支持该字段过滤
 recovery_price_max          float             收回价过滤终点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_min    float             正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-price_recovery_ratio_max    float             正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+price_recovery_ratio_min    float             正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+price_recovery_ratio_max    float             正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 ==========================  ==============    ====================================================================================
 
 
@@ -1597,15 +1597,15 @@ ask_vol                        int                卖量
 volume                         unsigned int       成交量
 turnover                       float              成交额
 score                          float              综合评分
-premium                        float              溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+premium                        float              溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 break_even_point               float              打和点
 leverage                       float              杠杆比率（倍）
-ipop                           float              价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-price_recovery_ratio           float              正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+ipop                           float              价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+price_recovery_ratio           float              正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 conversion_price               float              换股价
-street_rate                    float              街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+street_rate                    float              街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 street_vol                     int                街货量
-amplitude                      float              振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+amplitude                      float              振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 issue_size                     int                发行量
 high_price                     float              最高价
 low_price                      float              最低价
@@ -1851,34 +1851,34 @@ get_stock_filter
 stock_code                                     str            股票代码
 stock_name                                     str            股票名字
 cur_price                                      float          最新价
-cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+cur_price_to_highest_52weeks_ratio             float          (现价 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+cur_price_to_lowest_52weeks_ratio              float          (现价 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+high_price_to_highest_52weeks_ratio            float          (今日最高 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+low_price_to_lowest_52weeks_ratio              float          (今日最低 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 volume_ratio                                   float          量比
-bid_ask_ratio                                  float          委比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+bid_ask_ratio                                  float          委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 lot_price                                      float          每手价格
 market_val                                     float          市值
 pe_annual                                      float          市盈率
 pe_ttm                                         float          市盈率TTM
 pb_rate                                        float          市净率
-change_rate_5min                               float          五分钟价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-change_rate_begin_year                         float          年初至今价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+change_rate_5min                               float          五分钟价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+change_rate_begin_year                         float          年初至今价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 \ 
-change_rate                                    float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-amplitude                                      float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+change_rate                                    float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+amplitude                                      float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 volume                                         float          日均成交量
 turnover                                       float          日均成交额
-turnover_rate                                  float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+turnover_rate                                  float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 \ 
 net_profit                                     float          净利润
-net_profix_growth                              float          净利润增长率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+net_profix_growth                              float          净利润增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 sum_of_business                                float          营业收入
-sum_of_business_growth                         float          营业同比增长率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-net_profit_rate                                float          净利率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-gross_profit_rate                              float          毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-debt_asset_rate                                float          资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
-return_on_equity_rate                          float          净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%，如20实际对应20%，如20实际对应20%）
+sum_of_business_growth                         float          营业同比增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+net_profit_rate                                float          净利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+gross_profit_rate                              float          毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+debt_asset_rate                                float          资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+return_on_equity_rate                          float          净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 ============================================   ===========   ==============================================================================
 
  :Example:
@@ -1964,7 +1964,7 @@ is_estimate_ipo_price                        bool           是否预估发行�
 ipo_price                                    float          发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用
 industry_pe_rate                             float          行业市盈率，A股适用
 is_estimate_winning_ratio                    bool           是否预估中签率，A股适用
-winning_ratio                                float          中签率 该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用
+winning_ratio                                float          中签率 该字段为百分比字段，默认不展示%，如20实际对应20%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用
 issue_pe_rate                                float          发行市盈率，A股适用
 apply_time                                   str            申购日期字符串，A股适用
 apply_timestamp                              float          申购日期时间戳，A股适用
