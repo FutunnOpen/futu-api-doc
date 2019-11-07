@@ -360,6 +360,7 @@ API用户等级
 	* 请求协议ID: 3215_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 每次请求的数据个数最多 :red-strengthen:`200` 个
+	* 建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。
 
 
 .. _get-ipo-list-limit:
