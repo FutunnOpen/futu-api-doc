@@ -158,27 +158,27 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id21">on_recv_rsp</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id22">on_recv_rsp</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id23">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id24">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id25">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id26">on_recv_rsp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id27">on_recv_rsp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id28">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -443,7 +443,7 @@
 <dl class="function">
 <dt id="get_trading_days">
 <code class="descname">get_trading_days</code><span class="sig-paren">(</span><em>self</em>, <em>market</em>, <em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#get_trading_days" title="Permalink to this definition">¶</a></dt>
-<dd><p>获取交易日</p>
+<dd><p>获取交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -598,7 +598,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>stock_owner</td>
 <td>str</td>
-<td>涡轮所属正股的代码，或期权标的股的代码</td>
+<td>窝轮所属正股的代码，或期权标的股的代码</td>
 </tr>
 <tr class="row-even"><td>option_type</td>
 <td>str</td>
@@ -721,7 +721,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>turnover_rate</td>
 <td>float</td>
-<td>换手率（该字段为百分比字段，默认不展示%）</td>
+<td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>volume</td>
 <td>int</td>
@@ -733,7 +733,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>change_rate</td>
 <td>float</td>
-<td>涨跌幅（该字段为百分比字段，默认不展示%）</td>
+<td>涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>last_close</td>
 <td>float</td>
@@ -863,7 +863,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>turnover_rate</td>
 <td>float</td>
-<td>换手率（该字段为百分比字段，默认不展示%）</td>
+<td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>volume</td>
 <td>int</td>
@@ -875,7 +875,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>change_rate</td>
 <td>float</td>
-<td>涨跌幅（该字段为百分比字段，默认不展示%）</td>
+<td>涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>last_close</td>
 <td>float</td>
@@ -1179,9 +1179,9 @@ start和end的组合如下：</p>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="26%" />
-<col width="12%" />
-<col width="62%" />
+<col width="24%" />
+<col width="11%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -1228,7 +1228,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>turnover_rate</td>
 <td>float</td>
-<td>换手率（该字段为百分比字段，默认不展示%）</td>
+<td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>suspension</td>
 <td>bool</td>
@@ -1296,7 +1296,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>dividend_ratio_ttm</td>
 <td>float</td>
-<td>股息率TTM（该字段为百分比字段，默认不展示%）</td>
+<td>股息率TTM（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>dividend_lfy</td>
 <td>float</td>
@@ -1304,15 +1304,15 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>dividend_lfy_ratio</td>
 <td>float</td>
-<td>股息率LFY（该字段为百分比字段，默认不展示%）</td>
+<td>股息率LFY（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>stock_owner</td>
 <td>str</td>
-<td>涡轮所属正股的代码或期权的标的股代码</td>
+<td>窝轮所属正股的代码或期权的标的股代码</td>
 </tr>
 <tr class="row-even"><td>wrt_valid</td>
 <td>bool</td>
-<td>是否是窝轮（为true时以下涡轮相关的字段才有合法数据）</td>
+<td>是否是窝轮（为true时以下窝轮相关的字段才有合法数据）</td>
 </tr>
 <tr class="row-odd"><td>wrt_conversion_ratio</td>
 <td>float</td>
@@ -1340,7 +1340,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>wrt_ipop</td>
 <td>float</td>
-<td>价内/价外（该字段为百分比字段，默认不展示%）</td>
+<td>价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>wrt_break_even_point</td>
 <td>float</td>
@@ -1352,7 +1352,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>wrt_price_recovery_ratio</td>
 <td>float</td>
-<td>正股距收回价（该字段为百分比字段，默认不展示%）</td>
+<td>正股距收回价（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>wrt_score</td>
 <td>float</td>
@@ -1376,7 +1376,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>wrt_street_ratio</td>
 <td>float</td>
-<td>窝轮街货占比（该字段为百分比字段，默认不展示%）</td>
+<td>窝轮街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>wrt_delta</td>
 <td>float</td>
@@ -1388,7 +1388,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>wrt_premium</td>
 <td>float</td>
-<td>窝轮溢价（该字段为百分比字段，默认不展示%）</td>
+<td>窝轮溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>wrt_upper_strike_price</td>
 <td>float</td>
@@ -1432,11 +1432,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>mortgage_ratio</td>
 <td>float</td>
-<td>股票抵押率（该字段为百分比字段，默认不展示%）</td>
+<td>股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>long_margin_initial_ratio</td>
 <td>float</td>
-<td>融资初始保证金率（该字段为百分比字段，默认不展示%）</td>
+<td>融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>enable_short_sell</td>
 <td>bool</td>
@@ -1444,7 +1444,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>short_sell_rate</td>
 <td>float</td>
-<td>卖空参考利率（该字段为百分比字段，默认不展示%）</td>
+<td>卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>short_available_volume</td>
 <td>int</td>
@@ -1452,7 +1452,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>short_margin_initial_ratio</td>
 <td>float</td>
-<td>卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）</td>
+<td>卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>option_valid</td>
 <td>bool</td>
@@ -1508,7 +1508,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>amplitude</td>
 <td>float</td>
-<td>振幅（该字段为百分比字段，默认不展示%）</td>
+<td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>avg_price</td>
 <td>float</td>
@@ -1516,7 +1516,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>bid_ask_ratio</td>
 <td>float</td>
-<td>委比（该字段为百分比字段，默认不展示%）</td>
+<td>委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>volume_ratio</td>
 <td>float</td>
@@ -1624,11 +1624,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>pre_change_rate</td>
 <td>float</td>
-<td>盘前涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 <tr class="row-odd"><td>pre_amplitude</td>
 <td>float</td>
-<td>盘前振幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 <tr class="row-even"><td>after_price</td>
 <td>float</td>
@@ -1656,11 +1656,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>after_change_rate</td>
 <td>float</td>
-<td>盘后涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 <tr class="row-odd"><td>after_amplitude</td>
 <td>float</td>
-<td>盘后振幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 </tbody>
 </table>
@@ -2368,9 +2368,9 @@ start和end的组合如下：</p>
 <p>ret != RET_OK 返回错误字符串</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="12%" />
-<col width="65%" />
+<col width="22%" />
+<col width="11%" />
+<col width="67%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -2421,11 +2421,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>turnover_rate</td>
 <td>float</td>
-<td>换手率（该字段为百分比字段，默认不展示%）</td>
+<td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>amplitude</td>
 <td>int</td>
-<td>振幅（该字段为百分比字段，默认不展示%）</td>
+<td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>suspension</td>
 <td>bool</td>
@@ -2461,11 +2461,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>implied_volatility</td>
 <td>float</td>
-<td>隐含波动率（该字段为百分比字段，默认不展示%）</td>
+<td>隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>premium</td>
 <td>float</td>
-<td>溢价（该字段为百分比字段，默认不展示%）</td>
+<td>溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>delta</td>
 <td>float</td>
@@ -2537,11 +2537,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>pre_change_rate</td>
 <td>float</td>
-<td>盘前涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 <tr class="row-even"><td>pre_amplitude</td>
 <td>float</td>
-<td>盘前振幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 <tr class="row-odd"><td>after_price</td>
 <td>float</td>
@@ -2569,11 +2569,11 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>after_change_rate</td>
 <td>float</td>
-<td>盘后涨跌幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 <tr class="row-even"><td>after_amplitude</td>
 <td>float</td>
-<td>盘后振幅（该字段为百分比字段，默认不展示%）。</td>
+<td>盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
 </tr>
 </tbody>
 </table>
@@ -2908,7 +2908,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>turnover_rate</td>
 <td>float</td>
-<td>换手率（该字段为百分比字段，默认不展示%）</td>
+<td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>volume</td>
 <td>int</td>
@@ -2920,7 +2920,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>change_rate</td>
 <td>float</td>
-<td>涨跌幅（该字段为百分比字段，默认不展示%）</td>
+<td>涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>last_close</td>
 <td>float</td>
@@ -2956,7 +2956,7 @@ start和end的组合如下：</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; 证券id，str，例如HK.00700</li>
-<li><strong>reference_type</strong> &#8211; 要获得的相关数据，参见 <a class="reference external" href="Base_API.html#securityreferencetype">SecurityReferenceType</a> 。例如WARRANT，表示获取正股相关的涡轮</li>
+<li><strong>reference_type</strong> &#8211; 要获得的相关数据，参见 <a class="reference external" href="Base_API.html#securityreferencetype">SecurityReferenceType</a> 。例如WARRANT，表示获取正股相关的窝轮</li>
 </ul>
 </td>
 </tr>
@@ -3156,9 +3156,9 @@ start与end的组合如下：</p>
 
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="6%" />
-<col width="83%" />
+<col width="10%" />
+<col width="5%" />
+<col width="84%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -3177,7 +3177,7 @@ start与end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>holding_ratio</td>
 <td>float</td>
-<td>持股比例（该字段为百分比字段，默认不展示%）</td>
+<td>持股比例（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>change_qty</td>
 <td>float</td>
@@ -3185,7 +3185,7 @@ start与end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>change_ratio</td>
 <td>float</td>
-<td>变动比例（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）</td>
+<td>变动比例（该字段为百分比字段，默认不展示%，如20实际对应20%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）</td>
 </tr>
 <tr class="row-odd"><td>time</td>
 <td>str</td>
@@ -3548,13 +3548,13 @@ start和end的组合如下：</p>
 <dl class="function">
 <dt id="get_warrant">
 <code class="descname">get_warrant</code><span class="sig-paren">(</span><em>self</em>, <em>stock_owner=''</em>, <em>req=None</em><span class="sig-paren">)</span><a class="headerlink" href="#get_warrant" title="Permalink to this definition">¶</a></dt>
-<dd><p>通过标的股查询涡轮</p>
+<dd><p>通过标的股查询窝轮</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>stock_owner</strong> &#8211; 所属正股的股票代码,例如：&#8217;HK.00700&#8217;，会去找腾讯的涡轮，注意有些股票没有对应涡轮牛熊。</li>
+<li><strong>stock_owner</strong> &#8211; 所属正股的股票代码,例如：&#8217;HK.00700&#8217;，会去找腾讯的窝轮，注意有些股票没有对应窝轮牛熊。</li>
 <li><strong>req</strong> &#8211; 请求参数组合，from futu.quote.quote_get_warrant import Request</li>
 </ul>
 </td>
@@ -3565,9 +3565,9 @@ start和end的组合如下：</p>
 
 <table border="1" class="docutils">
 <colgroup>
-<col width="21%" />
-<col width="11%" />
-<col width="68%" />
+<col width="18%" />
+<col width="10%" />
+<col width="72%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -3614,42 +3614,42 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>price_type</td>
 <td>str</td>
-<td>价内/价外（该字段为百分比字段，默认不展示%）参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a> , 界内证暂不支持界内外筛选</td>
+<td>价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a> , 界内证暂不支持界内外筛选</td>
 </tr>
 <tr class="row-even"><td>status</td>
 <td>str</td>
 <td>窝轮状态 参见 <a class="reference external" href="Base_API.html#warrantstatus">WarrantStatus</a></td>
 </tr>
 <tr class="row-odd"><td>cur_price_min</td>
-<td>double</td>
+<td>float</td>
 <td>最新价过滤起点</td>
 </tr>
 <tr class="row-even"><td>cur_price_max</td>
-<td>double</td>
+<td>float</td>
 <td>最新价过滤终点</td>
 </tr>
 <tr class="row-odd"><td>strike_price_min</td>
-<td>double</td>
+<td>float</td>
 <td>行使价过滤起点</td>
 </tr>
 <tr class="row-even"><td>strike_price_max</td>
-<td>double</td>
+<td>float</td>
 <td>行使价过滤终点</td>
 </tr>
 <tr class="row-odd"><td>street_min</td>
-<td>double</td>
-<td>街货占比, 过滤起点（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>街货占比, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>street_max</td>
-<td>double</td>
-<td>街货占比, 过滤终点（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>街货占比, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>conversion_min</td>
-<td>double</td>
+<td>float</td>
 <td>换股比率过滤起点</td>
 </tr>
 <tr class="row-even"><td>conversion_max</td>
-<td>double</td>
+<td>float</td>
 <td>换股比率过滤终点</td>
 </tr>
 <tr class="row-odd"><td>vol_min</td>
@@ -3661,52 +3661,52 @@ start和end的组合如下：</p>
 <td>成交量过滤终点</td>
 </tr>
 <tr class="row-odd"><td>premium_min</td>
-<td>double</td>
-<td>溢价, 过滤起点（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>溢价, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>premium_max</td>
-<td>double</td>
-<td>溢价, 过滤终点（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>溢价, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>leverage_ratio_min</td>
-<td>double</td>
+<td>float</td>
 <td>杠杆比率过滤起点</td>
 </tr>
 <tr class="row-even"><td>leverage_ratio_max</td>
-<td>double</td>
+<td>float</td>
 <td>杠杆比率过滤终点</td>
 </tr>
 <tr class="row-odd"><td>delta_min</td>
-<td>double</td>
+<td>float</td>
 <td>对冲值过滤起点, 仅认购认沽支持该字段过滤</td>
 </tr>
 <tr class="row-even"><td>delta_max</td>
-<td>double</td>
+<td>float</td>
 <td>对冲值过滤终点, 仅认购认沽支持该字段过滤</td>
 </tr>
 <tr class="row-odd"><td>implied_min</td>
-<td>double</td>
+<td>float</td>
 <td>引伸波幅过滤起点, 仅认购认沽支持该字段过滤</td>
 </tr>
 <tr class="row-even"><td>implied_max</td>
-<td>double</td>
+<td>float</td>
 <td>引伸波幅过滤终点, 仅认购认沽支持该字段过滤</td>
 </tr>
 <tr class="row-odd"><td>recovery_price_min</td>
-<td>double</td>
+<td>float</td>
 <td>收回价过滤起点, 仅牛熊证支持该字段过滤</td>
 </tr>
 <tr class="row-even"><td>recovery_price_max</td>
-<td>double</td>
+<td>float</td>
 <td>收回价过滤终点, 仅牛熊证支持该字段过滤</td>
 </tr>
 <tr class="row-odd"><td>price_recovery_ratio_min</td>
-<td>double</td>
-<td>正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>price_recovery_ratio_max</td>
-<td>double</td>
-<td>正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 </tbody>
 </table>
@@ -3728,7 +3728,7 @@ start和end的组合如下：</p>
 </div></blockquote>
 <table border="1" class="docutils">
 <colgroup>
-<col width="21%" />
+<col width="20%" />
 <col width="13%" />
 <col width="67%" />
 </colgroup>
@@ -3741,7 +3741,7 @@ start和end的组合如下：</p>
 <tbody valign="top">
 <tr class="row-even"><td>stock</td>
 <td>str</td>
-<td>涡轮代码</td>
+<td>窝轮代码</td>
 </tr>
 <tr class="row-odd"><td>stock_owner</td>
 <td>str</td>
@@ -3760,7 +3760,7 @@ start和end的组合如下：</p>
 <td>到期日</td>
 </tr>
 <tr class="row-odd"><td>maturity_timestamp</td>
-<td>double</td>
+<td>float</td>
 <td><span class="strike">到期日时间戳</span></td>
 </tr>
 <tr class="row-even"><td>list_time</td>
@@ -3768,7 +3768,7 @@ start和end的组合如下：</p>
 <td>上市时间</td>
 </tr>
 <tr class="row-odd"><td>list_timestamp</td>
-<td>double</td>
+<td>float</td>
 <td><span class="strike">上市时间戳</span></td>
 </tr>
 <tr class="row-even"><td>last_trade_time</td>
@@ -3776,15 +3776,15 @@ start和end的组合如下：</p>
 <td>最后交易日</td>
 </tr>
 <tr class="row-odd"><td>last_trade_timestamp</td>
-<td>double</td>
+<td>float</td>
 <td><span class="strike">最后交易日时间戳</span></td>
 </tr>
 <tr class="row-even"><td>recovery_price</td>
-<td>double</td>
+<td>float</td>
 <td>收回价，仅牛熊证支持该字段</td>
 </tr>
 <tr class="row-odd"><td>conversion_ratio</td>
-<td>double</td>
+<td>float</td>
 <td>换股比率</td>
 </tr>
 <tr class="row-even"><td>lot_size</td>
@@ -3792,11 +3792,11 @@ start和end的组合如下：</p>
 <td>每手数量</td>
 </tr>
 <tr class="row-odd"><td>strike_price</td>
-<td>double</td>
+<td>float</td>
 <td>行使价</td>
 </tr>
 <tr class="row-even"><td>last_close_price</td>
-<td>double</td>
+<td>float</td>
 <td>昨收价</td>
 </tr>
 <tr class="row-odd"><td>name</td>
@@ -3804,11 +3804,11 @@ start和end的组合如下：</p>
 <td>名称</td>
 </tr>
 <tr class="row-even"><td>cur_price</td>
-<td>double</td>
+<td>float</td>
 <td>当前价</td>
 </tr>
 <tr class="row-odd"><td>price_change_val</td>
-<td>double</td>
+<td>float</td>
 <td>涨跌额</td>
 </tr>
 <tr class="row-even"><td>status</td>
@@ -3816,11 +3816,11 @@ start和end的组合如下：</p>
 <td>窝轮状态 参见 <a class="reference external" href="Base_API.html#warrantstatus">WarrantStatus</a></td>
 </tr>
 <tr class="row-odd"><td>bid_price</td>
-<td>double</td>
+<td>float</td>
 <td>买入价</td>
 </tr>
 <tr class="row-even"><td>ask_price</td>
-<td>double</td>
+<td>float</td>
 <td>卖出价</td>
 </tr>
 <tr class="row-odd"><td>bid_vol</td>
@@ -3836,79 +3836,79 @@ start和end的组合如下：</p>
 <td>成交量</td>
 </tr>
 <tr class="row-even"><td>turnover</td>
-<td>double</td>
+<td>float</td>
 <td>成交额</td>
 </tr>
 <tr class="row-odd"><td>score</td>
-<td>double</td>
+<td>float</td>
 <td>综合评分</td>
 </tr>
 <tr class="row-even"><td>premium</td>
-<td>double</td>
-<td>溢价（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>break_even_point</td>
-<td>double</td>
+<td>float</td>
 <td>打和点</td>
 </tr>
 <tr class="row-even"><td>leverage</td>
-<td>double</td>
+<td>float</td>
 <td>杠杆比率（倍）</td>
 </tr>
 <tr class="row-odd"><td>ipop</td>
-<td>double</td>
-<td>价内/价外（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>price_recovery_ratio</td>
-<td>double</td>
-<td>正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>conversion_price</td>
-<td>double</td>
+<td>float</td>
 <td>换股价</td>
 </tr>
 <tr class="row-even"><td>street_rate</td>
-<td>double</td>
-<td>街货占比（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>street_vol</td>
 <td>int</td>
 <td>街货量</td>
 </tr>
 <tr class="row-even"><td>amplitude</td>
-<td>double</td>
-<td>振幅（该字段为百分比字段，默认不展示%）</td>
+<td>float</td>
+<td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>issue_size</td>
 <td>int</td>
 <td>发行量</td>
 </tr>
 <tr class="row-even"><td>high_price</td>
-<td>double</td>
+<td>float</td>
 <td>最高价</td>
 </tr>
 <tr class="row-odd"><td>low_price</td>
-<td>double</td>
+<td>float</td>
 <td>最低价</td>
 </tr>
 <tr class="row-even"><td>implied_volatility</td>
-<td>double</td>
+<td>float</td>
 <td>引伸波幅，仅认购认沽支持该字段</td>
 </tr>
 <tr class="row-odd"><td>delta</td>
-<td>double</td>
+<td>float</td>
 <td>对冲值，仅认购认沽支持该字段</td>
 </tr>
 <tr class="row-even"><td>effective_leverage</td>
-<td>double</td>
+<td>float</td>
 <td>有效杠杆</td>
 </tr>
 <tr class="row-odd"><td>upper_strike_price</td>
-<td>double</td>
+<td>float</td>
 <td>上限价，仅界内证支持该字段</td>
 </tr>
 <tr class="row-even"><td>lower_strike_price</td>
-<td>double</td>
+<td>float</td>
 <td>下限价，仅界内证支持该字段</td>
 </tr>
 <tr class="row-odd"><td>inline_price_status</td>
@@ -3939,7 +3939,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id46">获取涡轮限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id46">获取窝轮限制</a></li>
 </ul>
 </div>
 </div>
@@ -3971,7 +3971,7 @@ start和end的组合如下：</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>in_flow</td>
-<td>double</td>
+<td>float</td>
 <td>净流入的资金额度</td>
 </tr>
 <tr class="row-odd"><td>capital_flow_item_time</td>
@@ -4033,27 +4033,27 @@ start和end的组合如下：</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>capital_in_big</td>
-<td>double</td>
+<td>float</td>
 <td>流入资金额度，大单</td>
 </tr>
 <tr class="row-odd"><td>capital_in_mid</td>
-<td>double</td>
+<td>float</td>
 <td>流入资金额度，中单</td>
 </tr>
 <tr class="row-even"><td>capital_in_small</td>
-<td>double</td>
+<td>float</td>
 <td>流入资金额度，小单</td>
 </tr>
 <tr class="row-odd"><td>capital_out_big</td>
-<td>double</td>
+<td>float</td>
 <td>流出资金额度，大单</td>
 </tr>
 <tr class="row-even"><td>capital_out_mid</td>
-<td>double</td>
+<td>float</td>
 <td>流出资金额度，中单</td>
 </tr>
 <tr class="row-odd"><td>capital_out_small</td>
-<td>double</td>
+<td>float</td>
 <td>流出资金额度，小单</td>
 </tr>
 <tr class="row-even"><td>update_time</td>
@@ -4132,7 +4132,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>stock_owner</td>
 <td>str</td>
-<td>涡轮所属正股的代码，或期权标的股的代码</td>
+<td>窝轮所属正股的代码，或期权标的股的代码</td>
 </tr>
 <tr class="row-even"><td>option_type</td>
 <td>str</td>
@@ -4239,12 +4239,17 @@ start和end的组合如下：</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>market</strong> &#8211; 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
-<li><strong>filter_list</strong> &#8211; <p>简单属性筛选条件的枚举值，筛选条件是SimpleFilter类型数据的list对象field，对象field的相关参数如下：</p>
+<li><strong>filter_list</strong> &#8211; <div class="line-block">
+<div class="line">简单属性筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter或FinancialFilter类型数据的list对象field。</div>
+</div>
+<div class="line-block">
+<div class="line">SimpleFilter对象field的相关参数如下：</div>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="43%" />
-<col width="11%" />
-<col width="47%" />
+<col width="32%" />
+<col width="8%" />
+<col width="60%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -4255,14 +4260,14 @@ start和end的组合如下：</p>
 <tbody valign="top">
 <tr class="row-even"><td>stock_field</td>
 <td>str</td>
-<td>StockField 简单属性，取值见 <a class="reference external" href="Base_API.html#stockfield">StockField</a></td>
+<td>StockField 简单属性，取值见 <a class="reference external" href="Base_API.html#stockfield-simplefilter">StockField</a></td>
 </tr>
 <tr class="row-odd"><td>filter_min</td>
-<td>double</td>
+<td>float</td>
 <td>区间下限，闭区间</td>
 </tr>
 <tr class="row-even"><td>filter_max</td>
-<td>double</td>
+<td>float</td>
 <td>区间上限，闭区间</td>
 </tr>
 <tr class="row-odd"><td>is_no_filter</td>
@@ -4275,6 +4280,90 @@ start和end的组合如下：</p>
 </tr>
 </tbody>
 </table>
+<div class="line-block">
+<div class="line">AccumulateFilter对象field的相关参数如下：</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="8%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stock_field</td>
+<td>str</td>
+<td>StockField 累积字段，取值见 <a class="reference external" href="Base_API.html#stockfield-accumulatefilter">StockField</a></td>
+</tr>
+<tr class="row-odd"><td>filter_min</td>
+<td>float</td>
+<td>区间下限，闭区间</td>
+</tr>
+<tr class="row-even"><td>filter_max</td>
+<td>float</td>
+<td>区间上限，闭区间</td>
+</tr>
+<tr class="row-odd"><td>is_no_filter</td>
+<td>bool</td>
+<td>该字段是否需要筛选。</td>
+</tr>
+<tr class="row-even"><td>sort</td>
+<td>str</td>
+<td>SortDir 排序方向，默认不排序，取值见 <a class="reference external" href="Base_API.html#sortdir">SortDir</a></td>
+</tr>
+<tr class="row-odd"><td>days</td>
+<td>int</td>
+<td>所筛选的数据的累计天数</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">FinancialFilter对象field的相关参数如下：</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="8%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stock_field</td>
+<td>str</td>
+<td>StockField 财务字段，取值见 <a class="reference external" href="Base_API.html#stockfield-financialfilter">StockField</a></td>
+</tr>
+<tr class="row-odd"><td>filter_min</td>
+<td>float</td>
+<td>区间下限，闭区间</td>
+</tr>
+<tr class="row-even"><td>filter_max</td>
+<td>float</td>
+<td>区间上限，闭区间</td>
+</tr>
+<tr class="row-odd"><td>is_no_filter</td>
+<td>bool</td>
+<td>该字段是否需要筛选。</td>
+</tr>
+<tr class="row-even"><td>sort</td>
+<td>str</td>
+<td>SortDir 排序方向，默认不排序，取值见 <a class="reference external" href="Base_API.html#sortdir">SortDir</a></td>
+</tr>
+<tr class="row-odd"><td>quarter</td>
+<td>str</td>
+<td>财报累积时间，取值见 <a class="reference external" href="Base_API.html#financialquarter">FinancialQuarter</a></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li><strong>plate_code</strong> &#8211; 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。</li>
 <li><strong>begin</strong> &#8211; 数据起始点</li>
@@ -4282,12 +4371,13 @@ start和end的组合如下：</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>(ret, data)</p>
-<p>ret != RET_OK 返回错误字符串</p>
-<p>ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。</p>
-<p>last_page 是否是最后一页</p>
-<p>all_count 列表总数量</p>
-<p>stock_list 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><div class="line-block">
+<div class="line">(ret, data)</div>
+<div class="line"><strong>ret</strong> - ret != RET_OK 返回错误字符串, ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。</div>
+<div class="line"><strong>last_page</strong> - 是否是最后一页</div>
+<div class="line"><strong>all_count</strong> - 列表总数量</div>
+<div class="line"><strong>stock_list</strong> - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:</div>
+</div>
 </p>
 </td>
 </tr>
@@ -4297,9 +4387,9 @@ start和end的组合如下：</p>
 
 <table border="1" class="docutils">
 <colgroup>
-<col width="33%" />
+<col width="31%" />
 <col width="8%" />
-<col width="59%" />
+<col width="61%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -4317,24 +4407,24 @@ start和end的组合如下：</p>
 <td>股票名字</td>
 </tr>
 <tr class="row-even"><td>cur_price</td>
-<td>double</td>
+<td>float</td>
 <td>最新价</td>
 </tr>
 <tr class="row-odd"><td>cur_price_to_highest_52weeks_ratio</td>
 <td>float</td>
-<td>(现价 - 52周最高)/52周最高，对应PC端离52周高点百分比</td>
+<td>(现价 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>cur_price_to_lowest_52weeks_ratio</td>
 <td>float</td>
-<td>(现价 - 52周最低)/52周最低，对应PC端离52周低点百分比</td>
+<td>(现价 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>high_price_to_highest_52weeks_ratio</td>
 <td>float</td>
-<td>(今日最高 - 52周最高)/52周最高</td>
+<td>(今日最高 - 52周最高)/52周最高（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>low_price_to_lowest_52weeks_ratio</td>
 <td>float</td>
-<td>(今日最低 - 52周最低)/52周最低</td>
+<td>(今日最低 - 52周最低)/52周最低（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>volume_ratio</td>
 <td>float</td>
@@ -4342,10 +4432,10 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>bid_ask_ratio</td>
 <td>float</td>
-<td>委比</td>
+<td>委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>lot_price</td>
-<td>double</td>
+<td>float</td>
 <td>每手价格</td>
 </tr>
 <tr class="row-even"><td>market_val</td>
@@ -4364,6 +4454,74 @@ start和end的组合如下：</p>
 <td>float</td>
 <td>市净率</td>
 </tr>
+<tr class="row-even"><td>change_rate_5min</td>
+<td>float</td>
+<td>五分钟价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>change_rate_begin_year</td>
+<td>float</td>
+<td>年初至今价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>change_rate</td>
+<td>float</td>
+<td>涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>amplitude</td>
+<td>float</td>
+<td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>volume</td>
+<td>float</td>
+<td>日均成交量</td>
+</tr>
+<tr class="row-even"><td>turnover</td>
+<td>float</td>
+<td>日均成交额</td>
+</tr>
+<tr class="row-odd"><td>turnover_rate</td>
+<td>float</td>
+<td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>net_profit</td>
+<td>float</td>
+<td>净利润</td>
+</tr>
+<tr class="row-even"><td>net_profix_growth</td>
+<td>float</td>
+<td>净利润增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>sum_of_business</td>
+<td>float</td>
+<td>营业收入</td>
+</tr>
+<tr class="row-even"><td>sum_of_business_growth</td>
+<td>float</td>
+<td>营业同比增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>net_profit_rate</td>
+<td>float</td>
+<td>净利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>gross_profit_rate</td>
+<td>float</td>
+<td>毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>debt_asset_rate</td>
+<td>float</td>
+<td>资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>return_on_equity_rate</td>
+<td>float</td>
+<td>净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
@@ -4376,16 +4534,24 @@ start和end的组合如下：</p>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">futu.quote.quote_stockfilter_info</span> <span class="kn">import</span> <span class="n">SimpleFilter</span>
+<span class="kn">from</span> <span class="nn">futu.quote.quote_stockfilter_info</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="n">field</span> <span class="o">=</span> <span class="n">SimpleFilter</span><span class="p">()</span>
-<span class="n">field</span><span class="o">.</span><span class="n">filter_min</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">field</span><span class="o">.</span><span class="n">filter_max</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">field</span><span class="o">.</span><span class="n">stock_field</span> <span class="o">=</span> <span class="n">StockField</span><span class="o">.</span><span class="n">CUR_PRICE</span>
-<span class="n">field</span><span class="o">.</span><span class="n">is_no_filter</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="n">field</span><span class="o">.</span><span class="n">sort</span> <span class="o">=</span> <span class="n">SortDir</span><span class="o">.</span><span class="n">ASCEND</span>
+<span class="n">simple_filter</span> <span class="o">=</span> <span class="n">SimpleFilter</span><span class="p">()</span>
+<span class="n">simple_filter</span><span class="o">.</span><span class="n">filter_min</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">simple_filter</span><span class="o">.</span><span class="n">filter_max</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">simple_filter</span><span class="o">.</span><span class="n">stock_field</span> <span class="o">=</span> <span class="n">StockField</span><span class="o">.</span><span class="n">CUR_PRICE</span>
+<span class="n">simple_filter</span><span class="o">.</span><span class="n">is_no_filter</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">simple_filter</span><span class="o">.</span><span class="n">sort</span> <span class="o">=</span> <span class="n">SortDir</span><span class="o">.</span><span class="n">ASCEND</span>
 
-<span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_filter</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="p">[</span><span class="n">field</span><span class="p">])</span>
+<span class="n">acc_filter</span> <span class="o">=</span> <span class="n">AccumulateFilter</span><span class="p">()</span>
+<span class="n">acc_filter</span><span class="o">.</span><span class="n">filter_min</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">acc_filter</span><span class="o">.</span><span class="n">filter_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">acc_filter</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">acc_filter</span><span class="o">.</span><span class="n">stock_field</span> <span class="o">=</span> <span class="n">StockField</span><span class="o">.</span><span class="n">CHANGE_RATE</span>
+<span class="n">acc_filter</span><span class="o">.</span><span class="n">is_no_filter</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">acc_filter</span><span class="o">.</span><span class="n">sort</span> <span class="o">=</span> <span class="n">SortDir</span><span class="o">.</span><span class="n">None</span>
+
+<span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_stock_filter</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="p">[</span><span class="n">simple_filter</span><span class="p">,</span> <span class="n">acc_filter</span><span class="p">])</span>
 <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">RET_OK</span><span class="p">:</span>
     <span class="n">last_page</span><span class="p">,</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">ret_list</span> <span class="o">=</span> <span class="n">ls</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ret_list</span><span class="p">),</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">ret_list</span><span class="p">)</span>
@@ -4397,7 +4563,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last">
-<li><p class="first">接口限制请参见 <a class="reference external" href="../protocol/intro.html#id51">获取条件选股</a></p>
+<li><p class="first">接口限制请参见 <a class="reference external" href="../protocol/intro.html#id55">获取条件选股</a></p>
 </li>
 <li><p class="first">条件选股支持的板块或指数代码如下:</p>
 <table border="1" class="docutils">
@@ -4471,9 +4637,9 @@ start和end的组合如下：</p>
 
 <table border="1" class="docutils">
 <colgroup>
-<col width="21%" />
-<col width="6%" />
-<col width="73%" />
+<col width="19%" />
+<col width="5%" />
+<col width="75%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -4536,7 +4702,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>winning_ratio</td>
 <td>float</td>
-<td>中签率 该字段为百分比字段，默认不展示%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用</td>
+<td>中签率 该字段为百分比字段，默认不展示%，如20实际对应20%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。A股适用</td>
 </tr>
 <tr class="row-even"><td>issue_pe_rate</td>
 <td>float</td>
@@ -4771,8 +4937,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id21">
-<h4>on_recv_rsp<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id23">
+<h4>on_recv_rsp<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4819,8 +4985,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id22">
-<h4>on_recv_rsp<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id24">
+<h4>on_recv_rsp<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4867,8 +5033,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id23">
-<h4>on_recv_rsp<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id25">
+<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4921,8 +5087,8 @@ start和end的组合如下：</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id24">
-<h4>on_recv_rsp<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id26">
+<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -4969,8 +5135,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id25">
-<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id27">
+<h4>on_recv_rsp<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5015,8 +5181,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id26">
-<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id28">
+<h4>on_recv_rsp<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>

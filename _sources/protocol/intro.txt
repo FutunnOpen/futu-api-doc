@@ -185,7 +185,7 @@
  3207             Qot_GetOwnerPlate.proto_                获取股票所属板块
  3208             Qot_GetHoldingChangeList.proto_         获取持股变化列表
  3209             Qot_GetOptionChain.proto_               获取期权链
- 3210             Qot_GetWarrant.proto_                   获取涡轮
+ 3210             Qot_GetWarrant.proto_                   获取窝轮
  3211             Qot_GetCapitalFlow.proto_               获取资金流向
  3212             Qot_GetCapitalDistribution.proto_       获取资金分布
  3213             Qot_GetUserSecurity.proto_       		  获取自选股分组下的股票
@@ -321,7 +321,7 @@ API用户等级
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 传入时间跨度最多 :red-strengthen:`30` 天
 	
-获取涡轮
+获取窝轮
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3210_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
@@ -332,13 +332,13 @@ API用户等级
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3211_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅支持正股、涡轮和基金
+	* 仅支持正股、窝轮和基金
 
 获取资金分布
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3212_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅支持正股、涡轮和基金
+	* 仅支持正股、窝轮和基金
 
 获取自选股分组下的股票
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -360,6 +360,7 @@ API用户等级
 	* 请求协议ID: 3215_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 每次请求的数据个数最多 :red-strengthen:`200` 个
+	* 建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。
 
 
 .. _get-ipo-list-limit:

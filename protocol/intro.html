@@ -121,7 +121,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id47">获取股票所属板块</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id48">获取持股变化列表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-option-chain-limit">获取期权链</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id50">获取涡轮</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">获取窝轮</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id51">获取资金流向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id52">获取资金分布</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id53">获取自选股分组下的股票</a></li>
@@ -496,7 +496,7 @@
 </tr>
 <tr class="row-odd"><td>3210</td>
 <td><a class="reference external" href="quote_protocol.html#qot-getwarrant-proto-3210">Qot_GetWarrant.proto</a></td>
-<td>获取涡轮</td>
+<td>获取窝轮</td>
 </tr>
 <tr class="row-even"><td>3211</td>
 <td><a class="reference external" href="quote_protocol.html#qot-getcapitalflow-proto-3211">Qot_GetCapitalFlow.proto</a></td>
@@ -719,7 +719,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="id50">
-<h3>获取涡轮<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<h3>获取窝轮<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getwarrant-proto-3210">3210</a></li>
@@ -735,7 +735,7 @@
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getcapitalflow-proto-3211">3211</a></li>
 <li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
-<li>仅支持正股、涡轮和基金</li>
+<li>仅支持正股、窝轮和基金</li>
 </ul>
 </div></blockquote>
 </div>
@@ -745,7 +745,7 @@
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getcapitaldistribution-proto-3212">3212</a></li>
 <li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
-<li>仅支持正股、涡轮和基金</li>
+<li>仅支持正股、窝轮和基金</li>
 </ul>
 </div></blockquote>
 </div>
@@ -779,6 +779,7 @@
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-stockfilter-proto-3215">3215</a></li>
 <li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 <li>每次请求的数据个数最多 <span class="red-strengthen">200</span> 个</li>
+<li>建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。</li>
 </ul>
 </div></blockquote>
 </div>

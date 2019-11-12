@@ -131,13 +131,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#securitystatus">SecurityStatus - 股票状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#companyact">CompanyAct - 公司行动</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#holdercategory">HolderCategory - 持有者类别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sortfield">SortField - 涡轮排序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#issuer">Issuer - 涡轮发行人</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ipoperiod">IpoPeriod - 涡轮上市日</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 涡轮价(界)外/内</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 涡轮状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sortfield">SortField - 窝轮排序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issuer">Issuer - 窝轮发行人</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ipoperiod">IpoPeriod - 窝轮上市日</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pricetype">PriceType - 窝轮价(界)外/内</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 窝轮状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#qotright">QotRight - 行情权限</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stockfield">StockField - 条件选股的简单属性筛选条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accumulatefield">AccumulateField - 条件选股的累积属性筛选条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#financialfield">FinancialField - 条件选股的财务属性筛选条件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#financialquarter">FinancialQuarter - 条件选股的财报时间</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sortdir">SortDir - 条件选股的排序方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#security">Security - 证券标识</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kline-k">KLine - K线数据点</a></li>
@@ -656,7 +659,7 @@
         <span class="na">SecurityType_Bwrt</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//一揽子权证</span>
         <span class="na">SecurityType_Eqty</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//正股</span>
         <span class="na">SecurityType_Trust</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//信托,基金</span>
-        <span class="na">SecurityType_Warrant</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//涡轮</span>
+        <span class="na">SecurityType_Warrant</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//窝轮</span>
         <span class="na">SecurityType_Index</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//指数</span>
         <span class="na">SecurityType_Plate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//板块</span>
         <span class="na">SecurityType_Drvt</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//期权</span>
@@ -1040,7 +1043,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="sortfield">
-<h3>SortField - 涡轮排序<a class="headerlink" href="#sortfield" title="Permalink to this headline">¶</a></h3>
+<h3>SortField - 窝轮排序<a class="headerlink" href="#sortfield" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SortField</span>
 <span class="p">{</span>
@@ -1103,7 +1106,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="issuer">
-<h3>Issuer - 涡轮发行人<a class="headerlink" href="#issuer" title="Permalink to this headline">¶</a></h3>
+<h3>Issuer - 窝轮发行人<a class="headerlink" href="#issuer" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Issuer</span>
 <span class="p">{</span>
@@ -1138,7 +1141,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="ipoperiod">
-<h3>IpoPeriod - 涡轮上市日<a class="headerlink" href="#ipoperiod" title="Permalink to this headline">¶</a></h3>
+<h3>IpoPeriod - 窝轮上市日<a class="headerlink" href="#ipoperiod" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">IpoPeriod</span>
 <span class="p">{</span>
@@ -1155,7 +1158,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="pricetype">
-<h3>PriceType - 涡轮价(界)外/内<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
+<h3>PriceType - 窝轮价(界)外/内<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PriceType</span>
 <span class="p">{</span>
@@ -1169,7 +1172,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="warrantstatus">
-<h3>WarrantStatus - 涡轮状态<a class="headerlink" href="#warrantstatus" title="Permalink to this headline">¶</a></h3>
+<h3>WarrantStatus - 窝轮状态<a class="headerlink" href="#warrantstatus" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantStatus</span>
 <span class="p">{</span>
@@ -1208,10 +1211,10 @@
         <span class="na">StockField_StockCode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 股票代码，不能填区间上下限值。</span>
         <span class="na">StockField_StockName</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称，不能填区间上下限值。</span>
         <span class="na">StockField_CurPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 最新价 例如填写[10,20]值区间</span>
-        <span class="na">StockField_CurPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]</span>
-        <span class="na">StockField_CurPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]</span>
-        <span class="na">StockField_HighPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]</span>
-        <span class="na">StockField_LowPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]</span>
+        <span class="na">StockField_CurPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间</span>
+        <span class="na">StockField_CurPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间</span>
+        <span class="na">StockField_HighPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间</span>
+        <span class="na">StockField_LowPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间</span>
         <span class="na">StockField_VolumeRatio</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 量比 例如填写[0.5,30]值区间</span>
         <span class="na">StockField_BidAskRatio</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 委比 例如填写[-20,85.01]值区间</span>
         <span class="na">StockField_LotPrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 每手价格 例如填写[40,100]值区间</span>
@@ -1219,6 +1222,62 @@
         <span class="na">StockField_PeAnnual</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 市盈率 (静态) 例如填写[-8,65.3]值区间</span>
         <span class="na">StockField_PeTTM</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 市盈率TTM 例如填写[-10,20.5]值区间</span>
         <span class="na">StockField_PbRate</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">// 市净率 例如填写[0,0.8]值区间</span>
+        <span class="na">StockField_ChangeRate5min</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 五分钟价格涨跌幅 例如填写[-5,6.3]值区间</span>
+        <span class="na">StockField_ChangeRateBeginYear</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="accumulatefield">
+<h3>AccumulateField - 条件选股的累积属性筛选条件<a class="headerlink" href="#accumulatefield" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">AccumulateField</span>
+<span class="p">{</span>
+        <span class="na">AccumulateField_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">AccumulateField_ChangeRate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 涨跌幅 例如填写[-10.2,20.4]值区间</span>
+        <span class="na">AccumulateField_Amplitude</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 振幅 例如填写[0.5,20.6]值区间</span>
+        <span class="na">AccumulateField_Volume</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 日均成交量 例如填写[2000,70000]值区间</span>
+        <span class="na">AccumulateField_Turnover</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 日均成交额 例如填写[1400,890000]值区间</span>
+        <span class="na">AccumulateField_TurnoverRate</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 换手率 例如填写[0.12,26.73]值区间</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="financialfield">
+<h3>FinancialField - 条件选股的财务属性筛选条件<a class="headerlink" href="#financialfield" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">FinancialField</span>
+<span class="p">{</span>
+        <span class="na">FinancialField_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">FinancialField_NetProfit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 净利润 例如填写[100000000,2500000000]值区间</span>
+        <span class="na">FinancialField_NetProfitGrowth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 净利润增长率 例如填写[-20.13,300]值区间</span>
+        <span class="na">FinancialField_SumOfBusiness</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 营业收入 例如填写[100000000,6400000000]值区间</span>
+        <span class="na">FinancialField_SumOfBusinessGrowth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 营收同比增长率 例如填写[-5.13,200]值区间</span>
+        <span class="na">FinancialField_NetProfitRate</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 净利率 例如填写[0.01,113]值区间</span>
+        <span class="na">FinancialField_GrossProfitRate</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 毛利率 例如填写[0.12,65]值区间</span>
+        <span class="na">FinancialField_DebtAssetRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 资产负债率 例如填写[0.05,470]值区间</span>
+        <span class="na">FinancialField_ReturnOnEquityRate</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 净资产收益率 例如填写[0.01,230]值区间</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="financialquarter">
+<h3>FinancialQuarter - 条件选股的财报时间<a class="headerlink" href="#financialquarter" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">FinancialQuarter</span>
+<span class="p">{</span>
+        <span class="na">FinancialQuarter_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">FinancialQuarter_Annual</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 年报</span>
+        <span class="na">FinancialQuarter_FirstQuarter</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 一季报</span>
+        <span class="na">FinancialQuarter_Interim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 中报</span>
+        <span class="na">FinancialQuarter_ThirdQuarter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 三季报</span>
+        <span class="na">FinancialQuarter_MostRecentQuarter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 最近季报</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1268,7 +1327,7 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//成交额</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//换手率（该字段为百分比字段，展示为小数表示）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">pe</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//市盈率</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//涨跌幅（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">timestamp</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//时间戳</span>
 <span class="p">}</span>
 </pre></div>
@@ -1284,8 +1343,8 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">strikePrice</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//行权价</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">contractSize</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//每份合约数</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">openInterest</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//未平仓合约数</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//隐含波动率（该字段为百分比字段，默认不展示%）</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">premium</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//溢价（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">impliedVolatility</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">premium</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">delta</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//希腊值 Delta</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">gamma</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//希腊值 Gamma</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">vega</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//希腊值 Vega</span>
@@ -1313,8 +1372,8 @@
         <span class="k">required</span> <span class="n">Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
         <span class="k">required</span> <span class="kt">bool</span> <span class="na">isSuspended</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//是否停牌</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">listTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//上市日期字符串</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">priceSpread</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//向上价差</span>
-        <span class="k">required</span> <span class="kt">string</span> <span class="na">updateTime</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//更新时间字符串</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">priceSpread</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//价差</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">updateTime</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//最新价的更新时间字符串，对其他字段不适用</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">highPrice</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//最高价</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">openPrice</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//开盘价</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">lowPrice</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//最低价</span>
@@ -1322,12 +1381,12 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">lastClosePrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//昨收价</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//成交量</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//成交额</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//换手率（该字段为百分比字段，默认不展示%）</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//振幅（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">turnoverRate</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">darkStatus</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//DarkStatus, 暗盘交易状态</span>
         <span class="k">optional</span> <span class="n">OptionBasicQotExData</span> <span class="na">optionExData</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//期权特有字段</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">listTimestamp</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">//上市日期时间戳</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">updateTimestamp</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//更新时间戳</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">updateTimestamp</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">//最新价的更新时间戳，对其他字段不适用</span>
         <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">preMarket</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span> <span class="c1">//盘前数据</span>
         <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">afterMarket</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//盘后数据</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">secStatus</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//SecurityStatus, 股票状态</span>
@@ -1350,8 +1409,8 @@
     <span class="k">optional</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 成交量</span>
     <span class="k">optional</span> <span class="kt">double</span> <span class="na">turnover</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 成交额</span>
     <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeVal</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌额</span>
-    <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）</span>
-    <span class="k">optional</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）</span>
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">changeRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
+    <span class="k">optional</span> <span class="kt">double</span> <span class="na">amplitude</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>  <span class="c1">// 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1402,7 +1461,7 @@
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">WarrantStaticExData</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.WarrantType,涡轮类型</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.WarrantType,窝轮类型</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//所属正股</span>
 <span class="p">}</span>
 </pre></div>
@@ -1501,9 +1560,9 @@
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">holderName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//持有者名称（机构名称 或 基金名称 或 高管姓名）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingQty</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//当前持股数量</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingRatio</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//当前持股百分比（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">holdingRatio</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//当前持股百分比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">changeQty</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//较上一次变动数量</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">changeRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//较上一次变动百分比（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">changeRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//较上一次变动百分比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//发布时间(YYYY-MM-DD HH:MM:SS字符串)</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">timestamp</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//时间戳</span>
 <span class="p">}</span>
@@ -1826,7 +1885,7 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">costPrice</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//成本价，无精度限制，如果没传，代表此时此值无效</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">val</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//市值，3位精度</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">plVal</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//盈亏金额，3位精度</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">plRatio</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//盈亏比例，无精度限制，如果没传，代表此时此值无效（该字段为百分比字段，默认不展示%）</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">plRatio</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//盈亏比例，无精度限制，如果没传，代表此时此值无效（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
 
         <span class="c1">//以下是此持仓今日统计</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">td_plVal</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//今日盈亏金额，3位精度，下同</span>
