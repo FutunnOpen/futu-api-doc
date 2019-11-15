@@ -588,9 +588,9 @@ ModifyUserSecurityOp - 自选股操作类型
 
  ..  py:attribute:: DEL
 
-  删除
+  删除自选
   
-   ..  py:attribute:: MOVE_OUT
+ ..  py:attribute:: MOVE_OUT
 
   移出分组
 

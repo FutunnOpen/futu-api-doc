@@ -435,7 +435,7 @@ request_history_kline
 
 .. note::
 
-    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id37>`_
+    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id41>`_
 	
 :strike:`get_autype_list`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -486,7 +486,7 @@ get_market_snapshot
 
 获取市场快照
 
- :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <../protocol/intro.html#id31>`_
+ :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <../protocol/intro.html#api>`_
  :return: (ret, data)
 
         ret == RET_OK ,返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
@@ -627,7 +627,7 @@ get_market_snapshot
 
 .. note::
 
-    * 接口限制请参见 `获取股票快照限制 <../protocol/intro.html#id31>`_
+    * 接口限制请参见 `获取股票快照限制 <../protocol/intro.html#id43>`_
 	
 get_rt_data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -703,7 +703,7 @@ get_plate_stock
 .. note::
 
     *   该接口也可用于获取指数成份股, 如获取上证指数成份股:
-    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id33>`_
+    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id45>`_
 		 .. code:: python
 		
 		    from futu import *
@@ -771,7 +771,7 @@ get_plate_list
 	
 .. note::
 
-    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id32>`_    
+    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id45>`_    
 	
 get_broker_queue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -847,7 +847,7 @@ subscribe
 
 .. note::
 
-    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id39>`_
 	
 		
 unsubscribe
@@ -877,7 +877,7 @@ unsubscribe
   
 .. note::
 
-    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id39>`_
 
 unsubscribe_all
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -903,7 +903,7 @@ unsubscribe_all
 
 .. note::
 
-    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id28>`_
+    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id39>`_
   
 query_subscription
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1098,7 +1098,7 @@ get_rt_ticker
 	
 .. note::
 
-    * 接口限制请参见 `获取逐笔限制 <../protocol/intro.html#id29>`_
+    * 接口限制请参见 `获取逐笔限制 <../protocol/intro.html#id40>`_
 	
 get_cur_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1308,7 +1308,7 @@ get_owner_plate
 
 .. note::
 
-    * 	接口限制请参见 `获取股票所属板块限制 <../protocol/intro.html#id35>`_  
+    * 	接口限制请参见 `获取股票所属板块限制 <../protocol/intro.html#id46>`_  
 	
 get_holding_change_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1359,7 +1359,7 @@ time                    str           发布时间（美股的时间默认是美
     quote_ctx.close()
 
 .. note::
-	* 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id36>`_  
+	* 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id48>`_  
 	
 get_option_chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1502,7 +1502,7 @@ backward_adj_factorB    float          后复权因子B
 
 .. note::
 
-    * 	接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id33>`_
+    * 	接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id42>`_
 
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1631,7 +1631,7 @@ inline_price_status            str                界内界外 参见 PriceType_
 
 
 .. note::
-    * 	接口限制请参见 `获取窝轮限制 <../protocol/intro.html#id46>`_
+    * 	接口限制请参见 `获取窝轮限制 <../protocol/intro.html#id50>`_
 
 get_capital_flow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1667,7 +1667,7 @@ get_capital_flow
 
 .. note::
 
-    * 	接口限制请参见 `获取资金流向限制 <../protocol/intro.html#id43>`_
+    * 	接口限制请参见 `获取资金流向限制 <../protocol/intro.html#id51>`_
 
 get_capital_distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1707,7 +1707,7 @@ get_capital_distribution
 
 .. note::
 
-    * 	接口限制请参见 `获取资金分布限制 <../protocol/intro.html#id44>`_
+    * 	接口限制请参见 `获取资金分布限制 <../protocol/intro.html#id52>`_
 
 get_user_security
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1753,7 +1753,7 @@ get_user_security
 
 .. note::
 
-    * 	接口限制请参见 `获取指定分组的自选股列表 <../protocol/intro.html#id47>`_
+    * 	接口限制请参见 `获取指定分组的自选股列表 <../protocol/intro.html#id53>`_
 
 modify_user_security
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1783,7 +1783,7 @@ modify_user_security
 
 .. note::
 
-    * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id48>`_
+    * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id54>`_
 
 get_stock_filter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

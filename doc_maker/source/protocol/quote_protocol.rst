@@ -1853,7 +1853,8 @@
 	{
 		ModifyUserSecurityOp_Unknown = 0;
 		ModifyUserSecurityOp_Add = 1; //新增
-		ModifyUserSecurityOp_Del = 2; //删除
+		ModifyUserSecurityOp_Del = 2; //删除自选
+		ModifyUserSecurityOp_MoveOut = 3; //移出分组
 	}
 
 	message C2S
