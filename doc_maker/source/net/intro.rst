@@ -22,7 +22,7 @@
 
   * 具体支持交易和行情品种参考\ `FutuOpenD网关客户端简介 <../intro/intro.html>`_
   
-  * 下载地址: 暂时请到FUTU OPEN API的QQ开发群里下载（108534288，229850364）
+  * `下载入口 <https://www.futunn.com/download/openAPI>`_
 
 接口框架
 -------------
