@@ -139,9 +139,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#javascript-websocket-api">JavaScript WebSocket API简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">接口框架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">代码结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">调用须知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">接口框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">代码结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">调用须知</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Quote_API.html">行情API</a></li>
@@ -242,12 +242,12 @@
 <li>JavaScript WebSocket API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a> , 并且在xml里面配置websocket_port选择。</li>
 <li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
 <li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
-<li>下载地址: 暂时请到FUTU OPEN API的QQ开发群里下载（108534288，229850364）</li>
+<li><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h2>接口框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>接口框架<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>为了保证性能最大，我们的中间层采用C++编写，然后提供JavaScript接口调用层</li>
@@ -255,8 +255,8 @@
 <img alt="../_images/websocket.png" src="../_images/websocket.png" />
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>代码结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>代码结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text"><div class="highlight"><pre><span></span>|-- js
 |   |-- src
 |       |   |-- ft-websocket
@@ -266,8 +266,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>调用须知<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>调用须知<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>所有接口以异步回调方式完成</li>

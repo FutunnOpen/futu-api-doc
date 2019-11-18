@@ -131,9 +131,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#cpp-api">Cpp API简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">接口框架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">代码结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">调用须知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">接口框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">代码结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">调用须知</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="base.html">基础API</a></li>
@@ -240,24 +240,27 @@
 <blockquote>
 <div><ul class="simple">
 <li>Cpp API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></li>
-<li>API使用VS2013编译，如需使用更高编译平台版本，需自行编译FTAPI以及<a class="reference external" href="https://github.com/protocolbuffers/protobuf">Google Protobuf</a> （3.5.1）静态库。</li>
 <li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
 <li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
-<li>下载地址: 暂时请到FUTU OPEN API的QQ开发群里下载（108534288，229850364）</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id3">
-<h2>接口框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li>FTAPIChannel模块是用于初始化连接，维护连接，该模块提供动态库不提供源码。</li>
-<li>FTAPI在FTAPIChannel基础上新增了一些业务上的收发接口，提供静态库以及源码。</li>
+<li><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id4">
-<h2>代码结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>接口框架<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>FTAPIChannel是C接口，供Cpp，Java，C#等语言底层调用，提供连接创建销毁，初始化，加密解密功能，是连接到FutuOpenD的底层通道。</li>
+<li>FTAPIChannel可用于各种编译选项无需重新编译，该模块提供动态库不提供源码。</li>
+<li>FTAPI在FTAPIChannel基础上新增了一些业务上的收发接口，提供源码，打包静态库方便使用。</li>
+<li>Windows下FTAPI静态库使用VS2013 /MT编译，如需使用更高编译平台版本、/MD、动态库等，需自行编译FTAPI以及<a class="reference external" href="https://github.com/protocolbuffers/protobuf">Google Protobuf</a> （3.5.1）。</li>
+<li>请保证使用API的工程，API库，Protobuf库编译选项一致。</li>
+<li>Src/protobuf目录下打包有Google Protobuf（3.5.1）源码，如需编译请参考该目录下&#8221;pb库编译说明.txt&#8221;。</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>代码结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text"><div class="highlight"><pre><span></span>|-- Bin        API所需的动态静态库，包括API通道动态库，pb静态库，API静态库。
 |-- Include    API头文件
 |-- Src        API源码
@@ -265,8 +268,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>调用须知<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>调用须知<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</li>

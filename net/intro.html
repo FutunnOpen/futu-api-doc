@@ -115,9 +115,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#net-api">.NET API简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">接口框架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">代码结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">调用须知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">接口框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">代码结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">调用须知</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
@@ -243,12 +243,12 @@
 <li>.NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5。或者FTAPI4NetCore.sln采用VS2017编译，采用NetCore2.1。Windows下使用32位.Net，Linux和Mac使用64位.NET。 用户可以根据需要采用更新的VS版本升级源码后编译目标调用库</li>
 <li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
 <li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
-<li>下载地址: 暂时请到FUTU OPEN API的QQ开发群里下载（108534288，229850364）</li>
+<li><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
-<h2>接口框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>接口框架<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>为了保证性能最大，我们的中间层采用C++编写，然后提供C#接口调用层</li>
@@ -260,8 +260,8 @@
 <p class="last">因为涉及到底层Native线程和.NET线程回调的问题，回调时需要特别注意自己的代码所处的线程。建议简单过滤后，把消息抛到上层主线程处理。</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>代码结构<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>代码结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-text"><div class="highlight"><pre><span></span>|-- FTAPI4Net
 |   |-- lib 所有依赖的库，包含第3方库和API库。即用户不必自己生成API库。
 |   |-- FTCAPI.cs  Native接口导入类
@@ -274,8 +274,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>调用须知<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>调用须知<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</li>
