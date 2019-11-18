@@ -511,7 +511,7 @@
 
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 买卖盘结构参考 `OrderBook <base_define.html#orderbook>`_
-	* 富途服务器从交易所收到数据的时间字段，仅支持港股正股和涡轮，且仅开盘时间才有此数据。
+	* 富途服务器从交易所收到数据的时间字段，仅支持港股正股和窝轮，且仅开盘时间才有此数据。
 	* 富途服务器从交易所收到数据的时间字段，部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
 	
 -------------------------------------
@@ -944,7 +944,7 @@
 
 	message S2C
 	{
-		repeated TradeDate tradeDateList = 1; //交易日
+		repeated TradeDate tradeDateList = 1; //交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据
 	}
 
 	message Request
@@ -1040,21 +1040,21 @@
 		required int64 outstandingShares = 6; // 流通股本
 		required double outstandingMarketVal = 7; // 流通市值 =流通股本*当前价格
 		required double netAssetPershare = 8; // 每股净资产
-		required double eyRate = 9; // 收益率（该字段为百分比字段，默认不展示%）
+		required double eyRate = 9; // 收益率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double peRate = 10; // 市盈率
 		required double pbRate = 11; // 市净率
 		required double peTTMRate = 12; // 市盈率TTM
 		optional double dividendTTM = 13; // 股息TTM，派息
-		optional double dividendRatioTTM = 14; // 股息率TTM（该字段为百分比字段，默认不展示%）
+		optional double dividendRatioTTM = 14; // 股息率TTM（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double dividendLFY = 15; // 股息LFY，上一年度派息
-		optional double dividendLFYRatio = 16; // 股息率LFY（该字段为百分比字段，默认不展示%）
+		optional double dividendLFYRatio = 16; // 股息率LFY（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 	}
 
-	 // 涡轮类型额外数据
+	 // 窝轮类型额外数据
 	message WarrantSnapshotExData
 	{
 		required double conversionRate = 1; //换股比率
-		required int32 warrantType = 2; //Qot_Common.WarrantType,涡轮类型
+		required int32 warrantType = 2; //Qot_Common.WarrantType,窝轮类型
 		required double strikePrice = 3; //行使价
 		required string maturityTime = 4; //到期日时间字符串
 		required string endTradeTime = 5; //最后交易日时间字符串
@@ -1062,17 +1062,17 @@
 		required double recoveryPrice = 7; //收回价,仅牛熊证支持该字段
 		required int64 streetVolumn = 8; //街货量
 		required int64 issueVolumn = 9; //发行量
-		required double streetRate = 10; //街货占比（该字段为百分比字段，默认不展示%）
+		required double streetRate = 10; //街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double delta = 11; //对冲值,仅认购认沽支持该字段
 		required double impliedVolatility = 12; //引申波幅,仅认购认沽支持该字段
-		required double premium = 13; //溢价（该字段为百分比字段，默认不展示%）
+		required double premium = 13; //溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double maturityTimestamp = 14; //到期日时间戳
 		optional double endTradeTimestamp = 15; //最后交易日时间戳
 		optional double leverage = 16;  // 杠杆比率（倍）
-		optional double ipop = 17; // 价内/价外（该字段为百分比字段，默认不展示%）
+		optional double ipop = 17; // 价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double breakEvenPoint = 18; // 打和点
 		optional double conversionPrice = 19;  // 换股价
-		optional double priceRecoveryRatio = 20; // 正股距收回价（该字段为百分比字段，默认不展示%）
+		optional double priceRecoveryRatio = 20; // 正股距收回价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double score = 21; // 综合评分
 		optional double upperStrikePrice = 22; //上限价，仅界内证支持该字段
 		optional double lowerStrikePrice = 23; //下限价，仅界内证支持该字段
@@ -1088,8 +1088,8 @@
 		required double strikePrice = 4; //行权价
 		required int32 contractSize = 5; //每份合约数
 		required int32 openInterest = 6; //未平仓合约数
-		required double impliedVolatility = 7; //隐含波动率（该字段为百分比字段，默认不展示%）
-		required double premium = 8; //溢价（该字段为百分比字段，默认不展示%）
+		required double impliedVolatility = 7; //隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		required double premium = 8; //溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double delta = 9; //希腊值 Delta
 		required double gamma = 10; //希腊值 Gamma
 		required double vega = 11; //希腊值 Vega
@@ -1140,7 +1140,7 @@
 		required double curPrice = 12; //最新价
 		required int64 volume = 13; //成交量
 		required double turnover = 14; //成交额
-		required double turnoverRate = 15; //换手率（该字段为百分比字段，默认不展示%）
+		required double turnoverRate = 15; //换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double listTimestamp = 16; //上市时间戳
 		optional double updateTimestamp = 17; //更新时间戳
 		optional double askPrice = 18;//卖价
@@ -1148,15 +1148,15 @@
 		optional int64 askVol = 20;//卖量
 		optional int64 bidVol = 21;//买量
 		optional bool enableMargin = 22; // 是否可融资，如果为true，后两个字段才有意义
-		optional double mortgageRatio = 23; // 股票抵押率（该字段为百分比字段，默认不展示%）
-		optional double longMarginInitialRatio = 24; // 融资初始保证金率（该字段为百分比字段，默认不展示%）
+		optional double mortgageRatio = 23; // 股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		optional double longMarginInitialRatio = 24; // 融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional bool enableShortSell = 25; // 是否可卖空，如果为true，后三个字段才有意义
-		optional double shortSellRate = 26; // 卖空参考利率（该字段为百分比字段，默认不展示%）
+		optional double shortSellRate = 26; // 卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional int64 shortAvailableVolume = 27; // 剩余可卖空数量（股）
-		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%）
-		optional double amplitude = 29; // 振幅（该字段为百分比字段，默认不展示%）
+		optional double shortMarginInitialRatio = 28; // 卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		optional double amplitude = 29; // 振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double avgPrice = 30; // 平均价
-		optional double bidAskRatio = 31; // 委比（该字段为百分比字段，默认不展示%）
+		optional double bidAskRatio = 31; // 委比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double volumeRatio = 32;  // 量比
 		optional double highest52WeeksPrice = 33;  // 52周最高价
 		optional double lowest52WeeksPrice = 34;  // 52周最低价
@@ -1515,7 +1515,7 @@
 
 ------------------------------------------
 
-`Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取涡轮
+`Qot_GetWarrant.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto>`_ - 3210获取窝轮
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
@@ -1540,20 +1540,20 @@
 		optional string maturityTimeMin = 8; //到期日,到期日范围的开始时间戳
 		optional string maturityTimeMax = 9; //到期日范围的结束时间戳
 		optional int32 ipoPeriod = 10; //Qot_Common.IpoPeriod,上市日
-		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外（该字段为百分比字段，默认不展示%）
+		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional int32 status = 12; //Qot_Common.WarrantStatus, 窝轮状态
 		optional double curPriceMin = 13; //最新价过滤起点 
 		optional double curPriceMax = 14; //最新价过滤终点 	
 		optional double strikePriceMin = 15; //行使价过滤起点
 		optional double strikePriceMax = 16; //行使价过滤终点  
-		optional double streetMin = 17; //街货占比,过滤起点（该字段为百分比字段，默认不展示%）
-		optional double streetMax = 18; //街货占比,过滤终点（该字段为百分比字段，默认不展示%）
+		optional double streetMin = 17; //街货占比,过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		optional double streetMax = 18; //街货占比,过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double conversionMin = 19; //换股比率过滤起点
 		optional double conversionMax = 20; //换股比率过滤终点	
 		optional uint64 volMin = 21; //成交量过滤起点
 		optional uint64 volMax = 22; //成交量过滤终点
-		optional double premiumMin = 23; //溢价,过滤起点（该字段为百分比字段，默认不展示%）
-		optional double premiumMax = 24; //溢价,过滤终点（该字段为百分比字段，默认不展示%）
+		optional double premiumMin = 23; //溢价,过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		optional double premiumMax = 24; //溢价,过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double leverageRatioMin = 25; //杠杆比率过滤起点
 		optional double leverageRatioMax = 26; //杠杆比率过滤终点	
 		optional double deltaMin = 27;//对冲值过滤起点,仅认购认沽支持该字段过滤
@@ -1562,8 +1562,8 @@
 		optional double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
 		optional double recoveryPriceMin = 31; //收回价过滤起点,仅牛熊证支持该字段过滤
 		optional double recoveryPriceMax = 32; //收回价过滤终点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMin = 33;//正股距收回价,过滤起点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）
-		optional double priceRecoveryRatioMax = 34;//正股距收回价,过滤终点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%）		
+		optional double priceRecoveryRatioMin = 33;//正股距收回价,过滤起点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		optional double priceRecoveryRatioMax = 34;//正股距收回价,过滤终点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）		
 	}
 
 	message WarrantData
@@ -1589,7 +1589,7 @@
 		//动态数据项
 		required double curPrice = 17; //当前价
 		required double priceChangeVal = 18; //涨跌额
-		required double changeRate = 19; //涨跌幅（该字段为百分比字段，默认不展示%）	
+		required double changeRate = 19; //涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）	
 		required int32 status = 20; //Qot_Common.WarrantStatus, 窝轮状态	
 		required double bidPrice = 21; //买入价	
 		required double askPrice = 22; //卖出价
@@ -1598,15 +1598,15 @@
 		required int64 volume = 25; //成交量
 		required double turnover = 26; //成交额	
 		required double score = 27; //综合评分
-		required double premium = 28; //溢价（该字段为百分比字段，默认不展示%）
+		required double premium = 28; //溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double breakEvenPoint = 29; //打和点	
 		required double leverage = 30; //杠杆比率（倍）
-		required double ipop = 31; //价内/价外（该字段为百分比字段，默认不展示%）			
-		optional double priceRecoveryRatio = 32; //正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%）
+		required double ipop = 31; //价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）			
+		optional double priceRecoveryRatio = 32; //正股距收回价，仅牛熊证支持该字段（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double conversionPrice = 33; //换股价
-		required double streetRate = 34; //街货占比（该字段为百分比字段，默认不展示%）	
+		required double streetRate = 34; //街货占比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）	
 		required int64 streetVol = 35; //街货量
-		required double amplitude = 36; //振幅（该字段为百分比字段，默认不展示%）
+		required double amplitude = 36; //振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required int64 issueSize = 37; //发行量	        
 		required double highPrice = 39; //最高价
 		required double lowPrice = 40; //最低价	
@@ -1647,7 +1647,7 @@
 	* 上市日类型参考 `IpoPeriod <base_define.html#ipoperiod>`_
 	* 价内价外类型参考 `PriceType <base_define.html#pricetype>`_
 	* 窝轮状态类型参考 `WarrantStatus <base_define.html#warrantstatus>`_
-	* 接口限制请参见 `获取涡轮限制 <intro.html#id43>`_
+	* 接口限制请参见 `获取窝轮限制 <intro.html#id43>`_
 	* 目前仅支持港股
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
 
@@ -1909,19 +1909,57 @@
 		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
 		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
 		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
-		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间
-		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,0.52]值区间
-		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间
-		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,0.68]值区间
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-30,-10]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[20,40]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-3,-1]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[10,70]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
-		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
+		StockField_BidAskRatio = 9; // 委比 例如填写[-20,80.5]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
-		StockField_MarketVal = 11; // 市值，单位是元 例如填写[50000000,3000000000]值区间
-		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
+		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
+		StockField_PeAnnual = 12; // 市盈率(静态) 例如填写[-8,65.3]值区间
 		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
-		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+		StockField_PbRate = 14; // 市净率 例如填写[0.5,20]值区间
+		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 	};
-		
+	
+	// 累积属性
+	enum AccumulateField
+	{
+		AccumulateField_Unknown = 0; // 未知
+		AccumulateField_ChangeRate = 1; // 涨跌幅 例如填写[-10.2,20.4]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		AccumulateField_Amplitude = 2; // 振幅 例如填写[0.5,20.6]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		AccumulateField_Volume = 3; // 日均成交量 例如填写[2000,70000]值区间
+		AccumulateField_Turnover = 4; // 日均成交额 例如填写[1400,890000]值区间
+		AccumulateField_TurnoverRate = 5; // 换手率 例如填写[2,30]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+	}
+	
+	// 财务属性
+	enum FinancialField
+	{
+		FinancialField_Unknown = 0; // 未知
+		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
+		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-10,300]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_SumOfBusiness = 3; // 营业收入 例如填写[100000000,6400000000]值区间
+		FinancialField_SumOfBusinessGrowth = 4; // 营收同比增长率 例如填写[-5,200]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_NetProfitRate = 5; // 净利率 例如填写[10,113]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[4,65]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[5,470]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[20,230]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+	}
+	
+	// 财报时间
+	enum FinancialQuarter
+	{
+		FinancialQuarter_Unknown = 0; // 未知
+		FinancialQuarter_Annual = 1; // 年报
+		FinancialQuarter_FirstQuarter = 2; // 一季报
+		FinancialQuarter_Interim = 3; // 中报
+		FinancialQuarter_ThirdQuarter = 4; // 三季报
+		FinancialQuarter_MostRecentQuarter = 5; // 最近季报
+	}
+	
 	// 排序方向
 	enum SortDir
 	{
@@ -1939,7 +1977,29 @@
 		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 	};
-
+	
+	// 累积属性筛选
+	message AccumulateFilter
+	{
+		required int32 field = 1; // AccumulateField 累积属性
+		optional double filterMin = 2; // 区间下限，闭区间
+		optional double filterMax = 3; // 区间上限，闭区间
+		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
+		required int32 days = 6; // 近几日，累积时间
+	}
+	
+	// 财务属性筛选
+	message FinancialFilter
+	{
+		required int32 field = 1; // FinancialField 财务属性
+		optional double filterMin = 2; // 区间下限，闭区间
+		optional double filterMax = 3; // 区间上限，闭区间
+		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
+		required int32 quarter = 6; // FinancialQuarter 财报累积时间
+	}
+	
 	// 简单属性数据
 	message BaseData 
 	{ 
@@ -1947,12 +2007,30 @@
 		required double value = 2;
 	};
 	
+	// 累积指标数据
+	message AccumulateData
+	{
+		required int32 field = 1; // AccumulateField 累积属性
+		required double value = 2;
+		required int32 days = 3; // 近几日，累积时间
+	}
+	
+	// 财务属性数据
+	message FinancialData
+	{
+		required int32 field = 1; // FinancialField 财务属性
+		required double value = 2;
+		required int32 quarter = 3; // FinancialQuarter 财报累积时间
+	}
+	
 	// 返回的股票数据
-	message StockData 
+	message StockData  
 	{
 		required Qot_Common.Security security = 1; // 股票
 		required string name = 2; // 股票名称
 		repeated BaseData baseDataList = 3; // 筛选后的简单属性数据
+		repeated AccumulateData accumulateDataList = 4; // 筛选后的累积属性数据
+		repeated FinancialData financialDataList = 5; // 筛选后的财务属性数据
 	};
 	
 	message C2S
@@ -1963,26 +2041,27 @@
 		// 以下为筛选条件，可选字段，不填表示不过滤
 		optional Qot_Common.Security plate = 4; // 板块
 		repeated BaseFilter baseFilterList = 5; // 简单行情过滤器
+		repeated AccumulateFilter accumulateFilterList = 6; // 累积行情过滤器
+		repeated FinancialFilter financialFilterList = 7; // 财务行情过滤器
 	}
-
+	
 	message S2C
 	{
 		required bool lastPage = 1; // 是否最后一页了,false:非最后一页,还有窝轮记录未返回; true:已是最后一页
 		required int32 allCount = 2; // 该条件请求所有数据的个数
 		repeated StockData dataList = 3; // 返回的股票数据列表
 	}
-
+	
 	message Request
 	{
 		required C2S c2s = 1;
 	}
-
+	
 	message Response
 	{
-		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		required int32 retType = 1 [default = -400]; // RetType,返回结果
 		optional string retMsg = 2;
 		optional int32 errCode = 3;
-		
 		optional S2C s2c = 4;
 	}
 
@@ -1992,6 +2071,9 @@
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 市场类型参考 `QotMarket <base_define.html#qotmarket>`_
 	* 简单属性筛选条件参考 `StockField <base_define.html#stockfield>`_
+	* 累积属性筛选条件参考 `AccumulateField <base_define.html#accumulatefield>`_
+	* 财务属性筛选条件参考 `FinancialField <base_define.html#financialfield>`_
+	* 财报时间参考 `FinancialQuarter <base_define.html#financialquarter>`_
 	* 排序方向参考 `SortDir <base_define.html#sortdir>`_
 	* 限频接口：30秒内最多10次	
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
@@ -2003,103 +2085,105 @@
 
 .. code-block:: protobuf
 
-    package Qot_GetIpoList;
-    option java_package = "com.futu.openapi.pb";
+	syntax = "proto2";
+	package Qot_GetIpoList;
+	option java_package = "com.futu.openapi.pb";
+	
+	import "Common.proto";
+	import "Qot_Common.proto";
+	
+	// Ipo基本数据
+	message BasicIpoData
+	{
+		required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+		required string name = 2; // 股票名称
+		optional string listTime = 3; // 上市日期字符串
+		optional double listTimestamp = 4; // 上市日期时间戳
+	};
+	
+	// A股Ipo列表额外数据
+	message CNIpoExData 
+	{
+		required string applyCode = 1; // 申购代码
+		required int64 issueSize = 2; // 发行总数
+		required int64 onlineIssueSize = 3; // 网上发行量
+		required int64 applyUpperLimit = 4; // 申购上限
+		required int64 applyLimitMarketValue = 5; // 顶格申购需配市值
+		required bool isEstimateIpoPrice = 6; // 是否预估发行价
+		required double ipoPrice = 7; // 发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。
+		required double industryPeRate = 8; // 行业市盈率
+		required bool isEstimateWinningRatio = 9; // 是否预估中签率
+		required double winningRatio = 10; // 中签率 该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。
+		required double issuePeRate = 11; // 发行市盈率
+		optional string applyTime = 12; // 申购日期字符串
+		optional double applyTimestamp = 13; // 申购日期时间戳
+		optional string winningTime = 14; // 公布中签日期字符串
+		optional double winningTimestamp = 15; // 公布中签日期时间戳
+		required bool isHasWon = 16; // 是否已经公布中签号
+		repeated WinningNumData winningNumData = 17; // Qot_GetIpoList::WinningNumData 中签号数据，对应PC中"公布中签日期的已公布"
+	};
+	
+	// 中签号数据
+	message WinningNumData
+	{
+		required string winningName = 1; // 分组名
+	    required string winningInfo = 2; // 中签号信息
+	}
+	
+	// 港股Ipo列表额外数据
+	message HKIpoExData
+	{
+		required double ipoPriceMin = 1; // 最低发售价
+		required double ipoPriceMax = 2; // 最高发售价
+		required double listPrice = 3; // 上市价
+		required int32 lotSize = 4; // 每手股数
+		required double entrancePrice = 5; // 入场费
+		required bool isSubscribeStatus = 6; // 是否为认购状态，True-认购中，False-待上市
+		optional string applyEndTime = 7; // 截止认购日期字符串
+		optional double applyEndTimestamp = 8; // 截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期。
+	};
+	
+	// 美股Ipo列表额外数据
+	message USIpoExData  
+	{
+		required double ipoPriceMin = 1; // 最低发行价
+		required double ipoPriceMax = 2; // 最高发行价
+		required int64 issueSize = 3; // 发行量
+	};
+	
+	// 新股Ipo数据
+	message IpoData
+	{	
+		required BasicIpoData basic = 1; // IPO基本数据	
+		optional CNIpoExData cnExData = 2; // A股IPO额外数据
+		optional HKIpoExData hkExData = 3; // 港股IPO额外数据
+		optional USIpoExData usExData = 4; // 美股IPO额外数据
+	};
+	
+	message C2S
+	{
+		required int32 market = 1; // Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+	}
+	
+	message S2C
+	{
+		repeated IpoData ipoList = 1; // 新股IPO数据
+	}
+	
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+	
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
 
-    import "Common.proto";
-    import "Qot_Common.proto";
-
-    // Ipo基本数据
-    message BasicIpoData
-    {
-        required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
-        required string name = 2; // 股票名称
-        optional string listTime = 3; // 上市日期字符串
-        optional double listTimestamp = 4; // 上市日期时间戳
-    };
-
-    // A股Ipo列表额外数据
-    message CNIpoExData 
-    {
-        required string applyCode = 1; // 申购代码
-        required int64 issueSize = 2; // 发行总数
-        required int64 onlineIssueSize = 3; // 网上发行量
-        required int64 applyUpperLimit = 4; // 申购上限
-        required int64 applyLimitMarketValue = 5; // 顶格申购需配市值
-        required bool isEstimateIpoPrice = 6; // 是否预估发行价
-        required double ipoPrice = 7; // 发行价 预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。
-        required double industryPeRate = 8; // 行业市盈率
-        required bool isEstimateWinningRatio = 9; // 是否预估中签率
-        required double winningRatio = 10; // 中签率 该字段为百分比字段，默认不展示%。预估值会因为募集资金、发行数量、发行费用等数据变动而变动，仅供参考。实际数据公布后会第一时间更新。
-        required double issuePeRate = 11; // 发行市盈率
-        optional string applyTime = 12; // 申购日期字符串
-        optional double applyTimestamp = 13; // 申购日期时间戳
-        optional string winningTime = 14; // 公布中签日期字符串
-        optional double winningTimestamp = 15; // 公布中签日期时间戳
-        required bool isHasWon = 16; // 是否已经公布中签号
-        repeated WinningNumData winningNumData = 17; // Qot_GetIpoList::WinningNumData 中签号数据，对应PC中"公布中签日期的已公布"
-    };
-
-    // 中签号数据
-    message WinningNumData
-    {
-        required string winningName = 1; // 分组名
-        required string winningInfo = 2; // 中签号信息
-    }
-
-    // 港股Ipo列表额外数据
-    message HKIpoExData
-    {
-        required double ipoPriceMin = 1; // 最低发售价
-        required double ipoPriceMax = 2; // 最高发售价
-        required double listPrice = 3; // 上市价
-        required int32 lotSize = 4; // 每手股数
-        required double entrancePrice = 5; // 入场费
-        required bool isSupportIpo = 6; // 是否有认购阶段
-        optional string applyEndTime = 7; // 截止认购日期字符串
-        optional double applyEndTimestamp = 8; // 截止认购日期时间戳 因需处理认购手续，富途认购截止时间会早于交易所公布的日期。
-    };
-
-    // 美股Ipo列表额外数据
-    message USIpoExData  
-    {
-        required double ipoPriceMin = 1; // 最低发行价
-        required double ipoPriceMax = 2; // 最高发行价
-        required int64 issueSize = 3; // 发行量
-    };
-
-    // 新股Ipo数据
-    message IpoData
-    {    
-        required BasicIpoData basic = 1; // IPO基本数据    
-        optional CNIpoExData cnExData = 2; // A股IPO额外数据
-        optional HKIpoExData hkExData = 3; // 港股IPO额外数据
-        optional USIpoExData usExData = 4; // 美股IPO额外数据
-    };
-
-    message C2S
-    {
-        required int32 market = 1; // Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
-    }
-
-    message S2C
-    {
-        repeated IpoData ipoList = 1; // 新股IPO数据
-    }
-
-    message Request
-    {
-        required C2S c2s = 1;
-    }
-
-    message Response
-    {
-        required int32 retType = 1 [default = -400]; //RetType,返回结果
-        optional string retMsg = 2;
-        optional int32 errCode = 3;
-        
-        optional S2C s2c = 4;
-    }
 
 .. note::
 	

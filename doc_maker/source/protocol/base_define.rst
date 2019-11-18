@@ -358,7 +358,7 @@ SecurityType - 证券类型
 		SecurityType_Bwrt = 2; //一揽子权证
 		SecurityType_Eqty = 3; //正股
 		SecurityType_Trust = 4; //信托,基金
-		SecurityType_Warrant = 5; //涡轮
+		SecurityType_Warrant = 5; //窝轮
 		SecurityType_Index = 6; //指数
 		SecurityType_Plate = 7; //板块
 		SecurityType_Drvt = 8; //期权
@@ -738,7 +738,7 @@ HolderCategory - 持有者类别
 	
 -----------------------------------------------
 
-SortField - 涡轮排序
+SortField - 窝轮排序
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -801,7 +801,7 @@ SortField - 涡轮排序
 	
 -----------------------------------------------
 
-Issuer - 涡轮发行人
+Issuer - 窝轮发行人
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -836,7 +836,7 @@ Issuer - 涡轮发行人
 	
 -----------------------------------------------
 
-IpoPeriod - 涡轮上市日
+IpoPeriod - 窝轮上市日
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -853,7 +853,7 @@ IpoPeriod - 涡轮上市日
 	
 -----------------------------------------------
 
-PriceType - 涡轮价(界)外/内
+PriceType - 窝轮价(界)外/内
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -867,7 +867,7 @@ PriceType - 涡轮价(界)外/内
 	
 -----------------------------------------------
 
-WarrantStatus - 涡轮状态
+WarrantStatus - 窝轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -903,16 +903,16 @@ StockField - 条件选股的简单属性筛选条件
 
  .. code-block:: protobuf
 
-	enum StockField
+	enum StockField 
 	{
 		StockField_Unknown = 0; // 未知
 		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
 		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
 		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
-		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
-		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间，区间合法范围[0,正无穷]
-		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间，区间合法范围[-1,0]
-		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间，区间合法范围[0,正无穷]
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-0.8,0]值区间
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[0,100]值区间
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-0.8,0]值区间
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[0,100]值区间
 		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
 		StockField_BidAskRatio = 9; // 委比 例如填写[-20,85.01]值区间
 		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
@@ -920,6 +920,62 @@ StockField - 条件选股的简单属性筛选条件
 		StockField_PeAnnual = 12; // 市盈率 (静态) 例如填写[-8,65.3]值区间
 		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
 		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
+		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间
+		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+AccumulateField - 条件选股的累积属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum AccumulateField
+	{
+		AccumulateField_Unknown = 0; // 未知
+		AccumulateField_ChangeRate = 1; // 涨跌幅 例如填写[-10.2,20.4]值区间
+		AccumulateField_Amplitude = 2; // 振幅 例如填写[0.5,20.6]值区间
+		AccumulateField_Volume = 3; // 日均成交量 例如填写[2000,70000]值区间
+		AccumulateField_Turnover = 4; // 日均成交额 例如填写[1400,890000]值区间
+		AccumulateField_TurnoverRate = 5; // 换手率 例如填写[0.12,26.73]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+FinancialField - 条件选股的财务属性筛选条件
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum FinancialField
+	{
+		FinancialField_Unknown = 0; // 未知
+		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
+		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-20.13,300]值区间
+		FinancialField_SumOfBusiness = 3; // 营业收入 例如填写[100000000,6400000000]值区间
+		FinancialField_SumOfBusinessGrowth = 4; // 营收同比增长率 例如填写[-5.13,200]值区间
+		FinancialField_NetProfitRate = 5; // 净利率 例如填写[0.01,113]值区间
+		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[0.12,65]值区间
+		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[0.05,470]值区间
+		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[0.01,230]值区间
+	}
+			
+-----------------------------------------------------------------------------
+
+FinancialQuarter - 条件选股的财报时间
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum FinancialQuarter
+	{
+		FinancialQuarter_Unknown = 0; // 未知
+		FinancialQuarter_Annual = 1; // 年报
+		FinancialQuarter_FirstQuarter = 2; // 一季报
+		FinancialQuarter_Interim = 3; // 中报
+		FinancialQuarter_ThirdQuarter = 4; // 三季报
+		FinancialQuarter_MostRecentQuarter = 5; // 最近季报
 	}
 			
 -----------------------------------------------------------------------------
@@ -969,7 +1025,7 @@ KLine - K线数据点
 		optional double turnover = 9; //成交额
 		optional double turnoverRate = 10; //换手率（该字段为百分比字段，展示为小数表示）
 		optional double pe = 11; //市盈率
-		optional double changeRate = 12; //涨跌幅（该字段为百分比字段，默认不展示%）
+		optional double changeRate = 12; //涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional double timestamp = 13; //时间戳
 	}
 
@@ -985,8 +1041,8 @@ OptionBasicQotExData - 基础报价的期权特有字段
 		required double strikePrice = 1; //行权价
 		required int32 contractSize = 2; //每份合约数
 		required int32 openInterest = 3; //未平仓合约数
-		required double impliedVolatility = 4; //隐含波动率（该字段为百分比字段，默认不展示%）
-		required double premium = 5; //溢价（该字段为百分比字段，默认不展示%）
+		required double impliedVolatility = 4; //隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		required double premium = 5; //溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double delta = 6; //希腊值 Delta
 		required double gamma = 7; //希腊值 Gamma
 		required double vega = 8; //希腊值 Vega
@@ -1014,8 +1070,8 @@ BasicQot - 基础报价
 		required Security security = 1; //股票
 		required bool isSuspended = 2; //是否停牌
 		required string listTime = 3; //上市日期字符串
-		required double priceSpread = 4; //向上价差
-		required string updateTime = 5; //更新时间字符串
+		required double priceSpread = 4; //价差
+		required string updateTime = 5; //最新价的更新时间字符串，对其他字段不适用
 		required double highPrice = 6; //最高价
 		required double openPrice = 7; //开盘价
 		required double lowPrice = 8; //最低价
@@ -1023,12 +1079,12 @@ BasicQot - 基础报价
 		required double lastClosePrice = 10; //昨收价
 		required int64 volume = 11; //成交量
 		required double turnover = 12; //成交额
-		required double turnoverRate = 13; //换手率（该字段为百分比字段，默认不展示%）
-		required double amplitude = 14; //振幅（该字段为百分比字段，默认不展示%）
-		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态
+		required double turnoverRate = 13; //换手率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		required double amplitude = 14; //振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		optional int32 darkStatus = 15; //DarkStatus, 暗盘交易状态	
 		optional OptionBasicQotExData optionExData = 16; //期权特有字段
 		optional double listTimestamp = 17; //上市日期时间戳
-		optional double updateTimestamp = 18; //更新时间戳
+		optional double updateTimestamp = 18; //最新价的更新时间戳，对其他字段不适用
 		optional PreAfterMarketData preMarket = 19; //盘前数据
 		optional PreAfterMarketData afterMarket = 20; //盘后数据
 		optional int32 secStatus = 21; //SecurityStatus, 股票状态
@@ -1051,8 +1107,8 @@ PreAfterMarketData - 盘前盘后数据
 	    optional int64 volume = 4;  // 盘前或盘后 - 成交量
 	    optional double turnover = 5;  // 盘前或盘后 - 成交额
 	    optional double changeVal = 6;  // 盘前或盘后 - 涨跌额
-	    optional double changeRate = 7;  // 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%）
-	    optional double amplitude = 8;  // 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%）
+	    optional double changeRate = 7;  // 盘前或盘后 - 涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+	    optional double amplitude = 8;  // 盘前或盘后 - 振幅（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 	}
 
 -----------------------------------------------------------------------------------------------------------
@@ -1103,7 +1159,7 @@ WarrantStaticExData - 窝轮额外静态信息
 
 	message WarrantStaticExData
 	{
-		required int32 type = 1; //Qot_Common.WarrantType,涡轮类型
+		required int32 type = 1; //Qot_Common.WarrantType,窝轮类型
 		required Qot_Common.Security owner = 2; //所属正股
 	}
 			
@@ -1203,9 +1259,9 @@ ShareHoldingChange - 持股变动
 	{
 		required string holderName = 1; //持有者名称（机构名称 或 基金名称 或 高管姓名）
 		required double holdingQty = 2; //当前持股数量
-		required double holdingRatio = 3; //当前持股百分比（该字段为百分比字段，默认不展示%）
+		required double holdingRatio = 3; //当前持股百分比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double changeQty = 4; //较上一次变动数量
-		required double changeRatio = 5; //较上一次变动百分比（该字段为百分比字段，默认不展示%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
+		required double changeRatio = 5; //较上一次变动百分比（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%。是相对于自身的比例，而不是总的。如总股本1万股，持有100股，持股百分比是1%，卖掉50股，变动比例是50%，而不是0.5%）
 		required string time = 6; //发布时间(YYYY-MM-DD HH:MM:SS字符串)
 		optional double timestamp = 7; //时间戳
 	}
@@ -1533,7 +1589,7 @@ Position - 账户持仓
 		optional double costPrice = 8; //成本价，无精度限制，如果没传，代表此时此值无效
 		required double val = 9; //市值，3位精度
 		required double plVal = 10; //盈亏金额，3位精度
-		optional double plRatio = 11; //盈亏比例，无精度限制，如果没传，代表此时此值无效（该字段为百分比字段，默认不展示%）
+		optional double plRatio = 11; //盈亏比例，无精度限制，如果没传，代表此时此值无效（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 	  
 		//以下是此持仓今日统计
 		optional double td_plVal = 21; //今日盈亏金额，3位精度，下同
