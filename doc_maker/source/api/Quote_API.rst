@@ -2332,6 +2332,3 @@ on_recv_rsp
 
           失败时返回(RET_ERROR, ERR_MSG, None)
 
-
-
-test
