@@ -70,7 +70,7 @@
 
  .. _WarrantStatus: Base_API.html#warrantstatus
 
- .. _ModifyUserSecurity: Base_API.html#modifyusersecurityop
+ .. _ModifyUserSecurityOp: Base_API.html#modifyusersecurityop
 
  .. _SortField: Base_API.html#sortfield
 
@@ -1763,7 +1763,7 @@ modify_user_security
  修改指定分组的自选股列表（不支持系统分组）
 
  :param group_name: 需要修改的自选股分组名称.
- :param op: 操作枚举值.查看 ModifyUserSecurity_
+ :param op: 操作枚举值.查看 ModifyUserSecurityOp_
  :param code_list: 股票列表，['HK.00700','HK.00701']
 
  :return: (ret, data)

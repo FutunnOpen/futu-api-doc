@@ -1861,7 +1861,7 @@
 	{
 		required string groupName = 1; //分组名,有同名的返回最先创建的
 		required int32 op = 2; //ModifyUserSecurityOp,操作类型
-		repeated Qot_Common.Security securityList = 3; //新增或删除该分组下的股票
+		repeated Qot_Common.Security securityList = 3; //新增、删除或移出该分组下的股票
 	}
 
 	message S2C
