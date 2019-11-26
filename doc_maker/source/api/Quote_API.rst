@@ -1042,7 +1042,7 @@ after_high_price        float          盘后最高价
 after_low_price         float          盘后最低价
 after_volume            int            盘后成交量，科创板支持此数据。
 after_turnover          float          盘后成交额，科创板支持此数据。
-after_change_val        float          盘后涨跌额，
+after_change_val        float          盘后涨跌额
 after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 ======================  ===========   ==============================================================
