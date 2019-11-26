@@ -592,12 +592,12 @@ get_market_snapshot
  index_fall_count                int            指数类型下跌支数
  index_equal_count               int            指数类型平盘支数
  sec_status                      str            股票状态，见 SecurityStatus_ 
- net_open_interest               int            净未平仓合约数
- expiry_date_distance            int            距离到期日天数
- contract_nominal_value          float          合约名义金额
- owner_lot_multiplier            float          相等正股手数，指数期权无该字段
+ option_net_open_interest        int            净未平仓合约数
+ option_expiry_date_distance     int            距离到期日天数
+ option_contract_nominal_value   float          合约名义金额
+ option_owner_lot_multiplier     float          相等正股手数，指数期权无该字段
  option_area_type                str            期权地区类型，见 OptionAreaType_
- contract_multiplier             float          合约乘数，指数期权特有字段
+ option_contract_multiplier      float          合约乘数，指数期权特有字段
  pre_price                       float          盘前价格。 
  pre_high_price                  float          盘前最高价。 
  pre_low_price                   float          盘前最低价。 
