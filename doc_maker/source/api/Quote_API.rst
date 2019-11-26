@@ -1029,22 +1029,22 @@ contract_nominal_value  float          合约名义金额
 owner_lot_multiplier    float          相等正股手数，指数期权无该字段
 option_area_type        str            期权地区类型，见 OptionAreaType_
 contract_multiplier     float          合约乘数，指数期权特有字段
-pre_price               float          盘前价格。 
-pre_high_price          float          盘前最高价。 
-pre_low_price           float          盘前最低价。 
-pre_volume              int            盘前成交量。 
-pre_turnover            float          盘前成交额。 
-pre_change_val          float          盘前涨跌额。 
-pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
-pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
-after_price             float          盘后价格。 
-after_high_price        float          盘后最高价。 
-after_low_price         float          盘后最低价。 
-after_volume            int            盘后成交量。 科创板支持此数据。
-after_turnover          float          盘后成交额。 科创板支持此数据。
-after_change_val        float          盘后涨跌额。 
-after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
-after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
+pre_price               float          盘前价格
+pre_high_price          float          盘前最高价
+pre_low_price           float          盘前最低价
+pre_volume              int            盘前成交量
+pre_turnover            float          盘前成交额
+pre_change_val          float          盘前涨跌额
+pre_change_rate         float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+pre_amplitude           float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+after_price             float          盘后价格
+after_high_price        float          盘后最高价
+after_low_price         float          盘后最低价
+after_volume            int            盘后成交量，科创板支持此数据。
+after_turnover          float          盘后成交额，科创板支持此数据。
+after_change_val        float          盘后涨跌额
+after_change_rate       float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+after_amplitude         float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 ======================  ===========   ==============================================================
         
  :Example:
@@ -1338,10 +1338,10 @@ get_holding_change_list
 
         ret != RET_OK 返回错误字符串
 
-=====================   ===========   ================================================================================================================================================================
+=====================   ===========   ==============================================================
 参数                      类型                        说明
 =====================   ===========   ==============================================================
-holder_name             str            高管名称
+holder_name             str           高管名称
 holding_qty             float         持股数
 holding_ratio           float         持股比例（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 change_qty              float         变动数
@@ -1411,7 +1411,7 @@ get_option_chain
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.None,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
+    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.NONE,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
     quote_ctx.close()
 	
 .. note::
