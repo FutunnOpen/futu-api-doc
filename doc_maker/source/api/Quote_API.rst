@@ -554,7 +554,7 @@ get_market_snapshot
  strike_time                        str            期权行权日（港股A股默认是北京时间）
  option_strike_price                float          行权价
  option_contract_size               int            每份合约数
- option_open_interest               int            未平仓合约数
+ option_open_interest               int            总未平仓合约数
  option_implied_volatility          float          隐含波动率
  option_premium                     float          溢价
  option_delta                       float          希腊值 Delta

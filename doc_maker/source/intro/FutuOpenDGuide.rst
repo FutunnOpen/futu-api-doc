@@ -93,11 +93,11 @@ FutuOpenD配置
   login_pwd                  登录密码明文                                                                                         是，可以使用密文、证书登录或命令行输入
   login_pwd_md5              登录密码密文（32位MD5加密16进制），密文明文都存在情况下，只使用密文                                  是，可以使用明文、证书登录或命令行输入
   login_cert_file            证书文件绝对路径，除帐号密码外的另一种登录方式输入，若同时存在帐号密码登录配置项，只使用证书登录     是，可以使用帐号密码登录或命令行输入
-  log_level                  日志级别，可填no，debug，info，warning，error，fatal                                                      是，默认info级别
+  log_level                  日志级别，可填no，debug，info，warning，error，fatal                                                 是，默认info级别
   simulate_trade		     是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable								  是，默认启用
   websocket_ip               API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）            是，不设置则默认127.0.0.1 
   websocket_port             WebSocket服务监听端口                                                                                是，不设置则不启用该功能  
-  websocket_private_key      WebSocket证书私钥文件路径，不配置则不启用SSL，需要和证书同时配置                                     是，不设置则不启用SSL
+  websocket_private_key      WebSocket证书私钥文件路径，私钥不可设置密码，不配置则不启用SSL，需要和证书同时配置                   是，不设置则不启用SSL
   websocket_cert             WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置                                         是，不设置则不启用SSL
   websocket_key_md5          密钥密文（32位MD5加密16进制），用于js接口连接时用于判断是否可信连接                                  是，不设置则不做验证
   ========================   ==================================================================================================   ================================================
@@ -308,15 +308,43 @@ WebSocket相关
 
 证书使用
 ~~~~~~~~~~~~~~
+   
+  为保证安全，当websocket监听来自非本地请求时，需要启用SSL并配置连接密钥。
+   
+  SSL通过在配置证书以及对应的私钥来启用，命令行FutuOpenD可通过XML或命令行参数设置文件路径。
   
-	
-自签证书
+  界面FutuOpenD点击【更多选项】可以看到对应设置项。
+  
+  .. image:: ../_static/MoreConfig.png
+  
+  .. note::
+     
+   * 如果证书是自签的，则需要在调用JS接口所在机器上安装该证书，或者设置不验证证书。
+   
+生成自签证书
 ~~~~~~~~~~~~~~
-  	
-  附上本地自签证书供测试：
-	| `futu.cer <../_static/file/cer>`_        
-	| `futu.key <../_static/file/key>`_ 
-	
+  
+  自签证书生成详细资料不便在此文档展开，请自行查阅。
+
+  在此提供较简单可用的生成步骤：
+  
+  1. 安装openssl
+  
+  2. 修改openssl.cnf，在alt_names节点下加上FutuOpenD所在机器IP地址或域名;如 IP.2 = xxx.xxx.xxx.xxx, DNS.2 = www.xxx.com
+  
+  3. 生成私钥以及证书（PEM）。
+  
+  证书生成参数参考如下：
+  ::
+    openssl req -x509 -newkey rsa:2048 -out futu.cer -outform PEM -keyout futu.key -days 10000 -verbose -config openssl.cnf -nodes -sha256 -subj "/CN=Futu CA" -reqexts v3_req -extensions v3_req
+
+  附上本地自签证书以及生成证书的配置文件供测试： `openssl.cnf <../_static/file/openssl.cnf>`_  |  `futu.cer <../_static/file/cer>`_  | `futu.key <../_static/file/key>`_  
+  
+  .. note::
+
+    * openssl.cnf需要放到系统路径下，或在生成参数中指定绝对路径。
+    * 注意生成私钥需要指定不设置密码（-nodes）。
+    
 ---------------------------- 
 
 补充说明

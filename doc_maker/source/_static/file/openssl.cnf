@@ -1,0 +1,25 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+[req_distinguished_name]
+countryName = Country Name (2 letter code)
+countryName_default = CN
+stateOrProvinceName = State or Province Name (full name)
+stateOrProvinceName_default = GD
+localityName = Locality Name (eg, city)
+localityName_default = SZ
+organizationalUnitName  = Organizational Unit Name (eg, section)
+organizationalUnitName_default  = futu
+commonName = Common Name (e.g. server FQDN or YOUR name)
+commonName_default = localhost
+commonName_max  = 64
+
+[v3_req]
+basicConstraints = critical, CA:true
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+IP.1 = 127.0.0.1
+DNS.1 = localhost
