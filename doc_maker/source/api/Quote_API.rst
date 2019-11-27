@@ -549,19 +549,6 @@ get_market_snapshot
  wrt_upper_strike_price          float          上限价，仅界内证支持该字段
  wrt_lower_strike_price          float          下限价，仅界内证支持该字段
  wrt_inline_price_status         str            界内界外, 参见 PriceType_ ，仅界内证支持该字段
- lot_size                        int            每手股数
- price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
- ask_price                       float          卖价
- bid_price                       float          买价
- ask_vol                         float          卖量
- bid_vol                         float          买量
- enable_margin                   bool           是否可融资，如果为true，后两个字段才有意义
- mortgage_ratio                  float          股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
- long_margin_initial_ratio       float          融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
- enable_short_sell               bool           是否可卖空，如果为true，后三个字段才有意义
- short_sell_rate                 float          卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
- short_available_volume          int            剩余可卖空数量
- short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  option_valid                    bool           是否是期权（为true时以下期权相关的字段才有合法数值）
  option_type                     str            期权类型，参见 OptionType_
  strike_time                     str            期权行权日（港股A股默认是北京时间）
@@ -575,6 +562,34 @@ get_market_snapshot
  option_vega                     float          希腊值 Vega
  option_theta                    float          希腊值 Theta
  option_rho                      float          希腊值 Rho
+ option_net_open_interest        int            净未平仓合约数
+ option_expiry_date_distance     int            距离到期日天数
+ option_contract_nominal_value   float          合约名义金额
+ option_owner_lot_multiplier     float          相等正股手数，指数期权无该字段
+ option_area_type                str            期权地区类型，见 OptionAreaType_
+ option_contract_multiplier      float          合约乘数，指数期权特有字段
+ plate_valid                     bool           是否为板块类型（为true时以下板块类型字段才有合法数值）
+ plate_raise_count               int            板块类型上涨支数
+ plate_fall_count                int            板块类型下跌支数
+ plate_equal_count               int            板块类型平盘支数
+ index_valid                     bool           是否有指数类型（为true时以下指数类型字段才有合法数值）
+ index_raise_count               int            指数类型上涨支数
+ index_fall_count                int            指数类型下跌支数
+ index_equal_count               int            指数类型平盘支数 
+ lot_size                        int            每手股数，期权表示每份合约股数（指数期权无该字段）
+ price_spread                    float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
+ ask_price                       float          卖价
+ bid_price                       float          买价
+ ask_vol                         float          卖量
+ bid_vol                         float          买量
+ enable_margin                   bool           是否可融资，如果为true，后两个字段才有意义
+ mortgage_ratio                  float          股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ long_margin_initial_ratio       float          融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ enable_short_sell               bool           是否可卖空，如果为true，后三个字段才有意义
+ short_sell_rate                 float          卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ short_available_volume          int            剩余可卖空数量
+ short_margin_initial_ratio      float          卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ sec_status                      str            股票状态，见 SecurityStatus_ 
  amplitude                       float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
  avg_price                       float          平均价
  bid_ask_ratio                   float          委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）
@@ -583,37 +598,22 @@ get_market_snapshot
  lowest52weeks_price             float          52周最低价
  highest_history_price           float          历史最高价
  lowest_history_price            float          历史最低价
- plate_valid                     bool           是否为板块类型（为true时以下板块类型字段才有合法数值）
- plate_raise_count               int            板块类型上涨支数
- plate_fall_count                int            板块类型下跌支数
- plate_equal_count               int            板块类型平盘支数
- index_valid                     bool           是否有指数类型（为true时以下指数类型字段才有合法数值）
- index_raise_count               int            指数类型上涨支数
- index_fall_count                int            指数类型下跌支数
- index_equal_count               int            指数类型平盘支数
- sec_status                      str            股票状态，见 SecurityStatus_ 
- option_net_open_interest        int            净未平仓合约数
- option_expiry_date_distance     int            距离到期日天数
- option_contract_nominal_value   float          合约名义金额
- option_owner_lot_multiplier     float          相等正股手数，指数期权无该字段
- option_area_type                str            期权地区类型，见 OptionAreaType_
- option_contract_multiplier      float          合约乘数，指数期权特有字段
- pre_price                       float          盘前价格。 
- pre_high_price                  float          盘前最高价。 
- pre_low_price                   float          盘前最低价。 
- pre_volume                      int            盘前成交量。 
- pre_turnover                    float          盘前成交额。 
- pre_change_val                  float          盘前涨跌额。 
- pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
- pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
- after_price                       float          盘后价格。 
- after_high_price                  float          盘后最高价。 
- after_low_price                   float          盘后最低价。 
- after_volume                      int            盘后成交量。 科创板支持该数据。
- after_turnover                    float          盘后成交额。 科创板支持该数据。
- after_change_val                  float          盘后涨跌额。 
- after_change_rate                 float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
- after_amplitude                   float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。 
+ pre_price                       float          盘前价格
+ pre_high_price                  float          盘前最高价
+ pre_low_price                   float          盘前最低价
+ pre_volume                      int            盘前成交量
+ pre_turnover                    float          盘前成交额
+ pre_change_val                  float          盘前涨跌额
+ pre_change_rate                 float          盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ pre_amplitude                   float          盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ after_price                     float          盘后价格
+ after_high_price                float          盘后最高价
+ after_low_price                 float          盘后最低价
+ after_volume                    int            盘后成交量，科创板支持该数据。
+ after_turnover                  float          盘后成交额，科创板支持该数据。
+ after_change_val                float          盘后涨跌额
+ after_change_rate               float          盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。） 
+ after_amplitude                 float          盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。） 
  ============================   =============   ===================================================================
 
  :Example:
@@ -684,7 +684,7 @@ get_plate_stock
         参数                      类型                        说明
         =====================   ===========   ==============================================================
         code                    str            股票代码
-        lot_size                int            每手股数
+        lot_size                int            每手股数，期权表示每份合约股数（指数期权无该字段）
         stock_name              str            股票名称
         stock_type              str            股票类型，参见 SecurityType_
         list_time               str            上市时间（港股A股默认是北京时间）

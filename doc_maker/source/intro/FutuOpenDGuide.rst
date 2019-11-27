@@ -24,7 +24,6 @@ FutuOpenD使用说明
 ~~~~~~~~~~~~~~~~~~~~
   * 命令行FutuOpenD目前直接提供程序压缩包，解压后即可运行。 
   
- 
   
   * 压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml），程序打包数据（Appdata.dat）。
   
