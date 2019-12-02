@@ -5,10 +5,10 @@ Q&A
 FutuOpenD相关
 +++++++++++++++++++++++++++++++++++++++
 
-Q1:因未同意免责声明退出
+Q1:因未确认使用协议而退出
 --------------------------------
 
-A: 已开户用户需要同意 `免责声明 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
+A: 用户需要 `完成相关问卷评估以及确认使用协议 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
 
 --------------------------------
 

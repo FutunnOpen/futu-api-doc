@@ -354,9 +354,10 @@ WebSocket相关
 ~~~~~~~~~~~~~~
   默认info级别，在系统开发阶段建议不要关闭日志或者将日志修改到info以上（warning，error，fatal），避免出现问题无法确认以及定位问题。
   
-免责声明
+  
+确认使用协议
 ~~~~~~~~~~~~~~
-  已开户用户需要同意 `免责声明 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
+  用户需要 `完成相关问卷评估以及确认使用协议 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
 
 ----------------------------
   
