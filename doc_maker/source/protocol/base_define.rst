@@ -27,6 +27,10 @@
 		required int32 clientVer = 1; //客户端版本号，clientVer = "."以前的数 * 100 + "."以后的，举例：1.1版本的clientVer为1 * 100 + 1 = 101，2.21版本为2 * 100 + 21 = 221
 		required string clientID = 2; //客户端唯一标识，无生具体生成规则，客户端自己保证唯一性即可
 		optional bool recvNotify = 3; //此连接是否接收市场状态、交易需要重新解锁等等事件通知，true代表接收，FutuOpenD就会向此连接推送这些通知，反之false代表不接收不推送
+		//如果通信要加密，首先得在FutuOpenD和客户端都配置RSA密钥，不配置始终不加密
+		//如果配置了RSA密钥且指定的加密算法不为PacketEncAlgo_None则加密(即便这里不设置，配置了RSA密钥，也会采用默认加密方式)，默认采用FTAES_ECB算法
+		optional int32 packetEncAlgo = 4; //指定包加密算法，参见Common.PacketEncAlgo的枚举定义
+		optional int32 pushProtoFmt = 5; //指定这条连接上的推送协议格式，若不指定则使用push_proto_type配置项
 	}
 	
 	message S2C
@@ -285,6 +289,36 @@ PacketID - 请求包标识
     *   PacketID 用于唯一标识一次请求
     *   serailNO 由请求方自定义填入包头，为防回放攻击要求自增，否则新的请求将被忽略
  
+-------------------------------------
+
+PacketEncAlgo - 包加密算法
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: protobuf
+
+	//包加密算法
+	enum PacketEncAlgo
+	{
+		PacketEncAlgo_FTAES_ECB = 0; //富途修改过的AES的ECB加密模式
+		PacketEncAlgo_None = -1; //不加密
+		PacketEncAlgo_AES_ECB = 1; //标准的AES的ECB加密模式
+		PacketEncAlgo_AES_CBC = 2; //标准的AES的CBC加密模式
+	}
+
+-------------------------------------
+
+ProtoFmt - 协议格式
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: protobuf
+
+	//协议格式，请求协议在请求头中指定，推送协议在Init时指定
+	enum ProtoFmt
+	{
+		ProtoFmt_Protobuf = 0; //Google Protobuf格式
+		ProtoFmt_Json = 1; //Json格式
+	}
+
 -------------------------------------
 
 ProgramStatus - 程序的当前状态
