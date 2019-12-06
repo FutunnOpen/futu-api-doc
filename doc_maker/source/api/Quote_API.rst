@@ -1715,7 +1715,7 @@ get_user_security
 
 ..  py:function:: get_user_security(self, group_name)
 
- 获取指定分组的自选股列表（不支持系统分组）
+ 获取指定分组的自选股列表（不支持持仓分组）
 
  :param group_name: 需要查询的自选股分组名称.
 

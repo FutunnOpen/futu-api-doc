@@ -1834,7 +1834,7 @@
 	
 	* 股票静态信息结构参考 `SecurityStaticInfo <base_define.html#securitystaticbasic>`_
 	* 限频接口：30秒内最多10次	
-	* 仅支持自定义分组
+	* 不支持持仓分组
 	
 -------------------------------------
 
