@@ -355,9 +355,9 @@ WebSocket相关
   默认info级别，在系统开发阶段建议不要关闭日志或者将日志修改到info以上（warning，error，fatal），避免出现问题无法确认以及定位问题。
   
   
-确认使用协议
-~~~~~~~~~~~~~~
-  用户需要 `完成相关问卷评估以及确认使用协议 <https://www.futunn.com/about/api-disclaimer/>`_ 才可以使用FutuOpenD。
+问卷评估及协议确认
+~~~~~~~~~~~~~~~~~~~~~
+  需要进行相关问卷评估及协议确认，才可以使用FutuOpenD，请先 `前往完成 <https://www.futunn.com/about/api-disclaimer/>`_ 。
 
 ----------------------------
   
