@@ -599,7 +599,7 @@ ModifyUserSecurityOp - 自选股操作类型
 Market - 行情市场
 ~~~~~~~~~~~~~~~~~
 
-标识不同的行情市场，股票名称的前缀复用该字符串,如 **'HK.00700'**, **'HK_FUTURE.999010'**
+标识不同的行情市场，股票名称的前缀复用该字符串,如 **'HK.00700'**, **'US.AAPL'**
 
 ..  py:class:: Market
 
@@ -1271,6 +1271,10 @@ SecurityReferenceType - 股票关联数据类型
   ..  py:attribute:: WARRANT
   
    相关窝轮
+   
+   ..  py:attribute:: FUTURE
+  
+   期货主连相关合约
 
 --------------------------------------
 
