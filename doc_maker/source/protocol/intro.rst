@@ -120,6 +120,9 @@
   .. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _3217:  quote_protocol.html#qot-getipolist-proto-3217ipo
 
+  .. Qot_GetFutureInfo.proto:  quote_protocol.html#qot-getfutureinfo-proto-3218
+  .. _3218:  quote_protocol.html#qot-getfutureinfo-proto-3218
+  
   .. role:: red-strengthen
 
 特点
@@ -191,6 +194,7 @@
  3213             Qot_GetUserSecurity.proto_       		  获取自选股分组下的股票
  3214             Qot_ModifyUserSecurity.proto_       	  修改自选股分组下的股票
  3215             Qot_StockFilter.proto_                  获取条件选股
+ 3217             Qot_GetIpoList.proto_                   获取新股
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -293,6 +297,12 @@ API用户等级
 	* 请求协议ID: 3205_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 		
+获取股票关联数据
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3206_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 查询相关窝轮不限频
+	
 获取股票所属板块
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3207_
@@ -363,7 +373,12 @@ API用户等级
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3217_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-
+	
+获取期货合约资料
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3218_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 传入股票最多 :red-strengthen:`200` 个
 
 获取账户资金
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
