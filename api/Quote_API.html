@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.15 documentation</title>
+  <title>行情API &mdash; futu-api-doc 3.16 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.15 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.16 documentation" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.15
+                3.16
               </div>
             
           
@@ -586,7 +586,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>lot_size</td>
 <td>int</td>
-<td>每手数量</td>
+<td>每手股数，期权表示每份合约股数（指数期权无该字段）</td>
 </tr>
 <tr class="row-odd"><td>stock_type</td>
 <td>str</td>
@@ -1043,7 +1043,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id37">在线获取单只股票一段历史K线限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id41">在线获取单只股票一段历史K线限制</a></li>
 </ul>
 </div>
 </div>
@@ -1167,7 +1167,7 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">param code_list:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">股票列表，股票个数限制参考 <a class="reference external" href="../protocol/intro.html#id31">OpenAPI用户等级权限</a></p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">股票列表，股票个数限制参考 <a class="reference external" href="../protocol/intro.html#api">OpenAPI用户等级权限</a></p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">return:</th><td class="field-body"><p class="first">(ret, data)</p>
@@ -1179,9 +1179,9 @@ start和end的组合如下：</p>
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="24%" />
+<col width="25%" />
 <col width="11%" />
-<col width="66%" />
+<col width="64%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -1402,191 +1402,71 @@ start和end的组合如下：</p>
 <td>str</td>
 <td>界内界外, 参见 <a class="reference external" href="Base_API.html#pricetype">PriceType</a> ，仅界内证支持该字段</td>
 </tr>
-<tr class="row-odd"><td>lot_size</td>
-<td>int</td>
-<td>每手股数</td>
-</tr>
-<tr class="row-even"><td>price_spread</td>
-<td>float</td>
-<td>当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差</td>
-</tr>
-<tr class="row-odd"><td>ask_price</td>
-<td>float</td>
-<td>卖价</td>
-</tr>
-<tr class="row-even"><td>bid_price</td>
-<td>float</td>
-<td>买价</td>
-</tr>
-<tr class="row-odd"><td>ask_vol</td>
-<td>float</td>
-<td>卖量</td>
-</tr>
-<tr class="row-even"><td>bid_vol</td>
-<td>float</td>
-<td>买量</td>
-</tr>
-<tr class="row-odd"><td>enable_margin</td>
-<td>bool</td>
-<td>是否可融资，如果为true，后两个字段才有意义</td>
-</tr>
-<tr class="row-even"><td>mortgage_ratio</td>
-<td>float</td>
-<td>股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-odd"><td>long_margin_initial_ratio</td>
-<td>float</td>
-<td>融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>enable_short_sell</td>
-<td>bool</td>
-<td>是否可卖空，如果为true，后三个字段才有意义</td>
-</tr>
-<tr class="row-odd"><td>short_sell_rate</td>
-<td>float</td>
-<td>卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>short_available_volume</td>
-<td>int</td>
-<td>剩余可卖空数量</td>
-</tr>
-<tr class="row-odd"><td>short_margin_initial_ratio</td>
-<td>float</td>
-<td>卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>option_valid</td>
+<tr class="row-odd"><td>option_valid</td>
 <td>bool</td>
 <td>是否是期权（为true时以下期权相关的字段才有合法数值）</td>
 </tr>
-<tr class="row-odd"><td>option_type</td>
+<tr class="row-even"><td>option_type</td>
 <td>str</td>
 <td>期权类型，参见 <a class="reference external" href="Base_API.html#optiontype">OptionType</a></td>
 </tr>
-<tr class="row-even"><td>strike_time</td>
+<tr class="row-odd"><td>strike_time</td>
 <td>str</td>
 <td>期权行权日（港股A股默认是北京时间）</td>
 </tr>
-<tr class="row-odd"><td>option_strike_price</td>
+<tr class="row-even"><td>option_strike_price</td>
 <td>float</td>
 <td>行权价</td>
 </tr>
-<tr class="row-even"><td>option_contract_size</td>
+<tr class="row-odd"><td>option_contract_size</td>
 <td>int</td>
 <td>每份合约数</td>
 </tr>
-<tr class="row-odd"><td>option_open_interest</td>
+<tr class="row-even"><td>option_open_interest</td>
 <td>int</td>
-<td>未平仓合约数</td>
+<td>总未平仓合约数</td>
 </tr>
-<tr class="row-even"><td>option_implied_volatility</td>
+<tr class="row-odd"><td>option_implied_volatility</td>
 <td>float</td>
 <td>隐含波动率</td>
 </tr>
-<tr class="row-odd"><td>option_premium</td>
+<tr class="row-even"><td>option_premium</td>
 <td>float</td>
 <td>溢价</td>
 </tr>
-<tr class="row-even"><td>option_delta</td>
+<tr class="row-odd"><td>option_delta</td>
 <td>float</td>
 <td>希腊值 Delta</td>
 </tr>
-<tr class="row-odd"><td>option_gamma</td>
+<tr class="row-even"><td>option_gamma</td>
 <td>float</td>
 <td>希腊值 Gamma</td>
 </tr>
-<tr class="row-even"><td>option_vega</td>
+<tr class="row-odd"><td>option_vega</td>
 <td>float</td>
 <td>希腊值 Vega</td>
 </tr>
-<tr class="row-odd"><td>option_theta</td>
+<tr class="row-even"><td>option_theta</td>
 <td>float</td>
 <td>希腊值 Theta</td>
 </tr>
-<tr class="row-even"><td>option_rho</td>
+<tr class="row-odd"><td>option_rho</td>
 <td>float</td>
 <td>希腊值 Rho</td>
 </tr>
-<tr class="row-odd"><td>amplitude</td>
-<td>float</td>
-<td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>avg_price</td>
-<td>float</td>
-<td>平均价</td>
-</tr>
-<tr class="row-odd"><td>bid_ask_ratio</td>
-<td>float</td>
-<td>委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>volume_ratio</td>
-<td>float</td>
-<td>量比</td>
-</tr>
-<tr class="row-odd"><td>highest52weeks_price</td>
-<td>float</td>
-<td>52周最高价</td>
-</tr>
-<tr class="row-even"><td>lowest52weeks_price</td>
-<td>float</td>
-<td>52周最低价</td>
-</tr>
-<tr class="row-odd"><td>highest_history_price</td>
-<td>float</td>
-<td>历史最高价</td>
-</tr>
-<tr class="row-even"><td>lowest_history_price</td>
-<td>float</td>
-<td>历史最低价</td>
-</tr>
-<tr class="row-odd"><td>plate_valid</td>
-<td>bool</td>
-<td>是否为板块类型（为true时以下板块类型字段才有合法数值）</td>
-</tr>
-<tr class="row-even"><td>plate_raise_count</td>
-<td>int</td>
-<td>板块类型上涨支数</td>
-</tr>
-<tr class="row-odd"><td>plate_fall_count</td>
-<td>int</td>
-<td>板块类型下跌支数</td>
-</tr>
-<tr class="row-even"><td>plate_equal_count</td>
-<td>int</td>
-<td>板块类型平盘支数</td>
-</tr>
-<tr class="row-odd"><td>index_valid</td>
-<td>bool</td>
-<td>是否有指数类型（为true时以下指数类型字段才有合法数值）</td>
-</tr>
-<tr class="row-even"><td>index_raise_count</td>
-<td>int</td>
-<td>指数类型上涨支数</td>
-</tr>
-<tr class="row-odd"><td>index_fall_count</td>
-<td>int</td>
-<td>指数类型下跌支数</td>
-</tr>
-<tr class="row-even"><td>index_equal_count</td>
-<td>int</td>
-<td>指数类型平盘支数</td>
-</tr>
-<tr class="row-odd"><td>sec_status</td>
-<td>str</td>
-<td>股票状态，见 <a class="reference external" href="Base_API.html#securitystatus">SecurityStatus</a></td>
-</tr>
-<tr class="row-even"><td>net_open_interest</td>
+<tr class="row-even"><td>option_net_open_interest</td>
 <td>int</td>
 <td>净未平仓合约数</td>
 </tr>
-<tr class="row-odd"><td>expiry_date_distance</td>
+<tr class="row-odd"><td>option_expiry_date_distance</td>
 <td>int</td>
 <td>距离到期日天数</td>
 </tr>
-<tr class="row-even"><td>contract_nominal_value</td>
+<tr class="row-even"><td>option_contract_nominal_value</td>
 <td>float</td>
 <td>合约名义金额</td>
 </tr>
-<tr class="row-odd"><td>owner_lot_multiplier</td>
+<tr class="row-odd"><td>option_owner_lot_multiplier</td>
 <td>float</td>
 <td>相等正股手数，指数期权无该字段</td>
 </tr>
@@ -1594,73 +1474,193 @@ start和end的组合如下：</p>
 <td>str</td>
 <td>期权地区类型，见 <a class="reference external" href="Base_API.html#optionareatype">OptionAreaType</a></td>
 </tr>
-<tr class="row-odd"><td>contract_multiplier</td>
+<tr class="row-odd"><td>option_contract_multiplier</td>
 <td>float</td>
 <td>合约乘数，指数期权特有字段</td>
 </tr>
+<tr class="row-even"><td>plate_valid</td>
+<td>bool</td>
+<td>是否为板块类型（为true时以下板块类型字段才有合法数值）</td>
+</tr>
+<tr class="row-odd"><td>plate_raise_count</td>
+<td>int</td>
+<td>板块类型上涨支数</td>
+</tr>
+<tr class="row-even"><td>plate_fall_count</td>
+<td>int</td>
+<td>板块类型下跌支数</td>
+</tr>
+<tr class="row-odd"><td>plate_equal_count</td>
+<td>int</td>
+<td>板块类型平盘支数</td>
+</tr>
+<tr class="row-even"><td>index_valid</td>
+<td>bool</td>
+<td>是否有指数类型（为true时以下指数类型字段才有合法数值）</td>
+</tr>
+<tr class="row-odd"><td>index_raise_count</td>
+<td>int</td>
+<td>指数类型上涨支数</td>
+</tr>
+<tr class="row-even"><td>index_fall_count</td>
+<td>int</td>
+<td>指数类型下跌支数</td>
+</tr>
+<tr class="row-odd"><td>index_equal_count</td>
+<td>int</td>
+<td>指数类型平盘支数</td>
+</tr>
+<tr class="row-even"><td>lot_size</td>
+<td>int</td>
+<td>每手股数，期权表示每份合约股数（指数期权无该字段）</td>
+</tr>
+<tr class="row-odd"><td>price_spread</td>
+<td>float</td>
+<td>当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差</td>
+</tr>
+<tr class="row-even"><td>ask_price</td>
+<td>float</td>
+<td>卖价</td>
+</tr>
+<tr class="row-odd"><td>bid_price</td>
+<td>float</td>
+<td>买价</td>
+</tr>
+<tr class="row-even"><td>ask_vol</td>
+<td>float</td>
+<td>卖量</td>
+</tr>
+<tr class="row-odd"><td>bid_vol</td>
+<td>float</td>
+<td>买量</td>
+</tr>
+<tr class="row-even"><td>enable_margin</td>
+<td>bool</td>
+<td>是否可融资，如果为true，后两个字段才有意义</td>
+</tr>
+<tr class="row-odd"><td>mortgage_ratio</td>
+<td>float</td>
+<td>股票抵押率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>long_margin_initial_ratio</td>
+<td>float</td>
+<td>融资初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>enable_short_sell</td>
+<td>bool</td>
+<td>是否可卖空，如果为true，后三个字段才有意义</td>
+</tr>
+<tr class="row-even"><td>short_sell_rate</td>
+<td>float</td>
+<td>卖空参考利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>short_available_volume</td>
+<td>int</td>
+<td>剩余可卖空数量</td>
+</tr>
+<tr class="row-even"><td>short_margin_initial_ratio</td>
+<td>float</td>
+<td>卖空（融券）初始保证金率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>sec_status</td>
+<td>str</td>
+<td>股票状态，见 <a class="reference external" href="Base_API.html#securitystatus">SecurityStatus</a></td>
+</tr>
+<tr class="row-even"><td>amplitude</td>
+<td>float</td>
+<td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>avg_price</td>
+<td>float</td>
+<td>平均价</td>
+</tr>
+<tr class="row-even"><td>bid_ask_ratio</td>
+<td>float</td>
+<td>委比（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>volume_ratio</td>
+<td>float</td>
+<td>量比</td>
+</tr>
+<tr class="row-even"><td>highest52weeks_price</td>
+<td>float</td>
+<td>52周最高价</td>
+</tr>
+<tr class="row-odd"><td>lowest52weeks_price</td>
+<td>float</td>
+<td>52周最低价</td>
+</tr>
+<tr class="row-even"><td>highest_history_price</td>
+<td>float</td>
+<td>历史最高价</td>
+</tr>
+<tr class="row-odd"><td>lowest_history_price</td>
+<td>float</td>
+<td>历史最低价</td>
+</tr>
 <tr class="row-even"><td>pre_price</td>
 <td>float</td>
-<td>盘前价格。</td>
+<td>盘前价格</td>
 </tr>
 <tr class="row-odd"><td>pre_high_price</td>
 <td>float</td>
-<td>盘前最高价。</td>
+<td>盘前最高价</td>
 </tr>
 <tr class="row-even"><td>pre_low_price</td>
 <td>float</td>
-<td>盘前最低价。</td>
+<td>盘前最低价</td>
 </tr>
 <tr class="row-odd"><td>pre_volume</td>
 <td>int</td>
-<td>盘前成交量。</td>
+<td>盘前成交量</td>
 </tr>
 <tr class="row-even"><td>pre_turnover</td>
 <td>float</td>
-<td>盘前成交额。</td>
+<td>盘前成交额</td>
 </tr>
 <tr class="row-odd"><td>pre_change_val</td>
 <td>float</td>
-<td>盘前涨跌额。</td>
+<td>盘前涨跌额</td>
 </tr>
 <tr class="row-even"><td>pre_change_rate</td>
 <td>float</td>
-<td>盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>pre_amplitude</td>
 <td>float</td>
-<td>盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>after_price</td>
 <td>float</td>
-<td>盘后价格。</td>
+<td>盘后价格</td>
 </tr>
 <tr class="row-odd"><td>after_high_price</td>
 <td>float</td>
-<td>盘后最高价。</td>
+<td>盘后最高价</td>
 </tr>
 <tr class="row-even"><td>after_low_price</td>
 <td>float</td>
-<td>盘后最低价。</td>
+<td>盘后最低价</td>
 </tr>
 <tr class="row-odd"><td>after_volume</td>
 <td>int</td>
-<td>盘后成交量。 科创板支持该数据。</td>
+<td>盘后成交量，科创板支持该数据。</td>
 </tr>
 <tr class="row-even"><td>after_turnover</td>
 <td>float</td>
-<td>盘后成交额。 科创板支持该数据。</td>
+<td>盘后成交额，科创板支持该数据。</td>
 </tr>
 <tr class="row-odd"><td>after_change_val</td>
 <td>float</td>
-<td>盘后涨跌额。</td>
+<td>盘后涨跌额</td>
 </tr>
 <tr class="row-even"><td>after_change_rate</td>
 <td>float</td>
-<td>盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>after_amplitude</td>
 <td>float</td>
-<td>盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 </tbody>
 </table>
@@ -1682,7 +1682,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id31">获取股票快照限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id43">获取股票快照限制</a></li>
 </ul>
 </div>
 </div>
@@ -1856,7 +1856,7 @@ start和end的组合如下：</p>
 <li><p class="first">该接口也可用于获取指数成份股, 如获取上证指数成份股:</p>
 </li>
 <li><dl class="first docutils">
-<dt>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id33">获取板块下的股票限制</a></dt>
+<dt>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id45">获取板块下的股票限制</a></dt>
 <dd><div class="first last highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_plate_stock</span><span class="p">(</span><span class="s1">&#39;SH.000001&#39;</span><span class="p">))</span>
@@ -2007,7 +2007,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id32">获取板块下的股票限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id45">获取板块下的股票限制</a></li>
 </ul>
 </div>
 </div>
@@ -2144,7 +2144,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id28">订阅反订阅限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id39">订阅反订阅限制</a></li>
 </ul>
 </div>
 </div>
@@ -2186,7 +2186,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id28">订阅反订阅限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id39">订阅反订阅限制</a></li>
 </ul>
 </div>
 </div>
@@ -2219,7 +2219,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id28">订阅反订阅限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id39">订阅反订阅限制</a></li>
 </ul>
 </div>
 </div>
@@ -2366,11 +2366,17 @@ start和end的组合如下：</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret == RET_OK 返回pd dataframe数据，数据列格式如下</p>
 <p>ret != RET_OK 返回错误字符串</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
 <col width="11%" />
-<col width="67%" />
+<col width="66%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -2513,72 +2519,75 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>pre_price</td>
 <td>float</td>
-<td>盘前价格。</td>
+<td>盘前价格</td>
 </tr>
 <tr class="row-even"><td>pre_high_price</td>
 <td>float</td>
-<td>盘前最高价。</td>
+<td>盘前最高价</td>
 </tr>
 <tr class="row-odd"><td>pre_low_price</td>
 <td>float</td>
-<td>盘前最低价。</td>
+<td>盘前最低价</td>
 </tr>
 <tr class="row-even"><td>pre_volume</td>
 <td>int</td>
-<td>盘前成交量。</td>
+<td>盘前成交量</td>
 </tr>
 <tr class="row-odd"><td>pre_turnover</td>
 <td>float</td>
-<td>盘前成交额。</td>
+<td>盘前成交额</td>
 </tr>
 <tr class="row-even"><td>pre_change_val</td>
 <td>float</td>
-<td>盘前涨跌额。</td>
+<td>盘前涨跌额</td>
 </tr>
 <tr class="row-odd"><td>pre_change_rate</td>
 <td>float</td>
-<td>盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘前涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>pre_amplitude</td>
 <td>float</td>
-<td>盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘前振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-odd"><td>after_price</td>
 <td>float</td>
-<td>盘后价格。</td>
+<td>盘后价格</td>
 </tr>
 <tr class="row-even"><td>after_high_price</td>
 <td>float</td>
-<td>盘后最高价。</td>
+<td>盘后最高价</td>
 </tr>
 <tr class="row-odd"><td>after_low_price</td>
 <td>float</td>
-<td>盘后最低价。</td>
+<td>盘后最低价</td>
 </tr>
 <tr class="row-even"><td>after_volume</td>
 <td>int</td>
-<td>盘后成交量。 科创板支持此数据。</td>
+<td>盘后成交量，科创板支持此数据。</td>
 </tr>
 <tr class="row-odd"><td>after_turnover</td>
 <td>float</td>
-<td>盘后成交额。 科创板支持此数据。</td>
+<td>盘后成交额，科创板支持此数据。</td>
 </tr>
 <tr class="row-even"><td>after_change_val</td>
 <td>float</td>
-<td>盘后涨跌额。</td>
+<td>盘后涨跌额</td>
 </tr>
 <tr class="row-odd"><td>after_change_rate</td>
 <td>float</td>
-<td>盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘后涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 <tr class="row-even"><td>after_amplitude</td>
 <td>float</td>
-<td>盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）。</td>
+<td>盘后振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 </tbody>
 </table>
-</td>
-</tr>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
 </tbody>
@@ -2591,8 +2600,7 @@ start和end的组合如下：</p>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</dd></dl>
-
+</div></blockquote>
 </div>
 <div class="section" id="get-rt-ticker">
 <h4>get_rt_ticker<a class="headerlink" href="#get-rt-ticker" title="Permalink to this headline">¶</a></h4>
@@ -2679,7 +2687,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id29">获取逐笔限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id40">获取逐笔限制</a></li>
 </ul>
 </div>
 </div>
@@ -2706,9 +2714,9 @@ start和end的组合如下：</p>
 <p>ret != RET_OK 返回错误字符串</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="12%" />
-<col width="66%" />
+<col width="20%" />
+<col width="10%" />
+<col width="70%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -2756,6 +2764,10 @@ start和end的组合如下：</p>
 <tr class="row-odd"><td>turnover_rate</td>
 <td>float</td>
 <td>换手率（该字段为百分比字段，展示为小数表示）</td>
+</tr>
+<tr class="row-even"><td>last_close</td>
+<td>float</td>
+<td>昨收价（即前一个时间的收盘价。为了效率原因，第一个数据的昨收价可能为0）</td>
 </tr>
 </tbody>
 </table>
@@ -2982,7 +2994,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-odd"><td>lot_size</td>
 <td>int</td>
-<td>每手数量</td>
+<td>每手股数</td>
 </tr>
 <tr class="row-even"><td>stock_type</td>
 <td>str</td>
@@ -3089,7 +3101,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id35">获取股票所属板块限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id46">获取股票所属板块限制</a></li>
 </ul>
 </div>
 </div>
@@ -3212,7 +3224,7 @@ start与end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id36">获取持股变化列表限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id47">获取持股变化列表限制</a></li>
 </ul>
 </div>
 </div>
@@ -3297,7 +3309,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>lot_size</td>
 <td>int</td>
-<td>每手数量</td>
+<td>每手股数，期权表示每份合约股数（指数期权无该字段）</td>
 </tr>
 <tr class="row-odd"><td>stock_type</td>
 <td>str</td>
@@ -3342,7 +3354,7 @@ start和end的组合如下：</p>
 
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_option_chain</span><span class="p">(</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="n">IndexOptionType</span><span class="o">.</span><span class="n">None</span><span class="p">,</span><span class="s1">&#39;2018-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-18&#39;</span><span class="p">,</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">OptionCondType</span><span class="o">.</span><span class="n">OUTSIDE</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_option_chain</span><span class="p">(</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="n">IndexOptionType</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span><span class="s1">&#39;2018-08-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-08-18&#39;</span><span class="p">,</span> <span class="n">OptionType</span><span class="o">.</span><span class="n">ALL</span><span class="p">,</span> <span class="n">OptionCondType</span><span class="o">.</span><span class="n">OUTSIDE</span><span class="p">))</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3539,7 +3551,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id33">在线获取单只股票复权信息限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id42">在线获取单只股票复权信息限制</a></li>
 </ul>
 </div>
 </div>
@@ -3939,7 +3951,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id46">获取窝轮限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id49">获取窝轮限制</a></li>
 </ul>
 </div>
 </div>
@@ -4001,7 +4013,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id43">获取资金流向限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id50">获取资金流向限制</a></li>
 </ul>
 </div>
 </div>
@@ -4079,7 +4091,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id44">获取资金分布限制</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id51">获取资金分布限制</a></li>
 </ul>
 </div>
 </div>
@@ -4088,7 +4100,7 @@ start和end的组合如下：</p>
 <dl class="function">
 <dt id="get_user_security">
 <code class="descname">get_user_security</code><span class="sig-paren">(</span><em>self</em>, <em>group_name</em><span class="sig-paren">)</span><a class="headerlink" href="#get_user_security" title="Permalink to this definition">¶</a></dt>
-<dd><p>获取指定分组的自选股列表（不支持系统分组）</p>
+<dd><p>获取指定分组的自选股列表（不支持持仓分组）</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4120,7 +4132,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>lot_size</td>
 <td>int</td>
-<td>每手数量</td>
+<td>每手股数，期权表示每份合约股数（指数期权无该字段）</td>
 </tr>
 <tr class="row-odd"><td>stock_type</td>
 <td>str</td>
@@ -4181,7 +4193,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id47">获取指定分组的自选股列表</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id52">获取指定分组的自选股列表</a></li>
 </ul>
 </div>
 </div>
@@ -4197,7 +4209,7 @@ start和end的组合如下：</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>group_name</strong> &#8211; 需要修改的自选股分组名称.</li>
-<li><strong>op</strong> &#8211; 操作枚举值.查看 <a class="reference external" href="Base_API.html#modifyusersecurityop">ModifyUserSecurity</a></li>
+<li><strong>op</strong> &#8211; 操作枚举值.查看 <a class="reference external" href="Base_API.html#modifyusersecurityop">ModifyUserSecurityOp</a></li>
 <li><strong>code_list</strong> &#8211; 股票列表，[&#8216;HK.00700&#8217;,&#8217;HK.00701&#8217;]</li>
 </ul>
 </td>
@@ -4223,7 +4235,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id48">修改指定分组的自选股列表</a></li>
+<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id53">修改指定分组的自选股列表</a></li>
 </ul>
 </div>
 </div>
@@ -4563,7 +4575,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last">
-<li><p class="first">接口限制请参见 <a class="reference external" href="../protocol/intro.html#id55">获取条件选股</a></p>
+<li><p class="first">接口限制请参见 <a class="reference external" href="../protocol/intro.html#id54">获取条件选股</a></p>
 </li>
 <li><p class="first">条件选股支持的板块或指数代码如下:</p>
 <table border="1" class="docutils">
@@ -4746,7 +4758,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>lot_size</td>
 <td>int</td>
-<td>每手股数，港股适用</td>
+<td>每手股数</td>
 </tr>
 <tr class="row-odd"><td>entrance_price</td>
 <td>float</td>
@@ -5249,7 +5261,7 @@ start和end的组合如下：</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.15',
+            VERSION:'3.16',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

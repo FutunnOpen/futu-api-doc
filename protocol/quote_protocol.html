@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.15 documentation</title>
+  <title>行情协议 &mdash; futu-api-doc 3.16 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.15 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.16 documentation" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.15
+                3.16
               </div>
             
           
@@ -2098,7 +2098,7 @@
 <ul class="last simple">
 <li>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></li>
 <li>限频接口：30秒内最多10次</li>
-<li>仅支持自定义分组</li>
+<li>不支持持仓分组</li>
 </ul>
 </div>
 </div>
@@ -2115,14 +2115,15 @@
 <span class="p">{</span>
         <span class="na">ModifyUserSecurityOp_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="na">ModifyUserSecurityOp_Add</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//新增</span>
-        <span class="na">ModifyUserSecurityOp_Del</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//删除</span>
+        <span class="na">ModifyUserSecurityOp_Del</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//删除自选</span>
+        <span class="na">ModifyUserSecurityOp_MoveOut</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//移出分组</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">groupName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//分组名,有同名的返回最先创建的</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">op</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//ModifyUserSecurityOp,操作类型</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//新增或删除该分组下的股票</span>
+        <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//新增、删除或移出该分组下的股票</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -2584,7 +2585,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.15',
+            VERSION:'3.16',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
