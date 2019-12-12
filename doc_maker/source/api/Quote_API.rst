@@ -2028,10 +2028,10 @@ apply_end_timestamp                          float          截止认购日期�
 
     * 接口限制请参见 :ref:`获取IPO列表的限制 <get-ipo-list-limit>`
 
-get_future_contract_info
+get_future_info
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_future_contract_info(self, code_list)
+..  py:function:: get_future_info(self, code_list)
 
  获取期货合约资料
 
@@ -2046,8 +2046,8 @@ get_future_contract_info
 		=========================   ===========   =========================
 		参数                         类型           说明
 		=========================   ===========   =========================
-		code                        str            股票代码
-		name                        str            股票名称
+		code                        string         股票代码
+		name                        string         股票名称
 		owner                       string         标的
 		exchange                    string         交易所
 		type                        string         合约类型
@@ -2069,7 +2069,7 @@ get_future_contract_info
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_future_contract_info(["HK.MPImain", "HK.HOImain"]))
+    print(quote_ctx.get_future_info(["HK.MPImain", "HK.HOImain"]))
     quote_ctx.close()
 
 .. note::
