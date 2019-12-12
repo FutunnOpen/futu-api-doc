@@ -244,7 +244,7 @@ get_stock_basicinfo
         =================   ===========   ==============================================================================
         code                str            股票代码
         name                str            名字
-        lot_size            int            每手股数，期权表示每份合约股数（指数期权无该字段）
+        lot_size            int            每手股数，期权表示每份合约股数（指数期权无该字段），期货表示合约乘数
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
         stock_owner         str            窝轮所属正股的代码，或期权标的股的代码
@@ -578,7 +578,7 @@ get_market_snapshot
  index_raise_count                  int            指数类型上涨支数
  index_fall_count                   int            指数类型下跌支数
  index_equal_count                  int            指数类型平盘支数 
- lot_size                           int            每手股数，期权表示每份合约股数（指数期权无该字段）
+ lot_size                           int            每手股数，期权表示每份合约股数（指数期权无该字段），期货表示合约乘数
  price_spread                       float          当前向上的摆盘价差,亦即摆盘数据的卖档的相邻档位的报价差
  ask_price                          float          卖价
  bid_price                          float          买价
@@ -691,8 +691,8 @@ get_plate_stock
         =====================   ===========   ==============================================================
         参数                      类型                        说明
         =====================   ===========   ==============================================================
-        code                    str            股票代码
-        lot_size                int            每手股数
+        code                    str            股票代码，期货表示合约乘数
+        lot_size                int            每手股数，期货表示合约乘数
         stock_name              str            股票名称
         stock_type              str            股票类型，参见 SecurityType_
         list_time               str            上市时间（港股A股默认是北京时间）
@@ -1281,7 +1281,7 @@ get_referencestock_list
 		参数                        类型           说明
 		========================   ===========   ==============================================================================
 		code                        str            证券代码
-		lot_size                    int            每手股数
+		lot_size                    int            每手股数，期货表示合约乘数
 		stock_type                  str            证券类型，参见 SecurityType_
 		stock_name                  str            证券名字
 		list_time                   str            上市时间（港股A股默认是北京时间）
@@ -1762,7 +1762,7 @@ get_user_security
         =================   ===========   ==============================================================================
         code                str            股票代码
         name                str            名字
-        lot_size            int            每手股数，期权表示每份合约股数（指数期权无该字段）
+        lot_size            int            每手股数，期权表示每份合约股数（指数期权无该字段），期货表示合约乘数
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
         stock_owner         str            窝轮所属正股的代码，或期权标的股的代码
