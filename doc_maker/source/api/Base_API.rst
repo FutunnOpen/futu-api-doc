@@ -1675,6 +1675,18 @@ SortField - 窝轮排序
 
   发行量
 
+ ..  py:attribute:: UPPER_STRIKE_PRICE
+
+  上限价，仅界内证支持该字段
+
+ ..  py:attribute:: LOWER_STRIKE_PRICE
+
+  下限价，仅界内证支持该字段
+  
+ ..  py:attribute:: INLINE_PRICE_STATUS
+
+  界内界外，仅界内证支持该字段
+
  ..  py:attribute:: PRE_CUR_PRICE
 
   盘前最新价
@@ -1714,19 +1726,19 @@ SortField - 窝轮排序
  ..  py:attribute:: AFTER_TURNOVER
 
   盘后成交额
-
- ..  py:attribute:: UPPER_STRIKE_PRICE
-
-  上限价，仅界内证支持该字段
-
- ..  py:attribute:: LOWER_STRIKE_PRICE
-
-  下限价，仅界内证支持该字段
   
- ..  py:attribute:: INLINE_PRICE_STATUS
+ ..  py:attribute:: LAST_SETTLE_PRICE
 
-  界内界外，仅界内证支持该字段
+  期货昨结
+  
+ ..  py:attribute:: POSITION
 
+  期货持仓量
+  
+ ..  py:attribute:: POSITION_CHANGE
+
+  期货日持仓
+  
 --------------------------------------
 
 SysNotifyType - 系统异步通知类型

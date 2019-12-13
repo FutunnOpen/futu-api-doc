@@ -1773,6 +1773,8 @@ get_user_security
         listing_date        str            上市时间
         stock_id            int            股票id
         delisting           bool           是否退市
+        main_contract       bool           是否主连合约  
+        last_trade_time     string         只有非主连期货合约才有该字段
         =================   ===========   ==============================================================================
 
  :Example:
