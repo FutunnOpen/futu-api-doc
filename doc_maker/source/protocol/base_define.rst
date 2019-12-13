@@ -1214,7 +1214,20 @@ OptionStaticExData - 期权额外静态信息
 		required string market = 6; //发行市场名字
 		optional double strikeTimestamp = 7; //行权日时间戳
 		optional int32 indexOptionType = 8; //Qot_Common.IndexOptionType, 指数期权的类型，仅在指数期权有效
+	}
+			
+-----------------------------------------------
 
+FutureStaticExData - 期货额外静态信息
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	message FutureStaticExData
+	{
+		required string lastTradeTime = 1; //最后交易日，只有非主连期货合约才有该字段
+		optional double lastTradeTimestamp = 2; //最后交易日时间戳，只有非主连期货合约才有该字段
+		required bool isMainContract = 3; //是否主连合约
 	}
 			
 -----------------------------------------------
@@ -1229,6 +1242,7 @@ SecurityStaticInfo - 证券静态信息
 		required SecurityStaticBasic basic = 1; //基本股票静态信息
 		optional WarrantStaticExData warrantExData = 2; //窝轮额外股票静态信息
 		optional OptionStaticExData optionExData = 3; //期权额外股票静态信息
+		optional FutureStaticExData futureExData = 4; //期货额外股票静态信息
 	}
 	
 -----------------------------------------------
