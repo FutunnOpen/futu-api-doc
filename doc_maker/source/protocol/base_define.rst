@@ -1094,6 +1094,20 @@ OptionBasicQotExData - 基础报价的期权特有字段
 
 ----------------------------------------------------------------------------------------------
 
+FutureBasicQotExData - 基础报价的期货特有字段
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	message FutureBasicQotExData
+	{
+		required double lastSettlePrice = 1; //昨结
+		required int32 position = 2; //持仓量
+		required int32 positionChange = 3; //日增仓
+	}		
+
+----------------------------------------------------------------------------------------------
+
 BasicQot - 基础报价
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1122,6 +1136,7 @@ BasicQot - 基础报价
 		optional PreAfterMarketData preMarket = 19; //盘前数据
 		optional PreAfterMarketData afterMarket = 20; //盘后数据
 		optional int32 secStatus = 21; //SecurityStatus, 股票状态
+		optional FutureBasicQotExData futureExData = 22; //期货特有字段
 	}
 		
 -----------------------------------------------------------------------------------------------------------

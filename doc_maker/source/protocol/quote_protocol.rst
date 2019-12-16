@@ -1122,6 +1122,17 @@
 		required int32 fallCount = 2;  // 下跌支数
 		required int32 equalCount = 3;  // 平盘支数
 	}
+	
+	//期货类型额外数据
+	message FutureSnapshotExData
+	{
+		required double lastSettlePrice = 1; //昨结
+		required int32 position = 2; //持仓量
+		required int32 positionChange = 3; //日增仓
+		required string lastTradeTime = 4; //最后交易日，只有非主连期货合约才有该字段
+		optional double lastTradeTimestamp = 5; //最后交易日时间戳，只有非主连期货合约才有该字段
+		required bool isMainContract = 6; //是否主连合约
+	}
 
 	 //基本快照数据
 	message SnapshotBasicData
@@ -1175,6 +1186,7 @@
 		optional OptionSnapshotExData optionExData = 4; //期权快照额外数据
 		optional IndexSnapshotExData indexExData = 5; //指数快照额外数据
 		optional PlateSnapshotExData plateExData = 6; //板块快照额外数据
+		optional FutureSnapshotExData futureExData = 7; //期货类型额外数据
 	}
 
 	message S2C

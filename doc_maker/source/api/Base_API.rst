@@ -1738,7 +1738,7 @@ SortField - 窝轮排序
  ..  py:attribute:: POSITION_CHANGE
 
   期货日持仓
-  
+
 --------------------------------------
 
 SysNotifyType - 系统异步通知类型
