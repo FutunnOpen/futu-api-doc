@@ -1262,19 +1262,19 @@ SecurityReferenceType - 股票关联数据类型
 
 股票关联数据类型
 
- ..  py:class:: SecurityReferenceType
+..  py:class:: SecurityReferenceType
  
-  ..  py:attribute:: NONE
+ ..  py:attribute:: NONE
   
-   未知
+  未知
    
-  ..  py:attribute:: WARRANT
+ ..  py:attribute:: WARRANT
   
-   相关窝轮
+  相关窝轮
    
-   ..  py:attribute:: FUTURE
+ ..  py:attribute:: FUTURE
   
-   期货主连相关合约
+  期货主连相关合约
 
 --------------------------------------
 
