@@ -2031,6 +2031,10 @@ TrdMarket - 交易市场类型
  ..  py:attribute:: HKCC
 
   香港的A股通交易  
+
+ ..  py:attribute:: FUTURES
+
+  期货市场
  
 --------------------------------------
 
@@ -2126,3 +2130,53 @@ WrtType - 港股窝轮类型
 
 --------------------------------------
 
+
+Currency - 交易相关的货币类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易相关的货币类型
+
+..  py:class:: Currency
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HKD
+
+  港币
+
+ ..  py:attribute:: USD
+
+  美元
+
+ ..  py:attribute:: CNH
+
+  离岸人民币
+
+--------------------------------------
+
+CltRiskLevel - 交易相关的货币类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易相关的货币类型
+
+..  py:class:: Currency
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HKD
+
+  港币
+
+ ..  py:attribute:: USD
+
+  美元
+
+ ..  py:attribute:: CNH
+
+  离岸人民币
+  
+--------------------------------------

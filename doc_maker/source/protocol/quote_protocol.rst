@@ -688,7 +688,6 @@
 `Qot_GetHistoryKLPoints.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto>`_  - :strike:`3101从本地下载历史数据获取多只股票多点历史K线`
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 .. code-block:: protobuf
 
 	syntax = "proto2";
@@ -915,6 +914,7 @@
 	* K线字段类型参考 `KLFields <base_define.html#klfields-k>`_
 	* 请求最大个数参考OpenAPI用户等级权限
 	* 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。
+
 -------------------------------------
 
 `Qot_GetTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto>`_ - 3200获取市场交易日
@@ -2179,6 +2179,7 @@
 .. note::
   
   * 股票结构参考 `Security <base_define.html#security>`_
+
 ----------------------------------------------------------------------------------------
 
 `Qot_GetIpoList.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetIpoList.proto>`_ - 3217获取IPO信息

@@ -1467,6 +1467,7 @@ TrdMarket - 交易市场
 		TrdMarket_US = 2; //美国市场
 		TrdMarket_CN = 3; //大陆市场
 		TrdMarket_HKCC = 4; //香港A股通市场
+		TrdMarket_Futures = 5; //期货市场
 	}
 
 -----------------------------------------------
@@ -1572,6 +1573,39 @@ TrdAccType - 交易账户类型
 
 -----------------------------------------------	
 
+Currency - 货币种类
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	enum Currency
+	{
+		Currency_Unknown = 0;  //未知货币
+		Currency_HKD = 1;   // 港币
+		Currency_USD = 2;   // 美元
+		Currency_CNH = 3;   // 离岸人民币
+	};
+
+-----------------------------------------------	
+
+CltRiskLevel - 账户风险控制等级
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	enum CltRiskLevel
+	{
+		CltRiskLevel_Unknown = -1;		// 未知
+		CltRiskLevel_Safe = 0;          // 安全
+		CltRiskLevel_Warning = 1;       // 预警
+		CltRiskLevel_Danger = 2;        // 危险
+		CltRiskLevel_AbsoluteSafe = 3;  // 绝对安全
+		CltRiskLevel_OptDanger = 4;     // 危险, 期权相关
+	}
+
+-----------------------------------------------	
+
+
 ReconfirmOrderReason - 确认订单类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1617,6 +1651,20 @@ TrdAcc - 交易账户
 
 -----------------------------------------------
 
+AccCashInfo - 账户现金信息，目前仅用于期货账户
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	message AccCashInfo
+	{
+		optional int32 currency = 1;        // 货币类型，取值参考 Currency
+		optional double cash = 2;           // 现金结余
+		optional double availableBalance = 3;   // 现金可提金额
+	}
+
+-----------------------------------------------
+
 Funds - 账户资金
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1631,6 +1679,15 @@ Funds - 账户资金
 		required double frozenCash = 5; //冻结金额
 		required double debtCash = 6; //欠款金额
 		required double avlWithdrawalCash = 7; //可提金额
+
+		optional int32 currency = 8;            //币种，本结构体资金相关的货币类型，取值参见 Currency，期货适用
+		optional double availableFunds = 9;     //可用资金，期货适用
+		optional double unrealizedPL = 10;      //未实现盈亏，期货适用
+		optional double realizedPL = 11;        //已实现盈亏，期货适用
+		optional int32 riskLevel = 12;           //风控状态，参见 CltRiskLevel, 期货适用
+		optional double initialMargin = 13;      //初始保证金，期货适用
+		optional double maintenanceMargin = 14;  //维持保证金，期货适用
+		repeated AccCashInfo cashInfoList = 15;  //分币种的现金信息，期货适用
 	}
 
 -----------------------------------------------
@@ -1661,6 +1718,9 @@ Position - 账户持仓
 		optional double td_buyQty = 24; //今日买入总量
 		optional double td_sellVal = 25; //今日卖出总额
 		optional double td_sellQty = 26; //今日卖出总量
+
+		optional double unrealizedPL = 28;       //未实现盈亏，期货适用
+		optional double realizedPL = 29;         //已实现盈亏，期货适用
 	}
 
 -----------------------------------------------
@@ -1729,11 +1789,11 @@ MaxTrdQtys - 最大交易数量
 	message MaxTrdQtys
 	{
 		//因目前服务器实现的问题，卖空需要先卖掉持仓才能再卖空，是分开两步卖的，买回来同样是逆向两步；而看多的买是可以现金加融资一起一步买的，请注意这个差异
-		required double maxCashBuy = 1; //不使用融资，仅自己的现金最大可买整手股数
+		required double maxCashBuy = 1; //不使用融资，仅自己的现金最大可买整手股数，期货此字段值为0，期货不适用
 		optional double maxCashAndMarginBuy = 2; //使用融资，自己的现金 + 融资资金总共的最大可买整手股数
-		required double maxPositionSell = 3; //不使用融券(卖空)，仅自己的持仓最大可卖整手股数
+		required double maxPositionSell = 3; //不使用融券(卖空)，仅自己的持仓最大可卖整手股数，期货不适用
 		optional double maxSellShort = 4; //使用融券(卖空)，最大可卖空整手股数，不包括多仓
-		optional double maxBuyBack = 5; //卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。
+		optional double maxBuyBack = 5; //卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。期货不适用
 	}
 	 
 -----------------------------------------------
