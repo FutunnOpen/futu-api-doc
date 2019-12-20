@@ -2329,7 +2329,7 @@
 		required string quoteCurrency = 11; //报价货币
 		required double minVar = 12; //最小变动单位
 		required string minVarUnit = 13; //最小变动单位的单位
-		required string quoteUnit = 14; //报价单位
+		optional string quoteUnit = 14; //报价单位
 		repeated TradeTime tradeTime = 15; //交易时间
 		required string timeZone = 16; //所在时区
 		required string exchangeFormatUrl = 17; //交易所规格
