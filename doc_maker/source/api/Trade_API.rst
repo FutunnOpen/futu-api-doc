@@ -544,7 +544,6 @@ history_deal_list_query - 获取历史成交列表
   pwd_unlock = '123456'
   trd_ctx = OpenHKTradeContext(host='127.0.0.1', port=11111)
   print(trd_ctx.unlock_trade(pwd_unlock))
-  order_id = "12345"
   print(trd_ctx.history_deal_list_query('HK.00700'))
   trd_ctx.close()
 
