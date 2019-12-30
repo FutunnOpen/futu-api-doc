@@ -1104,6 +1104,7 @@ FutureBasicQotExData - 基础报价的期货特有字段
 		required double lastSettlePrice = 1; //昨结
 		required int32 position = 2; //持仓量
 		required int32 positionChange = 3; //日增仓
+		optional int32 expiryDateDistance = 4; //距离到期日天数
 	}		
 
 ----------------------------------------------------------------------------------------------
