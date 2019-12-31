@@ -257,7 +257,7 @@ get_stock_basicinfo
         delisting           bool           是否退市
         index_option_type   str            指数期权类型
         main_contract       bool           是否主连合约  
-        last_trade_time     string         只有非主连期货合约才有该字段
+        last_trade_time     string         最后交易时间，主连，当月，下月等期货没有该字段
         =================   ===========   ==============================================================================
 
  :Example:
@@ -621,7 +621,7 @@ get_market_snapshot
  future_position                    float          持仓量
  future_position_change             float          日增仓
  future_main_contract               bool           是否主连合约
- future_last_trade_time             string         只有非主连期货合约才有该字段
+ future_last_trade_time             string         最后交易时间，主连，当月，下月等期货没有该字段
  ===============================   =============   ===================================================================
 
  :Example:
@@ -636,7 +636,7 @@ get_market_snapshot
 .. note::
 
     * 接口限制请参见 `获取股票快照限制 <../protocol/intro.html#id43>`_
-	
+
 get_rt_data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -649,19 +649,19 @@ get_rt_data
 
         ret != RET_OK 返回错误字符串
 
-=====================   ===========   ===================================================================
-参数                      类型                        说明
-=====================   ===========   ===================================================================
-code                    str            股票代码
-time                    str            时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
-is_blank                bool           数据状态；正常数据为False，伪造数据为True
-opened_mins             int            零点到当前多少分钟
-cur_price               float          当前价格
-last_close              float          昨天收盘的价格
-avg_price               float          平均价格（对于期权，该字段为None）
-volume                  float          成交量
-turnover                float          成交金额
-=====================   ===========   ===================================================================
+        =====================   ===========   ===================================================================
+        参数                      类型                        说明
+        =====================   ===========   ===================================================================
+        code                    str            股票代码
+        time                    str            时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
+        is_blank                bool           数据状态；正常数据为False，伪造数据为True
+        opened_mins             int            零点到当前多少分钟
+        cur_price               float          当前价格
+        last_close              float          昨天收盘的价格
+        avg_price               float          平均价格（对于期权，该字段为None）
+        volume                  float          成交量
+        turnover                float          成交金额
+        =====================   ===========   ===================================================================
 
  :Example:
 
@@ -697,8 +697,8 @@ get_plate_stock
         stock_type              str            股票类型，参见 SecurityType_
         list_time               str            上市时间（港股A股默认是北京时间）
         stock_id                int            股票id
-		main_contract           bool           是否主连合约（期货特有字段）
-        last_trade_time         string         最后交易时间（期货特有字段，非主连期货合约才有值）
+        main_contract           bool           是否主连合约（期货特有字段）
+        last_trade_time         string         最后交易时间（期货特有字段，主连，当月，下月等期货没有该字段）
         =====================   ===========   ==============================================================
 
  :Example:
@@ -708,8 +708,8 @@ get_plate_stock
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_plate_stock('HK.BK1001'))
-    quote_ctx.close()		
-    	
+    quote_ctx.close()
+
 .. note::
 
     *   该接口也可用于获取指数成份股, 如获取上证指数成份股:
@@ -1290,7 +1290,7 @@ get_referencestock_list
     wrt_code                    str            所属正股
     future_valid                bool           是否是期货，如果为True，下面future开头的字段有效
     future_main_contract        bool           是否主连合约（期货特有字段）
-    future_last_trade_time      string         最后交易时间（期货特有字段，非主连期货合约才有值）
+    future_last_trade_time      string         最后交易时间（期货特有字段，主连，当月，下月等期货没有该字段）
     ========================   ===========   ==============================================================================
 
  :Example:
@@ -1762,7 +1762,7 @@ get_user_security
         =================   ===========   ==============================================================================
         code                str            股票代码
         name                str            名字
-        lot_size            int            每手股数，期权表示每份合约股数（指数期权无该字段），期货表示合约乘数
+        lot_size            int            每手股数，期权表示每份合约股数，期货表示合约乘数
         stock_type          str            股票类型，参见 SecurityType_
         stock_child_type    str            窝轮子类型，参见 WrtType_
         stock_owner         str            窝轮所属正股的代码，或期权标的股的代码
@@ -1774,7 +1774,7 @@ get_user_security
         stock_id            int            股票id
         delisting           bool           是否退市
         main_contract       bool           是否主连合约  
-        last_trade_time     string         只有非主连期货合约才有该字段
+        last_trade_time     string         最后交易时间，主连，当月，下月等期货没有该字段
         =================   ===========   ==============================================================================
 
  :Example:
@@ -2045,9 +2045,9 @@ get_future_info
   
         ret == RET_OK data为DataFrame类型，字段如下:
 
-		=========================   ===========   =========================
+		=========================   ===========   =====================================================
 		参数                         类型           说明
-		=========================   ===========   =========================
+		=========================   ===========   =====================================================
 		code                        string         股票代码
 		name                        string         股票名称
 		owner                       string         标的
@@ -2061,9 +2061,9 @@ get_future_info
 		min_change_unit             string         最小变动的单位
 		trade_time                  string         交易时间
 		time_zone                   string         时区
-		last_trade_time             string         最后交易时间
+		last_trade_time             string         最后交易时间，主连，当月，下月等期货没有该字段
 		exchange_format_url         string         交易所规格url
-		=========================   ===========   =========================
+		=========================   ===========   =====================================================
 
  :Example:
 
