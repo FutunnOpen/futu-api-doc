@@ -840,7 +840,7 @@ OrderType - 订单类型
   
  ..  py:attribute:: NORMAL
   
-  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单)。目前港股期权只能指定此订单类型。
+  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单)。目前港股期权只能指定此订单类型。
   
  ..  py:attribute:: MARKET
  
@@ -852,19 +852,19 @@ OrderType - 订单类型
   
  ..  py:attribute:: AUCTION
  
-  港股竞价单
+  港股竞价单，港股期货的竞价市价单
   
  ..  py:attribute:: AUCTION_LIMIT
  
-  港股竞价限价单
+  港股竞价限价单。不支持期货。
   
  ..  py:attribute:: SPECIAL_LIMIT
  
-  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)
+  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)。不支持期货。
   
  .. py:attribute:: SPECIAL_LIMIT_ALL
 
-  港股特别限价(要么全部成交，否则下单失败)
+  港股特别限价(要么全部成交，否则下单失败)。不支持期货。
 --------------------------------------
 
 OrderStatus - 订单状态定义
@@ -2156,27 +2156,35 @@ Currency - 交易相关的货币类型
 
 --------------------------------------
 
-CltRiskLevel - 交易相关的货币类型
+CltRiskLevel - 账户风控状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-交易相关的货币类型
+账户风控状态
 
-..  py:class:: Currency
+..  py:class:: CltRiskLevel
 
  ..  py:attribute:: NONE
 
   未知
 
- ..  py:attribute:: HKD
+ ..  py:attribute:: SAFE
 
-  港币
+  安全
 
- ..  py:attribute:: USD
+ ..  py:attribute:: WARNING
 
-  美元
+  预警
 
- ..  py:attribute:: CNH
+ ..  py:attribute:: DANGER
 
-  离岸人民币
+  危险
+
+ ..  py:attribute:: ABSOLUTE_SAFE
+
+  绝对安全
+
+ ..  py:attribute:: OPT_DANGER
+
+  危险，期权相关
   
 --------------------------------------
