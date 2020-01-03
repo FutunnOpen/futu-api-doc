@@ -565,7 +565,7 @@ get_market_snapshot
  option_theta                       float          希腊值 Theta
  option_rho                         float          希腊值 Rho
  option_net_open_interest           int            净未平仓合约数
- option_expiry_date_distance        int            距离到期日天数
+ option_expiry_date_distance        int            距离到期日天数，负数表示已过期
  option_contract_nominal_value      float          合约名义金额
  option_owner_lot_multiplier        float          相等正股手数，指数期权无该字段
  option_area_type                   str            期权地区类型，见 OptionAreaType_
@@ -1047,7 +1047,7 @@ vega                    float          希腊值 Vega
 theta                   float          希腊值 Theta
 rho                     float          希腊值 Rho
 net_open_interest       int            净未平仓合约数
-expiry_date_distance    int            距离到期日天数
+expiry_date_distance    int            距离到期日天数，负数表示已过期
 contract_nominal_value  float          合约名义金额
 owner_lot_multiplier    float          相等正股手数，指数期权无该字段
 option_area_type        str            期权地区类型，见 OptionAreaType_
