@@ -252,7 +252,7 @@ place_order - 下单
  
  注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。
 
- 如果是OpenFutureTradeContext，目前仅支持港股的股指期货与行业指数期货。
+ 如果是OpenFutureTradeContext，目前仅支持港股的指数期货。
 
  :param price: float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值
  :param qty: float，订单数量，整数，期权单位是"张"，期货单位是“张”
