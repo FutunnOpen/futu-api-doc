@@ -480,7 +480,12 @@ request_history_kline
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_autype_list(["HK.00700"]))
     quote_ctx.close()
+	
+.. note::
 
+	* 复权后价格 = 复权前价格 * 复权因子a + 复权因子b
+	
+	
 get_market_snapshot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -691,7 +696,7 @@ get_plate_stock
         =====================   ===========   ==============================================================
         参数                      类型                        说明
         =====================   ===========   ==============================================================
-        code                    str            股票代码，期货表示合约乘数
+        code                    str            股票代码
         lot_size                int            每手股数，期货表示合约乘数
         stock_name              str            股票名称
         stock_type              str            股票类型，参见 SecurityType_
@@ -1535,7 +1540,8 @@ backward_adj_factorB    float          后复权因子B
 
 .. note::
 
-    * 	接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id42>`_
+    * 接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id42>`_
+	* 复权后价格 = 复权前价格 * 复权因子a + 复权因子b
 
 get_warrant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
