@@ -197,8 +197,8 @@ position_list_query - 获取账户持仓列表
  获取账户持仓列表。获取账户的证券持仓列表。
 
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
- :param pl_ratio_min: float，过滤盈亏比例下限，高于此比例的会返回，如0.1，返回盈亏比例大于10%的持仓
- :param pl_ratio_max: float，过滤盈亏比例上限，低于此比例的会返回，如0.2，返回盈亏比例小于20%的持仓
+ :param pl_ratio_min: float，过滤盈亏比例下限，高于此比例的会返回，如10，返回盈亏比例大于10%的持仓
+ :param pl_ratio_max: float，过滤盈亏比例上限，低于此比例的会返回，如20，返回盈亏比例小于20%的持仓
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
