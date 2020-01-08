@@ -1988,6 +1988,39 @@ TradeDateType - 交易时间类型
   
 --------------------------------------
 
+TradeDateMarket - 交易日市场类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易日市场类型定义
+
+..  py:class:: TradeDateMarket
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HK
+
+  港股市场
+
+ ..  py:attribute:: US
+
+  美股市场
+  
+ ..  py:attribute:: CN
+
+  A股市场
+
+ ..  py:attribute:: NT
+
+  深（沪）股通
+  
+ ..  py:attribute:: ST
+
+  港股通（深、沪）
+  
+--------------------------------------
+
 TrdEnv - 交易环境类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

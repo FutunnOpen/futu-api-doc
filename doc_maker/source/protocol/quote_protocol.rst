@@ -917,7 +917,7 @@
 
 -------------------------------------
 
-`Qot_GetTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto>`_ - 3200获取市场交易日
+`Qot_GetTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto>`_ - :strike:`3200获取市场交易日`
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
@@ -2364,5 +2364,59 @@
 	
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 限频接口：30秒内最多10次	
+	
+------------------------------------------------------------------------
+
+`Qot_RequestTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestTradeDate.proto>`_ - 3218获取期货合约资料
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_RequestTradeDate;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		required int32 market = 1; //Qot_Common.TradeDateMarket,要查询的市场
+		required string beginTime = 2; //开始时间字符串
+		required string endTime = 3; //结束时间字符串
+	}
+
+	message TradeDate
+	{
+		required string time = 1; //时间字符串
+		optional double timestamp = 2; //时间戳
+		optional int32 tradeDateType = 3; //Qot_Common.TradeDateType,交易时间类型
+	}
+
+	message S2C
+	{
+		repeated TradeDate tradeDateList = 1; //交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据。
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+}
+
+
+
+.. note::
+	
+	* 股票结构参考 `TradeDateMarket <base_define.html#tradedatemarket>`_
+	* 限频接口：30秒内最多30次	
 	
 ------------------------------------------------------------------------

@@ -525,6 +525,23 @@ TradeDateType - 交易时间类型
 
 -----------------------------------------------
 
+TradeDateMarket - 交易日查询市场
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: protobuf
+
+	enum TradeDateMarket
+	{
+		TradeDateMarket_Unknown = 0; //未知
+		TradeDateMarket_HK = 1; //港股市场
+		TradeDateMarket_US = 2; //美股市场
+		TradeDateMarket_CN = 3; //A股市场
+		TradeDateMarket_NT = 4; //深（沪）股通
+		TradeDateMarket_ST = 5; //港股通（深、沪）
+	}
+
+-----------------------------------------------
+
 RehabType - K线复权类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

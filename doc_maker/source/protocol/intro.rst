@@ -123,6 +123,9 @@
   .. Qot_GetFutureInfo.proto:  quote_protocol.html#qot-getfutureinfo-proto-3218
   .. _3218:  quote_protocol.html#qot-getfutureinfo-proto-3218
   
+    .. Qot_RequestTradeDate.proto:  quote_protocol.html#qot-requesttradedate-proto-3219
+  .. _3219:  quote_protocol.html#qot-requesttradedate-proto-3219
+
   .. role:: red-strengthen
 
 特点
@@ -195,13 +198,13 @@
  3214             Qot_ModifyUserSecurity.proto_       	  修改自选股分组下的股票
  3215             Qot_StockFilter.proto_                  获取条件选股
  3217             Qot_GetIpoList.proto_                   获取新股
+ 3218             Qot_GetFutureInfo.proto_                获取期货合约资料
+ 3219             Qot_RequestTradeDate.proto_             获取市场交易日，在线拉取不在本地计算 
  ==============   ==================================     ==================================================================
 
 .. note::
 
     * 所有 Protobuf 文件可从 `futu-api <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb>`_ Python开源项目下获取
-
-
 
 ---------------------------------------------------
  
@@ -379,6 +382,11 @@ API用户等级
 	* 请求协议ID: 3218_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 传入股票最多 :red-strengthen:`200` 个
+	
+在线拉取市场交易日
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3219_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
 
 获取账户资金
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

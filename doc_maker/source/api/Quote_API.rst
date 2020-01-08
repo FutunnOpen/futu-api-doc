@@ -80,6 +80,8 @@
  
  .. _FinancialQuarter: Base_API.html#financialquarter
 
+ .. _TradeDateMarket: Base_API.html#tradedatemarket
+ 
 一分钟上手
 ============
 
@@ -173,7 +175,7 @@ set_handler
 
         其它: 设置失败
 
-get_trading_days
+:strike:`get_trading_days`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  py:function:: get_trading_days(self, market, start=None, end=None)
@@ -2084,6 +2086,63 @@ get_future_info
 
     * 接口限制请参见 `获取期货合约资料限制 <../protocol/intro.html#id57>`_
 
+
+request_trading_days
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: request_trading_days(self, market, start=None, end=None)
+
+ 在线请求交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据
+
+ :param market: 市场类型，TradeDateMarket_
+ :param start: 起始日期。例如'2018-01-01'。
+ :param end: 结束日期。例如'2018-01-01'。
+         start和end的组合如下：
+            
+            ==========    ==========    ========================================
+            start类型      end类型       说明
+            ==========    ==========    ========================================
+            str            str           start和end分别为指定的日期
+            None           str           start为end往前365天
+            str            None          end为start往后365天
+            None           None          end为当前日期，start为end往前365天
+            ==========    ==========    ========================================
+ :return: (ret_code, content)
+
+        成功时返回(RET_OK, content)，content为字典列表，失败时返回(RET_ERROR, content)，其中content是错误描述字符串
+
+
+        =================   ===========   ==============================================================================
+        参数                  类型                        说明
+        =================   ===========   ==============================================================================
+        time                str            时间
+        trade_date_type     str            标志是一天、上午半天、下午半天，参见 TradeDateType_
+        =================   ===========   ==============================================================================
+
+ .. code:: python
+
+        [{'time': '2018-12-22', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-12-23', 'trade_date_type': 'WHOLE'},
+         {'time': '2018-12-24', 'trade_date_type': 'MORNING'}]
+
+..
+
+
+
+        
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.request_trading_days(TradeDateMarket.HK, start='2018-01-01', end='2018-01-10'))
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 `在线获取交易日 <../protocol/intro.html#id57>`_
+	
 -----------------------------------------------------------------------------------------------------    
 
 SysNotifyHandlerBase - OpenD通知回调
