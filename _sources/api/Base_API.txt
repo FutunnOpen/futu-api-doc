@@ -599,7 +599,7 @@ ModifyUserSecurityOp - 自选股操作类型
 Market - 行情市场
 ~~~~~~~~~~~~~~~~~
 
-标识不同的行情市场，股票名称的前缀复用该字符串,如 **'HK.00700'**, **'HK_FUTURE.999010'**
+标识不同的行情市场，股票名称的前缀复用该字符串,如 **'HK.00700'**, **'US.AAPL'**
 
 ..  py:class:: Market
 
@@ -840,7 +840,7 @@ OrderType - 订单类型
   
  ..  py:attribute:: NORMAL
   
-  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单)。目前港股期权只能指定此订单类型。
+  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单)。目前港股期权只能指定此订单类型。
   
  ..  py:attribute:: MARKET
  
@@ -852,19 +852,19 @@ OrderType - 订单类型
   
  ..  py:attribute:: AUCTION
  
-  港股竞价单
+  港股竞价单，港股期货的竞价市价单
   
  ..  py:attribute:: AUCTION_LIMIT
  
-  港股竞价限价单
+  港股竞价限价单。不支持期货。
   
  ..  py:attribute:: SPECIAL_LIMIT
  
-  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)
+  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)。不支持期货。
   
  .. py:attribute:: SPECIAL_LIMIT_ALL
 
-  港股特别限价(要么全部成交，否则下单失败)
+  港股特别限价(要么全部成交，否则下单失败)。不支持期货。
 --------------------------------------
 
 OrderStatus - 订单状态定义
@@ -1262,15 +1262,19 @@ SecurityReferenceType - 股票关联数据类型
 
 股票关联数据类型
 
- ..  py:class:: SecurityReferenceType
+..  py:class:: SecurityReferenceType
  
-  ..  py:attribute:: NONE
+ ..  py:attribute:: NONE
   
-   未知
+  未知
    
-  ..  py:attribute:: WARRANT
+ ..  py:attribute:: WARRANT
   
-   相关窝轮
+  相关窝轮
+   
+ ..  py:attribute:: FUTURE
+  
+  期货主连相关合约
 
 --------------------------------------
 
@@ -1671,6 +1675,18 @@ SortField - 窝轮排序
 
   发行量
 
+ ..  py:attribute:: UPPER_STRIKE_PRICE
+
+  上限价，仅界内证支持该字段
+
+ ..  py:attribute:: LOWER_STRIKE_PRICE
+
+  下限价，仅界内证支持该字段
+  
+ ..  py:attribute:: INLINE_PRICE_STATUS
+
+  界内界外，仅界内证支持该字段
+
  ..  py:attribute:: PRE_CUR_PRICE
 
   盘前最新价
@@ -1710,18 +1726,18 @@ SortField - 窝轮排序
  ..  py:attribute:: AFTER_TURNOVER
 
   盘后成交额
-
- ..  py:attribute:: UPPER_STRIKE_PRICE
-
-  上限价，仅界内证支持该字段
-
- ..  py:attribute:: LOWER_STRIKE_PRICE
-
-  下限价，仅界内证支持该字段
   
- ..  py:attribute:: INLINE_PRICE_STATUS
+ ..  py:attribute:: LAST_SETTLE_PRICE
 
-  界内界外，仅界内证支持该字段
+  期货昨结
+  
+ ..  py:attribute:: POSITION
+
+  期货持仓量
+  
+ ..  py:attribute:: POSITION_CHANGE
+
+  期货日持仓
 
 --------------------------------------
 
@@ -2015,6 +2031,10 @@ TrdMarket - 交易市场类型
  ..  py:attribute:: HKCC
 
   香港的A股通交易  
+
+ ..  py:attribute:: FUTURES
+
+  期货市场
  
 --------------------------------------
 
@@ -2110,3 +2130,61 @@ WrtType - 港股窝轮类型
 
 --------------------------------------
 
+
+Currency - 交易相关的货币类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易相关的货币类型
+
+..  py:class:: Currency
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HKD
+
+  港币
+
+ ..  py:attribute:: USD
+
+  美元
+
+ ..  py:attribute:: CNH
+
+  离岸人民币
+
+--------------------------------------
+
+CltRiskLevel - 账户风控状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+账户风控状态
+
+..  py:class:: CltRiskLevel
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: SAFE
+
+  安全
+
+ ..  py:attribute:: WARNING
+
+  预警
+
+ ..  py:attribute:: DANGER
+
+  危险
+
+ ..  py:attribute:: ABSOLUTE_SAFE
+
+  绝对安全
+
+ ..  py:attribute:: OPT_DANGER
+
+  危险，期权相关
+  
+--------------------------------------

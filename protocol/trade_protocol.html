@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易协议 &mdash; futu-api-doc 3.16 documentation</title>
+  <title>交易协议 &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.16 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="next" title="介绍" href="../api/intro.html"/>
         <link rel="prev" title="行情协议" href="quote_protocol.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.16
+                3.17
               </div>
             
           
@@ -400,6 +400,7 @@
         <span class="k">optional</span> <span class="kt">bool</span> <span class="na">refreshCache</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//立即刷新OpenD缓存的此数据，默认不填。true向服务器获取最新数据更新缓存并返回；flase或没填则返回OpenD缓存的数据，不会向服务器请求。</span>
 <span class="c1">//正常情况下，服务器有更新就会立即推送到OpenD，OpenD缓存着数据，API请求过来，返回同步的缓存数据，一般不需要指定刷新缓存，保证快速返回且减少对服务器的压力</span>
 <span class="c1">//如果遇到丢包等情况，可能出现缓存数据与服务器不一致，用户如果发现数据更新有异样，可指定刷新缓存，解决数据同步的问题。</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">currency</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>    <span class="c1">//货币种类，参见Trd_Common.Currency。期货账户必填，其它账户忽略</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -978,7 +979,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.16',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

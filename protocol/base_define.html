@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.16 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.16 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.16
+                3.17
               </div>
             
           
@@ -147,12 +147,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#security">Security - 证券标识</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kline-k">KLine - K线数据点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optionbasicqotexdata">OptionBasicQotExData - 基础报价的期权特有字段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futurebasicqotexdata">FutureBasicQotExData - 基础报价的期货特有字段</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#basicqot">BasicQot - 基础报价</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preaftermarketdata">PreAfterMarketData - 盘前盘后数据</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#timeshare">TimeShare - 分时数据点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#securitystaticbasic">SecurityStaticBasic - 证券基本静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#warrantstaticexdata">WarrantStaticExData - 窝轮额外静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optionstaticexdata">OptionStaticExData - 期权额外静态信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#futurestaticexdata">FutureStaticExData - 期货额外静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#securitystaticinfo">SecurityStaticInfo - 证券静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#broker">Broker - 买卖经纪摆盘</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ticker">Ticker - 逐笔成交</a></li>
@@ -174,9 +176,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#positionside">PositionSide - 持仓方向类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modifyorderop">ModifyOrderOp - 修改订单操作类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdacctype">TrdAccType - 交易账户类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#currency">Currency - 货币种类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cltrisklevel">CltRiskLevel - 账户风险控制等级</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reconfirmorderreason">ReconfirmOrderReason - 确认订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdheader">TrdHeader - 交易公共参数头</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdacc">TrdAcc - 交易账户</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acccashinfo">AccCashInfo - 账户现金信息，目前仅用于期货账户</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#funds">Funds - 账户资金</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#position">Position - 账户持仓</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#order">Order - 订单</a></li>
@@ -1396,6 +1401,21 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="futurebasicqotexdata">
+<h3>FutureBasicQotExData - 基础报价的期货特有字段<a class="headerlink" href="#futurebasicqotexdata" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">FutureBasicQotExData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">lastSettlePrice</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//昨结</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">position</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//持仓量</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">positionChange</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//日增仓</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">expiryDateDistance</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//距离到期日天数</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="basicqot">
 <h3>BasicQot - 基础报价<a class="headerlink" href="#basicqot" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -1422,6 +1442,7 @@
         <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">preMarket</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span> <span class="c1">//盘前数据</span>
         <span class="k">optional</span> <span class="n">PreAfterMarketData</span> <span class="na">afterMarket</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">//盘后数据</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">secStatus</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">//SecurityStatus, 股票状态</span>
+        <span class="k">optional</span> <span class="n">FutureBasicQotExData</span> <span class="na">futureExData</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//期货特有字段</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1514,7 +1535,20 @@
         <span class="k">required</span> <span class="kt">string</span> <span class="na">market</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//发行市场名字</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">strikeTimestamp</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//行权日时间戳</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">indexOptionType</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//Qot_Common.IndexOptionType, 指数期权的类型，仅在指数期权有效</span>
-
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="futurestaticexdata">
+<h3>FutureStaticExData - 期货额外静态信息<a class="headerlink" href="#futurestaticexdata" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">FutureStaticExData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">lastTradeTime</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//最后交易日，只有非主连期货合约才有该字段</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">lastTradeTimestamp</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//最后交易日时间戳，只有非主连期货合约才有该字段</span>
+        <span class="k">required</span> <span class="kt">bool</span> <span class="na">isMainContract</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//是否主连合约</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1529,6 +1563,7 @@
         <span class="k">required</span> <span class="n">SecurityStaticBasic</span> <span class="na">basic</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//基本股票静态信息</span>
         <span class="k">optional</span> <span class="n">WarrantStaticExData</span> <span class="na">warrantExData</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//窝轮额外股票静态信息</span>
         <span class="k">optional</span> <span class="n">OptionStaticExData</span> <span class="na">optionExData</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//期权额外股票静态信息</span>
+        <span class="k">optional</span> <span class="n">FutureStaticExData</span> <span class="na">futureExData</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//期货额外股票静态信息</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1737,6 +1772,7 @@
         <span class="na">TrdMarket_US</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//美国市场</span>
         <span class="na">TrdMarket_CN</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//大陆市场</span>
         <span class="na">TrdMarket_HKCC</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//香港A股通市场</span>
+        <span class="na">TrdMarket_Futures</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//期货市场</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1840,6 +1876,38 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="currency">
+<h3>Currency - 货币种类<a class="headerlink" href="#currency" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Currency</span>
+<span class="p">{</span>
+        <span class="na">Currency_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">//未知货币</span>
+        <span class="na">Currency_HKD</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>   <span class="c1">// 港币</span>
+        <span class="na">Currency_USD</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>   <span class="c1">// 美元</span>
+        <span class="na">Currency_CNH</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>   <span class="c1">// 离岸人民币</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="cltrisklevel">
+<h3>CltRiskLevel - 账户风险控制等级<a class="headerlink" href="#cltrisklevel" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">CltRiskLevel</span>
+<span class="p">{</span>
+        <span class="na">CltRiskLevel_Unknown</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>              <span class="c1">// 未知</span>
+        <span class="na">CltRiskLevel_Safe</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>          <span class="c1">// 安全</span>
+        <span class="na">CltRiskLevel_Warning</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>       <span class="c1">// 预警</span>
+        <span class="na">CltRiskLevel_Danger</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>        <span class="c1">// 危险</span>
+        <span class="na">CltRiskLevel_AbsoluteSafe</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// 绝对安全</span>
+        <span class="na">CltRiskLevel_OptDanger</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>     <span class="c1">// 危险, 期权相关</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="reconfirmorderreason">
 <h3>ReconfirmOrderReason - 确认订单类型<a class="headerlink" href="#reconfirmorderreason" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -1884,6 +1952,20 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="acccashinfo">
+<h3>AccCashInfo - 账户现金信息，目前仅用于期货账户<a class="headerlink" href="#acccashinfo" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">AccCashInfo</span>
+<span class="p">{</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">currency</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>        <span class="c1">// 货币类型，取值参考 Currency</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">cash</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>           <span class="c1">// 现金结余</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">availableBalance</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>   <span class="c1">// 现金可提金额</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="funds">
 <h3>Funds - 账户资金<a class="headerlink" href="#funds" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -1896,6 +1978,15 @@
         <span class="k">required</span> <span class="kt">double</span> <span class="na">frozenCash</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//冻结金额</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">debtCash</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//欠款金额</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">avlWithdrawalCash</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//可提金额</span>
+
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">currency</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>            <span class="c1">//币种，本结构体资金相关的货币类型，取值参见 Currency，期货适用</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">availableFunds</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>     <span class="c1">//可用资金，期货适用</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">unrealizedPL</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>      <span class="c1">//未实现盈亏，期货适用</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">realizedPL</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>        <span class="c1">//已实现盈亏，期货适用</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">riskLevel</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>           <span class="c1">//风控状态，参见 CltRiskLevel, 期货适用</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">initialMargin</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>      <span class="c1">//初始保证金，期货适用</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">maintenanceMargin</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>  <span class="c1">//维持保证金，期货适用</span>
+        <span class="k">repeated</span> <span class="n">AccCashInfo</span> <span class="na">cashInfoList</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>  <span class="c1">//分币种的现金信息，期货适用</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1926,6 +2017,9 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">td_buyQty</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span> <span class="c1">//今日买入总量</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">td_sellVal</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">//今日卖出总额</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">td_sellQty</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span> <span class="c1">//今日卖出总量</span>
+
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">unrealizedPL</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span>       <span class="c1">//未实现盈亏，期货适用</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">realizedPL</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span>         <span class="c1">//已实现盈亏，期货适用</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1994,11 +2088,11 @@
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">MaxTrdQtys</span>
 <span class="p">{</span>
         <span class="c1">//因目前服务器实现的问题，卖空需要先卖掉持仓才能再卖空，是分开两步卖的，买回来同样是逆向两步；而看多的买是可以现金加融资一起一步买的，请注意这个差异</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">maxCashBuy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//不使用融资，仅自己的现金最大可买整手股数</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">maxCashBuy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//不使用融资，仅自己的现金最大可买整手股数，期货此字段值为0，期货不适用</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">maxCashAndMarginBuy</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//使用融资，自己的现金 + 融资资金总共的最大可买整手股数</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">maxPositionSell</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//不使用融券(卖空)，仅自己的持仓最大可卖整手股数</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">maxPositionSell</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//不使用融券(卖空)，仅自己的持仓最大可卖整手股数，期货不适用</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">maxSellShort</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//使用融券(卖空)，最大可卖空整手股数，不包括多仓</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">maxBuyBack</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">maxBuyBack</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//卖空后，需要买回的最大整手股数。因为卖空后，必须先买回已卖空的股数，还掉股票，才能再继续买多。期货不适用</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2084,7 +2178,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.16',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

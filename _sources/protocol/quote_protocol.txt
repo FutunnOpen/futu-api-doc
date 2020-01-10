@@ -688,7 +688,6 @@
 `Qot_GetHistoryKLPoints.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto>`_  - :strike:`3101从本地下载历史数据获取多只股票多点历史K线`
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 .. code-block:: protobuf
 
 	syntax = "proto2";
@@ -915,6 +914,7 @@
 	* K线字段类型参考 `KLFields <base_define.html#klfields-k>`_
 	* 请求最大个数参考OpenAPI用户等级权限
 	* 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。
+
 -------------------------------------
 
 `Qot_GetTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto>`_ - 3200获取市场交易日
@@ -1122,6 +1122,17 @@
 		required int32 fallCount = 2;  // 下跌支数
 		required int32 equalCount = 3;  // 平盘支数
 	}
+	
+	//期货类型额外数据
+	message FutureSnapshotExData
+	{
+		required double lastSettlePrice = 1; //昨结
+		required int32 position = 2; //持仓量
+		required int32 positionChange = 3; //日增仓
+		required string lastTradeTime = 4; //最后交易日，只有非主连期货合约才有该字段
+		optional double lastTradeTimestamp = 5; //最后交易日时间戳，只有非主连期货合约才有该字段
+		required bool isMainContract = 6; //是否主连合约
+	}
 
 	 //基本快照数据
 	message SnapshotBasicData
@@ -1175,6 +1186,7 @@
 		optional OptionSnapshotExData optionExData = 4; //期权快照额外数据
 		optional IndexSnapshotExData indexExData = 5; //指数快照额外数据
 		optional PlateSnapshotExData plateExData = 6; //板块快照额外数据
+		optional FutureSnapshotExData futureExData = 7; //期货类型额外数据
 	}
 
 	message S2C
@@ -1311,6 +1323,7 @@
 	{
 		ReferenceType_Unknow = 0; 
 		ReferenceType_Warrant = 1; //正股相关的窝轮
+		ReferenceType_Future = 2; //期货主连的相关合约
 	}
 
 	message C2S
@@ -2079,7 +2092,95 @@
 	* 限频接口：30秒内最多10次	
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
 		
--------------------------------------
+----------------------------------------------------------------------------------------
+
+`Qot_GetCodeChange.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCodeChange.proto>`_ - 3216获取股票代码变更信息
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetCodeChange;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum CodeChangeType
+	{
+		CodeChangeType_Unkown = 0; //未知
+		CodeChangeType_GemToMain = 1; //创业板转主板
+		CodeChangeType_Unpaid = 2; //买卖未缴款供股权
+		CodeChangeType_ChangeLot = 3; //更改买卖单位
+		CodeChangeType_Split = 4; //拆股
+		CodeChangeType_Joint = 5; //合股
+		CodeChangeType_JointSplit = 6; //股份先并后拆
+		CodeChangeType_SplitJoint = 7; //股份先拆后并
+		CodeChangeType_Other = 8; //其他
+	}
+
+	message CodeChangeInfo
+	{
+		required int32 type = 1; //CodeChangeType,代码变化或者新增临时代码的事件类型
+		required Qot_Common.Security security = 2; //主代码，在创业板转主板中表示主板
+		required Qot_Common.Security relatedSecurity = 3; //关联代码，在创业板转主板中表示创业板，在剩余事件中表示临时代码
+		optional string publicTime = 4; //公布时间
+		optional double publicTimestamp = 5; //公布时间戳
+		optional string effectiveTime = 6; //生效时间
+		optional double effectiveTimestamp = 7; //生效时间戳
+		optional string endTime = 8; //结束时间，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间
+		optional double endTimestamp = 9; //结束时间戳，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间
+	}
+
+	enum TimeFilterType
+	{
+		TimeFilterType_Unknow = 0;
+		TimeFilterType_Public = 1; //根据公布时间过滤
+		TimeFilterType_Effective = 2; //根据生效时间过滤
+		TimeFilterType_End = 3; //根据结束时间过滤
+	}
+
+	message TimeFilter
+	{
+		required int32 type = 1; //TimeFilterType, 过滤类型
+		optional string beginTime = 2; //开始时间点
+		optional string endTime = 3; //结束时间点
+	}
+
+	message C2S
+	{
+		optional int32 placeHolder = 1; //占位
+		repeated Qot_Common.Security securityList = 2; //根据股票筛选
+		repeated TimeFilter timeFilterList = 3; //根据时间筛选
+		repeated int32 typeList = 4; //CodeChangeType，根据类型筛选
+	}
+
+	message S2C
+	{
+		repeated CodeChangeInfo codeChangeList = 1; //股票代码更换信息，目前仅有港股数据
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+
+.. note::
+  
+  * 股票结构参考 `Security <base_define.html#security>`_
+
+----------------------------------------------------------------------------------------
 
 `Qot_GetIpoList.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetIpoList.proto>`_ - 3217获取IPO信息
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2191,79 +2292,64 @@
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 限频接口：30秒内最多10次	
 	
--------------------------------------
+------------------------------------------------------------------------	
 
-`Qot_GetCodeChange.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCodeChange.proto>`_ - 3216获取股票代码变更信息
+`Qot_GetFutureInfo.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetFutureInfo.proto>`_ - 3218获取期货合约资料
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
 
 	syntax = "proto2";
-	package Qot_GetCodeChange;
+	package Qot_GetFutureInfo;
 	option java_package = "com.futu.openapi.pb";
-
+	
 	import "Common.proto";
 	import "Qot_Common.proto";
 
-	enum CodeChangeType
+	//交易时间
+	message TradeTime
 	{
-		CodeChangeType_Unkown = 0; //未知
-		CodeChangeType_GemToMain = 1; //创业板转主板
-		CodeChangeType_Unpaid = 2; //买卖未缴款供股权
-		CodeChangeType_ChangeLot = 3; //更改买卖单位
-		CodeChangeType_Split = 4; //拆股
-		CodeChangeType_Joint = 5; //合股
-		CodeChangeType_JointSplit = 6; //股份先并后拆
-		CodeChangeType_SplitJoint = 7; //股份先拆后并
-		CodeChangeType_Other = 8; //其他
-	}
-
-	message CodeChangeInfo
+		optional double begin = 1; // 开始时间,以分钟为单位
+		optional double end = 2; // 结束时间,以分钟为单位
+	}	
+    
+	//期货合约资料的列表
+	message FutureInfo
 	{
-		required int32 type = 1; //CodeChangeType,代码变化或者新增临时代码的事件类型
-		required Qot_Common.Security security = 2; //主代码，在创业板转主板中表示主板
-		required Qot_Common.Security relatedSecurity = 3; //关联代码，在创业板转主板中表示创业板，在剩余事件中表示临时代码
-		optional string publicTime = 4; //公布时间
-		optional double publicTimestamp = 5; //公布时间戳
-		optional string effectiveTime = 6; //生效时间
-		optional double effectiveTimestamp = 7; //生效时间戳
-		optional string endTime = 8; //结束时间，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间
-		optional double endTimestamp = 9; //结束时间戳，在创业板转主板事件不存在该字段，在剩余事件表示临时代码交易结束时间
-	}
-
-	enum TimeFilterType
-	{
-		TimeFilterType_Unknow = 0;
-		TimeFilterType_Public = 1; //根据公布时间过滤
-		TimeFilterType_Effective = 2; //根据生效时间过滤
-		TimeFilterType_End = 3; //根据结束时间过滤
-	}
-
-	message TimeFilter
-	{
-		required int32 type = 1; //TimeFilterType, 过滤类型
-		optional string beginTime = 2; //开始时间点
-		optional string endTime = 3; //结束时间点
+		required string name = 1; // 合约名称
+		required Qot_Common.Security security = 2; // 合约代码
+		required string lastTradeTime = 3; //最后交易日，只有非主连期货合约才有该字段
+		optional double lastTradeTimestamp = 4; //最后交易日时间戳，只有非主连期货合约才有该字段
+		optional Qot_Common.Security owner = 5; //标的股 股票期货和股指期货才有该字段
+		required string ownerOther = 6; //标的 
+		required string exchange = 7; //交易所
+		required string contractType = 8; //合约类型
+		required double contractSize = 9; //合约规模
+		required string contractSizeUnit = 10; //合约规模的单位
+		required string quoteCurrency = 11; //报价货币
+		required double minVar = 12; //最小变动单位
+		required string minVarUnit = 13; //最小变动单位的单位
+		optional string quoteUnit = 14; //报价单位
+		repeated TradeTime tradeTime = 15; //交易时间
+		required string timeZone = 16; //所在时区
+		required string exchangeFormatUrl = 17; //交易所规格
 	}
 
 	message C2S
 	{
-		optional int32 placeHolder = 1; //占位
-		repeated Qot_Common.Security securityList = 2; //根据股票筛选
-		repeated TimeFilter timeFilterList = 3; //根据时间筛选
-		repeated int32 typeList = 4; //CodeChangeType，根据类型筛选
+		repeated Qot_Common.Security securityList = 1; //股票列表
 	}
 
 	message S2C
 	{
-		repeated CodeChangeInfo codeChangeList = 1; //股票代码更换信息，目前仅有港股数据
+		repeated FutureInfo futureInfoList = 1; //期货合约资料的列表
 	}
-
+	
 	message Request
 	{
 		required C2S c2s = 1;
 	}
-
+	
 	message Response
 	{
 		required int32 retType = 1 [default = -400]; //RetType,返回结果
@@ -2274,9 +2360,9 @@
 	}
 
 
-
 .. note::
-  
-  * 股票结构参考 `Security <base_define.html#security>`_
-
 	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 限频接口：30秒内最多10次	
+	
+------------------------------------------------------------------------
