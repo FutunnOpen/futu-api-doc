@@ -40,6 +40,7 @@
   .. _notify: ../protocol/base_define.html#notify-proto-1003
   .. _getCodeChange: ../protocol/quote_protocol.html#qot-getcodechange-proto-3216
   .. _getIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
+  .. _getFutureInfo: ../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218
   .. _updateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _updateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _updateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -101,6 +102,7 @@ getUserSecurity_                    获取自选股分组下的股票           
 modifyUserSecurity_                 修改自选股分组下的股票                              onReply_ModifyUserSecurity
 getIpolist_                         获取ipo数据                                        onReply_GetIpoList
 getCodeChange_                      获取股票代码变更                                    onReply_GetCodeChange
+getFutureInfo_                      获取期货合约资料                                    onReply_GetFutureInfo
 ================================    ==============================================   ==============================
 
 FTSPI_Qot行情推送接收接口函数
