@@ -377,7 +377,7 @@ API用户等级
 获取期货合约资料
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3218_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
 	* 传入股票最多 :red-strengthen:`200` 个
 
 获取账户资金
