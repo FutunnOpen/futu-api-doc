@@ -439,7 +439,7 @@ request_history_kline
 
 .. note::
 
-    * 接口限制请参见 `在线获取单只股票一段历史K线限制 <../protocol/intro.html#id41>`_
+    * 接口限制请参见 :ref:`在线获取单只股票一段历史K线限制 <request-history-kline-limit>`
 	
 :strike:`get_autype_list`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -642,7 +642,8 @@ get_market_snapshot
 
 .. note::
 
-    * 接口限制请参见 `获取股票快照限制 <../protocol/intro.html#id43>`_
+    * 接口限制请参见 :ref:`获取股票快照限制 <get-market-snapshot-limit>`
+
 
 get_rt_data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -720,13 +721,9 @@ get_plate_stock
 .. note::
 
     *   该接口也可用于获取指数成份股, 如获取上证指数成份股:
-    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id45>`_
-		 .. code:: python
-		
-		    from futu import *
-		    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-		    print(quote_ctx.get_plate_stock('SH.000001'))
-		    quote_ctx.close()		
+	
+	*   接口限制请参见 :ref:`获取板块下的股票限制 <get-plate-stock-limit>`
+
 			    
     *   部分常用的板块或指数代码如下:
     
@@ -801,7 +798,8 @@ get_plate_list
 	
 .. note::
 
-    * 	接口限制请参见 `获取板块下的股票限制 <../protocol/intro.html#id45>`_    
+    * 接口限制请参见 :ref:`获取板块集合下的板块限制 <get-plate-list-limit>`
+
 	
 get_broker_queue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -876,9 +874,9 @@ subscribe
     quote_ctx.close()
 
 .. note::
+    
+	* 接口限制请参见 :ref:`订阅反订阅限制 <subscribe-limit>`
 
-    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id39>`_
-	
 		
 unsubscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -907,7 +905,7 @@ unsubscribe
   
 .. note::
 
-    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id39>`_
+	* 接口限制请参见 :ref:`订阅反订阅限制 <subscribe-limit>`
 
 unsubscribe_all
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -933,7 +931,7 @@ unsubscribe_all
 
 .. note::
 
-    * 接口限制请参见 `订阅反订阅限制 <../protocol/intro.html#id39>`_
+	* 接口限制请参见 :ref:`订阅反订阅限制 <subscribe-limit>`
   
 query_subscription
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1131,7 +1129,8 @@ get_rt_ticker
 	
 .. note::
 
-    * 接口限制请参见 `获取逐笔限制 <../protocol/intro.html#id40>`_
+	* 接口限制请参见 :ref:`获取逐笔限制 <get-rt-ticker-limit>`
+
 	
 get_cur_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1178,7 +1177,7 @@ get_cur_kline
 
 .. note::
 
-    * 接口限制请参见 `获取K线限制 <../protocol/intro.html#k>`_
+	* 接口限制请参见 :ref:`获取K线限制 <get-cur-kline-limit>`
 	
 get_order_book
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1297,7 +1296,7 @@ get_referencestock_list
     wrt_code                    str            所属正股
     future_valid                bool           是否是期货，如果为True，下面future开头的字段有效
     future_main_contract        bool           是否主连合约（期货特有字段）
-    future_last_trade_time      string         最后交易时间（期货特有字段，主连，当月，下月等期货没有该字段）
+    future_last_trade_time      string         最后交易时间（期货特有字段，主连，当月，下月等无该字段）
     ========================   ===========   ==============================================================================
 
  :Example:
@@ -1311,7 +1310,8 @@ get_referencestock_list
 
 .. note::
 
-    * 	接口限制请参见 `获取股票关联数据限制 <../protocol/intro.html#id47>`_  
+	* 接口限制请参见 :ref:`获取股票关联数据限制 <get-referencestock-list-limit>`
+
 	
 get_owner_plate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1348,7 +1348,8 @@ get_owner_plate
 
 .. note::
 
-    * 	接口限制请参见 `获取股票所属板块限制 <../protocol/intro.html#id48>`_  
+	* 接口限制请参见 :ref:`获取股票所属板块限制 <get-owner-plate-limit>`
+
 	
 get_holding_change_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1399,7 +1400,9 @@ time                    str           发布时间（美股的时间默认是美
     quote_ctx.close()
 
 .. note::
-	* 	接口限制请参见 `获取持股变化列表限制 <../protocol/intro.html#id49>`_  
+
+	* 接口限制请参见 :ref:`获取持股变化列表限制 <get-holding-change-list-limit>`
+
 	
 get_option_chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1542,7 +1545,8 @@ backward_adj_factorB    float          后复权因子B
 
 .. note::
 
-    * 接口限制请参见 `在线获取单只股票复权信息限制 <../protocol/intro.html#id42>`_
+	* 接口限制请参见 :ref:`在线获取单只股票复权信息限制 <get-rehab-limit>`
+	
 	* 复权后价格 = 复权前价格 * 复权因子a + 复权因子b
 
 get_warrant
@@ -1672,7 +1676,8 @@ inline_price_status            str                界内界外 参见 PriceType_
 
 
 .. note::
-    * 	接口限制请参见 `获取窝轮限制 <../protocol/intro.html#id51>`_
+
+	* 接口限制请参见 :ref:`获取窝轮限制 <get-warrant-limit>`
 
 get_capital_flow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1708,7 +1713,8 @@ get_capital_flow
 
 .. note::
 
-    * 	接口限制请参见 `获取资金流向限制 <../protocol/intro.html#id52>`_
+	* 接口限制请参见 :ref:`获取资金流向限制 <get-capital-flow-limit>`
+
 
 get_capital_distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1748,7 +1754,8 @@ get_capital_distribution
 
 .. note::
 
-    * 	接口限制请参见 `获取资金分布限制 <../protocol/intro.html#id53>`_
+	* 接口限制请参见 :ref:`获取资金分布限制 <get-capital-distribution-limit>`
+
 
 get_user_security
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1796,7 +1803,7 @@ get_user_security
 
 .. note::
 
-    * 	接口限制请参见 `获取指定分组的自选股列表 <../protocol/intro.html#id54>`_
+	* 接口限制请参见 :ref:`获取指定分组的自选股列表 <get-user-security-limit>`
 
 modify_user_security
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1826,7 +1833,7 @@ modify_user_security
 
 .. note::
 
-    * 接口限制请参见 `修改指定分组的自选股列表 <../protocol/intro.html#id55>`_
+	* 接口限制请参见 :ref:`修改指定分组的自选股列表 <modify-user-security-limit>`
 
 get_stock_filter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1955,7 +1962,8 @@ return_on_equity_rate                          float          净资产收益率
 
 .. note::
 
-    *   接口限制请参见 `获取条件选股 <../protocol/intro.html#id54>`_
+	*   接口限制请参见 :ref:`获取条件选股 <get-stock-filter-limit>`
+	
     *   条件选股支持的板块或指数代码如下:
     
         =====================  ==============================================================
@@ -2084,7 +2092,7 @@ get_future_info
 
 .. note::
 
-    * 接口限制请参见 `获取期货合约资料限制 <../protocol/intro.html#id57>`_
+	* 接口限制请参见 :ref:`获取期货合约资料限制 <get-future-info-limit>`
 
 
 request_trading_days
@@ -2141,7 +2149,7 @@ request_trading_days
 
 .. note::
 
-    * 接口限制请参见 `在线获取交易日 <../protocol/intro.html#id57>`_
+	* 接口限制请参见 :ref:`在线获取交易日 <request-trading-day-limit>`
 	
 -----------------------------------------------------------------------------------------------------    
 
