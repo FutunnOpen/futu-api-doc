@@ -41,6 +41,7 @@
   .. _GetCodeChange: ../protocol/quote_protocol.html#qot-getcodechange-proto-3216
   .. _GetIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _GetFutureInfo: ../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218
+  .. _StockFilter: ../protocol/quote_protocol.html#qot-stockfilter-proto-3215
   .. _UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _UpdateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -89,6 +90,7 @@ ModifyUserSecurity_                 修改自选股分组下的股票           
 GetIpolist_                         获取ipo数据                                          OnReply_GetIpoList
 GetCodeChange_                      获取股票代码变更                                      OnReply_GetCodeChange
 GetFutureInfo_                      获取期货合约资料                                    OnReply_GetFutureInfo
+StockFilter_                        筛选股票                                           OnReply_StockFilter
 ================================    ==============================================   ==============================
 
 
