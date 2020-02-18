@@ -120,10 +120,10 @@
   .. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _3217:  quote_protocol.html#qot-getipolist-proto-3217ipo
 
-  .. Qot_GetFutureInfo.proto:  quote_protocol.html#qot-getfutureinfo-proto-3218
+  .. _Qot_GetFutureInfo.proto:  quote_protocol.html#qot-getfutureinfo-proto-3218
   .. _3218:  quote_protocol.html#qot-getfutureinfo-proto-3218
   
-    .. Qot_RequestTradeDate.proto:  quote_protocol.html#qot-requesttradedate-proto-3219
+  .. _Qot_RequestTradeDate.proto:  quote_protocol.html#qot-requesttradedate-proto-3219
   .. _3219:  quote_protocol.html#qot-requesttradedate-proto-3219
 
   .. role:: red-strengthen

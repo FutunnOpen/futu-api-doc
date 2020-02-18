@@ -495,7 +495,7 @@ get_market_snapshot
 
 获取市场快照
 
- :param code_list: 股票列表，股票个数限制参考 `OpenAPI用户等级权限 <../protocol/intro.html#api>`_
+ :param code_list: 股票列表，股票个数最多400
  :return: (ret, data)
 
         ret == RET_OK ,返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
@@ -2365,7 +2365,7 @@ TickerHandlerBase - 实时逐笔推送回调
 		def on_recv_rsp(self, rsp_str):
 			ret_code, data = super(TickerTest,self).on_recv_rsp(rsp_str)
 			if ret_code != RET_OK:
-				print("CurKlineTest: error, msg: %s" % data)
+				print("TickerTest: error, msg: %s" % data)
 				return RET_ERROR, data
 
 			print("TickerTest ", data) # TickerTest自己的处理逻辑

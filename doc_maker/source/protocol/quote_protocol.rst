@@ -2367,7 +2367,7 @@
 	
 ------------------------------------------------------------------------
 
-`Qot_RequestTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestTradeDate.proto>`_ - 3218获取期货合约资料
+`Qot_RequestTradeDate.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestTradeDate.proto>`_ - 3219在线请求交易日
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf
