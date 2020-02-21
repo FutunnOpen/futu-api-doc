@@ -379,7 +379,7 @@ API用户额度
 获取期权链
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3209_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`60` 次
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 传入时间跨度最多 :red-strengthen:`30` 天
 
 .. _get-warrant-limit:
