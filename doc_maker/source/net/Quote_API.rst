@@ -41,6 +41,7 @@
   .. _GetCodeChange: ../protocol/quote_protocol.html#qot-getcodechange-proto-3216
   .. _GetIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _GetFutureInfo: ../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218
+  .. _RequestTradeDate: ../protocol/quote_protocol.html#qot-requesttradedate-proto-3219
   .. _StockFilter: ../protocol/quote_protocol.html#qot-stockfilter-proto-3215
   .. _UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
@@ -57,9 +58,9 @@ FTAPI_Qot功能函数
 
 + FTAPI_Qot继承自\ `FTAPI_Conn <./Base_API.html#ftapi-conn>`_ ，连接层调用接口参考FTAPI_Conn说明。
 
-================================    ==============================================   ==============================
+================================    ==============================================   ==================================
 函数名（点开链接可查看具体协议）        功能简介                                               回调函数(FTSPI_Qot)
-================================    ==============================================   ==============================
+================================    ==============================================   ==================================
 GetGlobalState_                     获取全局状态                                        OnReply_GetGlobalState
 Sub_                                订阅或者反订阅                                       OnReply_Sub
 RegQotPush_                         注册推送                                            OnReply_RegQotPush
@@ -91,7 +92,8 @@ GetIpolist_                         获取ipo数据                             
 GetCodeChange_                      获取股票代码变更                                      OnReply_GetCodeChange
 GetFutureInfo_                      获取期货合约资料                                    OnReply_GetFutureInfo
 StockFilter_                        筛选股票                                           OnReply_StockFilter
-================================    ==============================================   ==============================
+RequestTradeDate_                   在线拉取交易日                                      OnReply_RequestTradeDate
+================================    ==============================================   ==================================
 
 
 FTSPI_Qot行情推送接收接口函数
