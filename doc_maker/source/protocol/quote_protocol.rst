@@ -1912,57 +1912,60 @@
 
 	syntax = "proto2";
 	package Qot_StockFilter;
+	option java_package = "com.futu.openapi.pb";
 
 	import "Common.proto";
 	import "Qot_Common.proto";
-	
+
+	// 使用到以下 6 个结构体（BaseFilter，AccumulateFilter，FinancialFilter，BaseData， AccumulateData，FinancialData）的用户请注意，由于属性字段名“field”与 C # 的 protobuf 保留函数名产生冲突，Futu API 将从 3.18 版本开始将这一字段统一更名为“fieldName”，请注意修改使用到对应接口的字段名。
+
 	// 简单属性
-	enum StockField 
+	enum StockField  
 	{
 		StockField_Unknown = 0; // 未知
 		StockField_StockCode = 1; // 股票代码，不能填区间上下限值。
 		StockField_StockName = 2; // 股票名称，不能填区间上下限值。
 		StockField_CurPrice = 3; // 最新价 例如填写[10,20]值区间
-		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-30,-10]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[20,40]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-3,-1]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[10,70]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_CurPriceToHighest52WeeksRatio = 4; // (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-30,-10]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
+		StockField_CurPriceToLowest52WeeksRatio = 5; // (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[20,40]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		StockField_HighPriceToHighest52WeeksRatio = 6; // (今日最高 - 52周最高)/52周最高 例如填写[-3,-1]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		StockField_LowPriceToLowest52WeeksRatio = 7; // (今日最低 - 52周最低)/52周最低 例如填写[10,70]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		StockField_VolumeRatio = 8; // 量比 例如填写[0.5,30]值区间
-		StockField_BidAskRatio = 9; // 委比 例如填写[-20,80.5]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_BidAskRatio = 9; // 委比 例如填写[-20,80.5]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		StockField_LotPrice = 10; // 每手价格 例如填写[40,100]值区间
 		StockField_MarketVal = 11; // 市值 例如填写[50000000,3000000000]值区间
 		StockField_PeAnnual = 12; // 市盈率(静态) 例如填写[-8,65.3]值区间
 		StockField_PeTTM = 13; // 市盈率TTM 例如填写[-10,20.5]值区间
 		StockField_PbRate = 14; // 市净率 例如填写[0.5,20]值区间
-		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 	};
-	
+
 	// 累积属性
 	enum AccumulateField
 	{
 		AccumulateField_Unknown = 0; // 未知
-		AccumulateField_ChangeRate = 1; // 涨跌幅 例如填写[-10.2,20.4]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		AccumulateField_Amplitude = 2; // 振幅 例如填写[0.5,20.6]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		AccumulateField_ChangeRate = 1; // 涨跌幅 例如填写[-10.2,20.4]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		AccumulateField_Amplitude = 2; // 振幅 例如填写[0.5,20.6]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		AccumulateField_Volume = 3; // 日均成交量 例如填写[2000,70000]值区间
 		AccumulateField_Turnover = 4; // 日均成交额 例如填写[1400,890000]值区间
-		AccumulateField_TurnoverRate = 5; // 换手率 例如填写[2,30]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		AccumulateField_TurnoverRate = 5; // 换手率 例如填写[2,30]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 	}
-	
+
 	// 财务属性
 	enum FinancialField
 	{
 		FinancialField_Unknown = 0; // 未知
 		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
-		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-10,300]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-10,300]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		FinancialField_SumOfBusiness = 3; // 营业收入 例如填写[100000000,6400000000]值区间
-		FinancialField_SumOfBusinessGrowth = 4; // 营收同比增长率 例如填写[-5,200]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		FinancialField_NetProfitRate = 5; // 净利率 例如填写[10,113]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[4,65]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[5,470]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[20,230]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+		FinancialField_SumOfBusinessGrowth = 4; // 营收同比增长率 例如填写[-5,200]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		FinancialField_NetProfitRate = 5; // 净利率 例如填写[10,113]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[4,65]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[5,470]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[20,230]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 	}
-	
+
 	// 财报时间
 	enum FinancialQuarter
 	{
@@ -1973,7 +1976,7 @@
 		FinancialQuarter_ThirdQuarter = 4; // 三季报
 		FinancialQuarter_MostRecentQuarter = 5; // 最近季报
 	}
-	
+
 	// 排序方向
 	enum SortDir
 	{
@@ -1981,62 +1984,62 @@
 		SortDir_Ascend = 1; // 升序
 		SortDir_Descend = 2; // 降序
 	};
-	
+
 	// 简单属性筛选
 	message BaseFilter 
 	{ 
-		required int32 field = 1; // StockField 简单属性
+		required int32 fieldName = 1; // StockField 简单属性
 		optional double filterMin = 2; // 区间下限，闭区间
 		optional double filterMax = 3; // 区间上限，闭区间
 		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 	};
-	
+
 	// 累积属性筛选
 	message AccumulateFilter
 	{
-		required int32 field = 1; // AccumulateField 累积属性
+		required int32 fieldName = 1; // AccumulateField 累积属性
 		optional double filterMin = 2; // 区间下限，闭区间
 		optional double filterMax = 3; // 区间上限，闭区间
 		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 		required int32 days = 6; // 近几日，累积时间
 	}
-	
+
 	// 财务属性筛选
 	message FinancialFilter
 	{
-		required int32 field = 1; // FinancialField 财务属性
+		required int32 fieldName = 1; // FinancialField 财务属性
 		optional double filterMin = 2; // 区间下限，闭区间
 		optional double filterMax = 3; // 区间上限，闭区间
 		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 		required int32 quarter = 6; // FinancialQuarter 财报累积时间
 	}
-	
+
 	// 简单属性数据
 	message BaseData 
 	{ 
-		required int32 field = 1; // StockField 简单属性
+		required int32 fieldName = 1; // StockField 简单属性
 		required double value = 2;
 	};
-	
+
 	// 累积指标数据
 	message AccumulateData
 	{
-		required int32 field = 1; // AccumulateField 累积属性
+		required int32 fieldName = 1; // AccumulateField 累积属性
 		required double value = 2;
 		required int32 days = 3; // 近几日，累积时间
 	}
-	
+
 	// 财务属性数据
 	message FinancialData
 	{
-		required int32 field = 1; // FinancialField 财务属性
+		required int32 fieldName = 1; // FinancialField 财务属性
 		required double value = 2;
 		required int32 quarter = 3; // FinancialQuarter 财报累积时间
 	}
-	
+
 	// 返回的股票数据
 	message StockData  
 	{
@@ -2046,7 +2049,7 @@
 		repeated AccumulateData accumulateDataList = 4; // 筛选后的累积属性数据
 		repeated FinancialData financialDataList = 5; // 筛选后的财务属性数据
 	};
-	
+
 	message C2S
 	{
 		required int32 begin = 1; // 数据起始点
@@ -2058,19 +2061,19 @@
 		repeated AccumulateFilter accumulateFilterList = 6; // 累积行情过滤器
 		repeated FinancialFilter financialFilterList = 7; // 财务行情过滤器
 	}
-	
+
 	message S2C
 	{
 		required bool lastPage = 1; // 是否最后一页了,false:非最后一页,还有窝轮记录未返回; true:已是最后一页
 		required int32 allCount = 2; // 该条件请求所有数据的个数
 		repeated StockData dataList = 3; // 返回的股票数据列表
 	}
-	
+
 	message Request
 	{
 		required C2S c2s = 1;
 	}
-	
+
 	message Response
 	{
 		required int32 retType = 1 [default = -400]; // RetType,返回结果
@@ -2078,7 +2081,6 @@
 		optional int32 errCode = 3;
 		optional S2C s2c = 4;
 	}
-
 
 .. note::
 	
