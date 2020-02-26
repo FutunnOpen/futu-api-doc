@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.18 documentation</title>
+  <title>基础API &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,10 +36,7 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -70,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.17
               </div>
             
           
@@ -163,7 +160,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#tickerdirect">TickerDirect - 逐笔方向</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tickertype">TickerType - 逐笔类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedatetype">TradeDateType - 交易时间类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tradedatemarket">TradeDateMarket - 交易日市场类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdenv">TrdEnv - 交易环境类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdmarket">TrdMarket - 交易市场类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdside">TrdSide - 交易方向类型</a></li>
@@ -262,7 +258,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/Base_API.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/Base_API.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -303,7 +299,7 @@
 <h2>SysConfig - 系统配置<a class="headerlink" href="#sysconfig" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="SysConfig">
-<em class="property">class </em><code class="sig-name descname">SysConfig</code><a class="headerlink" href="#SysConfig" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SysConfig</code><a class="headerlink" href="#SysConfig" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>对python api系统参数进行配置</p>
@@ -312,22 +308,26 @@
 <h3>set_client_info<a class="headerlink" href="#set-client-info" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="set_client_info">
-<code class="sig-name descname">set_client_info</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">client_id</em>, <em class="sig-param">client_ver</em><span class="sig-paren">)</span><a class="headerlink" href="#set_client_info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_client_info</code><span class="sig-paren">(</span><em>cls</em>, <em>client_id</em>, <em>client_ver</em><span class="sig-paren">)</span><a class="headerlink" href="#set_client_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>设置调用api的client信息, 非必调接口</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>client_id</strong> – str, client的标识</p></li>
-<li><p><strong>client_ver</strong> – int, client的版本号</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>client_id</strong> &#8211; str, client的标识</li>
+<li><strong>client_ver</strong> &#8211; int, client的版本号</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_client_info</span><span class="p">(</span><span class="s2">&quot;MyFutuAPI&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -341,19 +341,21 @@
 <h3>set_proto_fmt<a class="headerlink" href="#set-proto-fmt" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="set_proto_fmt">
-<code class="sig-name descname">set_proto_fmt</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">proto_fmt</em><span class="sig-paren">)</span><a class="headerlink" href="#set_proto_fmt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_proto_fmt</code><span class="sig-paren">(</span><em>cls</em>, <em>proto_fmt</em><span class="sig-paren">)</span><a class="headerlink" href="#set_proto_fmt" title="Permalink to this definition">¶</a></dt>
 <dd><p>设置通讯协议body格式, 目前支持Protobuf | Json两种格式, 非必调接口</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>proto_fmt</strong> – <a class="reference external" href="#id2">ProtoFMT</a></p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>proto_fmt</strong> &#8211; <a class="reference external" href="#id2">ProtoFMT</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_proto_fmt</span><span class="p">(</span><span class="n">ProtoFMT</span><span class="o">.</span><span class="n">Protobuf</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -367,21 +369,23 @@
 <h3>enable_proto_encrypt<a class="headerlink" href="#enable-proto-encrypt" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="enable_proto_encrypt">
-<code class="sig-name descname">enable_proto_encrypt</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">is_encrypt</em><span class="sig-paren">)</span><a class="headerlink" href="#enable_proto_encrypt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">enable_proto_encrypt</code><span class="sig-paren">(</span><em>cls</em>, <em>is_encrypt</em><span class="sig-paren">)</span><a class="headerlink" href="#enable_proto_encrypt" title="Permalink to this definition">¶</a></dt>
 <dd><p>设置通讯协议是否加密，网关客户端和api需配置相同的RSA私钥文件，在连接初始化成功后，网关会下发随机生成的AES 加密密钥。</p>
 <p>每种context（例如OpenQuoteContext）可以单独设置自己是否加密。如果不设置，则使用这里的全局设置。即Context的加密设置优先级更高。</p>
 <p>如果FutuOpenD配置了RSA私钥文件（rsa_private_key），那么客户端不管是否在这里启用全局加密，还是每个context自己设置加密，都需要调用SysConfig.set_init_rsa_file来设置RSA私钥文件。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>is_encrypt</strong> – bool</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_encrypt</strong> &#8211; bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">enable_proto_encrypt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_init_rsa_file</span><span class="p">(</span><span class="s2">&quot;conn_key.txt&quot;</span><span class="p">)</span>   <span class="c1"># rsa 私钥文件路径</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
@@ -396,19 +400,21 @@
 <h3>set_init_rsa_file<a class="headerlink" href="#set-init-rsa-file" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="set_init_rsa_file">
-<code class="sig-name descname">set_init_rsa_file</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">file</em><span class="sig-paren">)</span><a class="headerlink" href="#set_init_rsa_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_init_rsa_file</code><span class="sig-paren">(</span><em>cls</em>, <em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#set_init_rsa_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>设置RSA私钥文件, 要求1024位, 格式为PKCS#1</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file</strong> – str, 文件路径</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> &#8211; str, 文件路径</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">enable_proto_encrypt</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_init_rsa_file</span><span class="p">(</span><span class="s2">&quot;conn_key.txt&quot;</span><span class="p">)</span>   <span class="c1"># rsa 私钥文件路径</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
@@ -423,19 +429,21 @@
 <h3>set_all_thread_daemon<a class="headerlink" href="#set-all-thread-daemon" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="set_all_thread_daemon">
-<code class="sig-name descname">set_all_thread_daemon</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">all_daemon</em><span class="sig-paren">)</span><a class="headerlink" href="#set_all_thread_daemon" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_all_thread_daemon</code><span class="sig-paren">(</span><em>cls</em>, <em>all_daemon</em><span class="sig-paren">)</span><a class="headerlink" href="#set_all_thread_daemon" title="Permalink to this definition">¶</a></dt>
 <dd><p>设置是否所有内部创建的线程都是daemon线程。在主线程退出后，如果其余线程都是daemon线程，则进程退出。否则进程仍会继续运行。如果不设置，默认内部会创建非daemon线程。默认情况下，行情和交易的context连接上FutuOpenD后，如果不调用close，即使主线程退出，进程也不会退出。因此，如果行情和交易的context设置了接收数据推送，并且也设置了daemon线程，则要自己保证主线程存活，否则进程将退出，也就不会再收到推送数据了。</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>all_daemon</strong> – bool, 是否所有内部线程都是daemon线程</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Example</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_daemon</strong> &#8211; bool, 是否所有内部线程都是daemon线程</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="n">SysConfig</span><span class="o">.</span><span class="n">set_all_thread_daemon</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
 <span class="c1"># 不调用quote_ctx.close()，进程也会退出</span>
@@ -453,22 +461,22 @@
 <p>K线复权定义</p>
 <dl class="class">
 <dt id="AuType">
-<em class="property">class </em><code class="sig-name descname">AuType</code><a class="headerlink" href="#AuType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">AuType</code><a class="headerlink" href="#AuType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="AuType.QFQ">
-<code class="sig-name descname">QFQ</code><a class="headerlink" href="#AuType.QFQ" title="Permalink to this definition">¶</a></dt>
+<code class="descname">QFQ</code><a class="headerlink" href="#AuType.QFQ" title="Permalink to this definition">¶</a></dt>
 <dd><p>前复权</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="AuType.HFQ">
-<code class="sig-name descname">HFQ</code><a class="headerlink" href="#AuType.HFQ" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HFQ</code><a class="headerlink" href="#AuType.HFQ" title="Permalink to this definition">¶</a></dt>
 <dd><p>后复权</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="AuType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#AuType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#AuType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>不复权</p>
 </dd></dl>
 
@@ -481,22 +489,22 @@
 <p>暗盘状态定义</p>
 <dl class="class">
 <dt id="DarkStatus">
-<em class="property">class </em><code class="sig-name descname">DarkStatus</code><a class="headerlink" href="#DarkStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">DarkStatus</code><a class="headerlink" href="#DarkStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="DarkStatus.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#DarkStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#DarkStatus.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>无暗盘交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="DarkStatus.TRADING">
-<code class="sig-name descname">TRADING</code><a class="headerlink" href="#DarkStatus.TRADING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TRADING</code><a class="headerlink" href="#DarkStatus.TRADING" title="Permalink to this definition">¶</a></dt>
 <dd><p>暗盘交易中</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="DarkStatus.END">
-<code class="sig-name descname">END</code><a class="headerlink" href="#DarkStatus.END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">END</code><a class="headerlink" href="#DarkStatus.END" title="Permalink to this definition">¶</a></dt>
 <dd><p>暗盘交易结束</p>
 </dd></dl>
 
@@ -509,40 +517,40 @@
 <p>财务指标周期定义</p>
 <dl class="class">
 <dt id="FinancialQuarter">
-<em class="property">class </em><code class="sig-name descname">FinancialQuarter</code><a class="headerlink" href="#FinancialQuarter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">FinancialQuarter</code><a class="headerlink" href="#FinancialQuarter" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="FinancialQuarter.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#FinancialQuarter.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#FinancialQuarter.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>无</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FinancialQuarter.ANNUAL">
-<code class="sig-name descname">ANNUAL</code><a class="headerlink" href="#FinancialQuarter.ANNUAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ANNUAL</code><a class="headerlink" href="#FinancialQuarter.ANNUAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>年报</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FinancialQuarter.FIRST_QUARTER">
-<code class="sig-name descname">FIRST_QUARTER</code><a class="headerlink" href="#FinancialQuarter.FIRST_QUARTER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FIRST_QUARTER</code><a class="headerlink" href="#FinancialQuarter.FIRST_QUARTER" title="Permalink to this definition">¶</a></dt>
 <dd><p>Q1一季报，不支持美股市场</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FinancialQuarter.INTERIM">
-<code class="sig-name descname">INTERIM</code><a class="headerlink" href="#FinancialQuarter.INTERIM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INTERIM</code><a class="headerlink" href="#FinancialQuarter.INTERIM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Q6中期报，不支持美股市场</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FinancialQuarter.THIRD_QUARTER">
-<code class="sig-name descname">THIRD_QUARTER</code><a class="headerlink" href="#FinancialQuarter.THIRD_QUARTER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">THIRD_QUARTER</code><a class="headerlink" href="#FinancialQuarter.THIRD_QUARTER" title="Permalink to this definition">¶</a></dt>
 <dd><p>Q9三季报，不支持美股市场</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="FinancialQuarter.MOST_RECENT_QUARTER">
-<code class="sig-name descname">MOST_RECENT_QUARTER</code><a class="headerlink" href="#FinancialQuarter.MOST_RECENT_QUARTER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MOST_RECENT_QUARTER</code><a class="headerlink" href="#FinancialQuarter.MOST_RECENT_QUARTER" title="Permalink to this definition">¶</a></dt>
 <dd><p>最近季报，仅支持美股市场</p>
 </dd></dl>
 
@@ -555,94 +563,94 @@
 <p>网关异步通知类型定义</p>
 <dl class="class">
 <dt id="GtwEventType">
-<em class="property">class </em><code class="sig-name descname">GtwEventType</code><a class="headerlink" href="#GtwEventType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">GtwEventType</code><a class="headerlink" href="#GtwEventType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="GtwEventType.LocalCfgLoadFailed">
-<code class="sig-name descname">LocalCfgLoadFailed</code><a class="headerlink" href="#GtwEventType.LocalCfgLoadFailed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LocalCfgLoadFailed</code><a class="headerlink" href="#GtwEventType.LocalCfgLoadFailed" title="Permalink to this definition">¶</a></dt>
 <dd><p>本地配置文件加载失败</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.APISvrRunFailed">
-<code class="sig-name descname">APISvrRunFailed</code><a class="headerlink" href="#GtwEventType.APISvrRunFailed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">APISvrRunFailed</code><a class="headerlink" href="#GtwEventType.APISvrRunFailed" title="Permalink to this definition">¶</a></dt>
 <dd><p>网关监听服务运行失败</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.ForceUpdate">
-<code class="sig-name descname">ForceUpdate</code><a class="headerlink" href="#GtwEventType.ForceUpdate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ForceUpdate</code><a class="headerlink" href="#GtwEventType.ForceUpdate" title="Permalink to this definition">¶</a></dt>
 <dd><p>强制升级网关</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.LoginFailed">
-<code class="sig-name descname">LoginFailed</code><a class="headerlink" href="#GtwEventType.LoginFailed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LoginFailed</code><a class="headerlink" href="#GtwEventType.LoginFailed" title="Permalink to this definition">¶</a></dt>
 <dd><p>登录牛牛服务器失败</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.UnAgreeDisclaimer">
-<code class="sig-name descname">UnAgreeDisclaimer</code><a class="headerlink" href="#GtwEventType.UnAgreeDisclaimer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">UnAgreeDisclaimer</code><a class="headerlink" href="#GtwEventType.UnAgreeDisclaimer" title="Permalink to this definition">¶</a></dt>
 <dd><p>未同意免责声明，无法加运行</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NetCfgMissing">
-<code class="sig-name descname">NetCfgMissing</code><a class="headerlink" href="#GtwEventType.NetCfgMissing" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NetCfgMissing</code><a class="headerlink" href="#GtwEventType.NetCfgMissing" title="Permalink to this definition">¶</a></dt>
 <dd><p>缺少网络连接配置</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.KickedOut">
-<code class="sig-name descname">KickedOut</code><a class="headerlink" href="#GtwEventType.KickedOut" title="Permalink to this definition">¶</a></dt>
+<code class="descname">KickedOut</code><a class="headerlink" href="#GtwEventType.KickedOut" title="Permalink to this definition">¶</a></dt>
 <dd><p>登录被踢下线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.LoginPwdChanged">
-<code class="sig-name descname">LoginPwdChanged</code><a class="headerlink" href="#GtwEventType.LoginPwdChanged" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LoginPwdChanged</code><a class="headerlink" href="#GtwEventType.LoginPwdChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>登陆密码变更</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.BanLogin">
-<code class="sig-name descname">BanLogin</code><a class="headerlink" href="#GtwEventType.BanLogin" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BanLogin</code><a class="headerlink" href="#GtwEventType.BanLogin" title="Permalink to this definition">¶</a></dt>
 <dd><p>牛牛后台不允许该账号登陆</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NeedPicVerifyCode">
-<code class="sig-name descname">NeedPicVerifyCode</code><a class="headerlink" href="#GtwEventType.NeedPicVerifyCode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NeedPicVerifyCode</code><a class="headerlink" href="#GtwEventType.NeedPicVerifyCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>登录需要输入图形验证码</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NeedPhoneVerifyCode">
-<code class="sig-name descname">NeedPhoneVerifyCode</code><a class="headerlink" href="#GtwEventType.NeedPhoneVerifyCode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NeedPhoneVerifyCode</code><a class="headerlink" href="#GtwEventType.NeedPhoneVerifyCode" title="Permalink to this definition">¶</a></dt>
 <dd><p>登录需要输入手机验证码</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.AppDataNotExist">
-<code class="sig-name descname">AppDataNotExist</code><a class="headerlink" href="#GtwEventType.AppDataNotExist" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AppDataNotExist</code><a class="headerlink" href="#GtwEventType.AppDataNotExist" title="Permalink to this definition">¶</a></dt>
 <dd><p>程序打包数据丢失</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NessaryDataMissing">
-<code class="sig-name descname">NessaryDataMissing</code><a class="headerlink" href="#GtwEventType.NessaryDataMissing" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NessaryDataMissing</code><a class="headerlink" href="#GtwEventType.NessaryDataMissing" title="Permalink to this definition">¶</a></dt>
 <dd><p>必要的数据没同步成功</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.TradePwdChanged">
-<code class="sig-name descname">TradePwdChanged</code><a class="headerlink" href="#GtwEventType.TradePwdChanged" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TradePwdChanged</code><a class="headerlink" href="#GtwEventType.TradePwdChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>交易密码变更通知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.EnableDeviceLock">
-<code class="sig-name descname">EnableDeviceLock</code><a class="headerlink" href="#GtwEventType.EnableDeviceLock" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EnableDeviceLock</code><a class="headerlink" href="#GtwEventType.EnableDeviceLock" title="Permalink to this definition">¶</a></dt>
 <dd><p>需启用设备锁</p>
 </dd></dl>
 
@@ -655,40 +663,40 @@
 <p>窝轮上市日定义</p>
 <dl class="class">
 <dt id="IpoPeriod">
-<em class="property">class </em><code class="sig-name descname">IpoPeriod</code><a class="headerlink" href="#IpoPeriod" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">IpoPeriod</code><a class="headerlink" href="#IpoPeriod" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="IpoPeriod.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#IpoPeriod.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#IpoPeriod.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IpoPeriod.TODAY">
-<code class="sig-name descname">TODAY</code><a class="headerlink" href="#IpoPeriod.TODAY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TODAY</code><a class="headerlink" href="#IpoPeriod.TODAY" title="Permalink to this definition">¶</a></dt>
 <dd><p>今日上市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IpoPeriod.TOMORROW">
-<code class="sig-name descname">TOMORROW</code><a class="headerlink" href="#IpoPeriod.TOMORROW" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TOMORROW</code><a class="headerlink" href="#IpoPeriod.TOMORROW" title="Permalink to this definition">¶</a></dt>
 <dd><p>明日上市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IpoPeriod.NEXTWEEK">
-<code class="sig-name descname">NEXTWEEK</code><a class="headerlink" href="#IpoPeriod.NEXTWEEK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NEXTWEEK</code><a class="headerlink" href="#IpoPeriod.NEXTWEEK" title="Permalink to this definition">¶</a></dt>
 <dd><p>未来一周上市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IpoPeriod.LASTWEEK">
-<code class="sig-name descname">LASTWEEK</code><a class="headerlink" href="#IpoPeriod.LASTWEEK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LASTWEEK</code><a class="headerlink" href="#IpoPeriod.LASTWEEK" title="Permalink to this definition">¶</a></dt>
 <dd><p>过去一周上市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IpoPeriod.LASTMONTH">
-<code class="sig-name descname">LASTMONTH</code><a class="headerlink" href="#IpoPeriod.LASTMONTH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LASTMONTH</code><a class="headerlink" href="#IpoPeriod.LASTMONTH" title="Permalink to this definition">¶</a></dt>
 <dd><p>过去一月上市</p>
 </dd></dl>
 
@@ -701,148 +709,148 @@
 <p>发行人过滤列表</p>
 <dl class="class">
 <dt id="Issuer">
-<em class="property">class </em><code class="sig-name descname">Issuer</code><a class="headerlink" href="#Issuer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Issuer</code><a class="headerlink" href="#Issuer" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="Issuer.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#Issuer.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#Issuer.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.SG">
-<code class="sig-name descname">SG</code><a class="headerlink" href="#Issuer.SG" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SG</code><a class="headerlink" href="#Issuer.SG" title="Permalink to this definition">¶</a></dt>
 <dd><p>法兴</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.BP">
-<code class="sig-name descname">BP</code><a class="headerlink" href="#Issuer.BP" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BP</code><a class="headerlink" href="#Issuer.BP" title="Permalink to this definition">¶</a></dt>
 <dd><p>法巴</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.CS">
-<code class="sig-name descname">CS</code><a class="headerlink" href="#Issuer.CS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CS</code><a class="headerlink" href="#Issuer.CS" title="Permalink to this definition">¶</a></dt>
 <dd><p>瑞信</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.CT">
-<code class="sig-name descname">CT</code><a class="headerlink" href="#Issuer.CT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CT</code><a class="headerlink" href="#Issuer.CT" title="Permalink to this definition">¶</a></dt>
 <dd><p>花旗</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.EA">
-<code class="sig-name descname">EA</code><a class="headerlink" href="#Issuer.EA" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EA</code><a class="headerlink" href="#Issuer.EA" title="Permalink to this definition">¶</a></dt>
 <dd><p>东亚</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.GS">
-<code class="sig-name descname">GS</code><a class="headerlink" href="#Issuer.GS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">GS</code><a class="headerlink" href="#Issuer.GS" title="Permalink to this definition">¶</a></dt>
 <dd><p>高盛</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.HS">
-<code class="sig-name descname">HS</code><a class="headerlink" href="#Issuer.HS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HS</code><a class="headerlink" href="#Issuer.HS" title="Permalink to this definition">¶</a></dt>
 <dd><p>汇丰</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.JP">
-<code class="sig-name descname">JP</code><a class="headerlink" href="#Issuer.JP" title="Permalink to this definition">¶</a></dt>
+<code class="descname">JP</code><a class="headerlink" href="#Issuer.JP" title="Permalink to this definition">¶</a></dt>
 <dd><p>摩通</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.MB">
-<code class="sig-name descname">MB</code><a class="headerlink" href="#Issuer.MB" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MB</code><a class="headerlink" href="#Issuer.MB" title="Permalink to this definition">¶</a></dt>
 <dd><p>麦银</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.SC">
-<code class="sig-name descname">SC</code><a class="headerlink" href="#Issuer.SC" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SC</code><a class="headerlink" href="#Issuer.SC" title="Permalink to this definition">¶</a></dt>
 <dd><p>渣打</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.UB">
-<code class="sig-name descname">UB</code><a class="headerlink" href="#Issuer.UB" title="Permalink to this definition">¶</a></dt>
+<code class="descname">UB</code><a class="headerlink" href="#Issuer.UB" title="Permalink to this definition">¶</a></dt>
 <dd><p>瑞银</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.BI">
-<code class="sig-name descname">BI</code><a class="headerlink" href="#Issuer.BI" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BI</code><a class="headerlink" href="#Issuer.BI" title="Permalink to this definition">¶</a></dt>
 <dd><p>中银</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.DB">
-<code class="sig-name descname">DB</code><a class="headerlink" href="#Issuer.DB" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DB</code><a class="headerlink" href="#Issuer.DB" title="Permalink to this definition">¶</a></dt>
 <dd><p>德银</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.DC">
-<code class="sig-name descname">DC</code><a class="headerlink" href="#Issuer.DC" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DC</code><a class="headerlink" href="#Issuer.DC" title="Permalink to this definition">¶</a></dt>
 <dd><p>大和</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.ML">
-<code class="sig-name descname">ML</code><a class="headerlink" href="#Issuer.ML" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ML</code><a class="headerlink" href="#Issuer.ML" title="Permalink to this definition">¶</a></dt>
 <dd><p>美林</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.NM">
-<code class="sig-name descname">NM</code><a class="headerlink" href="#Issuer.NM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NM</code><a class="headerlink" href="#Issuer.NM" title="Permalink to this definition">¶</a></dt>
 <dd><p>野村</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.RB">
-<code class="sig-name descname">RB</code><a class="headerlink" href="#Issuer.RB" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RB</code><a class="headerlink" href="#Issuer.RB" title="Permalink to this definition">¶</a></dt>
 <dd><p>荷合</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.RS">
-<code class="sig-name descname">RS</code><a class="headerlink" href="#Issuer.RS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RS</code><a class="headerlink" href="#Issuer.RS" title="Permalink to this definition">¶</a></dt>
 <dd><p>苏皇</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.BC">
-<code class="sig-name descname">BC</code><a class="headerlink" href="#Issuer.BC" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BC</code><a class="headerlink" href="#Issuer.BC" title="Permalink to this definition">¶</a></dt>
 <dd><p>巴克莱</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.HT">
-<code class="sig-name descname">HT</code><a class="headerlink" href="#Issuer.HT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HT</code><a class="headerlink" href="#Issuer.HT" title="Permalink to this definition">¶</a></dt>
 <dd><p>海通</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.VT">
-<code class="sig-name descname">VT</code><a class="headerlink" href="#Issuer.VT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VT</code><a class="headerlink" href="#Issuer.VT" title="Permalink to this definition">¶</a></dt>
 <dd><p>瑞通</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.KC">
-<code class="sig-name descname">KC</code><a class="headerlink" href="#Issuer.KC" title="Permalink to this definition">¶</a></dt>
+<code class="descname">KC</code><a class="headerlink" href="#Issuer.KC" title="Permalink to this definition">¶</a></dt>
 <dd><p>比联</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Issuer.MS">
-<code class="sig-name descname">MS</code><a class="headerlink" href="#Issuer.MS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MS</code><a class="headerlink" href="#Issuer.MS" title="Permalink to this definition">¶</a></dt>
 <dd><p>摩利</p>
 </dd></dl>
 
@@ -855,28 +863,28 @@
 <p>指定时间点取历史k线， 获得数据的实际状态</p>
 <dl class="class">
 <dt id="KLDataStatus">
-<em class="property">class </em><code class="sig-name descname">KLDataStatus</code><a class="headerlink" href="#KLDataStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">KLDataStatus</code><a class="headerlink" href="#KLDataStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="KLDataStatus.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#KLDataStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#KLDataStatus.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>无效数据</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLDataStatus.CURRENT">
-<code class="sig-name descname">CURRENT</code><a class="headerlink" href="#KLDataStatus.CURRENT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CURRENT</code><a class="headerlink" href="#KLDataStatus.CURRENT" title="Permalink to this definition">¶</a></dt>
 <dd><p>当前时间周期数据</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLDataStatus.PREVIOUS">
-<code class="sig-name descname">PREVIOUS</code><a class="headerlink" href="#KLDataStatus.PREVIOUS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PREVIOUS</code><a class="headerlink" href="#KLDataStatus.PREVIOUS" title="Permalink to this definition">¶</a></dt>
 <dd><p>前一时间周期数据</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLDataStatus.BACK">
-<code class="sig-name descname">BACK</code><a class="headerlink" href="#KLDataStatus.BACK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BACK</code><a class="headerlink" href="#KLDataStatus.BACK" title="Permalink to this definition">¶</a></dt>
 <dd><p>后一时间周期数据</p>
 </dd></dl>
 
@@ -889,76 +897,76 @@
 <p>获取K线数据, 可指定需返回的字段</p>
 <dl class="class">
 <dt id="KL_FIELD">
-<em class="property">class </em><code class="sig-name descname">KL_FIELD</code><a class="headerlink" href="#KL_FIELD" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">KL_FIELD</code><a class="headerlink" href="#KL_FIELD" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="KL_FIELD.ALL">
-<code class="sig-name descname">ALL</code><a class="headerlink" href="#KL_FIELD.ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ALL</code><a class="headerlink" href="#KL_FIELD.ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>所有字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.DATE_TIME">
-<code class="sig-name descname">DATE_TIME</code><a class="headerlink" href="#KL_FIELD.DATE_TIME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DATE_TIME</code><a class="headerlink" href="#KL_FIELD.DATE_TIME" title="Permalink to this definition">¶</a></dt>
 <dd><p>日期时间</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.OPEN">
-<code class="sig-name descname">OPEN</code><a class="headerlink" href="#KL_FIELD.OPEN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">OPEN</code><a class="headerlink" href="#KL_FIELD.OPEN" title="Permalink to this definition">¶</a></dt>
 <dd><p>开盘价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.CLOSE">
-<code class="sig-name descname">CLOSE</code><a class="headerlink" href="#KL_FIELD.CLOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CLOSE</code><a class="headerlink" href="#KL_FIELD.CLOSE" title="Permalink to this definition">¶</a></dt>
 <dd><p>收盘价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.HIGH">
-<code class="sig-name descname">HIGH</code><a class="headerlink" href="#KL_FIELD.HIGH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HIGH</code><a class="headerlink" href="#KL_FIELD.HIGH" title="Permalink to this definition">¶</a></dt>
 <dd><p>最高价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.LOW">
-<code class="sig-name descname">LOW</code><a class="headerlink" href="#KL_FIELD.LOW" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOW</code><a class="headerlink" href="#KL_FIELD.LOW" title="Permalink to this definition">¶</a></dt>
 <dd><p>最低价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.PE_RATIO">
-<code class="sig-name descname">PE_RATIO</code><a class="headerlink" href="#KL_FIELD.PE_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PE_RATIO</code><a class="headerlink" href="#KL_FIELD.PE_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>市盈率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.TURNOVER_RATE">
-<code class="sig-name descname">TURNOVER_RATE</code><a class="headerlink" href="#KL_FIELD.TURNOVER_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TURNOVER_RATE</code><a class="headerlink" href="#KL_FIELD.TURNOVER_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>换手率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.TRADE_VOL">
-<code class="sig-name descname">TRADE_VOL</code><a class="headerlink" href="#KL_FIELD.TRADE_VOL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TRADE_VOL</code><a class="headerlink" href="#KL_FIELD.TRADE_VOL" title="Permalink to this definition">¶</a></dt>
 <dd><p>成交量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.TRADE_VAL">
-<code class="sig-name descname">TRADE_VAL</code><a class="headerlink" href="#KL_FIELD.TRADE_VAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TRADE_VAL</code><a class="headerlink" href="#KL_FIELD.TRADE_VAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>成交额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.CHANGE_RATE">
-<code class="sig-name descname">CHANGE_RATE</code><a class="headerlink" href="#KL_FIELD.CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_RATE</code><a class="headerlink" href="#KL_FIELD.CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>涨跌比率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KL_FIELD.LAST_CLOSE">
-<code class="sig-name descname">LAST_CLOSE</code><a class="headerlink" href="#KL_FIELD.LAST_CLOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LAST_CLOSE</code><a class="headerlink" href="#KL_FIELD.LAST_CLOSE" title="Permalink to this definition">¶</a></dt>
 <dd><p>昨收价</p>
 </dd></dl>
 
@@ -971,22 +979,22 @@
 <p>指定时间为非交易日时，对应的k线数据取值模式</p>
 <dl class="class">
 <dt id="KLNoDataMode">
-<em class="property">class </em><code class="sig-name descname">KLNoDataMode</code><a class="headerlink" href="#KLNoDataMode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">KLNoDataMode</code><a class="headerlink" href="#KLNoDataMode" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="KLNoDataMode.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#KLNoDataMode.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#KLNoDataMode.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>返回无数据</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLNoDataMode.FORWARD">
-<code class="sig-name descname">FORWARD</code><a class="headerlink" href="#KLNoDataMode.FORWARD" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FORWARD</code><a class="headerlink" href="#KLNoDataMode.FORWARD" title="Permalink to this definition">¶</a></dt>
 <dd><p>往前取数据</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLNoDataMode.BACKWARD">
-<code class="sig-name descname">BACKWARD</code><a class="headerlink" href="#KLNoDataMode.BACKWARD" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BACKWARD</code><a class="headerlink" href="#KLNoDataMode.BACKWARD" title="Permalink to this definition">¶</a></dt>
 <dd><p>往后取数据</p>
 </dd></dl>
 
@@ -999,70 +1007,70 @@
 <p>k线类型定义</p>
 <dl class="class">
 <dt id="KLType">
-<em class="property">class </em><code class="sig-name descname">KLType</code><a class="headerlink" href="#KLType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">KLType</code><a class="headerlink" href="#KLType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="KLType.K_1M">
-<code class="sig-name descname">K_1M</code><a class="headerlink" href="#KLType.K_1M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_1M</code><a class="headerlink" href="#KLType.K_1M" title="Permalink to this definition">¶</a></dt>
 <dd><p>1分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_3M">
-<code class="sig-name descname">K_3M</code><a class="headerlink" href="#KLType.K_3M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_3M</code><a class="headerlink" href="#KLType.K_3M" title="Permalink to this definition">¶</a></dt>
 <dd><p>3分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_5M">
-<code class="sig-name descname">K_5M</code><a class="headerlink" href="#KLType.K_5M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_5M</code><a class="headerlink" href="#KLType.K_5M" title="Permalink to this definition">¶</a></dt>
 <dd><p>5分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_15M">
-<code class="sig-name descname">K_15M</code><a class="headerlink" href="#KLType.K_15M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_15M</code><a class="headerlink" href="#KLType.K_15M" title="Permalink to this definition">¶</a></dt>
 <dd><p>15分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_30M">
-<code class="sig-name descname">K_30M</code><a class="headerlink" href="#KLType.K_30M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_30M</code><a class="headerlink" href="#KLType.K_30M" title="Permalink to this definition">¶</a></dt>
 <dd><p>30分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_60M">
-<code class="sig-name descname">K_60M</code><a class="headerlink" href="#KLType.K_60M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_60M</code><a class="headerlink" href="#KLType.K_60M" title="Permalink to this definition">¶</a></dt>
 <dd><p>60分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_DAY">
-<code class="sig-name descname">K_DAY</code><a class="headerlink" href="#KLType.K_DAY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_DAY</code><a class="headerlink" href="#KLType.K_DAY" title="Permalink to this definition">¶</a></dt>
 <dd><p>日K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_WEEK">
-<code class="sig-name descname">K_WEEK</code><a class="headerlink" href="#KLType.K_WEEK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_WEEK</code><a class="headerlink" href="#KLType.K_WEEK" title="Permalink to this definition">¶</a></dt>
 <dd><p>周K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_MON">
-<code class="sig-name descname">K_MON</code><a class="headerlink" href="#KLType.K_MON" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_MON</code><a class="headerlink" href="#KLType.K_MON" title="Permalink to this definition">¶</a></dt>
 <dd><p>月K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_QUARTER">
-<code class="sig-name descname">K_QUARTER</code><a class="headerlink" href="#KLType.K_QUARTER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_QUARTER</code><a class="headerlink" href="#KLType.K_QUARTER" title="Permalink to this definition">¶</a></dt>
 <dd><p>季K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="KLType.K_YEAR">
-<code class="sig-name descname">K_YEAR</code><a class="headerlink" href="#KLType.K_YEAR" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_YEAR</code><a class="headerlink" href="#KLType.K_YEAR" title="Permalink to this definition">¶</a></dt>
 <dd><p>年K线</p>
 </dd></dl>
 
@@ -1075,28 +1083,28 @@
 <p>自选股操作类型定义</p>
 <dl class="class">
 <dt id="ModifyUserSecurityOp">
-<em class="property">class </em><code class="sig-name descname">ModifyUserSecurityOp</code><a class="headerlink" href="#ModifyUserSecurityOp" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">ModifyUserSecurityOp</code><a class="headerlink" href="#ModifyUserSecurityOp" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="ModifyUserSecurityOp.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#ModifyUserSecurityOp.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#ModifyUserSecurityOp.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyUserSecurityOp.ADD">
-<code class="sig-name descname">ADD</code><a class="headerlink" href="#ModifyUserSecurityOp.ADD" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ADD</code><a class="headerlink" href="#ModifyUserSecurityOp.ADD" title="Permalink to this definition">¶</a></dt>
 <dd><p>新增</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyUserSecurityOp.DEL">
-<code class="sig-name descname">DEL</code><a class="headerlink" href="#ModifyUserSecurityOp.DEL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEL</code><a class="headerlink" href="#ModifyUserSecurityOp.DEL" title="Permalink to this definition">¶</a></dt>
 <dd><p>删除自选</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyUserSecurityOp.MOVE_OUT">
-<code class="sig-name descname">MOVE_OUT</code><a class="headerlink" href="#ModifyUserSecurityOp.MOVE_OUT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MOVE_OUT</code><a class="headerlink" href="#ModifyUserSecurityOp.MOVE_OUT" title="Permalink to this definition">¶</a></dt>
 <dd><p>移出分组</p>
 </dd></dl>
 
@@ -1106,37 +1114,37 @@
 <hr class="docutils" />
 <div class="section" id="market">
 <h3>Market - 行情市场<a class="headerlink" href="#market" title="Permalink to this headline">¶</a></h3>
-<p>标识不同的行情市场，股票名称的前缀复用该字符串,如 <strong>‘HK.00700’</strong>, <strong>‘US.AAPL’</strong></p>
+<p>标识不同的行情市场，股票名称的前缀复用该字符串,如 <strong>&#8216;HK.00700&#8217;</strong>, <strong>&#8216;US.AAPL&#8217;</strong></p>
 <dl class="class">
 <dt id="Market">
-<em class="property">class </em><code class="sig-name descname">Market</code><a class="headerlink" href="#Market" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Market</code><a class="headerlink" href="#Market" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="Market.HK">
-<code class="sig-name descname">HK</code><a class="headerlink" href="#Market.HK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HK</code><a class="headerlink" href="#Market.HK" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Market.SH">
-<code class="sig-name descname">SH</code><a class="headerlink" href="#Market.SH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SH</code><a class="headerlink" href="#Market.SH" title="Permalink to this definition">¶</a></dt>
 <dd><p>沪市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Market.SZ">
-<code class="sig-name descname">SZ</code><a class="headerlink" href="#Market.SZ" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SZ</code><a class="headerlink" href="#Market.SZ" title="Permalink to this definition">¶</a></dt>
 <dd><p>深市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Market.HK_FUTURE">
-<code class="sig-name descname">HK_FUTURE</code><a class="headerlink" href="#Market.HK_FUTURE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HK_FUTURE</code><a class="headerlink" href="#Market.HK_FUTURE" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股期货</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Market.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#Market.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#Market.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
@@ -1149,112 +1157,112 @@
 <p>行情市场状态定义</p>
 <dl class="class">
 <dt id="MarketState">
-<em class="property">class </em><code class="sig-name descname">MarketState</code><a class="headerlink" href="#MarketState" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">MarketState</code><a class="headerlink" href="#MarketState" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="MarketState.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#MarketState.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#MarketState.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>无交易,美股未开盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.AUCTION">
-<code class="sig-name descname">AUCTION</code><a class="headerlink" href="#MarketState.AUCTION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AUCTION</code><a class="headerlink" href="#MarketState.AUCTION" title="Permalink to this definition">¶</a></dt>
 <dd><p>竞价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.WAITING_OPEN">
-<code class="sig-name descname">WAITING_OPEN</code><a class="headerlink" href="#MarketState.WAITING_OPEN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WAITING_OPEN</code><a class="headerlink" href="#MarketState.WAITING_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd><p>早盘前等待开盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.MORNING">
-<code class="sig-name descname">MORNING</code><a class="headerlink" href="#MarketState.MORNING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MORNING</code><a class="headerlink" href="#MarketState.MORNING" title="Permalink to this definition">¶</a></dt>
 <dd><p>早盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.REST">
-<code class="sig-name descname">REST</code><a class="headerlink" href="#MarketState.REST" title="Permalink to this definition">¶</a></dt>
+<code class="descname">REST</code><a class="headerlink" href="#MarketState.REST" title="Permalink to this definition">¶</a></dt>
 <dd><p>午间休市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.AFTERNOON">
-<code class="sig-name descname">AFTERNOON</code><a class="headerlink" href="#MarketState.AFTERNOON" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTERNOON</code><a class="headerlink" href="#MarketState.AFTERNOON" title="Permalink to this definition">¶</a></dt>
 <dd><p>午盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.CLOSED">
-<code class="sig-name descname">CLOSED</code><a class="headerlink" href="#MarketState.CLOSED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CLOSED</code><a class="headerlink" href="#MarketState.CLOSED" title="Permalink to this definition">¶</a></dt>
 <dd><p>收盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.PRE_MARKET_BEGIN">
-<code class="sig-name descname">PRE_MARKET_BEGIN</code><a class="headerlink" href="#MarketState.PRE_MARKET_BEGIN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_MARKET_BEGIN</code><a class="headerlink" href="#MarketState.PRE_MARKET_BEGIN" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前开始</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.PRE_MARKET_END">
-<code class="sig-name descname">PRE_MARKET_END</code><a class="headerlink" href="#MarketState.PRE_MARKET_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_MARKET_END</code><a class="headerlink" href="#MarketState.PRE_MARKET_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前结束</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.AFTER_HOURS_BEGIN">
-<code class="sig-name descname">AFTER_HOURS_BEGIN</code><a class="headerlink" href="#MarketState.AFTER_HOURS_BEGIN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_HOURS_BEGIN</code><a class="headerlink" href="#MarketState.AFTER_HOURS_BEGIN" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后开始</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.AFTER_HOURS_END">
-<code class="sig-name descname">AFTER_HOURS_END</code><a class="headerlink" href="#MarketState.AFTER_HOURS_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_HOURS_END</code><a class="headerlink" href="#MarketState.AFTER_HOURS_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后结束</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.NIGHT_OPEN">
-<code class="sig-name descname">NIGHT_OPEN</code><a class="headerlink" href="#MarketState.NIGHT_OPEN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NIGHT_OPEN</code><a class="headerlink" href="#MarketState.NIGHT_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd><p>夜市开盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.NIGHT_END">
-<code class="sig-name descname">NIGHT_END</code><a class="headerlink" href="#MarketState.NIGHT_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NIGHT_END</code><a class="headerlink" href="#MarketState.NIGHT_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>夜市收盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.FUTURE_DAY_OPEN">
-<code class="sig-name descname">FUTURE_DAY_OPEN</code><a class="headerlink" href="#MarketState.FUTURE_DAY_OPEN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUTURE_DAY_OPEN</code><a class="headerlink" href="#MarketState.FUTURE_DAY_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd><p>期指日市开盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.FUTURE_DAY_BREAK">
-<code class="sig-name descname">FUTURE_DAY_BREAK</code><a class="headerlink" href="#MarketState.FUTURE_DAY_BREAK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUTURE_DAY_BREAK</code><a class="headerlink" href="#MarketState.FUTURE_DAY_BREAK" title="Permalink to this definition">¶</a></dt>
 <dd><p>期指日市休市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.FUTURE_DAY_CLOSE">
-<code class="sig-name descname">FUTURE_DAY_CLOSE</code><a class="headerlink" href="#MarketState.FUTURE_DAY_CLOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUTURE_DAY_CLOSE</code><a class="headerlink" href="#MarketState.FUTURE_DAY_CLOSE" title="Permalink to this definition">¶</a></dt>
 <dd><p>期指日市收盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.FUTURE_DAY_WAIT_OPEN">
-<code class="sig-name descname">FUTURE_DAY_WAIT_OPEN</code><a class="headerlink" href="#MarketState.FUTURE_DAY_WAIT_OPEN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUTURE_DAY_WAIT_OPEN</code><a class="headerlink" href="#MarketState.FUTURE_DAY_WAIT_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd><p>期指日市等待开盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="MarketState.HK_CAS">
-<code class="sig-name descname">HK_CAS</code><a class="headerlink" href="#MarketState.HK_CAS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HK_CAS</code><a class="headerlink" href="#MarketState.HK_CAS" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股盘后竞价</p>
 </dd></dl>
 
@@ -1267,40 +1275,40 @@
 <p>修改订单操作类型定义</p>
 <dl class="class">
 <dt id="ModifyOrderOp">
-<em class="property">class </em><code class="sig-name descname">ModifyOrderOp</code><a class="headerlink" href="#ModifyOrderOp" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">ModifyOrderOp</code><a class="headerlink" href="#ModifyOrderOp" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="ModifyOrderOp.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#ModifyOrderOp.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#ModifyOrderOp.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyOrderOp.NORMAL">
-<code class="sig-name descname">NORMAL</code><a class="headerlink" href="#ModifyOrderOp.NORMAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NORMAL</code><a class="headerlink" href="#ModifyOrderOp.NORMAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>修改订单的数量、价格</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyOrderOp.CANCEL">
-<code class="sig-name descname">CANCEL</code><a class="headerlink" href="#ModifyOrderOp.CANCEL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CANCEL</code><a class="headerlink" href="#ModifyOrderOp.CANCEL" title="Permalink to this definition">¶</a></dt>
 <dd><p>取消订单</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyOrderOp.DISABLE">
-<code class="sig-name descname">DISABLE</code><a class="headerlink" href="#ModifyOrderOp.DISABLE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DISABLE</code><a class="headerlink" href="#ModifyOrderOp.DISABLE" title="Permalink to this definition">¶</a></dt>
 <dd><p>使订单失效</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyOrderOp.ENABLE">
-<code class="sig-name descname">ENABLE</code><a class="headerlink" href="#ModifyOrderOp.ENABLE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ENABLE</code><a class="headerlink" href="#ModifyOrderOp.ENABLE" title="Permalink to this definition">¶</a></dt>
 <dd><p>使订单生效</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ModifyOrderOp.DELETE">
-<code class="sig-name descname">DELETE</code><a class="headerlink" href="#ModifyOrderOp.DELETE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DELETE</code><a class="headerlink" href="#ModifyOrderOp.DELETE" title="Permalink to this definition">¶</a></dt>
 <dd><p>删除订单</p>
 </dd></dl>
 
@@ -1313,22 +1321,22 @@
 <p>价内价外定义</p>
 <dl class="class">
 <dt id="OptionType">
-<em class="property">class </em><code class="sig-name descname">OptionType</code><a class="headerlink" href="#OptionType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">OptionType</code><a class="headerlink" href="#OptionType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="OptionType.ALL">
-<code class="sig-name descname">ALL</code><a class="headerlink" href="#OptionType.ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ALL</code><a class="headerlink" href="#OptionType.ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>全部</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionType.WITHIN">
-<code class="sig-name descname">WITHIN</code><a class="headerlink" href="#OptionType.WITHIN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WITHIN</code><a class="headerlink" href="#OptionType.WITHIN" title="Permalink to this definition">¶</a></dt>
 <dd><p>价内</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionType.OUTSIDE">
-<code class="sig-name descname">OUTSIDE</code><a class="headerlink" href="#OptionType.OUTSIDE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">OUTSIDE</code><a class="headerlink" href="#OptionType.OUTSIDE" title="Permalink to this definition">¶</a></dt>
 <dd><p>价外</p>
 </dd></dl>
 
@@ -1341,22 +1349,22 @@
 <p>期权类型定义</p>
 <dl class="class">
 <dt>
-<em class="property">class </em><code class="sig-name descname">OptionType</code></dt>
+<em class="property">class </em><code class="descname">OptionType</code></dt>
 <dd><dl class="attribute">
 <dt>
-<code class="sig-name descname">ALL</code></dt>
+<code class="descname">ALL</code></dt>
 <dd><p>全部</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionType.CALL">
-<code class="sig-name descname">CALL</code><a class="headerlink" href="#OptionType.CALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CALL</code><a class="headerlink" href="#OptionType.CALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>涨</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionType.PUT">
-<code class="sig-name descname">PUT</code><a class="headerlink" href="#OptionType.PUT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PUT</code><a class="headerlink" href="#OptionType.PUT" title="Permalink to this definition">¶</a></dt>
 <dd><p>跌</p>
 </dd></dl>
 
@@ -1369,22 +1377,22 @@
 <p>指数期权类型定义</p>
 <dl class="class">
 <dt id="IndexOptionType">
-<em class="property">class </em><code class="sig-name descname">IndexOptionType</code><a class="headerlink" href="#IndexOptionType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">IndexOptionType</code><a class="headerlink" href="#IndexOptionType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="IndexOptionType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#IndexOptionType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#IndexOptionType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IndexOptionType.NORMAL">
-<code class="sig-name descname">NORMAL</code><a class="headerlink" href="#IndexOptionType.NORMAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NORMAL</code><a class="headerlink" href="#IndexOptionType.NORMAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>正常</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="IndexOptionType.SMALL">
-<code class="sig-name descname">SMALL</code><a class="headerlink" href="#IndexOptionType.SMALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SMALL</code><a class="headerlink" href="#IndexOptionType.SMALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>小型</p>
 </dd></dl>
 
@@ -1397,28 +1405,28 @@
 <p>期权地区类型定义</p>
 <dl class="class">
 <dt id="OptionAreaType">
-<em class="property">class </em><code class="sig-name descname">OptionAreaType</code><a class="headerlink" href="#OptionAreaType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">OptionAreaType</code><a class="headerlink" href="#OptionAreaType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="OptionAreaType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#OptionAreaType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#OptionAreaType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionAreaType.AMERICAN">
-<code class="sig-name descname">AMERICAN</code><a class="headerlink" href="#OptionAreaType.AMERICAN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AMERICAN</code><a class="headerlink" href="#OptionAreaType.AMERICAN" title="Permalink to this definition">¶</a></dt>
 <dd><p>美式</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionAreaType.EUROPEAN">
-<code class="sig-name descname">EUROPEAN</code><a class="headerlink" href="#OptionAreaType.EUROPEAN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EUROPEAN</code><a class="headerlink" href="#OptionAreaType.EUROPEAN" title="Permalink to this definition">¶</a></dt>
 <dd><p>欧式</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OptionAreaType.BERMUDA">
-<code class="sig-name descname">BERMUDA</code><a class="headerlink" href="#OptionAreaType.BERMUDA" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BERMUDA</code><a class="headerlink" href="#OptionAreaType.BERMUDA" title="Permalink to this definition">¶</a></dt>
 <dd><p>百慕大</p>
 </dd></dl>
 
@@ -1431,52 +1439,52 @@
 <p>订单类型定义</p>
 <dl class="class">
 <dt id="OrderType">
-<em class="property">class </em><code class="sig-name descname">OrderType</code><a class="headerlink" href="#OrderType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">OrderType</code><a class="headerlink" href="#OrderType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="OrderType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#OrderType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#OrderType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.NORMAL">
-<code class="sig-name descname">NORMAL</code><a class="headerlink" href="#OrderType.NORMAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NORMAL</code><a class="headerlink" href="#OrderType.NORMAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单)。目前港股期权只能指定此订单类型。</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.MARKET">
-<code class="sig-name descname">MARKET</code><a class="headerlink" href="#OrderType.MARKET" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MARKET</code><a class="headerlink" href="#OrderType.MARKET" title="Permalink to this definition">¶</a></dt>
 <dd><p>市价，目前仅美股</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.ABSOLUTE_LIMIT">
-<code class="sig-name descname">ABSOLUTE_LIMIT</code><a class="headerlink" href="#OrderType.ABSOLUTE_LIMIT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ABSOLUTE_LIMIT</code><a class="headerlink" href="#OrderType.ABSOLUTE_LIMIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股限价单(只有价格完全匹配才成交)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.AUCTION">
-<code class="sig-name descname">AUCTION</code><a class="headerlink" href="#OrderType.AUCTION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AUCTION</code><a class="headerlink" href="#OrderType.AUCTION" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股竞价单，港股期货的竞价市价单</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.AUCTION_LIMIT">
-<code class="sig-name descname">AUCTION_LIMIT</code><a class="headerlink" href="#OrderType.AUCTION_LIMIT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AUCTION_LIMIT</code><a class="headerlink" href="#OrderType.AUCTION_LIMIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股竞价限价单。不支持期货。</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.SPECIAL_LIMIT">
-<code class="sig-name descname">SPECIAL_LIMIT</code><a class="headerlink" href="#OrderType.SPECIAL_LIMIT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SPECIAL_LIMIT</code><a class="headerlink" href="#OrderType.SPECIAL_LIMIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)。不支持期货。</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderType.SPECIAL_LIMIT_ALL">
-<code class="sig-name descname">SPECIAL_LIMIT_ALL</code><a class="headerlink" href="#OrderType.SPECIAL_LIMIT_ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SPECIAL_LIMIT_ALL</code><a class="headerlink" href="#OrderType.SPECIAL_LIMIT_ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股特别限价(要么全部成交，否则下单失败)。不支持期货。</p>
 </dd></dl>
 
@@ -1489,94 +1497,94 @@
 <p>订单状态定义</p>
 <dl class="class">
 <dt id="OrderStatus">
-<em class="property">class </em><code class="sig-name descname">OrderStatus</code><a class="headerlink" href="#OrderStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">OrderStatus</code><a class="headerlink" href="#OrderStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="OrderStatus.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#OrderStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#OrderStatus.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.UNSUBMITTED">
-<code class="sig-name descname">UNSUBMITTED</code><a class="headerlink" href="#OrderStatus.UNSUBMITTED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">UNSUBMITTED</code><a class="headerlink" href="#OrderStatus.UNSUBMITTED" title="Permalink to this definition">¶</a></dt>
 <dd><p>未提交</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.WAITING_SUBMIT">
-<code class="sig-name descname">WAITING_SUBMIT</code><a class="headerlink" href="#OrderStatus.WAITING_SUBMIT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WAITING_SUBMIT</code><a class="headerlink" href="#OrderStatus.WAITING_SUBMIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>等待提交</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.SUBMITTING">
-<code class="sig-name descname">SUBMITTING</code><a class="headerlink" href="#OrderStatus.SUBMITTING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUBMITTING</code><a class="headerlink" href="#OrderStatus.SUBMITTING" title="Permalink to this definition">¶</a></dt>
 <dd><p>提交中</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.SUBMIT_FAILED">
-<code class="sig-name descname">SUBMIT_FAILED</code><a class="headerlink" href="#OrderStatus.SUBMIT_FAILED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUBMIT_FAILED</code><a class="headerlink" href="#OrderStatus.SUBMIT_FAILED" title="Permalink to this definition">¶</a></dt>
 <dd><p>提交失败，下单失败</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.SUBMITTED">
-<code class="sig-name descname">SUBMITTED</code><a class="headerlink" href="#OrderStatus.SUBMITTED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUBMITTED</code><a class="headerlink" href="#OrderStatus.SUBMITTED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已提交，等待成交</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.FILLED_PART">
-<code class="sig-name descname">FILLED_PART</code><a class="headerlink" href="#OrderStatus.FILLED_PART" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FILLED_PART</code><a class="headerlink" href="#OrderStatus.FILLED_PART" title="Permalink to this definition">¶</a></dt>
 <dd><p>部分成交</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.FILLED_ALL">
-<code class="sig-name descname">FILLED_ALL</code><a class="headerlink" href="#OrderStatus.FILLED_ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FILLED_ALL</code><a class="headerlink" href="#OrderStatus.FILLED_ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>全部已成</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.CANCELLING_PART">
-<code class="sig-name descname">CANCELLING_PART</code><a class="headerlink" href="#OrderStatus.CANCELLING_PART" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CANCELLING_PART</code><a class="headerlink" href="#OrderStatus.CANCELLING_PART" title="Permalink to this definition">¶</a></dt>
 <dd><p>正在撤单部分(部分已成交，正在撤销剩余部分)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.CANCELLING_ALL">
-<code class="sig-name descname">CANCELLING_ALL</code><a class="headerlink" href="#OrderStatus.CANCELLING_ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CANCELLING_ALL</code><a class="headerlink" href="#OrderStatus.CANCELLING_ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>正在撤单全部</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.CANCELLED_PART">
-<code class="sig-name descname">CANCELLED_PART</code><a class="headerlink" href="#OrderStatus.CANCELLED_PART" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CANCELLED_PART</code><a class="headerlink" href="#OrderStatus.CANCELLED_PART" title="Permalink to this definition">¶</a></dt>
 <dd><p>部分成交，剩余部分已撤单</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.CANCELLED_ALL">
-<code class="sig-name descname">CANCELLED_ALL</code><a class="headerlink" href="#OrderStatus.CANCELLED_ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CANCELLED_ALL</code><a class="headerlink" href="#OrderStatus.CANCELLED_ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>全部已撤单，无成交</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.FAILED">
-<code class="sig-name descname">FAILED</code><a class="headerlink" href="#OrderStatus.FAILED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FAILED</code><a class="headerlink" href="#OrderStatus.FAILED" title="Permalink to this definition">¶</a></dt>
 <dd><p>下单失败，服务拒绝</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.DISABLED">
-<code class="sig-name descname">DISABLED</code><a class="headerlink" href="#OrderStatus.DISABLED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DISABLED</code><a class="headerlink" href="#OrderStatus.DISABLED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已失效</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="OrderStatus.DELETED">
-<code class="sig-name descname">DELETED</code><a class="headerlink" href="#OrderStatus.DELETED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DELETED</code><a class="headerlink" href="#OrderStatus.DELETED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已删除(无成交的订单才能删除)</p>
 </dd></dl>
 
@@ -1589,22 +1597,22 @@
 <p>成交状态</p>
 <dl class="class">
 <dt id="DealStatus">
-<em class="property">class </em><code class="sig-name descname">DealStatus</code><a class="headerlink" href="#DealStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">DealStatus</code><a class="headerlink" href="#DealStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="DealStatus.OK">
-<code class="sig-name descname">OK</code><a class="headerlink" href="#DealStatus.OK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">OK</code><a class="headerlink" href="#DealStatus.OK" title="Permalink to this definition">¶</a></dt>
 <dd><p>正常</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="DealStatus.CANCELLED">
-<code class="sig-name descname">CANCELLED</code><a class="headerlink" href="#DealStatus.CANCELLED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CANCELLED</code><a class="headerlink" href="#DealStatus.CANCELLED" title="Permalink to this definition">¶</a></dt>
 <dd><p>被取消</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="DealStatus.CHANGED">
-<code class="sig-name descname">CHANGED</code><a class="headerlink" href="#DealStatus.CHANGED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGED</code><a class="headerlink" href="#DealStatus.CHANGED" title="Permalink to this definition">¶</a></dt>
 <dd><p>被更改</p>
 </dd></dl>
 
@@ -1617,70 +1625,70 @@
 <p>程序运行状态通知类型定义</p>
 <dl class="class">
 <dt>
-<em class="property">class </em><code class="sig-name descname">GtwEventType</code></dt>
+<em class="property">class </em><code class="descname">GtwEventType</code></dt>
 <dd><dl class="attribute">
 <dt id="GtwEventType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#GtwEventType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#GtwEventType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知类型</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.LOADED">
-<code class="sig-name descname">LOADED</code><a class="headerlink" href="#GtwEventType.LOADED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOADED</code><a class="headerlink" href="#GtwEventType.LOADED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.LOGING">
-<code class="sig-name descname">LOGING</code><a class="headerlink" href="#GtwEventType.LOGING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOGING</code><a class="headerlink" href="#GtwEventType.LOGING" title="Permalink to this definition">¶</a></dt>
 <dd><p>登录中</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NEED_PIC_VERIFY_CODE">
-<code class="sig-name descname">NEED_PIC_VERIFY_CODE</code><a class="headerlink" href="#GtwEventType.NEED_PIC_VERIFY_CODE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NEED_PIC_VERIFY_CODE</code><a class="headerlink" href="#GtwEventType.NEED_PIC_VERIFY_CODE" title="Permalink to this definition">¶</a></dt>
 <dd><p>需要图形验证码</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NEED_PHONE_VERIFY_CODE">
-<code class="sig-name descname">NEED_PHONE_VERIFY_CODE</code><a class="headerlink" href="#GtwEventType.NEED_PHONE_VERIFY_CODE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NEED_PHONE_VERIFY_CODE</code><a class="headerlink" href="#GtwEventType.NEED_PHONE_VERIFY_CODE" title="Permalink to this definition">¶</a></dt>
 <dd><p>需要手机验证码</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.LOGIN_FAILED">
-<code class="sig-name descname">LOGIN_FAILED</code><a class="headerlink" href="#GtwEventType.LOGIN_FAILED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOGIN_FAILED</code><a class="headerlink" href="#GtwEventType.LOGIN_FAILED" title="Permalink to this definition">¶</a></dt>
 <dd><p>登录失败,详细原因在描述返回</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.FORCE_UPDATE">
-<code class="sig-name descname">FORCE_UPDATE</code><a class="headerlink" href="#GtwEventType.FORCE_UPDATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FORCE_UPDATE</code><a class="headerlink" href="#GtwEventType.FORCE_UPDATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>客户端版本过低</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NESSARY_DATA_PREPARING">
-<code class="sig-name descname">NESSARY_DATA_PREPARING</code><a class="headerlink" href="#GtwEventType.NESSARY_DATA_PREPARING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NESSARY_DATA_PREPARING</code><a class="headerlink" href="#GtwEventType.NESSARY_DATA_PREPARING" title="Permalink to this definition">¶</a></dt>
 <dd><p>正在拉取类似免责声明等一些必要信息</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.NESSARY_DATA_MISSING">
-<code class="sig-name descname">NESSARY_DATA_MISSING</code><a class="headerlink" href="#GtwEventType.NESSARY_DATA_MISSING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NESSARY_DATA_MISSING</code><a class="headerlink" href="#GtwEventType.NESSARY_DATA_MISSING" title="Permalink to this definition">¶</a></dt>
 <dd><p>缺少必要信息</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.UN_AGREE_DISCLAIMER">
-<code class="sig-name descname">UN_AGREE_DISCLAIMER</code><a class="headerlink" href="#GtwEventType.UN_AGREE_DISCLAIMER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">UN_AGREE_DISCLAIMER</code><a class="headerlink" href="#GtwEventType.UN_AGREE_DISCLAIMER" title="Permalink to this definition">¶</a></dt>
 <dd><p>未同意免责声明</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="GtwEventType.READY">
-<code class="sig-name descname">READY</code><a class="headerlink" href="#GtwEventType.READY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">READY</code><a class="headerlink" href="#GtwEventType.READY" title="Permalink to this definition">¶</a></dt>
 <dd><p>可以接收业务协议收发,正常可用状态</p>
 </dd></dl>
 
@@ -1693,28 +1701,28 @@
 <p>板块集合分类定义</p>
 <dl class="class">
 <dt id="Plate">
-<em class="property">class </em><code class="sig-name descname">Plate</code><a class="headerlink" href="#Plate" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Plate</code><a class="headerlink" href="#Plate" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="Plate.ALL">
-<code class="sig-name descname">ALL</code><a class="headerlink" href="#Plate.ALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ALL</code><a class="headerlink" href="#Plate.ALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>所有板块</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Plate.INDUSTRY">
-<code class="sig-name descname">INDUSTRY</code><a class="headerlink" href="#Plate.INDUSTRY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INDUSTRY</code><a class="headerlink" href="#Plate.INDUSTRY" title="Permalink to this definition">¶</a></dt>
 <dd><p>行业板块</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Plate.REGION">
-<code class="sig-name descname">REGION</code><a class="headerlink" href="#Plate.REGION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">REGION</code><a class="headerlink" href="#Plate.REGION" title="Permalink to this definition">¶</a></dt>
 <dd><p>地域板块</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Plate.CONCEPT">
-<code class="sig-name descname">CONCEPT</code><a class="headerlink" href="#Plate.CONCEPT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONCEPT</code><a class="headerlink" href="#Plate.CONCEPT" title="Permalink to this definition">¶</a></dt>
 <dd><p>概念板块</p>
 </dd></dl>
 
@@ -1727,22 +1735,22 @@
 <p>持仓方向类型定义</p>
 <dl class="class">
 <dt id="PositionSide">
-<em class="property">class </em><code class="sig-name descname">PositionSide</code><a class="headerlink" href="#PositionSide" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">PositionSide</code><a class="headerlink" href="#PositionSide" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="PositionSide.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#PositionSide.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#PositionSide.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PositionSide.LONG">
-<code class="sig-name descname">LONG</code><a class="headerlink" href="#PositionSide.LONG" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LONG</code><a class="headerlink" href="#PositionSide.LONG" title="Permalink to this definition">¶</a></dt>
 <dd><p>多仓</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PositionSide.SHORT">
-<code class="sig-name descname">SHORT</code><a class="headerlink" href="#PositionSide.SHORT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SHORT</code><a class="headerlink" href="#PositionSide.SHORT" title="Permalink to this definition">¶</a></dt>
 <dd><p>空仓</p>
 </dd></dl>
 
@@ -1755,22 +1763,22 @@
 <p>上市日</p>
 <dl class="class">
 <dt id="PriceType">
-<em class="property">class </em><code class="sig-name descname">PriceType</code><a class="headerlink" href="#PriceType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">PriceType</code><a class="headerlink" href="#PriceType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="PriceType.Unknown">
-<code class="sig-name descname">Unknown</code><a class="headerlink" href="#PriceType.Unknown" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Unknown</code><a class="headerlink" href="#PriceType.Unknown" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PriceType.Outside">
-<code class="sig-name descname">Outside</code><a class="headerlink" href="#PriceType.Outside" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Outside</code><a class="headerlink" href="#PriceType.Outside" title="Permalink to this definition">¶</a></dt>
 <dd><p>价外,界内证表示界外</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PriceType.WithIn">
-<code class="sig-name descname">WithIn</code><a class="headerlink" href="#PriceType.WithIn" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WithIn</code><a class="headerlink" href="#PriceType.WithIn" title="Permalink to this definition">¶</a></dt>
 <dd><p>价内,界内证表示界内</p>
 </dd></dl>
 
@@ -1784,16 +1792,16 @@
 <div><p>协议格式类型</p>
 <dl class="class">
 <dt id="ProtoFMT">
-<em class="property">class </em><code class="sig-name descname">ProtoFMT</code><a class="headerlink" href="#ProtoFMT" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">ProtoFMT</code><a class="headerlink" href="#ProtoFMT" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="ProtoFMT.Protobuf">
-<code class="sig-name descname">Protobuf</code><a class="headerlink" href="#ProtoFMT.Protobuf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Protobuf</code><a class="headerlink" href="#ProtoFMT.Protobuf" title="Permalink to this definition">¶</a></dt>
 <dd><p>google的protobuf格式</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ProtoFMT.Json">
-<code class="sig-name descname">Json</code><a class="headerlink" href="#ProtoFMT.Json" title="Permalink to this definition">¶</a></dt>
+<code class="descname">Json</code><a class="headerlink" href="#ProtoFMT.Json" title="Permalink to this definition">¶</a></dt>
 <dd><p>json格式</p>
 </dd></dl>
 
@@ -1807,22 +1815,22 @@
 <p>推送数据类型定义</p>
 <dl class="class">
 <dt id="PushDataType">
-<em class="property">class </em><code class="sig-name descname">PushDataType</code><a class="headerlink" href="#PushDataType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">PushDataType</code><a class="headerlink" href="#PushDataType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="PushDataType.REALTIME">
-<code class="sig-name descname">REALTIME</code><a class="headerlink" href="#PushDataType.REALTIME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">REALTIME</code><a class="headerlink" href="#PushDataType.REALTIME" title="Permalink to this definition">¶</a></dt>
 <dd><p>实时推送数据</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PushDataType.BYDISCONN">
-<code class="sig-name descname">BYDISCONN</code><a class="headerlink" href="#PushDataType.BYDISCONN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BYDISCONN</code><a class="headerlink" href="#PushDataType.BYDISCONN" title="Permalink to this definition">¶</a></dt>
 <dd><p>行情连接断开重连后，OpenD拉取补充断开期间的数据，最多50根</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PushDataType.CACHE">
-<code class="sig-name descname">CACHE</code><a class="headerlink" href="#PushDataType.CACHE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CACHE</code><a class="headerlink" href="#PushDataType.CACHE" title="Permalink to this definition">¶</a></dt>
 <dd><p>非实时推送数据，非连接断开补充数据</p>
 </dd></dl>
 
@@ -1836,12 +1844,12 @@
 <blockquote>
 <div><dl class="attribute">
 <dt>
-<code class="sig-name descname">RET_OK = 0</code></dt>
+<code class="descname">RET_OK = 0</code></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt>
-<code class="sig-name descname">RET_ERROR = -1</code></dt>
+<code class="descname">RET_ERROR = -1</code></dt>
 <dd></dd></dl>
 
 </div></blockquote>
@@ -1852,46 +1860,46 @@
 <p>证券类型定义</p>
 <dl class="class">
 <dt id="SecurityType">
-<em class="property">class </em><code class="sig-name descname">SecurityType</code><a class="headerlink" href="#SecurityType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SecurityType</code><a class="headerlink" href="#SecurityType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SecurityType.STOCK">
-<code class="sig-name descname">STOCK</code><a class="headerlink" href="#SecurityType.STOCK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STOCK</code><a class="headerlink" href="#SecurityType.STOCK" title="Permalink to this definition">¶</a></dt>
 <dd><p>股票</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityType.IDX">
-<code class="sig-name descname">IDX</code><a class="headerlink" href="#SecurityType.IDX" title="Permalink to this definition">¶</a></dt>
+<code class="descname">IDX</code><a class="headerlink" href="#SecurityType.IDX" title="Permalink to this definition">¶</a></dt>
 <dd><p>指数</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityType.ETF">
-<code class="sig-name descname">ETF</code><a class="headerlink" href="#SecurityType.ETF" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ETF</code><a class="headerlink" href="#SecurityType.ETF" title="Permalink to this definition">¶</a></dt>
 <dd><p>交易所交易基金(Exchange Traded Funds)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityType.WARRANT">
-<code class="sig-name descname">WARRANT</code><a class="headerlink" href="#SecurityType.WARRANT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WARRANT</code><a class="headerlink" href="#SecurityType.WARRANT" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股窝轮牛熊界内证</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityType.BOND">
-<code class="sig-name descname">BOND</code><a class="headerlink" href="#SecurityType.BOND" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BOND</code><a class="headerlink" href="#SecurityType.BOND" title="Permalink to this definition">¶</a></dt>
 <dd><p>债券</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityType.DRVT">
-<code class="sig-name descname">DRVT</code><a class="headerlink" href="#SecurityType.DRVT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DRVT</code><a class="headerlink" href="#SecurityType.DRVT" title="Permalink to this definition">¶</a></dt>
 <dd><p>期权</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#SecurityType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#SecurityType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
@@ -1904,130 +1912,130 @@
 <p>股票状态定义</p>
 <dl class="class">
 <dt id="SecurityStatus">
-<em class="property">class </em><code class="sig-name descname">SecurityStatus</code><a class="headerlink" href="#SecurityStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SecurityStatus</code><a class="headerlink" href="#SecurityStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SecurityStatus.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#SecurityStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#SecurityStatus.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.NORMAL">
-<code class="sig-name descname">NORMAL</code><a class="headerlink" href="#SecurityStatus.NORMAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NORMAL</code><a class="headerlink" href="#SecurityStatus.NORMAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>正常状态</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.PURCHASING">
-<code class="sig-name descname">PURCHASING</code><a class="headerlink" href="#SecurityStatus.PURCHASING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PURCHASING</code><a class="headerlink" href="#SecurityStatus.PURCHASING" title="Permalink to this definition">¶</a></dt>
 <dd><p>申购中</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.SUBSCRIBING">
-<code class="sig-name descname">SUBSCRIBING</code><a class="headerlink" href="#SecurityStatus.SUBSCRIBING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUBSCRIBING</code><a class="headerlink" href="#SecurityStatus.SUBSCRIBING" title="Permalink to this definition">¶</a></dt>
 <dd><p>认购中</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.BEFORE_DARK_TRADE_OPEING">
-<code class="sig-name descname">BEFORE_DARK_TRADE_OPEING</code><a class="headerlink" href="#SecurityStatus.BEFORE_DARK_TRADE_OPEING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BEFORE_DARK_TRADE_OPEING</code><a class="headerlink" href="#SecurityStatus.BEFORE_DARK_TRADE_OPEING" title="Permalink to this definition">¶</a></dt>
 <dd><p>暗盘开盘前</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.DARK_TRADING">
-<code class="sig-name descname">DARK_TRADING</code><a class="headerlink" href="#SecurityStatus.DARK_TRADING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DARK_TRADING</code><a class="headerlink" href="#SecurityStatus.DARK_TRADING" title="Permalink to this definition">¶</a></dt>
 <dd><p>暗盘交易中</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.DARK_TRAD_END">
-<code class="sig-name descname">DARK_TRAD_END</code><a class="headerlink" href="#SecurityStatus.DARK_TRAD_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DARK_TRAD_END</code><a class="headerlink" href="#SecurityStatus.DARK_TRAD_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>暗盘已收盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.TO_BE_OPEN">
-<code class="sig-name descname">TO_BE_OPEN</code><a class="headerlink" href="#SecurityStatus.TO_BE_OPEN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TO_BE_OPEN</code><a class="headerlink" href="#SecurityStatus.TO_BE_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd><p>待开盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.SUSPENDED">
-<code class="sig-name descname">SUSPENDED</code><a class="headerlink" href="#SecurityStatus.SUSPENDED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUSPENDED</code><a class="headerlink" href="#SecurityStatus.SUSPENDED" title="Permalink to this definition">¶</a></dt>
 <dd><p>停牌</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.CALLED">
-<code class="sig-name descname">CALLED</code><a class="headerlink" href="#SecurityStatus.CALLED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CALLED</code><a class="headerlink" href="#SecurityStatus.CALLED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已收回</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.EXPIRED_LAST_TRADING_DATE">
-<code class="sig-name descname">EXPIRED_LAST_TRADING_DATE</code><a class="headerlink" href="#SecurityStatus.EXPIRED_LAST_TRADING_DATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EXPIRED_LAST_TRADING_DATE</code><a class="headerlink" href="#SecurityStatus.EXPIRED_LAST_TRADING_DATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>已过最后交易日</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.EXPIRED">
-<code class="sig-name descname">EXPIRED</code><a class="headerlink" href="#SecurityStatus.EXPIRED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EXPIRED</code><a class="headerlink" href="#SecurityStatus.EXPIRED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已过期</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.DELISTED">
-<code class="sig-name descname">DELISTED</code><a class="headerlink" href="#SecurityStatus.DELISTED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DELISTED</code><a class="headerlink" href="#SecurityStatus.DELISTED" title="Permalink to this definition">¶</a></dt>
 <dd><p>已退市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.CHANGE_TO_TEMPORARY_CODE">
-<code class="sig-name descname">CHANGE_TO_TEMPORARY_CODE</code><a class="headerlink" href="#SecurityStatus.CHANGE_TO_TEMPORARY_CODE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_TO_TEMPORARY_CODE</code><a class="headerlink" href="#SecurityStatus.CHANGE_TO_TEMPORARY_CODE" title="Permalink to this definition">¶</a></dt>
 <dd><p>公司行动中，交易关闭，转至临时代码交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.TEMPORARY_CODE_TRADE_END">
-<code class="sig-name descname">TEMPORARY_CODE_TRADE_END</code><a class="headerlink" href="#SecurityStatus.TEMPORARY_CODE_TRADE_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TEMPORARY_CODE_TRADE_END</code><a class="headerlink" href="#SecurityStatus.TEMPORARY_CODE_TRADE_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>临时代码交易结束，交易关闭</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.CHANGED_PLATE_TRADE_END">
-<code class="sig-name descname">CHANGED_PLATE_TRADE_END</code><a class="headerlink" href="#SecurityStatus.CHANGED_PLATE_TRADE_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGED_PLATE_TRADE_END</code><a class="headerlink" href="#SecurityStatus.CHANGED_PLATE_TRADE_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>已转板，旧代码交易关闭</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.CHANGED_CODE_TRAD_END">
-<code class="sig-name descname">CHANGED_CODE_TRAD_END</code><a class="headerlink" href="#SecurityStatus.CHANGED_CODE_TRAD_END" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGED_CODE_TRAD_END</code><a class="headerlink" href="#SecurityStatus.CHANGED_CODE_TRAD_END" title="Permalink to this definition">¶</a></dt>
 <dd><p>已换代码，旧代码交易关闭</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.RECOVERABLE_CIRCUIT_BREAKER">
-<code class="sig-name descname">RECOVERABLE_CIRCUIT_BREAKER</code><a class="headerlink" href="#SecurityStatus.RECOVERABLE_CIRCUIT_BREAKER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RECOVERABLE_CIRCUIT_BREAKER</code><a class="headerlink" href="#SecurityStatus.RECOVERABLE_CIRCUIT_BREAKER" title="Permalink to this definition">¶</a></dt>
 <dd><p>可恢复性熔断</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.UNRECOVERABLE_CIRCUIT_BREAKER">
-<code class="sig-name descname">UNRECOVERABLE_CIRCUIT_BREAKER</code><a class="headerlink" href="#SecurityStatus.UNRECOVERABLE_CIRCUIT_BREAKER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">UNRECOVERABLE_CIRCUIT_BREAKER</code><a class="headerlink" href="#SecurityStatus.UNRECOVERABLE_CIRCUIT_BREAKER" title="Permalink to this definition">¶</a></dt>
 <dd><p>不可恢复性熔断</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.AFTER_COMBINATION">
-<code class="sig-name descname">AFTER_COMBINATION</code><a class="headerlink" href="#SecurityStatus.AFTER_COMBINATION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_COMBINATION</code><a class="headerlink" href="#SecurityStatus.AFTER_COMBINATION" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后撮合</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityStatus.AFTER_TRANSACTION">
-<code class="sig-name descname">AFTER_TRANSACTION</code><a class="headerlink" href="#SecurityStatus.AFTER_TRANSACTION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_TRANSACTION</code><a class="headerlink" href="#SecurityStatus.AFTER_TRANSACTION" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后交易</p>
 </dd></dl>
 
@@ -2040,22 +2048,22 @@
 <p>股票关联数据类型</p>
 <dl class="class">
 <dt id="SecurityReferenceType">
-<em class="property">class </em><code class="sig-name descname">SecurityReferenceType</code><a class="headerlink" href="#SecurityReferenceType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SecurityReferenceType</code><a class="headerlink" href="#SecurityReferenceType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SecurityReferenceType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#SecurityReferenceType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#SecurityReferenceType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityReferenceType.WARRANT">
-<code class="sig-name descname">WARRANT</code><a class="headerlink" href="#SecurityReferenceType.WARRANT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WARRANT</code><a class="headerlink" href="#SecurityReferenceType.WARRANT" title="Permalink to this definition">¶</a></dt>
 <dd><p>相关窝轮</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SecurityReferenceType.FUTURE">
-<code class="sig-name descname">FUTURE</code><a class="headerlink" href="#SecurityReferenceType.FUTURE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUTURE</code><a class="headerlink" href="#SecurityReferenceType.FUTURE" title="Permalink to this definition">¶</a></dt>
 <dd><p>期货主连相关合约</p>
 </dd></dl>
 
@@ -2068,22 +2076,22 @@
 <p>持有者类别定义</p>
 <dl class="class">
 <dt id="StockHolder">
-<em class="property">class </em><code class="sig-name descname">StockHolder</code><a class="headerlink" href="#StockHolder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">StockHolder</code><a class="headerlink" href="#StockHolder" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="StockHolder.INSTITUTE">
-<code class="sig-name descname">INSTITUTE</code><a class="headerlink" href="#StockHolder.INSTITUTE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INSTITUTE</code><a class="headerlink" href="#StockHolder.INSTITUTE" title="Permalink to this definition">¶</a></dt>
 <dd><p>机构</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockHolder.FUND">
-<code class="sig-name descname">FUND</code><a class="headerlink" href="#StockHolder.FUND" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUND</code><a class="headerlink" href="#StockHolder.FUND" title="Permalink to this definition">¶</a></dt>
 <dd><p>基金</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockHolder.EXECUTIVE">
-<code class="sig-name descname">EXECUTIVE</code><a class="headerlink" href="#StockHolder.EXECUTIVE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EXECUTIVE</code><a class="headerlink" href="#StockHolder.EXECUTIVE" title="Permalink to this definition">¶</a></dt>
 <dd><p>高管</p>
 </dd></dl>
 
@@ -2096,100 +2104,100 @@
 <p>实时数据定阅类型定义</p>
 <dl class="class">
 <dt id="SubType">
-<em class="property">class </em><code class="sig-name descname">SubType</code><a class="headerlink" href="#SubType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SubType</code><a class="headerlink" href="#SubType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SubType.TICKER">
-<code class="sig-name descname">TICKER</code><a class="headerlink" href="#SubType.TICKER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TICKER</code><a class="headerlink" href="#SubType.TICKER" title="Permalink to this definition">¶</a></dt>
 <dd><p>逐笔</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.QUOTE">
-<code class="sig-name descname">QUOTE</code><a class="headerlink" href="#SubType.QUOTE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">QUOTE</code><a class="headerlink" href="#SubType.QUOTE" title="Permalink to this definition">¶</a></dt>
 <dd><p>报价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.ORDER_BOOK">
-<code class="sig-name descname">ORDER_BOOK</code><a class="headerlink" href="#SubType.ORDER_BOOK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ORDER_BOOK</code><a class="headerlink" href="#SubType.ORDER_BOOK" title="Permalink to this definition">¶</a></dt>
 <dd><p>买卖摆盘</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_1M">
-<code class="sig-name descname">K_1M</code><a class="headerlink" href="#SubType.K_1M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_1M</code><a class="headerlink" href="#SubType.K_1M" title="Permalink to this definition">¶</a></dt>
 <dd><p>1分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_3M">
-<code class="sig-name descname">K_3M</code><a class="headerlink" href="#SubType.K_3M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_3M</code><a class="headerlink" href="#SubType.K_3M" title="Permalink to this definition">¶</a></dt>
 <dd><p>3分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_5M">
-<code class="sig-name descname">K_5M</code><a class="headerlink" href="#SubType.K_5M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_5M</code><a class="headerlink" href="#SubType.K_5M" title="Permalink to this definition">¶</a></dt>
 <dd><p>5分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_15M">
-<code class="sig-name descname">K_15M</code><a class="headerlink" href="#SubType.K_15M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_15M</code><a class="headerlink" href="#SubType.K_15M" title="Permalink to this definition">¶</a></dt>
 <dd><p>15分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_30M">
-<code class="sig-name descname">K_30M</code><a class="headerlink" href="#SubType.K_30M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_30M</code><a class="headerlink" href="#SubType.K_30M" title="Permalink to this definition">¶</a></dt>
 <dd><p>30分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_60M">
-<code class="sig-name descname">K_60M</code><a class="headerlink" href="#SubType.K_60M" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_60M</code><a class="headerlink" href="#SubType.K_60M" title="Permalink to this definition">¶</a></dt>
 <dd><p>60分钟K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_DAY">
-<code class="sig-name descname">K_DAY</code><a class="headerlink" href="#SubType.K_DAY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_DAY</code><a class="headerlink" href="#SubType.K_DAY" title="Permalink to this definition">¶</a></dt>
 <dd><p>日K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_WEEK">
-<code class="sig-name descname">K_WEEK</code><a class="headerlink" href="#SubType.K_WEEK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_WEEK</code><a class="headerlink" href="#SubType.K_WEEK" title="Permalink to this definition">¶</a></dt>
 <dd><p>周K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_MON">
-<code class="sig-name descname">K_MON</code><a class="headerlink" href="#SubType.K_MON" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_MON</code><a class="headerlink" href="#SubType.K_MON" title="Permalink to this definition">¶</a></dt>
 <dd><p>月K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_QUARTER">
-<code class="sig-name descname">K_QUARTER</code><a class="headerlink" href="#SubType.K_QUARTER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_QUARTER</code><a class="headerlink" href="#SubType.K_QUARTER" title="Permalink to this definition">¶</a></dt>
 <dd><p>季K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.K_YEAR">
-<code class="sig-name descname">K_YEAR</code><a class="headerlink" href="#SubType.K_YEAR" title="Permalink to this definition">¶</a></dt>
+<code class="descname">K_YEAR</code><a class="headerlink" href="#SubType.K_YEAR" title="Permalink to this definition">¶</a></dt>
 <dd><p>年K线</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.RT_DATA">
-<code class="sig-name descname">RT_DATA</code><a class="headerlink" href="#SubType.RT_DATA" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RT_DATA</code><a class="headerlink" href="#SubType.RT_DATA" title="Permalink to this definition">¶</a></dt>
 <dd><p>分时</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SubType.BROKER">
-<code class="sig-name descname">BROKER</code><a class="headerlink" href="#SubType.BROKER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BROKER</code><a class="headerlink" href="#SubType.BROKER" title="Permalink to this definition">¶</a></dt>
 <dd><p>买卖经纪</p>
 </dd></dl>
 
@@ -2202,106 +2210,106 @@
 <p>条件选股的筛选条件简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积或财务筛选。</p>
 <dl class="class">
 <dt id="StockField">
-<em class="property">class </em><code class="sig-name descname">StockField</code><a class="headerlink" href="#StockField" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">StockField</code><a class="headerlink" href="#StockField" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="StockField.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#StockField.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#StockField.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.STOCK_CODE">
-<code class="sig-name descname">STOCK_CODE</code><a class="headerlink" href="#StockField.STOCK_CODE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STOCK_CODE</code><a class="headerlink" href="#StockField.STOCK_CODE" title="Permalink to this definition">¶</a></dt>
 <dd><p>股票代码</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.STOCK_NAME">
-<code class="sig-name descname">STOCK_NAME</code><a class="headerlink" href="#StockField.STOCK_NAME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STOCK_NAME</code><a class="headerlink" href="#StockField.STOCK_NAME" title="Permalink to this definition">¶</a></dt>
 <dd><p>股票名称</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.CUR_PRICE">
-<code class="sig-name descname">CUR_PRICE</code><a class="headerlink" href="#StockField.CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CUR_PRICE</code><a class="headerlink" href="#StockField.CUR_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>最新价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO">
-<code class="sig-name descname">CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>(现价 - 52周最高)/52周最高</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.CUR_PRICE_TO_LOWEST52_WEEKS_RATIO">
-<code class="sig-name descname">CUR_PRICE_TO_LOWEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.CUR_PRICE_TO_LOWEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CUR_PRICE_TO_LOWEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.CUR_PRICE_TO_LOWEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>(现价 - 52周最低)/52周最低</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO">
-<code class="sig-name descname">HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>(今日最高 - 52周最高)/52周最高</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.LOW_PRICE_TO_LOWEST52_WEEKS_RATIO">
-<code class="sig-name descname">LOW_PRICE_TO_LOWEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.LOW_PRICE_TO_LOWEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOW_PRICE_TO_LOWEST52_WEEKS_RATIO</code><a class="headerlink" href="#StockField.LOW_PRICE_TO_LOWEST52_WEEKS_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>(今日最低 - 52周最低)/52周最低</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.VOLUME_RATIO">
-<code class="sig-name descname">VOLUME_RATIO</code><a class="headerlink" href="#StockField.VOLUME_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VOLUME_RATIO</code><a class="headerlink" href="#StockField.VOLUME_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>量比</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.BID_ASK_RATIO">
-<code class="sig-name descname">BID_ASK_RATIO</code><a class="headerlink" href="#StockField.BID_ASK_RATIO" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BID_ASK_RATIO</code><a class="headerlink" href="#StockField.BID_ASK_RATIO" title="Permalink to this definition">¶</a></dt>
 <dd><p>委比</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.LOT_PRICE">
-<code class="sig-name descname">LOT_PRICE</code><a class="headerlink" href="#StockField.LOT_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOT_PRICE</code><a class="headerlink" href="#StockField.LOT_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>每手价格</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.MARKET_VAL">
-<code class="sig-name descname">MARKET_VAL</code><a class="headerlink" href="#StockField.MARKET_VAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MARKET_VAL</code><a class="headerlink" href="#StockField.MARKET_VAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>市值</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.PE_ANNUAL">
-<code class="sig-name descname">PE_ANNUAL</code><a class="headerlink" href="#StockField.PE_ANNUAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PE_ANNUAL</code><a class="headerlink" href="#StockField.PE_ANNUAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>市盈率 (静态)</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.PE_TTM">
-<code class="sig-name descname">PE_TTM</code><a class="headerlink" href="#StockField.PE_TTM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PE_TTM</code><a class="headerlink" href="#StockField.PE_TTM" title="Permalink to this definition">¶</a></dt>
 <dd><p>市盈率TTM</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.PB_RATE">
-<code class="sig-name descname">PB_RATE</code><a class="headerlink" href="#StockField.PB_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PB_RATE</code><a class="headerlink" href="#StockField.PB_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>市净率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.CHANGE_RATE_5MIN">
-<code class="sig-name descname">CHANGE_RATE_5MIN</code><a class="headerlink" href="#StockField.CHANGE_RATE_5MIN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_RATE_5MIN</code><a class="headerlink" href="#StockField.CHANGE_RATE_5MIN" title="Permalink to this definition">¶</a></dt>
 <dd><p>五分钟价格涨跌幅</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.CHANGE_RATE_BEGIN_YEAR">
-<code class="sig-name descname">CHANGE_RATE_BEGIN_YEAR</code><a class="headerlink" href="#StockField.CHANGE_RATE_BEGIN_YEAR" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_RATE_BEGIN_YEAR</code><a class="headerlink" href="#StockField.CHANGE_RATE_BEGIN_YEAR" title="Permalink to this definition">¶</a></dt>
 <dd><p>年初至今价格涨跌幅</p>
 </dd></dl>
 
@@ -2314,34 +2322,34 @@
 <p>条件选股的筛选条件累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单或财务筛选。</p>
 <dl class="class">
 <dt>
-<em class="property">class </em><code class="sig-name descname">StockField</code></dt>
+<em class="property">class </em><code class="descname">StockField</code></dt>
 <dd><dl class="attribute">
 <dt id="StockField.CHANGE_RATE">
-<code class="sig-name descname">CHANGE_RATE</code><a class="headerlink" href="#StockField.CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_RATE</code><a class="headerlink" href="#StockField.CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>涨跌幅</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.AMPLITUDE">
-<code class="sig-name descname">AMPLITUDE</code><a class="headerlink" href="#StockField.AMPLITUDE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AMPLITUDE</code><a class="headerlink" href="#StockField.AMPLITUDE" title="Permalink to this definition">¶</a></dt>
 <dd><p>振幅</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.VOLUME">
-<code class="sig-name descname">VOLUME</code><a class="headerlink" href="#StockField.VOLUME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VOLUME</code><a class="headerlink" href="#StockField.VOLUME" title="Permalink to this definition">¶</a></dt>
 <dd><p>日均成交量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.TURNOVER">
-<code class="sig-name descname">TURNOVER</code><a class="headerlink" href="#StockField.TURNOVER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TURNOVER</code><a class="headerlink" href="#StockField.TURNOVER" title="Permalink to this definition">¶</a></dt>
 <dd><p>日均成交额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.TURNOVER_RATE">
-<code class="sig-name descname">TURNOVER_RATE</code><a class="headerlink" href="#StockField.TURNOVER_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TURNOVER_RATE</code><a class="headerlink" href="#StockField.TURNOVER_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>换手率</p>
 </dd></dl>
 
@@ -2354,58 +2362,58 @@
 <p>条件选股的筛选条件财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单或累积筛选。</p>
 <p>财务筛选字段的使用说明：</p>
 <ol class="arabic simple">
-<li><p>港股和A股：使用累计季报数据；</p></li>
-<li><p>美股：使用单季报数据；</p></li>
-<li><p>净利润增长率及营收增长率：均为同比数据（本期与去年同期作对比）。</p></li>
+<li>港股和A股：使用累计季报数据；</li>
+<li>美股：使用单季报数据；</li>
+<li>净利润增长率及营收增长率：均为同比数据（本期与去年同期作对比）。</li>
 </ol>
 <dl class="class">
 <dt>
-<em class="property">class </em><code class="sig-name descname">StockField</code></dt>
+<em class="property">class </em><code class="descname">StockField</code></dt>
 <dd><dl class="attribute">
 <dt id="StockField.NET_PROFIT">
-<code class="sig-name descname">NET_PROFIT</code><a class="headerlink" href="#StockField.NET_PROFIT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NET_PROFIT</code><a class="headerlink" href="#StockField.NET_PROFIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>净利润</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.NET_PROFIX_GROWTH">
-<code class="sig-name descname">NET_PROFIX_GROWTH</code><a class="headerlink" href="#StockField.NET_PROFIX_GROWTH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NET_PROFIX_GROWTH</code><a class="headerlink" href="#StockField.NET_PROFIX_GROWTH" title="Permalink to this definition">¶</a></dt>
 <dd><p>净利润增长率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.SUM_OF_BUSINESS">
-<code class="sig-name descname">SUM_OF_BUSINESS</code><a class="headerlink" href="#StockField.SUM_OF_BUSINESS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUM_OF_BUSINESS</code><a class="headerlink" href="#StockField.SUM_OF_BUSINESS" title="Permalink to this definition">¶</a></dt>
 <dd><p>营业收入</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.SUM_OF_BUSINESS_GROWTH">
-<code class="sig-name descname">SUM_OF_BUSINESS_GROWTH</code><a class="headerlink" href="#StockField.SUM_OF_BUSINESS_GROWTH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUM_OF_BUSINESS_GROWTH</code><a class="headerlink" href="#StockField.SUM_OF_BUSINESS_GROWTH" title="Permalink to this definition">¶</a></dt>
 <dd><p>营业同比增长率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.NET_PROFIT_RATE">
-<code class="sig-name descname">NET_PROFIT_RATE</code><a class="headerlink" href="#StockField.NET_PROFIT_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NET_PROFIT_RATE</code><a class="headerlink" href="#StockField.NET_PROFIT_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>净利率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.GROSS_PROFIT_RATE">
-<code class="sig-name descname">GROSS_PROFIT_RATE</code><a class="headerlink" href="#StockField.GROSS_PROFIT_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">GROSS_PROFIT_RATE</code><a class="headerlink" href="#StockField.GROSS_PROFIT_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>毛利率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.DEBT_ASSET_RATE">
-<code class="sig-name descname">DEBT_ASSET_RATE</code><a class="headerlink" href="#StockField.DEBT_ASSET_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DEBT_ASSET_RATE</code><a class="headerlink" href="#StockField.DEBT_ASSET_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>资产负债率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="StockField.RETURN_ON_EQUITY_RATE">
-<code class="sig-name descname">RETURN_ON_EQUITY_RATE</code><a class="headerlink" href="#StockField.RETURN_ON_EQUITY_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RETURN_ON_EQUITY_RATE</code><a class="headerlink" href="#StockField.RETURN_ON_EQUITY_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>净资产收益率</p>
 </dd></dl>
 
@@ -2418,310 +2426,310 @@
 <p>窝轮排序定义</p>
 <dl class="class">
 <dt id="SortField">
-<em class="property">class </em><code class="sig-name descname">SortField</code><a class="headerlink" href="#SortField" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SortField</code><a class="headerlink" href="#SortField" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SortField.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#SortField.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#SortField.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.CODE">
-<code class="sig-name descname">CODE</code><a class="headerlink" href="#SortField.CODE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CODE</code><a class="headerlink" href="#SortField.CODE" title="Permalink to this definition">¶</a></dt>
 <dd><p>代码</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.CUR_PRICE">
-<code class="sig-name descname">CUR_PRICE</code><a class="headerlink" href="#SortField.CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CUR_PRICE</code><a class="headerlink" href="#SortField.CUR_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>最新价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PRICE_CHANGE_VAL">
-<code class="sig-name descname">PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>涨跌额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.CHANGE_RATE">
-<code class="sig-name descname">CHANGE_RATE</code><a class="headerlink" href="#SortField.CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_RATE</code><a class="headerlink" href="#SortField.CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>涨跌幅%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.STATUS">
-<code class="sig-name descname">STATUS</code><a class="headerlink" href="#SortField.STATUS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STATUS</code><a class="headerlink" href="#SortField.STATUS" title="Permalink to this definition">¶</a></dt>
 <dd><p>状态</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.BID_PRICE">
-<code class="sig-name descname">BID_PRICE</code><a class="headerlink" href="#SortField.BID_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BID_PRICE</code><a class="headerlink" href="#SortField.BID_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>买入价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.ASK_PRICE">
-<code class="sig-name descname">ASK_PRICE</code><a class="headerlink" href="#SortField.ASK_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ASK_PRICE</code><a class="headerlink" href="#SortField.ASK_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>卖出价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.BID_VOL">
-<code class="sig-name descname">BID_VOL</code><a class="headerlink" href="#SortField.BID_VOL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BID_VOL</code><a class="headerlink" href="#SortField.BID_VOL" title="Permalink to this definition">¶</a></dt>
 <dd><p>买量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.ASK_VOL">
-<code class="sig-name descname">ASK_VOL</code><a class="headerlink" href="#SortField.ASK_VOL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ASK_VOL</code><a class="headerlink" href="#SortField.ASK_VOL" title="Permalink to this definition">¶</a></dt>
 <dd><p>卖量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.VOLUME">
-<code class="sig-name descname">VOLUME</code><a class="headerlink" href="#SortField.VOLUME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VOLUME</code><a class="headerlink" href="#SortField.VOLUME" title="Permalink to this definition">¶</a></dt>
 <dd><p>成交量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.TURNOVER">
-<code class="sig-name descname">TURNOVER</code><a class="headerlink" href="#SortField.TURNOVER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TURNOVER</code><a class="headerlink" href="#SortField.TURNOVER" title="Permalink to this definition">¶</a></dt>
 <dd><p>成交额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.SCORE">
-<code class="sig-name descname">SCORE</code><a class="headerlink" href="#SortField.SCORE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SCORE</code><a class="headerlink" href="#SortField.SCORE" title="Permalink to this definition">¶</a></dt>
 <dd><p>综合评分</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PREMIUM">
-<code class="sig-name descname">PREMIUM</code><a class="headerlink" href="#SortField.PREMIUM" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PREMIUM</code><a class="headerlink" href="#SortField.PREMIUM" title="Permalink to this definition">¶</a></dt>
 <dd><p>溢价%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.EFFECTIVE_LEVERAGE">
-<code class="sig-name descname">EFFECTIVE_LEVERAGE</code><a class="headerlink" href="#SortField.EFFECTIVE_LEVERAGE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">EFFECTIVE_LEVERAGE</code><a class="headerlink" href="#SortField.EFFECTIVE_LEVERAGE" title="Permalink to this definition">¶</a></dt>
 <dd><p>有效杠杆</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.DELTA">
-<code class="sig-name descname">DELTA</code><a class="headerlink" href="#SortField.DELTA" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DELTA</code><a class="headerlink" href="#SortField.DELTA" title="Permalink to this definition">¶</a></dt>
 <dd><p>对冲值,仅认购认沽支持该字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.IMPLIED_VOLATILITY">
-<code class="sig-name descname">IMPLIED_VOLATILITY</code><a class="headerlink" href="#SortField.IMPLIED_VOLATILITY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">IMPLIED_VOLATILITY</code><a class="headerlink" href="#SortField.IMPLIED_VOLATILITY" title="Permalink to this definition">¶</a></dt>
 <dd><p>引伸波幅,仅认购认沽支持该字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.TYPE">
-<code class="sig-name descname">TYPE</code><a class="headerlink" href="#SortField.TYPE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TYPE</code><a class="headerlink" href="#SortField.TYPE" title="Permalink to this definition">¶</a></dt>
 <dd><p>类型</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.STRIKE_PRICE">
-<code class="sig-name descname">STRIKE_PRICE</code><a class="headerlink" href="#SortField.STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STRIKE_PRICE</code><a class="headerlink" href="#SortField.STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>行权价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.BREAK_EVEN_POINT">
-<code class="sig-name descname">BREAK_EVEN_POINT</code><a class="headerlink" href="#SortField.BREAK_EVEN_POINT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BREAK_EVEN_POINT</code><a class="headerlink" href="#SortField.BREAK_EVEN_POINT" title="Permalink to this definition">¶</a></dt>
 <dd><p>打和点</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.MATURITY_TIME">
-<code class="sig-name descname">MATURITY_TIME</code><a class="headerlink" href="#SortField.MATURITY_TIME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MATURITY_TIME</code><a class="headerlink" href="#SortField.MATURITY_TIME" title="Permalink to this definition">¶</a></dt>
 <dd><p>到期日</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.LIST_TIME">
-<code class="sig-name descname">LIST_TIME</code><a class="headerlink" href="#SortField.LIST_TIME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LIST_TIME</code><a class="headerlink" href="#SortField.LIST_TIME" title="Permalink to this definition">¶</a></dt>
 <dd><p>上市日期</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.LAST_TRADE_TIME">
-<code class="sig-name descname">LAST_TRADE_TIME</code><a class="headerlink" href="#SortField.LAST_TRADE_TIME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LAST_TRADE_TIME</code><a class="headerlink" href="#SortField.LAST_TRADE_TIME" title="Permalink to this definition">¶</a></dt>
 <dd><p>最后交易日</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.LEVERAGE">
-<code class="sig-name descname">LEVERAGE</code><a class="headerlink" href="#SortField.LEVERAGE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LEVERAGE</code><a class="headerlink" href="#SortField.LEVERAGE" title="Permalink to this definition">¶</a></dt>
 <dd><p>杠杆比率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.IN_OUT_MONEY">
-<code class="sig-name descname">IN_OUT_MONEY</code><a class="headerlink" href="#SortField.IN_OUT_MONEY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">IN_OUT_MONEY</code><a class="headerlink" href="#SortField.IN_OUT_MONEY" title="Permalink to this definition">¶</a></dt>
 <dd><p>价内/价外%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.RECOVERY_PRICE">
-<code class="sig-name descname">RECOVERY_PRICE</code><a class="headerlink" href="#SortField.RECOVERY_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">RECOVERY_PRICE</code><a class="headerlink" href="#SortField.RECOVERY_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>收回价,仅牛熊证支持该字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.CHANGE_PRICE">
-<code class="sig-name descname">CHANGE_PRICE</code><a class="headerlink" href="#SortField.CHANGE_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE_PRICE</code><a class="headerlink" href="#SortField.CHANGE_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>换股价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.CHANGE">
-<code class="sig-name descname">CHANGE</code><a class="headerlink" href="#SortField.CHANGE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CHANGE</code><a class="headerlink" href="#SortField.CHANGE" title="Permalink to this definition">¶</a></dt>
 <dd><p>换股比率</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.STREET_RATE">
-<code class="sig-name descname">STREET_RATE</code><a class="headerlink" href="#SortField.STREET_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STREET_RATE</code><a class="headerlink" href="#SortField.STREET_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>街货比%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.STREET_VOL">
-<code class="sig-name descname">STREET_VOL</code><a class="headerlink" href="#SortField.STREET_VOL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STREET_VOL</code><a class="headerlink" href="#SortField.STREET_VOL" title="Permalink to this definition">¶</a></dt>
 <dd><p>街货量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.AMPLITUDE">
-<code class="sig-name descname">AMPLITUDE</code><a class="headerlink" href="#SortField.AMPLITUDE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AMPLITUDE</code><a class="headerlink" href="#SortField.AMPLITUDE" title="Permalink to this definition">¶</a></dt>
 <dd><p>振幅%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.WARRANT_NAME">
-<code class="sig-name descname">WARRANT_NAME</code><a class="headerlink" href="#SortField.WARRANT_NAME" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WARRANT_NAME</code><a class="headerlink" href="#SortField.WARRANT_NAME" title="Permalink to this definition">¶</a></dt>
 <dd><p>名称</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.ISSUER">
-<code class="sig-name descname">ISSUER</code><a class="headerlink" href="#SortField.ISSUER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ISSUER</code><a class="headerlink" href="#SortField.ISSUER" title="Permalink to this definition">¶</a></dt>
 <dd><p>发行人</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.LOT_SIZE">
-<code class="sig-name descname">LOT_SIZE</code><a class="headerlink" href="#SortField.LOT_SIZE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOT_SIZE</code><a class="headerlink" href="#SortField.LOT_SIZE" title="Permalink to this definition">¶</a></dt>
 <dd><p>每手</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.ISSUE_SIZE">
-<code class="sig-name descname">ISSUE_SIZE</code><a class="headerlink" href="#SortField.ISSUE_SIZE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ISSUE_SIZE</code><a class="headerlink" href="#SortField.ISSUE_SIZE" title="Permalink to this definition">¶</a></dt>
 <dd><p>发行量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.UPPER_STRIKE_PRICE">
-<code class="sig-name descname">UPPER_STRIKE_PRICE</code><a class="headerlink" href="#SortField.UPPER_STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">UPPER_STRIKE_PRICE</code><a class="headerlink" href="#SortField.UPPER_STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>上限价，仅界内证支持该字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.LOWER_STRIKE_PRICE">
-<code class="sig-name descname">LOWER_STRIKE_PRICE</code><a class="headerlink" href="#SortField.LOWER_STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LOWER_STRIKE_PRICE</code><a class="headerlink" href="#SortField.LOWER_STRIKE_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>下限价，仅界内证支持该字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.INLINE_PRICE_STATUS">
-<code class="sig-name descname">INLINE_PRICE_STATUS</code><a class="headerlink" href="#SortField.INLINE_PRICE_STATUS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INLINE_PRICE_STATUS</code><a class="headerlink" href="#SortField.INLINE_PRICE_STATUS" title="Permalink to this definition">¶</a></dt>
 <dd><p>界内界外，仅界内证支持该字段</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PRE_CUR_PRICE">
-<code class="sig-name descname">PRE_CUR_PRICE</code><a class="headerlink" href="#SortField.PRE_CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_CUR_PRICE</code><a class="headerlink" href="#SortField.PRE_CUR_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前最新价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.AFTER_CUR_PRICE">
-<code class="sig-name descname">AFTER_CUR_PRICE</code><a class="headerlink" href="#SortField.AFTER_CUR_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_CUR_PRICE</code><a class="headerlink" href="#SortField.AFTER_CUR_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后最新价</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PRE_PRICE_CHANGE_VAL">
-<code class="sig-name descname">PRE_PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.PRE_PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.PRE_PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前涨跌额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.AFTER_PRICE_CHANGE_VAL">
-<code class="sig-name descname">AFTER_PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.AFTER_PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_PRICE_CHANGE_VAL</code><a class="headerlink" href="#SortField.AFTER_PRICE_CHANGE_VAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后涨跌额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PRE_CHANGE_RATE">
-<code class="sig-name descname">PRE_CHANGE_RATE</code><a class="headerlink" href="#SortField.PRE_CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_CHANGE_RATE</code><a class="headerlink" href="#SortField.PRE_CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前涨跌幅%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.AFTER_CHANGE_RATE">
-<code class="sig-name descname">AFTER_CHANGE_RATE</code><a class="headerlink" href="#SortField.AFTER_CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_CHANGE_RATE</code><a class="headerlink" href="#SortField.AFTER_CHANGE_RATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后涨跌幅%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PRE_AMPLITUDE">
-<code class="sig-name descname">PRE_AMPLITUDE</code><a class="headerlink" href="#SortField.PRE_AMPLITUDE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_AMPLITUDE</code><a class="headerlink" href="#SortField.PRE_AMPLITUDE" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前振幅%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.AFTER_AMPLITUDE">
-<code class="sig-name descname">AFTER_AMPLITUDE</code><a class="headerlink" href="#SortField.AFTER_AMPLITUDE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_AMPLITUDE</code><a class="headerlink" href="#SortField.AFTER_AMPLITUDE" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后振幅%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.PRE_TURNOVER">
-<code class="sig-name descname">PRE_TURNOVER</code><a class="headerlink" href="#SortField.PRE_TURNOVER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PRE_TURNOVER</code><a class="headerlink" href="#SortField.PRE_TURNOVER" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘前成交额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.AFTER_TURNOVER">
-<code class="sig-name descname">AFTER_TURNOVER</code><a class="headerlink" href="#SortField.AFTER_TURNOVER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTER_TURNOVER</code><a class="headerlink" href="#SortField.AFTER_TURNOVER" title="Permalink to this definition">¶</a></dt>
 <dd><p>盘后成交额</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.LAST_SETTLE_PRICE">
-<code class="sig-name descname">LAST_SETTLE_PRICE</code><a class="headerlink" href="#SortField.LAST_SETTLE_PRICE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">LAST_SETTLE_PRICE</code><a class="headerlink" href="#SortField.LAST_SETTLE_PRICE" title="Permalink to this definition">¶</a></dt>
 <dd><p>期货昨结</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.POSITION">
-<code class="sig-name descname">POSITION</code><a class="headerlink" href="#SortField.POSITION" title="Permalink to this definition">¶</a></dt>
+<code class="descname">POSITION</code><a class="headerlink" href="#SortField.POSITION" title="Permalink to this definition">¶</a></dt>
 <dd><p>期货持仓量</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortField.POSITION_CHANGE">
-<code class="sig-name descname">POSITION_CHANGE</code><a class="headerlink" href="#SortField.POSITION_CHANGE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">POSITION_CHANGE</code><a class="headerlink" href="#SortField.POSITION_CHANGE" title="Permalink to this definition">¶</a></dt>
 <dd><p>期货日持仓</p>
 </dd></dl>
 
@@ -2734,40 +2742,40 @@
 <p>系统异步通知类型定义</p>
 <dl class="class">
 <dt id="SysNotifyType">
-<em class="property">class </em><code class="sig-name descname">SysNotifyType</code><a class="headerlink" href="#SysNotifyType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SysNotifyType</code><a class="headerlink" href="#SysNotifyType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SysNotifyType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#SysNotifyType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#SysNotifyType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SysNotifyType.GTW_EVENT">
-<code class="sig-name descname">GTW_EVENT</code><a class="headerlink" href="#SysNotifyType.GTW_EVENT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">GTW_EVENT</code><a class="headerlink" href="#SysNotifyType.GTW_EVENT" title="Permalink to this definition">¶</a></dt>
 <dd><p>网关事件</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SysNotifyType.PROGRAM_STATUS">
-<code class="sig-name descname">PROGRAM_STATUS</code><a class="headerlink" href="#SysNotifyType.PROGRAM_STATUS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PROGRAM_STATUS</code><a class="headerlink" href="#SysNotifyType.PROGRAM_STATUS" title="Permalink to this definition">¶</a></dt>
 <dd><p>程序状态变化</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SysNotifyType.CONN_STATUS">
-<code class="sig-name descname">CONN_STATUS</code><a class="headerlink" href="#SysNotifyType.CONN_STATUS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONN_STATUS</code><a class="headerlink" href="#SysNotifyType.CONN_STATUS" title="Permalink to this definition">¶</a></dt>
 <dd><p>与Server的连接状态变化</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SysNotifyType.QOT_RIGHT">
-<code class="sig-name descname">QOT_RIGHT</code><a class="headerlink" href="#SysNotifyType.QOT_RIGHT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">QOT_RIGHT</code><a class="headerlink" href="#SysNotifyType.QOT_RIGHT" title="Permalink to this definition">¶</a></dt>
 <dd><p>行情权限变化</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SysNotifyType.API_LEVEL">
-<code class="sig-name descname">API_LEVEL</code><a class="headerlink" href="#SysNotifyType.API_LEVEL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">API_LEVEL</code><a class="headerlink" href="#SysNotifyType.API_LEVEL" title="Permalink to this definition">¶</a></dt>
 <dd><p>API等级变化</p>
 </dd></dl>
 
@@ -2780,22 +2788,22 @@
 <p>条件选股的排序方向定义</p>
 <dl class="class">
 <dt id="SortDir">
-<em class="property">class </em><code class="sig-name descname">SortDir</code><a class="headerlink" href="#SortDir" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">SortDir</code><a class="headerlink" href="#SortDir" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="SortDir.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#SortDir.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#SortDir.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>不排序</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortDir.ASCEND">
-<code class="sig-name descname">ASCEND</code><a class="headerlink" href="#SortDir.ASCEND" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ASCEND</code><a class="headerlink" href="#SortDir.ASCEND" title="Permalink to this definition">¶</a></dt>
 <dd><p>升序</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="SortDir.DESCEND">
-<code class="sig-name descname">DESCEND</code><a class="headerlink" href="#SortDir.DESCEND" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DESCEND</code><a class="headerlink" href="#SortDir.DESCEND" title="Permalink to this definition">¶</a></dt>
 <dd><p>降序</p>
 </dd></dl>
 
@@ -2808,22 +2816,22 @@
 <p>交易账户类型定义</p>
 <dl class="class">
 <dt id="TrdAccType">
-<em class="property">class </em><code class="sig-name descname">TrdAccType</code><a class="headerlink" href="#TrdAccType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TrdAccType</code><a class="headerlink" href="#TrdAccType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TrdAccType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#TrdAccType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#TrdAccType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdAccType.CASH">
-<code class="sig-name descname">CASH</code><a class="headerlink" href="#TrdAccType.CASH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CASH</code><a class="headerlink" href="#TrdAccType.CASH" title="Permalink to this definition">¶</a></dt>
 <dd><p>现金账户</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdAccType.MARGIN">
-<code class="sig-name descname">MARGIN</code><a class="headerlink" href="#TrdAccType.MARGIN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MARGIN</code><a class="headerlink" href="#TrdAccType.MARGIN" title="Permalink to this definition">¶</a></dt>
 <dd><p>保证金账户</p>
 </dd></dl>
 
@@ -2836,22 +2844,22 @@
 <p>逐笔方向定义</p>
 <dl class="class">
 <dt id="TickerDirect">
-<em class="property">class </em><code class="sig-name descname">TickerDirect</code><a class="headerlink" href="#TickerDirect" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TickerDirect</code><a class="headerlink" href="#TickerDirect" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TickerDirect.BUY">
-<code class="sig-name descname">BUY</code><a class="headerlink" href="#TickerDirect.BUY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BUY</code><a class="headerlink" href="#TickerDirect.BUY" title="Permalink to this definition">¶</a></dt>
 <dd><p>买</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TickerDirect.SELL">
-<code class="sig-name descname">SELL</code><a class="headerlink" href="#TickerDirect.SELL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SELL</code><a class="headerlink" href="#TickerDirect.SELL" title="Permalink to this definition">¶</a></dt>
 <dd><p>卖</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TickerDirect.NEUTRAL">
-<code class="sig-name descname">NEUTRAL</code><a class="headerlink" href="#TickerDirect.NEUTRAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NEUTRAL</code><a class="headerlink" href="#TickerDirect.NEUTRAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>中性</p>
 </dd></dl>
 
@@ -2864,187 +2872,187 @@
 <p>逐笔类型定义</p>
 <dl class="class">
 <dt id="TickerType">
-<em class="property">class </em><code class="sig-name descname">TickerType</code><a class="headerlink" href="#TickerType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TickerType</code><a class="headerlink" href="#TickerType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TickerType.AUTO_MATCH">
-<code class="sig-name descname">AUTO_MATCH</code><a class="headerlink" href="#TickerType.AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
-<dd><p>自动对盘</p>
-</dd></dl>
+<code class="descname">AUTO_MATCH</code><a class="headerlink" href="#TickerType.AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>自动对盘</p>
 <dl class="attribute">
 <dt id="TickerType.LATE">
-<code class="sig-name descname">LATE</code><a class="headerlink" href="#TickerType.LATE" title="Permalink to this definition">¶</a></dt>
-<dd><p>开市前成交盘</p>
-</dd></dl>
+<code class="descname">LATE</code><a class="headerlink" href="#TickerType.LATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>开市前成交盘</p>
 <dl class="attribute">
 <dt id="TickerType.NON_AUTO_MATCH">
-<code class="sig-name descname">NON_AUTO_MATCH</code><a class="headerlink" href="#TickerType.NON_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
-<dd><p>非自动对盘</p>
-</dd></dl>
+<code class="descname">NON_AUTO_MATCH</code><a class="headerlink" href="#TickerType.NON_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>非自动对盘</p>
 <dl class="attribute">
 <dt id="TickerType.INTER_AUTO_MATCH">
-<code class="sig-name descname">INTER_AUTO_MATCH</code><a class="headerlink" href="#TickerType.INTER_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
-<dd><p>同一证券商自动对盘</p>
-</dd></dl>
+<code class="descname">INTER_AUTO_MATCH</code><a class="headerlink" href="#TickerType.INTER_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>同一证券商自动对盘</p>
 <dl class="attribute">
 <dt id="TickerType.INTER_NON_AUTO_MATCH">
-<code class="sig-name descname">INTER_NON_AUTO_MATCH</code><a class="headerlink" href="#TickerType.INTER_NON_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
-<dd><p>同一证券商非自动对盘</p>
-</dd></dl>
+<code class="descname">INTER_NON_AUTO_MATCH</code><a class="headerlink" href="#TickerType.INTER_NON_AUTO_MATCH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>同一证券商非自动对盘</p>
 <dl class="attribute">
 <dt id="TickerType.ODD_LOT">
-<code class="sig-name descname">ODD_LOT</code><a class="headerlink" href="#TickerType.ODD_LOT" title="Permalink to this definition">¶</a></dt>
-<dd><p>碎股交易</p>
-</dd></dl>
+<code class="descname">ODD_LOT</code><a class="headerlink" href="#TickerType.ODD_LOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>碎股交易</p>
 <dl class="attribute">
 <dt id="TickerType.AUCTION">
-<code class="sig-name descname">AUCTION</code><a class="headerlink" href="#TickerType.AUCTION" title="Permalink to this definition">¶</a></dt>
-<dd><p>竞价交易</p>
-</dd></dl>
+<code class="descname">AUCTION</code><a class="headerlink" href="#TickerType.AUCTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>竞价交易</p>
 <dl class="attribute">
 <dt id="TickerType.BULK">
-<code class="sig-name descname">BULK</code><a class="headerlink" href="#TickerType.BULK" title="Permalink to this definition">¶</a></dt>
-<dd><p>批量交易</p>
-</dd></dl>
+<code class="descname">BULK</code><a class="headerlink" href="#TickerType.BULK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>批量交易</p>
 <dl class="attribute">
 <dt id="TickerType.CRASH">
-<code class="sig-name descname">CRASH</code><a class="headerlink" href="#TickerType.CRASH" title="Permalink to this definition">¶</a></dt>
-<dd><p>现金交易</p>
-</dd></dl>
+<code class="descname">CRASH</code><a class="headerlink" href="#TickerType.CRASH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>现金交易</p>
 <dl class="attribute">
 <dt id="TickerType.CROSS_MARKET">
-<code class="sig-name descname">CROSS_MARKET</code><a class="headerlink" href="#TickerType.CROSS_MARKET" title="Permalink to this definition">¶</a></dt>
-<dd><p>跨市场交易</p>
-</dd></dl>
+<code class="descname">CROSS_MARKET</code><a class="headerlink" href="#TickerType.CROSS_MARKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>跨市场交易</p>
 <dl class="attribute">
 <dt id="TickerType.BULK_SOLD">
-<code class="sig-name descname">BULK_SOLD</code><a class="headerlink" href="#TickerType.BULK_SOLD" title="Permalink to this definition">¶</a></dt>
-<dd><p>批量卖出</p>
-</dd></dl>
+<code class="descname">BULK_SOLD</code><a class="headerlink" href="#TickerType.BULK_SOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>批量卖出</p>
 <dl class="attribute">
 <dt id="TickerType.FREE_ON_BOARD">
-<code class="sig-name descname">FREE_ON_BOARD</code><a class="headerlink" href="#TickerType.FREE_ON_BOARD" title="Permalink to this definition">¶</a></dt>
-<dd><p>离价交易</p>
-</dd></dl>
+<code class="descname">FREE_ON_BOARD</code><a class="headerlink" href="#TickerType.FREE_ON_BOARD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>离价交易</p>
 <dl class="attribute">
 <dt id="TickerType.RULE127_OR_155">
-<code class="sig-name descname">RULE127_OR_155</code><a class="headerlink" href="#TickerType.RULE127_OR_155" title="Permalink to this definition">¶</a></dt>
-<dd><p>第127条交易（纽交所规则）或第155条交易</p>
-</dd></dl>
+<code class="descname">RULE127_OR_155</code><a class="headerlink" href="#TickerType.RULE127_OR_155" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>第127条交易（纽交所规则）或第155条交易</p>
 <dl class="attribute">
 <dt id="TickerType.DELAY">
-<code class="sig-name descname">DELAY</code><a class="headerlink" href="#TickerType.DELAY" title="Permalink to this definition">¶</a></dt>
-<dd><p>延迟交易</p>
-</dd></dl>
+<code class="descname">DELAY</code><a class="headerlink" href="#TickerType.DELAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>延迟交易</p>
 <dl class="attribute">
 <dt id="TickerType.MARKET_CENTER_CLOSE_PRICE">
-<code class="sig-name descname">MARKET_CENTER_CLOSE_PRICE</code><a class="headerlink" href="#TickerType.MARKET_CENTER_CLOSE_PRICE" title="Permalink to this definition">¶</a></dt>
-<dd><p>中央收市价</p>
-</dd></dl>
+<code class="descname">MARKET_CENTER_CLOSE_PRICE</code><a class="headerlink" href="#TickerType.MARKET_CENTER_CLOSE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>中央收市价</p>
 <dl class="attribute">
 <dt id="TickerType.NEXT_DAY">
-<code class="sig-name descname">NEXT_DAY</code><a class="headerlink" href="#TickerType.NEXT_DAY" title="Permalink to this definition">¶</a></dt>
-<dd><p>隔日交易</p>
-</dd></dl>
+<code class="descname">NEXT_DAY</code><a class="headerlink" href="#TickerType.NEXT_DAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>隔日交易</p>
 <dl class="attribute">
 <dt id="TickerType.MARKET_CENTER_OPENING">
-<code class="sig-name descname">MARKET_CENTER_OPENING</code><a class="headerlink" href="#TickerType.MARKET_CENTER_OPENING" title="Permalink to this definition">¶</a></dt>
-<dd><p>中央开盘价交易</p>
-</dd></dl>
+<code class="descname">MARKET_CENTER_OPENING</code><a class="headerlink" href="#TickerType.MARKET_CENTER_OPENING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>中央开盘价交易</p>
 <dl class="attribute">
 <dt id="TickerType.PRIOR_REFERENCE_PRICE">
-<code class="sig-name descname">PRIOR_REFERENCE_PRICE</code><a class="headerlink" href="#TickerType.PRIOR_REFERENCE_PRICE" title="Permalink to this definition">¶</a></dt>
-<dd><p>前参考价</p>
-</dd></dl>
+<code class="descname">PRIOR_REFERENCE_PRICE</code><a class="headerlink" href="#TickerType.PRIOR_REFERENCE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>前参考价</p>
 <dl class="attribute">
 <dt id="TickerType.MARKET_CENTER_OPEN_PRICE">
-<code class="sig-name descname">MARKET_CENTER_OPEN_PRICE</code><a class="headerlink" href="#TickerType.MARKET_CENTER_OPEN_PRICE" title="Permalink to this definition">¶</a></dt>
-<dd><p>中央开盘价</p>
-</dd></dl>
+<code class="descname">MARKET_CENTER_OPEN_PRICE</code><a class="headerlink" href="#TickerType.MARKET_CENTER_OPEN_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>中央开盘价</p>
 <dl class="attribute">
 <dt id="TickerType.SELLER">
-<code class="sig-name descname">SELLER</code><a class="headerlink" href="#TickerType.SELLER" title="Permalink to this definition">¶</a></dt>
-<dd><p>卖方</p>
-</dd></dl>
+<code class="descname">SELLER</code><a class="headerlink" href="#TickerType.SELLER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>卖方</p>
 <dl class="attribute">
 <dt id="TickerType.T">
-<code class="sig-name descname">T</code><a class="headerlink" href="#TickerType.T" title="Permalink to this definition">¶</a></dt>
-<dd><p>T类交易(盘前和盘后交易)</p>
-</dd></dl>
+<code class="descname">T</code><a class="headerlink" href="#TickerType.T" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>T类交易(盘前和盘后交易)</p>
 <dl class="attribute">
 <dt id="TickerType.EXTENDED_TRADING_HOURS">
-<code class="sig-name descname">EXTENDED_TRADING_HOURS</code><a class="headerlink" href="#TickerType.EXTENDED_TRADING_HOURS" title="Permalink to this definition">¶</a></dt>
-<dd><p>延长交易时段</p>
-</dd></dl>
+<code class="descname">EXTENDED_TRADING_HOURS</code><a class="headerlink" href="#TickerType.EXTENDED_TRADING_HOURS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>延长交易时段</p>
 <dl class="attribute">
 <dt id="TickerType.CONTINGENT">
-<code class="sig-name descname">CONTINGENT</code><a class="headerlink" href="#TickerType.CONTINGENT" title="Permalink to this definition">¶</a></dt>
-<dd><p>合单交易</p>
-</dd></dl>
+<code class="descname">CONTINGENT</code><a class="headerlink" href="#TickerType.CONTINGENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>合单交易</p>
 <dl class="attribute">
 <dt id="TickerType.AVERAGE_PRICE">
-<code class="sig-name descname">AVERAGE_PRICE</code><a class="headerlink" href="#TickerType.AVERAGE_PRICE" title="Permalink to this definition">¶</a></dt>
-<dd><p>平均价成交</p>
-</dd></dl>
+<code class="descname">AVERAGE_PRICE</code><a class="headerlink" href="#TickerType.AVERAGE_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>平均价成交</p>
 <dl class="attribute">
 <dt id="TickerType.OTC_SOLD">
-<code class="sig-name descname">OTC_SOLD</code><a class="headerlink" href="#TickerType.OTC_SOLD" title="Permalink to this definition">¶</a></dt>
-<dd><p>场外售出</p>
-</dd></dl>
+<code class="descname">OTC_SOLD</code><a class="headerlink" href="#TickerType.OTC_SOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>场外售出</p>
 <dl class="attribute">
 <dt id="TickerType.ODD_LOT_CROSS_MARKET">
-<code class="sig-name descname">ODD_LOT_CROSS_MARKET</code><a class="headerlink" href="#TickerType.ODD_LOT_CROSS_MARKET" title="Permalink to this definition">¶</a></dt>
-<dd><p>碎股跨市场交易</p>
-</dd></dl>
+<code class="descname">ODD_LOT_CROSS_MARKET</code><a class="headerlink" href="#TickerType.ODD_LOT_CROSS_MARKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>碎股跨市场交易</p>
 <dl class="attribute">
 <dt id="TickerType.DERIVATIVELY_PRICED">
-<code class="sig-name descname">DERIVATIVELY_PRICED</code><a class="headerlink" href="#TickerType.DERIVATIVELY_PRICED" title="Permalink to this definition">¶</a></dt>
-<dd><p>衍生工具定价</p>
-</dd></dl>
+<code class="descname">DERIVATIVELY_PRICED</code><a class="headerlink" href="#TickerType.DERIVATIVELY_PRICED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>衍生工具定价</p>
 <dl class="attribute">
 <dt id="TickerType.REOPENINGP_RICED">
-<code class="sig-name descname">REOPENINGP_RICED</code><a class="headerlink" href="#TickerType.REOPENINGP_RICED" title="Permalink to this definition">¶</a></dt>
-<dd><p>再开盘定价</p>
-</dd></dl>
+<code class="descname">REOPENINGP_RICED</code><a class="headerlink" href="#TickerType.REOPENINGP_RICED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>再开盘定价</p>
 <dl class="attribute">
 <dt id="TickerType.CLOSING_PRICED">
-<code class="sig-name descname">CLOSING_PRICED</code><a class="headerlink" href="#TickerType.CLOSING_PRICED" title="Permalink to this definition">¶</a></dt>
-<dd><p>收盘定价</p>
-</dd></dl>
+<code class="descname">CLOSING_PRICED</code><a class="headerlink" href="#TickerType.CLOSING_PRICED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>收盘定价</p>
 <dl class="attribute">
 <dt id="TickerType.COMPREHENSIVE_DELAY_PRICE">
-<code class="sig-name descname">COMPREHENSIVE_DELAY_PRICE</code><a class="headerlink" href="#TickerType.COMPREHENSIVE_DELAY_PRICE" title="Permalink to this definition">¶</a></dt>
-<dd><p>综合延迟价格</p>
-</dd></dl>
+<code class="descname">COMPREHENSIVE_DELAY_PRICE</code><a class="headerlink" href="#TickerType.COMPREHENSIVE_DELAY_PRICE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
+<p>综合延迟价格</p>
 </dd></dl>
 
 </div>
@@ -3054,69 +3062,23 @@
 <p>交易时间类型定义</p>
 <dl class="class">
 <dt id="TradeDateType">
-<em class="property">class </em><code class="sig-name descname">TradeDateType</code><a class="headerlink" href="#TradeDateType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TradeDateType</code><a class="headerlink" href="#TradeDateType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TradeDateType.WHOLE">
-<code class="sig-name descname">WHOLE</code><a class="headerlink" href="#TradeDateType.WHOLE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WHOLE</code><a class="headerlink" href="#TradeDateType.WHOLE" title="Permalink to this definition">¶</a></dt>
 <dd><p>全天交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TradeDateType.MORNING">
-<code class="sig-name descname">MORNING</code><a class="headerlink" href="#TradeDateType.MORNING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">MORNING</code><a class="headerlink" href="#TradeDateType.MORNING" title="Permalink to this definition">¶</a></dt>
 <dd><p>上午交易，下午休市</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TradeDateType.AFTERNOON">
-<code class="sig-name descname">AFTERNOON</code><a class="headerlink" href="#TradeDateType.AFTERNOON" title="Permalink to this definition">¶</a></dt>
+<code class="descname">AFTERNOON</code><a class="headerlink" href="#TradeDateType.AFTERNOON" title="Permalink to this definition">¶</a></dt>
 <dd><p>下午交易，上午休市</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<hr class="docutils" />
-<div class="section" id="tradedatemarket">
-<h3>TradeDateMarket - 交易日市场类型<a class="headerlink" href="#tradedatemarket" title="Permalink to this headline">¶</a></h3>
-<p>交易日市场类型定义</p>
-<dl class="class">
-<dt id="TradeDateMarket">
-<em class="property">class </em><code class="sig-name descname">TradeDateMarket</code><a class="headerlink" href="#TradeDateMarket" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="TradeDateMarket.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#TradeDateMarket.NONE" title="Permalink to this definition">¶</a></dt>
-<dd><p>未知</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="TradeDateMarket.HK">
-<code class="sig-name descname">HK</code><a class="headerlink" href="#TradeDateMarket.HK" title="Permalink to this definition">¶</a></dt>
-<dd><p>港股市场</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="TradeDateMarket.US">
-<code class="sig-name descname">US</code><a class="headerlink" href="#TradeDateMarket.US" title="Permalink to this definition">¶</a></dt>
-<dd><p>美股市场</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="TradeDateMarket.CN">
-<code class="sig-name descname">CN</code><a class="headerlink" href="#TradeDateMarket.CN" title="Permalink to this definition">¶</a></dt>
-<dd><p>A股市场</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="TradeDateMarket.NT">
-<code class="sig-name descname">NT</code><a class="headerlink" href="#TradeDateMarket.NT" title="Permalink to this definition">¶</a></dt>
-<dd><p>深（沪）股通</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="TradeDateMarket.ST">
-<code class="sig-name descname">ST</code><a class="headerlink" href="#TradeDateMarket.ST" title="Permalink to this definition">¶</a></dt>
-<dd><p>港股通（深、沪）</p>
 </dd></dl>
 
 </dd></dl>
@@ -3128,16 +3090,16 @@
 <p>交易环境类型定义</p>
 <dl class="class">
 <dt id="TrdEnv">
-<em class="property">class </em><code class="sig-name descname">TrdEnv</code><a class="headerlink" href="#TrdEnv" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TrdEnv</code><a class="headerlink" href="#TrdEnv" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TrdEnv.REAL">
-<code class="sig-name descname">REAL</code><a class="headerlink" href="#TrdEnv.REAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">REAL</code><a class="headerlink" href="#TrdEnv.REAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>真实环境</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdEnv.SIMULATE">
-<code class="sig-name descname">SIMULATE</code><a class="headerlink" href="#TrdEnv.SIMULATE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SIMULATE</code><a class="headerlink" href="#TrdEnv.SIMULATE" title="Permalink to this definition">¶</a></dt>
 <dd><p>模拟环境</p>
 </dd></dl>
 
@@ -3150,40 +3112,40 @@
 <p>交易市场类型定义</p>
 <dl class="class">
 <dt id="TrdMarket">
-<em class="property">class </em><code class="sig-name descname">TrdMarket</code><a class="headerlink" href="#TrdMarket" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TrdMarket</code><a class="headerlink" href="#TrdMarket" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TrdMarket.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#TrdMarket.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#TrdMarket.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdMarket.HK">
-<code class="sig-name descname">HK</code><a class="headerlink" href="#TrdMarket.HK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HK</code><a class="headerlink" href="#TrdMarket.HK" title="Permalink to this definition">¶</a></dt>
 <dd><p>港股交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdMarket.US">
-<code class="sig-name descname">US</code><a class="headerlink" href="#TrdMarket.US" title="Permalink to this definition">¶</a></dt>
+<code class="descname">US</code><a class="headerlink" href="#TrdMarket.US" title="Permalink to this definition">¶</a></dt>
 <dd><p>美股交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdMarket.CN">
-<code class="sig-name descname">CN</code><a class="headerlink" href="#TrdMarket.CN" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CN</code><a class="headerlink" href="#TrdMarket.CN" title="Permalink to this definition">¶</a></dt>
 <dd><p>A股交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdMarket.HKCC">
-<code class="sig-name descname">HKCC</code><a class="headerlink" href="#TrdMarket.HKCC" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HKCC</code><a class="headerlink" href="#TrdMarket.HKCC" title="Permalink to this definition">¶</a></dt>
 <dd><p>香港的A股通交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdMarket.FUTURES">
-<code class="sig-name descname">FUTURES</code><a class="headerlink" href="#TrdMarket.FUTURES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">FUTURES</code><a class="headerlink" href="#TrdMarket.FUTURES" title="Permalink to this definition">¶</a></dt>
 <dd><p>期货市场</p>
 </dd></dl>
 
@@ -3196,34 +3158,34 @@
 <p>交易方向类型定义(客户端下单只传Buy或Sell即可，SELL_SHORT / BUY_BACK 服务器可能会传回)</p>
 <dl class="class">
 <dt id="TrdSide">
-<em class="property">class </em><code class="sig-name descname">TrdSide</code><a class="headerlink" href="#TrdSide" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">TrdSide</code><a class="headerlink" href="#TrdSide" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="TrdSide.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#TrdSide.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#TrdSide.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdSide.BUY">
-<code class="sig-name descname">BUY</code><a class="headerlink" href="#TrdSide.BUY" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BUY</code><a class="headerlink" href="#TrdSide.BUY" title="Permalink to this definition">¶</a></dt>
 <dd><p>买</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdSide.SELL">
-<code class="sig-name descname">SELL</code><a class="headerlink" href="#TrdSide.SELL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SELL</code><a class="headerlink" href="#TrdSide.SELL" title="Permalink to this definition">¶</a></dt>
 <dd><p>卖</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdSide.SELL_SHORT">
-<code class="sig-name descname">SELL_SHORT</code><a class="headerlink" href="#TrdSide.SELL_SHORT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SELL_SHORT</code><a class="headerlink" href="#TrdSide.SELL_SHORT" title="Permalink to this definition">¶</a></dt>
 <dd><p>卖空</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="TrdSide.BUY_BACK">
-<code class="sig-name descname">BUY_BACK</code><a class="headerlink" href="#TrdSide.BUY_BACK" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BUY_BACK</code><a class="headerlink" href="#TrdSide.BUY_BACK" title="Permalink to this definition">¶</a></dt>
 <dd><p>买回</p>
 </dd></dl>
 
@@ -3236,34 +3198,34 @@
 <p>窝轮状态定义</p>
 <dl class="class">
 <dt id="WarrantStatus">
-<em class="property">class </em><code class="sig-name descname">WarrantStatus</code><a class="headerlink" href="#WarrantStatus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">WarrantStatus</code><a class="headerlink" href="#WarrantStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="WarrantStatus.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#WarrantStatus.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#WarrantStatus.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WarrantStatus.NORMAL">
-<code class="sig-name descname">NORMAL</code><a class="headerlink" href="#WarrantStatus.NORMAL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NORMAL</code><a class="headerlink" href="#WarrantStatus.NORMAL" title="Permalink to this definition">¶</a></dt>
 <dd><p>正常状态</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WarrantStatus.SUSPEND">
-<code class="sig-name descname">SUSPEND</code><a class="headerlink" href="#WarrantStatus.SUSPEND" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SUSPEND</code><a class="headerlink" href="#WarrantStatus.SUSPEND" title="Permalink to this definition">¶</a></dt>
 <dd><p>停牌</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WarrantStatus.STOP_TRADE">
-<code class="sig-name descname">STOP_TRADE</code><a class="headerlink" href="#WarrantStatus.STOP_TRADE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">STOP_TRADE</code><a class="headerlink" href="#WarrantStatus.STOP_TRADE" title="Permalink to this definition">¶</a></dt>
 <dd><p>终止交易</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WarrantStatus.PENDING_LISTING">
-<code class="sig-name descname">PENDING_LISTING</code><a class="headerlink" href="#WarrantStatus.PENDING_LISTING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PENDING_LISTING</code><a class="headerlink" href="#WarrantStatus.PENDING_LISTING" title="Permalink to this definition">¶</a></dt>
 <dd><p>等待上市</p>
 </dd></dl>
 
@@ -3276,40 +3238,40 @@
 <p>港股窝轮类型定义</p>
 <dl class="class">
 <dt id="WrtType">
-<em class="property">class </em><code class="sig-name descname">WrtType</code><a class="headerlink" href="#WrtType" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">WrtType</code><a class="headerlink" href="#WrtType" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="WrtType.CALL">
-<code class="sig-name descname">CALL</code><a class="headerlink" href="#WrtType.CALL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CALL</code><a class="headerlink" href="#WrtType.CALL" title="Permalink to this definition">¶</a></dt>
 <dd><p>认购</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WrtType.PUT">
-<code class="sig-name descname">PUT</code><a class="headerlink" href="#WrtType.PUT" title="Permalink to this definition">¶</a></dt>
+<code class="descname">PUT</code><a class="headerlink" href="#WrtType.PUT" title="Permalink to this definition">¶</a></dt>
 <dd><p>认沽</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WrtType.BULL">
-<code class="sig-name descname">BULL</code><a class="headerlink" href="#WrtType.BULL" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BULL</code><a class="headerlink" href="#WrtType.BULL" title="Permalink to this definition">¶</a></dt>
 <dd><p>牛证</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WrtType.BEAR">
-<code class="sig-name descname">BEAR</code><a class="headerlink" href="#WrtType.BEAR" title="Permalink to this definition">¶</a></dt>
+<code class="descname">BEAR</code><a class="headerlink" href="#WrtType.BEAR" title="Permalink to this definition">¶</a></dt>
 <dd><p>熊证</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WrtType.INLINE">
-<code class="sig-name descname">INLINE</code><a class="headerlink" href="#WrtType.INLINE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">INLINE</code><a class="headerlink" href="#WrtType.INLINE" title="Permalink to this definition">¶</a></dt>
 <dd><p>界内证</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="WrtType.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#WrtType.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#WrtType.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
@@ -3322,28 +3284,28 @@
 <p>交易相关的货币类型</p>
 <dl class="class">
 <dt id="Currency">
-<em class="property">class </em><code class="sig-name descname">Currency</code><a class="headerlink" href="#Currency" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">Currency</code><a class="headerlink" href="#Currency" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="Currency.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#Currency.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#Currency.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Currency.HKD">
-<code class="sig-name descname">HKD</code><a class="headerlink" href="#Currency.HKD" title="Permalink to this definition">¶</a></dt>
+<code class="descname">HKD</code><a class="headerlink" href="#Currency.HKD" title="Permalink to this definition">¶</a></dt>
 <dd><p>港币</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Currency.USD">
-<code class="sig-name descname">USD</code><a class="headerlink" href="#Currency.USD" title="Permalink to this definition">¶</a></dt>
+<code class="descname">USD</code><a class="headerlink" href="#Currency.USD" title="Permalink to this definition">¶</a></dt>
 <dd><p>美元</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="Currency.CNH">
-<code class="sig-name descname">CNH</code><a class="headerlink" href="#Currency.CNH" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CNH</code><a class="headerlink" href="#Currency.CNH" title="Permalink to this definition">¶</a></dt>
 <dd><p>离岸人民币</p>
 </dd></dl>
 
@@ -3356,40 +3318,40 @@
 <p>账户风控状态</p>
 <dl class="class">
 <dt id="CltRiskLevel">
-<em class="property">class </em><code class="sig-name descname">CltRiskLevel</code><a class="headerlink" href="#CltRiskLevel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">CltRiskLevel</code><a class="headerlink" href="#CltRiskLevel" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="attribute">
 <dt id="CltRiskLevel.NONE">
-<code class="sig-name descname">NONE</code><a class="headerlink" href="#CltRiskLevel.NONE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">NONE</code><a class="headerlink" href="#CltRiskLevel.NONE" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CltRiskLevel.SAFE">
-<code class="sig-name descname">SAFE</code><a class="headerlink" href="#CltRiskLevel.SAFE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">SAFE</code><a class="headerlink" href="#CltRiskLevel.SAFE" title="Permalink to this definition">¶</a></dt>
 <dd><p>安全</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CltRiskLevel.WARNING">
-<code class="sig-name descname">WARNING</code><a class="headerlink" href="#CltRiskLevel.WARNING" title="Permalink to this definition">¶</a></dt>
+<code class="descname">WARNING</code><a class="headerlink" href="#CltRiskLevel.WARNING" title="Permalink to this definition">¶</a></dt>
 <dd><p>预警</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CltRiskLevel.DANGER">
-<code class="sig-name descname">DANGER</code><a class="headerlink" href="#CltRiskLevel.DANGER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">DANGER</code><a class="headerlink" href="#CltRiskLevel.DANGER" title="Permalink to this definition">¶</a></dt>
 <dd><p>危险</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CltRiskLevel.ABSOLUTE_SAFE">
-<code class="sig-name descname">ABSOLUTE_SAFE</code><a class="headerlink" href="#CltRiskLevel.ABSOLUTE_SAFE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ABSOLUTE_SAFE</code><a class="headerlink" href="#CltRiskLevel.ABSOLUTE_SAFE" title="Permalink to this definition">¶</a></dt>
 <dd><p>绝对安全</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CltRiskLevel.OPT_DANGER">
-<code class="sig-name descname">OPT_DANGER</code><a class="headerlink" href="#CltRiskLevel.OPT_DANGER" title="Permalink to this definition">¶</a></dt>
+<code class="descname">OPT_DANGER</code><a class="headerlink" href="#CltRiskLevel.OPT_DANGER" title="Permalink to this definition">¶</a></dt>
 <dd><p>危险，期权相关</p>
 </dd></dl>
 
@@ -3443,17 +3405,16 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

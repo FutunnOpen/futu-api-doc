@@ -1,4 +1,4 @@
-基础API
+﻿基础API
 ========
  .. _ProtoFMT : #id2
  
@@ -172,39 +172,6 @@ DarkStatus - 暗盘状态
   
 --------------------------------------
 
-FinancialQuarter - 财务指标周期
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-财务指标周期定义
-
-..  py:class:: FinancialQuarter
-
- ..  py:attribute:: NONE
- 
-  无
-  
- ..  py:attribute:: ANNUAL
- 
-  年报
-  
- ..  py:attribute:: FIRST_QUARTER
- 
-  Q1一季报，不支持美股市场
-  
- ..  py:attribute:: INTERIM
- 
-  Q6中期报，不支持美股市场
-  
- ..  py:attribute:: THIRD_QUARTER
- 
-  Q9三季报，不支持美股市场
-    
- ..  py:attribute:: MOST_RECENT_QUARTER
- 
-  最近季报，仅支持美股市场
-  
---------------------------------------
-
-
 GtwEventType - 网关异步通知类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -274,10 +241,63 @@ GtwEventType - 网关异步通知类型
   
 --------------------------------------  
 
-IpoPeriod - 窝轮上市日
+ProgramStatusType - 程序运行状态通知类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+程序运行状态通知类型定义
+
+..  py:class:: GtwEventType
+
+ ..  py:attribute:: NONE
+
+  未知类型
+
+ ..  py:attribute:: LOADED
+
+  已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回
+
+ ..  py:attribute:: LOGING
+
+  登录中
+
+ ..  py:attribute:: NEED_PIC_VERIFY_CODE
+
+  需要图形验证码
+
+ ..  py:attribute:: NEED_PHONE_VERIFY_CODE
+
+  需要手机验证码
+
+ ..  py:attribute:: LOGIN_FAILED
+
+  登录失败,详细原因在描述返回
+
+ ..  py:attribute:: FORCE_UPDATE
+
+  客户端版本过低
+
+ ..  py:attribute:: NESSARY_DATA_PREPARING
+
+  正在拉取类似免责声明等一些必要信息
+
+ ..  py:attribute:: NESSARY_DATA_MISSING
+
+  缺少必要信息
+
+ ..  py:attribute:: UN_AGREE_DISCLAIMER
+
+  未同意免责声明
+
+ ..  py:attribute:: READY
+
+  可以接收业务协议收发,正常可用状态
+
+--------------------------------------  
+
+IpoPeriod - 涡轮上市日
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-窝轮上市日定义
+涡轮上市日定义
 
 ..  py:class:: IpoPeriod
 
@@ -408,9 +428,6 @@ Issuer - 发行人过滤列表
 
   比联
 
- ..  py:attribute:: MS
-
-  摩利
 --------------------------------------
 
 KLDataStatus - k线数据状态
@@ -571,35 +588,10 @@ k线类型定义
 
 --------------------------------------
 
-ModifyUserSecurityOp - 自选股操作类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-自选股操作类型定义
-
-..  py:class:: ModifyUserSecurityOp
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: ADD
-
-  新增
-
- ..  py:attribute:: DEL
-
-  删除自选
-  
- ..  py:attribute:: MOVE_OUT
-
-  移出分组
-
---------------------------------------
-
 Market - 行情市场
 ~~~~~~~~~~~~~~~~~
 
-标识不同的行情市场，股票名称的前缀复用该字符串,如 **'HK.00700'**, **'US.AAPL'**
+标识不同的行情市场，股票名称的前缀复用该字符串,如 **'HK.00700'**, **'HK_FUTURE.999010'**
 
 ..  py:class:: Market
 
@@ -781,52 +773,6 @@ OptionType - 期权类型
   
 --------------------------------------
 
-IndexOptionType - 指数期权类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-指数期权类型定义
-
-..  py:class:: IndexOptionType
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: NORMAL 
- 
-  正常
-  
- ..  py:attribute:: SMALL 
- 
-  小型
-  
---------------------------------------
-
-OptionAreaType - 期权地区类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-期权地区类型定义
-
-..  py:class:: OptionAreaType
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: AMERICAN
- 
-  美式
-  
- ..  py:attribute:: EUROPEAN
- 
-  欧式
-  
- ..  py:attribute:: BERMUDA
- 
-  百慕大
-  
---------------------------------------
-
 OrderType - 订单类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -840,7 +786,7 @@ OrderType - 订单类型
   
  ..  py:attribute:: NORMAL
   
-  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单)。目前港股期权只能指定此订单类型。
+  普通订单(港股的增强限价单、A股限价委托、美股的限价单)
   
  ..  py:attribute:: MARKET
  
@@ -852,19 +798,17 @@ OrderType - 订单类型
   
  ..  py:attribute:: AUCTION
  
-  港股竞价单，港股期货的竞价市价单
+  港股竞价单
   
  ..  py:attribute:: AUCTION_LIMIT
  
-  港股竞价限价单。不支持期货。
+  港股竞价限价单
   
  ..  py:attribute:: SPECIAL_LIMIT
  
-  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)。不支持期货。
+  港股特别限价(即市价IOC, 订单到达交易所后，或全部成交， 或部分成交再撤单， 或下单失败)
   
- .. py:attribute:: SPECIAL_LIMIT_ALL
 
-  港股特别限价(要么全部成交，否则下单失败)。不支持期货。
 --------------------------------------
 
 OrderStatus - 订单状态定义
@@ -936,81 +880,6 @@ OrderStatus - 订单状态定义
   
 --------------------------------------
 
-
-DealStatus - 成交状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-成交状态
-
-..  py:class:: DealStatus
-
- ..  py:attribute:: OK
-
-   正常
-
- ..  py:attribute:: CANCELLED
-
-   被取消
-
- ..  py:attribute:: CHANGED
-
-  被更改
-
---------------------------------------
-
-ProgramStatusType - 程序运行状态通知类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-程序运行状态通知类型定义
-
-..  py:class:: GtwEventType
-
- ..  py:attribute:: NONE
-
-  未知类型
-
- ..  py:attribute:: LOADED
-
-  已完成类似加载配置,启动服务器等操作,服务器启动之前的状态无需返回
-
- ..  py:attribute:: LOGING
-
-  登录中
-
- ..  py:attribute:: NEED_PIC_VERIFY_CODE
-
-  需要图形验证码
-
- ..  py:attribute:: NEED_PHONE_VERIFY_CODE
-
-  需要手机验证码
-
- ..  py:attribute:: LOGIN_FAILED
-
-  登录失败,详细原因在描述返回
-
- ..  py:attribute:: FORCE_UPDATE
-
-  客户端版本过低
-
- ..  py:attribute:: NESSARY_DATA_PREPARING
-
-  正在拉取类似免责声明等一些必要信息
-
- ..  py:attribute:: NESSARY_DATA_MISSING
-
-  缺少必要信息
-
- ..  py:attribute:: UN_AGREE_DISCLAIMER
-
-  未同意免责声明
-
- ..  py:attribute:: READY
-
-  可以接收业务协议收发,正常可用状态
-
---------------------------------------  
-
 Plate - 板块集合分类
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1057,7 +926,7 @@ PositionSide - 持仓方向类型
   
 --------------------------------------
 
-PriceType - 窝轮价(界)内外
+PriceType - 涡轮价内价外
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 上市日
@@ -1070,11 +939,11 @@ PriceType - 窝轮价(界)内外
 
  ..  py:attribute:: Outside
 
-  价外,界内证表示界外
+  价外
 
  ..  py:attribute:: WithIn
 
-  价内,界内证表示界内
+  价内
 
 --------------------------------------
 
@@ -1148,7 +1017,7 @@ SecurityType - 证券类型
   
  ..  py:attribute:: WARRANT
  
-  港股窝轮牛熊界内证
+  港股涡轮牛熊证
   
  ..  py:attribute:: BOND
  
@@ -1164,117 +1033,20 @@ SecurityType - 证券类型
   
 --------------------------------------
 
-SecurityStatus - 股票状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-股票状态定义
-
-..  py:class:: SecurityStatus
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: NORMAL
- 
-  正常状态
-  
- ..  py:attribute:: PURCHASING 
- 
-   申购中
-
- ..  py:attribute:: SUBSCRIBING 
- 
-   认购中
-  
- ..  py:attribute:: BEFORE_DARK_TRADE_OPEING 
- 
-   暗盘开盘前
-   
- ..  py:attribute:: DARK_TRADING 
- 
-   暗盘交易中
-   
- ..  py:attribute:: DARK_TRAD_END 
- 
-   暗盘已收盘
-   
- ..  py:attribute:: TO_BE_OPEN 
- 
-   待开盘
-   
- ..  py:attribute:: SUSPENDED 
- 
-   停牌
-   
- ..  py:attribute:: CALLED  
- 
-   已收回
-   
- ..  py:attribute:: EXPIRED_LAST_TRADING_DATE 
- 
-   已过最后交易日
-   
- ..  py:attribute:: EXPIRED 
- 
-   已过期
-   
- ..  py:attribute:: DELISTED 
- 
-   已退市
-   
- ..  py:attribute:: CHANGE_TO_TEMPORARY_CODE 
- 
-   公司行动中，交易关闭，转至临时代码交易
-   
- ..  py:attribute:: TEMPORARY_CODE_TRADE_END 
- 
-   临时代码交易结束，交易关闭
-   
- ..  py:attribute:: CHANGED_PLATE_TRADE_END 
- 
-   已转板，旧代码交易关闭
-   
- ..  py:attribute:: CHANGED_CODE_TRAD_END 
- 
-   已换代码，旧代码交易关闭
-   
- ..  py:attribute:: RECOVERABLE_CIRCUIT_BREAKER 
- 
-   可恢复性熔断
-   
- ..  py:attribute:: UNRECOVERABLE_CIRCUIT_BREAKER 
- 
-   不可恢复性熔断
-   
- ..  py:attribute:: AFTER_COMBINATION 
- 
-   盘后撮合
-   
- ..  py:attribute:: AFTER_TRANSACTION 
- 
-   盘后交易
-   
---------------------------------------
-
 SecurityReferenceType - 股票关联数据类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 股票关联数据类型
 
-..  py:class:: SecurityReferenceType
+ ..  py:class:: SecurityReferenceType
  
- ..  py:attribute:: NONE
+  ..  py:attribute:: NONE
   
-  未知
+   未知
    
- ..  py:attribute:: WARRANT
+  ..  py:attribute:: WARRANT
   
-  相关窝轮
-   
- ..  py:attribute:: FUTURE
-  
-  期货主连相关合约
+   相关窝轮
 
 --------------------------------------
 
@@ -1372,166 +1144,351 @@ SubType - 实时数据定阅类型
 
 --------------------------------------
 
-StockField - 条件选股筛选条件字段(SimpleFilter)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积或财务筛选。
+SysNotifyType - 系统异步通知类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:class:: StockField
+系统异步通知类型定义
+
+..  py:class:: SysNotifyType
 
  ..  py:attribute:: NONE
 
   未知
 
- ..  py:attribute:: STOCK_CODE
+ ..  py:attribute:: GTW_EVENT
 
-  股票代码
+  网关事件
 
- ..  py:attribute:: STOCK_NAME
-
-  股票名称
-
- ..  py:attribute:: CUR_PRICE
-
-  最新价
-
- ..  py:attribute:: CUR_PRICE_TO_HIGHEST52_WEEKS_RATIO
-
-  (现价 - 52周最高)/52周最高
-
- ..  py:attribute:: CUR_PRICE_TO_LOWEST52_WEEKS_RATIO
-
-  (现价 - 52周最低)/52周最低
-
- ..  py:attribute:: HIGH_PRICE_TO_HIGHEST52_WEEKS_RATIO
-
-  (今日最高 - 52周最高)/52周最高
-
- ..  py:attribute:: LOW_PRICE_TO_LOWEST52_WEEKS_RATIO
-
-  (今日最低 - 52周最低)/52周最低
-
- ..  py:attribute:: VOLUME_RATIO
-
-  量比
-
- ..  py:attribute:: BID_ASK_RATIO
-
-  委比
-
- ..  py:attribute:: LOT_PRICE
-
-  每手价格
-
- ..  py:attribute:: MARKET_VAL 
-
-  市值
-
- ..  py:attribute:: PE_ANNUAL
-
-  市盈率 (静态)
-
- ..  py:attribute:: PE_TTM
-
-  市盈率TTM
-
- ..  py:attribute:: PB_RATE
-
-  市净率
+ ..  py:attribute:: PROGRAM_STATUS
   
- ..  py:attribute:: CHANGE_RATE_5MIN
+  程序状态变化
 
-  五分钟价格涨跌幅
+ ..  py:attribute:: CONN_STATUS
 
- ..  py:attribute:: CHANGE_RATE_BEGIN_YEAR
+  与Server的连接状态变化
 
-  年初至今价格涨跌幅
+ ..  py:attribute:: QOT_RIGHT
 
---------------------------------------------------------------------------------
+  行情权限变化
 
-StockField - 条件选股筛选条件字段(AccumulateFilter)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ..  py:attribute:: API_LEVEL
 
-条件选股的筛选条件累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单或财务筛选。
+  API等级变化
 
-..  py:class:: StockField
+--------------------------------------
 
- ..  py:attribute:: CHANGE_RATE
-
-  涨跌幅
-
- ..  py:attribute:: AMPLITUDE
-
-  振幅
-
- ..  py:attribute:: VOLUME
-
-  日均成交量
-
- ..  py:attribute:: TURNOVER
-
-  日均成交额
-
- ..  py:attribute:: TURNOVER_RATE
-
-  换手率
-
-----------------------------------------------------------------------------------------------
-
-StockField - 条件选股筛选条件字段(FinancialFilter)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-条件选股的筛选条件财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单或累积筛选。
-
-财务筛选字段的使用说明：
-
-1. 港股和A股：使用累计季报数据；
-
-2. 美股：使用单季报数据；
-
-3. 净利润增长率及营收增长率：均为同比数据（本期与去年同期作对比）。
-
-
-..  py:class:: StockField
-
- ..  py:attribute:: NET_PROFIT
-
-  净利润
-
- ..  py:attribute:: NET_PROFIX_GROWTH
-
-  净利润增长率
-
- ..  py:attribute:: SUM_OF_BUSINESS
-
-  营业收入
-
- ..  py:attribute:: SUM_OF_BUSINESS_GROWTH
-
-  营业同比增长率
-
- ..  py:attribute:: NET_PROFIT_RATE
-
-  净利率
-
- ..  py:attribute:: GROSS_PROFIT_RATE
-
-  毛利率
-
- ..  py:attribute:: DEBT_ASSET_RATE
-
-  资产负债率
-
- ..  py:attribute:: RETURN_ON_EQUITY_RATE
-
-  净资产收益率
-
---------------------------------------------------------------------------------
-
-SortField - 窝轮排序
+TickerDirect - 逐笔方向
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-窝轮排序定义
+逐笔方向定义
+
+..  py:class:: TickerDirect
+
+ ..  py:attribute:: BUY
+ 
+  买
+  
+ ..  py:attribute:: SELL
+ 
+  卖
+  
+ ..  py:attribute:: NEUTRAL
+ 
+  中性
+  
+  
+--------------------------------------
+
+TickerType - 逐笔类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+逐笔类型定义
+
+..  py:class:: TickerType
+
+	..  py:attribute:: AUTO_MATCH
+
+	自动对盘
+
+	..  py:attribute:: LATE
+
+	开市前成交盘
+
+	..  py:attribute:: NON_AUTO_MATCH
+
+	非自动对盘
+
+	..  py:attribute:: INTER_AUTO_MATCH
+
+	同一证券商自动对盘
+
+	..  py:attribute:: INTER_NON_AUTO_MATCH
+
+	同一证券商非自动对盘
+
+	..  py:attribute:: ODD_LOT
+
+	碎股交易
+
+	..  py:attribute:: AUCTION
+
+	竞价交易
+
+	..  py:attribute:: BULK
+
+	批量交易
+
+	..  py:attribute:: CRASH
+
+	现金交易
+
+	..  py:attribute:: CROSS_MARKET
+
+	跨市场交易
+
+	..  py:attribute:: BULK_SOLD
+
+	批量卖出
+
+	..  py:attribute:: FREE_ON_BOARD
+
+	离价交易
+
+	..  py:attribute:: RULE127_OR_155
+
+	第127条交易（纽交所规则）或第155条交易
+
+	..  py:attribute:: DELAY
+
+	延迟交易
+
+	..  py:attribute:: MARKET_CENTER_CLOSE_PRICE
+
+	中央收市价
+
+	..  py:attribute:: NEXT_DAY
+
+	隔日交易
+
+	..  py:attribute:: MARKET_CENTER_OPENING
+
+	中央开盘价交易
+
+	..  py:attribute:: PRIOR_REFERENCE_PRICE
+
+	前参考价
+
+	..  py:attribute:: MARKET_CENTER_OPEN_PRICE
+
+	中央开盘价
+
+	..  py:attribute:: SELLER
+
+	卖方
+
+	..  py:attribute:: T
+
+	T类交易(盘前和盘后交易)
+
+	..  py:attribute:: EXTENDED_TRADING_HOURS
+
+	延长交易时段
+
+	..  py:attribute:: CONTINGENT
+
+	合单交易
+
+	..  py:attribute:: AVERAGE_PRICE
+
+	平均价成交
+
+	..  py:attribute:: OTC_SOLD
+
+	场外售出
+
+	..  py:attribute:: ODD_LOT_CROSS_MARKET
+
+	碎股跨市场交易
+
+	..  py:attribute:: DERIVATIVELY_PRICED
+
+	衍生工具定价
+
+	..  py:attribute:: REOPENINGP_RICED
+
+	再开盘定价
+
+	..  py:attribute:: CLOSING_PRICED
+
+	收盘定价
+
+	..  py:attribute:: COMPREHENSIVE_DELAY_PRICE
+
+	综合延迟价格
+  
+--------------------------------------
+
+TradeDateType - 交易时间类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易时间类型定义
+
+..  py:class:: TradeDateType
+
+ ..  py:attribute:: WHOLE
+
+  全天交易
+
+ ..  py:attribute:: MORNING
+
+  上午交易，下午休市
+
+ ..  py:attribute:: AFTERNOON
+
+  下午交易，上午休市
+  
+--------------------------------------
+
+TrdEnv - 交易环境类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易环境类型定义
+
+..  py:class:: TrdEnv
+
+ ..  py:attribute:: REAL
+ 
+  真实环境
+  
+ ..  py:attribute:: SIMULATE
+ 
+  模拟环境
+
+--------------------------------------
+
+TrdMarket - 交易市场类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易市场类型定义
+
+..  py:class:: TrdMarket
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: HK
+ 
+  港股交易
+  
+ ..  py:attribute:: US
+
+  美股交易
+  
+ ..  py:attribute:: CN
+
+  A股交易
+  
+ ..  py:attribute:: HKCC
+
+  香港的A股通交易  
+ 
+--------------------------------------
+
+TrdSide - 交易方向类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易方向类型定义(客户端下单只传Buy或Sell即可，SELL_SHORT / BUY_BACK 服务器可能会传回)
+
+..  py:class:: TrdSide
+
+ ..  py:attribute:: NONE
+ 
+  未知
+  
+ ..  py:attribute:: BUY
+  
+  买
+  
+ ..  py:attribute:: SELL
+ 
+  卖
+  
+ ..  py:attribute:: SELL_SHORT
+ 
+  卖空
+  
+ ..  py:attribute:: BUY_BACK
+ 
+  买回
+  
+--------------------------------------
+
+WarrantStatus - 涡轮状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+涡轮状态定义
+
+..  py:class:: WarrantStatus
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: NORMAL
+
+  正常状态
+
+ ..  py:attribute:: SUSPEND
+
+  停牌
+
+ ..  py:attribute:: STOP_TRADE
+
+  终止交易
+
+ ..  py:attribute:: PENDING_LISTING
+
+  等待上市
+
+--------------------------------------
+
+
+WrtType - 港股窝轮类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+港股窝轮类型定义
+
+..  py:class:: WrtType
+
+ ..  py:attribute:: CALL
+
+  认购
+
+ ..  py:attribute:: PUT
+
+  认沽
+
+ ..  py:attribute:: BULL
+
+  牛证
+
+ ..  py:attribute:: BEAR
+
+  熊证
+
+ ..  py:attribute:: NONE
+
+  未知
+
+--------------------------------------
+
+
+SortField - 涡轮排序
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+涡轮排序定义
 
 ..  py:class:: SortField
 
@@ -1675,549 +1632,27 @@ SortField - 窝轮排序
 
   发行量
 
- ..  py:attribute:: UPPER_STRIKE_PRICE
-
-  上限价，仅界内证支持该字段
-
- ..  py:attribute:: LOWER_STRIKE_PRICE
-
-  下限价，仅界内证支持该字段
-  
- ..  py:attribute:: INLINE_PRICE_STATUS
-
-  界内界外，仅界内证支持该字段
-
- ..  py:attribute:: PRE_CUR_PRICE
-
-  盘前最新价
-
- ..  py:attribute:: AFTER_CUR_PRICE
-
-  盘后最新价
-
- ..  py:attribute:: PRE_PRICE_CHANGE_VAL
-
-  盘前涨跌额
-
- ..  py:attribute:: AFTER_PRICE_CHANGE_VAL
-
-  盘后涨跌额
-
- ..  py:attribute:: PRE_CHANGE_RATE
-
-  盘前涨跌幅%
-
- ..  py:attribute:: AFTER_CHANGE_RATE
-
-  盘后涨跌幅%
-
- ..  py:attribute:: PRE_AMPLITUDE
-
-  盘前振幅%
-  
- ..  py:attribute:: AFTER_AMPLITUDE
-
-  盘后振幅%
-
- ..  py:attribute:: PRE_TURNOVER
-
-  盘前成交额
-  
- ..  py:attribute:: AFTER_TURNOVER
-
-  盘后成交额
-  
- ..  py:attribute:: LAST_SETTLE_PRICE
-
-  期货昨结
-  
- ..  py:attribute:: POSITION
-
-  期货持仓量
-  
- ..  py:attribute:: POSITION_CHANGE
-
-  期货日持仓
 
 --------------------------------------
 
-SysNotifyType - 系统异步通知类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-系统异步通知类型定义
-
-..  py:class:: SysNotifyType
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: GTW_EVENT
-
-  网关事件
-
- ..  py:attribute:: PROGRAM_STATUS
-  
-  程序状态变化
-
- ..  py:attribute:: CONN_STATUS
-
-  与Server的连接状态变化
-
- ..  py:attribute:: QOT_RIGHT
-
-  行情权限变化
-
- ..  py:attribute:: API_LEVEL
-
-  API等级变化
-
---------------------------------------
-
-SortDir - 条件选股的排序方向
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-条件选股的排序方向定义
-
-..  py:class:: SortDir
-
- ..  py:attribute:: NONE
-
-  不排序
-
- ..  py:attribute:: ASCEND
-
-  升序
-
- ..  py:attribute:: DESCEND
-
-  降序
-
---------------------------------------------------------------------------------
-
-TrdAccType - 交易账户类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-
-交易账户类型定义
-
-..  py:class:: TrdAccType
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: CASH
-
-  现金账户
-
- ..  py:attribute:: MARGIN
-
-  保证金账户
-
---------------------------------------------------------------------------------
-
-TickerDirect - 逐笔方向
+ModifyUserSecurityOp - 自选股操作类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-逐笔方向定义
+定义
 
-..  py:class:: TickerDirect
-
- ..  py:attribute:: BUY
- 
-  买
-  
- ..  py:attribute:: SELL
- 
-  卖
-  
- ..  py:attribute:: NEUTRAL
- 
-  中性
-  
-  
---------------------------------------
-
-TickerType - 逐笔类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-逐笔类型定义
-
-..  py:class:: TickerType
-
- ..  py:attribute:: AUTO_MATCH
- 
-  自动对盘
-
- ..   py:attribute:: LATE
- 
-  开市前成交盘
-
- ..  py:attribute:: NON_AUTO_MATCH
- 
-  非自动对盘
-
- ..   py:attribute:: INTER_AUTO_MATCH
- 
-  同一证券商自动对盘
-
- ..  py:attribute:: INTER_NON_AUTO_MATCH
- 
-  同一证券商非自动对盘
-
- ..  py:attribute:: ODD_LOT
- 
-  碎股交易
-
- ..  py:attribute:: AUCTION
- 
-  竞价交易
-
- ..  py:attribute:: BULK
- 
-  批量交易
-
- ..  py:attribute:: CRASH
- 
-  现金交易
-
- ..  py:attribute:: CROSS_MARKET
- 
-  跨市场交易
-
- ..  py:attribute:: BULK_SOLD
- 
-  批量卖出
-
- ..  py:attribute:: FREE_ON_BOARD
- 
-  离价交易
-
- ..  py:attribute:: RULE127_OR_155
- 
-  第127条交易（纽交所规则）或第155条交易
-
- ..  py:attribute:: DELAY
- 
-  延迟交易
-
- ..  py:attribute:: MARKET_CENTER_CLOSE_PRICE
- 
-  中央收市价
-
- ..  py:attribute:: NEXT_DAY
- 
-  隔日交易
-
- ..  py:attribute:: MARKET_CENTER_OPENING
- 
-  中央开盘价交易
-
- ..  py:attribute:: PRIOR_REFERENCE_PRICE
- 
-  前参考价
-
- ..  py:attribute:: MARKET_CENTER_OPEN_PRICE
- 
-  中央开盘价
-
- ..  py:attribute:: SELLER
- 
-  卖方
-
- ..  py:attribute:: T
- 
-  T类交易(盘前和盘后交易)
-
- ..  py:attribute:: EXTENDED_TRADING_HOURS
- 
-  延长交易时段
-
- ..  py:attribute:: CONTINGENT
- 
-  合单交易
-
- ..  py:attribute:: AVERAGE_PRICE
- 
-  平均价成交
-
- ..  py:attribute:: OTC_SOLD
- 
-  场外售出
-
- ..  py:attribute:: ODD_LOT_CROSS_MARKET
- 
-  碎股跨市场交易
-
- ..  py:attribute:: DERIVATIVELY_PRICED
- 
-  衍生工具定价
-
- ..  py:attribute:: REOPENINGP_RICED
- 
-  再开盘定价
-
- ..  py:attribute:: CLOSING_PRICED
- 
-  收盘定价
-
- ..  py:attribute:: COMPREHENSIVE_DELAY_PRICE
- 
-  综合延迟价格
-  
---------------------------------------
-
-TradeDateType - 交易时间类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易时间类型定义
-
-..  py:class:: TradeDateType
-
- ..  py:attribute:: WHOLE
-
-  全天交易
-
- ..  py:attribute:: MORNING
-
-  上午交易，下午休市
-
- ..  py:attribute:: AFTERNOON
-
-  下午交易，上午休市
-  
---------------------------------------
-
-TradeDateMarket - 交易日市场类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易日市场类型定义
-
-..  py:class:: TradeDateMarket
+..  py:class:: ModifyUserSecurityOp
 
  ..  py:attribute:: NONE
 
   未知
 
- ..  py:attribute:: HK
+ ..  py:attribute:: ADD
 
-  港股市场
+  新增
 
- ..  py:attribute:: US
+ ..  py:attribute:: DEL
 
-  美股市场
-  
- ..  py:attribute:: CN
+  删除
 
-  A股市场
 
- ..  py:attribute:: NT
-
-  深（沪）股通
-  
- ..  py:attribute:: ST
-
-  港股通（深、沪）
-  
---------------------------------------
-
-TrdEnv - 交易环境类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易环境类型定义
-
-..  py:class:: TrdEnv
-
- ..  py:attribute:: REAL
- 
-  真实环境
-  
- ..  py:attribute:: SIMULATE
- 
-  模拟环境
-
---------------------------------------
-
-TrdMarket - 交易市场类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易市场类型定义
-
-..  py:class:: TrdMarket
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: HK
- 
-  港股交易
-  
- ..  py:attribute:: US
-
-  美股交易
-  
- ..  py:attribute:: CN
-
-  A股交易
-  
- ..  py:attribute:: HKCC
-
-  香港的A股通交易  
-
- ..  py:attribute:: FUTURES
-
-  期货市场
- 
---------------------------------------
-
-TrdSide - 交易方向类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易方向类型定义(客户端下单只传Buy或Sell即可，SELL_SHORT / BUY_BACK 服务器可能会传回)
-
-..  py:class:: TrdSide
-
- ..  py:attribute:: NONE
- 
-  未知
-  
- ..  py:attribute:: BUY
-  
-  买
-  
- ..  py:attribute:: SELL
- 
-  卖
-  
- ..  py:attribute:: SELL_SHORT
- 
-  卖空
-  
- ..  py:attribute:: BUY_BACK
- 
-  买回
-  
---------------------------------------
-
-WarrantStatus - 窝轮状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-窝轮状态定义
-
-..  py:class:: WarrantStatus
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: NORMAL
-
-  正常状态
-
- ..  py:attribute:: SUSPEND
-
-  停牌
-
- ..  py:attribute:: STOP_TRADE
-
-  终止交易
-
- ..  py:attribute:: PENDING_LISTING
-
-  等待上市
-
---------------------------------------
-
-
-WrtType - 港股窝轮类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-港股窝轮类型定义
-
-..  py:class:: WrtType
-
- ..  py:attribute:: CALL
-
-  认购
-
- ..  py:attribute:: PUT
-
-  认沽
-
- ..  py:attribute:: BULL
-
-  牛证
-
- ..  py:attribute:: BEAR
-
-  熊证
-  
- ..  py:attribute:: INLINE
-
-  界内证
-
- ..  py:attribute:: NONE
-
-  未知
-
---------------------------------------
-
-
-Currency - 交易相关的货币类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易相关的货币类型
-
-..  py:class:: Currency
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: HKD
-
-  港币
-
- ..  py:attribute:: USD
-
-  美元
-
- ..  py:attribute:: CNH
-
-  离岸人民币
-
---------------------------------------
-
-CltRiskLevel - 账户风控状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-账户风控状态
-
-..  py:class:: CltRiskLevel
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: SAFE
-
-  安全
-
- ..  py:attribute:: WARNING
-
-  预警
-
- ..  py:attribute:: DANGER
-
-  危险
-
- ..  py:attribute:: ABSOLUTE_SAFE
-
-  绝对安全
-
- ..  py:attribute:: OPT_DANGER
-
-  危险，期权相关
-  
 --------------------------------------

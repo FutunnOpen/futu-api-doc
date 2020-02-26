@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api-doc 3.18 documentation</title>
+  <title>介绍 &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,10 +36,7 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="next" title="基础API" href="Base_API.html"/>
         <link rel="prev" title="交易API" href="../api/Trade_API.html"/> 
 
@@ -70,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.17
               </div>
             
           
@@ -204,7 +201,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/net/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/net/intro.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -242,11 +239,11 @@
 <h2>.NET API简介<a class="headerlink" href="#net-api" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>.NET API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></p></li>
-<li><p>.NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5。或者FTAPI4NetCore.sln采用VS2017编译，采用NetCore2.1。Windows下使用32位.Net，Linux和Mac使用64位.NET。 用户可以根据需要采用更新的VS版本升级源码后编译目标调用库</p></li>
-<li><p>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</p></li>
-<li><p>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></p></li>
-<li><p><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></p></li>
+<li>.NET API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></li>
+<li>.NET API开源了调用库代码，FTAPI4Net.sln采用VS2013编译，要求平台.NET Framework 4.5。或者FTAPI4NetCore.sln采用VS2017编译，采用NetCore2.1。Windows下使用32位.Net，Linux和Mac使用64位.NET。 用户可以根据需要采用更新的VS版本升级源码后编译目标调用库</li>
+<li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
+<li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
+<li><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -254,18 +251,18 @@
 <h2>接口框架<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>为了保证性能最大，我们的中间层采用C++编写，然后提供C#接口调用层</p></li>
+<li>为了保证性能最大，我们的中间层采用C++编写，然后提供C#接口调用层</li>
 </ul>
 <img alt="../_images/NETAPI.png" src="../_images/NETAPI.png" />
 </div></blockquote>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>因为涉及到底层Native线程和.NET线程回调的问题，回调时需要特别注意自己的代码所处的线程。建议简单过滤后，把消息抛到上层主线程处理。</p>
+<p class="first admonition-title">Note</p>
+<p class="last">因为涉及到底层Native线程和.NET线程回调的问题，回调时需要特别注意自己的代码所处的线程。建议简单过滤后，把消息抛到上层主线程处理。</p>
 </div>
 </div>
 <div class="section" id="id5">
 <h2>代码结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|-- FTAPI4Net
+<div class="highlight-text"><div class="highlight"><pre><span></span>|-- FTAPI4Net
 |   |-- lib 所有依赖的库，包含第3方库和API库。即用户不必自己生成API库。
 |   |-- FTCAPI.cs  Native接口导入类
 |   |-- pb  pb自动生成文件，用于组包解包pb
@@ -281,9 +278,9 @@
 <h2>调用须知<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</p></li>
-<li><p>所有接口以异步回调方式完成</p></li>
-<li><p>运行时需要将lib下对应操作系统的FTAPIChannel动态库复制到程序运行目录下。</p></li>
+<li>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</li>
+<li>所有接口以异步回调方式完成</li>
+<li>运行时需要将lib下对应操作系统的FTAPIChannel动态库复制到程序运行目录下。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -332,17 +329,16 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

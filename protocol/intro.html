@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>协议接口 &mdash; futu-api-doc 3.18 documentation</title>
+  <title>协议接口 &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,10 +36,7 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="next" title="基础定义" href="base_define.html"/>
         <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html"/> 
 
@@ -70,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.17
               </div>
             
           
@@ -102,47 +99,46 @@
 <p class="caption"><span class="caption-text">PROTOCOL</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">协议接口</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id32">特点</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id33">协议清单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id34">协议请求限制</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#api">API用户额度</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#unlock-limit">解锁或锁定交易</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#acctradinginfo-query-limit">获取最大交易数量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accinfo-query-limit">获取账户资金</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#position-list-query-limit">获取账户持仓</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#deal-list-query-limit">获取成交列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#place-order-limit">下单</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modify-order-limit">修改订单</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#history-order-list-query-limit">获取历史订单列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#history-deal-list-query-limit">获取历史成交列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#subscribe-limit">订阅反订阅</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id31">特点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id32">协议清单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id33">协议请求限制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#api">API用户等级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">解锁或锁定交易</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">获取最大交易数量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">下单</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">修改订单</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">获取历史订单列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">获取历史成交列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">订阅反订阅</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k">获取K线</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-rt-ticker-limit">获取逐笔</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#request-history-kline-limit">在线获取单只股票一段历史K线</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-rehab-limit">在线获取单只股票复权信息</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-market-snapshot-limit">获取股票快照</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-plate-list-limit">获取板块集合下的板块</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-plate-stock-limit">获取板块下的股票</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-referencestock-list-limit">获取股票关联数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-owner-plate-limit">获取股票所属板块</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-holding-change-list-limit">获取持股变化列表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">获取逐笔</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">在线获取单只股票一段历史K线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">在线获取单只股票复权信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">获取股票快照</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">获取板块集合下的板块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">获取板块下的股票</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">获取股票关联数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">获取股票所属板块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">获取持股变化列表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-option-chain-limit">获取期权链</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-warrant-limit">获取窝轮</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-capital-flow-limit">获取资金流向</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-capital-distribution-limit">获取资金分布</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-user-security-limit">获取自选股分组下的股票</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modify-user-security-limit">修改自选股分组下的股票</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-stock-filter-limit">获取条件选股</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">获取窝轮</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">获取资金流向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">获取资金分布</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id54">获取自选股分组下的股票</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">修改自选股分组下的股票</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id56">获取条件选股</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ipo">获取IPO列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-future-info-limit">获取期货合约资料</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#request-trading-day-limit">在线拉取市场交易日</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">获取期货合约资料</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">获取账户资金</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id59">获取账户持仓</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id60">获取成交列表</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id63">协议请求流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id64">协议设计</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id65">协议头结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id66">协议体结构</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id67">加密通信流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id61">协议请求流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id62">协议设计</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id63">协议头结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id64">协议体结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id65">加密通信流程</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rsa">RSA加解密</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#aes">AES加解密</a></li>
 </ul>
@@ -245,7 +241,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/protocol/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/protocol/intro.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -280,548 +276,515 @@
 <div class="section" id="id1">
 <h1>协议接口<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>FutuOpenD是futu-api项目的网关客户端，在本机或云端成功运行后，第三方应用即可通过约定的TCP协议与之通讯，从而达到调用指定行情和交易接口的目的。</p></li>
-<li><p><a class="reference external" href="../api/intro.html">py-futu-api</a> 可以简化在python编程上协议通讯的复杂度，其他语言接口正在陆续开发中……</p></li>
+<li>FutuOpenD是futu-api项目的网关客户端，在本机或云端成功运行后，第三方应用即可通过约定的TCP协议与之通讯，从而达到调用指定行情和交易接口的目的。</li>
+<li><a class="reference external" href="../api/intro.html">py-futu-api</a> 可以简化在python编程上协议通讯的复杂度，其他语言接口正在陆续开发中……</li>
 </ul>
 <hr class="docutils" />
 <blockquote>
 <div></div></blockquote>
-<div class="section" id="id32">
-<h2>特点<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id31">
+<h2>特点<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>基于TCP传输协议实现，稳定高效。</p></li>
-<li><p>支持protobuf/json两种协议格式， 灵活接入。</p></li>
-<li><p>协议设计支持加密、数据校验及回放功击保护，安全可靠。</p></li>
+<li>基于TCP传输协议实现，稳定高效。</li>
+<li>支持protobuf/json两种协议格式， 灵活接入。</li>
+<li>协议设计支持加密、数据校验及回放功击保护，安全可靠。</li>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id33">
-<h2>协议清单<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id32">
+<h2>协议清单<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><table class="docutils align-default">
+<div><table border="1" class="docutils">
 <colgroup>
-<col style="width: 12%" />
-<col style="width: 30%" />
-<col style="width: 58%" />
+<col width="12%" />
+<col width="30%" />
+<col width="58%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>协议ID</p></th>
-<th class="head"><p>Protobuf文件</p></th>
-<th class="head"><p>说明</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">协议ID</th>
+<th class="head">Protobuf文件</th>
+<th class="head">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>1001</p></td>
-<td><p><a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect.proto</a></p></td>
-<td><p>初始化连接</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>1001</td>
+<td><a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect.proto</a></td>
+<td>初始化连接</td>
 </tr>
-<tr class="row-odd"><td><p>1002</p></td>
-<td><p><a class="reference external" href="base_define.html#getglobalstate-proto-1002">GetGlobalState.proto</a></p></td>
-<td><p>获取全局状态</p></td>
+<tr class="row-odd"><td>1002</td>
+<td><a class="reference external" href="base_define.html#getglobalstate-proto-1002">GetGlobalState.proto</a></td>
+<td>获取全局状态</td>
 </tr>
-<tr class="row-even"><td><p>1003</p></td>
-<td><p><a class="reference external" href="base_define.html#notify-proto-1003">Notify.proto</a></p></td>
-<td><p>系统通知推送</p></td>
+<tr class="row-even"><td>1003</td>
+<td><a class="reference external" href="base_define.html#notify-proto-1003">Notify.proto</a></td>
+<td>系统通知推送</td>
 </tr>
-<tr class="row-odd"><td><p>1004</p></td>
-<td><p><a class="reference external" href="base_define.html#keepalive-proto-1004">KeepAlive.proto</a></p></td>
-<td><p>保活心跳</p></td>
+<tr class="row-odd"><td>1004</td>
+<td><a class="reference external" href="base_define.html#keepalive-proto-1004">KeepAlive.proto</a></td>
+<td>保活心跳</td>
 </tr>
-<tr class="row-even"><td><p>2001</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-getacclist-proto-2001">Trd_GetAccList.proto</a></p></td>
-<td><p>获取业务账户列表</p></td>
+<tr class="row-even"><td>2001</td>
+<td><a class="reference external" href="trade_protocol.html#trd-getacclist-proto-2001">Trd_GetAccList.proto</a></td>
+<td>获取业务账户列表</td>
 </tr>
-<tr class="row-odd"><td><p>2005</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-unlocktrade-proto-2005">Trd_UnlockTrade.proto</a></p></td>
-<td><p>解锁或锁定交易</p></td>
+<tr class="row-odd"><td>2005</td>
+<td><a class="reference external" href="trade_protocol.html#trd-unlocktrade-proto-2005">Trd_UnlockTrade.proto</a></td>
+<td>解锁或锁定交易</td>
 </tr>
-<tr class="row-even"><td><p>2008</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-subaccpush-proto-2008">Trd_SubAccPush.proto</a></p></td>
-<td><p>订阅业务账户的交易推送数据</p></td>
+<tr class="row-even"><td>2008</td>
+<td><a class="reference external" href="trade_protocol.html#trd-subaccpush-proto-2008">Trd_SubAccPush.proto</a></td>
+<td>订阅业务账户的交易推送数据</td>
 </tr>
-<tr class="row-odd"><td><p>2101</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-getfunds-proto-2101">Trd_GetFunds.proto</a></p></td>
-<td><p>获取账户资金</p></td>
+<tr class="row-odd"><td>2101</td>
+<td><a class="reference external" href="trade_protocol.html#trd-getfunds-proto-2101">Trd_GetFunds.proto</a></td>
+<td>获取账户资金</td>
 </tr>
-<tr class="row-even"><td><p>2102</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-getpositionlist-proto-2102">Trd_GetPositionList.proto</a></p></td>
-<td><p>获取账户持仓</p></td>
+<tr class="row-even"><td>2102</td>
+<td><a class="reference external" href="trade_protocol.html#trd-getpositionlist-proto-2102">Trd_GetPositionList.proto</a></td>
+<td>获取账户持仓</td>
 </tr>
-<tr class="row-odd"><td><p>2111</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-getmaxtrdqtys-proto-2111">Trd_GetMaxTrdQtys.proto</a></p></td>
-<td><p>获取最大交易数量</p></td>
+<tr class="row-odd"><td>2111</td>
+<td><a class="reference external" href="trade_protocol.html#trd-getmaxtrdqtys-proto-2111">Trd_GetMaxTrdQtys.proto</a></td>
+<td>获取最大交易数量</td>
 </tr>
-<tr class="row-even"><td><p>2201</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-getorderlist-proto-2201">Trd_GetOrderList.proto</a></p></td>
-<td><p>获取订单列表</p></td>
+<tr class="row-even"><td>2201</td>
+<td><a class="reference external" href="trade_protocol.html#trd-getorderlist-proto-2201">Trd_GetOrderList.proto</a></td>
+<td>获取订单列表</td>
 </tr>
-<tr class="row-odd"><td><p>2202</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-placeorder-proto-2202">Trd_PlaceOrder.proto</a></p></td>
-<td><p>下单</p></td>
+<tr class="row-odd"><td>2202</td>
+<td><a class="reference external" href="trade_protocol.html#trd-placeorder-proto-2202">Trd_PlaceOrder.proto</a></td>
+<td>下单</td>
 </tr>
-<tr class="row-even"><td><p>2205</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-modifyorder-proto-2205">Trd_ModifyOrder.proto</a></p></td>
-<td><p>修改订单</p></td>
+<tr class="row-even"><td>2205</td>
+<td><a class="reference external" href="trade_protocol.html#trd-modifyorder-proto-2205">Trd_ModifyOrder.proto</a></td>
+<td>修改订单</td>
 </tr>
-<tr class="row-odd"><td><p>2208</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-updateorder-proto-2208">Trd_UpdateOrder.proto</a></p></td>
-<td><p>推送订单状态变动通知</p></td>
+<tr class="row-odd"><td>2208</td>
+<td><a class="reference external" href="trade_protocol.html#trd-updateorder-proto-2208">Trd_UpdateOrder.proto</a></td>
+<td>推送订单状态变动通知</td>
 </tr>
-<tr class="row-even"><td><p>2211</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-getorderfilllist-proto-2211">Trd_GetOrderFillList.proto</a></p></td>
-<td><p>获取成交列表</p></td>
+<tr class="row-even"><td>2211</td>
+<td><a class="reference external" href="trade_protocol.html#trd-getorderfilllist-proto-2211">Trd_GetOrderFillList.proto</a></td>
+<td>获取成交列表</td>
 </tr>
-<tr class="row-odd"><td><p>2218</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-updateorderfill-proto-2218">Trd_UpdateOrderFill.proto</a></p></td>
-<td><p>推送成交通知</p></td>
+<tr class="row-odd"><td>2218</td>
+<td><a class="reference external" href="trade_protocol.html#trd-updateorderfill-proto-2218">Trd_UpdateOrderFill.proto</a></td>
+<td>推送成交通知</td>
 </tr>
-<tr class="row-even"><td><p>2221</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-gethistoryorderlist-proto-2221">Trd_GetHistoryOrderList.proto</a></p></td>
-<td><p>获取历史订单列表</p></td>
+<tr class="row-even"><td>2221</td>
+<td><a class="reference external" href="trade_protocol.html#trd-gethistoryorderlist-proto-2221">Trd_GetHistoryOrderList.proto</a></td>
+<td>获取历史订单列表</td>
 </tr>
-<tr class="row-odd"><td><p>2222</p></td>
-<td><p><a class="reference external" href="trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">Trd_GetHistoryOrderFillList.proto</a></p></td>
-<td><p>获取历史成交列表</p></td>
+<tr class="row-odd"><td>2222</td>
+<td><a class="reference external" href="trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">Trd_GetHistoryOrderFillList.proto</a></td>
+<td>获取历史成交列表</td>
 </tr>
-<tr class="row-even"><td><p>3001</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-sub-proto-3001">Qot_Sub.proto</a></p></td>
-<td><p>订阅或者反订阅</p></td>
+<tr class="row-even"><td>3001</td>
+<td><a class="reference external" href="quote_protocol.html#qot-sub-proto-3001">Qot_Sub.proto</a></td>
+<td>订阅或者反订阅</td>
 </tr>
-<tr class="row-odd"><td><p>3002</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-regqotpush-proto-3002">Qot_RegQotPush.proto</a></p></td>
-<td><p>注册推送</p></td>
+<tr class="row-odd"><td>3002</td>
+<td><a class="reference external" href="quote_protocol.html#qot-regqotpush-proto-3002">Qot_RegQotPush.proto</a></td>
+<td>注册推送</td>
 </tr>
-<tr class="row-even"><td><p>3003</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getsubinfo-proto-3003">Qot_GetSubInfo.proto</a></p></td>
-<td><p>获取订阅信息</p></td>
+<tr class="row-even"><td>3003</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getsubinfo-proto-3003">Qot_GetSubInfo.proto</a></td>
+<td>获取订阅信息</td>
 </tr>
-<tr class="row-odd"><td><p>3004</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getbasicqot-proto-3004">Qot_GetBasicQot.proto</a></p></td>
-<td><p>获取股票基本报价</p></td>
+<tr class="row-odd"><td>3004</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getbasicqot-proto-3004">Qot_GetBasicQot.proto</a></td>
+<td>获取股票基本报价</td>
 </tr>
-<tr class="row-even"><td><p>3005</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-updatebasicqot-proto-3005">Qot_UpdateBasicQot.proto</a></p></td>
-<td><p>推送股票基本报价</p></td>
+<tr class="row-even"><td>3005</td>
+<td><a class="reference external" href="quote_protocol.html#qot-updatebasicqot-proto-3005">Qot_UpdateBasicQot.proto</a></td>
+<td>推送股票基本报价</td>
 </tr>
-<tr class="row-odd"><td><p>3006</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getkl-proto-3006k">Qot_GetKL.proto</a></p></td>
-<td><p>获取K线</p></td>
+<tr class="row-odd"><td>3006</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getkl-proto-3006k">Qot_GetKL.proto</a></td>
+<td>获取K线</td>
 </tr>
-<tr class="row-even"><td><p>3007</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-updatekl-proto-3007k">Qot_UpdateKL.proto</a></p></td>
-<td><p>推送K线</p></td>
+<tr class="row-even"><td>3007</td>
+<td><a class="reference external" href="quote_protocol.html#qot-updatekl-proto-3007k">Qot_UpdateKL.proto</a></td>
+<td>推送K线</td>
 </tr>
-<tr class="row-odd"><td><p>3008</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getrt-proto-3008">Qot_GetRT.proto</a></p></td>
-<td><p>获取分时</p></td>
+<tr class="row-odd"><td>3008</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getrt-proto-3008">Qot_GetRT.proto</a></td>
+<td>获取分时</td>
 </tr>
-<tr class="row-even"><td><p>3009</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-updatert-proto-3009">Qot_UpdateRT.proto</a></p></td>
-<td><p>推送分时</p></td>
+<tr class="row-even"><td>3009</td>
+<td><a class="reference external" href="quote_protocol.html#qot-updatert-proto-3009">Qot_UpdateRT.proto</a></td>
+<td>推送分时</td>
 </tr>
-<tr class="row-odd"><td><p>3010</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getticker-proto-3010">Qot_GetTicker.proto</a></p></td>
-<td><p>获取逐笔</p></td>
+<tr class="row-odd"><td>3010</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getticker-proto-3010">Qot_GetTicker.proto</a></td>
+<td>获取逐笔</td>
 </tr>
-<tr class="row-even"><td><p>3011</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-updateticker-proto-3011">Qot_UpdateTicker.proto</a></p></td>
-<td><p>推送逐笔</p></td>
+<tr class="row-even"><td>3011</td>
+<td><a class="reference external" href="quote_protocol.html#qot-updateticker-proto-3011">Qot_UpdateTicker.proto</a></td>
+<td>推送逐笔</td>
 </tr>
-<tr class="row-odd"><td><p>3012</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getorderbook-proto-3012">Qot_GetOrderBook.proto</a></p></td>
-<td><p>获取买卖盘</p></td>
+<tr class="row-odd"><td>3012</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getorderbook-proto-3012">Qot_GetOrderBook.proto</a></td>
+<td>获取买卖盘</td>
 </tr>
-<tr class="row-even"><td><p>3013</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-updateorderbook-proto-3013">Qot_UpdateOrderBook.proto</a></p></td>
-<td><p>推送买卖盘</p></td>
+<tr class="row-even"><td>3013</td>
+<td><a class="reference external" href="quote_protocol.html#qot-updateorderbook-proto-3013">Qot_UpdateOrderBook.proto</a></td>
+<td>推送买卖盘</td>
 </tr>
-<tr class="row-odd"><td><p>3014</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getbroker-proto-3014">Qot_GetBroker.proto</a></p></td>
-<td><p>获取经纪队列</p></td>
+<tr class="row-odd"><td>3014</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getbroker-proto-3014">Qot_GetBroker.proto</a></td>
+<td>获取经纪队列</td>
 </tr>
-<tr class="row-even"><td><p>3015</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-updatebroker-proto-3015">Qot_UpdateBroker.proto</a></p></td>
-<td><p>推送经纪队列</p></td>
+<tr class="row-even"><td>3015</td>
+<td><a class="reference external" href="quote_protocol.html#qot-updatebroker-proto-3015">Qot_UpdateBroker.proto</a></td>
+<td>推送经纪队列</td>
 </tr>
-<tr class="row-odd"><td><p>3100</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-gethistorykl-proto-3100k">Qot_GetHistoryKL.proto</a></p></td>
-<td><p>从本地下载历史数据获取单只股票一段历史K线</p></td>
+<tr class="row-odd"><td>3100</td>
+<td><a class="reference external" href="quote_protocol.html#qot-gethistorykl-proto-3100k">Qot_GetHistoryKL.proto</a></td>
+<td>从本地下载历史数据获取单只股票一段历史K线</td>
 </tr>
-<tr class="row-even"><td><p>3101</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-gethistoryklpoints-proto-3101k">Qot_GetHistoryKLPoints.proto</a></p></td>
-<td><p>从本地下载历史数据获取多只股票多点历史K线</p></td>
+<tr class="row-even"><td>3101</td>
+<td><a class="reference external" href="quote_protocol.html#qot-gethistoryklpoints-proto-3101k">Qot_GetHistoryKLPoints.proto</a></td>
+<td>从本地下载历史数据获取多只股票多点历史K线</td>
 </tr>
-<tr class="row-odd"><td><p>3102</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getrehab-proto-3102">Qot_GetRehab.proto</a></p></td>
-<td><p>从本地下载历史数据获取复权信息</p></td>
+<tr class="row-odd"><td>3102</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getrehab-proto-3102">Qot_GetRehab.proto</a></td>
+<td>从本地下载历史数据获取复权信息</td>
 </tr>
-<tr class="row-even"><td><p>3103</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-requesthistorykl-proto-3103k">Qot_RequestHistoryKL.proto</a></p></td>
-<td><p>在线获取单只股票一段历史K线</p></td>
+<tr class="row-even"><td>3103</td>
+<td><a class="reference external" href="quote_protocol.html#qot-requesthistorykl-proto-3103k">Qot_RequestHistoryKL.proto</a></td>
+<td>在线获取单只股票一段历史K线</td>
 </tr>
-<tr class="row-odd"><td><p>3105</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-requestrehab-proto-3105">Qot_RequestRehab.proto</a></p></td>
-<td><p>在线获取单只股票复权信息</p></td>
+<tr class="row-odd"><td>3105</td>
+<td><a class="reference external" href="quote_protocol.html#qot-requestrehab-proto-3105">Qot_RequestRehab.proto</a></td>
+<td>在线获取单只股票复权信息</td>
 </tr>
-<tr class="row-even"><td><p>3200</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-gettradedate-proto-3200">Qot_GetTradeDate.proto</a></p></td>
-<td><p>获取市场交易日</p></td>
+<tr class="row-even"><td>3200</td>
+<td><a class="reference external" href="quote_protocol.html#qot-gettradedate-proto-3200">Qot_GetTradeDate.proto</a></td>
+<td>获取市场交易日</td>
 </tr>
-<tr class="row-odd"><td><p>3202</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getstaticinfo-proto-3202">Qot_GetStaticInfo.proto</a></p></td>
-<td><p>获取股票静态信息</p></td>
+<tr class="row-odd"><td>3202</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getstaticinfo-proto-3202">Qot_GetStaticInfo.proto</a></td>
+<td>获取股票静态信息</td>
 </tr>
-<tr class="row-even"><td><p>3203</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getsecuritysnapshot-proto-3203">Qot_GetSecuritySnapshot.proto</a></p></td>
-<td><p>获取股票快照</p></td>
+<tr class="row-even"><td>3203</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getsecuritysnapshot-proto-3203">Qot_GetSecuritySnapshot.proto</a></td>
+<td>获取股票快照</td>
 </tr>
-<tr class="row-odd"><td><p>3204</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getplateset-proto-3204">Qot_GetPlateSet.proto</a></p></td>
-<td><p>获取板块集合下的板块</p></td>
+<tr class="row-odd"><td>3204</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getplateset-proto-3204">Qot_GetPlateSet.proto</a></td>
+<td>获取板块集合下的板块</td>
 </tr>
-<tr class="row-even"><td><p>3205</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getplatesecurity-proto-3205">Qot_GetPlateSecurity.proto</a></p></td>
-<td><p>获取板块下的股票</p></td>
+<tr class="row-even"><td>3205</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getplatesecurity-proto-3205">Qot_GetPlateSecurity.proto</a></td>
+<td>获取板块下的股票</td>
 </tr>
-<tr class="row-odd"><td><p>3206</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getreference-proto-3206">Qot_GetReference.proto</a></p></td>
-<td><p>获取正股相关股票</p></td>
+<tr class="row-odd"><td>3206</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getreference-proto-3206">Qot_GetReference.proto</a></td>
+<td>获取正股相关股票</td>
 </tr>
-<tr class="row-even"><td><p>3207</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getownerplate-proto-3207">Qot_GetOwnerPlate.proto</a></p></td>
-<td><p>获取股票所属板块</p></td>
+<tr class="row-even"><td>3207</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getownerplate-proto-3207">Qot_GetOwnerPlate.proto</a></td>
+<td>获取股票所属板块</td>
 </tr>
-<tr class="row-odd"><td><p>3208</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getholdingchangelist-proto-3208">Qot_GetHoldingChangeList.proto</a></p></td>
-<td><p>获取持股变化列表</p></td>
+<tr class="row-odd"><td>3208</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getholdingchangelist-proto-3208">Qot_GetHoldingChangeList.proto</a></td>
+<td>获取持股变化列表</td>
 </tr>
-<tr class="row-even"><td><p>3209</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getoptionchain-proto-3209">Qot_GetOptionChain.proto</a></p></td>
-<td><p>获取期权链</p></td>
+<tr class="row-even"><td>3209</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getoptionchain-proto-3209">Qot_GetOptionChain.proto</a></td>
+<td>获取期权链</td>
 </tr>
-<tr class="row-odd"><td><p>3210</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getwarrant-proto-3210">Qot_GetWarrant.proto</a></p></td>
-<td><p>获取窝轮</p></td>
+<tr class="row-odd"><td>3210</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getwarrant-proto-3210">Qot_GetWarrant.proto</a></td>
+<td>获取窝轮</td>
 </tr>
-<tr class="row-even"><td><p>3211</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getcapitalflow-proto-3211">Qot_GetCapitalFlow.proto</a></p></td>
-<td><p>获取资金流向</p></td>
+<tr class="row-even"><td>3211</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getcapitalflow-proto-3211">Qot_GetCapitalFlow.proto</a></td>
+<td>获取资金流向</td>
 </tr>
-<tr class="row-odd"><td><p>3212</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getcapitaldistribution-proto-3212">Qot_GetCapitalDistribution.proto</a></p></td>
-<td><p>获取资金分布</p></td>
+<tr class="row-odd"><td>3212</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getcapitaldistribution-proto-3212">Qot_GetCapitalDistribution.proto</a></td>
+<td>获取资金分布</td>
 </tr>
-<tr class="row-even"><td><p>3213</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getusersecurity-proto-3213">Qot_GetUserSecurity.proto</a></p></td>
-<td><p>获取自选股分组下的股票</p></td>
+<tr class="row-even"><td>3213</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getusersecurity-proto-3213">Qot_GetUserSecurity.proto</a></td>
+<td>获取自选股分组下的股票</td>
 </tr>
-<tr class="row-odd"><td><p>3214</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-modifyusersecurity-proto-3214">Qot_ModifyUserSecurity.proto</a></p></td>
-<td><p>修改自选股分组下的股票</p></td>
+<tr class="row-odd"><td>3214</td>
+<td><a class="reference external" href="quote_protocol.html#qot-modifyusersecurity-proto-3214">Qot_ModifyUserSecurity.proto</a></td>
+<td>修改自选股分组下的股票</td>
 </tr>
-<tr class="row-even"><td><p>3215</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-stockfilter-proto-3215">Qot_StockFilter.proto</a></p></td>
-<td><p>获取条件选股</p></td>
+<tr class="row-even"><td>3215</td>
+<td><a class="reference external" href="quote_protocol.html#qot-stockfilter-proto-3215">Qot_StockFilter.proto</a></td>
+<td>获取条件选股</td>
 </tr>
-<tr class="row-odd"><td><p>3217</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getipolist-proto-3217ipo">Qot_GetIpoList.proto</a></p></td>
-<td><p>获取新股</p></td>
-</tr>
-<tr class="row-even"><td><p>3218</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-getfutureinfo-proto-3218">Qot_GetFutureInfo.proto</a></p></td>
-<td><p>获取期货合约资料</p></td>
-</tr>
-<tr class="row-odd"><td><p>3219</p></td>
-<td><p><a class="reference external" href="quote_protocol.html#qot-requesttradedate-proto-3219">Qot_RequestTradeDate.proto</a></p></td>
-<td><p>获取市场交易日，在线拉取不在本地计算</p></td>
+<tr class="row-odd"><td>3217</td>
+<td><a class="reference external" href="quote_protocol.html#qot-getipolist-proto-3217ipo">Qot_GetIpoList.proto</a></td>
+<td>获取新股</td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>所有 Protobuf 文件可从 <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb">futu-api</a> Python开源项目下获取</p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>所有 Protobuf 文件可从 <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb">futu-api</a> Python开源项目下获取</li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id34">
-<h2>协议请求限制<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id33">
+<h2>协议请求限制<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="api">
-<span id="quota-limit"></span><h3>API用户额度<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<h3>API用户等级<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>部分协议额度限制划分如下：</p>
-<blockquote>
-<div><img alt="../_images/quota-table.png" src="../_images/quota-table.png" />
-</div></blockquote>
+<div><dl class="docutils">
+<dt>部分协议的请求限制与API用户等级相关，划分如下：</dt>
+<dd><ul class="first last simple">
+<li>用户净资产大于10000港币为二级用户</li>
+<li>小于10000港币为三级用户</li>
+<li>一级用户提供给有一定交易额的实盘交易用户，可与富途联系获取</li>
+</ul>
+</dd>
+</dl>
 </div></blockquote>
 </div>
-<div class="section" id="unlock-limit">
-<span id="id35"></span><h3>解锁或锁定交易<a class="headerlink" href="#unlock-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>解锁或锁定交易<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>协议ID: <a class="reference external" href="trade_protocol.html#trd-unlocktrade-proto-2005">2005</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求次数最多 <span class="red-strengthen">10</span> 次</p></li>
+<li>协议ID: <a class="reference external" href="trade_protocol.html#trd-unlocktrade-proto-2005">2005</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求次数最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="acctradinginfo-query-limit">
-<span id="id36"></span><h3>获取最大交易数量<a class="headerlink" href="#acctradinginfo-query-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>获取最大交易数量<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>协议ID: <a class="reference external" href="trade_protocol.html#trd-getmaxtrdqtys-proto-2111">2111</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求次数最多 <span class="red-strengthen">10</span> 次</p></li>
+<li>协议ID: <a class="reference external" href="trade_protocol.html#trd-getmaxtrdqtys-proto-2111">2111</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求次数最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="accinfo-query-limit">
-<span id="id37"></span><h3>获取账户资金<a class="headerlink" href="#accinfo-query-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>下单<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-getfunds-proto-2101">2101</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>仅当refreshCache为True时限制频率</p></li>
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-placeorder-proto-2202">2202</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">15</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="position-list-query-limit">
-<span id="id38"></span><h3>获取账户持仓<a class="headerlink" href="#position-list-query-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>修改订单<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-getpositionlist-proto-2102">2102</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>仅当refreshCache为True时限制频率</p></li>
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-modifyorder-proto-2205">2205</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">20</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="deal-list-query-limit">
-<span id="id39"></span><h3>获取成交列表<a class="headerlink" href="#deal-list-query-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>获取历史订单列表<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-getorderfilllist-proto-2211">2211</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>仅当refreshCache为True时限制频率</p></li>
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-gethistoryorderlist-proto-2221">2221</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="place-order-limit">
-<span id="id40"></span><h3>下单<a class="headerlink" href="#place-order-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>获取历史成交列表<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-placeorder-proto-2202">2202</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">15</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次</p></li>
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">2222</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="modify-order-limit">
-<span id="id41"></span><h3>修改订单<a class="headerlink" href="#modify-order-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>订阅反订阅<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-modifyorder-proto-2205">2205</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">20</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="history-order-list-query-limit">
-<span id="id42"></span><h3>获取历史订单列表<a class="headerlink" href="#history-order-list-query-limit" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-gethistoryorderlist-proto-2221">2221</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="history-deal-list-query-limit">
-<span id="id43"></span><h3>获取历史成交列表<a class="headerlink" href="#history-deal-list-query-limit" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">2222</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="subscribe-limit">
-<span id="id44"></span><h3>订阅反订阅<a class="headerlink" href="#subscribe-limit" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-sub-proto-3001">3001</a></p></li>
-<li><p>支持多种实时数据类型的定阅，参见 <a class="reference external" href="base_define.html#subtype">SubType</a> , 每支股票订阅一个类型占用一个额度。</p></li>
-<li><p>额度现在限制请参见 <a class="reference internal" href="#quota-limit"><span class="std std-ref">API用户额度</span></a></p></li>
-<li><p>至少订阅一分钟才可以反订阅。</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-sub-proto-3001">3001</a></li>
+<li>支持多种实时数据类型的定阅，参见 <a class="reference external" href="base_define.html#subtype">SubType</a> , 每支股票订阅一个类型占用一个额度。</li>
+<li>订阅额度上限与用户等级相关，一级: <span class="red-strengthen">1000</span>, 二级: <span class="red-strengthen">300</span> , 三级: <span class="red-strengthen">100</span></li>
+<li>至少订阅一分钟才可以反订阅。</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="k">
-<span id="get-cur-kline-limit"></span><h3>获取K线<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h3>
+<h3>获取K线<a class="headerlink" href="#k" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getkl-proto-3006k">3006</a></p></li>
-<li><p>最多能获取最近 <span class="red-strengthen">1000</span> 根</p></li>
-<li><p>市盈率，换手率字段只有日K及日K以上周期的正股才有数据。</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getkl-proto-3006k">3006</a></li>
+<li>最多能获取最近 <span class="red-strengthen">1000</span> 根</li>
+<li>市盈率，换手率字段只有日K及日K以上周期的正股才有数据。</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-rt-ticker-limit">
-<span id="id45"></span><h3>获取逐笔<a class="headerlink" href="#get-rt-ticker-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>获取逐笔<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getticker-proto-3010">3010</a></p></li>
-<li><p>最多能获取最近 <span class="red-strengthen">1000</span> 根</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getticker-proto-3010">3010</a></li>
+<li>最多能获取最近 <span class="red-strengthen">1000</span> 根</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="request-history-kline-limit">
-<span id="id46"></span><h3>在线获取单只股票一段历史K线<a class="headerlink" href="#request-history-kline-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>在线获取单只股票一段历史K线<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-requesthistorykl-proto-3103k">3103</a></p></li>
-<li><p>30天内在线获取历史K线最多可请求股票数请参见 <a class="reference internal" href="#quota-limit"><span class="std std-ref">API用户额度</span></a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">60</span> 次，可分页的请求，第1页限频，后续页请求不限频</p></li>
-<li><p>分K提供最近2年数据，日K及以上提供近10年数据。</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-requesthistorykl-proto-3103k">3103</a></li>
+<li>30天内在线获取历史K线最多可请求股票数与用户等级相关，一级: <span class="red-strengthen">1000</span> , 二级: <span class="red-strengthen">300</span> , 三级:  <span class="red-strengthen">100</span></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次，可分页的请求，第1页限频，后续页请求不限频</li>
+<li>分K提供最近2年数据，日K及以上提供近10年数据。</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-rehab-limit">
-<span id="id47"></span><h3>在线获取单只股票复权信息<a class="headerlink" href="#get-rehab-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>在线获取单只股票复权信息<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-requestrehab-proto-3105">3105</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">60</span> 次</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-requestrehab-proto-3105">3105</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-market-snapshot-limit">
-<span id="id48"></span><h3>获取股票快照<a class="headerlink" href="#get-market-snapshot-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>获取股票快照<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getsecuritysnapshot-proto-3203">3203</a></p></li>
-<li><p>每次可请求股票数最多 <span class="red-strengthen">400</span></p></li>
-<li><p>30秒内快照最多请求次数 <span class="red-strengthen">60</span></p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getsecuritysnapshot-proto-3203">3203</a></li>
+<li>每次最多可请求股票数与用户等级相关,  一级: <span class="red-strengthen">400</span> , 二级: <span class="red-strengthen">300</span> , 三级: <span class="red-strengthen">200</span></li>
+<li>30秒内快照最多请求次数与用户等级相关，一级: <span class="red-strengthen">30</span> , 二级: <span class="red-strengthen">20</span> , 三级: <span class="red-strengthen">10</span></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-plate-list-limit">
-<span id="id49"></span><h3>获取板块集合下的板块<a class="headerlink" href="#get-plate-list-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>获取板块集合下的板块<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getplateset-proto-3204">3204</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getplateset-proto-3204">3204</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-plate-stock-limit">
-<span id="id50"></span><h3>获取板块下的股票<a class="headerlink" href="#get-plate-stock-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>获取板块下的股票<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getplatesecurity-proto-3205">3205</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getplatesecurity-proto-3205">3205</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-referencestock-list-limit">
-<span id="id51"></span><h3>获取股票关联数据<a class="headerlink" href="#get-referencestock-list-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>获取股票关联数据<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getreference-proto-3206">3206</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>查询相关窝轮不限频</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getreference-proto-3206">3206</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>查询相关窝轮不限频</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-owner-plate-limit">
-<span id="id52"></span><h3>获取股票所属板块<a class="headerlink" href="#get-owner-plate-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h3>获取股票所属板块<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getownerplate-proto-3207">3207</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>传入股票最多 <span class="red-strengthen">200</span> 个</p></li>
-<li><p>仅支持正股和指数</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getownerplate-proto-3207">3207</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>传入股票最多 <span class="red-strengthen">200</span> 个</li>
+<li>仅支持正股和指数</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-holding-change-list-limit">
-<span id="id53"></span><h3>获取持股变化列表<a class="headerlink" href="#get-holding-change-list-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>获取持股变化列表<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getholdingchangelist-proto-3208">3208</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>最多返回前 <span class="red-strengthen">100</span> 大股东的变化</p></li>
-<li><p>仅支持美股</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getholdingchangelist-proto-3208">3208</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>最多返回前 <span class="red-strengthen">100</span> 大股东的变化</li>
+<li>仅支持美股</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="get-option-chain-limit">
-<span id="id54"></span><h3>获取期权链<a class="headerlink" href="#get-option-chain-limit" title="Permalink to this headline">¶</a></h3>
+<span id="id50"></span><h3>获取期权链<a class="headerlink" href="#get-option-chain-limit" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getoptionchain-proto-3209">3209</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>传入时间跨度最多 <span class="red-strengthen">30</span> 天</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getoptionchain-proto-3209">3209</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>传入时间跨度最多 <span class="red-strengthen">30</span> 天</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-warrant-limit">
-<span id="id55"></span><h3>获取窝轮<a class="headerlink" href="#get-warrant-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>获取窝轮<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getwarrant-proto-3210">3210</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">60</span> 次</p></li>
-<li><p>每次请求的数据个数最多 <span class="red-strengthen">200</span> 个</p></li>
-<li><p>仅支持港股</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getwarrant-proto-3210">3210</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>每次请求的数据个数最多 <span class="red-strengthen">200</span> 个</li>
+<li>仅支持港股</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-capital-flow-limit">
-<span id="id56"></span><h3>获取资金流向<a class="headerlink" href="#get-capital-flow-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h3>获取资金流向<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getcapitalflow-proto-3211">3211</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">30</span> 次</p></li>
-<li><p>仅支持正股、窝轮和基金</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getcapitalflow-proto-3211">3211</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅支持正股、窝轮和基金</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-capital-distribution-limit">
-<span id="id57"></span><h3>获取资金分布<a class="headerlink" href="#get-capital-distribution-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>获取资金分布<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getcapitaldistribution-proto-3212">3212</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">30</span> 次</p></li>
-<li><p>仅支持正股、窝轮和基金</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getcapitaldistribution-proto-3212">3212</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅支持正股、窝轮和基金</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-user-security-limit">
-<span id="id58"></span><h3>获取自选股分组下的股票<a class="headerlink" href="#get-user-security-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id54">
+<h3>获取自选股分组下的股票<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getusersecurity-proto-3213">3213</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>仅支持自定义分组</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getusersecurity-proto-3213">3213</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅支持自定义分组</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="modify-user-security-limit">
-<span id="id59"></span><h3>修改自选股分组下的股票<a class="headerlink" href="#modify-user-security-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id55">
+<h3>修改自选股分组下的股票<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-modifyusersecurity-proto-3214">3214</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>仅支持自定义分组</p></li>
-<li><p>自选股的数量是有上限的。</p></li>
-<li><p>如果有同名的分组，会返回排序第一个分组的信息。</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-modifyusersecurity-proto-3214">3214</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅支持自定义分组</li>
+<li>自选股的数量是有上限的。</li>
+<li>如果有同名的分组，会返回排序第一个分组的信息。</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-stock-filter-limit">
-<span id="id60"></span><h3>获取条件选股<a class="headerlink" href="#get-stock-filter-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id56">
+<h3>获取条件选股<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-stockfilter-proto-3215">3215</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
-<li><p>每次请求的数据个数最多 <span class="red-strengthen">200</span> 个</p></li>
-<li><p>建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-stockfilter-proto-3215">3215</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>每次请求的数据个数最多 <span class="red-strengthen">200</span> 个</li>
+<li>建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -829,218 +792,238 @@
 <span id="get-ipo-list-limit"></span><h3>获取IPO列表<a class="headerlink" href="#ipo" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getipolist-proto-3217ipo">3217</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getipolist-proto-3217ipo">3217</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="get-future-info-limit">
-<span id="id61"></span><h3>获取期货合约资料<a class="headerlink" href="#get-future-info-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h3>获取期货合约资料<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getfutureinfo-proto-3218">3218</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">30</span> 次</p></li>
-<li><p>传入股票最多 <span class="red-strengthen">200</span> 个</p></li>
+<li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getfutureinfo-proto-3218">3218</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">30</span> 次</li>
+<li>传入股票最多 <span class="red-strengthen">200</span> 个</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="request-trading-day-limit">
-<span id="id62"></span><h3>在线拉取市场交易日<a class="headerlink" href="#request-trading-day-limit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id58">
+<h3>获取账户资金<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-requesttradedate-proto-3219">3219</a></p></li>
-<li><p><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">30</span> 次</p></li>
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-getfunds-proto-2101">2101</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id59">
+<h3>获取账户持仓<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-getpositionlist-proto-2102">2102</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id60">
+<h3>获取成交列表<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-getorderfilllist-proto-2211">2211</a></li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
+<li>仅当refreshCache为True时限制频率</li>
 </ul>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="id63">
-<h2>协议请求流程<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id61">
+<h2>协议请求流程<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>建立连接</p></li>
-<li><p>初始化连接</p></li>
-<li><p>请求数据或接收推送数据</p></li>
-<li><p>定时发送 <a class="reference external" href="base_define.html#keepalive-proto-1004">KeepAlive</a> 保持连接</p></li>
+<li>建立连接</li>
+<li>初始化连接</li>
+<li>请求数据或接收推送数据</li>
+<li>定时发送 <a class="reference external" href="base_define.html#keepalive-proto-1004">KeepAlive</a> 保持连接</li>
 </ul>
 </div></blockquote>
 <img alt="../_images/proto.png" src="../_images/proto.png" />
 </div>
 <hr class="docutils" />
-<div class="section" id="id64">
-<h2>协议设计<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id62">
+<h2>协议设计<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>协议数据包括协议头以及协议体，协议头固定字段，协议体根据具体协议决定。</p>
-</div></blockquote>
-<div class="section" id="id65">
-<h3>协议头结构<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>struct APIProtoHeader
+<div>协议数据包括协议头以及协议体，协议头固定字段，协议体根据具体协议决定。</div></blockquote>
+<div class="section" id="id63">
+<h3>协议头结构<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>struct APIProtoHeader
 <span class="o">{</span>
-    u8_t szHeaderFlag<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="p">;</span>
+    u8_t szHeaderFlag<span class="o">[</span>2<span class="o">]</span><span class="p">;</span>
     u32_t nProtoID<span class="p">;</span>
     u8_t nProtoFmtType<span class="p">;</span>
     u8_t nProtoVer<span class="p">;</span>
     u32_t nSerialNo<span class="p">;</span>
     u32_t nBodyLen<span class="p">;</span>
-    u8_t arrBodySHA1<span class="o">[</span><span class="m">20</span><span class="o">]</span><span class="p">;</span>
-    u8_t arrReserved<span class="o">[</span><span class="m">8</span><span class="o">]</span><span class="p">;</span>
+    u8_t arrBodySHA1<span class="o">[</span>20<span class="o">]</span><span class="p">;</span>
+    u8_t arrReserved<span class="o">[</span>8<span class="o">]</span><span class="p">;</span>
 <span class="o">}</span><span class="p">;</span>
 </pre></div>
 </div>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 83%" />
+<col width="18%" />
+<col width="83%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>字段</p></th>
-<th class="head"><p>说明</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">字段</th>
+<th class="head">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>szHeaderFlag</p></td>
-<td><p>包头起始标志，固定为“FT”</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>szHeaderFlag</td>
+<td>包头起始标志，固定为“FT”</td>
 </tr>
-<tr class="row-odd"><td><p>nProtoID</p></td>
-<td><p>协议ID</p></td>
+<tr class="row-odd"><td>nProtoID</td>
+<td>协议ID</td>
 </tr>
-<tr class="row-even"><td><p>nProtoFmtType</p></td>
-<td><p>协议格式类型，0为Protobuf格式，1为Json格式</p></td>
+<tr class="row-even"><td>nProtoFmtType</td>
+<td>协议格式类型，0为Protobuf格式，1为Json格式</td>
 </tr>
-<tr class="row-odd"><td><p>nProtoVer</p></td>
-<td><p>协议版本，用于迭代兼容, 目前填0</p></td>
+<tr class="row-odd"><td>nProtoVer</td>
+<td>协议版本，用于迭代兼容, 目前填0</td>
 </tr>
-<tr class="row-even"><td><p>nSerialNo</p></td>
-<td><p>包序列号，用于对应请求包和回包, 要求递增</p></td>
+<tr class="row-even"><td>nSerialNo</td>
+<td>包序列号，用于对应请求包和回包, 要求递增</td>
 </tr>
-<tr class="row-odd"><td><p>nBodyLen</p></td>
-<td><p>包体长度</p></td>
+<tr class="row-odd"><td>nBodyLen</td>
+<td>包体长度</td>
 </tr>
-<tr class="row-even"><td><p>arrBodySHA1</p></td>
-<td><p>包体原始数据(解密后)的SHA1哈希值</p></td>
+<tr class="row-even"><td>arrBodySHA1</td>
+<td>包体原始数据(解密后)的SHA1哈希值</td>
 </tr>
-<tr class="row-odd"><td><p>arrReserved</p></td>
-<td><p>保留8字节扩展</p></td>
+<tr class="row-odd"><td>arrReserved</td>
+<td>保留8字节扩展</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>u8_t表示8位无符号整数，u32_t表示32位无符号整数</p></li>
-<li><p>FutuOpenD内部处理使用Protobuf，因此协议格式建议使用Protobuf，减少Json转换开销</p></li>
-<li><p>nProtoFmtType字段指定了包体的数据类型，回包会回对应类型的数据；推送协议数据类型由FutuOpenD配置文件指定</p></li>
-<li><p><strong>arrBodySHA1用于校验请求数据在网络传输前后的一致性，必须正确填入</strong></p></li>
-<li><p><strong>协议头的二进制流使用的是小端字节序，即一般不需要使用ntohl等相关函数转换数据</strong></p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>u8_t表示8位无符号整数，u32_t表示32位无符号整数</li>
+<li>FutuOpenD内部处理使用Protobuf，因此协议格式建议使用Protobuf，减少Json转换开销</li>
+<li>nProtoFmtType字段指定了包体的数据类型，回包会回对应类型的数据；推送协议数据类型由FutuOpenD配置文件指定</li>
+<li><strong>arrBodySHA1用于校验请求数据在网络传输前后的一致性，必须正确填入</strong></li>
+<li><strong>协议头的二进制流使用的是小端字节序，即一般不需要使用ntohl等相关函数转换数据</strong></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id66">
-<h3>协议体结构<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h3>协议体结构<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <p><strong>Protobuf协议请求包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>message C2S
+<div class="highlight-bash"><div class="highlight"><pre><span></span>message C2S
 <span class="o">{</span>
-    required int64 <span class="nv">req</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+    required int64 <span class="nv">req</span> <span class="o">=</span> 1<span class="p">;</span>
 <span class="o">}</span>
 
 message Request
 <span class="o">{</span>
-    required C2S <span class="nv">c2s</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+    required C2S <span class="nv">c2s</span> <span class="o">=</span> 1<span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Protobuf协议回应包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>message S2C
+<div class="highlight-bash"><div class="highlight"><pre><span></span>message S2C
 <span class="o">{</span>
-    required int64 <span class="nv">data</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+    required int64 <span class="nv">data</span> <span class="o">=</span> 1<span class="p">;</span>
 <span class="o">}</span>
 
 message Response
 <span class="o">{</span>
     required int32 <span class="nv">retType</span> <span class="o">=</span> <span class="m">1</span> <span class="o">[</span><span class="nv">default</span> <span class="o">=</span> -400<span class="o">]</span><span class="p">;</span> //RetType,返回结果
-    optional string <span class="nv">retMsg</span> <span class="o">=</span> <span class="m">2</span><span class="p">;</span>
-    optional int32 <span class="nv">errCode</span> <span class="o">=</span> <span class="m">3</span><span class="p">;</span>
-    optional S2C <span class="nv">s2c</span> <span class="o">=</span> <span class="m">4</span><span class="p">;</span>
+    optional string <span class="nv">retMsg</span> <span class="o">=</span> 2<span class="p">;</span>
+    optional int32 <span class="nv">errCode</span> <span class="o">=</span> 3<span class="p">;</span>
+    optional S2C <span class="nv">s2c</span> <span class="o">=</span> 4<span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Json协议请求包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{</span>
     <span class="s2">&quot;c2s&quot;</span>:
     <span class="o">{</span>
-         <span class="s2">&quot;req&quot;</span>: <span class="m">0</span>
+         <span class="s2">&quot;req&quot;</span>: 0
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Json协议回应包体结构</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
-    <span class="s2">&quot;retType&quot;</span> : <span class="m">0</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{</span>
+    <span class="s2">&quot;retType&quot;</span> : 0
     <span class="s2">&quot;retMsg&quot;</span> : <span class="s2">&quot;&quot;</span>
-    <span class="s2">&quot;errCode&quot;</span> : <span class="m">0</span>
+    <span class="s2">&quot;errCode&quot;</span> : 0
     <span class="s2">&quot;s2c&quot;</span>:
     <span class="o">{</span>
-        <span class="s2">&quot;data&quot;</span>: <span class="m">0</span>
+        <span class="s2">&quot;data&quot;</span>: 0
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <hr class="docutils" />
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 18%" />
-<col style="width: 83%" />
+<col width="18%" />
+<col width="83%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>字段</p></th>
-<th class="head"><p>说明</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">字段</th>
+<th class="head">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>c2s</p></td>
-<td><p>请求参数结构</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>c2s</td>
+<td>请求参数结构</td>
 </tr>
-<tr class="row-odd"><td><p>req</p></td>
-<td><p>请求参数，实际根据协议定义</p></td>
+<tr class="row-odd"><td>req</td>
+<td>请求参数，实际根据协议定义</td>
 </tr>
-<tr class="row-even"><td><p>retType</p></td>
-<td><p>请求结果</p></td>
+<tr class="row-even"><td>retType</td>
+<td>请求结果</td>
 </tr>
-<tr class="row-odd"><td><p>retMsg</p></td>
-<td><p>若请求失败，说明失败原因</p></td>
+<tr class="row-odd"><td>retMsg</td>
+<td>若请求失败，说明失败原因</td>
 </tr>
-<tr class="row-even"><td><p>errCode</p></td>
-<td><p>若请求失败对应错误码</p></td>
+<tr class="row-even"><td>errCode</td>
+<td>若请求失败对应错误码</td>
 </tr>
-<tr class="row-odd"><td><p>s2c</p></td>
-<td><p>回应数据结构，部分协议不返回数据则无该字段</p></td>
+<tr class="row-odd"><td>s2c</td>
+<td>回应数据结构，部分协议不返回数据则无该字段</td>
 </tr>
-<tr class="row-even"><td><p>data</p></td>
-<td><p>回应数据，实际根据协议定义</p></td>
+<tr class="row-even"><td>data</td>
+<td>回应数据，实际根据协议定义</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>包体格式类型请求包由协议头 <a class="reference external" href="#id8">nProtoFmtType</a> 指定， FutuOPenD主动推送格式参见 <a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定的 “push_proto_type“ 配置项</p></li>
-<li><p>原始协议文件格式是以Protobuf格式定义，若需要json格式传输，建议使用protobuf3的接口直接转换成json</p></li>
-<li><p>枚举值字段定义使用有符号整形，注释指明对应枚举，枚举一般定义于Common.proto，Qot_Common.proto，Trd_Common.proto文件中</p></li>
-<li><p><strong>协议中价格、百分比等数据用浮点类型来传输，直接使用会有精度问题，需要根据精度（如协议中未指明，默认小数点后三位）做四舍五入之后再使用</strong></p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>包体格式类型请求包由协议头 <a class="reference external" href="#id8">nProtoFmtType</a> 指定， FutuOPenD主动推送格式参见 <a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定的 “push_proto_type“ 配置项</li>
+<li>原始协议文件格式是以Protobuf格式定义，若需要json格式传输，建议使用protobuf3的接口直接转换成json</li>
+<li>枚举值字段定义使用有符号整形，注释指明对应枚举，枚举一般定义于Common.proto，Qot_Common.proto，Trd_Common.proto文件中</li>
+<li><strong>协议中价格、百分比等数据用浮点类型来传输，直接使用会有精度问题，需要根据精度（如协议中未指明，默认小数点后三位）做四舍五入之后再使用</strong></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id67">
-<h3>加密通信流程<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id65">
+<h3>加密通信流程<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>若FutuOpenD配置了加密, <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 初始化连接协议必须使用RSA公钥加密，后续其他协议使用 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 返回的随机密钥进行AES加密通信。</p></li>
-<li><p>FutuOpenD的加密流程借鉴了SSL协议，但考虑到一般是本地部署服务和应用，简化了相关流程，FutuOpenD与接入Client共用了同一个RSA 私钥文件，请妥善保存和分发私钥文件。</p></li>
-<li><p>可到”<a class="reference external" href="http://web.chacuo.net/netrsakeypair">http://web.chacuo.net/netrsakeypair</a>”这个网址在线生成随机RSA密钥对，密钥格式必须为PCKS#1，密钥长度512，1024都可以，不要设置密码，将生成的私钥复制保存到文件中，然后将私钥文件路径配置到 <a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定的 “rsa_private_key”配置项中</p></li>
+<li>若FutuOpenD配置了加密, <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 初始化连接协议必须使用RSA公钥加密，后续其他协议使用 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 返回的随机密钥进行AES加密通信。</li>
+<li>FutuOpenD的加密流程借鉴了SSL协议，但考虑到一般是本地部署服务和应用，简化了相关流程，FutuOpenD与接入Client共用了同一个RSA 私钥文件，请妥善保存和分发私钥文件。</li>
+<li>可到&#8221;<a class="reference external" href="http://web.chacuo.net/netrsakeypair">http://web.chacuo.net/netrsakeypair</a>&#8220;这个网址在线生成随机RSA密钥对，密钥格式必须为PCKS#1，密钥长度512，1024都可以，不要设置密码，将生成的私钥复制保存到文件中，然后将私钥文件路径配置到 <a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定的 “rsa_private_key”配置项中</li>
 <li></li>
-<li><p><strong>强烈建议有实盘交易的用户配置加密，避免账户和交易信息泄露</strong></p></li>
+<li><strong>强烈建议有实盘交易的用户配置加密，避免账户和交易信息泄露</strong></li>
 </ul>
 <img alt="../_images/encrypt.png" src="../_images/encrypt.png" />
 </div></blockquote>
@@ -1051,25 +1034,25 @@ message Response
 <blockquote>
 <div><blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定”rsa_private_key”为私钥文件路径</p></li>
-<li><p>FutuOpenD 与接入客户端共用相同的私钥文件</p></li>
-<li><p>RSA加解密仅用于 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 请求，用于安全获取其它请求协议的对称加密Key</p></li>
-<li><p>FutuOpenD的RSA密钥为1024位, 填充方式PKCS1, 公钥加密，私钥解密，公钥可通过私钥生成</p></li>
-<li><p>Python API 参考实现: <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/sys_config.py">RsaCrypt</a>  类的encrypt / decrypt 接口</p></li>
+<li><a class="reference external" href="https://futunnopen.github.io/py-futu-api/setup/FutuOpenDGuide.html#id5">FutuOpenD配置</a> 约定&#8221;rsa_private_key&#8221;为私钥文件路径</li>
+<li>FutuOpenD 与接入客户端共用相同的私钥文件</li>
+<li>RSA加解密仅用于 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 请求，用于安全获取其它请求协议的对称加密Key</li>
+<li>FutuOpenD的RSA密钥为1024位, 填充方式PKCS1, 公钥加密，私钥解密，公钥可通过私钥生成</li>
+<li>Python API 参考实现: <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/sys_config.py">RsaCrypt</a>  类的encrypt / decrypt 接口</li>
 </ul>
 </div></blockquote>
 <p><strong>发送数据加密</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>RSA加密规则:若密钥位数是key_size, 单次加密串的最大长度为 (key_size)/8 - 11, 目前位数1024, 一次加密长度可定为100</p></li>
-<li><p>将明文数据分成一个或数个最长100字节的小段进行加密，拼接分段加密数据即为最终的Body加密数据</p></li>
+<li>RSA加密规则:若密钥位数是key_size, 单次加密串的最大长度为 (key_size)/8 - 11, 目前位数1024, 一次加密长度可定为100</li>
+<li>将明文数据分成一个或数个最长100字节的小段进行加密，拼接分段加密数据即为最终的Body加密数据</li>
 </ul>
 </div></blockquote>
 <p><strong>接收数据解密</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>RSA解密同样遵循分段规则，对于1024位密钥, 每小段待解密数据长度为128字节</p></li>
-<li><p>将密文数据分成一个或数个128字节长的小段进行解密，拼接分段解密数据即为最终的Body解密数据</p></li>
+<li>RSA解密同样遵循分段规则，对于1024位密钥, 每小段待解密数据长度为128字节</li>
+<li>将密文数据分成一个或数个128字节长的小段进行解密，拼接分段解密数据即为最终的Body解密数据</li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -1080,23 +1063,23 @@ message Response
 <blockquote>
 <div><blockquote>
 <div><ul class="simple">
-<li><p>加密key由 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 协议返回</p></li>
-<li><p>使用的是AES的ecb加密模式。</p></li>
-<li><p>Python API 参考实现: <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/conn_mng.py">FutuConnMng</a>  类的encrypt_conn_data / decrypt_conn_data 接口</p></li>
+<li>加密key由 <a class="reference external" href="base_define.html#initconnect-proto-1001">InitConnect</a> 协议返回</li>
+<li>使用的是AES的ecb加密模式。</li>
+<li>Python API 参考实现: <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/conn_mng.py">FutuConnMng</a>  类的encrypt_conn_data / decrypt_conn_data 接口</li>
 </ul>
 </div></blockquote>
 <p><strong>发送数据加密</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>AES加密要求源数据长度必须是16的整数倍,  故需补‘0’对齐后再加密，记录mod_len为源数据长度与16取模值</p></li>
-<li><p>因加密前有可能对源数据作修改， 故需在加密后的数据尾再增加一个16字节的填充数据块，其最后一个字节赋值mod_len, 其余字节赋值’0’， 将加密数据和额外的填充数据块拼接作为最终要发送协议的body数据</p></li>
+<li>AES加密要求源数据长度必须是16的整数倍,  故需补‘0&#8217;对齐后再加密，记录mod_len为源数据长度与16取模值</li>
+<li>因加密前有可能对源数据作修改， 故需在加密后的数据尾再增加一个16字节的填充数据块，其最后一个字节赋值mod_len, 其余字节赋值&#8216;0&#8217;， 将加密数据和额外的填充数据块拼接作为最终要发送协议的body数据</li>
 </ul>
 </div></blockquote>
 <p><strong>接收数据解密</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>协议body数据, 先将最后一个字节取出，记为mod_len， 然后将body截掉尾部16字节填充数据块后再解密（与加密填充额外数据块逻辑对应）</p></li>
-<li><p>mod_len 为0时，上述解密后的数据即为协议返回的body数据, 否则需截掉尾部(16 - mod_len)长度的用于填充对齐的数据</p></li>
+<li>协议body数据, 先将最后一个字节取出，记为mod_len， 然后将body截掉尾部16字节填充数据块后再解密（与加密填充额外数据块逻辑对应）</li>
+<li>mod_len 为0时，上述解密后的数据即为协议返回的body数据, 否则需截掉尾部(16 - mod_len)长度的用于填充对齐的数据</li>
 </ul>
 <img alt="../_images/AES.png" src="../_images/AES.png" />
 </div></blockquote>
@@ -1148,17 +1131,16 @@ message Response
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

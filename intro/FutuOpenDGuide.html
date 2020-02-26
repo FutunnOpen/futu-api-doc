@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.18 documentation</title>
+  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,10 +36,7 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="next" title="协议接口" href="../protocol/intro.html"/>
         <link rel="prev" title="介绍" href="intro.html"/> 
 
@@ -70,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.17
               </div>
             
           
@@ -238,7 +235,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/intro/FutuOpenDGuide.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/intro/FutuOpenDGuide.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -278,8 +275,8 @@
 <div><p>FutuOpenD是futu-api的网关程序，运行于客户本机或服务器，负责中转协议请求到富途后台，并将处理后的数据返回给协议请求连接。</p>
 <p>FutuOpenD目前提供两种安装执行形式，用户可根据自身需求选择任一方式。</p>
 <ol class="arabic simple">
-<li><p>命令行形式：提供命令行执行程序，需自行进行部分配置，适合熟悉度高或无界面化需求的用户；</p></li>
-<li><p>可视化形式：提供界面化应用程序，操作便捷，尤其适合入门用户。</p></li>
+<li>命令行形式：提供命令行执行程序，需自行进行部分配置，适合熟悉度高或无界面化需求的用户；</li>
+<li>可视化形式：提供界面化应用程序，操作便捷，尤其适合入门用户。</li>
 </ol>
 </div></blockquote>
 </div>
@@ -290,10 +287,10 @@
 <h3>命令行FutuOpenD<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>命令行FutuOpenD目前直接提供程序压缩包，解压后即可运行。</p></li>
-<li><p>压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml），程序打包数据（Appdata.dat）。</p></li>
-<li><p>Appdata.dat是程序需要用到的一些数据量较大的信息，打包数据减少启动下载该数据用时，若不存在则程序无法正常启动。</p></li>
-<li><p>FutuOpenD.xml 用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动，支持用户自定义文件路径， 详见 <a class="reference external" href="./FutuOpenDGuide.html#id10">启动命令行参数</a></p></li>
+<li>命令行FutuOpenD目前直接提供程序压缩包，解压后即可运行。</li>
+<li>压缩包内除了各平台的执行程序，还有带有默认FutuOpenD配置文件（FutuOpenD.xml），程序打包数据（Appdata.dat）。</li>
+<li>Appdata.dat是程序需要用到的一些数据量较大的信息，打包数据减少启动下载该数据用时，若不存在则程序无法正常启动。</li>
+<li>FutuOpenD.xml 用于配置FutuOpenD程序启动参数，若不存在则程序无法正常启动，支持用户自定义文件路径， 详见 <a class="reference external" href="./FutuOpenDGuide.html#id10">启动命令行参数</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -301,9 +298,9 @@
 <h3>可视化FutuOpenD<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>可视化OpenD提供程序安装包，可一键安装运行，</p></li>
-<li><p>Windows安装在%appdata%目录下。</p></li>
-<li><p>下载方式同命令行FutuOpenD。</p></li>
+<li>可视化OpenD提供程序安装包，可一键安装运行，</li>
+<li>Windows安装在%appdata%目录下。</li>
+<li>下载方式同命令行FutuOpenD。</li>
 </ul>
 </div></blockquote>
 <p>方式1：<a class="reference external" href="https://www.futunn.com/download/index/">富途官网下载</a></p>
@@ -331,94 +328,94 @@
 <h3>命令行FutuOpenD<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>命令行FutuOpenD启动配置文件使用XML格式，如下图所示：</p></li>
+<li>命令行FutuOpenD启动配置文件使用XML格式，如下图所示：</li>
 </ul>
 <img alt="../_images/FTOpenDConfig.png" src="../_images/FTOpenDConfig.png" />
 <p><strong>配置项：</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 44%" />
-<col style="width: 45%" />
+<col width="11%" />
+<col width="44%" />
+<col width="45%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>键值</p></th>
-<th class="head"><p>说明</p></th>
-<th class="head"><p>是否可选配置项</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">键值</th>
+<th class="head">说明</th>
+<th class="head">是否可选配置项</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>ip</p></td>
-<td><p>监听地址</p></td>
-<td><p>是，不设置则默认127.0.0.1</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>ip</td>
+<td>监听地址</td>
+<td>是，不设置则默认127.0.0.1</td>
 </tr>
-<tr class="row-odd"><td><p>api_port</p></td>
-<td><p>API协议接收端口</p></td>
-<td><p>是，可以命令行指定</p></td>
+<tr class="row-odd"><td>api_port</td>
+<td>API协议接收端口</td>
+<td>是，可以命令行指定</td>
 </tr>
-<tr class="row-even"><td><p>push_proto_type</p></td>
-<td><p>API协议支持PB以及Json格式，PB：0，Json：1，推送类协议通过该配置决定包体格式</p></td>
-<td><p>是，不设置则默认PB格式</p></td>
+<tr class="row-even"><td>push_proto_type</td>
+<td>API协议支持PB以及Json格式，PB：0，Json：1，推送类协议通过该配置决定包体格式</td>
+<td>是，不设置则默认PB格式</td>
 </tr>
-<tr class="row-odd"><td><p>qot_push_frequency</p></td>
-<td><p>API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时</p></td>
-<td><p>是，不设置则不限制频率</p></td>
+<tr class="row-odd"><td>qot_push_frequency</td>
+<td>API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时</td>
+<td>是，不设置则不限制频率</td>
 </tr>
-<tr class="row-even"><td><p>rsa_private_key</p></td>
-<td><p>API协议RSA加密私钥（PKCS#1）文件绝对路径</p></td>
-<td><p>是，不设置则协议不加密</p></td>
+<tr class="row-even"><td>rsa_private_key</td>
+<td>API协议RSA加密私钥（PKCS#1）文件绝对路径</td>
+<td>是，不设置则协议不加密</td>
 </tr>
-<tr class="row-odd"><td><p>telnet_ip</p></td>
-<td><p>远程操作命令监听地址</p></td>
-<td><p>是，不设置则默认127.0.0.1</p></td>
+<tr class="row-odd"><td>telnet_ip</td>
+<td>远程操作命令监听地址</td>
+<td>是，不设置则默认127.0.0.1</td>
 </tr>
-<tr class="row-even"><td><p>telnet_port</p></td>
-<td><p>远程操作命令监听端口</p></td>
-<td><p>是，不设置则不启用远程命令</p></td>
+<tr class="row-even"><td>telnet_port</td>
+<td>远程操作命令监听端口</td>
+<td>是，不设置则不启用远程命令</td>
 </tr>
-<tr class="row-odd"><td><p>login_account</p></td>
-<td><p>登录帐号</p></td>
-<td><p>是，可以使用证书登录或命令行输入</p></td>
+<tr class="row-odd"><td>login_account</td>
+<td>登录帐号</td>
+<td>是，可以使用证书登录或命令行输入</td>
 </tr>
-<tr class="row-even"><td><p>login_pwd</p></td>
-<td><p>登录密码明文</p></td>
-<td><p>是，可以使用密文、证书登录或命令行输入</p></td>
+<tr class="row-even"><td>login_pwd</td>
+<td>登录密码明文</td>
+<td>是，可以使用密文、证书登录或命令行输入</td>
 </tr>
-<tr class="row-odd"><td><p>login_pwd_md5</p></td>
-<td><p>登录密码密文（32位MD5加密16进制），密文明文都存在情况下，只使用密文</p></td>
-<td><p>是，可以使用明文、证书登录或命令行输入</p></td>
+<tr class="row-odd"><td>login_pwd_md5</td>
+<td>登录密码密文（32位MD5加密16进制），密文明文都存在情况下，只使用密文</td>
+<td>是，可以使用明文、证书登录或命令行输入</td>
 </tr>
-<tr class="row-even"><td><p>login_cert_file</p></td>
-<td><p>证书文件绝对路径，除帐号密码外的另一种登录方式输入，若同时存在帐号密码登录配置项，只使用证书登录</p></td>
-<td><p>是，可以使用帐号密码登录或命令行输入</p></td>
+<tr class="row-even"><td>login_cert_file</td>
+<td>证书文件绝对路径，除帐号密码外的另一种登录方式输入，若同时存在帐号密码登录配置项，只使用证书登录</td>
+<td>是，可以使用帐号密码登录或命令行输入</td>
 </tr>
-<tr class="row-odd"><td><p>log_level</p></td>
-<td><p>日志级别，可填no，debug，info，warning，error，fatal</p></td>
-<td><p>是，默认info级别</p></td>
+<tr class="row-odd"><td>log_level</td>
+<td>日志级别，可填no，debug，info，warning，error，fatal</td>
+<td>是，默认info级别</td>
 </tr>
-<tr class="row-even"><td><p>simulate_trade</p></td>
-<td><p>是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable</p></td>
-<td><p>是，默认启用</p></td>
+<tr class="row-even"><td>simulate_trade</td>
+<td>是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable</td>
+<td>是，默认启用</td>
 </tr>
-<tr class="row-odd"><td><p>websocket_ip</p></td>
-<td><p>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）</p></td>
-<td><p>是，不设置则默认127.0.0.1</p></td>
+<tr class="row-odd"><td>websocket_ip</td>
+<td>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）</td>
+<td>是，不设置则默认127.0.0.1</td>
 </tr>
-<tr class="row-even"><td><p>websocket_port</p></td>
-<td><p>WebSocket服务监听端口</p></td>
-<td><p>是，不设置则不启用该功能</p></td>
+<tr class="row-even"><td>websocket_port</td>
+<td>WebSocket服务监听端口</td>
+<td>是，不设置则不启用该功能</td>
 </tr>
-<tr class="row-odd"><td><p>websocket_private_key</p></td>
-<td><p>WebSocket证书私钥文件路径，私钥不可设置密码，不配置则不启用SSL，需要和证书同时配置</p></td>
-<td><p>是，不设置则不启用SSL</p></td>
+<tr class="row-odd"><td>websocket_private_key</td>
+<td>WebSocket证书私钥文件路径，私钥不可设置密码，不配置则不启用SSL，需要和证书同时配置</td>
+<td>是，不设置则不启用SSL</td>
 </tr>
-<tr class="row-even"><td><p>websocket_cert</p></td>
-<td><p>WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置</p></td>
-<td><p>是，不设置则不启用SSL</p></td>
+<tr class="row-even"><td>websocket_cert</td>
+<td>WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置</td>
+<td>是，不设置则不启用SSL</td>
 </tr>
-<tr class="row-odd"><td><p>websocket_key_md5</p></td>
-<td><p>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</p></td>
-<td><p>是，不设置则不做验证</p></td>
+<tr class="row-odd"><td>websocket_key_md5</td>
+<td>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</td>
+<td>是，不设置则不做验证</td>
 </tr>
 </tbody>
 </table>
@@ -428,76 +425,76 @@
 <h3>可视化FutuOpenD<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>可视化FutuOpenD配置以界面化表单形式展现，代替命令行版本的XML配置文件方式。</p></li>
+<li>可视化FutuOpenD配置以界面化表单形式展现，代替命令行版本的XML配置文件方式。</li>
 </ul>
 <img alt="../_images/UIConfig.png" src="../_images/UIConfig.png" />
 <p><strong>配置项说明如下表所示：</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col width="15%" />
+<col width="85%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>配置项</p></th>
-<th class="head"><p>说明</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">配置项</th>
+<th class="head">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>监听地址</p></td>
-<td><p>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接），或填本机某个网卡地址</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>监听地址</td>
+<td>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接），或填本机某个网卡地址</td>
 </tr>
-<tr class="row-odd"><td><p>监听端口</p></td>
-<td><p>API协议监听端口</p></td>
+<tr class="row-odd"><td>监听端口</td>
+<td>API协议监听端口</td>
 </tr>
-<tr class="row-even"><td><p>日志级别</p></td>
-<td><p>FutuOpenD日志级别</p></td>
+<tr class="row-even"><td>日志级别</td>
+<td>FutuOpenD日志级别</td>
 </tr>
-<tr class="row-odd"><td><p>API推送频率</p></td>
-<td><p>API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时</p></td>
+<tr class="row-odd"><td>API推送频率</td>
+<td>API订阅数据推送频率控制，单位毫秒，目前不包括K线和分时</td>
 </tr>
-<tr class="row-even"><td><p>Telnet地址</p></td>
-<td><p>远程操作命令监听地址</p></td>
+<tr class="row-even"><td>Telnet地址</td>
+<td>远程操作命令监听地址</td>
 </tr>
-<tr class="row-odd"><td><p>Telnet端口</p></td>
-<td><p>远程操作命令监听端口</p></td>
+<tr class="row-odd"><td>Telnet端口</td>
+<td>远程操作命令监听端口</td>
 </tr>
-<tr class="row-even"><td><p>加密私钥路径</p></td>
-<td><p>API协议RSA加密私钥（PKCS#1）文件绝对路径</p></td>
+<tr class="row-even"><td>加密私钥路径</td>
+<td>API协议RSA加密私钥（PKCS#1）文件绝对路径</td>
 </tr>
-<tr class="row-odd"><td><p>WebSocket监听地址</p></td>
-<td><p>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）</p></td>
+<tr class="row-odd"><td>WebSocket监听地址</td>
+<td>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）</td>
 </tr>
-<tr class="row-even"><td><p>WebSocket端口</p></td>
-<td><p>WebSocket服务监听端口</p></td>
+<tr class="row-even"><td>WebSocket端口</td>
+<td>WebSocket服务监听端口</td>
 </tr>
-<tr class="row-odd"><td><p>WebSocket证书</p></td>
-<td><p>WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置</p></td>
+<tr class="row-odd"><td>WebSocket证书</td>
+<td>WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置</td>
 </tr>
-<tr class="row-even"><td><p>WebSocket私钥</p></td>
-<td><p>WebSocket证书私钥文件路径，私钥不可设置密码，不配置则不启用SSL，需要和证书同时配置</p></td>
+<tr class="row-even"><td>WebSocket私钥</td>
+<td>WebSocket证书私钥文件路径，私钥不可设置密码，不配置则不启用SSL，需要和证书同时配置</td>
 </tr>
-<tr class="row-odd"><td><p>WebSocket鉴权密钥</p></td>
-<td><p>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</p></td>
+<tr class="row-odd"><td>WebSocket鉴权密钥</td>
+<td>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <ul class="simple">
-<li><p>可视化FutuOpenD通过启动命令行OpenD来提供服务， 且通过Websocket与命令行OpenD交互，所以必定启动Websocket功能。</p></li>
-<li><p>当API监听地址不是本地，使用交易接口需配置私钥。</p></li>
-<li><p>当WebSocket监听地址不是本地，需配置SSL才可以启动，且证书私钥生成不可设置密码。</p></li>
-<li><p>密文是明文经过32位MD5加密后用16进制表示的数据，搜索在线MD5加密（注意，通过第三方网站计算可能有记录撞库的风险）或下载MD5计算工具可计算得到。</p></li>
+<li>可视化FutuOpenD通过启动命令行OpenD来提供服务， 且通过Websocket与命令行OpenD交互，所以必定启动Websocket功能。</li>
+<li>当API监听地址不是本地，使用交易接口需配置私钥。</li>
+<li>当WebSocket监听地址不是本地，需配置SSL才可以启动，且证书私钥生成不可设置密码。</li>
+<li>密文是明文经过32位MD5加密后用16进制表示的数据，搜索在线MD5加密（注意，通过第三方网站计算可能有记录撞库的风险）或下载MD5计算工具可计算得到。</li>
 </ul>
 <p>32位MD5密文如下图红框区域（e10adc3949ba59abbe56e057f20f883e）：</p>
 <img alt="../_images/MD5.png" src="../_images/MD5.png" />
 <ul class="simple">
-<li><p>FutuOpenD默认读取同目录下的FutuOpenD.xml。在MacOS上，由于系统保护机制，FutuOpenD.app在运行时会被分配一个随机路径，导致无法找到原本的路径。此时有以下方法：</p></li>
+<li>FutuOpenD默认读取同目录下的FutuOpenD.xml。在MacOS上，由于系统保护机制，FutuOpenD.app在运行时会被分配一个随机路径，导致无法找到原本的路径。此时有以下方法：</li>
 </ul>
-<ol class="arabic simple">
-<li><p>执行tar包下的fixrun.sh</p></li>
-<li><p>用命令行参数-cfg_file指定配置文件路径，见下面说明</p></li>
+<ol class="last arabic simple">
+<li>执行tar包下的fixrun.sh</li>
+<li>用命令行参数-cfg_file指定配置文件路径，见下面说明</li>
 </ol>
 </div>
 </div>
@@ -510,98 +507,98 @@
 <p>传参格式：-key=value</p>
 <p>例如FutuOpenD.exe -login_account=100000 -login_pwd=123456 -lang=en</p>
 <p><strong>参数项：</strong></p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 58%" />
-<col style="width: 28%" />
+<col width="14%" />
+<col width="58%" />
+<col width="28%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>键值</p></th>
-<th class="head"><p>说明</p></th>
-<th class="head"><p>是否可选配置项</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">键值</th>
+<th class="head">说明</th>
+<th class="head">是否可选配置项</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>login_account</p></td>
-<td><p>登录帐号</p></td>
-<td><p>是，可以使用证书登录或配置文件配置项</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>login_account</td>
+<td>登录帐号</td>
+<td>是，可以使用证书登录或配置文件配置项</td>
 </tr>
-<tr class="row-odd"><td><p>login_pwd</p></td>
-<td><p>登录密码明文</p></td>
-<td><p>是，可以使用证书登录或配置文件配置项</p></td>
+<tr class="row-odd"><td>login_pwd</td>
+<td>登录密码明文</td>
+<td>是，可以使用证书登录或配置文件配置项</td>
 </tr>
-<tr class="row-even"><td><p>login_pwd_md5</p></td>
-<td><p>登录密码密文（32位MD5加密16进制），密文明文都存在情况下，只使用密文</p></td>
-<td><p>是，可以使用密文、证书登录或配置文件配置项</p></td>
+<tr class="row-even"><td>login_pwd_md5</td>
+<td>登录密码密文（32位MD5加密16进制），密文明文都存在情况下，只使用密文</td>
+<td>是，可以使用密文、证书登录或配置文件配置项</td>
 </tr>
-<tr class="row-odd"><td><p>login_cert_file</p></td>
-<td><p>证书文件绝对路径，除帐号密码外的另一种登录方式输入，若同时存在帐号密码登录配置项，只使用证书登录</p></td>
-<td><p>是，可以使用明文、证书登录或配置文件配置项</p></td>
+<tr class="row-odd"><td>login_cert_file</td>
+<td>证书文件绝对路径，除帐号密码外的另一种登录方式输入，若同时存在帐号密码登录配置项，只使用证书登录</td>
+<td>是，可以使用明文、证书登录或配置文件配置项</td>
 </tr>
-<tr class="row-even"><td><p>login_by_remember</p></td>
-<td><p>记住密码登录，需要搭配帐号使用，当该参数存在，忽略密码参数</p></td>
-<td><p>是，可以使用帐号密码登录或命令行输入</p></td>
+<tr class="row-even"><td>login_by_remember</td>
+<td>记住密码登录，需要搭配帐号使用，当该参数存在，忽略密码参数</td>
+<td>是，可以使用帐号密码登录或命令行输入</td>
 </tr>
-<tr class="row-odd"><td><p>remember</p></td>
-<td><p>记住密码，当该参数不设置时，已记住密码的帐号继续记住，需要取消记住密码，需要明确传入-remember=0</p></td>
-<td><p>是，不设置保留当前帐号的记住密码状态</p></td>
+<tr class="row-odd"><td>remember</td>
+<td>记住密码，当该参数不设置时，已记住密码的帐号继续记住，需要取消记住密码，需要明确传入-remember=0</td>
+<td>是，不设置保留当前帐号的记住密码状态</td>
 </tr>
-<tr class="row-even"><td><p>login_region</p></td>
-<td><p>优先连接点区域，但不一定能连接上该区域连接点(gz/sh/hk)</p></td>
-<td><p>是，不设置则自动选择</p></td>
+<tr class="row-even"><td>login_region</td>
+<td>优先连接点区域，但不一定能连接上该区域连接点(gz/sh/hk)</td>
+<td>是，不设置则自动选择</td>
 </tr>
-<tr class="row-odd"><td><p>cfg_file</p></td>
-<td><p>FutuOpenD配置文件绝对路径</p></td>
-<td><p>是，不设置则使用程序所在目录下的FutuOpenD.xml</p></td>
+<tr class="row-odd"><td>cfg_file</td>
+<td>FutuOpenD配置文件绝对路径</td>
+<td>是，不设置则使用程序所在目录下的FutuOpenD.xml</td>
 </tr>
-<tr class="row-even"><td><p>console</p></td>
-<td><p>是否显示控制台，后台运行：0，控制台运行：1</p></td>
-<td><p>是，不设置则默认控制台运行</p></td>
+<tr class="row-even"><td>console</td>
+<td>是否显示控制台，后台运行：0，控制台运行：1</td>
+<td>是，不设置则默认控制台运行</td>
 </tr>
-<tr class="row-odd"><td><p>lang</p></td>
-<td><p>FutuOpenD语言，en：英文，chs：简体中文</p></td>
-<td><p>是，不设置则默认简体中文</p></td>
+<tr class="row-odd"><td>lang</td>
+<td>FutuOpenD语言，en：英文，chs：简体中文</td>
+<td>是，不设置则默认简体中文</td>
 </tr>
-<tr class="row-even"><td><p>api_port</p></td>
-<td><p>API协议接收端口</p></td>
-<td><p>是，不设置则使用配置文件配置项</p></td>
+<tr class="row-even"><td>api_port</td>
+<td>API协议接收端口</td>
+<td>是，不设置则使用配置文件配置项</td>
 </tr>
-<tr class="row-odd"><td><p>help</p></td>
-<td><p>输出启动命令行参数然后退出程序</p></td>
-<td><p>是，不设置则正常启动FutuOpenD</p></td>
+<tr class="row-odd"><td>help</td>
+<td>输出启动命令行参数然后退出程序</td>
+<td>是，不设置则正常启动FutuOpenD</td>
 </tr>
-<tr class="row-even"><td><p>log_level</p></td>
-<td><p>日志级别，可填no，debug，info，warning，error，fatal</p></td>
-<td><p>是，默认info级别</p></td>
+<tr class="row-even"><td>log_level</td>
+<td>日志级别，可填no，debug，info，warning，error，fatal</td>
+<td>是，默认info级别</td>
 </tr>
-<tr class="row-odd"><td><p>no_monitor</p></td>
-<td><p>是否启动守护进程，启动：0，不启动：1</p></td>
-<td><p>是，默认带守护进程启动</p></td>
+<tr class="row-odd"><td>no_monitor</td>
+<td>是否启动守护进程，启动：0，不启动：1</td>
+<td>是，默认带守护进程启动</td>
 </tr>
-<tr class="row-even"><td><p>simulate_trade</p></td>
-<td><p>是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable</p></td>
-<td><p>是，默认启用</p></td>
+<tr class="row-even"><td>simulate_trade</td>
+<td>是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable</td>
+<td>是，默认启用</td>
 </tr>
-<tr class="row-odd"><td><p>websocket_ip</p></td>
-<td><p>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）</p></td>
-<td><p>是，不设置则默认127.0.0.1</p></td>
+<tr class="row-odd"><td>websocket_ip</td>
+<td>API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）</td>
+<td>是，不设置则默认127.0.0.1</td>
 </tr>
-<tr class="row-even"><td><p>websocket_port</p></td>
-<td><p>WebSocket服务监听端口</p></td>
-<td><p>是，不设置则不启用该功能</p></td>
+<tr class="row-even"><td>websocket_port</td>
+<td>WebSocket服务监听端口</td>
+<td>是，不设置则不启用该功能</td>
 </tr>
-<tr class="row-odd"><td><p>websocket_private_key</p></td>
-<td><p>WebSocket证书私钥文件路径，不配置则不启用SSL，需要和证书同时配置</p></td>
-<td><p>是，不设置则不启用SSL</p></td>
+<tr class="row-odd"><td>websocket_private_key</td>
+<td>WebSocket证书私钥文件路径，不配置则不启用SSL，需要和证书同时配置</td>
+<td>是，不设置则不启用SSL</td>
 </tr>
-<tr class="row-even"><td><p>websocket_cert</p></td>
-<td><p>WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置</p></td>
-<td><p>是，不设置则不启用SSL</p></td>
+<tr class="row-even"><td>websocket_cert</td>
+<td>WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置</td>
+<td>是，不设置则不启用SSL</td>
 </tr>
-<tr class="row-odd"><td><p>websocket_key_md5</p></td>
-<td><p>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</p></td>
-<td><p>是，不设置则不做验证</p></td>
+<tr class="row-odd"><td>websocket_key_md5</td>
+<td>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</td>
+<td>是，不设置则不做验证</td>
 </tr>
 </tbody>
 </table>
@@ -623,11 +620,11 @@
 <p><strong>Paramters cmd:</strong> str，命令</p>
 </div></blockquote>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <ul class="simple">
-<li><p>运维代码在Telnet窗口或命令控制台输入</p></li>
+<li>运维代码在Telnet窗口或命令控制台输入</li>
 </ul>
-<img alt="../_images/req-verify.png" src="../_images/req-verify.png" />
+<img alt="../_images/req-verify.png" class="last" src="../_images/req-verify.png" />
 </div>
 </div>
 <div class="section" id="exit">
@@ -722,9 +719,9 @@
 <p>界面FutuOpenD点击【更多选项】可以看到对应设置项。</p>
 <img alt="../_images/MoreConfig.png" src="../_images/MoreConfig.png" />
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>如果证书是自签的，则需要在调用JS接口所在机器上安装该证书，或者设置不验证证书。</p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>如果证书是自签的，则需要在调用JS接口所在机器上安装该证书，或者设置不验证证书。</li>
 </ul>
 </div>
 </div></blockquote>
@@ -735,20 +732,20 @@
 <div><p>自签证书生成详细资料不便在此文档展开，请自行查阅。</p>
 <p>在此提供较简单可用的生成步骤：</p>
 <ol class="arabic simple">
-<li><p>安装openssl</p></li>
-<li><p>修改openssl.cnf，在alt_names节点下加上FutuOpenD所在机器IP地址或域名;如 IP.2 = xxx.xxx.xxx.xxx, DNS.2 = www.xxx.com</p></li>
-<li><p>生成私钥以及证书（PEM）。</p></li>
+<li>安装openssl</li>
+<li>修改openssl.cnf，在alt_names节点下加上FutuOpenD所在机器IP地址或域名;如 IP.2 = xxx.xxx.xxx.xxx, DNS.2 = www.xxx.com</li>
+<li>生成私钥以及证书（PEM）。</li>
 </ol>
 <p>证书生成参数参考如下：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">newkey</span> <span class="n">rsa</span><span class="p">:</span><span class="mi">2048</span> <span class="o">-</span><span class="n">out</span> <span class="n">futu</span><span class="o">.</span><span class="n">cer</span> <span class="o">-</span><span class="n">outform</span> <span class="n">PEM</span> <span class="o">-</span><span class="n">keyout</span> <span class="n">futu</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">days</span> <span class="mi">10000</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">-</span><span class="n">config</span> <span class="n">openssl</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">sha256</span> <span class="o">-</span><span class="n">subj</span> <span class="s2">&quot;/CN=Futu CA&quot;</span> <span class="o">-</span><span class="n">reqexts</span> <span class="n">v3_req</span> <span class="o">-</span><span class="n">extensions</span> <span class="n">v3_req</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">newkey</span> <span class="n">rsa</span><span class="p">:</span><span class="mi">2048</span> <span class="o">-</span><span class="n">out</span> <span class="n">futu</span><span class="o">.</span><span class="n">cer</span> <span class="o">-</span><span class="n">outform</span> <span class="n">PEM</span> <span class="o">-</span><span class="n">keyout</span> <span class="n">futu</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">days</span> <span class="mi">10000</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">-</span><span class="n">config</span> <span class="n">openssl</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">sha256</span> <span class="o">-</span><span class="n">subj</span> <span class="s2">&quot;/CN=Futu CA&quot;</span> <span class="o">-</span><span class="n">reqexts</span> <span class="n">v3_req</span> <span class="o">-</span><span class="n">extensions</span> <span class="n">v3_req</span>
 </pre></div>
 </div>
 <p>附上本地自签证书以及生成证书的配置文件供测试： <a class="reference external" href="../_static/file/openssl.cnf">openssl.cnf</a>  |  <a class="reference external" href="../_static/file/cer">futu.cer</a>  | <a class="reference external" href="../_static/file/key">futu.key</a></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>openssl.cnf需要放到系统路径下，或在生成参数中指定绝对路径。</p></li>
-<li><p>注意生成私钥需要指定不设置密码（-nodes）。</p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>openssl.cnf需要放到系统路径下，或在生成参数中指定绝对路径。</li>
+<li>注意生成私钥需要指定不设置密码（-nodes）。</li>
 </ul>
 </div>
 </div></blockquote>
@@ -760,21 +757,19 @@
 <div class="section" id="id16">
 <h3>日志级别<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>默认info级别，在系统开发阶段建议不要关闭日志或者将日志修改到info以上（warning，error，fatal），避免出现问题无法确认以及定位问题。</p>
-</div></blockquote>
+<div>默认info级别，在系统开发阶段建议不要关闭日志或者将日志修改到info以上（warning，error，fatal），避免出现问题无法确认以及定位问题。</div></blockquote>
 </div>
 <div class="section" id="id17">
 <h3>问卷评估及协议确认<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>需要进行相关问卷评估及协议确认，才可以使用FutuOpenD，请先 <a class="reference external" href="https://www.futunn.com/about/api-disclaimer/">前往完成</a> 。</p>
-</div></blockquote>
+<div>需要进行相关问卷评估及协议确认，才可以使用FutuOpenD，请先 <a class="reference external" href="https://www.futunn.com/about/api-disclaimer/">前往完成</a> 。</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="rsa">
 <h3>RSA私钥文件<a class="headerlink" href="#rsa" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>参考文件格式：</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-----BEGIN RSA PRIVATE KEY-----
+<div class="highlight-bash"><div class="highlight"><pre><span></span>-----BEGIN RSA PRIVATE KEY-----
 MIICXAIBAAKBgQCx3W78hx5dQxg47hGMEj02JAJYP+HdKGWD8QilzeK4eL6QJ9QP
 +uVYGA5Jp0Ed2AaV+zQrT/BCe6z5j/Qd5B0eY2cFlgk+/hbAt7A4wcSAbby8nONw
 0fZTglU78FhLUih84Int5HO0Fr3WLUDvpE+TgS3l/2u5ym6H6fvsdrdNCwIDAQAB
@@ -792,13 +787,13 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>RSA 密钥的填充方式为 PKCS1， 位数1024</p></li>
-<li><p>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索”RSA 在线生成”</p></li>
-<li><p>将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项</p></li>
-<li><p>公钥可通过私钥计算得到，但生成私钥时不要设置密码</p></li>
-<li><p>该密钥需要在OpenD配置文件中指定，且API接口也需要调用相关接口设置密钥信息</p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>RSA 密钥的填充方式为 PKCS1， 位数1024</li>
+<li>密钥文件可通过第三方web平台自动生成， 请在baidu或google上搜索&#8221;RSA 在线生成&#8221;</li>
+<li>将私钥保存成文件，并在将文件路径配置在FutuOpenD.xml的rsa_private_key配置项</li>
+<li>公钥可通过私钥计算得到，但生成私钥时不要设置密码</li>
+<li>该密钥需要在OpenD配置文件中指定，且API接口也需要调用相关接口设置密钥信息</li>
 </ul>
 </div>
 </div></blockquote>
@@ -850,17 +845,16 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

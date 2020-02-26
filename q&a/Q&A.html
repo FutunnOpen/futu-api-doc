@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Q&amp;A &mdash; futu-api-doc 3.18 documentation</title>
+  <title>Q&amp;A &mdash; futu-api-doc 3.17 documentation</title>
   
 
   
@@ -36,10 +36,7 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
         <link rel="prev" title="快速上手" href="../javascript/start.html"/> 
 
   
@@ -69,7 +66,7 @@
             
             
               <div class="version">
-                3.18
+                3.17
               </div>
             
           
@@ -173,6 +170,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id11">Q5:请求限频逻辑是怎样</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">Q6:如何获取一级用户权限</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q7">Q7:自选股添加不上是什么原因</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q8-2-10">Q8:2.10版本权限调整预告</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id13">交易相关</a><ul>
@@ -241,7 +239,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/q&amp;a/Q&amp;A.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/q&amp;a/Q&amp;A.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -287,8 +285,8 @@
 <p>A: 一般因权限问题导致自带数据拷贝失败，可以尝试将程序目录下Appdata.dat解压后的文件拷贝到程序数据目录下。</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>windows程序数据目录：%appdata%/com.futunn.FutuOpenD/F3CNN</p></li>
-<li><p>非windows程序数据目录：~/.com.futunn.FutuOpenD/F3CNN</p></li>
+<li>windows程序数据目录：%appdata%/com.futunn.FutuOpenD/F3CNN</li>
+<li>非windows程序数据目录：~/.com.futunn.FutuOpenD/F3CNN</li>
 </ul>
 </div></blockquote>
 </div>
@@ -302,8 +300,7 @@
 <h3>Q4:如何验证手机验证码<a class="headerlink" href="#q4" title="Permalink to this headline">¶</a></h3>
 <p>A: 在FutuOpenD界面上或远程到Telnet端口输入命令input_phone_verify_code -code=123456（手机验证码）。</p>
 <blockquote>
-<div><p>注 ：【-code=123456】前有空格</p>
-</div></blockquote>
+<div>注 ：【-code=123456】前有空格</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="q5">
@@ -316,8 +313,8 @@
 <p>A: 设备标识随机生成并存放于com.futunn.FutuOpenD\F3CNN\Device.dat文件中。</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>如果删除或损坏会重新生成新设备标识然后验证设备锁</p></li>
-<li><p>另外镜像拷贝部署的用户需要注意，如果多台机器的Device.dat内容相同，也会导致这些机器多次验证设备锁，删除Device.dat文件即可</p></li>
+<li>如果删除或损坏会重新生成新设备标识然后验证设备锁</li>
+<li>另外镜像拷贝部署的用户需要注意，如果多台机器的Device.dat内容相同，也会导致这些机器多次验证设备锁，删除Device.dat文件即可</li>
 </ol>
 </div></blockquote>
 </div>
@@ -340,8 +337,8 @@
 <p>A: 请先尝试检查是否以下情况：</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>脚本端口是否与FutuOpenD配置一致</p></li>
-<li><p>连接上限为128，检查是否有无用连接没有关闭</p></li>
+<li>脚本端口是否与FutuOpenD配置一致</li>
+<li>连接上限为128，检查是否有无用连接没有关闭</li>
 </ol>
 </div></blockquote>
 </div>
@@ -359,7 +356,7 @@
 <div class="section" id="q4-linuxmultiprocessingpythonfutuopend">
 <h3>Q4:Linux下通过multiprocessing模块以多进程方式运行Python脚本可能会连不上FutuOpenD<a class="headerlink" href="#q4-linuxmultiprocessingpythonfutuopend" title="Permalink to this headline">¶</a></h3>
 <p>A: Linux/Mac环境下以默认方式创建进程后，父进程中py-futu-api内部创建的线程将会在子进程中消失，导致程序内部状态错误。可以用spawn方式来启动进程：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="kn">as</span> <span class="nn">mp</span>
 <span class="n">mp</span><span class="o">.</span><span class="n">set_start_method</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">)</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
 <span class="o">...</span>
@@ -375,10 +372,10 @@
 <p>A: 检查订阅接口返回的错误描述，常见有以下情况：</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>帐号无港股Lv2权限</p></li>
-<li><p>帐号有港股Lv2权限，但被其他终端踢掉行情权限</p></li>
-<li><p>帐号有赠送的港股Lv2权限，但赠送的港股Lv2权限只能在大陆IP机器使用。</p></li>
-<li><p>订阅额度不足，订阅额度规则参见  <a class="reference external" href="../protocol/intro.html#id28">订阅限制</a></p></li>
+<li>帐号无港股Lv2权限</li>
+<li>帐号有港股Lv2权限，但被其他终端踢掉行情权限</li>
+<li>帐号有赠送的港股Lv2权限，但赠送的港股Lv2权限只能在大陆IP机器使用。</li>
+<li>订阅额度不足，订阅额度规则参见  <a class="reference external" href="../protocol/intro.html#id28">订阅限制</a></li>
 </ol>
 </div></blockquote>
 </div>
@@ -412,6 +409,12 @@
 <h3>Q7:自选股添加不上是什么原因<a class="headerlink" href="#q7" title="Permalink to this headline">¶</a></h3>
 <p>A: 请先检查是否有超出上限，或者删除一部分自选。</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="q8-2-10">
+<h3>Q8:2.10版本权限调整预告<a class="headerlink" href="#q8-2-10" title="Permalink to this headline">¶</a></h3>
+<p>A: 2.10版本（3.17对应2.9版本）额度权限如下：</p>
+<img alt="../_images/quota-table.png" src="../_images/quota-table.png" />
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id13">
@@ -426,11 +429,11 @@
 <p>A: 有区别:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>订单的状态不支持删除、部分成交、生效、失效状态</p></li>
-<li><p>不支持生效失效、删除订单操作，仅支持支持改单， 撤单</p></li>
-<li><p>不支持成交数据，包括今日成交，历史成交，成交推送</p></li>
-<li><p>下单仅支持Normal类型</p></li>
-<li><p>模拟交易不需要解锁交易</p></li>
+<li>订单的状态不支持删除、部分成交、生效、失效状态</li>
+<li>不支持生效失效、删除订单操作，仅支持支持改单， 撤单</li>
+<li>不支持成交数据，包括今日成交，历史成交，成交推送</li>
+<li>下单仅支持Normal类型</li>
+<li>模拟交易不需要解锁交易</li>
 </ol>
 <p>更多模拟交易规则可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate#/rule">模拟交易规则</a>。</p>
 </div></blockquote>
@@ -453,11 +456,12 @@
 <hr class="docutils" />
 <div class="section" id="id20">
 <h3>Q6:各市场支持的订单类型<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt>A:</dt><dd><ul class="simple">
-<li><p>港股支持增强限价单，竞价单，竞价限价单，绝对限价单，特别限价单</p></li>
-<li><p>美股支持限价单，市价单</p></li>
-<li><p>A股通仅支持A股限价委托</p></li>
+<dl class="docutils">
+<dt>A:</dt>
+<dd><ul class="first last simple">
+<li>港股支持增强限价单，竞价单，竞价限价单，绝对限价单，特别限价单</li>
+<li>美股支持限价单，市价单</li>
+<li>A股通仅支持A股限价委托</li>
 </ul>
 </dd>
 </dl>
@@ -465,11 +469,12 @@
 <hr class="docutils" />
 <div class="section" id="id21">
 <h3>Q7:各市场支持的订单操作<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt>A:</dt><dd><ul class="simple">
-<li><p>港股支持改单、撤单、生效、失效、删除</p></li>
-<li><p>美股仅支持改单和撤单</p></li>
-<li><p>A股通仅支持改单和撤单</p></li>
+<dl class="docutils">
+<dt>A:</dt>
+<dd><ul class="first last simple">
+<li>港股支持改单、撤单、生效、失效、删除</li>
+<li>美股仅支持改单和撤单</li>
+<li>A股通仅支持改单和撤单</li>
 </ul>
 </dd>
 </dl>
@@ -526,17 +531,16 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.17',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 
