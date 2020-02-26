@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.17 documentation</title>
+  <title>基础API &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,10 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="介绍" href="intro.html"/> 
 
@@ -67,7 +70,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -222,7 +225,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/net/Base_API.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/net/Base_API.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -265,83 +268,83 @@
 <h3>ConnectFailType - 连接错误码<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>连接错误码</p>
 <dl class="enum">
-<dt id="_CPPv215ConnectFailType">
-<em class="property">enum </em><code class="descclassname"></code><code class="descname">ConnectFailType</code><a class="headerlink" href="#_CPPv215ConnectFailType" title="Permalink to this definition">¶</a></dt>
+<dt id="_CPPv415ConnectFailType">
+<em class="property">enum </em><code class="sig-name descname">ConnectFailType</code><br /></dt>
 <dd><dl class="attribute">
 <dt id="Unknown">
-<code class="descname">Unknown</code><a class="headerlink" href="#Unknown" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">Unknown</code><a class="headerlink" href="#Unknown" title="Permalink to this definition">¶</a></dt>
 <dd><p>未知错误</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="None">
-<code class="descname">None</code><a class="headerlink" href="#None" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">None</code><a class="headerlink" href="#None" title="Permalink to this definition">¶</a></dt>
 <dd><p>没有错误</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CreateFailed">
-<code class="descname">CreateFailed</code><a class="headerlink" href="#CreateFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">CreateFailed</code><a class="headerlink" href="#CreateFailed" title="Permalink to this definition">¶</a></dt>
 <dd><p>socket创建失败</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="CloseFailed">
-<code class="descname">CloseFailed</code><a class="headerlink" href="#CloseFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">CloseFailed</code><a class="headerlink" href="#CloseFailed" title="Permalink to this definition">¶</a></dt>
 <dd><p>socket close错误</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="ShutdownFailed">
-<code class="descname">ShutdownFailed</code><a class="headerlink" href="#ShutdownFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ShutdownFailed</code><a class="headerlink" href="#ShutdownFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>socket shutdown错误</p>
 <dl class="attribute">
 <dt>
-<code class="descname">GetHost ByNameFailed</code></dt>
+<code class="sig-name descname">GetHost ByNameFailed</code></dt>
 <dd></dd></dl>
 
 <p>gethostbyname错误</p>
 <dl class="attribute">
 <dt id="GetHostByNameWrong">
-<code class="descname">GetHostByNameWrong</code><a class="headerlink" href="#GetHostByNameWrong" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">GetHostByNameWrong</code><a class="headerlink" href="#GetHostByNameWrong" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>gethostbyname调用成功，但返回的结果错误</p>
 <dl class="attribute">
 <dt id="ConnectFailed">
-<code class="descname">ConnectFailed</code><a class="headerlink" href="#ConnectFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ConnectFailed</code><a class="headerlink" href="#ConnectFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>连接失败</p>
 <dl class="attribute">
 <dt id="BindFailed">
-<code class="descname">BindFailed</code><a class="headerlink" href="#BindFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">BindFailed</code><a class="headerlink" href="#BindFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>socket bind失败</p>
 <dl class="attribute">
 <dt id="ListenFailed">
-<code class="descname">ListenFailed</code><a class="headerlink" href="#ListenFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ListenFailed</code><a class="headerlink" href="#ListenFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>socket listen失败</p>
 <dl class="attribute">
 <dt id="SelectReturnError">
-<code class="descname">SelectReturnError</code><a class="headerlink" href="#SelectReturnError" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SelectReturnError</code><a class="headerlink" href="#SelectReturnError" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>socket select错误</p>
 <dl class="attribute">
 <dt id="SendFailed">
-<code class="descname">SendFailed</code><a class="headerlink" href="#SendFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SendFailed</code><a class="headerlink" href="#SendFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>socket send失败</p>
 <dl class="attribute">
 <dt id="RecvFailed">
-<code class="descname">RecvFailed</code><a class="headerlink" href="#RecvFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">RecvFailed</code><a class="headerlink" href="#RecvFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>socket recv失败</p>
@@ -353,41 +356,41 @@
 <h3>InitFailType - 初始化连接协议失败类型<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>初始化连接协议失败，即InitConnect协议相关的错误</p>
 <dl class="enum">
-<dt id="_CPPv212InitFailType">
-<em class="property">enum </em><code class="descclassname"></code><code class="descname">InitFailType</code><a class="headerlink" href="#_CPPv212InitFailType" title="Permalink to this definition">¶</a></dt>
+<dt id="_CPPv412InitFailType">
+<em class="property">enum </em><code class="sig-name descname">InitFailType</code><br /></dt>
 <dd><dl class="attribute">
 <dt id="Unknow">
-<code class="descname">Unknow</code><a class="headerlink" href="#Unknow" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">Unknow</code><a class="headerlink" href="#Unknow" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>未知错误</p>
 <dl class="attribute">
 <dt id="Timeout">
-<code class="descname">Timeout</code><a class="headerlink" href="#Timeout" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">Timeout</code><a class="headerlink" href="#Timeout" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>超时</p>
 <dl class="attribute">
 <dt id="DisConnect">
-<code class="descname">DisConnect</code><a class="headerlink" href="#DisConnect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">DisConnect</code><a class="headerlink" href="#DisConnect" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>连接断开</p>
 <dl class="attribute">
 <dt id="SeriaNoNotMatch">
-<code class="descname">SeriaNoNotMatch</code><a class="headerlink" href="#SeriaNoNotMatch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SeriaNoNotMatch</code><a class="headerlink" href="#SeriaNoNotMatch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>序列号不符</p>
 <dl class="attribute">
 <dt id="SendInitReqFailed">
-<code class="descname">SendInitReqFailed</code><a class="headerlink" href="#SendInitReqFailed" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SendInitReqFailed</code><a class="headerlink" href="#SendInitReqFailed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>发送初始化协议失败</p>
 <dl class="attribute">
 <dt id="OpenDReject">
-<code class="descname">OpenDReject</code><a class="headerlink" href="#OpenDReject" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">OpenDReject</code><a class="headerlink" href="#OpenDReject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>FutuOpenD回包指定错误，具体错误看描述</p>
@@ -405,7 +408,7 @@
 <h2>FTAPI - API全局功能。<a class="headerlink" href="#ftapi-api" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="FTAPI">
-<em class="property">class </em><code class="descname">FTAPI</code><a class="headerlink" href="#FTAPI" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">FTAPI</code><a class="headerlink" href="#FTAPI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>API全局配置类，初始化和全局配置类。</p>
@@ -414,16 +417,13 @@
 <h3>Init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">static void Init()</code></dt>
+<code class="sig-name descname">static void Init()</code></dt>
 <dd><p>初始化底层通道，程序启动时首先调用</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">void</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -432,16 +432,13 @@
 <h3>UnInit<a class="headerlink" href="#uninit" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">static void UnInit()</code></dt>
+<code class="sig-name descname">static void UnInit()</code></dt>
 <dd><p>清理底层通道，程序结束时调用</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">void</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -451,7 +448,7 @@
 <h2>FTAPI_Conn连接层基类<a class="headerlink" href="#ftapi-conn" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt>
-<em class="property">class </em><code class="descname">FTAPI</code></dt>
+<em class="property">class </em><code class="sig-name descname">FTAPI</code></dt>
 <dd></dd></dl>
 
 <p>API功能基类，提供连接方面公用的功能。FTAPI_Qot（行情）和FTAPI_Trd（交易）都继承该类。</p>
@@ -460,18 +457,16 @@
 <h3>SetConnSpi<a class="headerlink" href="#setconnspi" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">void SetConnSpi(FTSPI_Conn callback)</code></dt>
+<code class="sig-name descname">void SetConnSpi(FTSPI_Conn callback)</code></dt>
 <dd><p>设置连接相关回调。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>callback</strong> &#8211; 参加下面 <cite>FTSPI_Conn</cite> 的说明</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>callback</strong> – 参加下面 <cite>FTSPI_Conn</cite> 的说明</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -480,23 +475,19 @@
 <h3>SetClientInfo<a class="headerlink" href="#setclientinfo" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">void SetClientInfo(string clientID, int clientVer)</code></dt>
+<code class="sig-name descname">void SetClientInfo(string clientID, int clientVer)</code></dt>
 <dd><p>初始化连接信息。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>clientID</strong> &#8211; 连接标识符，请自定义独特的标识符</li>
-<li><strong>clientVer</strong> &#8211; 连接版本号，请参考opendapi版本号</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clientID</strong> – 连接标识符，请自定义独特的标识符</p></li>
+<li><p><strong>clientVer</strong> – 连接版本号，请参考opendapi版本号</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -505,24 +496,20 @@
 <h3>InitConnect<a class="headerlink" href="#initconnect" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">bool InitConnect(string ip, ushort port, bool isEnableEncrypt)</code></dt>
+<code class="sig-name descname">bool InitConnect(string ip, ushort port, bool isEnableEncrypt)</code></dt>
 <dd><p>初始化连接信息。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ip</strong> &#8211; 连接地址</li>
-<li><strong>port</strong> &#8211; 连接端口号</li>
-<li><strong>isEnableEncrypt</strong> &#8211; 是否允许加密</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ip</strong> – 连接地址</p></li>
+<li><p><strong>port</strong> – 连接端口号</p></li>
+<li><p><strong>isEnableEncrypt</strong> – 是否允许加密</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool 初始化失败返回false，其他错误依据callback返回</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool 初始化失败返回false，其他错误依据callback返回</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -531,18 +518,16 @@
 <h3>SetRSAPrivateKey<a class="headerlink" href="#setrsaprivatekey" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">void SetRSAPrivateKey(string key)</code></dt>
+<code class="sig-name descname">void SetRSAPrivateKey(string key)</code></dt>
 <dd><p>设置密钥。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; 加密密钥。格式见 <a class="reference external" href="../intro/FutuOpenDGuide.html#rsa">rsa</a></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – 加密密钥。格式见 <a class="reference external" href="../intro/FutuOpenDGuide.html#rsa">rsa</a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -551,16 +536,13 @@
 <h3>GetConnectID<a class="headerlink" href="#getconnectid" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">long GetConnectID()</code></dt>
+<code class="sig-name descname">long GetConnectID()</code></dt>
 <dd><p>获取此连接的连接ID，连接的唯一标识，InitConnect协议返回，没有初始化前为0</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">long</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>long</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -569,16 +551,13 @@
 <h3>Close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">void Close()</code></dt>
+<code class="sig-name descname">void Close()</code></dt>
 <dd><p>释放内存。当对象不再使用时调用，否则会有内存泄漏。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">void</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -588,7 +567,7 @@
 <h2>FTSPI_Conn - 连接状态回调接口<a class="headerlink" href="#ftspi-conn" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt>
-<code class="descname">interface FTSPI_Conn</code></dt>
+<code class="sig-name descname">interface FTSPI_Conn</code></dt>
 <dd></dd></dl>
 
 <p>当与OpenD的连接状态变化时调用此接口。</p>
@@ -597,24 +576,20 @@
 <h3>OnInitConnect<a class="headerlink" href="#oninitconnect" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">void OnInitConnect(FTAPI_Conn client, long errCode, String desc)</code></dt>
+<code class="sig-name descname">void OnInitConnect(FTAPI_Conn client, long errCode, String desc)</code></dt>
 <dd><p>初始化连接状态变化。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>client</strong> &#8211; 对应的FTAPI实例</li>
-<li><strong>errCode</strong> &#8211; 错误码。0表示成功，可以进行后续请求。当高32位为 <a class="reference external" href="Base_API.html#id2">ConnectFailType</a> 类型时，低32位为系统错误码；当高32位等于 <a class="reference external" href="Base_API.html#id4">FTAPI_InitFail</a>，则低32位为 <a class="reference external" href="Base_API.html#id3">InitFailType</a> 类型。</li>
-<li><strong>desc</strong> &#8211; 错误描述</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – 对应的FTAPI实例</p></li>
+<li><p><strong>errCode</strong> – 错误码。0表示成功，可以进行后续请求。当高32位为 <a class="reference external" href="Base_API.html#id2">ConnectFailType</a> 类型时，低32位为系统错误码；当高32位等于 <a class="reference external" href="Base_API.html#id4">FTAPI_InitFail</a>，则低32位为 <a class="reference external" href="Base_API.html#id3">InitFailType</a> 类型。</p></li>
+<li><p><strong>desc</strong> – 错误描述</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -623,23 +598,19 @@
 <h3>OnDisConnect<a class="headerlink" href="#ondisconnect" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
 <dt>
-<code class="descname">void OnDisconnect(FTAPI_Conn client, long errCode)</code></dt>
+<code class="sig-name descname">void OnDisconnect(FTAPI_Conn client, long errCode)</code></dt>
 <dd><p>连接断开。</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>client</strong> &#8211; 对应的FTAPI实例</li>
-<li><strong>errCode</strong> &#8211; 错误码。高32位为 <a class="reference external" href="Base_API.html#id2">ConnectFailType</a> 类型，低32位为系统错误码；</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – 对应的FTAPI实例</p></li>
+<li><p><strong>errCode</strong> – 错误码。高32位为 <a class="reference external" href="Base_API.html#id2">ConnectFailType</a> 类型，低32位为系统错误码；</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>void</p>
+</dd>
+</dl>
 </dd></dl>
 
 <hr class="docutils" />
@@ -690,16 +661,17 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

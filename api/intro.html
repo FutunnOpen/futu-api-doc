@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api-doc 3.17 documentation</title>
+  <title>介绍 &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,10 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="安装指南" href="setup.html"/>
         <link rel="prev" title="交易协议" href="../protocol/trade_protocol.html"/> 
 
@@ -67,7 +70,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -198,7 +201,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/intro.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/intro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -234,12 +237,12 @@
 <h1>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></p>
 <p>交易品种:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.港股：正股、ETF、窝轮、牛熊证
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.港股：正股、ETF、窝轮、牛熊证
 2.美股：正股、ETF
 </pre></div>
 </div>
 <p>行情数据:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1.支持A股、港股
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.支持A股、港股
 2.支持定阅并接收实时报价、逐笔、买卖档，买卖经纪（仅港股)等深度数据
 </pre></div>
 </div>
@@ -250,129 +253,129 @@
 <div class="section" id="id2">
 <h2>主要函数列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>行情函数:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">函数名</th>
-<th class="head">功能简介</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数名</p></th>
+<th class="head"><p>功能简介</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_trading_days">get_trading_days</a></td>
-<td>获取交易日</td>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_trading_days">get_trading_days</a></p></td>
+<td><p>获取交易日</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_stock_basicinfo">get_stock_basicinfo</a></td>
-<td>获取指定市场中特定类型的股票基本信息</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_stock_basicinfo">get_stock_basicinfo</a></p></td>
+<td><p>获取指定市场中特定类型的股票基本信息</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_multiple_history_kline">get_multiple_history_kline</a></td>
-<td><span class="strike">获取多只股票的本地历史k线数据</span></td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_multiple_history_kline">get_multiple_history_kline</a></p></td>
+<td><p><span class="strike">获取多只股票的本地历史k线数据</span></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_autype_list">get_autype_list</a></td>
-<td><span class="strike">获取给定股票列表的复权因子</span></td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_autype_list">get_autype_list</a></p></td>
+<td><p><span class="strike">获取给定股票列表的复权因子</span></p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#request_history_kline">request_history_kline</a></td>
-<td>获取k线，不需要事先下载k线数据</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#request_history_kline">request_history_kline</a></p></td>
+<td><p>获取k线，不需要事先下载k线数据</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#query_subscription">query_subscription</a></td>
-<td>查询已订阅的实时信息</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#query_subscription">query_subscription</a></p></td>
+<td><p>查询已订阅的实时信息</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_market_snapshot">get_market_snapshot</a></td>
-<td>获取市场快照</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_market_snapshot">get_market_snapshot</a></p></td>
+<td><p>获取市场快照</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_rt_data">get_rt_data</a></td>
-<td>获取指定股票的分时数据</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_rt_data">get_rt_data</a></p></td>
+<td><p>获取指定股票的分时数据</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_plate_stock">get_plate_stock</a></td>
-<td>获取特定板块下的股票列表</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_plate_stock">get_plate_stock</a></p></td>
+<td><p>获取特定板块下的股票列表</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_plate_list">get_plate_list</a></td>
-<td>获取板块集合下的子板块列表</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_plate_list">get_plate_list</a></p></td>
+<td><p>获取板块集合下的子板块列表</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_broker_queue">get_broker_queue</a></td>
-<td>获取股票的经纪队列</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_broker_queue">get_broker_queue</a></p></td>
+<td><p>获取股票的经纪队列</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#subscribe">subscribe</a></td>
-<td>订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#subscribe">subscribe</a></p></td>
+<td><p>订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_stock_quote">get_stock_quote</a></td>
-<td>获取订阅股票报价的实时数据，有订阅要求限制</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_stock_quote">get_stock_quote</a></p></td>
+<td><p>获取订阅股票报价的实时数据，有订阅要求限制</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_rt_ticker">get_rt_ticker</a></td>
-<td>获取指定股票的实时逐笔。取最近num个逐笔</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_rt_ticker">get_rt_ticker</a></p></td>
+<td><p>获取指定股票的实时逐笔。取最近num个逐笔</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_cur_kline">get_cur_kline</a></td>
-<td>实时获取指定股票最近num个K线数据</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_cur_kline">get_cur_kline</a></p></td>
+<td><p>实时获取指定股票最近num个K线数据</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_order_book">get_order_book</a></td>
-<td>获取实时摆盘数据</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_order_book">get_order_book</a></p></td>
+<td><p>获取实时摆盘数据</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_referencestock_list">get_referencestock_list</a></td>
-<td>获取证券的关联数据</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_referencestock_list">get_referencestock_list</a></p></td>
+<td><p>获取证券的关联数据</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_owner_plate">get_owner_plate</a></td>
-<td>获取单支或多支股票的所属板块信息列表</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_owner_plate">get_owner_plate</a></p></td>
+<td><p>获取单支或多支股票的所属板块信息列表</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_holding_change_list">get_holding_change_list</a></td>
-<td>获取大股东持股变动列表,只提供美股数据,并最多只返回前100个</td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_holding_change_list">get_holding_change_list</a></p></td>
+<td><p>获取大股东持股变动列表,只提供美股数据,并最多只返回前100个</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_option_chain">get_option_chain</a></td>
-<td>通过标的股查询期权</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_option_chain">get_option_chain</a></p></td>
+<td><p>通过标的股查询期权</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_multi_points_history_kline">get_multi_points_history_kline</a></td>
-<td><span class="strike">从本地历史K线中获取多支股票多个时间点的指定数据列</span></td>
+<tr class="row-even"><td><p><a class="reference external" href="Quote_API.html#get_multi_points_history_kline">get_multi_points_history_kline</a></p></td>
+<td><p><span class="strike">从本地历史K线中获取多支股票多个时间点的指定数据列</span></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_warrant">get_warrant</a></td>
-<td>拉取窝轮和相关衍生品数据接口</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Quote_API.html#get_warrant">get_warrant</a></p></td>
+<td><p>拉取窝轮和相关衍生品数据接口</p></td>
 </tr>
 </tbody>
 </table>
 <p>交易函数:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">函数名</th>
-<th class="head">功能简介</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数名</p></th>
+<th class="head"><p>功能简介</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="Trade_API.html#get_acc_list">get_acc_list</a></td>
-<td>获取交易业务账户列表</td>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="Trade_API.html#get_acc_list">get_acc_list</a></p></td>
+<td><p>获取交易业务账户列表</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Trade_API.html#unlock_trade">unlock_trade</a></td>
-<td>解锁交易</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Trade_API.html#unlock_trade">unlock_trade</a></p></td>
+<td><p>解锁交易</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Trade_API.html#accinfo_query">accinfo_query</a></td>
-<td>获取账户资金数据</td>
+<tr class="row-even"><td><p><a class="reference external" href="Trade_API.html#accinfo_query">accinfo_query</a></p></td>
+<td><p>获取账户资金数据</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Trade_API.html#position_list_query">position_list_query</a></td>
-<td>获取账户持仓列表</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Trade_API.html#position_list_query">position_list_query</a></p></td>
+<td><p>获取账户持仓列表</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Trade_API.html#place_order">place_order</a></td>
-<td>下单</td>
+<tr class="row-even"><td><p><a class="reference external" href="Trade_API.html#place_order">place_order</a></p></td>
+<td><p>下单</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Trade_API.html#order_list_query">order_list_query</a></td>
-<td>获取订单列表</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Trade_API.html#order_list_query">order_list_query</a></p></td>
+<td><p>获取订单列表</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Trade_API.html#modify_order">modify_order</a></td>
-<td>修改订单</td>
+<tr class="row-even"><td><p><a class="reference external" href="Trade_API.html#modify_order">modify_order</a></p></td>
+<td><p>修改订单</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Trade_API.html#deal_list_query">deal_list_query</a></td>
-<td>获取成交列表</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Trade_API.html#deal_list_query">deal_list_query</a></p></td>
+<td><p>获取成交列表</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Trade_API.html#history_order_list_query">history_order_list_query</a></td>
-<td>获取历史订单列表</td>
+<tr class="row-even"><td><p><a class="reference external" href="Trade_API.html#history_order_list_query">history_order_list_query</a></p></td>
+<td><p>获取历史订单列表</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Trade_API.html#history_deal_list_query">history_deal_list_query</a></td>
-<td>获取历史成交列表</td>
+<tr class="row-odd"><td><p><a class="reference external" href="Trade_API.html#history_deal_list_query">history_deal_list_query</a></p></td>
+<td><p>获取历史成交列表</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Trade_API.html#acctradinginfo_query">acctradinginfo_query</a></td>
-<td>查询账户下最大可买卖数量</td>
+<tr class="row-even"><td><p><a class="reference external" href="Trade_API.html#acctradinginfo_query">acctradinginfo_query</a></p></td>
+<td><p>查询账户下最大可买卖数量</p></td>
 </tr>
 </tbody>
 </table>
@@ -422,16 +425,17 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

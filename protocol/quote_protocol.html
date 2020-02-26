@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.17 documentation</title>
+  <title>行情协议 &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,10 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +70,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -121,7 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-getrehab-proto-3102">Qot_GetRehab.proto - <span class="strike">3102从本地下载历史数据获取复权信息</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-requestrehab-proto-3105">Qot_RequestRehab.proto - 3105在线获取单只股票复权信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-requesthistorykl-proto-3103k">Qot_RequestHistoryKL.proto - 3103在线获取单只股票一段历史K线</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qot-gettradedate-proto-3200">Qot_GetTradeDate.proto - 3200获取市场交易日</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-gettradedate-proto-3200">Qot_GetTradeDate.proto - <span class="strike">3200获取市场交易日</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getstaticinfo-proto-3202">Qot_GetStaticInfo.proto - 3202获取股票静态信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getsecuritysnapshot-proto-3203">Qot_GetSecuritySnapshot.proto - 3203获取股票快照</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getplateset-proto-3204">Qot_GetPlateSet.proto - 3204获取板块集合下的板块</a></li>
@@ -140,6 +143,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-getcodechange-proto-3216">Qot_GetCodeChange.proto - 3216获取股票代码变更信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getipolist-proto-3217ipo">Qot_GetIpoList.proto - 3217获取IPO信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getfutureinfo-proto-3218">Qot_GetFutureInfo.proto - 3218获取期货合约资料</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-requesttradedate-proto-3219">Qot_RequestTradeDate.proto - 3219在线请求交易日</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trade_protocol.html">交易协议</a></li>
@@ -236,7 +240,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/protocol/quote_protocol.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/protocol/quote_protocol.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -271,19 +275,20 @@
 <div class="section" id="id1">
 <h1>行情协议<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div>这里对FutuOpenD开放的行情协议接口作出归档说明。</div></blockquote>
+<div><p>这里对FutuOpenD开放的行情协议接口作出归档说明。</p>
+</div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>为避免增删导致的版本兼容问题，所有enum枚举类型只用于值的定义，在protobuf结构体中声明类型时使用int32类型</li>
-<li>所有类型定义使用protobuf格式声明，不同语言对接时请自行通过相关工具转换成对应的头文件</li>
-<li>XXX.proto表示协议文件名, 点击超链接可打开github上的协议文件，每条协议内容以github上的为准，此文档更新可能存在滞后</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>为避免增删导致的版本兼容问题，所有enum枚举类型只用于值的定义，在protobuf结构体中声明类型时使用int32类型</p></li>
+<li><p>所有类型定义使用protobuf格式声明，不同语言对接时请自行通过相关工具转换成对应的头文件</p></li>
+<li><p>XXX.proto表示协议文件名, 点击超链接可打开github上的协议文件，每条协议内容以github上的为准，此文档更新可能存在滞后</p></li>
 </ul>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-sub-proto-3001">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_Sub.proto">Qot_Sub.proto</a> - 3001订阅或者反订阅<a class="headerlink" href="#qot-sub-proto-3001" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_Sub</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -320,20 +325,20 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>订阅数据类型参考 <a class="reference external" href="base_define.html#subtype">SubType</a></li>
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 <a class="reference external" href="../api/Quote_API.html#id32">高频数据接口</a></li>
-<li>高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>订阅数据类型参考 <a class="reference external" href="base_define.html#subtype">SubType</a></p></li>
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 <a class="reference external" href="../api/Quote_API.html#id32">高频数据接口</a></p></li>
+<li><p>高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-regqotpush-proto-3002">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RegQotPush.proto">Qot_RegQotPush.proto</a> - 3002注册行情推送<a class="headerlink" href="#qot-regqotpush-proto-3002" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RegQotPush</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -368,19 +373,19 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>订阅数据类型参考 <a class="reference external" href="base_define.html#subtype">SubType</a></li>
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>行情需要订阅成功才能注册推送</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>订阅数据类型参考 <a class="reference external" href="base_define.html#subtype">SubType</a></p></li>
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>行情需要订阅成功才能注册推送</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getsubinfo-proto-3003">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetSubInfo.proto">Qot_GetSubInfo.proto</a> - 3003获取订阅信息<a class="headerlink" href="#qot-getsubinfo-proto-3003" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetSubInfo</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -414,16 +419,16 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>订阅信息结构参考 <a class="reference external" href="base_define.html#connsubinfo">ConnSubInfo</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>订阅信息结构参考 <a class="reference external" href="base_define.html#connsubinfo">ConnSubInfo</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getbasicqot-proto-3004">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetBasicQot.proto">Qot_GetBasicQot.proto</a> - 3004获取股票基本行情<a class="headerlink" href="#qot-getbasicqot-proto-3004" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetBasicQot</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -455,17 +460,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>基本报价结构参考 <a class="reference external" href="base_define.html#basicqot">BasicQot</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>基本报价结构参考 <a class="reference external" href="base_define.html#basicqot">BasicQot</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-updatebasicqot-proto-3005">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateBasicQot.proto">Qot_UpdateBasicQot.proto</a> - 3005推送股票基本报价<a class="headerlink" href="#qot-updatebasicqot-proto-3005" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateBasicQot</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -487,16 +492,16 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>基本报价结构参考 <a class="reference external" href="base_define.html#basicqot">BasicQot</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>基本报价结构参考 <a class="reference external" href="base_define.html#basicqot">BasicQot</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getkl-proto-3006k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetKL.proto">Qot_GetKL.proto</a> - 3006获取K线<a class="headerlink" href="#qot-getkl-proto-3006k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -532,20 +537,20 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
-<li>请求K线目前最多最近1000根</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></p></li>
+<li><p>请求K线目前最多最近1000根</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-updatekl-proto-3007k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateKL.proto">Qot_UpdateKL.proto</a> - 3007推送K线<a class="headerlink" href="#qot-updatekl-proto-3007k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -570,19 +575,19 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getrt-proto-3008">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRT.proto">Qot_GetRT.proto</a> - 3008获取分时<a class="headerlink" href="#qot-getrt-proto-3008" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetRT</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -615,17 +620,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>分时结构参考 <a class="reference external" href="base_define.html#timeshare">TimeShare</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>分时结构参考 <a class="reference external" href="base_define.html#timeshare">TimeShare</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-updatert-proto-3009">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateRT.proto">Qot_UpdateRT.proto</a> - 3009推送分时<a class="headerlink" href="#qot-updatert-proto-3009" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateRT</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -648,17 +653,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>分时结构参考 <a class="reference external" href="base_define.html#timeshare">TimeShare</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>分时结构参考 <a class="reference external" href="base_define.html#timeshare">TimeShare</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getticker-proto-3010">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTicker.proto">Qot_GetTicker.proto</a> - 3010获取逐笔<a class="headerlink" href="#qot-getticker-proto-3010" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetTicker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -691,18 +696,18 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>逐笔结构参考 <a class="reference external" href="base_define.html#ticker">Ticker</a></li>
-<li>请求逐笔目前最多最近1000个</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>逐笔结构参考 <a class="reference external" href="base_define.html#ticker">Ticker</a></p></li>
+<li><p>请求逐笔目前最多最近1000个</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-updateticker-proto-3011">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateTicker.proto">Qot_UpdateTicker.proto</a> - 3011推送逐笔<a class="headerlink" href="#qot-updateticker-proto-3011" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateTicker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -725,17 +730,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>逐笔结构参考 <a class="reference external" href="base_define.html#ticker">Ticker</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>逐笔结构参考 <a class="reference external" href="base_define.html#ticker">Ticker</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getorderbook-proto-3012">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetOrderBook.proto">Qot_GetOrderBook.proto</a> - 3012获取买卖盘<a class="headerlink" href="#qot-getorderbook-proto-3012" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetOrderBook</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -773,19 +778,19 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>买卖盘结构参考 <a class="reference external" href="base_define.html#orderbook">OrderBook</a></li>
-<li>富途服务器从交易所收到数据的时间字段，仅支持港股正股和窝轮，且仅开盘时间才有此数据。</li>
-<li>富途服务器从交易所收到数据的时间字段，部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>买卖盘结构参考 <a class="reference external" href="base_define.html#orderbook">OrderBook</a></p></li>
+<li><p>富途服务器从交易所收到数据的时间字段，仅支持港股正股和窝轮，且仅开盘时间才有此数据。</p></li>
+<li><p>富途服务器从交易所收到数据的时间字段，部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-updateorderbook-proto-3013">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateOrderBook.proto">Qot_UpdateOrderBook.proto</a> - 3013推送买卖盘<a class="headerlink" href="#qot-updateorderbook-proto-3013" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateOrderBook</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -813,17 +818,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>买卖盘结构参考 <a class="reference external" href="base_define.html#orderbook">OrderBook</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>买卖盘结构参考 <a class="reference external" href="base_define.html#orderbook">OrderBook</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getbroker-proto-3014">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetBroker.proto">Qot_GetBroker.proto</a> - 3014获取经纪队列<a class="headerlink" href="#qot-getbroker-proto-3014" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetBroker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -856,17 +861,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>经纪队列结构参考 <a class="reference external" href="base_define.html#broker">Broker</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>经纪队列结构参考 <a class="reference external" href="base_define.html#broker">Broker</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-updatebroker-proto-3015">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdateBroker.proto">Qot_UpdateBroker.proto</a> - 3015推送经纪队列<a class="headerlink" href="#qot-updatebroker-proto-3015" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_UpdateBroker</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -890,17 +895,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>经纪队列结构参考 <a class="reference external" href="base_define.html#broker">Broker</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>经纪队列结构参考 <a class="reference external" href="base_define.html#broker">Broker</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-gethistorykl-proto-3100k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto">Qot_GetHistoryKL.proto</a> - <span class="strike">3100从本地下载历史数据获取单只股票一段历史K线</span><a class="headerlink" href="#qot-gethistorykl-proto-3100k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetHistoryKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -941,21 +946,21 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li><span class="red-strengthen">历史K线数据下载到本地需单独申请</span></li>
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
-<li>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><span class="red-strengthen">历史K线数据下载到本地需单独申请</span></p></li>
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></p></li>
+<li><p>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-gethistoryklpoints-proto-3101k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto">Qot_GetHistoryKLPoints.proto</a>  - <span class="strike">3101从本地下载历史数据获取多只股票多点历史K线</span><a class="headerlink" href="#qot-gethistoryklpoints-proto-3101k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetHistoryKLPoints</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1024,22 +1029,22 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>历史K线数据下载到本地需单独申请</li>
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
-<li>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></li>
-<li>目前限制最多5个时间点，股票个数不做限制，但不建议传入过多股票，查询耗时过多会导致协议返回超时。</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>历史K线数据下载到本地需单独申请</p></li>
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></p></li>
+<li><p>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></p></li>
+<li><p>目前限制最多5个时间点，股票个数不做限制，但不建议传入过多股票，查询耗时过多会导致协议返回超时。</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getrehab-proto-3102">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto">Qot_GetRehab.proto</a> - <span class="strike">3102从本地下载历史数据获取复权信息</span><a class="headerlink" href="#qot-getrehab-proto-3102" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetRehab</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1077,18 +1082,18 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>历史K线数据下载到本地需单独申请</li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>复权结构参考 <a class="reference external" href="base_define.html#rehab">Rehab</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>历史K线数据下载到本地需单独申请</p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>复权结构参考 <a class="reference external" href="base_define.html#rehab">Rehab</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-requestrehab-proto-3105">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestRehab.proto">Qot_RequestRehab.proto</a> - 3105在线获取单只股票复权信息<a class="headerlink" href="#qot-requestrehab-proto-3105" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RequestRehab</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1120,18 +1125,18 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>复权结构参考 <a class="reference external" href="base_define.html#rehab">Rehab</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>复权结构参考 <a class="reference external" href="base_define.html#rehab">Rehab</a></p></li>
+<li><p>限频接口：30秒内最多60次</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-requesthistorykl-proto-3103k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKL.proto">Qot_RequestHistoryKL.proto</a> - 3103在线获取单只股票一段历史K线<a class="headerlink" href="#qot-requesthistorykl-proto-3103k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RequestHistoryKL</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1172,22 +1177,22 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
-<li>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></li>
-<li>请求最大个数参考OpenAPI用户等级权限</li>
-<li>分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></p></li>
+<li><p>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></p></li>
+<li><p>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></p></li>
+<li><p>请求最大个数参考OpenAPI用户等级权限</p></li>
+<li><p>分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-gettradedate-proto-3200">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto">Qot_GetTradeDate.proto</a> - 3200获取市场交易日<a class="headerlink" href="#qot-gettradedate-proto-3200" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetTradeDate.proto">Qot_GetTradeDate.proto</a> - <span class="strike">3200获取市场交易日</span><a class="headerlink" href="#qot-gettradedate-proto-3200" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetTradeDate</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1228,17 +1233,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></li>
-<li>交易时间类型参考 <a class="reference external" href="base_define.html#tradedatetype">TradeDateType</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></p></li>
+<li><p>交易时间类型参考 <a class="reference external" href="base_define.html#tradedatetype">TradeDateType</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getstaticinfo-proto-3202">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetStaticInfo.proto">Qot_GetStaticInfo.proto</a> - 3202获取股票静态信息<a class="headerlink" href="#qot-getstaticinfo-proto-3202" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetStaticInfo</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1273,18 +1278,18 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></li>
-<li>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></p></li>
+<li><p>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getsecuritysnapshot-proto-3203">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetSecuritySnapshot.proto">Qot_GetSecuritySnapshot.proto</a> - 3203获取股票快照<a class="headerlink" href="#qot-getsecuritysnapshot-proto-3203" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetSecuritySnapshot</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1476,17 +1481,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>接口限制请参见 <a class="reference external" href="intro.html#id36">获取股票快照限制</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>接口限制请参见 <a class="reference external" href="intro.html#id36">获取股票快照限制</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getplateset-proto-3204">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPlateSet.proto">Qot_GetPlateSet.proto</a> - 3204获取板块集合下的板块<a class="headerlink" href="#qot-getplateset-proto-3204" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetPlateSet</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1519,20 +1524,20 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></li>
-<li>板块集合类型参考 <a class="reference external" href="base_define.html#platesettype">PlateSetType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>板块信息结构参考  <a class="reference external" href="base_define.html#plateinfo">PlateInfo</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></p></li>
+<li><p>板块集合类型参考 <a class="reference external" href="base_define.html#platesettype">PlateSetType</a></p></li>
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>板块信息结构参考  <a class="reference external" href="base_define.html#plateinfo">PlateInfo</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getplatesecurity-proto-3205">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPlateSecurity.proto">Qot_GetPlateSecurity.proto</a> - 3205获取板块下的股票<a class="headerlink" href="#qot-getplatesecurity-proto-3205" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetPlateSecurity</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1567,18 +1572,18 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getreference-proto-3206">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetReference.proto">Qot_GetReference.proto</a> - 3206 获取正股相关股票<a class="headerlink" href="#qot-getreference-proto-3206" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetReference</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1618,17 +1623,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getownerplate-proto-3207">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetOwnerPlate.proto">Qot_GetOwnerPlate.proto</a> - 3207获取股票所属板块<a class="headerlink" href="#qot-getownerplate-proto-3207" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetOwnerPlate</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1666,20 +1671,20 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>板块信息结构参考  <a class="reference external" href="base_define.html#plateinfo">PlateInfo</a></li>
-<li>限频接口：30秒内最多10次</li>
-<li>最多可传入200只股票</li>
-<li>仅支持正股和指数</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>板块信息结构参考  <a class="reference external" href="base_define.html#plateinfo">PlateInfo</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+<li><p>最多可传入200只股票</p></li>
+<li><p>仅支持正股和指数</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getholdingchangelist-proto-3208">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHoldingChangeList.proto">Qot_GetHoldingChangeList.proto</a> - 3208获取持股变化列表<a class="headerlink" href="#qot-getholdingchangelist-proto-3208" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetHoldingChangeList</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1715,21 +1720,21 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>持有者类别枚举参考  <a class="reference external" href="base_define.html#holdercategory">HolderCategory</a></li>
-<li>持股变化列表结构参考  <a class="reference external" href="base_define.html#shareholdingchange">ShareHoldingChange</a></li>
-<li>限频接口：30秒内最多10次</li>
-<li>最多返回前100大股东的变化</li>
-<li>目前仅支持美股</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>持有者类别枚举参考  <a class="reference external" href="base_define.html#holdercategory">HolderCategory</a></p></li>
+<li><p>持股变化列表结构参考  <a class="reference external" href="base_define.html#shareholdingchange">ShareHoldingChange</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+<li><p>最多返回前100大股东的变化</p></li>
+<li><p>目前仅支持美股</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getoptionchain-proto-3209">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetOptionChain.proto">Qot_GetOptionChain.proto</a> - 3209获取期权链<a class="headerlink" href="#qot-getoptionchain-proto-3209" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetOptionChain</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1784,20 +1789,20 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>期权类型参考 <a class="reference external" href="base_define.html#optiontype">OptionType</a></li>
-<li>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></li>
-<li>限频接口：30秒内最多10次</li>
-<li>目前仅支持美股</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>期权类型参考 <a class="reference external" href="base_define.html#optiontype">OptionType</a></p></li>
+<li><p>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+<li><p>目前仅支持美股</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getwarrant-proto-3210">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetWarrant.proto">Qot_GetWarrant.proto</a> - 3210获取窝轮<a class="headerlink" href="#qot-getwarrant-proto-3210" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetWarrant</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1917,24 +1922,24 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>排序类型参考 <a class="reference external" href="base_define.html#sortfield">SortField</a></li>
-<li>窝轮类型过滤列表参考 <a class="reference external" href="base_define.html#warranttype">WarrantType</a></li>
-<li>发行人过滤列表参考 <a class="reference external" href="base_define.html#issuer">Issuer</a></li>
-<li>上市日类型参考 <a class="reference external" href="base_define.html#ipoperiod">IpoPeriod</a></li>
-<li>价内价外类型参考 <a class="reference external" href="base_define.html#pricetype">PriceType</a></li>
-<li>窝轮状态类型参考 <a class="reference external" href="base_define.html#warrantstatus">WarrantStatus</a></li>
-<li>接口限制请参见 <a class="reference external" href="intro.html#id43">获取窝轮限制</a></li>
-<li>目前仅支持港股</li>
-<li>使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>排序类型参考 <a class="reference external" href="base_define.html#sortfield">SortField</a></p></li>
+<li><p>窝轮类型过滤列表参考 <a class="reference external" href="base_define.html#warranttype">WarrantType</a></p></li>
+<li><p>发行人过滤列表参考 <a class="reference external" href="base_define.html#issuer">Issuer</a></p></li>
+<li><p>上市日类型参考 <a class="reference external" href="base_define.html#ipoperiod">IpoPeriod</a></p></li>
+<li><p>价内价外类型参考 <a class="reference external" href="base_define.html#pricetype">PriceType</a></p></li>
+<li><p>窝轮状态类型参考 <a class="reference external" href="base_define.html#warrantstatus">WarrantStatus</a></p></li>
+<li><p>接口限制请参见 <a class="reference external" href="intro.html#id43">获取窝轮限制</a></p></li>
+<li><p>目前仅支持港股</p></li>
+<li><p>使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="qot-requesthistoryklquota-proto-3104k">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestHistoryKLQuota.proto">Qot_RequestHistoryKLQuota.proto</a> - 3104拉取历史K线已经用掉的额度<a class="headerlink" href="#qot-requesthistoryklquota-proto-3104k" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_RequestHistoryKLQuota</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -1978,7 +1983,7 @@
 <hr class="docutils" />
 <div class="section" id="qot-getcapitalflow-proto-3211">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCapitalFlow.proto">Qot_GetCapitalFlow.proto</a> - 3211获取资金流向<a class="headerlink" href="#qot-getcapitalflow-proto-3211" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetCapitalFlow</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -2018,17 +2023,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>限频接口：30秒内最多30次</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getcapitaldistribution-proto-3212">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCapitalDistribution.proto">Qot_GetCapitalDistribution.proto</a> - 3212获取资金分布<a class="headerlink" href="#qot-getcapitaldistribution-proto-3212" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetCapitalDistribution</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -2066,17 +2071,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>限频接口：30秒内最多30次</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getusersecurity-proto-3213">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurity.proto">Qot_GetUserSecurity.proto</a> - 3213获取自选股分组下的股票<a class="headerlink" href="#qot-getusersecurity-proto-3213" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetUserSecurity</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -2108,18 +2113,18 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></li>
-<li>限频接口：30秒内最多10次</li>
-<li>不支持持仓分组</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票静态信息结构参考 <a class="reference external" href="base_define.html#securitystaticbasic">SecurityStaticInfo</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+<li><p>不支持持仓分组</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-modifyusersecurity-proto-3214">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_ModifyUserSecurity.proto">Qot_ModifyUserSecurity.proto</a> - 3214修改自选股分组下的股票<a class="headerlink" href="#qot-modifyusersecurity-proto-3214" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_ModifyUserSecurity</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
@@ -2161,22 +2166,25 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>限频接口：30秒内最多10次</li>
-<li>仅支持自定义分组</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+<li><p>仅支持自定义分组</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-stockfilter-proto-3215">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_StockFilter.proto">Qot_StockFilter.proto</a> - 3215获取条件选股<a class="headerlink" href="#qot-stockfilter-proto-3215" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_StockFilter</span><span class="p">;</span>
+<span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
 
 <span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="c1">// 使用到以下 6 个结构体（BaseFilter，AccumulateFilter，FinancialFilter，BaseData， AccumulateData，FinancialData）的用户请注意，由于属性字段名“field”与 C # 的 protobuf 保留函数名产生冲突，Futu API 将从 3.18 版本开始将这一字段统一更名为“fieldName”，请注意修改使用到对应接口的字段名。</span>
 
 <span class="c1">// 简单属性</span>
 <span class="kd">enum</span> <span class="n">StockField</span>
@@ -2185,30 +2193,30 @@
         <span class="na">StockField_StockCode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 股票代码，不能填区间上下限值。</span>
         <span class="na">StockField_StockName</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称，不能填区间上下限值。</span>
         <span class="na">StockField_CurPrice</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 最新价 例如填写[10,20]值区间</span>
-        <span class="na">StockField_CurPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-30,-10]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">StockField_CurPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[20,40]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">StockField_HighPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// (今日最高 - 52周最高)/52周最高 例如填写[-3,-1]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">StockField_LowPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// (今日最低 - 52周最低)/52周最低 例如填写[10,70]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">StockField_CurPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// (现价 - 52周最高)/52周最高，对应PC端离52周高点百分比 例如填写[-30,-10]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
+        <span class="na">StockField_CurPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// (现价 - 52周最低)/52周最低，对应PC端离52周低点百分比 例如填写[20,40]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">StockField_HighPriceToHighest52WeeksRatio</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// (今日最高 - 52周最高)/52周最高 例如填写[-3,-1]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">StockField_LowPriceToLowest52WeeksRatio</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// (今日最低 - 52周最低)/52周最低 例如填写[10,70]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
         <span class="na">StockField_VolumeRatio</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 量比 例如填写[0.5,30]值区间</span>
-        <span class="na">StockField_BidAskRatio</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 委比 例如填写[-20,80.5]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">StockField_BidAskRatio</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 委比 例如填写[-20,80.5]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
         <span class="na">StockField_LotPrice</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 每手价格 例如填写[40,100]值区间</span>
         <span class="na">StockField_MarketVal</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 市值 例如填写[50000000,3000000000]值区间</span>
         <span class="na">StockField_PeAnnual</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 市盈率(静态) 例如填写[-8,65.3]值区间</span>
         <span class="na">StockField_PeTTM</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 市盈率TTM 例如填写[-10,20.5]值区间</span>
         <span class="na">StockField_PbRate</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">// 市净率 例如填写[0.5,20]值区间</span>
-        <span class="na">StockField_ChangeRate5min</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 五分钟价格涨跌幅 例如填写[-5,6.3]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">StockField_ChangeRateBeginYear</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">StockField_ChangeRate5min</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">// 五分钟价格涨跌幅 例如填写[-5,6.3]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">StockField_ChangeRateBeginYear</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">// 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
 <span class="p">};</span>
 
 <span class="c1">// 累积属性</span>
 <span class="kd">enum</span> <span class="n">AccumulateField</span>
 <span class="p">{</span>
         <span class="na">AccumulateField_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
-        <span class="na">AccumulateField_ChangeRate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 涨跌幅 例如填写[-10.2,20.4]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">AccumulateField_Amplitude</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 振幅 例如填写[0.5,20.6]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">AccumulateField_ChangeRate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 涨跌幅 例如填写[-10.2,20.4]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">AccumulateField_Amplitude</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 振幅 例如填写[0.5,20.6]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
         <span class="na">AccumulateField_Volume</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 日均成交量 例如填写[2000,70000]值区间</span>
         <span class="na">AccumulateField_Turnover</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 日均成交额 例如填写[1400,890000]值区间</span>
-        <span class="na">AccumulateField_TurnoverRate</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 换手率 例如填写[2,30]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">AccumulateField_TurnoverRate</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 换手率 例如填写[2,30]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
 <span class="p">}</span>
 
 <span class="c1">// 财务属性</span>
@@ -2216,13 +2224,13 @@
 <span class="p">{</span>
         <span class="na">FinancialField_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
         <span class="na">FinancialField_NetProfit</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 净利润 例如填写[100000000,2500000000]值区间</span>
-        <span class="na">FinancialField_NetProfitGrowth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 净利润增长率 例如填写[-10,300]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">FinancialField_NetProfitGrowth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 净利润增长率 例如填写[-10,300]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
         <span class="na">FinancialField_SumOfBusiness</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 营业收入 例如填写[100000000,6400000000]值区间</span>
-        <span class="na">FinancialField_SumOfBusinessGrowth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 营收同比增长率 例如填写[-5,200]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">FinancialField_NetProfitRate</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 净利率 例如填写[10,113]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">FinancialField_GrossProfitRate</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 毛利率 例如填写[4,65]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">FinancialField_DebtAssetRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 资产负债率 例如填写[5,470]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
-        <span class="na">FinancialField_ReturnOnEquityRate</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 净资产收益率 例如填写[20,230]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%。）</span>
+        <span class="na">FinancialField_SumOfBusinessGrowth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 营收同比增长率 例如填写[-5,200]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">FinancialField_NetProfitRate</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 净利率 例如填写[10,113]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">FinancialField_GrossProfitRate</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 毛利率 例如填写[4,65]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">FinancialField_DebtAssetRate</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 资产负债率 例如填写[5,470]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="na">FinancialField_ReturnOnEquityRate</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 净资产收益率 例如填写[20,230]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
 <span class="p">}</span>
 
 <span class="c1">// 财报时间</span>
@@ -2247,7 +2255,7 @@
 <span class="c1">// 简单属性筛选</span>
 <span class="kd">message</span> <span class="nc">BaseFilter</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// StockField 简单属性</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fieldName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// StockField 简单属性</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 区间下限，闭区间</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMax</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 区间上限，闭区间</span>
         <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isNoFilter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。</span>
@@ -2257,7 +2265,7 @@
 <span class="c1">// 累积属性筛选</span>
 <span class="kd">message</span> <span class="nc">AccumulateFilter</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// AccumulateField 累积属性</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fieldName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// AccumulateField 累积属性</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 区间下限，闭区间</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMax</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 区间上限，闭区间</span>
         <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isNoFilter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。</span>
@@ -2268,7 +2276,7 @@
 <span class="c1">// 财务属性筛选</span>
 <span class="kd">message</span> <span class="nc">FinancialFilter</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// FinancialField 财务属性</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fieldName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// FinancialField 财务属性</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 区间下限，闭区间</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">filterMax</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 区间上限，闭区间</span>
         <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isNoFilter</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。</span>
@@ -2279,14 +2287,14 @@
 <span class="c1">// 简单属性数据</span>
 <span class="kd">message</span> <span class="nc">BaseData</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// StockField 简单属性</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fieldName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// StockField 简单属性</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// 累积指标数据</span>
 <span class="kd">message</span> <span class="nc">AccumulateData</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// AccumulateField 累积属性</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fieldName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// AccumulateField 累积属性</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">days</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 近几日，累积时间</span>
 <span class="p">}</span>
@@ -2294,7 +2302,7 @@
 <span class="c1">// 财务属性数据</span>
 <span class="kd">message</span> <span class="nc">FinancialData</span>
 <span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">field</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// FinancialField 财务属性</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">fieldName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// FinancialField 财务属性</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">quarter</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// FinancialQuarter 财报累积时间</span>
 <span class="p">}</span>
@@ -2343,24 +2351,24 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></li>
-<li>简单属性筛选条件参考 <a class="reference external" href="base_define.html#stockfield">StockField</a></li>
-<li>累积属性筛选条件参考 <a class="reference external" href="base_define.html#accumulatefield">AccumulateField</a></li>
-<li>财务属性筛选条件参考 <a class="reference external" href="base_define.html#financialfield">FinancialField</a></li>
-<li>财报时间参考 <a class="reference external" href="base_define.html#financialquarter">FinancialQuarter</a></li>
-<li>排序方向参考 <a class="reference external" href="base_define.html#sortdir">SortDir</a></li>
-<li>限频接口：30秒内最多10次</li>
-<li>使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>市场类型参考 <a class="reference external" href="base_define.html#qotmarket">QotMarket</a></p></li>
+<li><p>简单属性筛选条件参考 <a class="reference external" href="base_define.html#stockfield">StockField</a></p></li>
+<li><p>累积属性筛选条件参考 <a class="reference external" href="base_define.html#accumulatefield">AccumulateField</a></p></li>
+<li><p>财务属性筛选条件参考 <a class="reference external" href="base_define.html#financialfield">FinancialField</a></p></li>
+<li><p>财报时间参考 <a class="reference external" href="base_define.html#financialquarter">FinancialQuarter</a></p></li>
+<li><p>排序方向参考 <a class="reference external" href="base_define.html#sortdir">SortDir</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+<li><p>使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getcodechange-proto-3216">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetCodeChange.proto">Qot_GetCodeChange.proto</a> - 3216获取股票代码变更信息<a class="headerlink" href="#qot-getcodechange-proto-3216" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetCodeChange</span><span class="p">;</span>
 <span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
 
@@ -2437,16 +2445,16 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getipolist-proto-3217ipo">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetIpoList.proto">Qot_GetIpoList.proto</a> - 3217获取IPO信息<a class="headerlink" href="#qot-getipolist-proto-3217ipo" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetIpoList</span><span class="p">;</span>
 <span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
 
@@ -2547,17 +2555,17 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
 </ul>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="qot-getfutureinfo-proto-3218">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetFutureInfo.proto">Qot_GetFutureInfo.proto</a> - 3218获取期货合约资料<a class="headerlink" href="#qot-getfutureinfo-proto-3218" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Qot_GetFutureInfo</span><span class="p">;</span>
 <span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
 
@@ -2619,10 +2627,62 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>限频接口：30秒内最多10次</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></p></li>
+<li><p>限频接口：30秒内最多10次</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="qot-requesttradedate-proto-3219">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestTradeDate.proto">Qot_RequestTradeDate.proto</a> - 3219在线请求交易日<a class="headerlink" href="#qot-requesttradedate-proto-3219" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-protobuf notranslate"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">Qot_RequestTradeDate</span><span class="p">;</span>
+<span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="kd">message</span> <span class="nc">C2S</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">market</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.TradeDateMarket,要查询的市场</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">beginTime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//开始时间字符串</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">endTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//结束时间字符串</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">TradeDate</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//时间字符串</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">timestamp</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//时间戳</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">tradeDateType</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//Qot_Common.TradeDateType,交易时间类型</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">S2C</span>
+<span class="p">{</span>
+        <span class="k">repeated</span> <span class="n">TradeDate</span> <span class="na">tradeDateList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据。</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Request</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Response</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>}</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>股票结构参考 <a class="reference external" href="base_define.html#tradedatemarket">TradeDateMarket</a></p></li>
+<li><p>限频接口：30秒内最多30次</p></li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -2672,16 +2732,17 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

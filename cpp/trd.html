@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易API &mdash; futu-api-doc 3.17 documentation</title>
+  <title>交易API &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,10 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="快速上手" href="start.html"/>
         <link rel="prev" title="行情API" href="qot.html"/> 
 
@@ -67,7 +70,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -199,7 +202,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/cpp/trd.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/trd.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -240,90 +243,90 @@
 <div class="section" id="ftapi-trd">
 <h2>FTAPI_Trd成员函数<a class="headerlink" href="#ftapi-trd" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>FTAPI_Trd继承自<a class="reference external" href="./base.html#ftapi-conn">FTAPI_Conn</a> ，连接层调用接口参考FTAPI_Conn说明。</li>
+<li><p>FTAPI_Trd继承自<a class="reference external" href="./base.html#ftapi-conn">FTAPI_Conn</a> ，连接层调用接口参考FTAPI_Conn说明。</p></li>
 </ul>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="29%" />
-<col width="41%" />
-<col width="30%" />
+<col style="width: 29%" />
+<col style="width: 41%" />
+<col style="width: 30%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">函数名（点开链接可查看具体协议）</th>
-<th class="head">功能简介</th>
-<th class="head">回调函数(FTSPI_Trd)</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数名（点开链接可查看具体协议）</p></th>
+<th class="head"><p>功能简介</p></th>
+<th class="head"><p>回调函数(FTSPI_Trd)</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getacclist-proto-2001">GetAccList</a></td>
-<td>获取交易账户列表</td>
-<td>OnReply_GetAccList</td>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-getacclist-proto-2001">GetAccList</a></p></td>
+<td><p>获取交易账户列表</p></td>
+<td><p>OnReply_GetAccList</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-unlocktrade-proto-2005">UnlockTrade</a></td>
-<td>解锁</td>
-<td>OnReply_UnlockTrade</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-unlocktrade-proto-2005">UnlockTrade</a></p></td>
+<td><p>解锁</p></td>
+<td><p>OnReply_UnlockTrade</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-subaccpush-proto-2008">SubAccPush</a></td>
-<td>订阅接收推送数据的交易账户</td>
-<td>OnReply_SubAccPush</td>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-subaccpush-proto-2008">SubAccPush</a></p></td>
+<td><p>订阅接收推送数据的交易账户</p></td>
+<td><p>OnReply_SubAccPush</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getfunds-proto-2101">GetFunds</a></td>
-<td>获取账户资金</td>
-<td>OnReply_GetFunds</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-getfunds-proto-2101">GetFunds</a></p></td>
+<td><p>获取账户资金</p></td>
+<td><p>OnReply_GetFunds</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getpositionlist-proto-2102">GetPositionList</a></td>
-<td>获取账户持仓</td>
-<td>OnReply_GetPositionList</td>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-getpositionlist-proto-2102">GetPositionList</a></p></td>
+<td><p>获取账户持仓</p></td>
+<td><p>OnReply_GetPositionList</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getmaxtrdqtys-proto-2111">GetMaxTrdQtys</a></td>
-<td>获取最大交易数量</td>
-<td>OnReply_GetMaxTrdQtys</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-getmaxtrdqtys-proto-2111">GetMaxTrdQtys</a></p></td>
+<td><p>获取最大交易数量</p></td>
+<td><p>OnReply_GetMaxTrdQtys</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getorderlist-proto-2201">GetOrderList</a></td>
-<td>获取当日订单列表</td>
-<td>OnReply_GetOrderList</td>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-getorderlist-proto-2201">GetOrderList</a></p></td>
+<td><p>获取当日订单列表</p></td>
+<td><p>OnReply_GetOrderList</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-placeorder-proto-2202">PlaceOrder</a></td>
-<td>下单</td>
-<td>OnReply_PlaceOrder</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-placeorder-proto-2202">PlaceOrder</a></p></td>
+<td><p>下单</p></td>
+<td><p>OnReply_PlaceOrder</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-modifyorder-proto-2205">ModifyOrder</a></td>
-<td>改单</td>
-<td>OnReply_ModifyOrder</td>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-modifyorder-proto-2205">ModifyOrder</a></p></td>
+<td><p>改单</p></td>
+<td><p>OnReply_ModifyOrder</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-getorderfilllist-proto-2211">GetOrderFillList</a></td>
-<td>获取当日成交列表</td>
-<td>OnReply_GetOrderFillList</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-getorderfilllist-proto-2211">GetOrderFillList</a></p></td>
+<td><p>获取当日成交列表</p></td>
+<td><p>OnReply_GetOrderFillList</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-gethistoryorderlist-proto-2221">GetHistoryOrderList</a></td>
-<td>获取历史订单列表</td>
-<td>OnReply_GetHistoryOrderList</td>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-gethistoryorderlist-proto-2221">GetHistoryOrderList</a></p></td>
+<td><p>获取历史订单列表</p></td>
+<td><p>OnReply_GetHistoryOrderList</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">GetHistoryOrderFillList</a></td>
-<td>获取历史成交列表</td>
-<td>OnReply_GetHistoryOrderFillList</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222">GetHistoryOrderFillList</a></p></td>
+<td><p>获取历史成交列表</p></td>
+<td><p>OnReply_GetHistoryOrderFillList</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="ftspi-trd">
 <h2>FTSPI_Trd交易推送接收接口函数<a class="headerlink" href="#ftspi-trd" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="41%" />
-<col width="59%" />
+<col style="width: 41%" />
+<col style="width: 59%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">回调函数（点开链接可查看具体协议）</th>
-<th class="head">功能简介</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>回调函数（点开链接可查看具体协议）</p></th>
+<th class="head"><p>功能简介</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-updateorder-proto-2208">OnPush_UpdateOrder</a></td>
-<td>订单状态变动通知(推送)</td>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-updateorder-proto-2208">OnPush_UpdateOrder</a></p></td>
+<td><p>订单状态变动通知(推送)</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/trade_protocol.html#trd-updateorderfill-proto-2218">OnPush_UpdateOrderFill</a></td>
-<td>成交通知(推送)</td>
+<tr class="row-odd"><td><p><a class="reference external" href="../protocol/trade_protocol.html#trd-updateorderfill-proto-2218">OnPush_UpdateOrderFill</a></p></td>
+<td><p>成交通知(推送)</p></td>
 </tr>
 </tbody>
 </table>
@@ -373,16 +376,17 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

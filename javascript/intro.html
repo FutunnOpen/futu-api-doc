@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api-doc 3.17 documentation</title>
+  <title>介绍 &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,10 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="快速上手" href="../cpp/start.html"/> 
 
@@ -67,7 +70,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -201,7 +204,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/javascript/intro.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/javascript/intro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -239,10 +242,10 @@
 <h2>JavaScript WebSocket API简介<a class="headerlink" href="#javascript-websocket-api" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>JavaScript WebSocket API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a> , 并且在xml里面配置websocket_port选择。</li>
-<li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
-<li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
-<li><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></li>
+<li><p>JavaScript WebSocket API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a> , 并且在xml里面配置websocket_port选择。</p></li>
+<li><p>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</p></li>
+<li><p>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></p></li>
+<li><p><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -250,14 +253,14 @@
 <h2>接口框架<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>为了保证性能最大，我们的中间层采用C++编写，然后提供JavaScript接口调用层</li>
+<li><p>为了保证性能最大，我们的中间层采用C++编写，然后提供JavaScript接口调用层</p></li>
 </ul>
 <img alt="../_images/websocket.png" src="../_images/websocket.png" />
 </div></blockquote>
 </div>
 <div class="section" id="id5">
 <h2>代码结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text"><div class="highlight"><pre><span></span>|-- js
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|-- js
 |   |-- src
 |       |   |-- ft-websocket
 |       |   |   |-- main.js
@@ -270,7 +273,7 @@
 <h2>调用须知<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>所有接口以异步回调方式完成</li>
+<li><p>所有接口以异步回调方式完成</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -319,16 +322,17 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 
