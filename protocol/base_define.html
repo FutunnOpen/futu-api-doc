@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.17 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -122,6 +122,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#optionareatype">OptionAreaType - 期权地区类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">QotMarketState - 行情市场状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedatetype">TradeDateType - 交易时间类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tradedatemarket">TradeDateMarket - 交易日查询市场</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rehabtype-k">RehabType - K线复权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kltype-k">KLType - K线类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#klfields-k">KLFields - K线数据字段</a></li>
@@ -830,6 +831,21 @@
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="tradedatemarket">
+<h3>TradeDateMarket - 交易日查询市场<a class="headerlink" href="#tradedatemarket" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TradeDateMarket</span>
+<span class="p">{</span>
+        <span class="na">TradeDateMarket_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
+        <span class="na">TradeDateMarket_HK</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//港股市场</span>
+        <span class="na">TradeDateMarket_US</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//美股市场</span>
+        <span class="na">TradeDateMarket_CN</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//A股市场</span>
+        <span class="na">TradeDateMarket_NT</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//深（沪）股通</span>
+        <span class="na">TradeDateMarket_ST</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//港股通（深、沪）</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="rehabtype-k">
@@ -2178,7 +2194,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

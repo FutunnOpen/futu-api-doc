@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.17 documentation</title>
+  <title>行情API &mdash; futu-api-doc 3.18 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.17 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.17
+                3.18
               </div>
             
           
@@ -117,7 +117,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#start">start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stop">stop</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-handler">set_handler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#get-trading-days">get_trading_days</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-trading-days"><span class="strike">get_trading_days</span></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-stock-basicinfo">get_stock_basicinfo</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-multiple-history-kline"><span class="strike">get_multiple_history_kline</span></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-history-kline"><span class="strike">get_history_kline</span></a></li>
@@ -130,7 +130,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-broker-queue">get_broker_queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subscribe">subscribe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unsubscribe">unsubscribe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">unsubscribe_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">unsubscribe_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#query-subscription">query_subscription</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-global-state">get_global_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-stock-quote">get_stock_quote</a></li>
@@ -152,6 +152,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-stock-filter">get_stock_filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-ipo-list">get_ipo_list</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-future-info">get_future_info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#request-trading-days">request_trading_days</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sysnotifyhandlerbase-opend">SysNotifyHandlerBase - OpenD通知回调</a><ul>
@@ -159,27 +160,27 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id25">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id26">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id27">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id28">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id29">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">on_recv_rsp</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id30">on_recv_rsp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -440,7 +441,7 @@
 
 </div>
 <div class="section" id="get-trading-days">
-<h4>get_trading_days<a class="headerlink" href="#get-trading-days" title="Permalink to this headline">¶</a></h4>
+<h4><span class="strike">get_trading_days</span><a class="headerlink" href="#get-trading-days" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="get_trading_days">
 <code class="descname">get_trading_days</code><span class="sig-paren">(</span><em>self</em>, <em>market</em>, <em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#get_trading_days" title="Permalink to this definition">¶</a></dt>
@@ -1052,7 +1053,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id41">在线获取单只股票一段历史K线限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#request-history-kline-limit"><span class="std std-ref">在线获取单只股票一段历史K线限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -1182,7 +1183,7 @@ start和end的组合如下：</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">param code_list:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">股票列表，股票个数限制参考 <a class="reference external" href="../protocol/intro.html#api">OpenAPI用户等级权限</a></p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first">股票列表，股票个数最多400</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">return:</th><td class="field-body"><p class="first">(ret, data)</p>
@@ -1721,7 +1722,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id43">获取股票快照限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-market-snapshot-limit"><span class="std std-ref">获取股票快照限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -1735,7 +1736,7 @@ start和end的组合如下：</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>code</strong> &#8211; 股票代码，例如，HK.00700，US.AAPL</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>code</strong> &#8211; 股票代码，例如，HK.00700</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return (ret, data):</th></tr>
@@ -1893,17 +1894,9 @@ start和end的组合如下：</p>
 <p class="first admonition-title">Note</p>
 <ul class="last">
 <li><p class="first">该接口也可用于获取指数成份股, 如获取上证指数成份股:</p>
-</li>
-<li><dl class="first docutils">
-<dt>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id45">获取板块下的股票限制</a></dt>
-<dd><div class="first last highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_plate_stock</span><span class="p">(</span><span class="s1">&#39;SH.000001&#39;</span><span class="p">))</span>
-<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd>
-</dl>
+<ul class="simple">
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-plate-stock-limit"><span class="std std-ref">获取板块下的股票限制</span></a></li>
+</ul>
 </li>
 <li><p class="first">部分常用的板块或指数代码如下:</p>
 <table border="1" class="docutils">
@@ -2085,7 +2078,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id45">获取板块下的股票限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-plate-list-limit"><span class="std std-ref">获取板块集合下的板块限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -2222,7 +2215,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id39">订阅反订阅限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#subscribe-limit"><span class="std std-ref">订阅反订阅限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -2264,12 +2257,12 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id39">订阅反订阅限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#subscribe-limit"><span class="std std-ref">订阅反订阅限制</span></a></li>
 </ul>
 </div>
 </div>
-<div class="section" id="id8">
-<h4>unsubscribe_all<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id3">
+<h4>unsubscribe_all<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt id="unsubscribe_all">
 <code class="descname">unsubscribe_all</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#unsubscribe_all" title="Permalink to this definition">¶</a></dt>
@@ -2297,7 +2290,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id39">订阅反订阅限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#subscribe-limit"><span class="std std-ref">订阅反订阅限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -2314,16 +2307,16 @@ start和end的组合如下：</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_all_conn</strong> &#8211; 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
-<p>ret == RET_OK 返回 定阅信息的字典数据 ，格式如下:</p>
+<p>ret == RET_OK 返回订阅信息的字典数据 ，格式如下:</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;total_used&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>    <span class="c1"># 所有连接已使用的定阅额度</span>
-    <span class="s1">&#39;own_used&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>       <span class="c1"># 当前连接已使用的定阅额度</span>
-    <span class="s1">&#39;remain&#39;</span><span class="p">:</span> <span class="mi">496</span><span class="p">,</span>       <span class="c1">#  剩余的定阅额度</span>
-    <span class="s1">&#39;sub_list&#39;</span><span class="p">:</span>          <span class="c1">#  每种定阅类型对应的股票列表</span>
+    <span class="s1">&#39;total_used&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>    <span class="c1"># 所有连接已使用的订阅额度</span>
+    <span class="s1">&#39;own_used&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>       <span class="c1"># 当前连接已使用的订阅额度</span>
+    <span class="s1">&#39;remain&#39;</span><span class="p">:</span> <span class="mi">496</span><span class="p">,</span>       <span class="c1">#  剩余的订阅额度</span>
+    <span class="s1">&#39;sub_list&#39;</span><span class="p">:</span>          <span class="c1">#  每种订阅类型对应的股票列表</span>
     <span class="p">{</span>
         <span class="s1">&#39;BROKER&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.02318&#39;</span><span class="p">],</span>
         <span class="s1">&#39;RT_DATA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.02318&#39;</span><span class="p">]</span>
@@ -2777,7 +2770,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id40">获取逐笔限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-rt-ticker-limit"><span class="std std-ref">获取逐笔限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -2880,7 +2873,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#k">获取K线限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-cur-kline-limit"><span class="std std-ref">获取K线限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -3122,7 +3115,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="row-even"><td>future_last_trade_time</td>
 <td>string</td>
-<td>最后交易时间（期货特有字段，主连，当月，下月等期货没有该字段）</td>
+<td>最后交易时间（期货特有字段，主连，当月，下月等无该字段）</td>
 </tr>
 </tbody>
 </table>
@@ -3144,7 +3137,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id47">获取股票关联数据限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-referencestock-list-limit"><span class="std std-ref">获取股票关联数据限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -3211,7 +3204,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id48">获取股票所属板块限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-owner-plate-limit"><span class="std std-ref">获取股票所属板块限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -3334,7 +3327,7 @@ start与end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id49">获取持股变化列表限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-holding-change-list-limit"><span class="std std-ref">获取持股变化列表限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -3661,14 +3654,8 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li><dl class="first docutils">
-<dt>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id42">在线获取单只股票复权信息限制</a></dt>
-<dd><ul class="first last">
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-rehab-limit"><span class="std std-ref">在线获取单只股票复权信息限制</span></a></li>
 <li>复权后价格 = 复权前价格 * 复权因子a + 复权因子b</li>
-</ul>
-</dd>
-</dl>
-</li>
 </ul>
 </div>
 </div>
@@ -4068,7 +4055,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id51">获取窝轮限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-warrant-limit"><span class="std std-ref">获取窝轮限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -4130,7 +4117,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id52">获取资金流向限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-capital-flow-limit"><span class="std std-ref">获取资金流向限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -4208,7 +4195,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id53">获取资金分布限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-capital-distribution-limit"><span class="std std-ref">获取资金分布限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -4318,7 +4305,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id54">获取指定分组的自选股列表</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-user-security-limit"><span class="std std-ref">获取指定分组的自选股列表</span></a></li>
 </ul>
 </div>
 </div>
@@ -4360,7 +4347,7 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id55">修改指定分组的自选股列表</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#modify-user-security-limit"><span class="std std-ref">修改指定分组的自选股列表</span></a></li>
 </ul>
 </div>
 </div>
@@ -4699,9 +4686,12 @@ start和end的组合如下：</p>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
+<blockquote>
+<div><ul class="simple">
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-stock-filter-limit"><span class="std std-ref">获取条件选股</span></a></li>
+</ul>
+</div></blockquote>
 <ul class="last">
-<li><p class="first">接口限制请参见 <a class="reference external" href="../protocol/intro.html#id54">获取条件选股</a></p>
-</li>
 <li><p class="first">条件选股支持的板块或指数代码如下:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5034,7 +5024,119 @@ start和end的组合如下：</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id57">获取期货合约资料限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-future-info-limit"><span class="std std-ref">获取期货合约资料限制</span></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="request-trading-days">
+<h4>request_trading_days<a class="headerlink" href="#request-trading-days" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="request_trading_days">
+<code class="descname">request_trading_days</code><span class="sig-paren">(</span><em>self</em>, <em>market</em>, <em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#request_trading_days" title="Permalink to this definition">¶</a></dt>
+<dd><p>在线请求交易日,注意该交易日是通过自然日去除周末以及节假日得到，不包括临时休市数据</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>market</strong> &#8211; 市场类型，<a class="reference external" href="Base_API.html#tradedatemarket">TradeDateMarket</a></li>
+<li><strong>start</strong> &#8211; 起始日期。例如&#8216;2018-01-01&#8217;。</li>
+<li><strong>end</strong> &#8211; <p>结束日期。例如&#8216;2018-01-01&#8217;。
+start和end的组合如下：</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">start类型</th>
+<th class="head">end类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>str</td>
+<td>str</td>
+<td>start和end分别为指定的日期</td>
+</tr>
+<tr class="row-odd"><td>None</td>
+<td>str</td>
+<td>start为end往前365天</td>
+</tr>
+<tr class="row-even"><td>str</td>
+<td>None</td>
+<td>end为start往后365天</td>
+</tr>
+<tr class="row-odd"><td>None</td>
+<td>None</td>
+<td>end为当前日期，start为end往前365天</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>(ret_code, content)</p>
+<p>成功时返回(RET_OK, content)，content为字典列表，失败时返回(RET_ERROR, content)，其中content是错误描述字符串</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="10%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>time</td>
+<td>str</td>
+<td>时间</td>
+</tr>
+<tr class="row-odd"><td>trade_date_type</td>
+<td>str</td>
+<td>标志是一天、上午半天、下午半天，参见 <a class="reference external" href="Base_API.html#tradedatetype">TradeDateType</a></td>
+</tr>
+</tbody>
+</table>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-12-22&#39;</span><span class="p">,</span> <span class="s1">&#39;trade_date_type&#39;</span><span class="p">:</span> <span class="s1">&#39;WHOLE&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-12-23&#39;</span><span class="p">,</span> <span class="s1">&#39;trade_date_type&#39;</span><span class="p">:</span> <span class="s1">&#39;WHOLE&#39;</span><span class="p">},</span>
+ <span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-12-24&#39;</span><span class="p">,</span> <span class="s1">&#39;trade_date_type&#39;</span><span class="p">:</span> <span class="s1">&#39;MORNING&#39;</span><span class="p">}]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quote_ctx</span><span class="o">.</span><span class="n">request_trading_days</span><span class="p">(</span><span class="n">TradeDateMarket</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2018-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2018-01-10&#39;</span><span class="p">))</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#request-trading-day-limit"><span class="std std-ref">在线获取交易日</span></a></li>
 </ul>
 </div>
 </div>
@@ -5186,8 +5288,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id25">
-<h4>on_recv_rsp<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>on_recv_rsp<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5234,8 +5336,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id26">
-<h4>on_recv_rsp<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>on_recv_rsp<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5282,8 +5384,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id27">
-<h4>on_recv_rsp<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>on_recv_rsp<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5314,7 +5416,7 @@ start和end的组合如下：</p>
         <span class="k">def</span> <span class="nf">on_recv_rsp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rsp_str</span><span class="p">):</span>
                 <span class="n">ret_code</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TickerTest</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_recv_rsp</span><span class="p">(</span><span class="n">rsp_str</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">ret_code</span> <span class="o">!=</span> <span class="n">RET_OK</span><span class="p">:</span>
-                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;CurKlineTest: error, msg: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
+                        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;TickerTest: error, msg: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
                         <span class="k">return</span> <span class="n">RET_ERROR</span><span class="p">,</span> <span class="n">data</span>
 
                 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;TickerTest &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="c1"># TickerTest自己的处理逻辑</span>
@@ -5336,8 +5438,8 @@ start和end的组合如下：</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id28">
-<h4>on_recv_rsp<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>on_recv_rsp<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5384,8 +5486,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id29">
-<h4>on_recv_rsp<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>on_recv_rsp<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5430,8 +5532,8 @@ start和end的组合如下：</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id30">
-<h4>on_recv_rsp<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>on_recv_rsp<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -5498,7 +5600,7 @@ start和end的组合如下：</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.17',
+            VERSION:'3.18',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
