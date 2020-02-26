@@ -551,10 +551,32 @@
 <div class="section" id="api">
 <span id="quota-limit"></span><h3>API用户额度<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>部分协议额度限制划分如下：</p>
-<blockquote>
-<div><img alt="../_images/quota-table.png" src="../_images/quota-table.png" />
-</div></blockquote>
+<div><p>新版规则会依据您的资产情况和交易情况，为您划分不同的行情权限，具体规则如下：</p>
+<img alt="../_images/quota-table.png" src="../_images/quota-table.png" />
+<ol class="arabic simple">
+<li><p>总资产</p></li>
+</ol>
+<p>是指您在富途的所有资产，包括港美 A 股账户、Futu Inc. 账户、基金账户等，按照即期汇率换算成以港币为单位。</p>
+<ol class="arabic simple" start="2">
+<li><p>交易笔数</p></li>
+</ol>
+<p>会综合您当前自然月与上一自然月的交易情况，取您上个自然月的成交笔数与当前自然月的成交笔数的较大值进行计算，即：max (上个自然月的成交笔数，当前自然月的成交笔数)。</p>
+<ol class="arabic simple" start="3">
+<li><p>交易额</p></li>
+</ol>
+<p>是取您上个自然月的成交总金额与当前自然月的成交总金额的较大值进行计算，即：max（上个自然月的成交总金额，当前自然月的成交总金额），按照即期汇率换算成以港币为单位。</p>
+<ol class="arabic simple" start="4">
+<li><p>订阅额度</p></li>
+</ol>
+<p>适用于订阅才可获取到的实时数据接口，每只股票订阅一个类型即占用 1 个订阅额度。</p>
+<ol class="arabic simple" start="5">
+<li><p>历史 K 线额度（30天内）</p></li>
+</ol>
+<p>适用于历史 K 线接口，30 天内每只股票占用 1 个额度。</p>
+<p><strong>举例：</strong></p>
+<p>当前您在富途的所有资产总和折算成港币为 40 万 HKD ，上月交易笔数 250 笔，本月交易笔数 180 笔，上月交易额为 190 万 HKD，本月交易额为 150 万 HKD 。</p>
+<p>在计算您的额度时，总资产为 40 万 HKD ，交易笔数取 250 笔，交易额取 190 万HKD。</p>
+<p>由上表可得您的交易笔数符合大于 200 的要求，所以您的订阅额度为 1000，历史 K 线额度（30天内）为 1000 。</p>
 </div></blockquote>
 </div>
 <div class="section" id="unlock-limit">
