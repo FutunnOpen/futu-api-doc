@@ -945,15 +945,15 @@ query_subscription
         
         ret != RET_OK 返回错误字符串
         
-        ret == RET_OK 返回 定阅信息的字典数据 ，格式如下:
+        ret == RET_OK 返回订阅信息的字典数据 ，格式如下:
         
  .. code:: python
 
         {
-            'total_used': 4,    # 所有连接已使用的定阅额度
-            'own_used': 0,       # 当前连接已使用的定阅额度
-            'remain': 496,       #  剩余的定阅额度
-            'sub_list':          #  每种定阅类型对应的股票列表
+            'total_used': 4,    # 所有连接已使用的订阅额度
+            'own_used': 0,       # 当前连接已使用的订阅额度
+            'remain': 496,       #  剩余的订阅额度
+            'sub_list':          #  每种订阅类型对应的股票列表
             {
                 'BROKER': ['HK.00700', 'HK.02318'],
                 'RT_DATA': ['HK.00700', 'HK.02318']
