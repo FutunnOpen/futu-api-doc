@@ -36,9 +36,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="介绍" href="../cpp/intro.html"/>
         <link rel="prev" title="交易API" href="Trade_API.html"/> 
@@ -202,7 +199,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/java/start.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/java/start.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -240,17 +237,17 @@
 <div class="section" id="id2">
 <h2>环境搭建<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Windows 7/10 ，64位操作系统。Mac 10.11或以上。CentOS 7或Ubuntu 16.04以上。</p></li>
-<li><p>官方提供的SDK编译环境为OpenJDK 8，Windows下需要32位，Linux和Mac下需要64位。</p></li>
-<li><p>如需更高版本JDK，可以自己设置编译环境。</p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Windows 7/10 ，64位操作系统。Mac 10.11或以上。CentOS 7或Ubuntu 16.04以上。</li>
+<li>官方提供的SDK编译环境为OpenJDK 8，Windows下需要32位，Linux和Mac下需要64位。</li>
+<li>如需更高版本JDK，可以自己设置编译环境。</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>代码快速入门<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span> <span class="c1">//初始化环境</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span> <span class="c1">//初始化环境</span>
 <span class="n">FTAPI_Qot</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FTAPI_Qot</span><span class="p">();</span> <span class="c1">//创建行情对象</span>
 <span class="n">client</span><span class="p">.</span><span class="n">SetConnCallback</span><span class="p">(</span><span class="k">new</span> <span class="n">SampleConnCallback</span><span class="p">());</span> <span class="c1">//创建连接回调类</span>
 <span class="n">client</span><span class="p">.</span><span class="n">SetQotCallback</span><span class="p">(</span><span class="k">new</span> <span class="n">SampleQotCallback</span><span class="p">());</span> <span class="c1">//创建行情数据回调类</span>
@@ -258,7 +255,7 @@
 <span class="n">client</span><span class="p">.</span><span class="n">InitConnect</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">11111</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span> <span class="c1">//开始连接</span>
 </pre></div>
 </div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SampleConnCallback</span> <span class="o">:</span> <span class="n">FTSPI_Conn</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SampleConnCallback</span> <span class="o">:</span> <span class="n">FTSPI_Conn</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="kt">void</span> <span class="n">OnConnect</span><span class="p">(</span><span class="n">FTAPI</span> <span class="n">client</span><span class="p">,</span> <span class="kt">long</span> <span class="n">errCode</span><span class="p">)</span>
     <span class="p">{</span>
@@ -334,13 +331,12 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

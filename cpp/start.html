@@ -36,9 +36,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="介绍" href="../javascript/intro.html"/>
         <link rel="prev" title="交易API" href="trd.html"/> 
@@ -202,7 +199,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/cpp/start.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/start.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -240,17 +237,17 @@
 <div class="section" id="id2">
 <h2>环境搭建<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>Windows 7/10 ，64位操作系统</p></li>
-<li><p>官方提供的SDK编译环境为Visual Studio 2013</p></li>
-<li><p>如需更高版本VS环境，可以升级FTAPI.sln</p></li>
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Windows 7/10 ，64位操作系统</li>
+<li>官方提供的SDK编译环境为Visual Studio 2013</li>
+<li>如需更高版本VS环境，可以升级FTAPI.sln</li>
 </ul>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>代码快速入门<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="o">::</span><span class="n">InitFTApi</span><span class="p">();</span> <span class="c1">//初始化环境</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="o">::</span><span class="n">InitFTApi</span><span class="p">();</span> <span class="c1">//初始化环境</span>
 <span class="n">FTAPI_Qot</span> <span class="o">*</span><span class="n">pQot</span> <span class="o">=</span> <span class="n">FTAPI</span><span class="o">::</span><span class="n">CreateQotApi</span><span class="p">();</span> <span class="c1">//创建行情对象</span>
 <span class="n">SampleConnCallback</span> <span class="o">*</span><span class="n">pCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleConnCallback</span><span class="p">();</span>
 <span class="n">pQot</span><span class="o">-&gt;</span><span class="n">RegisterConnSpi</span><span class="p">(</span><span class="n">pCallback</span><span class="p">);</span> <span class="c1">//创建连接回调类</span>
@@ -268,7 +265,7 @@
 <span class="n">FTAPI</span><span class="o">::</span><span class="n">UnInitFTApi</span><span class="p">();</span>
 </pre></div>
 </div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SampleCallback</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FTSPI_Conn</span><span class="p">,</span> <span class="k">public</span> <span class="n">FTAPI_Qot</span>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SampleCallback</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FTSPI_Conn</span><span class="p">,</span> <span class="k">public</span> <span class="n">FTAPI_Qot</span>
 <span class="p">{</span>
     <span class="kt">void</span> <span class="n">OnInitConnect</span><span class="p">(</span><span class="n">FTAPI_Conn</span><span class="o">*</span> <span class="n">pConn</span><span class="p">,</span> <span class="n">FTAPI</span><span class="o">::</span><span class="n">i64_t</span> <span class="n">nErrCode</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">strDesc</span><span class="p">)</span>
     <span class="p">{</span>
@@ -342,13 +339,12 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

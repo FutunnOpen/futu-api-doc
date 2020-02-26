@@ -37,49 +37,6 @@ futuapi documentation
 	api/Base_API
 	api/Quote_API
 	api/Trade_API
-
-.. toctree::
-	:caption: .Net API
-	:maxdepth: 4
-	:hidden:
-
-	net/intro
-	net/Base_API
-	net/Quote_API
-	net/Trade_API
-	net/start
-
-.. toctree::
-	:caption: .Java API
-	:maxdepth: 4
-	:hidden:
-
-	java/intro
-	java/Base_API
-	java/Quote_API
-	java/Trade_API
-	java/start
-	
-.. toctree::
-	:caption: CPP API
-	:maxdepth: 4
-	:hidden:
-
-	cpp/intro
-	cpp/base
-	cpp/qot
-	cpp/trd
-	cpp/start
-
-.. toctree::
-	:caption: JavaScript API
-	:maxdepth: 4
-	:hidden:
-
-	javascript/intro
-	javascript/Quote_API
-	javascript/Trade_API
-	javascript/start
 	
 .. toctree::
 	:caption: Q&A

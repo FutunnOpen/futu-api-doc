@@ -36,9 +36,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
@@ -202,7 +199,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/java/Quote_API.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/java/Quote_API.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -243,185 +240,185 @@
 <div class="section" id="ftapi-qot">
 <h2>FTAPI_Qot成员函数<a class="headerlink" href="#ftapi-qot" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>FTAPI_Qot继承自<a class="reference external" href="./Base_API.html#ftapi-conn">FTAPI_Conn</a> ，连接层调用接口参考FTAPI_Conn说明。</p></li>
+<li>FTAPI_Qot继承自<a class="reference external" href="./Base_API.html#ftapi-conn">FTAPI_Conn</a> ，连接层调用接口参考FTAPI_Conn说明。</li>
 </ul>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 28%" />
-<col style="width: 41%" />
-<col style="width: 31%" />
+<col width="28%" />
+<col width="41%" />
+<col width="31%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>函数名（点开链接可查看具体协议）</p></th>
-<th class="head"><p>功能简介</p></th>
-<th class="head"><p>回调函数(FTSPI_Qot)</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">函数名（点开链接可查看具体协议）</th>
+<th class="head">功能简介</th>
+<th class="head">回调函数(FTSPI_Qot)</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/base_define.html#getglobalstate-proto-1002">getGlobalState</a></p></td>
-<td><p>获取全局状态</p></td>
-<td><p>onReply_GetGlobalState</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="../protocol/base_define.html#getglobalstate-proto-1002">getGlobalState</a></td>
+<td>获取全局状态</td>
+<td>onReply_GetGlobalState</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-sub-proto-3001">sub</a></p></td>
-<td><p>订阅或者反订阅</p></td>
-<td><p>onReply_Sub</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-sub-proto-3001">sub</a></td>
+<td>订阅或者反订阅</td>
+<td>onReply_Sub</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-regqotpush-proto-3002">regQotPush</a></p></td>
-<td><p>注册推送</p></td>
-<td><p>onReply_RegQotPush</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-regqotpush-proto-3002">regQotPush</a></td>
+<td>注册推送</td>
+<td>onReply_RegQotPush</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getsubinfo-proto-3003">getSubInfo</a></p></td>
-<td><p>获取订阅信息</p></td>
-<td><p>onReply_GetSubInfo</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getsubinfo-proto-3003">getSubInfo</a></td>
+<td>获取订阅信息</td>
+<td>onReply_GetSubInfo</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getticker-proto-3010">getTicker</a></p></td>
-<td><p>获取逐笔,调用该接口前需要先订阅</p></td>
-<td><p>onReply_GetTicker</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getticker-proto-3010">getTicker</a></td>
+<td>获取逐笔,调用该接口前需要先订阅</td>
+<td>onReply_GetTicker</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getbasicqot-proto-3004">getBasicQot</a></p></td>
-<td><p>获取基本行情,调用该接口前需要先订阅</p></td>
-<td><p>onReply_GetBasicQot</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getbasicqot-proto-3004">getBasicQot</a></td>
+<td>获取基本行情,调用该接口前需要先订阅</td>
+<td>onReply_GetBasicQot</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getorderbook-proto-3012">getOrderBook</a></p></td>
-<td><p>获取摆盘,调用该接口前需要先订阅</p></td>
-<td><p>onReply_GetOrderBook</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getorderbook-proto-3012">getOrderBook</a></td>
+<td>获取摆盘,调用该接口前需要先订阅</td>
+<td>onReply_GetOrderBook</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getkl-proto-3006k">getKL</a></p></td>
-<td><p>获取K线，调用该接口前需要先订阅</p></td>
-<td><p>onReply_GetKL</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getkl-proto-3006k">getKL</a></td>
+<td>获取K线，调用该接口前需要先订阅</td>
+<td>onReply_GetKL</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getrt-proto-3008">getRT</a></p></td>
-<td><p>获取分时，调用该接口前需要先订阅</p></td>
-<td><p>onReply_GetRT</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getrt-proto-3008">getRT</a></td>
+<td>获取分时，调用该接口前需要先订阅</td>
+<td>onReply_GetRT</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getbroker-proto-3014">getBroker</a></p></td>
-<td><p>获取经纪队列，调用该接口前需要先订阅</p></td>
-<td><p>onReply_GetBroker</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getbroker-proto-3014">getBroker</a></td>
+<td>获取经纪队列，调用该接口前需要先订阅</td>
+<td>onReply_GetBroker</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-requestrehab-proto-3105">requestRehab</a></p></td>
-<td><p>在线请求历史复权信息，不读本地历史数据DB</p></td>
-<td><p>onReply_RequestRehab</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requestrehab-proto-3105">requestRehab</a></td>
+<td>在线请求历史复权信息，不读本地历史数据DB</td>
+<td>onReply_RequestRehab</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k">requestHistoryKL</a></p></td>
-<td><p>在线请求历史K线，不读本地历史数据DB</p></td>
-<td><p>onReply_RequestHistoryKL</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k">requestHistoryKL</a></td>
+<td>在线请求历史K线，不读本地历史数据DB</td>
+<td>onReply_RequestHistoryKL</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k">requestHistoryKLQuota</a></p></td>
-<td><p>获取历史K线已经用掉的额度</p></td>
-<td><p>onReply_RequestHistoryKLQuota</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k">requestHistoryKLQuota</a></td>
+<td>获取历史K线已经用掉的额度</td>
+<td>onReply_RequestHistoryKLQuota</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-gettradedate-proto-3200">getTradeDate</a></p></td>
-<td><p>获取交易日</p></td>
-<td><p>onReply_GetTradeDate</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-gettradedate-proto-3200">getTradeDate</a></td>
+<td>获取交易日</td>
+<td>onReply_GetTradeDate</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getstaticinfo-proto-3202">getStaticInfo</a></p></td>
-<td><p>获取静态信息</p></td>
-<td><p>onReply_GetStaticInfo</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getstaticinfo-proto-3202">getStaticInfo</a></td>
+<td>获取静态信息</td>
+<td>onReply_GetStaticInfo</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getsecuritysnapshot-proto-3203">getSecuritySnapshot</a></p></td>
-<td><p>获取股票快照</p></td>
-<td><p>onReply_GetSecuritySnapshot</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getsecuritysnapshot-proto-3203">getSecuritySnapshot</a></td>
+<td>获取股票快照</td>
+<td>onReply_GetSecuritySnapshot</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getplateset-proto-3204">getPlateSet</a></p></td>
-<td><p>获取板块集合下的板块</p></td>
-<td><p>onReply_GetPlateSet</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getplateset-proto-3204">getPlateSet</a></td>
+<td>获取板块集合下的板块</td>
+<td>onReply_GetPlateSet</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getplatesecurity-proto-3205">getPlateSecurity</a></p></td>
-<td><p>获取板块下的股票</p></td>
-<td><p>onReply_GetPlateSecurity</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getplatesecurity-proto-3205">getPlateSecurity</a></td>
+<td>获取板块下的股票</td>
+<td>onReply_GetPlateSecurity</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getreference-proto-3206">getReference</a></p></td>
-<td><p>获取相关股票</p></td>
-<td><p>onReply_GetReference</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getreference-proto-3206">getReference</a></td>
+<td>获取相关股票</td>
+<td>onReply_GetReference</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getownerplate-proto-3207">getOwnerPlate</a></p></td>
-<td><p>获取股票所属的板块</p></td>
-<td><p>onReply_GetOwnerPlate</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getownerplate-proto-3207">getOwnerPlate</a></td>
+<td>获取股票所属的板块</td>
+<td>onReply_GetOwnerPlate</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getholdingchangelist-proto-3208">getHoldingChangeList</a></p></td>
-<td><p>获取大股东持股变化列表</p></td>
-<td><p>onReply_GetHoldingChangeList</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getholdingchangelist-proto-3208">getHoldingChangeList</a></td>
+<td>获取大股东持股变化列表</td>
+<td>onReply_GetHoldingChangeList</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getoptionchain-proto-3209">getOptionChain</a></p></td>
-<td><p>筛选期权</p></td>
-<td><p>onReply_GetOptionChain</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getoptionchain-proto-3209">getOptionChain</a></td>
+<td>筛选期权</td>
+<td>onReply_GetOptionChain</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getwarrant-proto-3210">getWarrant</a></p></td>
-<td><p>筛选窝轮</p></td>
-<td><p>onReply_GetWarrant</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getwarrant-proto-3210">getWarrant</a></td>
+<td>筛选窝轮</td>
+<td>onReply_GetWarrant</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getcapitalflow-proto-3211">getCapitalFlow</a></p></td>
-<td><p>获取资金流向</p></td>
-<td><p>onReply_GetCapitalFlow</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getcapitalflow-proto-3211">getCapitalFlow</a></td>
+<td>获取资金流向</td>
+<td>onReply_GetCapitalFlow</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212">getCapitalDistribution</a></p></td>
-<td><p>获取资金分布</p></td>
-<td><p>onReply_GetCapitalDistribution</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212">getCapitalDistribution</a></td>
+<td>获取资金分布</td>
+<td>onReply_GetCapitalDistribution</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getusersecurity-proto-3213">getUserSecurity</a></p></td>
-<td><p>获取自选股分组下的股票</p></td>
-<td><p>onReply_GetUserSecurity</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getusersecurity-proto-3213">getUserSecurity</a></td>
+<td>获取自选股分组下的股票</td>
+<td>onReply_GetUserSecurity</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214">modifyUserSecurity</a></p></td>
-<td><p>修改自选股分组下的股票</p></td>
-<td><p>onReply_ModifyUserSecurity</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214">modifyUserSecurity</a></td>
+<td>修改自选股分组下的股票</td>
+<td>onReply_ModifyUserSecurity</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo">getIpolist</a></p></td>
-<td><p>获取ipo数据</p></td>
-<td><p>onReply_GetIpoList</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo">getIpolist</a></td>
+<td>获取ipo数据</td>
+<td>onReply_GetIpoList</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getcodechange-proto-3216">getCodeChange</a></p></td>
-<td><p>获取股票代码变更</p></td>
-<td><p>onReply_GetCodeChange</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getcodechange-proto-3216">getCodeChange</a></td>
+<td>获取股票代码变更</td>
+<td>onReply_GetCodeChange</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218">getFutureInfo</a></p></td>
-<td><p>获取期货合约资料</p></td>
-<td><p>onReply_GetFutureInfo</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218">getFutureInfo</a></td>
+<td>获取期货合约资料</td>
+<td>onReply_GetFutureInfo</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-stockfilter-proto-3215">stockFilter</a></p></td>
-<td><p>筛选股票</p></td>
-<td><p>onReply_StockFilter</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-stockfilter-proto-3215">stockFilter</a></td>
+<td>筛选股票</td>
+<td>onReply_StockFilter</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-requesttradedate-proto-3219">requestTradeDate</a></p></td>
-<td><p>在线拉取交易日</p></td>
-<td><p>onReply_RequestTradeDate</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requesttradedate-proto-3219">requestTradeDate</a></td>
+<td>在线拉取交易日</td>
+<td>onReply_RequestTradeDate</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="ftspi-qot">
 <h2>FTSPI_Qot行情推送接收接口函数<a class="headerlink" href="#ftspi-qot" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 41%" />
-<col style="width: 59%" />
+<col width="41%" />
+<col width="59%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>回调函数（点开链接可查看具体协议）</p></th>
-<th class="head"><p>功能简介</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">回调函数（点开链接可查看具体协议）</th>
+<th class="head">功能简介</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/base_define.html#notify-proto-1003">notify</a></p></td>
-<td><p>推送通知</p></td>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="../protocol/base_define.html#notify-proto-1003">notify</a></td>
+<td>推送通知</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005">updateBasicQot</a></p></td>
-<td><p>推送基本行情</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005">updateBasicQot</a></td>
+<td>推送基本行情</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-updatekl-proto-3007k">updateKL</a></p></td>
-<td><p>推送K线</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatekl-proto-3007k">updateKL</a></td>
+<td>推送K线</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-updatert-proto-3009">updateRT</a></p></td>
-<td><p>推送分时</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatert-proto-3009">updateRT</a></td>
+<td>推送分时</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-updateticker-proto-3011">updateTicker</a></p></td>
-<td><p>推送逐笔</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updateticker-proto-3011">updateTicker</a></td>
+<td>推送逐笔</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-updateorderbook-proto-3013">updateOrderBook</a></p></td>
-<td><p>推送买卖盘</p></td>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updateorderbook-proto-3013">updateOrderBook</a></td>
+<td>推送买卖盘</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebroker-proto-3015">updateBroker</a></p></td>
-<td><p>推送经纪队列</p></td>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebroker-proto-3015">updateBroker</a></td>
+<td>推送经纪队列</td>
 </tr>
 </tbody>
 </table>
@@ -475,13 +472,12 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 

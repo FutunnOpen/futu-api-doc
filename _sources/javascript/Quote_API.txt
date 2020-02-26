@@ -37,6 +37,7 @@
   .. _GetCapitalDistribution: ../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212
   .. _GetUserSecurity: ../protocol/quote_protocol.html#qot-getusersecurity-proto-3213
   .. _ModifyUserSecurity: ../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214
+  .. _RequestTradeDate: ../protocol/quote_protocol.html#qot-requesttradedate-proto-3219
   .. _Notify: ../protocol/base_define.html#notify-proto-1003
   .. _GetCodeChange: ../protocol/quote_protocol.html#qot-getcodechange-proto-3216
   .. _GetIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
@@ -87,6 +88,7 @@ ModifyUserSecurity_                 修改自选股分组下的股票
 GetIpolist_                         获取ipo数据
 GetCodeChange_                      获取股票代码变更
 GetFutureInfo_                      获取期货合约资料
+RequestTradeDate_                   获取市场交易日，在线拉取不在本地计算
 ================================    ==============================================
 
 

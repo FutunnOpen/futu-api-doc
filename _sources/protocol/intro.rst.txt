@@ -24,9 +24,7 @@
   
   .. _Trd_SubAccPush.proto:  trade_protocol.html#trd-subaccpush-proto-2008
   .. _Trd_GetFunds.proto:  trade_protocol.html#trd-getfunds-proto-2101
-  .. _2101: trade_protocol.html#trd-getfunds-proto-2101
   .. _Trd_GetPositionList.proto:  trade_protocol.html#trd-getpositionlist-proto-2102
-  .. _2102:  trade_protocol.html#trd-getpositionlist-proto-2102
   
   .. _Trd_GetMaxTrdQtys.proto:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   .. _2111:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
@@ -42,7 +40,6 @@
   .. _Trd_UpdateOrder.proto:  trade_protocol.html#trd-updateorder-proto-2208
   
   .. _Trd_GetOrderFillList.proto:  trade_protocol.html#trd-getorderfilllist-proto-2211
-  .. _2211:  trade_protocol.html#trd-getorderfilllist-proto-2211
   .. _Trd_UpdateOrderFill.proto:  trade_protocol.html#trd-updateorderfill-proto-2218
   
   .. _Trd_GetHistoryOrderList.proto:  trade_protocol.html#trd-gethistoryorderlist-proto-2221
@@ -114,18 +111,6 @@
   .. _Qot_ModifyUserSecurity.proto:  quote_protocol.html#qot-modifyusersecurity-proto-3214
   .. _3214:  quote_protocol.html#qot-modifyusersecurity-proto-3214
   
-  .. _Qot_StockFilter.proto:  quote_protocol.html#qot-stockfilter-proto-3215
-  .. _3215:  quote_protocol.html#qot-stockfilter-proto-3215
-  
-  .. _Qot_GetIpoList.proto:  quote_protocol.html#qot-getipolist-proto-3217ipo
-  .. _3217:  quote_protocol.html#qot-getipolist-proto-3217ipo
-
-  .. _Qot_GetFutureInfo.proto:  quote_protocol.html#qot-getfutureinfo-proto-3218
-  .. _3218:  quote_protocol.html#qot-getfutureinfo-proto-3218
-  
-  .. _Qot_RequestTradeDate.proto:  quote_protocol.html#qot-requesttradedate-proto-3219
-  .. _3219:  quote_protocol.html#qot-requesttradedate-proto-3219
-
   .. role:: red-strengthen
 
 特点
@@ -191,30 +176,28 @@
  3207             Qot_GetOwnerPlate.proto_                获取股票所属板块
  3208             Qot_GetHoldingChangeList.proto_         获取持股变化列表
  3209             Qot_GetOptionChain.proto_               获取期权链
- 3210             Qot_GetWarrant.proto_                   获取窝轮
+ 3210             Qot_GetWarrant.proto_                   获取涡轮
  3211             Qot_GetCapitalFlow.proto_               获取资金流向
  3212             Qot_GetCapitalDistribution.proto_       获取资金分布
  3213             Qot_GetUserSecurity.proto_       		  获取自选股分组下的股票
  3214             Qot_ModifyUserSecurity.proto_       	  修改自选股分组下的股票
- 3215             Qot_StockFilter.proto_                  获取条件选股
- 3217             Qot_GetIpoList.proto_                   获取新股
- 3218             Qot_GetFutureInfo.proto_                获取期货合约资料
- 3219             Qot_RequestTradeDate.proto_             获取市场交易日，在线拉取不在本地计算 
  ==============   ==================================     ==================================================================
 
 .. note::
 
     * 所有 Protobuf 文件可从 `futu-api <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb>`_ Python开源项目下获取
 
+
+
 ---------------------------------------------------
  
 协议请求限制
 ---------------
-.. _quota-limit:
 
-API用户额度
+API用户等级
 ~~~~~~~~~~~~~~~~~~~~~~
  
+<<<<<<< HEAD
  新版规则会依据您的资产情况和交易情况，为您划分不同的行情权限，具体规则如下：
  
  .. image:: ../_static/quota-table.png
@@ -249,6 +232,12 @@ API用户额度
 	
 
 .. _unlock-limit:
+=======
+ 部分协议的请求限制与API用户等级相关，划分如下：
+	+ 用户净资产大于10000港币为二级用户
+	+ 小于10000港币为三级用户
+	+ 一级用户提供给有一定交易额的实盘交易用户，可与富途联系获取
+>>>>>>> addf16f767bd46814f78a01ef4ba2b4f50b13a82
 
 解锁或锁定交易
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -256,234 +245,139 @@ API用户额度
 	* 协议ID: 2005_
 	* :red-strengthen:`30` 秒内请求次数最多 :red-strengthen:`10` 次
 
-.. _acctradinginfo-query-limit:
-
 获取最大交易数量
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 协议ID: 2111_
 	* :red-strengthen:`30` 秒内请求次数最多 :red-strengthen:`10` 次
 
-.. _accinfo-query-limit:
-
-获取账户资金
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 2101_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅当refreshCache为True时限制频率
-
-.. _position-list-query-limit:
-
-获取账户持仓
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 2102_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅当refreshCache为True时限制频率
-
-.. _deal-list-query-limit:
-
-获取成交列表
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 2211_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅当refreshCache为True时限制频率
-	
-.. _place-order-limit:
-
 下单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2202_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次
-
-.. _modify-order-limit:	
+	
 	
 修改订单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2205_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次
 	
-.. _history-order-list-query-limit:	
 
 获取历史订单列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2221_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 
-.. _history-deal-list-query-limit:	
 
 获取历史成交列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2222_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 
-.. _subscribe-limit:
 
 订阅反订阅
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3001_
   * 支持多种实时数据类型的定阅，参见 SubType_ , 每支股票订阅一个类型占用一个额度。
-  * 额度现在限制请参见 :ref:`API用户额度 <quota-limit>`
+  * 订阅额度上限与用户等级相关，一级: :red-strengthen:`1000`, 二级: :red-strengthen:`300` , 三级: :red-strengthen:`100`
   * 至少订阅一分钟才可以反订阅。
-
-.. _get-cur-kline-limit:
 	
 获取K线
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3006_
 	* 最多能获取最近 :red-strengthen:`1000` 根
 	* 市盈率，换手率字段只有日K及日K以上周期的正股才有数据。
-
-.. _get-rt-ticker-limit:
 	
 获取逐笔
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3010_
 	* 最多能获取最近 :red-strengthen:`1000` 根
-
-.. _request-history-kline-limit:
-
+	
 在线获取单只股票一段历史K线
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3103_
-  * 30天内在线获取历史K线最多可请求股票数请参见 :ref:`API用户额度 <quota-limit>`
-  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`60` 次，可分页的请求，第1页限频，后续页请求不限频
+  * 30天内在线获取历史K线最多可请求股票数与用户等级相关，一级: :red-strengthen:`1000` , 二级: :red-strengthen:`300` , 三级:  :red-strengthen:`100`
+  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次，可分页的请求，第1页限频，后续页请求不限频
   * 分K提供最近2年数据，日K及以上提供近10年数据。
   
-.. _get-rehab-limit:
-
 在线获取单只股票复权信息
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3105_
-  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`60` 次
-
-.. _get-market-snapshot-limit:
+  * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 
 获取股票快照
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   * 请求协议ID: 3203_
-  * 每次可请求股票数最多 :red-strengthen:`400`
-  * 30秒内快照最多请求次数 :red-strengthen:`60`
-
-.. _get-plate-list-limit:
+  * 每次最多可请求股票数与用户等级相关,  一级: :red-strengthen:`400` , 二级: :red-strengthen:`300` , 三级: :red-strengthen:`200` 
+  * 30秒内快照最多请求次数与用户等级相关，一级: :red-strengthen:`30` , 二级: :red-strengthen:`20` , 三级: :red-strengthen:`10` 
 
 获取板块集合下的板块
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3204_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	
-.. _get-plate-stock-limit:	
+获取板块下的股票
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3205_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	
 获取板块下的股票
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3205_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-
-.. _get-referencestock-list-limit:	
 		
-获取股票关联数据
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 3206_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 查询相关窝轮不限频
-
-.. _get-owner-plate-limit:	
-
 获取股票所属板块
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3207_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 传入股票最多 :red-strengthen:`200` 个
 	* 仅支持正股和指数
-
-.. _get-holding-change-list-limit:	
-
+	
 获取持股变化列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3208_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 最多返回前 :red-strengthen:`100` 大股东的变化
 	* 仅支持美股
-
-.. _get-option-chain-limit:
-
+	
 获取期权链
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3209_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 传入时间跨度最多 :red-strengthen:`30` 天
-
-.. _get-warrant-limit:
 	
-获取窝轮
+获取涡轮
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3210_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`60` 次
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 每次请求的数据个数最多 :red-strengthen:`200` 个
 	* 仅支持港股
-
-.. _get-capital-flow-limit:
 
 获取资金流向
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3211_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
-	* 仅支持正股、窝轮和基金
-	
-.. _get-capital-distribution-limit:
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅支持正股、涡轮和基金
 
 获取资金分布
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3212_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
-	* 仅支持正股、窝轮和基金
-
-.. _get-user-security-limit:
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅支持正股、涡轮和基金
 
 获取自选股分组下的股票
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3213_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持自定义分组
-
-.. _modify-user-security-limit:
 	
 修改自选股分组下的股票
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3214_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持自定义分组
-	* 自选股的数量是有上限的。
+	* 自选股的上限，一般最多是 :red-strengthen:`500` 支股票。
 	* 如果有同名的分组，会返回排序第一个分组的信息。
-
-.. _get-stock-filter-limit:
-
-获取条件选股
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 3215_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 每次请求的数据个数最多 :red-strengthen:`200` 个
-	* 建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。
-
-.. _get-ipo-list-limit:
-
-获取IPO列表
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 3217_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	
-.. _get-future-info-limit:
-	
-获取期货合约资料
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 3218_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
-	* 传入股票最多 :red-strengthen:`200` 个
-
-.. _request-trading-day-limit:	
-
-在线拉取市场交易日
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	* 请求协议ID: 3219_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
+	* 用户分组的删除操作，只做本组的移除操作，系统分组的“全部”分组下股票的数量并不会减少。
 	
 协议请求流程 
 -------------

@@ -36,9 +36,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
         <link rel="next" title="基础API" href="base.html"/>
         <link rel="prev" title="快速上手" href="../java/start.html"/> 
@@ -204,7 +201,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/cpp/intro.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/cpp/intro.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -242,10 +239,10 @@
 <h2>Cpp API简介<a class="headerlink" href="#cpp-api" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>Cpp API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></p></li>
-<li><p>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</p></li>
-<li><p>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></p></li>
-<li><p><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></p></li>
+<li>Cpp API依赖FutuOpenD网关客户端，需要先运行登录 <a class="reference external" href="../intro/FutuOpenDGuide.html">FutuOpenD</a></li>
+<li>Sample提供了几个简单的行情和交易获取demo，可以用于上手学习。</li>
+<li>具体支持交易和行情品种参考<a class="reference external" href="../intro/intro.html">FutuOpenD网关客户端简介</a></li>
+<li><a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></li>
 </ul>
 </div></blockquote>
 </div>
@@ -253,18 +250,18 @@
 <h2>接口框架<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>FTAPIChannel是C接口，供Cpp，Java，C#等语言底层调用，提供连接创建销毁，初始化，加密解密功能，是连接到FutuOpenD的底层通道。</p></li>
-<li><p>FTAPIChannel可用于各种编译选项无需重新编译，该模块提供动态库不提供源码。</p></li>
-<li><p>FTAPI在FTAPIChannel基础上新增了一些业务上的收发接口，提供源码，打包静态库方便使用。</p></li>
-<li><p>Windows下FTAPI静态库使用VS2013 /MT编译，如需使用更高编译平台版本、/MD、动态库等，需自行编译FTAPI以及<a class="reference external" href="https://github.com/protocolbuffers/protobuf">Google Protobuf</a> （3.5.1）。</p></li>
-<li><p>请保证使用API的工程，API库，Protobuf库编译选项一致。</p></li>
-<li><p>Src/protobuf目录下打包有Google Protobuf（3.5.1）源码，如需编译请参考该目录下”pb库编译说明.txt”。</p></li>
+<li>FTAPIChannel是C接口，供Cpp，Java，C#等语言底层调用，提供连接创建销毁，初始化，加密解密功能，是连接到FutuOpenD的底层通道。</li>
+<li>FTAPIChannel可用于各种编译选项无需重新编译，该模块提供动态库不提供源码。</li>
+<li>FTAPI在FTAPIChannel基础上新增了一些业务上的收发接口，提供源码，打包静态库方便使用。</li>
+<li>Windows下FTAPI静态库使用VS2013 /MT编译，如需使用更高编译平台版本、/MD、动态库等，需自行编译FTAPI以及<a class="reference external" href="https://github.com/protocolbuffers/protobuf">Google Protobuf</a> （3.5.1）。</li>
+<li>请保证使用API的工程，API库，Protobuf库编译选项一致。</li>
+<li>Src/protobuf目录下打包有Google Protobuf（3.5.1）源码，如需编译请参考该目录下&#8221;pb库编译说明.txt&#8221;。</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="id5">
 <h2>代码结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>|-- Bin        API所需的动态静态库，包括API通道动态库，pb静态库，API静态库。
+<div class="highlight-text"><div class="highlight"><pre><span></span>|-- Bin        API所需的动态静态库，包括API通道动态库，pb静态库，API静态库。
 |-- Include    API头文件
 |-- Src        API源码
 `-- Sample     演示demo
@@ -275,8 +272,8 @@
 <h2>调用须知<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><p>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</p></li>
-<li><p>所有接口以异步回调方式完成</p></li>
+<li>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</li>
+<li>所有接口以异步回调方式完成</li>
 </ul>
 </div></blockquote>
 </div>
@@ -329,13 +326,12 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
 
   
 
