@@ -1428,6 +1428,47 @@ Rehab - 复权信息
 	
 -----------------------------------------------
 
+PriceReminderType - 提醒类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	//提醒类型
+	enum PriceReminderType
+	{
+		PriceReminderType_Unknown = 0; // 未知
+		PriceReminderType_PriceUp = 1; // 价格涨到
+		PriceReminderType_PriceDown = 2; // 价格跌到
+		PriceReminderType_ChangeRateUp = 3; // 日涨幅超
+		PriceReminderType_ChangeRateDown = 4; // 日跌幅超
+		PriceReminderType_5MinChangeRateUp = 5; // 5分钟涨幅超
+		PriceReminderType_5MinChangeRateDown = 6; // 5分钟跌幅超
+		PriceReminderType_VolumeUp = 7; // 成交量超过
+		PriceReminderType_TurnoverUp = 8; // 成交额超过
+		PriceReminderType_TurnoverRateUp = 9; // 换手率超过
+		PriceReminderType_BidPriceUp = 10; // 买一价高于
+		PriceReminderType_AskPriceDown = 11; // 卖一价低于
+		PriceReminderType_BidVolUp = 12; // 买一量高于	
+		PriceReminderType_AskVolUp = 13; // 卖一量高于
+	}
+	 
+-----------------------------------------------
+
+PriceReminderType - 提醒频率
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	//提醒频率
+	enum PriceReminderFreq
+	{
+		PriceReminderFreq_Unknown = 0; // 未知
+		PriceReminderFreq_Always = 1; // 持续提醒
+		PriceReminderFreq_OnceADay = 2; // 每日一次
+		PriceReminderFreq_OnlyOnce = 3; // 仅提醒一次
+	}
+	 
+-----------------------------------------------
 
 `Trd_Common.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto>`_ - 交易通用定义
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -1848,7 +1889,5 @@ TrdSecMarket - 可交易证券所属市场
 	}
 	 
 -----------------------------------------------
-
-
 
     

@@ -82,6 +82,10 @@
 
  .. _TradeDateMarket: Base_API.html#tradedatemarket
  
+ .. _PriceReminderType: Base_API.html#priceremindertype
+ 
+ .. _SetPriceReminderOp: Base_API.html#setpricereminderop
+ 
 一分钟上手
 ============
 
@@ -2135,9 +2139,6 @@ request_trading_days
 
 ..
 
-
-
-        
  :Example:
 
  .. code:: python
@@ -2152,6 +2153,82 @@ request_trading_days
 	* 接口限制请参见 :ref:`在线获取交易日 <request-trading-day-limit>`
 	
 -----------------------------------------------------------------------------------------------------    
+
+set_price_reminder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: set_price_reminder(self, stock_code, op, key=None, type=None, freq=None, value=None, note=None)
+
+    新增、删除、修改、启用、禁用 某只股票的到价提醒，每只股票每种类型最多可设置10个提醒
+ :param stock_code: 股票
+ :param op: SetPriceReminderOp_，操作类型
+ :param key: int64，标识，新增的情况不需要填
+ :param type: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
+ :param freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
+ :param value: float，提醒值，修改该项需要连type一起指定，删除、启用、禁用的情况不需要填
+ :param note: str，用户设置的备注，删除、启用、禁用的情况不需要填
+ :return: (ret, data)
+    ret != RET_OK 返回错误字符串
+	
+    ret == RET_OK data为success
+..
+
+ :Example:
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    quote_ctx.set_price_reminder(stock_code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
+                                 type=PriceReminderType.PRICE_UP, freq=PriceReminderFreq.ALWAYS,
+                                 value=400.0, note='')
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`设置到价提醒 <set-price-reminder-limit>`
+
+-----------------------------------------------------------------------------------------------------
+
+get_price_reminder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_price_reminder(self, stock_code = None, market = None)
+
+    获取对某只股票(某个市场)设置的到价提醒列表
+ :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先
+ :param market: 获取该市场的到价提醒，注意传入沪深都会认为是A股市场
+ :return: (ret, data)
+    ret != RET_OK 返回错误字符串
+	
+    ret == RET_OK data为DataFrame类型，字段如下:
+    
+    =========================   ==================   ========================================
+    参数                         类型                 说明
+    =========================   ==================   ========================================
+    code                        str                  股票代码
+    key                         int64                标识，用于修改到价提醒
+    type                        str                  到价提醒的类型，参见PriceReminderType_
+    freq                        str                  到价提醒的频率，参见PriceReminderFreq_
+    value                       float                提醒值
+    enable                      bool                 是否启用
+    note                        string               备注，最多10个字符
+    =========================   ==================   ========================================
+..
+
+ :Example:
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_price_reminder(code='HK.00700'))
+    print(quote_ctx.get_price_reminder(code=None, market=Market.HK))
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取到价提醒列表 <get-price-reminder-limit>`
+
+-----------------------------------------------------------------------------------------------------
 
 SysNotifyHandlerBase - OpenD通知回调
 -----------------------------------------------------------------------------------------------------    
@@ -2488,3 +2565,59 @@ on_recv_rsp
 
           失败时返回(RET_ERROR, ERR_MSG, None)
 
+----------------------------
+
+PriceReminderHandlerBase - 到价提醒通知回调
+-------------------------------------------
+
+异步处理推送的到价提醒通知
+
+.. code:: python
+    
+   class PriceReminderTest(PriceReminderHandlerBase):
+    def on_recv_rsp(self, rsp_str):
+        ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
+        if ret_code != RET_OK:
+            print("PriceReminderTest: error, msg: %s" % content)
+            return RET_ERROR, content
+
+        print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
+
+        return RET_OK, content
+
+
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    handler = PriceReminderTest()
+    quote_ctx.set_handler(handler)
+    time.sleep(15)
+    quote_ctx.close()
+    
+-------------------------------------------
+
+on_recv_rsp
+~~~~~~~~~~~
+
+..  py:function:: on_recv_rsp(self, rsp_pb)
+
+
+ 在收到后到价提醒通知会回调到该函数，使用者需要在派生类中覆盖此方法
+
+ 注意该回调是在独立子线程中
+
+ :param rsp_pb: 派生类中不需要直接处理该参数
+ :return: 失败时返回(RET_ERROR, ERR_MSG, None)
+ 
+ 成功时返回(RET_OK, '', data), data为DataFrame类型，字段如下
+    
+    =========================   ==================   ========================================
+    参数                         类型                 说明
+    =========================   ==================   ========================================
+    code                        str                  股票代码
+    price                       float                当前价格
+    change_rate                 str                  当前涨跌幅
+    market_status               str                  触发的时间段，盘前、盘中、盘后
+    content                     str                  到价提醒文字内容
+    note                        str                  备注，最多10个字符
+    =========================   ==================   ========================================
+
+          

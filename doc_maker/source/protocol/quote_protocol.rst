@@ -2418,7 +2418,132 @@
 
 .. note::
 	
-	* 股票结构参考 `TradeDateMarket <base_define.html#tradedatemarket>`_
+	* 交易日市场类型参考 `TradeDateMarket <base_define.html#tradedatemarket>`_
 	* 限频接口：30秒内最多30次	
 	
 ------------------------------------------------------------------------
+
+`Qot_SetPriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_SetPriceReminder.proto>`_ - 3220设置到价提醒
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_SetPriceReminder;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum SetPriceReminderOp
+	{
+		SetPriceReminderOp_Unknown = 0;
+		SetPriceReminderOp_Add = 1; //新增
+		SetPriceReminderOp_Del = 2; //删除
+		SetPriceReminderOp_Enable = 3; //启用
+		SetPriceReminderOp_Disable = 4; //禁用
+		SetPriceReminderOp_Modify = 5; //修改
+	}
+
+	message C2S
+	{
+		required Qot_Common.Security security = 1; // 股票
+		required int32 op = 2; // SetPriceReminderOp, 操作类型
+		optional int64 key = 3; // 到价提醒的标识，GetPriceReminder协议可获得，用于指定要操作的到价提醒项，对于新增的情况不需要填
+		optional int32 type = 4; // Qot_Common::PriceReminderType，提醒类型，删除、启用、禁用的情况不需要填
+		optional int32 freq = 7; // Qot_Common::PriceReminderFreq，提醒频率类型，删除、启用、禁用的情况不需要填
+		optional double value = 5; // 提醒值，注意修改提醒值时，type也需要指定，删除、启用、禁用的情况不需要填
+		optional string note = 6; // 用户设置到价提醒时的标注，最多10个字符，删除、启用、禁用的情况不需要填
+	}
+
+	message S2C
+	{
+		
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 提醒类型参考 `PriceReminderType <base_define.html#priceremindertype>`_
+	* 提醒频率类型参考 `PriceReminderFreq <base_define.html#pricereminderfreq>`_
+	* 每只股票每种提醒类型最多设置10个
+	* 限频接口：30秒内最多60次	
+	
+------------------------------------------------------------------------
+
+
+`Qot_GetPriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPriceReminder.proto>`_ - 3221获取到价提醒
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetPriceReminder;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	// 提醒信息列表
+	message PriceReminderItem
+	{
+		required int64 key = 1; // 每个提醒的唯一标识
+		required int32 type = 2; // Qot_Common::PriceReminderType 提醒类型
+		required double value = 3; // 提醒参数值
+		required string note = 4; // 用户设置到价提醒时的标注
+		required int32 freq = 5; // Qot_Common::PriceReminderFreq 提醒频率类型
+		required bool isEnable = 6; // 该提醒设置是否生效。false不生效，true生效
+	}
+
+	message PriceReminder
+	{
+		required Qot_Common.Security security = 1; // 股票
+		repeated PriceReminderItem itemList = 2; // 提醒信息列表
+	}
+
+	message C2S
+	{
+		optional Qot_Common.Security security = 1; // 查询股票下的到价提醒项，security和market二选一，都存在的情况下security优先。
+		optional int32 market = 2; //Qot_Common::QotMarket 市场，查询市场下的到价提醒项，不区分沪深
+	}
+
+	message S2C
+	{
+		repeated PriceReminder priceReminderList = 1; //到价提醒
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 市场类型参考 `QotMarket <base_define.html#qotmarket>`_
+	* 提醒类型参考 `PriceReminderType <base_define.html#priceremindertype>`_
+	* 提醒频率类型参考 `PriceReminderFreq <base_define.html#pricereminderfreq>`_
+	* 限频接口：30秒内最多10次	

@@ -172,6 +172,27 @@ DarkStatus - 暗盘状态
   
 --------------------------------------
 
+DealStatus - 成交状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+成交状态
+
+..  py:class:: DealStatus
+
+ ..  py:attribute:: OK
+
+   正常
+
+ ..  py:attribute:: CANCELLED
+
+   被取消
+
+ ..  py:attribute:: CHANGED
+
+  被更改
+
+--------------------------------------
+
 FinancialQuarter - 财务指标周期
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 财务指标周期定义
@@ -936,26 +957,94 @@ OrderStatus - 订单状态定义
   
 --------------------------------------
 
+PriceReminderFreq - 到价提醒频率
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DealStatus - 成交状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+到价提醒频率
 
-成交状态
+..  py:class:: PriceReminderFreq
 
-..  py:class:: DealStatus
+ ..  py:attribute:: NONE
 
- ..  py:attribute:: OK
+  未知类型
 
-   正常
+ ..  py:attribute:: ALWAYS
 
- ..  py:attribute:: CANCELLED
+  持续提醒
+  
+   ..  py:attribute:: ONCE_A_DAY 
 
-   被取消
+  每日一次
+  
+  ..  py:attribute:: ONCE
 
- ..  py:attribute:: CHANGED
+  仅提醒一次
+  
+--------------------------------------
 
-  被更改
+PriceReminderType - 到价提醒类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+到价提醒的类型
+
+..  py:class:: PriceReminderType
+
+ ..  py:attribute:: NONE
+
+  未知类型
+
+ ..  py:attribute:: PRICE_UP
+
+  价格涨到
+  
+ ..  py:attribute::  PRICE_DOWN 
+
+  价格跌到
+  
+  ..  py:attribute:: CHANGE_RATE_UP
+
+  日涨幅超
+  
+  ..  py:attribute:: CHANGE_RATE_DOWN
+
+  日跌幅超
+  
+  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_UP 
+
+  5分钟涨幅超
+  
+  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_DOWN
+
+  5分钟跌幅超
+  
+  ..  py:attribute:: VOLUME_UP
+
+  成交量超过
+  
+  ..  py:attribute::  TURNOVER_UP
+
+  成交额超过
+  
+  ..  py:attribute:: TURNOVER_RATE_UP 
+
+  换手率超过
+  
+  ..  py:attribute:: BID_PRICE_UP
+
+  买一价高于
+  
+  ..  py:attribute:: ASK_PRICE_DOWN
+
+  卖一价低于
+  
+  ..  py:attribute:: BID_VOL_UP 
+
+  买一量高于
+  
+  ..  py:attribute:: ASK_VOL_UP
+
+  卖一量高于
+  
 --------------------------------------
 
 ProgramStatusType - 程序运行状态通知类型
@@ -963,7 +1052,7 @@ ProgramStatusType - 程序运行状态通知类型
 
 程序运行状态通知类型定义
 
-..  py:class:: GtwEventType
+..  py:class:: ProgramStatusType
 
  ..  py:attribute:: NONE
 
@@ -1276,6 +1365,39 @@ SecurityReferenceType - 股票关联数据类型
   
   期货主连相关合约
 
+--------------------------------------
+
+SetPriceReminderOp - 设置到价提醒操作
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+设置到价提醒操作
+
+..  py:class:: SetPriceReminderOp
+ 
+ ..  py:attribute:: NONE
+  
+  未知
+   
+ ..  py:attribute:: ADD
+  
+  新增
+   
+ ..  py:attribute:: DELETE
+  
+  删除
+  
+ ..  py:attribute:: ENABLE
+  
+  启用
+   
+ ..  py:attribute:: DISABLE
+  
+  禁用
+   
+ ..  py:attribute:: MODIFY
+  
+  修改
+  
 --------------------------------------
 
 StockHolder - 持有者类别
