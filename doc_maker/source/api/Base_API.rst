@@ -844,7 +844,7 @@ OrderType - 订单类型
   
  ..  py:attribute:: MARKET
  
-  市价，目前仅美股
+  市价，目前支持美股、港股（正股、涡轮、牛熊证，界内证）
   
  ..  py:attribute:: ABSOLUTE_LIMIT
  
