@@ -2485,7 +2485,6 @@
 	
 ------------------------------------------------------------------------
 
-
 `Qot_GetPriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPriceReminder.proto>`_ - 3221获取到价提醒
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -2547,3 +2546,48 @@
 	* 提醒类型参考 `PriceReminderType <base_define.html#priceremindertype>`_
 	* 提醒频率类型参考 `PriceReminderFreq <base_define.html#pricereminderfreq>`_
 	* 限频接口：30秒内最多10次	
+	
+	
+`Qot_UpdatePriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdatePriceReminder.proto>`_ - 3221获取到价提醒
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_UpdatePriceReminder;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum MarketStatus
+	{
+		MarketStatus_Unknow = 0;
+		MarketStatus_Open = 1; // 盘中
+		MarketStatus_USPre = 2;  // 美股盘前
+		MarketStatus_USAfter = 3; // 美股盘后
+	}
+
+	message S2C
+	{
+		required Qot_Common.Security security = 1; //股票
+		required double price = 2; //价格
+		required double changeRate = 3; //涨跌幅
+		required int32 marketStatus = 4; //市场状态
+		required string content = 5; //内容
+		required string note = 6; //备注
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
