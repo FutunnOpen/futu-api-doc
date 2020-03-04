@@ -1957,7 +1957,7 @@ return_on_equity_rate                          float          净资产收益率
     acc_filter.is_no_filter = False
     acc_filter.sort = SortDir.None
 
-    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter])
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter], begin=200, num=10)
     if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
