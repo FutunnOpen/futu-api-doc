@@ -2165,12 +2165,12 @@ set_price_reminder
  :param key: int64，标识，新增的情况不需要填
  :param type: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
  :param freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
- :param value: float，提醒值，修改该项需要连type一起指定，删除、启用、禁用的情况不需要填
+ :param value: float，提醒值，删除、启用、禁用的情况不需要填
  :param note: str，用户设置的备注，删除、启用、禁用的情况不需要填
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
 	
-    ret == RET_OK data为success
+    ret == RET_OK data为key
 ..
 
  :Example:
