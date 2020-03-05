@@ -1995,7 +1995,7 @@ get_ipo_list
 
  获取指定市场的ipo列表
 
- :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
+ :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
 
  :return: (ret, data)
 
@@ -2195,8 +2195,8 @@ get_price_reminder
 ..  py:function:: get_price_reminder(self, stock_code = None, market = None)
 
     获取对某只股票(某个市场)设置的到价提醒列表
- :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先
- :param market: 获取该市场的到价提醒，注意传入沪深都会认为是A股市场
+ :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先。
+ :param market: 获取该市场的到价提醒，注意输入沪深都会认为是A股市场。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
 	
