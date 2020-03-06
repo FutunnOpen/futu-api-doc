@@ -1466,57 +1466,92 @@
 .. code-block:: protobuf
 
     syntax = "proto2";
-    package Qot_GetOptionChain;
+	package Qot_GetOptionChain;
+	option java_package = "com.futu.openapi.pb";
 
-    import "Common.proto";
-    import "Qot_Common.proto";
+	import "Common.proto";
+	import "Qot_Common.proto";
 
-    enum OptionCondType
-    {
-        OptionCondType_Unknow = 0;
-        OptionCondType_WithIn = 1; //价内
-        OptionCondType_Outside = 2; //价外
-    }
+	enum OptionCondType
+	{
+		OptionCondType_Unknow = 0;
+		OptionCondType_WithIn = 1; //价内
+		OptionCondType_Outside = 2; //价外
+	}
 
-    message C2S
-    {
-        required Qot_Common.Security owner = 1; //期权标的股
+	//以下为数据字段筛选，可选字段，不填表示不过滤
+	message DataFilter
+	{
+		optional double impliedVolatilityMin = 1; //隐含波动率过滤起点
+		optional double impliedVolatilityMax = 2; //隐含波动率过滤终点
+
+		optional double deltaMin = 3; //希腊值 Delta过滤起点
+		optional double deltaMax = 4; //希腊值 Delta过滤终点
+
+		optional double gammaMin = 5; //希腊值 Gamma过滤起点
+		optional double gammaMax = 6; //希腊值 Gamma过滤终点
+
+		optional double vegaMin = 7; //希腊值 Vega过滤起点
+		optional double vegaMax = 8; //希腊值 Vega过滤终点
+
+		optional double thetaMin = 9; //希腊值 Theta过滤起点
+		optional double thetaMax = 10; //希腊值 Theta过滤终点
+
+		optional double rhoMin = 11; //希腊值 Rho过滤起点
+		optional double rhoMax = 12; //希腊值 Rho过滤终点
+
+		optional double netOpenInterestMin = 13; //净未平仓合约数过滤起点
+		optional double netOpenInterestMax = 14; //净未平仓合约数过滤终点
+
+		optional double openInterestMin = 15; //未平仓合约数过滤起点
+		optional double openInterestMax = 16; //未平仓合约数过滤终点
+
+		optional double volMin = 17; //成交量过滤起点
+		optional double volMax = 18; //成交量过滤终点
+	}
+
+	message C2S
+	{
+		required Qot_Common.Security owner = 1; //期权标的股,目前仅支持传入港美正股以及恒指国指
 		optional int32 indexOptionType = 6; //Qot_Common.IndexOptionType, 指数期权的类型，仅用于恒指国指
-        optional int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
-        optional int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
-        required string beginTime = 4; //期权到期日开始时间
-        required string endTime = 5; //期权到期日结束时间,时间跨度最多一个月
-    }
+		optional int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
+		optional int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
+		required string beginTime = 4; //期权到期日开始时间
+		required string endTime = 5; //期权到期日结束时间,时间跨度最多一个月
+		optional DataFilter dataFilter = 7; //数据字段筛选
+	}
 
-    message OptionItem
-    {
-        optional Qot_Common.SecurityStaticInfo call = 1; //看涨,不一定有该字段,由请求条件决定
-        optional Qot_Common.SecurityStaticInfo put = 2; //看跌,不一定有该字段,由请求条件决定
-    }
+	message OptionItem
+	{
+		optional Qot_Common.SecurityStaticInfo call = 1; //看涨,不一定有该字段,由请求条件决定
+		optional Qot_Common.SecurityStaticInfo put = 2; //看跌,不一定有该字段,由请求条件决定
+	}
 
-    message OptionChain
-    {
-        required string strikeTime = 1; //行权日
-        repeated OptionItem option = 2; //期权信息
-    }
+	message OptionChain
+	{
+		required string strikeTime = 1; //行权日
+		repeated OptionItem option = 2; //期权信息
+		optional double strikeTimestamp = 3; //行权日时间戳
+	}
 
-    message S2C
-    {
-        repeated OptionChain optionChain = 1; //期权链
-    }
+	message S2C
+	{
+		repeated OptionChain optionChain = 1; //期权链
+	}
 
-    message Request
-    {
-        required C2S c2s = 1;
-    }
+	message Request
+	{
+		required C2S c2s = 1;
+	}
 
-    message Response
-    {
-        required int32 retType = 1 [default = -400]; //RetType,返回结果
-        optional string retMsg = 2;
-        optional int32 errCode = 3;
-        optional S2C s2c = 4;
-    }
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		optional S2C s2c = 4;
+	}
+
 
 .. note::
     
