@@ -84,6 +84,8 @@
  
  .. _PriceReminderType: Base_API.html#priceremindertype
  
+ .. _PriceReminderFreq: Base_API.html#pricereminderfreq
+ 
  .. _SetPriceReminderOp: Base_API.html#setpricereminderop
  
 一分钟上手
@@ -2189,7 +2191,7 @@ set_price_reminder
  :param stock_code: 股票
  :param op: SetPriceReminderOp_，操作类型
  :param key: int64，标识，新增的情况不需要填
- :param type: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
+ :param type: PriceReminderType_，到价提醒的频率，删除、启用、禁用的情况不需要填
  :param freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
  :param value: float，提醒值，删除、启用、禁用的情况不需要填
  :param note: str，用户设置的备注，删除、启用、禁用的情况不需要填
@@ -2233,21 +2235,21 @@ get_price_reminder
     =========================   ==================   ========================================
     code                        str                  股票代码
     key                         int64                标识，用于修改到价提醒
-    type                        str                  到价提醒的类型，参见PriceReminderType_
-    freq                        str                  到价提醒的频率，参见PriceReminderFreq_
+    type                        str                  到价提醒的类型，参见 PriceReminderType_
+    freq                        str                  到价提醒的频率，参见 PriceReminderFreq_
     value                       float                提醒值
     enable                      bool                 是否启用
     note                        string               备注，最多10个字符
     =========================   ==================   ========================================
-..
 
  :Example:
+
  .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_price_reminder(code='HK.00700'))
-    print(quote_ctx.get_price_reminder(code=None, market=Market.HK))
+    print(quote_ctx.get_price_reminder(stock_code='HK.00700'))
+    print(quote_ctx.get_price_reminder(stock_code=None, market=Market.HK))
     quote_ctx.close()
 
 .. note::

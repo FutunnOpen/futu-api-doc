@@ -967,16 +967,16 @@ PriceReminderFreq - 到价提醒频率
  ..  py:attribute:: NONE
 
   未知类型
-
+  
  ..  py:attribute:: ALWAYS
 
   持续提醒
   
-   ..  py:attribute:: ONCE_A_DAY 
+ ..  py:attribute:: ONCE_A_DAY 
 
   每日一次
   
-  ..  py:attribute:: ONCE
+ ..  py:attribute:: ONCE
 
   仅提醒一次
   
@@ -1001,47 +1001,47 @@ PriceReminderType - 到价提醒类型
 
   价格跌到
   
-  ..  py:attribute:: CHANGE_RATE_UP
+ ..  py:attribute:: CHANGE_RATE_UP
 
   日涨幅超
   
-  ..  py:attribute:: CHANGE_RATE_DOWN
+ ..  py:attribute:: CHANGE_RATE_DOWN
 
   日跌幅超
   
-  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_UP 
+ ..  py:attribute:: FIVE_MIN_CHANGE_RATE_UP 
 
   5分钟涨幅超
   
-  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_DOWN
+ ..  py:attribute:: FIVE_MIN_CHANGE_RATE_DOWN
 
   5分钟跌幅超
   
-  ..  py:attribute:: VOLUME_UP
+ ..  py:attribute:: VOLUME_UP
 
   成交量超过
   
-  ..  py:attribute::  TURNOVER_UP
+ ..  py:attribute::  TURNOVER_UP
 
   成交额超过
   
-  ..  py:attribute:: TURNOVER_RATE_UP 
+ ..  py:attribute:: TURNOVER_RATE_UP 
 
   换手率超过
   
-  ..  py:attribute:: BID_PRICE_UP
+ ..  py:attribute:: BID_PRICE_UP
 
   买一价高于
   
-  ..  py:attribute:: ASK_PRICE_DOWN
+ ..  py:attribute:: ASK_PRICE_DOWN
 
   卖一价低于
   
-  ..  py:attribute:: BID_VOL_UP 
+ ..  py:attribute:: BID_VOL_UP 
 
   买一量高于
   
-  ..  py:attribute:: ASK_VOL_UP
+ ..  py:attribute:: ASK_VOL_UP
 
   卖一量高于
   
