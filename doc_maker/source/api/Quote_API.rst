@@ -2187,7 +2187,8 @@ set_price_reminder
 
 ..  py:function:: set_price_reminder(self, stock_code, op, key=None, type=None, freq=None, value=None, note=None)
 
-    新增、删除、修改、启用、禁用 某只股票的到价提醒，每只股票每种类型最多可设置10个提醒
+ 新增、删除、修改、启用、禁用 某只股票的到价提醒，每只股票每种类型最多可设置10个提醒
+ 
  :param stock_code: 股票
  :param op: SetPriceReminderOp_，操作类型
  :param key: int64，标识，新增的情况不需要填
@@ -2222,7 +2223,8 @@ get_price_reminder
 
 ..  py:function:: get_price_reminder(self, stock_code = None, market = None)
 
-    获取对某只股票(某个市场)设置的到价提醒列表
+ 获取对某只股票(某个市场)设置的到价提醒列表
+
  :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先。
  :param market: 获取该市场的到价提醒，注意输入沪深都会认为是A股市场。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
  :return: (ret, data)
