@@ -2583,7 +2583,7 @@
 	* 限频接口：30秒内最多10次	
 	
 	
-`Qot_UpdatePriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdatePriceReminder.proto>`_ - 3221获取到价提醒
+`Qot_UpdatePriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdatePriceReminder.proto>`_ - 3019到价提醒通知
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf

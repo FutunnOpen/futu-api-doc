@@ -43,6 +43,8 @@
   .. _getFutureInfo: ../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218
   .. _requestTradeDate: ../protocol/quote_protocol.html#qot-requesttradedate-proto-3219
   .. _stockFilter: ../protocol/quote_protocol.html#qot-stockfilter-proto-3215
+  .. _setPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
+  .. _getPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
   .. _updateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _updateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _updateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -62,6 +64,7 @@
   .. _getHistoryOrderFillList: ../protocol/trade_protocol.html#trd-gethistoryorderfilllist-proto-2222
   .. _updateOrder: ../protocol/trade_protocol.html#trd-updateorder-proto-2208
   .. _updateOrderFill: ../protocol/trade_protocol.html#trd-updateorderfill-proto-2218
+  .. _updatePriceReminder: ../protocol/quote_protocol.html#qot-updatepricereminder-proto-3019
 
 
 ---------------------------------------------------
@@ -107,6 +110,8 @@ getCodeChange_                      获取股票代码变更                    
 getFutureInfo_                      获取期货合约资料                                    onReply_GetFutureInfo
 stockFilter_                        筛选股票                                           onReply_StockFilter
 requestTradeDate_                   在线拉取交易日                                      onReply_RequestTradeDate
+setPriceReminder_                   设置到价提醒                                        onReply_SetPriceReminder
+getPriceReminder_                   获取到价提醒                                        onReply_getPriceReminder
 ================================    ==============================================   ===================================
 
 FTSPI_Qot行情推送接收接口函数
@@ -121,4 +126,5 @@ updateRT_                             推送分时
 updateTicker_                         推送逐笔
 updateOrderBook_                      推送买卖盘
 updateBroker_                         推送经纪队列
+updatePriceReminder_                  推送到价提醒通知
 ==================================    ================================================= 
