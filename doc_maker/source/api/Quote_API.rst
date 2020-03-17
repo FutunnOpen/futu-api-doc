@@ -2188,15 +2188,15 @@ request_trading_days
 set_price_reminder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: set_price_reminder(self, stock_code, op, key=None, type=None, freq=None, value=None, note=None)
+..  py:function:: set_price_reminder(self, code, op, key=None, reminder_type=None, reminder_freq=None, value=None, note=None)
 
  新增、删除、修改、启用、禁用 某只股票的到价提醒，每只股票每种类型最多可设置10个提醒
  
- :param stock_code: 股票
+ :param code: 股票
  :param op: SetPriceReminderOp_，操作类型
  :param key: int64，标识，新增的情况不需要填
- :param type: PriceReminderType_，到价提醒的频率，删除、启用、禁用的情况不需要填
- :param freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
+ :param reminder_type: PriceReminderType_，到价提醒的频率，删除、启用、禁用的情况不需要填
+ :param reminder_freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况不需要填
  :param value: float，提醒值，删除、启用、禁用的情况不需要填
  :param note: str，用户设置的备注，删除、启用、禁用的情况不需要填
  :return: (ret, data)
@@ -2210,8 +2210,8 @@ set_price_reminder
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.set_price_reminder(stock_code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
-                                 type=PriceReminderType.PRICE_UP, freq=PriceReminderFreq.ALWAYS,
+    quote_ctx.set_price_reminder(code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
+                                 reminder_type=PriceReminderType.PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS,
                                  value=400.0, note='')
     quote_ctx.close()
 
@@ -2224,7 +2224,7 @@ set_price_reminder
 get_price_reminder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_price_reminder(self, stock_code = None, market = None)
+..  py:function:: get_price_reminder(self, code = None, market = None)
 
  获取对某只股票(某个市场)设置的到价提醒列表
 
@@ -2240,8 +2240,8 @@ get_price_reminder
     =========================   ==================   ========================================
     code                        str                  股票代码
     key                         int64                标识，用于修改到价提醒
-    type                        str                  到价提醒的类型，参见 PriceReminderType_
-    freq                        str                  到价提醒的频率，参见 PriceReminderFreq_
+    reminder_type               str                  到价提醒的类型，参见 PriceReminderType_
+    reminder_freq               str                  到价提醒的频率，参见 PriceReminderFreq_
     value                       float                提醒值
     enable                      bool                 是否启用
     note                        string               备注，最多10个字符
@@ -2253,8 +2253,8 @@ get_price_reminder
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_price_reminder(stock_code='HK.00700'))
-    print(quote_ctx.get_price_reminder(stock_code=None, market=Market.HK))
+    print(quote_ctx.get_price_reminder(code='HK.00700'))
+    print(quote_ctx.get_price_reminder(code=None, market=Market.HK))
     quote_ctx.close()
 
 .. note::
