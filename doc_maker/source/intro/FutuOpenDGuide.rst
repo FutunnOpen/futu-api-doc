@@ -174,12 +174,13 @@ FutuOpenD配置
   cfg_file                   FutuOpenD配置文件绝对路径                                                                            是，不设置则使用程序所在目录下的FutuOpenD.xml
   console                    是否显示控制台，后台运行：0，控制台运行：1                                                           是，不设置则默认控制台运行
   lang                       FutuOpenD语言，en：英文，chs：简体中文                                                               是，不设置则默认简体中文
+  api_ip                     API服务监听地址                                                                                      是，不设置则默认127.0.0.1   
   api_port                   API协议接收端口                                                                                      是，不设置则使用配置文件配置项
   help                       输出启动命令行参数然后退出程序                                                                       是，不设置则正常启动FutuOpenD
   log_level                  日志级别，可填no，debug，info，warning，error，fatal                                                 是，默认info级别
   no_monitor                 是否启动守护进程，启动：0，不启动：1                                                                 是，默认带守护进程启动
   simulate_trade             是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable                                是，默认启用
-  websocket_ip               API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）            是，不设置则默认127.0.0.1    
+  websocket_ip               WebSocket服务监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）      是，不设置则默认127.0.0.1    
   websocket_port             WebSocket服务监听端口                                                                                是，不设置则不启用该功能
   websocket_private_key      WebSocket证书私钥文件路径，不配置则不启用SSL，需要和证书同时配置                                     是，不设置则不启用SSL
   websocket_cert             WebSocket证书文件路径，不配置则不启用SSL，需要和私钥同时配置                                         是，不设置则不启用SSL
