@@ -1609,28 +1609,28 @@ maturity_time_max           str               到期日范围的结束时间
 ipo_period                  str               上市日 参见 IpoPeriod_
 price_type                  str               价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）参见 PriceType_ , 界内证暂不支持界内外筛选
 status                      str               窝轮状态 参见 WarrantStatus_
-cur_price_min               float             最新价过滤起点
-cur_price_max               float             最新价过滤终点
-strike_price_min            float             行使价过滤起点
-strike_price_max            float             行使价过滤终点
-street_min                  float             街货占比, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-street_max                  float             街货占比, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-conversion_min              float             换股比率过滤起点
-conversion_max              float             换股比率过滤终点
-vol_min                     unsigned int      成交量过滤起点
-vol_max                     unsigned int      成交量过滤终点
-premium_min                 float             溢价, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-premium_max                 float             溢价, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-leverage_ratio_min          float             杠杆比率过滤起点
-leverage_ratio_max          float             杠杆比率过滤终点
-delta_min                   float             对冲值过滤起点, 仅认购认沽支持该字段过滤
-delta_max                   float             对冲值过滤终点, 仅认购认沽支持该字段过滤
-implied_min                 float             引伸波幅过滤起点, 仅认购认沽支持该字段过滤
-implied_max                 float             引伸波幅过滤终点, 仅认购认沽支持该字段过滤
-recovery_price_min          float             收回价过滤起点, 仅牛熊证支持该字段过滤
-recovery_price_max          float             收回价过滤终点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_min    float             正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-price_recovery_ratio_max    float             正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+cur_price_min               float             最新价的过滤下限（闭区间），不传代表下限为-∞
+cur_price_max               float             最新价的过滤上限（闭区间），不传代表上限为+∞
+strike_price_min            float             行使价的过滤下限（闭区间），不传代表下限为-∞
+strike_price_max            float             行使价的过滤上限（闭区间），不传代表上限为+∞
+street_min                  float             街货占比的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+street_max                  float             街货占比的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+conversion_min              float             换股比率的过滤下限（闭区间），不传代表下限为-∞
+conversion_max              float             换股比率的过滤上限（闭区间），不传代表上限为+∞
+vol_min                     unsigned int      成交量的过滤下限（闭区间），不传代表下限为-∞
+vol_max                     unsigned int      成交量的过滤上限（闭区间），不传代表上限为+∞
+premium_min                 float             溢价的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+premium_max                 float             溢价的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+leverage_ratio_min          float             杠杆比率的过滤下限（闭区间），不传代表下限为-∞
+leverage_ratio_max          float             杠杆比率的过滤上限（闭区间），不传代表上限为+∞
+delta_min                   float             对冲值的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+delta_max                   float             对冲值的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞
+implied_min                 float             引伸波幅的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+implied_max                 float             引伸波幅的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞
+recovery_price_min          float             收回价的过滤下限（闭区间）, 仅牛熊证支持该字段过滤，不传代表下限为-∞
+recovery_price_max          float             收回价的过滤上限（闭区间）, 仅牛熊证支持该字段过滤，不传代表上限为+∞
+price_recovery_ratio_min    float             正股距收回价, 的过滤下限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+price_recovery_ratio_max    float             正股距收回价, 的过滤上限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
 ==========================  ==============    ====================================================================================
 
 
@@ -1887,10 +1887,10 @@ get_stock_filter
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 简单属性，取值见 `StockField <Base_API.html#stockfield-simplefilter>`_ 
-        filter_min                                     float          区间下限，闭区间
-        filter_max                                     float          区间上限，闭区间
-        is_no_filter                                   bool           该字段是否需要筛选。
-        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        filter_min                                     float          区间下限（闭区间），不传代表下限为-∞
+        filter_max                                     float          区间上限（闭区间），不传代表上限为+∞
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序 
         ============================================   ===========   ================================================
         
         | AccumulateFilter对象field的相关参数如下：
@@ -1899,10 +1899,10 @@ get_stock_filter
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 累积字段，取值见 `StockField <Base_API.html#stockfield-accumulatefilter>`_ 
-        filter_min                                     float          区间下限，闭区间
-        filter_max                                     float          区间上限，闭区间
-        is_no_filter                                   bool           该字段是否需要筛选。
-        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        filter_min                                     float          区间下限（闭区间），不传代表下限为-∞
+        filter_max                                     float          区间上限（闭区间），不传代表上限为+∞
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序
         days                                           int            所筛选的数据的累计天数
         ============================================   ===========   ================================================
         
@@ -1912,10 +1912,10 @@ get_stock_filter
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 财务字段，取值见 `StockField <Base_API.html#stockfield-financialfilter>`_ 
-        filter_min                                     float          区间下限，闭区间
-        filter_max                                     float          区间上限，闭区间
-        is_no_filter                                   bool           该字段是否需要筛选。
-        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        filter_min                                     float          区间下限（闭区间），不传代表下限为-∞
+        filter_max                                     float          区间上限（闭区间），不传代表上限为+∞
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序
         quarter                                        str            财报累积时间，取值见 FinancialQuarter_ 
         ============================================   ===========   ================================================
 

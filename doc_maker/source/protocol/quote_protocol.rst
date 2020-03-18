@@ -1590,28 +1590,28 @@
 		optional int32 ipoPeriod = 10; //Qot_Common.IpoPeriod,上市日
 		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional int32 status = 12; //Qot_Common.WarrantStatus, 窝轮状态
-		optional double curPriceMin = 13; //最新价过滤起点 
-		optional double curPriceMax = 14; //最新价过滤终点 	
-		optional double strikePriceMin = 15; //行使价过滤起点
-		optional double strikePriceMax = 16; //行使价过滤终点  
-		optional double streetMin = 17; //街货占比,过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double streetMax = 18; //街货占比,过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double conversionMin = 19; //换股比率过滤起点
-		optional double conversionMax = 20; //换股比率过滤终点	
-		optional uint64 volMin = 21; //成交量过滤起点
-		optional uint64 volMax = 22; //成交量过滤终点
-		optional double premiumMin = 23; //溢价,过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double premiumMax = 24; //溢价,过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double leverageRatioMin = 25; //杠杆比率过滤起点
-		optional double leverageRatioMax = 26; //杠杆比率过滤终点	
-		optional double deltaMin = 27;//对冲值过滤起点,仅认购认沽支持该字段过滤
-		optional double deltaMax = 28;//对冲值过滤终点,仅认购认沽支持该字段过滤
-		optional double impliedMin = 29; //引伸波幅过滤起点,仅认购认沽支持该字段过滤
-		optional double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
-		optional double recoveryPriceMin = 31; //收回价过滤起点,仅牛熊证支持该字段过滤
-		optional double recoveryPriceMax = 32; //收回价过滤终点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMin = 33;//正股距收回价,过滤起点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double priceRecoveryRatioMax = 34;//正股距收回价,过滤终点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）		
+		optional double curPriceMin = 13; //最新价的过滤下限（闭区间），不传代表下限为-∞
+		optional double curPriceMax = 14; //最新价的过滤上限（闭区间），不传代表上限为+∞ 	
+		optional double strikePriceMin = 15; //行使价的过滤下限（闭区间），不传代表下限为-∞
+		optional double strikePriceMax = 16; //行使价的过滤上限（闭区间），不传代表上限为+∞ 
+		optional double streetMin = 17; //街货占比的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+		optional double streetMax = 18; //街货占比的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+		optional double conversionMin = 19; //换股比率的过滤下限（闭区间），不传代表下限为-∞
+		optional double conversionMax = 20; //换股比率的过滤上限（闭区间），不传代表上限为+∞
+		optional uint64 volMin = 21; //成交量的过滤下限（闭区间），不传代表下限为-∞
+		optional uint64 volMax = 22; //成交量的过滤上限（闭区间），不传代表上限为+∞
+		optional double premiumMin = 23; //溢价的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+		optional double premiumMax = 24; //溢价的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+		optional double leverageRatioMin = 25; //杠杆比率的过滤下限（闭区间），不传代表下限为-∞
+		optional double leverageRatioMax = 26; //杠杆比率的过滤上限（闭区间），不传代表上限为+∞
+		optional double deltaMin = 27;//对冲值的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+		optional double deltaMax = 28;//对冲值的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞
+		optional double impliedMin = 29; //引伸波幅的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+		optional double impliedMax = 30; //引伸波幅的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞	
+		optional double recoveryPriceMin = 31; //收回价的过滤下限（闭区间）, 仅牛熊证支持该字段过滤，不传代表下限为-∞
+		optional double recoveryPriceMax = 32; //收回价的过滤上限（闭区间）, 仅牛熊证支持该字段过滤，不传代表上限为+∞
+		optional double priceRecoveryRatioMin = 33;//正股距收回价, 的过滤下限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+		optional double priceRecoveryRatioMax = 34;//正股距收回价, 的过滤上限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞	
 	}
 
 	message WarrantData
@@ -2024,9 +2024,9 @@
 	message BaseFilter 
 	{ 
 		required int32 fieldName = 1; // StockField 简单属性
-		optional double filterMin = 2; // 区间下限，闭区间
-		optional double filterMax = 3; // 区间上限，闭区间
-		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional double filterMin = 2; // 区间下限（闭区间），不传代表下限为-∞
+		optional double filterMax = 3; // 区间上限（闭区间），不传代表上限为+∞
+		optional bool isNoFilter = 4; // 该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 	};
 
@@ -2034,9 +2034,9 @@
 	message AccumulateFilter
 	{
 		required int32 fieldName = 1; // AccumulateField 累积属性
-		optional double filterMin = 2; // 区间下限，闭区间
-		optional double filterMax = 3; // 区间上限，闭区间
-		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional double filterMin = 2; // 区间下限（闭区间），不传代表下限为-∞
+		optional double filterMax = 3; // 区间上限（闭区间），不传代表上限为+∞
+		optional bool isNoFilter = 4; // 该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 		required int32 days = 6; // 近几日，累积时间
 	}
@@ -2045,9 +2045,9 @@
 	message FinancialFilter
 	{
 		required int32 fieldName = 1; // FinancialField 财务属性
-		optional double filterMin = 2; // 区间下限，闭区间
-		optional double filterMax = 3; // 区间上限，闭区间
-		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional double filterMin = 2; // 区间下限（闭区间），不传代表下限为-∞
+		optional double filterMax = 3; // 区间上限（闭区间），不传代表上限为+∞
+		optional bool isNoFilter = 4; // 该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 		required int32 quarter = 6; // FinancialQuarter 财报累积时间
 	}
