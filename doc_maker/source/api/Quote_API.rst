@@ -88,6 +88,8 @@
  
  .. _SetPriceReminderOp: Base_API.html#setpricereminderop
  
+ .. _PriceReminderMarketStatus: Base_API.html#priceremindermarketstatus
+ 
 一分钟上手
 ============
 
@@ -1484,14 +1486,16 @@ get_option_chain
         stock_id             int           股票id
         index_option_type    str           指数期权类型
         ==================   ===========   ==============================================================
-	
+
 .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.NONE,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
+    filter = OptionDataFilter()
+    filter.delta_min = 0.1
+    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.NONE, '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE, filter))
     quote_ctx.close()
-	
+    
 .. note::
 
     * 	接口限制请参见 :ref:`获取期权链限制 <get-option-chain-limit>`
@@ -2198,7 +2202,7 @@ set_price_reminder
  :param reminder_type: PriceReminderType_，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参
  :param reminder_freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参
  :param value: float，提醒值，删除、启用、禁用的情况下会忽略该入参
- :param note: str，用户设置的备注，删除、启用、禁用的情况下会忽略该入参
+ :param note: str，用户设置的备注，最多10个字符，删除、启用、禁用的情况下会忽略该入参
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
 	
@@ -2210,15 +2214,27 @@ set_price_reminder
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.set_price_reminder(code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
+    print(quote_ctx.set_price_reminder(code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
                                  reminder_type=PriceReminderType.PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS,
-                                 value=400.0, note='')
+                                 value=400.0, note=''))
     quote_ctx.close()
 
 .. note::
 
     * 接口限制请参见 :ref:`设置到价提醒 <set-price-reminder-limit>`
+    
+    * API 中成交量设置统一以股为单位。但是牛牛客户端中，A 股是以为手为单位展示
+    
+    * 到价提醒类型，存在最小精度，如下：
 
+        TURNOVER_UP：成交额最小精度为 10 元（人民币元，港元，美元）。传入的数值会自动向下取整到最小精度的整数倍。如果设置【00700成交额102元提醒】，设置后会得到【00700成交额100元提醒】；如果设置【00700 成交额 8 元提醒】，设置后会得到【00700 成交额 0 元提醒】。
+
+        VOLUME_UP：A 股成交量最小精度为 1000 股，其他市场股票成交量最小精度为 10 股。传入的数值会自动向下取整到最小精度的整数倍。
+
+        BID_VOL_UP、ASK_VOL_UP：A 股的买一卖一量最小精度为 100 股。传入的数值会自动向下取整到最小精度的整数倍。
+
+        其余到价提醒类型精度支持到小数点后 3 位
+		
 -----------------------------------------------------------------------------------------------------
 
 get_price_reminder
@@ -2607,16 +2623,16 @@ PriceReminderHandlerBase - 到价提醒通知回调
 
 .. code:: python
     
-   class PriceReminderTest(PriceReminderHandlerBase):
-    def on_recv_rsp(self, rsp_str):
-        ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
-        if ret_code != RET_OK:
-            print("PriceReminderTest: error, msg: %s" % content)
-            return RET_ERROR, content
+    class PriceReminderTest(PriceReminderHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("PriceReminderTest: error, msg: %s" % content)
+                return RET_ERROR, content
 
-        print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
+            print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
 
-        return RET_OK, content
+            return RET_OK, content
 
 
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
@@ -2642,15 +2658,15 @@ on_recv_rsp
  
  成功时返回(RET_OK, '', data), data为DataFrame类型，字段如下
     
-    =========================   =========================   ========================================
+    =========================   =========================   ====================================================================
     参数                         类型                         说明
-    =========================   =========================   ========================================
+    =========================   =========================   ====================================================================
     code                        str                          股票代码
     price                       float                        当前价格
     change_rate                 str                          当前涨跌幅
-    market_status               PriceReminderMarketStatus    触发的时间段，盘前、盘中、盘后
+    market_status               str                          触发的时间段，盘前、盘中、盘后，参见 PriceReminderMarketStatus_
     content                     str                          到价提醒文字内容
     note                        str                          备注，最多10个字符
-    =========================   =========================   ========================================
+    =========================   =========================   ====================================================================
 
           
