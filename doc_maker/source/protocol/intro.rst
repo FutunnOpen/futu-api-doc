@@ -476,6 +476,13 @@ API用户额度
 	* 请求协议ID: 3221_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	
+.. _get-user-security-group-limit:
+	
+获取自选股分组列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3222_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	
 协议请求流程 
 -------------
 	* 建立连接
