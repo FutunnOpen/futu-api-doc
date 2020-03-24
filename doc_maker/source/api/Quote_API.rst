@@ -1706,10 +1706,9 @@ inline_price_status            str                界内界外 参见 PriceType_
  .. code:: python
 
     from futu import *
-    from futu.quote.quote_get_warrant import Request
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    req=Request()
-    req.sort_field=SortField.TURNOVER
+    req = WarrantRequest()
+    req.sort_field = SortField.TURNOVER
     print(quote_ctx.get_warrant("HK.00700",req))
     quote_ctx.close()
 
@@ -1975,7 +1974,6 @@ return_on_equity_rate                          float          净资产收益率
  .. code:: python
 
     from futu import *
-    from futu.quote.quote_stockfilter_info import *  
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)     
     simple_filter = SimpleFilter()
     simple_filter.filter_min = 100
@@ -1990,7 +1988,7 @@ return_on_equity_rate                          float          净资产收益率
     acc_filter.days = 2
     acc_filter.stock_field = StockField.CHANGE_RATE
     acc_filter.is_no_filter = False
-    acc_filter.sort = SortDir.None
+    acc_filter.sort = SortDir.NONE
 
     ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter], begin=200, num=10)
     if ret == RET_OK:
