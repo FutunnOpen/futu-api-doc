@@ -45,6 +45,19 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
   .. _query_subscription: Quote_API.html#query_subscription
   .. _get_warrant: Quote_API.html#get_warrant
   .. _get_option_chain:  Quote_API.html#get_option_chain
+  .. _get_history_kl_quota: Quote_API.html#get_history_kl_quota
+  .. _get_rehab: Quote_API.html#get_rehab
+  .. _unsubscribe_all: Quote_API.html#unsubscribe_all
+  .. _get_capital_flow: Quote_API.html#get_capital_flow
+  .. _get_capital_distribution: Quote_API.html#get_capital_distribution
+  .. _get_user_security: Quote_API.html#get_user_security
+  .. _modify_user_security: Quote_API.html#modify_user_security
+  .. _get_stock_filter: Quote_API.html#get_stock_filter  
+  .. _get_future_info: Quote_API.html#get_future_info
+  .. _request_trading_days: Quote_API.html#request_trading_days
+  .. _set_price_reminder: Quote_API.html#set_price_reminder
+  .. _get_price_reminder: Quote_API.html#get_price_reminder
+  .. _get_ipo_list: Quote_API.html#get_ipo_list
 
   .. _get_acc_list:  Trade_API.html#get_acc_list
   .. _unlock_trade:  Trade_API.html#unlock_trade
@@ -69,18 +82,18 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 ================================    ============================================================================
 函数名                                 功能简介
 ================================    ============================================================================
-get_trading_days_                   获取交易日
 get_stock_basicinfo_                获取指定市场中特定类型的股票基本信息
-get_multiple_history_kline_         :strike:`获取多只股票的本地历史k线数据`
-get_autype_list_                    :strike:`获取给定股票列表的复权因子`
 request_history_kline_              获取k线，不需要事先下载k线数据
-query_subscription_                 查询已订阅的实时信息
+get_history_kl_quota_               获取已使用过的额度，即当前周期内已经下载过多少只股票
+get_rehab_                          获取给定股票的复权因子
 get_market_snapshot_                获取市场快照
 get_rt_data_                        获取指定股票的分时数据
 get_plate_stock_                    获取特定板块下的股票列表
 get_plate_list_                     获取板块集合下的子板块列表
 get_broker_queue_                   获取股票的经纪队列
 subscribe_                          订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。
+unsubscribe_all_                    取消该实例的所有订阅
+query_subscription_				    查询订阅信息
 get_stock_quote_                    获取订阅股票报价的实时数据，有订阅要求限制
 get_rt_ticker_                      获取指定股票的实时逐笔。取最近num个逐笔
 get_cur_kline_                      实时获取指定股票最近num个K线数据
@@ -89,8 +102,17 @@ get_referencestock_list_            获取证券的关联数据
 get_owner_plate_                    获取单支或多支股票的所属板块信息列表
 get_holding_change_list_            获取大股东持股变动列表,只提供美股数据,并最多只返回前100个
 get_option_chain_                   通过标的股查询期权
-get_multi_points_history_kline_     :strike:`从本地历史K线中获取多支股票多个时间点的指定数据列`
 get_warrant_                        拉取窝轮和相关衍生品数据接口
+get_capital_flow_                   获取个股资金流向
+get_capital_distribution_           获取个股资金分布
+get_user_security_                  获取指定分组的自选股列表
+modify_user_security_               修改指定分组的自选股列表
+get_stock_filter_                   获取条件选股
+get_ipo_list_                       获取指定市场的ipo列表
+get_future_info_                    获取期货合约资料
+request_trading_days_               在线请求交易日
+set_price_reminder_                 设置到价提醒
+get_price_reminder_                 获取对某只股票(某个市场)设置的到价提醒列表
 ================================    ============================================================================
 
 交易函数:
