@@ -1844,7 +1844,7 @@
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdSide</span>
 <span class="p">{</span>
-        <span class="c1">//客户端下单只传Buy或Sell即可，SellShort是美股订单时服务器返回有此方向，BuyBack目前不存在，但也不排除服务器会传</span>
+        <span class="c1">//除了期货，其他股票都只支持传入买入和卖出</span>
         <span class="na">TrdSide_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知方向</span>
         <span class="na">TrdSide_Buy</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//买入</span>
         <span class="na">TrdSide_Sell</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//卖出</span>
