@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.18 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.20 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.20 documentation" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.20
               </div>
             
           
@@ -165,9 +165,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#connsubinfo">ConnSubInfo - 单条连接定阅信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plateinfo">PlateInfo - 单条连接定阅信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rehab">Rehab - 复权信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#priceremindertype">PriceReminderType - 提醒类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">PriceReminderType - 提醒频率</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Trd_Common.proto - 交易通用定义</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Trd_Common.proto - 交易通用定义</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#orderstatus">OrderStatus - 订单状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdenv">TrdEnv - 交易环境</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdmarket">TrdMarket - 交易市场</a></li>
@@ -1733,10 +1735,52 @@
 </div>
 </div></blockquote>
 </div>
+<hr class="docutils" />
+<div class="section" id="priceremindertype">
+<h3>PriceReminderType - 提醒类型<a class="headerlink" href="#priceremindertype" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//提醒类型</span>
+<span class="kd">enum</span> <span class="n">PriceReminderType</span>
+<span class="p">{</span>
+        <span class="na">PriceReminderType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">PriceReminderType_PriceUp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 价格涨到</span>
+        <span class="na">PriceReminderType_PriceDown</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 价格跌到</span>
+        <span class="na">PriceReminderType_ChangeRateUp</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 日涨幅超</span>
+        <span class="na">PriceReminderType_ChangeRateDown</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 日跌幅超</span>
+        <span class="na">PriceReminderType_5MinChangeRateUp</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 5分钟涨幅超</span>
+        <span class="na">PriceReminderType_5MinChangeRateDown</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 5分钟跌幅超</span>
+        <span class="na">PriceReminderType_VolumeUp</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 成交量超过</span>
+        <span class="na">PriceReminderType_TurnoverUp</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 成交额超过</span>
+        <span class="na">PriceReminderType_TurnoverRateUp</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 换手率超过</span>
+        <span class="na">PriceReminderType_BidPriceUp</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 买一价高于</span>
+        <span class="na">PriceReminderType_AskPriceDown</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 卖一价低于</span>
+        <span class="na">PriceReminderType_BidVolUp</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 买一量高于</span>
+        <span class="na">PriceReminderType_AskVolUp</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 卖一量高于</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="id5">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto">Trd_Common.proto</a> - 交易通用定义<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h3>PriceReminderType - 提醒频率<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//提醒频率</span>
+<span class="kd">enum</span> <span class="n">PriceReminderFreq</span>
+<span class="p">{</span>
+        <span class="na">PriceReminderFreq_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">PriceReminderFreq_Always</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 持续提醒</span>
+        <span class="na">PriceReminderFreq_OnceADay</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 每日一次</span>
+        <span class="na">PriceReminderFreq_OnlyOnce</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 仅提醒一次</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto">Trd_Common.proto</a> - 交易通用定义<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="orderstatus">
 <h3>OrderStatus - 订单状态<a class="headerlink" href="#orderstatus" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -2194,7 +2238,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.20',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

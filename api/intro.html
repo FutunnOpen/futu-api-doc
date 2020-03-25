@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api-doc 3.18 documentation</title>
+  <title>介绍 &mdash; futu-api-doc 3.20 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.20 documentation" href="../index.html"/>
         <link rel="next" title="安装指南" href="setup.html"/>
         <link rel="prev" title="交易协议" href="../protocol/trade_protocol.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.20
               </div>
             
           
@@ -261,23 +261,17 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_trading_days">get_trading_days</a></td>
-<td>获取交易日</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_stock_basicinfo">get_stock_basicinfo</a></td>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_stock_basicinfo">get_stock_basicinfo</a></td>
 <td>获取指定市场中特定类型的股票基本信息</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_multiple_history_kline">get_multiple_history_kline</a></td>
-<td><span class="strike">获取多只股票的本地历史k线数据</span></td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_autype_list">get_autype_list</a></td>
-<td><span class="strike">获取给定股票列表的复权因子</span></td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#request_history_kline">request_history_kline</a></td>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#request_history_kline">request_history_kline</a></td>
 <td>获取k线，不需要事先下载k线数据</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#query_subscription">query_subscription</a></td>
-<td>查询已订阅的实时信息</td>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_history_kl_quota">get_history_kl_quota</a></td>
+<td>获取已使用过的额度，即当前周期内已经下载过多少只股票</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_rehab">get_rehab</a></td>
+<td>获取给定股票的复权因子</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_market_snapshot">get_market_snapshot</a></td>
 <td>获取市场快照</td>
@@ -296,6 +290,12 @@
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="Quote_API.html#subscribe">subscribe</a></td>
 <td>订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#unsubscribe_all">unsubscribe_all</a></td>
+<td>取消该实例的所有订阅</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#query_subscription">query_subscription</a></td>
+<td>查询订阅信息</td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_stock_quote">get_stock_quote</a></td>
 <td>获取订阅股票报价的实时数据，有订阅要求限制</td>
@@ -321,11 +321,38 @@
 <tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_option_chain">get_option_chain</a></td>
 <td>通过标的股查询期权</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_multi_points_history_kline">get_multi_points_history_kline</a></td>
-<td><span class="strike">从本地历史K线中获取多支股票多个时间点的指定数据列</span></td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_warrant">get_warrant</a></td>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_warrant">get_warrant</a></td>
 <td>拉取窝轮和相关衍生品数据接口</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_capital_flow">get_capital_flow</a></td>
+<td>获取个股资金流向</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_capital_distribution">get_capital_distribution</a></td>
+<td>获取个股资金分布</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_user_security">get_user_security</a></td>
+<td>获取指定分组的自选股列表</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#modify_user_security">modify_user_security</a></td>
+<td>修改指定分组的自选股列表</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_stock_filter">get_stock_filter</a></td>
+<td>获取条件选股</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_ipo_list">get_ipo_list</a></td>
+<td>获取指定市场的ipo列表</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#get_future_info">get_future_info</a></td>
+<td>获取期货合约资料</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#request_trading_days">request_trading_days</a></td>
+<td>在线请求交易日</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="Quote_API.html#set_price_reminder">set_price_reminder</a></td>
+<td>设置到价提醒</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="Quote_API.html#get_price_reminder">get_price_reminder</a></td>
+<td>获取对某只股票(某个市场)设置的到价提醒列表</td>
 </tr>
 </tbody>
 </table>
@@ -422,7 +449,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.20',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

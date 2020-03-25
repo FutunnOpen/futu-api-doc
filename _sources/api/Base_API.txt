@@ -151,6 +151,66 @@ K线复权定义
   
 --------------------------------------
 
+
+
+Currency - 交易相关的货币类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易相关的货币类型
+
+..  py:class:: Currency
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HKD
+
+  港币
+
+ ..  py:attribute:: USD
+
+  美元
+
+ ..  py:attribute:: CNH
+
+  离岸人民币
+
+--------------------------------------
+
+CltRiskLevel - 账户风控状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+账户风控状态
+
+..  py:class:: CltRiskLevel
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: SAFE
+
+  安全
+
+ ..  py:attribute:: WARNING
+
+  预警
+
+ ..  py:attribute:: DANGER
+
+  危险
+
+ ..  py:attribute:: ABSOLUTE_SAFE
+
+  绝对安全
+
+ ..  py:attribute:: OPT_DANGER
+
+  危险，期权相关
+  
+--------------------------------------
+
 DarkStatus - 暗盘状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -170,6 +230,27 @@ DarkStatus - 暗盘状态
  
   暗盘交易结束
   
+--------------------------------------
+
+DealStatus - 成交状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+成交状态
+
+..  py:class:: DealStatus
+
+ ..  py:attribute:: OK
+
+   正常
+
+ ..  py:attribute:: CANCELLED
+
+   被取消
+
+ ..  py:attribute:: CHANGED
+
+  被更改
+
 --------------------------------------
 
 FinancialQuarter - 财务指标周期
@@ -844,7 +925,7 @@ OrderType - 订单类型
   
  ..  py:attribute:: MARKET
  
-  市价，目前仅美股
+  市价，目前支持美股、港股（正股、涡轮、牛熊证，界内证）
   
  ..  py:attribute:: ABSOLUTE_LIMIT
  
@@ -936,26 +1017,94 @@ OrderStatus - 订单状态定义
   
 --------------------------------------
 
+PriceReminderFreq - 到价提醒频率
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-DealStatus - 成交状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+到价提醒频率
 
-成交状态
+..  py:class:: PriceReminderFreq
 
-..  py:class:: DealStatus
+ ..  py:attribute:: NONE
 
- ..  py:attribute:: OK
+  未知类型
+  
+ ..  py:attribute:: ALWAYS
 
-   正常
+  持续提醒
+  
+ ..  py:attribute:: ONCE_A_DAY 
 
- ..  py:attribute:: CANCELLED
+  每日一次
+  
+ ..  py:attribute:: ONCE
 
-   被取消
+  仅提醒一次
+  
+--------------------------------------
 
- ..  py:attribute:: CHANGED
+PriceReminderType - 到价提醒类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  被更改
+到价提醒的类型
 
+..  py:class:: PriceReminderType
+
+ ..  py:attribute:: NONE
+
+  未知类型
+
+ ..  py:attribute:: PRICE_UP
+
+  价格涨到
+  
+ ..  py:attribute::  PRICE_DOWN 
+
+  价格跌到
+  
+ ..  py:attribute:: CHANGE_RATE_UP
+
+  日涨幅超
+  
+ ..  py:attribute:: CHANGE_RATE_DOWN
+
+  日跌幅超
+  
+ ..  py:attribute:: FIVE_MIN_CHANGE_RATE_UP 
+
+  5分钟涨幅超
+  
+ ..  py:attribute:: FIVE_MIN_CHANGE_RATE_DOWN
+
+  5分钟跌幅超
+  
+ ..  py:attribute:: VOLUME_UP
+
+  成交量超过
+  
+ ..  py:attribute::  TURNOVER_UP
+
+  成交额超过
+  
+ ..  py:attribute:: TURNOVER_RATE_UP 
+
+  换手率超过
+  
+ ..  py:attribute:: BID_PRICE_UP
+
+  买一价高于
+  
+ ..  py:attribute:: ASK_PRICE_DOWN
+
+  卖一价低于
+  
+ ..  py:attribute:: BID_VOL_UP 
+
+  买一量高于
+  
+ ..  py:attribute:: ASK_VOL_UP
+
+  卖一量高于
+  
 --------------------------------------
 
 ProgramStatusType - 程序运行状态通知类型
@@ -963,7 +1112,7 @@ ProgramStatusType - 程序运行状态通知类型
 
 程序运行状态通知类型定义
 
-..  py:class:: GtwEventType
+..  py:class:: ProgramStatusType
 
  ..  py:attribute:: NONE
 
@@ -1278,6 +1427,39 @@ SecurityReferenceType - 股票关联数据类型
 
 --------------------------------------
 
+SetPriceReminderOp - 设置到价提醒操作
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+设置到价提醒操作
+
+..  py:class:: SetPriceReminderOp
+ 
+ ..  py:attribute:: NONE
+  
+  未知
+   
+ ..  py:attribute:: ADD
+  
+  新增
+   
+ ..  py:attribute:: DELETE
+  
+  删除
+  
+ ..  py:attribute:: ENABLE
+  
+  启用
+   
+ ..  py:attribute:: DISABLE
+  
+  禁用
+   
+ ..  py:attribute:: MODIFY
+  
+  修改
+  
+--------------------------------------
+
 StockHolder - 持有者类别
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1299,10 +1481,10 @@ StockHolder - 持有者类别
   
 --------------------------------------
 
-SubType - 实时数据订阅类型
+SubType - 实时数据定阅类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-实时数据订阅类型定义
+实时数据定阅类型定义
 
 ..  py:class:: SubType
 
@@ -2100,6 +2282,31 @@ TrdSide - 交易方向类型
   
 --------------------------------------
 
+UserSecurityGroupType - 自选股的类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+自选股的类型定义
+
+..  py:class:: GroupType
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: CUSTOM
+
+  自定义分组
+
+ ..  py:attribute:: SYSTEM
+
+  系统分组
+
+ ..  py:attribute:: ALL
+
+  全部分组
+
+
+--------------------------------------
 WarrantStatus - 窝轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2161,63 +2368,4 @@ WrtType - 港股窝轮类型
 
   未知
 
---------------------------------------
-
-
-Currency - 交易相关的货币类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易相关的货币类型
-
-..  py:class:: Currency
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: HKD
-
-  港币
-
- ..  py:attribute:: USD
-
-  美元
-
- ..  py:attribute:: CNH
-
-  离岸人民币
-
---------------------------------------
-
-CltRiskLevel - 账户风控状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-账户风控状态
-
-..  py:class:: CltRiskLevel
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: SAFE
-
-  安全
-
- ..  py:attribute:: WARNING
-
-  预警
-
- ..  py:attribute:: DANGER
-
-  危险
-
- ..  py:attribute:: ABSOLUTE_SAFE
-
-  绝对安全
-
- ..  py:attribute:: OPT_DANGER
-
-  危险，期权相关
-  
 --------------------------------------

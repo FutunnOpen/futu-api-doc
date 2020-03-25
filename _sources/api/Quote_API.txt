@@ -82,6 +82,16 @@
 
  .. _TradeDateMarket: Base_API.html#tradedatemarket
  
+ .. _PriceReminderType: Base_API.html#priceremindertype
+ 
+ .. _PriceReminderFreq: Base_API.html#pricereminderfreq
+ 
+ .. _SetPriceReminderOp: Base_API.html#setpricereminderop
+ 
+ .. _PriceReminderMarketStatus: Base_API.html#priceremindermarketstatus
+ 
+ .. _UserSecurityGroupType: Base_API.html#usersecuritygrouptype
+ 
 一分钟上手
 ============
 
@@ -744,6 +754,7 @@ get_plate_stock
         HK.BK1988                  港股汇率期货
         HK.BK1989                  港股金属期货
         HK.BK1990                  港股股票期货
+		HK.BK1912                  已上市新股-港股
         SH.3000000                 上海主板
         SH.BK0901                  上证B股
         SH.BK0902                  深证B股 
@@ -751,9 +762,10 @@ get_plate_stock
         SH.3000005                 沪深全部A股
         SH.BK0600                  富途热门(沪深)
         SH.BK0992                  科创板
+		SH.BK0912                  已上市新股-A股	
         SZ.3000001                 深证主板
         SZ.3000003                 中小企业板块
-        SZ.3000004                 深证创业板
+        SZ.3000004                 深证创业板	
         US.USAALL                  所有美股
         US.BK2989                  美股期货全类型
         US.BK2990                  美股农产品期货
@@ -762,7 +774,8 @@ get_plate_stock
         US.BK2993                  美股数字货币期货
         US.BK2994                  美股股指期货
         US.BK2995                  美股能源化工期货
-        US.BK2996                  美股贵金属期货
+        US.BK2996                  美股贵金属期货		
+		US.BK2912                  已上市新股-美股
         =====================  ==============================================================
    
         
@@ -945,15 +958,15 @@ query_subscription
         
         ret != RET_OK 返回错误字符串
         
-        ret == RET_OK 返回订阅信息的字典数据 ，格式如下:
+        ret == RET_OK 返回 定阅信息的字典数据 ，格式如下:
         
  .. code:: python
 
         {
-            'total_used': 4,    # 所有连接已使用的订阅额度
-            'own_used': 0,       # 当前连接已使用的订阅额度
-            'remain': 496,       #  剩余的订阅额度
-            'sub_list':          #  每种订阅类型对应的股票列表
+            'total_used': 4,    # 所有连接已使用的定阅额度
+            'own_used': 0,       # 当前连接已使用的定阅额度
+            'remain': 496,       #  剩余的定阅额度
+            'sub_list':          #  每种定阅类型对应的股票列表
             {
                 'BROKER': ['HK.00700', 'HK.02318'],
                 'RT_DATA': ['HK.00700', 'HK.02318']
@@ -1407,7 +1420,7 @@ time                    str           发布时间（美股的时间默认是美
 get_option_chain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_option_chain(self, code, index_option_type=IndexOptionType.NORMAL, start=None, end=None, option_type=OptionType.ALL, option_cond_type=OptionCondType.ALL)
+..  py:function:: get_option_chain(self, code, index_option_type=IndexOptionType.NORMAL, start=None, end=None, option_type=OptionType.ALL, option_cond_type=OptionCondType.ALL, data_filter=None)
 
  通过标的股查询期权
 
@@ -1428,6 +1441,32 @@ get_option_chain
 				
  :param option_type: 期权类型,,默认全部,全部/看涨/看跌，查看 OptionType_
  :param option_cond_type: 默认全部,全部/价内/价外，查看 OptionCondType_
+ :param data_filter: 数据筛选条件，默认不筛选，参考OptionDataFilter。
+                OptionDataFilter字段如下：
+				
+                ============================    ==========    ========================================
+                 字段                            类型           说明
+                ============================    ==========    ========================================
+                 implied_volatility_min         float          隐含波动率过滤起点 %
+                 implied_volatility_max         float          隐含波动率过滤终点 %
+                 delta_min                      float          希腊值 Delta过滤起点
+                 delta_max                      float          希腊值 Delta过滤终点
+                 gamma_min                      float          希腊值 Gamma过滤起点
+                 gamma_max                      float          希腊值 Gamma过滤终点
+                 vega_min                       float          希腊值 Vega过滤起点
+                 vega_max                       float          希腊值 Vega过滤终点
+                 theta_min                      float          希腊值 Theta过滤起点
+                 theta_max                      float          希腊值 Theta过滤终点
+                 rho_min                        float          希腊值 Rho过滤起点
+                 rho_max                        float          希腊值 Rho过滤终点
+                 net_open_interest_min          float          净未平仓合约数过滤起点
+                 net_open_interest_max          float          净未平仓合约数过滤终点
+                 open_interest_min              float          未平仓合约数过滤起点
+                 open_interest_max              float          未平仓合约数过滤终点
+                 vol_min                        float          成交量过滤起点
+                 vol_max                        float          成交量过滤终点
+                ============================    ==========    ========================================
+
  :return: (ret, data)
 
         ret == RET_OK 返回pd dataframe数据，数据列格式如下
@@ -1449,14 +1488,16 @@ get_option_chain
         stock_id             int           股票id
         index_option_type    str           指数期权类型
         ==================   ===========   ==============================================================
-	
+
 .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.NONE,'2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE))
+    filter = OptionDataFilter()
+    filter.delta_min = 0.1
+    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.NONE, '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE, filter))
     quote_ctx.close()
-	
+    
 .. note::
 
     * 	接口限制请参见 :ref:`获取期权链限制 <get-option-chain-limit>`
@@ -1557,7 +1598,7 @@ get_warrant
  通过标的股查询窝轮
 
  :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的窝轮，注意有些股票没有对应窝轮牛熊。
- :param req: 请求参数组合，from futu.quote.quote_get_warrant import Request
+ :param req: 请求参数组合
 
 
 ==========================  ==============    ====================================================================================
@@ -1574,28 +1615,28 @@ maturity_time_max           str               到期日范围的结束时间
 ipo_period                  str               上市日 参见 IpoPeriod_
 price_type                  str               价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%。）参见 PriceType_ , 界内证暂不支持界内外筛选
 status                      str               窝轮状态 参见 WarrantStatus_
-cur_price_min               float             最新价过滤起点
-cur_price_max               float             最新价过滤终点
-strike_price_min            float             行使价过滤起点
-strike_price_max            float             行使价过滤终点
-street_min                  float             街货占比, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-street_max                  float             街货占比, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-conversion_min              float             换股比率过滤起点
-conversion_max              float             换股比率过滤终点
-vol_min                     unsigned int      成交量过滤起点
-vol_max                     unsigned int      成交量过滤终点
-premium_min                 float             溢价, 过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-premium_max                 float             溢价, 过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-leverage_ratio_min          float             杠杆比率过滤起点
-leverage_ratio_max          float             杠杆比率过滤终点
-delta_min                   float             对冲值过滤起点, 仅认购认沽支持该字段过滤
-delta_max                   float             对冲值过滤终点, 仅认购认沽支持该字段过滤
-implied_min                 float             引伸波幅过滤起点, 仅认购认沽支持该字段过滤
-implied_max                 float             引伸波幅过滤终点, 仅认购认沽支持该字段过滤
-recovery_price_min          float             收回价过滤起点, 仅牛熊证支持该字段过滤
-recovery_price_max          float             收回价过滤终点, 仅牛熊证支持该字段过滤
-price_recovery_ratio_min    float             正股距收回价, 过滤起点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-price_recovery_ratio_max    float             正股距收回价, 过滤终点, 仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+cur_price_min               float             最新价的过滤下限（闭区间），不传代表下限为-∞
+cur_price_max               float             最新价的过滤上限（闭区间），不传代表上限为+∞
+strike_price_min            float             行使价的过滤下限（闭区间），不传代表下限为-∞
+strike_price_max            float             行使价的过滤上限（闭区间），不传代表上限为+∞
+street_min                  float             街货占比的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+street_max                  float             街货占比的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+conversion_min              float             换股比率的过滤下限（闭区间），不传代表下限为-∞
+conversion_max              float             换股比率的过滤上限（闭区间），不传代表上限为+∞
+vol_min                     unsigned int      成交量的过滤下限（闭区间），不传代表下限为-∞
+vol_max                     unsigned int      成交量的过滤上限（闭区间），不传代表上限为+∞
+premium_min                 float             溢价的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+premium_max                 float             溢价的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+leverage_ratio_min          float             杠杆比率的过滤下限（闭区间），不传代表下限为-∞
+leverage_ratio_max          float             杠杆比率的过滤上限（闭区间），不传代表上限为+∞
+delta_min                   float             对冲值的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+delta_max                   float             对冲值的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞
+implied_min                 float             引伸波幅的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+implied_max                 float             引伸波幅的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞
+recovery_price_min          float             收回价的过滤下限（闭区间）, 仅牛熊证支持该字段过滤，不传代表下限为-∞
+recovery_price_max          float             收回价的过滤上限（闭区间）, 仅牛熊证支持该字段过滤，不传代表上限为+∞
+price_recovery_ratio_min    float             正股距收回价, 的过滤下限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+price_recovery_ratio_max    float             正股距收回价, 的过滤上限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
 ==========================  ==============    ====================================================================================
 
 
@@ -1667,10 +1708,9 @@ inline_price_status            str                界内界外 参见 PriceType_
  .. code:: python
 
     from futu import *
-    from futu.quote.quote_get_warrant import Request
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    req=Request()
-    req.sort_field=SortField.TURNOVER
+    req = WarrantRequest()
+    req.sort_field = SortField.TURNOVER
     print(quote_ctx.get_warrant("HK.00700",req))
     quote_ctx.close()
 
@@ -1852,10 +1892,10 @@ get_stock_filter
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 简单属性，取值见 `StockField <Base_API.html#stockfield-simplefilter>`_ 
-        filter_min                                     float          区间下限，闭区间
-        filter_max                                     float          区间上限，闭区间
-        is_no_filter                                   bool           该字段是否需要筛选。
-        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        filter_min                                     float          区间下限（闭区间），不传代表下限为-∞
+        filter_max                                     float          区间上限（闭区间），不传代表上限为+∞
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序 
         ============================================   ===========   ================================================
         
         | AccumulateFilter对象field的相关参数如下：
@@ -1864,10 +1904,10 @@ get_stock_filter
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 累积字段，取值见 `StockField <Base_API.html#stockfield-accumulatefilter>`_ 
-        filter_min                                     float          区间下限，闭区间
-        filter_max                                     float          区间上限，闭区间
-        is_no_filter                                   bool           该字段是否需要筛选。
-        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        filter_min                                     float          区间下限（闭区间），不传代表下限为-∞
+        filter_max                                     float          区间上限（闭区间），不传代表上限为+∞
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序
         days                                           int            所筛选的数据的累计天数
         ============================================   ===========   ================================================
         
@@ -1877,10 +1917,10 @@ get_stock_filter
         参数                                            类型           说明
         ============================================   ===========   ================================================
         stock_field                                    str            StockField 财务字段，取值见 `StockField <Base_API.html#stockfield-financialfilter>`_ 
-        filter_min                                     float          区间下限，闭区间
-        filter_max                                     float          区间上限，闭区间
-        is_no_filter                                   bool           该字段是否需要筛选。
-        sort                                           str            SortDir 排序方向，默认不排序，取值见 SortDir_ 
+        filter_min                                     float          区间下限（闭区间），不传代表下限为-∞
+        filter_max                                     float          区间上限（闭区间），不传代表上限为+∞
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序
         quarter                                        str            财报累积时间，取值见 FinancialQuarter_ 
         ============================================   ===========   ================================================
 
@@ -1936,7 +1976,6 @@ return_on_equity_rate                          float          净资产收益率
  .. code:: python
 
     from futu import *
-    from futu.quote.quote_stockfilter_info import *  
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)     
     simple_filter = SimpleFilter()
     simple_filter.filter_min = 100
@@ -1951,9 +1990,9 @@ return_on_equity_rate                          float          净资产收益率
     acc_filter.days = 2
     acc_filter.stock_field = StockField.CHANGE_RATE
     acc_filter.is_no_filter = False
-    acc_filter.sort = SortDir.None
+    acc_filter.sort = SortDir.NONE
 
-    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter])
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter], begin=200, num=10)
     if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
@@ -1991,7 +2030,7 @@ get_ipo_list
 
  获取指定市场的ipo列表
 
- :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
+ :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
 
  :return: (ret, data)
 
@@ -2135,9 +2174,6 @@ request_trading_days
 
 ..
 
-
-
-        
  :Example:
 
  .. code:: python
@@ -2152,6 +2188,130 @@ request_trading_days
 	* 接口限制请参见 :ref:`在线获取交易日 <request-trading-day-limit>`
 	
 -----------------------------------------------------------------------------------------------------    
+
+set_price_reminder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: set_price_reminder(self, code, op, key=None, reminder_type=None, reminder_freq=None, value=None, note=None)
+
+ 新增、删除、修改、启用、禁用 某只股票的到价提醒，每只股票每种类型最多可设置10个提醒
+ 
+ :param code: 股票
+ :param op: SetPriceReminderOp_，操作类型
+ :param key: int64，标识，新增的情况不需要填
+ :param reminder_type: PriceReminderType_，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参
+ :param reminder_freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参
+ :param value: float，提醒值，删除、启用、禁用的情况下会忽略该入参
+ :param note: str，用户设置的备注，最多10个字符，删除、启用、禁用的情况下会忽略该入参
+ :return: (ret, data)
+    ret != RET_OK 返回错误字符串
+	
+    ret == RET_OK data为key
+..
+
+ :Example:
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.set_price_reminder(code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
+                                 reminder_type=PriceReminderType.PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS,
+                                 value=400.0, note=''))
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`设置到价提醒 <set-price-reminder-limit>`
+    
+    * API 中成交量设置统一以股为单位。但是牛牛客户端中，A 股是以为手为单位展示
+    
+    * 到价提醒类型，存在最小精度，如下：
+
+        TURNOVER_UP：成交额最小精度为 10 元（人民币元，港元，美元）。传入的数值会自动向下取整到最小精度的整数倍。如果设置【00700成交额102元提醒】，设置后会得到【00700成交额100元提醒】；如果设置【00700 成交额 8 元提醒】，设置后会得到【00700 成交额 0 元提醒】。
+
+        VOLUME_UP：A 股成交量最小精度为 1000 股，其他市场股票成交量最小精度为 10 股。传入的数值会自动向下取整到最小精度的整数倍。
+
+        BID_VOL_UP、ASK_VOL_UP：A 股的买一卖一量最小精度为 100 股。传入的数值会自动向下取整到最小精度的整数倍。
+
+        其余到价提醒类型精度支持到小数点后 3 位
+		
+-----------------------------------------------------------------------------------------------------
+
+get_price_reminder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_price_reminder(self, code = None, market = None)
+
+  获取对某只股票(某个市场)设置的到价提醒列表
+
+ :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先。
+ :param market: 获取该市场的到价提醒，注意输入沪深都会认为是A股市场。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
+ :return: (ret, data)
+    ret != RET_OK 返回错误字符串
+
+    ret == RET_OK data为DataFrame类型，字段如下:
+    
+    =========================   ==================   ========================================
+    参数                         类型                 说明
+    =========================   ==================   ========================================
+    code                        str                  股票代码
+    key                         int64                标识，用于修改到价提醒
+    reminder_type               str                  到价提醒的类型，参见 PriceReminderType_
+    reminder_freq               str                  到价提醒的频率，参见 PriceReminderFreq_
+    value                       float                提醒值
+    enable                      bool                 是否启用
+    note                        string               备注，最多10个字符
+    =========================   ==================   ========================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_price_reminder(code='HK.00700'))
+    print(quote_ctx.get_price_reminder(code=None, market=Market.HK))
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取到价提醒列表 <get-price-reminder-limit>`
+
+-----------------------------------------------------------------------------------------------------
+
+get_user_security_group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_user_security_group(self, group_type = UserSecurityGroupType.ALL)
+     
+  获取自选股分组列表
+  
+ :param group_type: UserSecurityGroupType_，分组类型
+ :return: (ret, data) ret != RET_OK 返回错误字符串
+  
+    ret == RET_OK data为DataFrame类型，字段如下:
+  
+  =========================   ==================   ================================
+  参数                         类型                 说明
+  =========================   ==================   ================================
+  group_name                   str                  分组名
+  group_type                   str                  UserSecurityGroupType，分组类型
+  =========================   ==================   ================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取自选股分组列表 <get-user-security-group-limit>`
+
+-----------------------------------------------------------------------------------------------------
 
 SysNotifyHandlerBase - OpenD通知回调
 -----------------------------------------------------------------------------------------------------    
@@ -2488,3 +2648,59 @@ on_recv_rsp
 
           失败时返回(RET_ERROR, ERR_MSG, None)
 
+----------------------------
+
+PriceReminderHandlerBase - 到价提醒通知回调
+-------------------------------------------
+
+异步处理推送的到价提醒通知
+
+.. code:: python
+    
+    class PriceReminderTest(PriceReminderHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("PriceReminderTest: error, msg: %s" % content)
+                return RET_ERROR, content
+
+            print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
+
+            return RET_OK, content
+
+
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    handler = PriceReminderTest()
+    quote_ctx.set_handler(handler)
+    time.sleep(15)
+    quote_ctx.close()
+    
+-------------------------------------------
+
+on_recv_rsp
+~~~~~~~~~~~
+
+..  py:function:: on_recv_rsp(self, rsp_pb)
+
+
+ 在收到后到价提醒通知会回调到该函数，使用者需要在派生类中覆盖此方法
+
+ 注意该回调是在独立子线程中
+
+ :param rsp_pb: 派生类中不需要直接处理该参数
+ :return: 失败时返回(RET_ERROR, ERR_MSG, None)
+ 
+ 成功时返回(RET_OK, '', data), data为DataFrame类型，字段如下
+    
+    =========================   =========================   ====================================================================
+    参数                         类型                         说明
+    =========================   =========================   ====================================================================
+    code                        str                          股票代码
+    price                       float                        当前价格
+    change_rate                 str                          当前涨跌幅
+    market_status               str                          触发的时间段，盘前、盘中、盘后，参见 PriceReminderMarketStatus_
+    content                     str                          到价提醒文字内容
+    note                        str                          备注，最多10个字符
+    =========================   =========================   ====================================================================
+
+          

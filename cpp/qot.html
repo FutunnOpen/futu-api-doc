@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.18 documentation</title>
+  <title>行情API &mdash; futu-api-doc 3.20 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.18 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.20 documentation" href="../index.html"/>
         <link rel="next" title="交易API" href="trd.html"/>
         <link rel="prev" title="基础API" href="base.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.18
+                3.20
               </div>
             
           
@@ -378,6 +378,14 @@
 <td>获取市场交易日，在线拉取不在本地计算</td>
 <td>OnReply_RequestTradeDate</td>
 </tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-setpricereminder-proto-3220">SetPriceReminder</a></td>
+<td>设置到价提醒</td>
+<td>OnReply_SetPriceReminder</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getpricereminder-proto-3221">GetPriceReminder</a></td>
+<td>获取到价提醒</td>
+<td>OnReply_GetPriceReminder</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -414,6 +422,9 @@
 </tr>
 <tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebroker-proto-3015">OnPush_UpdateBroker</a></td>
 <td>推送经纪队列</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatepricereminder-proto-3019">OnPush_UpdatePriceReminder</a></td>
+<td>推送到价提醒</td>
 </tr>
 </tbody>
 </table>
@@ -463,7 +474,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.18',
+            VERSION:'3.20',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

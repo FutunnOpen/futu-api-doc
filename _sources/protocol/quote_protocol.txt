@@ -60,7 +60,7 @@
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 订阅数据类型参考 `SubType <base_define.html#subtype>`_
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
-	* 为控制订阅产生推送数据流量，股票订阅总量有额度控制，订阅规则参考 `高频数据接口 <../api/Quote_API.html#id32>`_
+	* 为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 `高频数据接口 <../api/Quote_API.html#id32>`_
 	* 高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送
 	
 -------------------------------------
@@ -1466,57 +1466,92 @@
 .. code-block:: protobuf
 
     syntax = "proto2";
-    package Qot_GetOptionChain;
+	package Qot_GetOptionChain;
+	option java_package = "com.futu.openapi.pb";
 
-    import "Common.proto";
-    import "Qot_Common.proto";
+	import "Common.proto";
+	import "Qot_Common.proto";
 
-    enum OptionCondType
-    {
-        OptionCondType_Unknow = 0;
-        OptionCondType_WithIn = 1; //价内
-        OptionCondType_Outside = 2; //价外
-    }
+	enum OptionCondType
+	{
+		OptionCondType_Unknow = 0;
+		OptionCondType_WithIn = 1; //价内
+		OptionCondType_Outside = 2; //价外
+	}
 
-    message C2S
-    {
-        required Qot_Common.Security owner = 1; //期权标的股
+	//以下为数据字段筛选，可选字段，不填表示不过滤
+	message DataFilter
+	{
+		optional double impliedVolatilityMin = 1; //隐含波动率过滤起点
+		optional double impliedVolatilityMax = 2; //隐含波动率过滤终点
+
+		optional double deltaMin = 3; //希腊值 Delta过滤起点
+		optional double deltaMax = 4; //希腊值 Delta过滤终点
+
+		optional double gammaMin = 5; //希腊值 Gamma过滤起点
+		optional double gammaMax = 6; //希腊值 Gamma过滤终点
+
+		optional double vegaMin = 7; //希腊值 Vega过滤起点
+		optional double vegaMax = 8; //希腊值 Vega过滤终点
+
+		optional double thetaMin = 9; //希腊值 Theta过滤起点
+		optional double thetaMax = 10; //希腊值 Theta过滤终点
+
+		optional double rhoMin = 11; //希腊值 Rho过滤起点
+		optional double rhoMax = 12; //希腊值 Rho过滤终点
+
+		optional double netOpenInterestMin = 13; //净未平仓合约数过滤起点
+		optional double netOpenInterestMax = 14; //净未平仓合约数过滤终点
+
+		optional double openInterestMin = 15; //未平仓合约数过滤起点
+		optional double openInterestMax = 16; //未平仓合约数过滤终点
+
+		optional double volMin = 17; //成交量过滤起点
+		optional double volMax = 18; //成交量过滤终点
+	}
+
+	message C2S
+	{
+		required Qot_Common.Security owner = 1; //期权标的股,目前仅支持传入港美正股以及恒指国指
 		optional int32 indexOptionType = 6; //Qot_Common.IndexOptionType, 指数期权的类型，仅用于恒指国指
-        optional int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
-        optional int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
-        required string beginTime = 4; //期权到期日开始时间
-        required string endTime = 5; //期权到期日结束时间,时间跨度最多一个月
-    }
+		optional int32 type = 2; //Qot_Common.OptionType,期权类型,可选字段,不指定则表示都返回
+		optional int32 condition = 3; //OptionCondType,价内价外,可选字段,不指定则表示都返回
+		required string beginTime = 4; //期权到期日开始时间
+		required string endTime = 5; //期权到期日结束时间,时间跨度最多一个月
+		optional DataFilter dataFilter = 7; //数据字段筛选
+	}
 
-    message OptionItem
-    {
-        optional Qot_Common.SecurityStaticInfo call = 1; //看涨,不一定有该字段,由请求条件决定
-        optional Qot_Common.SecurityStaticInfo put = 2; //看跌,不一定有该字段,由请求条件决定
-    }
+	message OptionItem
+	{
+		optional Qot_Common.SecurityStaticInfo call = 1; //看涨,不一定有该字段,由请求条件决定
+		optional Qot_Common.SecurityStaticInfo put = 2; //看跌,不一定有该字段,由请求条件决定
+	}
 
-    message OptionChain
-    {
-        required string strikeTime = 1; //行权日
-        repeated OptionItem option = 2; //期权信息
-    }
+	message OptionChain
+	{
+		required string strikeTime = 1; //行权日
+		repeated OptionItem option = 2; //期权信息
+		optional double strikeTimestamp = 3; //行权日时间戳
+	}
 
-    message S2C
-    {
-        repeated OptionChain optionChain = 1; //期权链
-    }
+	message S2C
+	{
+		repeated OptionChain optionChain = 1; //期权链
+	}
 
-    message Request
-    {
-        required C2S c2s = 1;
-    }
+	message Request
+	{
+		required C2S c2s = 1;
+	}
 
-    message Response
-    {
-        required int32 retType = 1 [default = -400]; //RetType,返回结果
-        optional string retMsg = 2;
-        optional int32 errCode = 3;
-        optional S2C s2c = 4;
-    }
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		optional S2C s2c = 4;
+	}
+
 
 .. note::
     
@@ -1555,28 +1590,28 @@
 		optional int32 ipoPeriod = 10; //Qot_Common.IpoPeriod,上市日
 		optional int32 priceType = 11; //Qot_Common.PriceType, 价内/价外（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		optional int32 status = 12; //Qot_Common.WarrantStatus, 窝轮状态
-		optional double curPriceMin = 13; //最新价过滤起点 
-		optional double curPriceMax = 14; //最新价过滤终点 	
-		optional double strikePriceMin = 15; //行使价过滤起点
-		optional double strikePriceMax = 16; //行使价过滤终点  
-		optional double streetMin = 17; //街货占比,过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double streetMax = 18; //街货占比,过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double conversionMin = 19; //换股比率过滤起点
-		optional double conversionMax = 20; //换股比率过滤终点	
-		optional uint64 volMin = 21; //成交量过滤起点
-		optional uint64 volMax = 22; //成交量过滤终点
-		optional double premiumMin = 23; //溢价,过滤起点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double premiumMax = 24; //溢价,过滤终点（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double leverageRatioMin = 25; //杠杆比率过滤起点
-		optional double leverageRatioMax = 26; //杠杆比率过滤终点	
-		optional double deltaMin = 27;//对冲值过滤起点,仅认购认沽支持该字段过滤
-		optional double deltaMax = 28;//对冲值过滤终点,仅认购认沽支持该字段过滤
-		optional double impliedMin = 29; //引伸波幅过滤起点,仅认购认沽支持该字段过滤
-		optional double impliedMax = 30; //引伸波幅过滤终点,仅认购认沽支持该字段过滤	
-		optional double recoveryPriceMin = 31; //收回价过滤起点,仅牛熊证支持该字段过滤
-		optional double recoveryPriceMax = 32; //收回价过滤终点,仅牛熊证支持该字段过滤
-		optional double priceRecoveryRatioMin = 33;//正股距收回价,过滤起点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
-		optional double priceRecoveryRatioMax = 34;//正股距收回价,过滤终点,仅牛熊证支持该字段过滤（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）		
+		optional double curPriceMin = 13; //最新价的过滤下限（闭区间），不传代表下限为-∞
+		optional double curPriceMax = 14; //最新价的过滤上限（闭区间），不传代表上限为+∞ 	
+		optional double strikePriceMin = 15; //行使价的过滤下限（闭区间），不传代表下限为-∞
+		optional double strikePriceMax = 16; //行使价的过滤上限（闭区间），不传代表上限为+∞ 
+		optional double streetMin = 17; //街货占比的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+		optional double streetMax = 18; //街货占比的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+		optional double conversionMin = 19; //换股比率的过滤下限（闭区间），不传代表下限为-∞
+		optional double conversionMax = 20; //换股比率的过滤上限（闭区间），不传代表上限为+∞
+		optional uint64 volMin = 21; //成交量的过滤下限（闭区间），不传代表下限为-∞
+		optional uint64 volMax = 22; //成交量的过滤上限（闭区间），不传代表上限为+∞
+		optional double premiumMin = 23; //溢价的过滤下限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+		optional double premiumMax = 24; //溢价的过滤上限（闭区间），该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞
+		optional double leverageRatioMin = 25; //杠杆比率的过滤下限（闭区间），不传代表下限为-∞
+		optional double leverageRatioMax = 26; //杠杆比率的过滤上限（闭区间），不传代表上限为+∞
+		optional double deltaMin = 27;//对冲值的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+		optional double deltaMax = 28;//对冲值的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞
+		optional double impliedMin = 29; //引伸波幅的过滤下限（闭区间）, 仅认购认沽支持该字段过滤，不传代表下限为-∞
+		optional double impliedMax = 30; //引伸波幅的过滤上限（闭区间）, 仅认购认沽支持该字段过滤，不传代表上限为+∞	
+		optional double recoveryPriceMin = 31; //收回价的过滤下限（闭区间）, 仅牛熊证支持该字段过滤，不传代表下限为-∞
+		optional double recoveryPriceMax = 32; //收回价的过滤上限（闭区间）, 仅牛熊证支持该字段过滤，不传代表上限为+∞
+		optional double priceRecoveryRatioMin = 33;//正股距收回价, 的过滤下限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表下限为-∞
+		optional double priceRecoveryRatioMax = 34;//正股距收回价, 的过滤上限（闭区间）, 仅牛熊证支持该字段过滤。该字段为百分比字段，默认不展示%，如20实际对应20%。不传代表上限为+∞	
 	}
 
 	message WarrantData
@@ -1989,9 +2024,9 @@
 	message BaseFilter 
 	{ 
 		required int32 fieldName = 1; // StockField 简单属性
-		optional double filterMin = 2; // 区间下限，闭区间
-		optional double filterMax = 3; // 区间上限，闭区间
-		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional double filterMin = 2; // 区间下限（闭区间），不传代表下限为-∞
+		optional double filterMax = 3; // 区间上限（闭区间），不传代表上限为+∞
+		optional bool isNoFilter = 4; // 该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 	};
 
@@ -1999,9 +2034,9 @@
 	message AccumulateFilter
 	{
 		required int32 fieldName = 1; // AccumulateField 累积属性
-		optional double filterMin = 2; // 区间下限，闭区间
-		optional double filterMax = 3; // 区间上限，闭区间
-		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional double filterMin = 2; // 区间下限（闭区间），不传代表下限为-∞
+		optional double filterMax = 3; // 区间上限（闭区间），不传代表上限为+∞
+		optional bool isNoFilter = 4; // 该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 		required int32 days = 6; // 近几日，累积时间
 	}
@@ -2010,9 +2045,9 @@
 	message FinancialFilter
 	{
 		required int32 fieldName = 1; // FinancialField 财务属性
-		optional double filterMin = 2; // 区间下限，闭区间
-		optional double filterMax = 3; // 区间上限，闭区间
-		optional bool isNoFilter = 4; // 该字段是否需要筛选。当该字段为true时，表示不需要筛选，以上filterMin，filterMax区间两个字段无效。默认True，不需要筛选。
+		optional double filterMin = 2; // 区间下限（闭区间），不传代表下限为-∞
+		optional double filterMax = 3; // 区间上限（闭区间），不传代表上限为+∞
+		optional bool isNoFilter = 4; // 该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
 		optional int32 sortDir = 5; // SortDir 排序方向，默认不排序。
 		required int32 quarter = 6; // FinancialQuarter 财报累积时间
 	}
@@ -2418,7 +2453,176 @@
 
 .. note::
 	
-	* 股票结构参考 `TradeDateMarket <base_define.html#tradedatemarket>`_
+	* 交易日市场类型参考 `TradeDateMarket <base_define.html#tradedatemarket>`_
 	* 限频接口：30秒内最多30次	
 	
 ------------------------------------------------------------------------
+
+`Qot_SetPriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_SetPriceReminder.proto>`_ - 3220设置到价提醒
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_SetPriceReminder;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum SetPriceReminderOp
+	{
+		SetPriceReminderOp_Unknown = 0;
+		SetPriceReminderOp_Add = 1; //新增
+		SetPriceReminderOp_Del = 2; //删除
+		SetPriceReminderOp_Enable = 3; //启用
+		SetPriceReminderOp_Disable = 4; //禁用
+		SetPriceReminderOp_Modify = 5; //修改
+	}
+
+	message C2S
+	{
+		required Qot_Common.Security security = 1; // 股票
+		required int32 op = 2; // SetPriceReminderOp, 操作类型
+		optional int64 key = 3; // 到价提醒的标识，GetPriceReminder协议可获得，用于指定要操作的到价提醒项，对于新增的情况不需要填
+		optional int32 type = 4; // Qot_Common::PriceReminderType，提醒类型，删除、启用、禁用的情况下会忽略该字段
+		optional int32 freq = 7; // Qot_Common::PriceReminderFreq，提醒频率类型，删除、启用、禁用的情况下会忽略该字段
+		optional double value = 5; // 提醒值，删除、启用、禁用的情况下会忽略该字段
+		optional string note = 6; // 用户设置到价提醒时的标注，最多10个字符，删除、启用、禁用的情况下会忽略该字段
+	}
+
+	message S2C
+	{
+		
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 提醒类型参考 `PriceReminderType <base_define.html#priceremindertype>`_
+	* 提醒频率类型参考 `PriceReminderFreq <base_define.html#pricereminderfreq>`_
+	* 每只股票每种提醒类型最多设置10个
+	* 限频接口：30秒内最多60次	
+	
+------------------------------------------------------------------------
+
+`Qot_GetPriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetPriceReminder.proto>`_ - 3221获取到价提醒
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetPriceReminder;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	// 提醒信息列表
+	message PriceReminderItem
+	{
+		required int64 key = 1; // 每个提醒的唯一标识
+		required int32 type = 2; // Qot_Common::PriceReminderType 提醒类型
+		required double value = 3; // 提醒参数值
+		required string note = 4; // 用户设置到价提醒时的标注
+		required int32 freq = 5; // Qot_Common::PriceReminderFreq 提醒频率类型
+		required bool isEnable = 6; // 该提醒设置是否生效。false不生效，true生效
+	}
+
+	message PriceReminder
+	{
+		required Qot_Common.Security security = 1; // 股票
+		repeated PriceReminderItem itemList = 2; // 提醒信息列表
+	}
+
+	message C2S
+	{
+		optional Qot_Common.Security security = 1; // 查询股票下的到价提醒项，security和market二选一，都存在的情况下security优先。
+		optional int32 market = 2; //Qot_Common::QotMarket 市场，查询市场下的到价提醒项，不区分沪深
+	}
+
+	message S2C
+	{
+		repeated PriceReminder priceReminderList = 1; //到价提醒
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
+	* 市场类型参考 `QotMarket <base_define.html#qotmarket>`_
+	* 提醒类型参考 `PriceReminderType <base_define.html#priceremindertype>`_
+	* 提醒频率类型参考 `PriceReminderFreq <base_define.html#pricereminderfreq>`_
+	* 限频接口：30秒内最多10次	
+	
+	
+`Qot_UpdatePriceReminder.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_UpdatePriceReminder.proto>`_ - 3019到价提醒通知
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_UpdatePriceReminder;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	enum MarketStatus
+	{
+		MarketStatus_Unknow = 0;
+		MarketStatus_Open = 1; // 盘中
+		MarketStatus_USPre = 2;  // 美股盘前
+		MarketStatus_USAfter = 3; // 美股盘后
+	}
+
+	message S2C
+	{
+		required Qot_Common.Security security = 1; //股票
+		required double price = 2; //价格
+		required double changeRate = 3; //涨跌幅
+		required int32 marketStatus = 4; //市场状态
+		required string content = 5; //内容
+		required string note = 6; //备注
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 股票结构参考 `Security <base_define.html#security>`_
