@@ -1538,7 +1538,7 @@ TrdSide - 交易方向
  
 	enum TrdSide
 	{
-		//客户端下单只传Buy或Sell即可，SellShort是美股订单时服务器返回有此方向，BuyBack目前不存在，但也不排除服务器会传
+		//除了期货，其他股票都只支持传入买入和卖出
 		TrdSide_Unknown = 0; //未知方向
 		TrdSide_Buy = 1; //买入
 		TrdSide_Sell = 2; //卖出
