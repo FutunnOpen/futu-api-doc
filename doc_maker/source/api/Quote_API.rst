@@ -2701,6 +2701,10 @@ on_recv_rsp
     market_status               str                          触发的时间段，盘前、盘中、盘后，参见 PriceReminderMarketStatus_
     content                     str                          到价提醒文字内容
     note                        str                          备注，最多10个字符
+	key                         int64                        到价提醒标识
+	reminder_type               str                          到价提醒的类型，参见 PriceReminderType_
+	set_value                   float                        用户设置的提醒值
+	cur_value                   float                        提醒触发时的值
     =========================   =========================   ====================================================================
 
           
