@@ -126,6 +126,12 @@
   .. _Qot_RequestTradeDate.proto:  quote_protocol.html#qot-requesttradedate-proto-3219
   .. _3219:  quote_protocol.html#qot-requesttradedate-proto-3219
 
+  .. _Qot_SetPriceReminder.proto:  quote_protocol.html#qot-setpricereminder-proto-3220
+  .. _3220:  quote_protocol.html#qot-setpricereminder-proto-3220
+  
+  .. _Qot_GetPriceReminder.proto:  quote_protocol.html#qot-getpricereminder-proto-3221
+  .. _3221:  quote_protocol.html#qot-getpricereminder-proto-3221
+  
   .. role:: red-strengthen
 
 特点
@@ -423,7 +429,7 @@ API用户额度
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅支持自定义分组
 	* 自选股的数量是有上限的。
-	* 如果有同名的分组，会返回排序第一个分组的信息。
+	* 如果有同名的分组，会返回自定义分组里面排序第一个分组的信息。
 
 .. _get-stock-filter-limit:
 
@@ -455,6 +461,20 @@ API用户额度
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3219_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`30` 次
+
+.. _set-price-reminder-limit:	
+
+设置到价提醒
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3220_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`60` 次
+
+.. _get-price-reminder-limit:
+	
+获取到价提醒列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3221_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	
 协议请求流程 
 -------------

@@ -44,6 +44,8 @@
   .. _GetIpoList: ../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo
   .. _GetFutureInfo: ../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218
   .. _RequestTradeDate: ../protocol/quote_protocol.html#qot-requesttradedate-proto-3219
+  .. _SetPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
+  .. _GetPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
   .. _OnPush_Notify: ../protocol/base_define.html#notify-proto-1003
   .. _OnPush_UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _OnPush_UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
@@ -51,7 +53,7 @@
   .. _OnPush_UpdateTicker: ../protocol/quote_protocol.html#qot-updateticker-proto-3011
   .. _OnPush_UpdateOrderBook: ../protocol/quote_protocol.html#qot-updateorderbook-proto-3013
   .. _OnPush_UpdateBroker: ../protocol/quote_protocol.html#qot-updatebroker-proto-3015
-  
+  .. _OnPush_UpdatePriceReminder: ../protocol/quote_protocol.html#qot-updatepricereminder-proto-3019
 ---------------------------------------------------
 主要函数列表
 ---------------
@@ -94,6 +96,8 @@ GetIpolist_                         获取ipo数据                             
 GetCodeChange_                      获取股票代码变更                                   OnReply_GetCodeChange
 GetFutureInfo_                      获取期货合约资料                                   OnReply_GetFutureInfo
 RequestTradeDate_                   获取市场交易日，在线拉取不在本地计算               OnReply_RequestTradeDate
+SetPriceReminder_                   设置到价提醒                                       OnReply_SetPriceReminder
+GetPriceReminder_                   获取到价提醒                                       OnReply_GetPriceReminder
 ================================    ==============================================   ==============================
 
 FTSPI_Qot行情推送接收接口函数
@@ -108,5 +112,6 @@ OnPush_UpdateRT_                       推送分时
 OnPush_UpdateTicker_                   推送逐笔
 OnPush_UpdateOrderBook_                推送买卖盘
 OnPush_UpdateBroker_                   推送经纪队列
+OnPush_UpdatePriceReminder_            推送到价提醒
 ==================================    ================================================= 
 

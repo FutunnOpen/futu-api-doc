@@ -43,12 +43,15 @@
   .. _GetFutureInfo: ../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218
   .. _RequestTradeDate: ../protocol/quote_protocol.html#qot-requesttradedate-proto-3219
   .. _StockFilter: ../protocol/quote_protocol.html#qot-stockfilter-proto-3215
+  .. _SetPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
+  .. _GetPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
   .. _UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _UpdateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
   .. _UpdateTicker: ../protocol/quote_protocol.html#qot-updateticker-proto-3011
   .. _UpdateOrderBook: ../protocol/quote_protocol.html#qot-updateorderbook-proto-3013
   .. _UpdateBroker: ../protocol/quote_protocol.html#qot-updatebroker-proto-3015
+  .. _UpdatePriceReminder: ../protocol/quote_protocol.html#qot-updatepricereminder-proto-3019
   
 ---------------------------------------------------
 
@@ -93,6 +96,8 @@ GetCodeChange_                      获取股票代码变更                    
 GetFutureInfo_                      获取期货合约资料                                    OnReply_GetFutureInfo
 StockFilter_                        筛选股票                                           OnReply_StockFilter
 RequestTradeDate_                   在线拉取交易日                                      OnReply_RequestTradeDate
+SetPriceReminder_                   设置到价提醒                                        OnReply_SetPriceReminder
+GetPriceReminder_                   获取到价提醒                                        OnReply_getPriceReminder
 ================================    ==============================================   ==================================
 
 
@@ -109,6 +114,7 @@ UpdateRT_                             推送分时
 UpdateTicker_                         推送逐笔
 UpdateOrderBook_                      推送买卖盘
 UpdateBroker_                         推送经纪队列
+UpdatePriceReminder_                  推送到价提醒通知
 ==================================    ================================================= 
 
 
