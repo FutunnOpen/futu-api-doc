@@ -90,8 +90,6 @@
  
  .. _PriceReminderMarketStatus: Base_API.html#priceremindermarketstatus
  
- .. _UserSecurityGroupType: Base_API.html#usersecuritygrouptype
- 
 一分钟上手
 ============
 
@@ -2242,13 +2240,13 @@ get_price_reminder
 
 ..  py:function:: get_price_reminder(self, code = None, market = None)
 
-  获取对某只股票(某个市场)设置的到价提醒列表
+ 获取对某只股票(某个市场)设置的到价提醒列表
 
  :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先。
  :param market: 获取该市场的到价提醒，注意输入沪深都会认为是A股市场。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
-
+	
     ret == RET_OK data为DataFrame类型，字段如下:
     
     =========================   ==================   ========================================
@@ -2276,40 +2274,6 @@ get_price_reminder
 .. note::
 
     * 接口限制请参见 :ref:`获取到价提醒列表 <get-price-reminder-limit>`
-
------------------------------------------------------------------------------------------------------
-
-get_user_security_group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_user_security_group(self, group_type = UserSecurityGroupType.ALL)
-     
-  获取自选股分组列表
-  
- :param group_type: UserSecurityGroupType_，分组类型
- :return: (ret, data) ret != RET_OK 返回错误字符串
-  
-    ret == RET_OK data为DataFrame类型，字段如下:
-  
-  =========================   ==================   ================================
-  参数                         类型                 说明
-  =========================   ==================   ================================
-  group_name                   str                  分组名
-  group_type                   str                  UserSecurityGroupType，分组类型
-  =========================   ==================   ================================
-
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
-    quote_ctx.close()
-
-.. note::
-
-    * 接口限制请参见 :ref:`获取自选股分组列表 <get-user-security-group-limit>`
 
 -----------------------------------------------------------------------------------------------------
 
