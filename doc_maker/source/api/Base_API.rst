@@ -2146,7 +2146,11 @@ TickerType - 逐笔类型
  ..  py:attribute:: COMPREHENSIVE_DELAY_PRICE
  
   综合延迟价格
-  
+
+ ..  py:attribute:: OVERSEAS
+ 
+  交易的一方不是香港交易所的成员，属于场外交易
+
 --------------------------------------
 
 TradeDateType - 交易时间类型

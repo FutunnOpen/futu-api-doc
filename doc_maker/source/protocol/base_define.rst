@@ -684,6 +684,7 @@ TickerType - 逐笔类型
 		TickerType_ReOpeningPriced = 28; //再开盘定价
 		TickerType_ClosingPriced = 29; //收盘定价
 		TickerType_ComprehensiveDelayPrice = 30; //综合延迟价格
+		TickerType_Overseas = 31; //交易的一方不是香港交易所的成员，属于场外交易
 	}
 	
 -----------------------------------------------
@@ -945,6 +946,7 @@ QotRight - 行情权限
 		QotRight_Bmp = 1; //Bmp，无法订阅
 		QotRight_Level1 = 2; //Level1
 		QotRight_Level2 = 3; //Level2
+		QotRight_SF = 4; //SF高级行情
 	}
 				
 -----------------------------------------------------------------------------
@@ -1290,6 +1292,10 @@ Broker - 买卖经纪摆盘
 		required int64 id = 1; //经纪ID
 		required string name = 2; //经纪名称
 		required int32 pos = 3; //经纪档位
+		
+		//以下为SF行情特有字段
+		optional int64 orderID = 4; //交易所订单ID，与交易接口返回的订单ID并不一样
+		optional int64 volume = 5; //订单股数
 	}
 	
 -----------------------------------------------

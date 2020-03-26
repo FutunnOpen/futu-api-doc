@@ -480,7 +480,7 @@
 	message C2S
 	{
 		required Qot_Common.Security security = 1; //股票
-		required int32 num = 2; //请求的摆盘个数(1~10)
+		required int32 num = 2; //请求的摆盘个数
 	}
 
 	message S2C
@@ -568,6 +568,7 @@
 	message C2S
 	{
 		required Qot_Common.Security security = 1; //股票
+		optional int32 num = 2; //请求的经纪个数
 	}
 
 	message S2C
