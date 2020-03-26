@@ -822,7 +822,6 @@ get_broker_queue
  获取股票的经纪队列
 
  :param code: 股票代码
- :param num: 请求经纪队列档数，LV2 行情用户最多可以获取 40 档，SF 行情用户可以获取全部档位
  :return: (ret, bid_frame_table, ask_frame_table)或(ret, err_message, err_message)
 
         ret == RET_OK，bid_frame_table，ask_frame_table 返回pd dataframe数据，数据列格式如下
