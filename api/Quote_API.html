@@ -5850,11 +5850,11 @@ ret != RET_OK 返回错误字符串</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; 派生类中不需要直接处理该参数</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">失败时返回(RET_ERROR, ERR_MSG, None)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">失败时返回(RET_ERROR, ERR_MSG)</td>
 </tr>
 </tbody>
 </table>
-<p>成功时返回(RET_OK, &#8216;&#8217;, data), data为DataFrame类型，字段如下</p>
+<p>成功时返回(RET_OK, &#8216;&#8217;, data), data为dict类型，字段如下</p>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
