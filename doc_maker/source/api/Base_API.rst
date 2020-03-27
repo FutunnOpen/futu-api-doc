@@ -1246,7 +1246,19 @@ SecurityType - 证券类型
  ..  py:attribute:: DRVT
  
   期权
-   
+ 
+ ..  py:attribute:: FUTURE
+
+  期货
+
+ ..  py:attribute:: PLATE
+
+  板块
+
+ ..  py:attribute:: PLATESET
+
+  板块集合
+
  ..  py:attribute:: NONE
  
   未知
