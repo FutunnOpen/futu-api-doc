@@ -151,6 +151,66 @@ K线复权定义
   
 --------------------------------------
 
+
+
+Currency - 交易相关的货币类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易相关的货币类型
+
+..  py:class:: Currency
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HKD
+
+  港币
+
+ ..  py:attribute:: USD
+
+  美元
+
+ ..  py:attribute:: CNH
+
+  离岸人民币
+
+--------------------------------------
+
+CltRiskLevel - 账户风控状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+账户风控状态
+
+..  py:class:: CltRiskLevel
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: SAFE
+
+  安全
+
+ ..  py:attribute:: WARNING
+
+  预警
+
+ ..  py:attribute:: DANGER
+
+  危险
+
+ ..  py:attribute:: ABSOLUTE_SAFE
+
+  绝对安全
+
+ ..  py:attribute:: OPT_DANGER
+
+  危险，期权相关
+  
+--------------------------------------
+
 DarkStatus - 暗盘状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2098,7 +2158,11 @@ TickerType - 逐笔类型
  ..  py:attribute:: COMPREHENSIVE_DELAY_PRICE
  
   综合延迟价格
-  
+
+ ..  py:attribute:: OVERSEAS
+ 
+  交易的一方不是香港交易所的成员，属于场外交易
+
 --------------------------------------
 
 TradeDateType - 交易时间类型
@@ -2234,6 +2298,31 @@ TrdSide - 交易方向类型
   
 --------------------------------------
 
+UserSecurityGroupType - 自选股的类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+自选股的类型定义
+
+..  py:class:: GroupType
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: CUSTOM
+
+  自定义分组
+
+ ..  py:attribute:: SYSTEM
+
+  系统分组
+
+ ..  py:attribute:: ALL
+
+  全部分组
+
+
+--------------------------------------
 WarrantStatus - 窝轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2295,63 +2384,4 @@ WrtType - 港股窝轮类型
 
   未知
 
---------------------------------------
-
-
-Currency - 交易相关的货币类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易相关的货币类型
-
-..  py:class:: Currency
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: HKD
-
-  港币
-
- ..  py:attribute:: USD
-
-  美元
-
- ..  py:attribute:: CNH
-
-  离岸人民币
-
---------------------------------------
-
-CltRiskLevel - 账户风控状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-账户风控状态
-
-..  py:class:: CltRiskLevel
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: SAFE
-
-  安全
-
- ..  py:attribute:: WARNING
-
-  预警
-
- ..  py:attribute:: DANGER
-
-  危险
-
- ..  py:attribute:: ABSOLUTE_SAFE
-
-  绝对安全
-
- ..  py:attribute:: OPT_DANGER
-
-  危险，期权相关
-  
 --------------------------------------

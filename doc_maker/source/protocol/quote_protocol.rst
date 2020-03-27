@@ -480,7 +480,7 @@
 	message C2S
 	{
 		required Qot_Common.Security security = 1; //股票
-		required int32 num = 2; //请求的摆盘个数(1~10)
+		required int32 num = 2; //请求的摆盘个数
 	}
 
 	message S2C
@@ -568,6 +568,7 @@
 	message C2S
 	{
 		required Qot_Common.Security security = 1; //股票
+		optional int32 num = 2; //请求的经纪个数
 	}
 
 	message S2C
@@ -2611,6 +2612,10 @@
 		required int32 marketStatus = 4; //市场状态
 		required string content = 5; //内容
 		required string note = 6; //备注
+		optional int64 key = 7; // 到价提醒的标识
+		optional int32 type = 8; // Qot_Common::PriceReminderType，提醒频率类型
+		optional double setValue = 9; // 设置的提醒值
+		optional double curValue = 10; // 设置的提醒类型触发时当前值
 	}
 
 	message Response
