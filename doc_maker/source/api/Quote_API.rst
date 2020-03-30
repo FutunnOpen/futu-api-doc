@@ -753,33 +753,29 @@ get_rt_data
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    
-    quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA])
-    ret, data = quote_ctx.get_rt_data('HK.00700')
-    if ret == RET_OK:
-        print(data)
-        print(data['volume'][0]) # 取第一条的成交量
-        print(data['volume'].values.tolist()) # 转为list
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA])
+    # 先订阅分时数据类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:   # 订阅成功
+        ret, data = quote_ctx.get_rt_data('HK.00700')   # 获取一次分时数据
+        if ret == RET_OK:
+            print(data)
+        else:
+            print('error:', data)
     else:
-        print('error:', data)
-    quote_ctx.close()
+        print('subscription failed', err_message)
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
  :Return:
 
  .. code:: python
 
-    code                 time  is_blank  opened_mins  cur_price  last_close  avg_price  volume     turnover
-    0   HK.00700  2020-03-27 09:30:00     False          570      390.0       381.8  390.00000  999800  389922000.0
-    ..       ...                  ...       ...          ...        ...         ...        ...     ...          ...
-    72  HK.00700  2020-03-27 10:42:00     False          642      383.6       381.8  385.94096    4100    1573160.0
+    code                 time  is_blank  opened_mins  cur_price  last_close   avg_price  volume     turnover
+    0   HK.00700  2020-03-30 09:30:00     False          570      371.8       382.4  371.800000  923800  343468840.0
+    ..       ...                  ...       ...          ...        ...         ...         ...     ...          ...
+    32  HK.00700  2020-03-30 10:02:00     False          602      372.8       382.4  372.979075    4100    1527820.0
     
-    [73 rows x 9 columns]
-    999800
-    [999800, 675700, 414000, 206600, 376400, 460000, 283400, 256800, 190300, 152600, 175900, 198500, 151700, 105600, 
-    ..       ...                  ...       ...          ...        ...         ...        ...     ...          ...
-    38300, 21600, 59900, 111100, 107600, 138500, 67900, 49700, 80200, 29300, 9200, 63600, 4100]
+    [33 rows x 9 columns]
 
-	
 get_plate_stock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -886,7 +882,7 @@ get_plate_stock
         US.BK2996                  美股贵金属期货		
 		US.BK2912                  已上市新股-美股
         =====================  ==============================================================
-   
+
         
 get_plate_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -989,31 +985,29 @@ get_broker_queue
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    
-    quote_ctx.subscribe(['HK.00700'], [SubType.BROKER])
-    ret, bid_frame_table, ask_frame_table = quote_ctx.get_broker_queue('HK.00700')
-    if ret == RET_OK:
-        print(bid_frame_table)
-        print(bid_frame_table['bid_broker_id'][0])   # 取第一条的经纪买盘数据
-        print(bid_frame_table['bid_broker_id'].values.tolist())   # 转为list
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.BROKER], subscribe_push=False)
+    # 先订阅经纪队列类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:   # 订阅成功
+        ret, bid_frame_table, ask_frame_table = quote_ctx.get_broker_queue('HK.00700')   # 获取一次经纪队列数据
+        if ret == RET_OK:
+            print(bid_frame_table)
+        else:
+            print('error:', bid_frame_table)
     else:
-        print('error:', bid_frame_table, ask_frame_table)
-    quote_ctx.close()
+        print('subscription failed')
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
  :Return:
 
  .. code:: python
 
     code  bid_broker_id bid_broker_name  bid_broker_pos
-    0   HK.00700            696       一通投资者有限公司               1
+    0   HK.00700           2846     麦格理资本股份有限公司               1
     ..       ...            ...             ...             ...
-    38  HK.00700           1190  瑞士信贷证券(香港)有限公司               2
+    37  HK.00700           1450            万邦亚太               2
     
-    [39 rows x 4 columns]
-    696
-    Name: bid_broker_id, Length: 39, dtype: int64
-    [696, 9025, 9068, 5345, 7268, 5344, 9057, 9068, 141, 7389, 1292, 7367, 2847, 3440, 3440, 6825, 6998, 7268, 141, 8944, 9063, 8304, 3440, 4085, 229, 5344, 1450, 7268, 9064, 9064, 9069, 9065, 3440, 6387, 7268, 1198, 4099, 1194, 1190]
-		
+    [38 rows x 4 columns]
+
 subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1035,22 +1029,28 @@ subscribe
 
  .. code:: python
 
+    import time
     from futu import *
+    class OrderBookTest(OrderBookHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, data = super(OrderBookTest,self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("OrderBookTest: error, msg: %s" % data)
+                return RET_ERROR, data
+            print("OrderBookTest ", data) # OrderBookTest自己的处理逻辑
+            return RET_OK, data
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    
-    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.BROKER])[0]
-    # 先订阅k线类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
-    if ret_sub == RET_OK:  # 订阅成功
-        print('subscription successful')
-    else:
-        print('subscription failed')
+    handler = OrderBookTest()
+    quote_ctx.set_handler(handler)  # 设置实时摆盘回调
+    quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK])  # 订阅买卖摆盘类型，OpenD开始持续收到服务器的推送
+    time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
  :Return:
 
  .. code:: python
 
-    subscription successful
+    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-30 15:56:00.96', 'svr_recv_time_ask': '', 'Bid': [(376.0, 19200, 19), (375.8, 11700, 9), (375.6, 26100, 18), (375.4, 19000, 11), (375.2, 34300, 21), (375.0, 37500, 49), (374.8, 10900, 9), (374.6, 13800, 9), (374.4, 2700, 5), (374.2, 2500, 14)], 'Ask': [(376.2, 8400, 10), (376.4, 9100, 11), (376.6, 20000, 22), (376.8, 29400, 14), (377.0, 16800, 14), (377.2, 6500, 3), (377.4, 10400, 8), (377.6, 9600, 7), (377.8, 1900, 8), (378.0, 31000, 44)]}
 
 .. note::
     
@@ -1078,9 +1078,32 @@ unsubscribe
  .. code:: python
 
     from futu import *
+    import time
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE]))
-    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽 
+    
+    print('current subscription status :', quote_ctx.query_subscription())  # 查询初始订阅状态
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE, SubType.TICKER], subscribe_push=False)
+    # 先订阅了QUOTE和TICKER两个类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:   # 订阅成功
+        print('subscribe successfully！current subscription status :', quote_ctx.query_subscription())  # 订阅成功后查询订阅状态
+        time.sleep(60)  # 订阅之后至少1分钟才能取消订阅
+        ret_unsub, err_message_unsub = quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE])
+        if ret_unsub == RET_OK:
+            print('unsubscribe successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
+        else:
+            print('unsubscription failed', err_message_unsub)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Return:
+
+ .. code:: python
+
+    current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
+    subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
+    2020-03-30 17:42:55,350 [network_manager.py] work:366: Close: conn_id=1
+    unsubscribe successfully！current subscription status: (0, {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'TICKER': ['HK.00700']}})
   
 .. note::
 
@@ -1275,29 +1298,29 @@ position_change         float          日增仓，期货特有字段
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     
-    ret_sub = quote_ctx.subscribe(['US.AAPL210115C185000'], [SubType.QUOTE])[0]
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE], subscribe_push=False)
     # 先订阅k线类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
     if ret_sub == RET_OK:  # 订阅成功
-        ret, data = quote_ctx.get_stock_quote(['US.AAPL210115C185000'])  # 获取订阅股票报价的实时数据
+        ret, data = quote_ctx.get_stock_quote(['HK.00700'])  # 获取订阅股票报价的实时数据
         if ret == RET_OK:
             print(data)
-            print(data['code'])   # 取第一条的股票代码
+            print(data['code'][0])   # 取第一条的股票代码
             print(data['code'].values.tolist())   # 转为list
         else:
             print('error:', data)
     else:
-        print('subscription failed')
+        print('subscription failed', err_message)
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
  :Return:
 
  .. code:: python
 
-    code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price  volume  turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status  strike_price  contract_size  open_interest  implied_volatility  premium  delta  gamma   vega  theta    rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
-    0  US.AAPL210115C185000  2020-03-26  16:00:00        80.0       75.24        80.0      75.24             75.75      10   77620.0            0.0      6.284       False          N/A          0.01         N/A     NORMAL         185.0            100           3257              38.283    2.538  0.873  0.002  0.469  -0.03  1.178               N/A                  N/A                    N/A                  N/A              N/A                 N/A               N/A      N/A             N/A       N/A            N/A           N/A        N/A          N/A            N/A             N/A           N/A         N/A              N/A             N/A          N/A            N/A              N/A               N/A             N/A
-    US.AAPL210115C185000
-    ['US.AAPL210115C185000']
-        
+    code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
+    0  HK.00700  2020-03-30  15:49:19       376.8       371.8       380.0      371.6             382.4  18829170  7.055425e+09          0.197      2.197       False   2004-06-16           0.2         N/A     NORMAL          N/A           N/A           N/A                N/A     N/A   N/A   N/A  N/A   N/A  N/A               N/A                  N/A                    N/A                  N/A              N/A                 N/A               N/A      N/A             N/A       N/A            N/A           N/A        N/A          N/A            N/A             N/A           N/A         N/A              N/A             N/A          N/A            N/A              N/A               N/A             N/A
+    HK.00700
+    ['HK.00700']
+    
 get_rt_ticker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1333,8 +1356,8 @@ get_rt_ticker
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     
-    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.TICKER])[0]
-    # 先订阅k线类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.TICKER], subscribe_push=False)
+    # 先订阅逐笔类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
     if ret_sub == RET_OK:  # 订阅成功
         ret, data = quote_ctx.get_rt_ticker('HK.00700', 2)  # 获取港股00700最近2个逐笔
         if ret == RET_OK:
@@ -1344,18 +1367,18 @@ get_rt_ticker
         else:
             print('error:', data)
     else:
-        print('subscription failed')
+        print('subscription failed', err_message)
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
  :Return:
 
  .. code:: python
 
-    code                 time  price  volume  turnover ticker_direction             sequence        type
-    0  HK.00700  2020-03-27 11:33:15  384.0     800  307200.0             SELL  6808725733528051769  AUTO_MATCH
-    1  HK.00700  2020-03-27 11:33:15  384.0     200   76800.0             SELL  6808725733528051770  AUTO_MATCH
-    307200.0
-    [307200.0, 76800.0]
+    code                 time  price   volume     turnover ticker_direction             sequence     type
+    0  HK.00700  2020-03-30 16:04:41  372.4       60      22344.0          NEUTRAL  6809908936888567318  ODD_LOT
+    1  HK.00700  2020-03-30 16:08:17  376.6  2198400  827917440.0          NEUTRAL  6809909864601503255  AUCTION
+    22344.0
+    [22344.0, 827917440.0]
 	
 .. note::
 
@@ -1402,7 +1425,7 @@ get_cur_kline
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     
-    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.K_DAY])[0]
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.K_DAY], subscribe_push=False)
     # 先订阅k线类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
     if ret_sub == RET_OK:  # 订阅成功
         ret, data = quote_ctx.get_cur_kline('HK.00700', 2, SubType.K_DAY, AuType.QFQ)  # 获取港股00700最近2个K线数据
@@ -1413,18 +1436,19 @@ get_cur_kline
         else:
             print('error:', data)
     else:
-        print('subscription failed')
+        print('subscription failed', err_message)
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+
 	
  :Return:
 
  .. code:: python
 
     code             time_key   open  close   high    low    volume      turnover  pe_ratio  turnover_rate  last_close
-    0  HK.00700  2020-03-26 00:00:00  386.0  381.8  386.0  376.0  29318892  1.119300e+10    35.410        0.00307       380.0
-    1  HK.00700  2020-03-27 00:00:00  390.0  383.6  390.0  381.8  14109717  5.439835e+09    35.577        0.00148       381.8
-    0.00307
-    [0.00307, 0.00148]
+    0  HK.00700  2020-03-27 00:00:00  390.0  382.4  390.0  381.8  28738698  1.103966e+10    35.466        0.00301       381.8
+    1  HK.00700  2020-03-30 00:00:00  371.8  376.6  380.0  371.6  21838731  8.188543e+09    34.928        0.00229       382.4
+    0.00301
+    [0.00301, 0.00229]
 
 .. note::
 
@@ -2730,22 +2754,42 @@ set_price_reminder
  .. code:: python
 
     from futu import *
+    class PriceReminderTest(PriceReminderHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("PriceReminderTest: error, msg: %s" % content)
+                return RET_ERROR, content
+            print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
+            return RET_OK, content
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    
-    ret, data = quote_ctx.set_price_reminder(code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
-                                 reminder_type=PriceReminderType.PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS,
-                                 value=400.0, note='')
+    handler = PriceReminderTest()
+    quote_ctx.set_handler(handler)
+    ret, data = quote_ctx.get_market_snapshot(['HK.HSImain'])
     if ret == RET_OK:
-        print('key:', data) # data为key
+        bid_price = data['bid_price'][0]  # 获取实时买一价
+        ask_price = data['ask_price'][0]  # 获取实时卖一价
+    # 设置当卖一价低于（ask_price-1）时提醒
+    ret_ask, ask_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.ASK_PRICE_DOWN, reminder_freq=PriceReminderFreq.ALWAYS, value=(ask_price-1), note='123')
+    if ret_ask == RET_OK:
+        print('卖一价低于（ask_price-1）时提醒设置成功：', ask_data)
     else:
-        print('error:', data)
-    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+        print('error:', ask_data)
+    # 设置当买一价高于（bid_price+1）时提醒
+    ret_bid, bid_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.BID_PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS, value=(bid_price+1), note='456')
+    if ret_bid == RET_OK:
+        print('买一价高于（bid_price+1）时提醒设置成功：', bid_data)
+    else:
+        print('error:', bid_data)
+    time.sleep(15)
+    quote_ctx.close()
 	
  :Return:
 
  .. code:: python
 
-    key: 158527664087928601
+    卖一价低于（ask_price-1）时提醒设置成功： 158555658455564801
+    买一价高于（bid_price+1）时提醒设置成功： 158555658456686801
 
 .. note::
 
@@ -2869,7 +2913,7 @@ get_user_security_group
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
-    quote_ctx.close()
+    quote_ctx.close()	# 结束后记得关闭当条连接，防止连接条数用尽
 
 .. note::
 
@@ -3162,29 +3206,26 @@ RTDataHandlerBase - 实时分时推送回调
 	from futu import *
 	
 	class RTDataTest(RTDataHandlerBase):
-		def on_recv_rsp(self, rsp_str):
-			ret_code, data = super(RTDataTest,self).on_recv_rsp(rsp_str)
-			if ret_code != RET_OK:
-				print("RTDataTest: error, msg: %s" % data)
-				return RET_ERROR, data
-
-			print("RTDataTest ", data) # RTDataTest自己的处理逻辑
-
-			return RET_OK, data
-                
+	    def on_recv_rsp(self, rsp_str):
+	        ret_code, data = super(RTDataTest, self).on_recv_rsp(rsp_str)
+	        if ret_code != RET_OK:
+	            print("RTDataTest: error, msg: %s" % data)
+	            return RET_ERROR, data
+	        print("RTDataTest ", data) # RTDataTest自己的处理逻辑
+	        return RET_OK, data
 	quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
 	handler = RTDataTest()
-	quote_ctx.set_handler(handler)
-	quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA])
-	time.sleep(15)  
-	quote_ctx.close()
+	quote_ctx.set_handler(handler)  # 设置实时分时推送回调
+	quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA]) # 订阅分时类型，OpenD开始持续收到服务器的推送
+	time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+	quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
  :Return:
 
  .. code:: python
 
-	RTDataTest         code                 time  is_blank  opened_mins  cur_price  last_close   avg_price    turnover  volume
-	0  HK.00700  2020-03-27 15:17:00     False          917      382.6       381.8  384.543361  10175940.0   26600
+	RTDataTest         code                 time  is_blank  opened_mins  cur_price  last_close   avg_price     turnover   volume
+	0  HK.00700  2020-03-30 16:00:00     False          960      376.6       382.4  374.818939  855764640.0  2272500
 	
 -------------------------------------------
 
