@@ -294,7 +294,7 @@ get_stock_basicinfo
         print('error:', data)
     quote_ctx.close()  # 结束后记得关闭当条连接，防止连接条数用尽
 
- :Return:
+ :Output:
 
  .. code-block:: python
 
@@ -480,7 +480,7 @@ request_history_kline
         print('error:', data)    
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -700,7 +700,7 @@ get_market_snapshot
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -753,7 +753,7 @@ get_rt_data
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA])
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA], subscribe_push=False)
     # 先订阅分时数据类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
     if ret_sub == RET_OK:   # 订阅成功
         ret, data = quote_ctx.get_rt_data('HK.00700')   # 获取一次分时数据
@@ -765,7 +765,7 @@ get_rt_data
         print('subscription failed', err_message)
     quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -820,7 +820,7 @@ get_plate_stock
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
  
@@ -921,7 +921,7 @@ get_plate_list
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -997,7 +997,7 @@ get_broker_queue
         print('subscription failed')
     quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1046,7 +1046,7 @@ subscribe
     time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1096,13 +1096,12 @@ unsubscribe
         print('subscription failed', err_message)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
     current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
     subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
-    2020-03-30 17:42:55,350 [network_manager.py] work:366: Close: conn_id=1
     unsubscribe successfully！current subscription status: (0, {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'TICKER': ['HK.00700']}})
   
 .. note::
@@ -1177,7 +1176,7 @@ query_subscription
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1312,7 +1311,7 @@ position_change         float          日增仓，期货特有字段
         print('subscription failed', err_message)
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1370,7 +1369,7 @@ get_rt_ticker
         print('subscription failed', err_message)
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1440,7 +1439,7 @@ get_cur_kline
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1500,7 +1499,7 @@ get_order_book
         print('subscription failed')
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1611,7 +1610,7 @@ get_referencestock_list
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1680,7 +1679,7 @@ get_owner_plate
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1753,7 +1752,7 @@ time                    str           发布时间（美股的时间默认是美
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1861,7 +1860,7 @@ get_option_chain
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1924,7 +1923,7 @@ get_history_kl_quota
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -1979,7 +1978,7 @@ backward_adj_factorB    float          后复权因子B
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2133,7 +2132,7 @@ inline_price_status            str                界内界外 参见 PriceType_
         print('error: ', ls)
     quote_ctx.close()  # 所有接口结尾加上这条close，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2187,7 +2186,7 @@ get_capital_flow
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2250,7 +2249,7 @@ get_capital_distribution
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2315,7 +2314,7 @@ get_user_security
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2360,7 +2359,7 @@ modify_user_security
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2488,7 +2487,7 @@ return_on_equity_rate                          float          净资产收益率
         print('error: ', ls)
     quote_ctx.close()  # 所有接口结尾加上这条close，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2585,7 +2584,7 @@ apply_end_timestamp                          float          截止认购日期�
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2649,7 +2648,7 @@ get_future_info
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2718,7 +2717,7 @@ request_trading_days
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -2784,12 +2783,14 @@ set_price_reminder
     time.sleep(15)
     quote_ctx.close()
 	
- :Return:
+ :Output:
 
  .. code:: python
 
     卖一价低于（ask_price-1）时提醒设置成功： 158555658455564801
     买一价高于（bid_price+1）时提醒设置成功： 158555658456686801
+	PriceReminderTest  {'code': 'HK.HSImain', 'price': 23474.0, 'change_rate': 1.998, 'market_status': 'OPEN', 'content': '卖一价低于23476.000', 'note': '123'}
+	……
 
 .. note::
 
@@ -2859,7 +2860,7 @@ get_price_reminder
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3015,7 +3016,7 @@ StockQuoteHandlerBase - 实时报价回调
     time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅	
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3064,7 +3065,7 @@ OrderBookHandlerBase - 实时摆盘回调
     time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3114,7 +3115,7 @@ CurKlineHandlerBase - 实时k线推送回调
     time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅		
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3165,7 +3166,7 @@ TickerHandlerBase - 实时逐笔推送回调
 	time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
 	quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3220,7 +3221,7 @@ RTDataHandlerBase - 实时分时推送回调
 	time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
 	quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3271,7 +3272,7 @@ BrokerHandlerBase - 实时经纪推送回调
     time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
@@ -3332,7 +3333,7 @@ PriceReminderHandlerBase - 到价提醒通知回调
     time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
- :Return:
+ :Output:
 
  .. code:: python
 
