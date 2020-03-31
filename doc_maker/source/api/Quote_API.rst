@@ -298,14 +298,14 @@ get_stock_basicinfo
 
  .. code-block:: python
 
-    code             name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting index_option_type  main_contract last_trade_time
+           code             name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting index_option_type  main_contract last_trade_time
     0      HK.00001               长和       500      STOCK              N/A                                              N/A        N/A   2015-03-18   4440996184065      False               N/A          False  
     ...         ...              ...       ...        ...              ...         ...         ...         ...          ...        ...          ...             ...        ...               ...            ...             ...
     2592   HK.84602  ICBC CNHPREF1-R     10000      STOCK              N/A                                              N/A        N/A   2014-12-11  70497593281146      False               N/A          False                
     
     [2593 rows x 16 columns]
     ******************************************
-    code            name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting index_option_type  main_contract last_trade_time
+           code            name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting index_option_type  main_contract last_trade_time
     0  HK.00647  JOYCE BOUTIQUE      2000      STOCK              N/A                                              N/A        N/A   2019-08-27  32607391711879      False               N/A          False                
     1  HK.00700            腾讯控股       100      STOCK              N/A                                              N/A        N/A   2004-06-16  54047868453564      False               N/A          False                
     JOYCE BOUTIQUE
@@ -484,7 +484,7 @@ request_history_kline
 
  .. code:: python
 
-    code             time_key   open  close   high    low  pe_ratio  turnover_rate    volume      turnover  change_rate  last_close
+       code             time_key   open  close   high    low  pe_ratio  turnover_rate    volume      turnover  change_rate  last_close
     0  HK.00700  2019-06-20 00:00:00  349.0  354.0  354.0  348.0    37.247        0.00202  19226151  6.770775e+09     1.958525       347.2
     1  HK.00700  2019-06-21 00:00:00  357.4  354.4  357.4  349.0    37.289        0.00211  20111025  7.094849e+09     0.112994       354.0
     HK.00700
@@ -704,11 +704,11 @@ get_market_snapshot
 
  .. code:: python
 
-    code          update_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  suspension listing_date  lot_size  price_spread  stock_owner  ask_price  bid_price  ask_vol  bid_vol  enable_margin  mortgage_ratio  long_margin_initial_ratio  enable_short_sell  short_sell_rate  short_available_volume  short_margin_initial_ratio  amplitude  avg_price  bid_ask_ratio  volume_ratio  highest52weeks_price  lowest52weeks_price  highest_history_price  lowest_history_price  after_volume  after_turnover sec_status  equity_valid  issued_shares  total_market_val     net_asset    net_profit  earning_per_share  outstanding_shares  circular_market_val  net_asset_per_share  ey_ratio  pe_ratio  pb_ratio  pe_ttm_ratio  ...  wrt_upper_strike_price  wrt_lowe_strike_price  wrt_inline_price_status  option_valid  option_type  strike_time  option_strike_price  option_contract_size  option_open_interest  option_implied_volatility  option_premium  option_delta  option_gamma  option_vega  option_theta  option_rho  option_net_open_interest  option_expiry_date_distance  option_contract_nominal_value  option_owner_lot_multiplier  option_area_type  \
+       code          update_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  suspension listing_date  lot_size  price_spread  stock_owner  ask_price  bid_price  ask_vol  bid_vol  enable_margin  mortgage_ratio  long_margin_initial_ratio  enable_short_sell  short_sell_rate  short_available_volume  short_margin_initial_ratio  amplitude  avg_price  bid_ask_ratio  volume_ratio  highest52weeks_price  lowest52weeks_price  highest_history_price  lowest_history_price  after_volume  after_turnover sec_status  equity_valid  issued_shares  total_market_val     net_asset    net_profit  earning_per_share  outstanding_shares  circular_market_val  net_asset_per_share  ey_ratio  pe_ratio  pb_ratio  pe_ttm_ratio  ...  wrt_upper_strike_price  wrt_lowe_strike_price  wrt_inline_price_status  option_valid  option_type  strike_time  option_strike_price  option_contract_size  option_open_interest  option_implied_volatility  option_premium  option_delta  option_gamma  option_vega  option_theta  option_rho  option_net_open_interest  option_expiry_date_distance  option_contract_nominal_value  option_owner_lot_multiplier  option_area_type  \
     0  SH.600000  2020-03-26 15:00:00       10.23        10.1       10.37      10.08             10.15  30921803  3.159604e+08          0.110       False   1999-11-10       100          0.01          NaN      10.23      10.22    39048    12300           True             0.0                       60.0              False              NaN                     NaN                         NaN      2.857     10.218         -1.327         0.823                 13.33                 9.82                  13.57             -1.408106             0             0.0     NORMAL          True    29352080397      3.002718e+11  4.801707e+11  5.591571e+10              1.905         28103763899         2.875015e+11               16.359     0.127      5.37     0.625         4.918  ...                     NaN                    NaN                      NaN         False          NaN          NaN                  NaN                   NaN                   NaN                        NaN             NaN           NaN           NaN          NaN           NaN         NaN                       NaN                          NaN                            NaN                          NaN               NaN   
     1   HK.00700  2020-03-26 16:08:06      381.80       386.0      386.00     376.00            380.00  29318892  1.119300e+10          0.307       False   2004-06-16       100          0.20          NaN     382.00     381.80   383400     5900           True            70.0                       44.0              False              NaN                     NaN                         NaN      2.632    381.767         30.192         0.655                420.00               312.20                 474.72             -3.581000             0             0.0     NORMAL          True     9552936193      3.647311e+12  4.776564e+11  1.029998e+11             10.782          9552936193         3.647311e+12               50.001     0.227     35.41     7.635        33.606  ...                     NaN                    NaN                      NaN         False          NaN          NaN                  NaN                   NaN                   NaN                        NaN             NaN           NaN           NaN          NaN           NaN         NaN                       NaN                          NaN                            NaN                          NaN               NaN   
     
-    option_contract_multiplier  index_valid  index_raise_count  index_fall_count  index_equal_count  plate_valid  plate_raise_count  plate_fall_count  plate_equal_count  future_valid  future_last_settle_price  future_position  future_position_change  future_main_contract  future_last_trade_time  pre_price  pre_high_price  pre_low_price  pre_volume  pre_turnover  pre_change_val  pre_change_rate  pre_amplitude  after_price  after_high_price  after_low_price  after_change_val  after_change_rate  after_amplitude  
+       option_contract_multiplier  index_valid  index_raise_count  index_fall_count  index_equal_count  plate_valid  plate_raise_count  plate_fall_count  plate_equal_count  future_valid  future_last_settle_price  future_position  future_position_change  future_main_contract  future_last_trade_time  pre_price  pre_high_price  pre_low_price  pre_volume  pre_turnover  pre_change_val  pre_change_rate  pre_amplitude  after_price  after_high_price  after_low_price  after_change_val  after_change_rate  after_amplitude  
     0                         NaN        False                NaN               NaN                NaN        False                NaN               NaN                NaN         False                       NaN              NaN                     NaN                   NaN                     NaN        N/A             N/A            N/A         N/A           N/A             N/A              N/A            N/A          N/A               N/A              N/A               N/A                N/A              N/A  
     1                         NaN        False                NaN               NaN                NaN        False                NaN               NaN                NaN         False                       NaN              NaN                     NaN                   NaN                     NaN        N/A             N/A            N/A         N/A           N/A             N/A              N/A            N/A          N/A               N/A              N/A               N/A                N/A              N/A  
     
@@ -769,7 +769,7 @@ get_rt_data
 
  .. code:: python
 
-    code                 time  is_blank  opened_mins  cur_price  last_close   avg_price  volume     turnover
+        code                 time  is_blank  opened_mins  cur_price  last_close   avg_price  volume     turnover
     0   HK.00700  2020-03-30 09:30:00     False          570      371.8       382.4  371.800000  923800  343468840.0
     ..       ...                  ...       ...          ...        ...         ...         ...     ...          ...
     32  HK.00700  2020-03-30 10:02:00     False          602      372.8       382.4  372.979075    4100    1527820.0
@@ -824,7 +824,7 @@ get_plate_stock
 
  .. code:: python
  
-    code  lot_size stock_name  stock_owner  stock_child_type stock_type   list_time        stock_id  main_contract last_trade_time
+        code  lot_size stock_name  stock_owner  stock_child_type stock_type   list_time        stock_id  main_contract last_trade_time
     0   HK.00462      4000       天然乳品          NaN               NaN      STOCK  2005-06-10  55589761712590          False                
     ..       ...       ...        ...          ...               ...        ...         ...             ...            ...             ...
     10  HK.06863      1000       辉山乳业          NaN               NaN      STOCK  2013-09-27  68607807593167          False                
@@ -925,7 +925,7 @@ get_plate_list
 
  .. code:: python
 
-    code plate_name plate_id
+        code plate_name plate_id
     0   HK.BK1000      做空集合股   BK1000
     ..        ...        ...      ...
     77  HK.BK1999       殡葬概念   BK1999
@@ -1001,7 +1001,7 @@ get_broker_queue
 
  .. code:: python
 
-    code  bid_broker_id bid_broker_name  bid_broker_pos
+        code  bid_broker_id bid_broker_name  bid_broker_pos
     0   HK.00700           2846     麦格理资本股份有限公司               1
     ..       ...            ...             ...             ...
     37  HK.00700           1450            万邦亚太               2
@@ -1337,7 +1337,7 @@ position_change         float          日增仓，期货特有字段
 
  .. code:: python
 
-    code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
+       code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
     0  HK.00700  2020-03-30  15:49:19       376.8       371.8       380.0      371.6             382.4  18829170  7.055425e+09          0.197      2.197       False   2004-06-16           0.2         N/A     NORMAL          N/A           N/A           N/A                N/A     N/A   N/A   N/A  N/A   N/A  N/A               N/A                  N/A                    N/A                  N/A              N/A                 N/A               N/A      N/A             N/A       N/A            N/A           N/A        N/A          N/A            N/A             N/A           N/A         N/A              N/A             N/A          N/A            N/A              N/A               N/A             N/A
     HK.00700
     ['HK.00700']
@@ -1395,7 +1395,7 @@ get_rt_ticker
 
  .. code:: python
 
-    code                 time  price   volume     turnover ticker_direction             sequence     type
+       code                 time  price   volume     turnover ticker_direction             sequence     type
     0  HK.00700  2020-03-30 16:04:41  372.4       60      22344.0          NEUTRAL  6809908936888567318  ODD_LOT
     1  HK.00700  2020-03-30 16:08:17  376.6  2198400  827917440.0          NEUTRAL  6809909864601503255  AUCTION
     22344.0
@@ -1465,7 +1465,7 @@ get_cur_kline
 
  .. code:: python
 
-    code             time_key   open  close   high    low    volume      turnover  pe_ratio  turnover_rate  last_close
+       code             time_key   open  close   high    low    volume      turnover  pe_ratio  turnover_rate  last_close
     0  HK.00700  2020-03-27 00:00:00  390.0  382.4  390.0  381.8  28738698  1.103966e+10    35.466        0.00301       381.8
     1  HK.00700  2020-03-30 00:00:00  371.8  376.6  380.0  371.6  21838731  8.188543e+09    34.928        0.00229       382.4
     0.00301
@@ -1636,7 +1636,7 @@ get_referencestock_list
 
  .. code:: python
 
-    code  lot_size stock_type stock_name   list_time  wrt_valid wrt_type  wrt_code  future_valid  future_main_contract  future_last_trade_time
+          code  lot_size stock_type stock_name   list_time  wrt_valid wrt_type  wrt_code  future_valid  future_main_contract  future_last_trade_time
     0     HK.47096      1000    WARRANT   腾讯摩通零三界A  2019-07-25       True   INLINE  HK.00700         False                   NaN                     NaN
     ...        ...       ...        ...        ...         ...        ...      ...       ...           ...                   ...                     ...
     1396  HK.58533     10000    WARRANT   腾讯高盛零九熊A  2020-04-01       True     BEAR  HK.00700         False                   NaN                     NaN
@@ -1647,7 +1647,7 @@ get_referencestock_list
     ...        ...       ...        ...        ...         ...        ...      ...       ... 
      'HK.58474', 'HK.58533']
     ******************************************
-              code  lot_size stock_type         stock_name list_time  wrt_valid  wrt_type  wrt_code  future_valid  future_main_contract future_last_trade_time
+          code  lot_size stock_type         stock_name list_time  wrt_valid  wrt_type  wrt_code  future_valid  future_main_contract future_last_trade_time
     0   HK.A50main      5000     FUTURE  安硕富时 A50 ETF 期货主连                False       NaN       NaN          True                  True                       
     ..         ...       ...        ...                ...       ...        ...       ...       ...           ...                   ...                    ...
     5   HK.A502009      5000     FUTURE  安硕富时 A50 ETF 2009                False       NaN       NaN          True                 False             2020-09-29
@@ -1705,7 +1705,7 @@ get_owner_plate
 
  .. code:: python
 
-    code          plate_code plate_name plate_type
+        code          plate_code plate_name plate_type
     0   HK.00001  HK.HSI Constituent      恒指成份股      OTHER
     ..       ...                 ...        ...        ...
     10  HK.00001           HK.BK1993      香港本地股    CONCEPT
@@ -1778,7 +1778,7 @@ time                    str           发布时间（美股的时间默认是美
 
  .. code:: python
 
-    holder_name  holding_qty  holding_ratio  change_qty  change_ratio                 time
+        holder_name  holding_qty  holding_ratio  change_qty  change_ratio                 time
     0                            The Vanguard Group, Inc.  331132509.0         7.4525  -3981157.0         -1.19  2019-09-30 00:00:00
     ..                                                ...          ...            ...         ...           ...                  ...
     92  Los Angeles Capital Management And Equity Rese...    4007663.0         0.0902    -57784.0         -1.42  2019-09-30 00:00:00
@@ -1886,7 +1886,7 @@ get_option_chain
 
  .. code:: python
 
-    code                name  lot_size stock_type option_type stock_owner strike_time  strike_price  suspension  stock_id index_option_type
+        code                name  lot_size stock_type option_type stock_owner strike_time  strike_price  suspension  stock_id index_option_type
     0   HK.TCH200330C250000  腾讯 200330 250.00 购       100       DRVT        CALL    HK.00700  2020-03-30         250.0       False  80049079               N/A
     ..                  ...                 ...       ...        ...         ...         ...         ...           ...         ...       ...               ...
     18  HK.TCH200330C380000  腾讯 200330 380.00 购       100       DRVT        CALL    HK.00700  2020-03-30         380.0       False  80031978               N/A
@@ -2004,7 +2004,7 @@ backward_adj_factorB    float          后复权因子B
 
  .. code:: python
 
-    ex_div_date  split_ratio  per_cash_div  per_share_div_ratio  per_share_trans_ratio  allotment_ratio  allotment_price  stk_spo_ratio  stk_spo_price  forward_adj_factorA  forward_adj_factorB  backward_adj_factorA  backward_adj_factorB
+        ex_div_date  split_ratio  per_cash_div  per_share_div_ratio  per_share_trans_ratio  allotment_ratio  allotment_price  stk_spo_ratio  stk_spo_price  forward_adj_factorA  forward_adj_factorB  backward_adj_factorA  backward_adj_factorB
     0   2005-04-19          NaN          0.07                  NaN                    NaN              NaN              NaN            NaN            NaN                  1.0                -0.07                   1.0                  0.07
     ..         ...          ...           ...                  ...                    ...              ...              ...            ...            ...                  ...                  ...                   ...                   ...
     15  2019-05-17          NaN          1.00                  NaN                    NaN              NaN              NaN            NaN            NaN                  1.0                -1.00                   1.0                  1.00
@@ -2159,7 +2159,7 @@ inline_price_status            str                界内界外 参见 PriceType_
  .. code:: python
 
     2 2 
-    stock        name stock_owner  type issuer maturity_time   list_time last_trade_time  recovery_price  conversion_ratio  lot_size  strike_price  last_close_price  cur_price  price_change_val  change_rate  status  bid_price  ask_price   bid_vol  ask_vol    volume   turnover   score  premium  break_even_point  leverage    ipop  price_recovery_ratio  conversion_price  street_rate  street_vol  amplitude  issue_size  high_price  low_price  implied_volatility  delta  effective_leverage  list_timestamp  last_trade_timestamp  maturity_timestamp  upper_strike_price  lower_strike_price  inline_price_status
+       stock        name stock_owner  type issuer maturity_time   list_time last_trade_time  recovery_price  conversion_ratio  lot_size  strike_price  last_close_price  cur_price  price_change_val  change_rate  status  bid_price  ask_price   bid_vol  ask_vol    volume   turnover   score  premium  break_even_point  leverage    ipop  price_recovery_ratio  conversion_price  street_rate  street_vol  amplitude  issue_size  high_price  low_price  implied_volatility  delta  effective_leverage  list_timestamp  last_trade_timestamp  maturity_timestamp  upper_strike_price  lower_strike_price  inline_price_status
     0  HK.19692  腾讯法巴零八购B.C    HK.00700  CALL     BP    2020-08-04  2020-01-15      2020-07-29             NaN             100.0     10000        430.50             0.234      0.201            -0.033   -14.102564  NORMAL      0.198      0.201   5000000  5000000   2360000   496360.0  77.402   18.019            450.60    18.995 -11.312                   NaN              20.1         0.33      264000      2.137    80000000       0.214      0.209              41.154  0.358               6.800    1.579018e+09          1.595952e+09        1.596470e+09                 NaN                 NaN                  NaN
     1  HK.18854  腾讯瑞信零七购A.C    HK.00700  CALL     CS    2020-07-09  2020-01-08      2020-07-03             NaN             100.0     10000        401.28             0.212      0.200            -0.012    -5.660377  NORMAL      0.199      0.200  10000000   100000  12200000  2581320.0  72.970   10.340            421.28    19.090  -4.854                   NaN              20.0         4.98    12450000     17.453   250000000       0.220      0.183              34.305  0.429               8.189    1.578413e+09          1.593706e+09        1.594224e+09                 NaN                 NaN                  NaN
     HK.19692
@@ -2212,7 +2212,7 @@ get_capital_flow
 
  .. code:: python
 
-    last_valid_time       in_flow capital_flow_item_time
+         last_valid_time       in_flow capital_flow_item_time
     0    2020-03-26 16:00:00 -3.162472e+07    2020-03-26 09:30:00
     ..                   ...           ...                    ...
     330  2020-03-26 16:00:00 -1.433742e+09    2020-03-26 16:00:00
@@ -2275,7 +2275,7 @@ get_capital_distribution
 
  .. code:: python
 
-    capital_in_big  capital_in_mid  capital_in_small  capital_out_big  capital_out_mid  capital_out_small          update_time
+          capital_in_big  capital_in_mid  capital_in_small  capital_out_big  capital_out_mid  capital_out_small          update_time
     0     227797260.0     438703020.0       114061560.0      209093300.0      578002980.0        141638900.0  2020-03-27 09:47:36
     227797260.0
     [227797260.0]
@@ -2340,9 +2340,9 @@ get_user_security
 
  .. code:: python
 
-    code    name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting  main_contract last_trade_time
+       code    name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting  main_contract last_trade_time
     0  HK.HSImain  恒指期货主连        50     FUTURE              N/A                                              N/A        N/A                     71000662      False           True                
-    1    HK.00700    腾讯控股       100      STOCK              N/A                                              N/A        N/A   2004-06-16  54047868453564      False          False                
+    1  HK.00700    腾讯控股       100      STOCK              N/A                                              N/A        N/A   2004-06-16  54047868453564      False          False                
     HK.HSImain
     ['HK.HSImain', 'HK.00700']
 
@@ -2610,7 +2610,7 @@ apply_end_timestamp                          float          截止认购日期�
 
  .. code:: python
 
-    code      name   list_time  list_timestamp apply_code issue_size online_issue_size apply_upper_limit apply_limit_market_value is_estimate_ipo_price ipo_price industry_pe_rate is_estimate_winning_ratio winning_ratio issue_pe_rate apply_time apply_timestamp winning_time winning_timestamp is_has_won winning_num_data  ipo_price_min  ipo_price_max  list_price  lot_size  entrance_price  is_subscribe_status apply_end_time  apply_end_timestamp
+       code      name   list_time  list_timestamp apply_code issue_size online_issue_size apply_upper_limit apply_limit_market_value is_estimate_ipo_price ipo_price industry_pe_rate is_estimate_winning_ratio winning_ratio issue_pe_rate apply_time apply_timestamp winning_time winning_timestamp is_has_won winning_num_data  ipo_price_min  ipo_price_max  list_price  lot_size  entrance_price  is_subscribe_status apply_end_time  apply_end_timestamp
     0  HK.01957  MBV INTL  2020-03-30    1.585498e+09        N/A        N/A               N/A               N/A                      N/A                   N/A       N/A              N/A                       N/A           N/A           N/A        N/A             N/A          N/A               N/A        N/A              N/A            0.8           0.88         0.0      2500         2222.17                False     2020-03-19         1.584580e+09
     HK.01957
     ['HK.01957']
@@ -2674,7 +2674,7 @@ get_future_info
 
  .. code:: python
 
-    code      name       owner exchange  type     size size_unit price_currency price_unit  min_change min_change_unit                        trade_time time_zone last_trade_time                                exchange_format_url
+       code      name       owner exchange  type     size size_unit price_currency price_unit  min_change min_change_unit                        trade_time time_zone last_trade_time                                exchange_format_url
     0  HK.MPImain    內房期货主连  恒生中国内地地产指数      港交所  股指期货     50.0    指数点×港元             港元        指数点        0.50             指数点  (09:15 - 12:00), (13:00 - 16:30)       CCT                  https://sc.hkex.com.hk/TuniS/www.hkex.com.hk/P...
     1  HK.HAImain  海通证券期货主连    HK.06837      港交所  股票期货  10000.0         股             港元      每股/港元        0.01              港元  (09:30 - 12:00), (13:00 - 16:00)       CCT                  https://sc.hkex.com.hk/TuniS/www.hkex.com.hk/P...
     HK.MPImain
@@ -2811,8 +2811,8 @@ set_price_reminder
 
     卖一价低于（ask_price-1）时提醒设置成功： 158555658455564801
     买一价高于（bid_price+1）时提醒设置成功： 158555658456686801
-	PriceReminderTest  {'code': 'HK.HSImain', 'price': 23474.0, 'change_rate': 1.998, 'market_status': 'OPEN', 'content': '卖一价低于23476.000', 'note': '123'}
-	……
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 23474.0, 'change_rate': 1.998, 'market_status': 'OPEN', 'content': '卖一价低于23476.000', 'note': '123'}
+    ……
 
 .. note::
 
@@ -2886,7 +2886,7 @@ get_price_reminder
 
  .. code:: python
 
-    code                 key reminder_type reminder_freq  value  enable      note
+        code                 key reminder_type reminder_freq  value  enable      note
     0   HK.00700  158441340870842901      PRICE_UP        ALWAYS  382.4   False  10:50:04
     ..       ...                 ...           ...           ...    ...     ...       ...
     5   HK.00700  158520771470991601      PRICE_UP        ALWAYS  400.0    True          
@@ -2895,8 +2895,8 @@ get_price_reminder
     HK.00700
     ['HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.00700']
     ******************************************
-             code                 key reminder_type reminder_freq    value  enable      note
-    0    HK.00700  158441340870842901      PRICE_UP        ALWAYS    382.4   False  10:50:04
+        code                 key reminder_type reminder_freq    value  enable      note
+    0   HK.00700  158441340870842901      PRICE_UP        ALWAYS    382.4   False  10:50:04
     ..        ...                 ...           ...           ...      ...     ...       ...
     11  HK.999010  158209954178788901      PRICE_UP          ONCE  27580.0   False          
     
@@ -3042,7 +3042,7 @@ StockQuoteHandlerBase - 实时报价回调
 
  .. code:: python
 
-    StockQuoteTest         code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
+       StockQuoteTest         code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
     0  HK.00700  2020-03-27  14:43:35       384.0       390.0       390.0      381.8             381.8  21573862  8.298364e+09          0.226      2.148       False   2004-06-16           0.2         N/A     NORMAL          N/A           N/A           N/A                N/A     N/A   N/A   N/A  N/A   N/A  N/A               N/A                  N/A                    N/A                  N/A              N/A                 N/A               N/A      N/A             N/A       N/A            N/A           N/A        N/A          N/A            N/A             N/A           N/A         N/A              N/A             N/A          N/A            N/A              N/A               N/A             N/A
                 
 -------------------------------------------
@@ -3141,7 +3141,7 @@ CurKlineHandlerBase - 实时k线推送回调
 
  .. code:: python
 
-    CurKlineTest         code             time_key   open  close   high    low  volume   turnover k_type  last_close
+       CurKlineTest         code             time_key   open  close   high    low  volume   turnover k_type  last_close
     0  HK.00700  2020-03-27 15:12:00  382.8  382.6  382.8  382.6   15800  6046940.0   K_1M         0.0
 
 -------------------------------------------
@@ -3192,7 +3192,7 @@ TickerHandlerBase - 实时逐笔推送回调
 
  .. code:: python
 
-	TickerTest         code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+	   TickerTest         code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
 	0  HK.00700  2020-03-27 15:15:17  382.4     100   38240.0             SELL  6808782951082376714  AUTO_MATCH          CACHE
 	
 .. note::
@@ -3247,7 +3247,7 @@ RTDataHandlerBase - 实时分时推送回调
 
  .. code:: python
 
-	RTDataTest         code                 time  is_blank  opened_mins  cur_price  last_close   avg_price     turnover   volume
+	   RTDataTest         code                 time  is_blank  opened_mins  cur_price  last_close   avg_price     turnover   volume
 	0  HK.00700  2020-03-30 16:00:00     False          960      376.6       382.4  374.818939  855764640.0  2272500
 	
 -------------------------------------------
@@ -3298,7 +3298,7 @@ BrokerHandlerBase - 实时经纪推送回调
 
  .. code:: python
 
-    BrokerTest: stock: HK.00700 data: [        code  bid_broker_id bid_broker_name  bid_broker_pos
+        BrokerTest: stock: HK.00700 data: [        code  bid_broker_id bid_broker_name  bid_broker_pos
     0   HK.00700           3443    高盛(亚洲)证券有限公司               1
     ..       ...            ...             ...             ...
     38  HK.00700           4481       巴克莱亚洲有限公司               2
