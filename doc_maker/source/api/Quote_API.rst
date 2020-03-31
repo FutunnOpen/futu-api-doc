@@ -1089,9 +1089,9 @@ unsubscribe
         time.sleep(60)  # 订阅之后至少1分钟才能取消订阅
         ret_unsub, err_message_unsub = quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE])
         if ret_unsub == RET_OK:
-            print('unsubscribe successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
+            print('unsubscribe all successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
         else:
-            print('unsubscription failed', err_message_unsub)
+            print('Failed to cancel all subscriptions！', err_message_unsub)
     else:
         print('subscription failed', err_message)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
@@ -1102,7 +1102,7 @@ unsubscribe
 
     current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
     subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
-    unsubscribe successfully！current subscription status: (0, {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'TICKER': ['HK.00700']}})
+    unsubscribe all successfully！current subscription status: (0, {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'TICKER': ['HK.00700']}})
   
 .. note::
 
