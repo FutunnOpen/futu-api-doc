@@ -2868,8 +2868,7 @@ get_price_reminder
     ret, data = quote_ctx.get_price_reminder(code='HK.00700')
     if ret == RET_OK:
         print(data)
-        print(data['code'][0])    # 取第一条的股票代码
-        print(data['code'].values.tolist())   # 转为list
+        print(data['key'].values.tolist())   # 转为list
     else:
         print('error:', data)
     print('******************************************')
@@ -2886,23 +2885,21 @@ get_price_reminder
 
  .. code:: python
 
-        code                 key reminder_type reminder_freq  value  enable      note
-    0   HK.00700  158441340870842901      PRICE_UP        ALWAYS  382.4   False  10:50:04
-    ..       ...                 ...           ...           ...    ...     ...       ...
-    5   HK.00700  158520771470991601      PRICE_UP        ALWAYS  400.0    True          
+        code                key       reminder_type  reminder_freq  value  enable      note
+    0   HK.00700  158441340870842901      PRICE_UP        ALWAYS    382.4   False   10:50:04
+    1   HK.00700  158573111208632201    PRICE_DOWN        ALWAYS    370.0    True         
     
     [6 rows x 7 columns]
-    HK.00700
-    ['HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.00700']
+    [158441340870842901, 158573111208632201]
     ******************************************
-        code                 key reminder_type reminder_freq    value  enable      note
-    0   HK.00700  158441340870842901      PRICE_UP        ALWAYS    382.4   False  10:50:04
-    ..        ...                 ...           ...           ...      ...     ...       ...
-    11  HK.999010  158209954178788901      PRICE_UP          ONCE  27580.0   False          
+        code              key          reminder_type  reminder_freq   value  enable      note
+    0   HK.00700   158441340870842901      PRICE_UP        ALWAYS    382.4   False    10:50:04
+    1   HK.00700   158573111208632201    PRICE_DOWN        ALWAYS    370.0    True
+    2   HK.HSImain  158573100205367801    PRICE_DOWN        ALWAYS  22900.0    True         
     
     [12 rows x 7 columns]
     HK.00700
-    ['HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.00700', 'HK.01751', 'HK.01751', 'HK.HSImain', 'HK.00772', 'HK.MCHmain', 'HK.999010']
+    ['HK.00700', 'HK.00700', 'HK.HSImain']
 
 .. note::
 
