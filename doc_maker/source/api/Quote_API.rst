@@ -1696,7 +1696,7 @@ get_owner_plate
     if ret == RET_OK:
         print(data)
         print(data['code'][0])    # 取第一条的股票代码
-        print(data['code'].values.tolist())   # 转为list
+        print(data['plate_code'].values.tolist())   # 转为list
     else:
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
@@ -1712,7 +1712,7 @@ get_owner_plate
     
     [11 rows x 4 columns]
     HK.00001
-    ['HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001', 'HK.00001']
+    ['HK.HSI Constituent', 'HK.GangGuTong', 'HK.BK1000', 'HK.BK1061', 'HK.BK1107', 'HK.BK1197', 'HK.BK1249', 'HK.BK1600', 'HK.BK1609', 'HK.BK1922', 'HK.BK1983', 'HK.BK1993']
 
 .. note::
 
@@ -1938,7 +1938,7 @@ get_history_kl_quota
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     
-    ret, data = quote_ctx.get_history_kl_quota()
+    ret, data = quote_ctx.get_history_kl_quota(get_detail=True)  # 设置True代表需要返回详细的拉取历史K线的记录
     if ret == RET_OK:
         print(data)
     else:
@@ -1949,7 +1949,7 @@ get_history_kl_quota
 
  .. code:: python
 
-    (1, 99, [])
+    (1, 99, [{'code': 'HK.00700', 'request_time': '2020-03-27 19:15:57'}])
 
 get_rehab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2499,15 +2499,15 @@ return_on_equity_rate                          float          净资产收益率
     simple_filter.stock_field = StockField.CUR_PRICE
     simple_filter.is_no_filter = False
     simple_filter.sort = SortDir.ASCEND
-    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter])
-    if ret == RET_OK:  # 所有接口先判断是否正常，再取数据
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter])  # 对香港市场的股票做简单筛选
+    if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
         for item in ret_list:
-            print(item.stock_code)  # 由于数据类型特殊，加上这一条，解释如何取其中的 stock_code
+            print(item.stock_code)  # 取其中的股票代码
     else:
         print('error: ', ls)
-    quote_ctx.close()  # 所有接口结尾加上这条close，防止连接条数用尽
+    quote_ctx.close()  # 结束后记得关闭当条连接，防止连接条数用尽
 	
  :Output:
 
@@ -3121,7 +3121,6 @@ CurKlineHandlerBase - 实时k线推送回调
 
     import time
     from futu import *
-    
     class CurKlineTest(CurKlineHandlerBase):
         def on_recv_rsp(self, rsp_str):
             ret_code, data = super(CurKlineTest,self).on_recv_rsp(rsp_str)
@@ -3141,8 +3140,12 @@ CurKlineHandlerBase - 实时k线推送回调
 
  .. code:: python
 
-       CurKlineTest         code             time_key   open  close   high    low  volume   turnover k_type  last_close
-    0  HK.00700  2020-03-27 15:12:00  382.8  382.6  382.8  382.6   15800  6046940.0   K_1M         0.0
+       CurKlineTest         code             time_key   open  close   high    low  volume    turnover k_type  last_close
+                      0  HK.00700  2020-04-01 15:55:00  375.2  375.4  375.4  375.2   39000  14639140.0   K_1M         0.0
+       CurKlineTest         code             time_key   open  close   high    low  volume  turnover k_type  last_close
+                      0  HK.00700  2020-04-01 15:56:00  375.4  375.4  375.4  375.4    1000  375400.0   K_1M       375.4
+       CurKlineTest         code             time_key   open  close   high    low  volume  turnover k_type  last_close
+                      0  HK.00700  2020-04-01 15:56:00  375.4  375.4  375.4  375.4    1100  412940.0   K_1M       375.4
 
 -------------------------------------------
 
