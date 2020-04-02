@@ -1063,19 +1063,19 @@ PriceReminderType - 到价提醒类型
   
  ..  py:attribute:: CHANGE_RATE_UP
 
-  日涨幅超
+  日涨幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: CHANGE_RATE_DOWN
 
-  日跌幅超
+  日跌幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_UP 
 
-  5分钟涨幅超
+  5分钟涨幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_DOWN
 
-  5分钟跌幅超
+  5分钟跌幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: VOLUME_UP
 
@@ -1087,7 +1087,7 @@ PriceReminderType - 到价提醒类型
   
  ..  py:attribute:: TURNOVER_RATE_UP 
 
-  换手率超过
+  换手率超过，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: BID_PRICE_UP
 
