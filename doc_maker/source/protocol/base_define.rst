@@ -1460,7 +1460,7 @@ PriceReminderType - 提醒类型
 	 
 -----------------------------------------------
 
-PriceReminderType - 提醒频率
+PriceReminderFreq - 提醒频率
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf

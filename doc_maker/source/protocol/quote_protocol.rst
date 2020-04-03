@@ -2631,3 +2631,54 @@
 .. note::
 	
 	* 股票结构参考 `Security <base_define.html#security>`_
+
+`Qot_GetUserSecurityGroup.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurityGroup.proto>`_ - 3022获取自选股分组列表
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetUserSecurityGroup;
+	option java_package = "com.futu.openapi.pb";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+	
+	// 自选股分组类型
+	enum GroupType
+	{
+		GroupType_Unknown = 0; // 未知
+		GroupType_Custom = 1; // 自定义分组
+		GroupType_System = 2; // 系统分组
+		GroupType_All = 3; // 全部分组
+	}
+	
+	message C2S
+	{
+		required int32 groupType = 1; // GroupType,自选股分组类型。
+	}
+	
+	message GroupData
+	{
+		required string groupName = 1; // 自选股分组名字
+		required int32 groupType = 2; // GroupType,自选股分组类型。
+	}
+	
+	message S2C
+	{
+		repeated GroupData groupList = 1; // 自选股分组列表
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 限频接口：30秒内最多10次
