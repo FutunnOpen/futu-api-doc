@@ -2632,7 +2632,7 @@
 	
 	* 股票结构参考 `Security <base_define.html#security>`_
 
-`Qot_GetUserSecurityGroup.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurityGroup.proto>`_ - 3022获取自选股分组列表
+`Qot_GetUserSecurityGroup.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurityGroup.proto>`_ - 3222获取自选股分组列表
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .. code-block:: protobuf

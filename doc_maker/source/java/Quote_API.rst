@@ -7,8 +7,6 @@
 行情API
 =======
 
---------------
-
   .. _getGlobalState: ../protocol/base_define.html#getglobalstate-proto-1002
   .. _sub: ../protocol/quote_protocol.html#qot-sub-proto-3001
   .. _regQotPush: ../protocol/quote_protocol.html#qot-regqotpush-proto-3002
@@ -45,6 +43,7 @@
   .. _stockFilter: ../protocol/quote_protocol.html#qot-stockfilter-proto-3215
   .. _setPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
   .. _getPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
+  .. _getUserSecurityGroup: ../protocol/quote_protocol.html#qot-getusersecuritygroup-proto-3222
   .. _updateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _updateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _updateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -112,6 +111,7 @@ stockFilter_                        筛选股票                                
 requestTradeDate_                   在线拉取交易日                                      onReply_RequestTradeDate
 setPriceReminder_                   设置到价提醒                                        onReply_SetPriceReminder
 getPriceReminder_                   获取到价提醒                                        onReply_getPriceReminder
+getUserSecurityGroup_               获取自选股分组                                      onReply_getUserSecurityGroup
 ================================    ==============================================   ===================================
 
 FTSPI_Qot行情推送接收接口函数

@@ -40,7 +40,7 @@
   .. _RequestTradeDate: ../protocol/quote_protocol.html#qot-requesttradedate-proto-3219
   .. _SetPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
   .. _GetPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
-  .. _GetUserSecurityGroup: ../protocol/quote_protocol.html#qot-getusersecuritygroup-proto-32222
+  .. _GetUserSecurityGroup: ../protocol/quote_protocol.html#qot-getusersecuritygroup-proto-3222
   .. _OnPush_Notify: ../protocol/base_define.html#notify-proto-1003
   .. _OnPush_UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _OnPush_UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
