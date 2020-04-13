@@ -132,6 +132,9 @@
   .. _Qot_GetPriceReminder.proto:  quote_protocol.html#qot-getpricereminder-proto-3221
   .. _3221:  quote_protocol.html#qot-getpricereminder-proto-3221
   
+  .. _Qot_GetUserSecurityGroup.proto:  quote_protocol.html#qot-getusersecuritygroup-proto-3222
+  .. _3222:  quote_protocol.html#qot-getusersecuritygroup-proto-3222
+  
   .. role:: red-strengthen
 
 特点
@@ -150,7 +153,7 @@
  ==============   ==================================     ==================================================================
  协议ID           Protobuf文件                           说明
  ==============   ==================================     ==================================================================
- 1001        	    InitConnect.proto_                      初始化连接
+ 1001        	  InitConnect.proto_                      初始化连接
  1002             GetGlobalState.proto_                   获取全局状态 
  1003             Notify.proto_                           系统通知推送
  1004             KeepAlive.proto_                        保活心跳
@@ -205,7 +208,10 @@
  3215             Qot_StockFilter.proto_                  获取条件选股
  3217             Qot_GetIpoList.proto_                   获取新股
  3218             Qot_GetFutureInfo.proto_                获取期货合约资料
- 3219             Qot_RequestTradeDate.proto_             获取市场交易日，在线拉取不在本地计算 
+ 3219             Qot_RequestTradeDate.proto_             获取市场交易日，在线拉取不在本地计算
+ 3220             Qot_SetPriceReminder.proto_             设置到价提醒
+ 3221             Qot_GetPriceReminder.proto_             获取到价提醒 
+ 3222             Qot_GetUserSecurityGroup.proto_         获取自选股分组列表  
  ==============   ==================================     ==================================================================
 
 .. note::
