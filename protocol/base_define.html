@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.19 documentation</title>
+  <title>基础定义 &mdash; futu-api-doc 3.19 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.19 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.19 文档" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -324,11 +324,11 @@
 }
 </style>
 <div class="section" id="id1">
-<h1>基础定义<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>基础定义<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div>这里对FutuOpenD开放协议接口中用到基本数据结构作出归档说明。</div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>XXX.proto表示协议文件名, 点击超链接可打开github上的协议文件，每条协议内容以github上的为准，此文档更新可能存在滞后</li>
 <li>为避免增删导致的版本兼容问题，所有enum枚举类型只用于值的定义，在protobuf结构体中声明类型时使用int32类型</li>
@@ -337,7 +337,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="initconnect-proto-1001">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/InitConnect.proto">InitConnect.proto</a> - 1001初始化连接<a class="headerlink" href="#initconnect-proto-1001" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/InitConnect.proto">InitConnect.proto</a> - 1001初始化连接<a class="headerlink" href="#initconnect-proto-1001" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
@@ -375,7 +375,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>请求其它协议前必须等InitConnect协议先完成</li>
 <li>若FutuOpenD配置了加密， &#8220;connAESKey&#8221;将用于后续协议加密</li>
@@ -385,7 +385,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="getglobalstate-proto-1002">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/GetGlobalState.proto">GetGlobalState.proto</a> - 1002获取全局状态<a class="headerlink" href="#getglobalstate-proto-1002" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/GetGlobalState.proto">GetGlobalState.proto</a> - 1002获取全局状态<a class="headerlink" href="#getglobalstate-proto-1002" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
 
@@ -423,7 +423,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>市场状态参考 <a class="reference external" href="#qotmarket">QotMarketState</a></li>
 </ul>
@@ -431,7 +431,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="notify-proto-1003">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Notify.proto">Notify.proto</a> - 1003系统推送通知<a class="headerlink" href="#notify-proto-1003" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Notify.proto">Notify.proto</a> - 1003系统推送通知<a class="headerlink" href="#notify-proto-1003" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Notify</span><span class="p">;</span>
 
@@ -519,7 +519,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>Notify是系统推送协议</li>
 <li>FutuOpenD将内部的一些重要运行状态通知到client前端，可用于前端的管理平台监控处理</li>
@@ -528,7 +528,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="keepalive-proto-1004">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/KeepAlive.proto">KeepAlive.proto</a> - 1004保活心跳<a class="headerlink" href="#keepalive-proto-1004" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/KeepAlive.proto">KeepAlive.proto</a> - 1004保活心跳<a class="headerlink" href="#keepalive-proto-1004" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
@@ -556,7 +556,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>心跳时间间隔由 <a class="reference external" href="#initconnect-proto-1001">InitConnect</a> 协议返回，若FutuOpenD在30秒内未收到一次心跳，将主动断开连接</li>
 </ul>
@@ -564,9 +564,9 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id2">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Common.proto">Common.proto</a> - 通用定义<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Common.proto">Common.proto</a> - 通用定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="rettype">
-<h3>RetType - 协议返回值<a class="headerlink" href="#rettype" title="Permalink to this headline">¶</a></h3>
+<h3>RetType - 协议返回值<a class="headerlink" href="#rettype" title="永久链接至标题">¶</a></h3>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//返回结果</span>
 <span class="kd">enum</span> <span class="n">RetType</span>
 <span class="p">{</span>
@@ -578,7 +578,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>RetType 定义协议请求返回值</li>
 <li>请求失败情况，除网络超时外，其它具体原因参见各协议定义的retMsg字段</li>
@@ -587,7 +587,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="packetid">
-<h3>PacketID - 请求包标识<a class="headerlink" href="#packetid" title="Permalink to this headline">¶</a></h3>
+<h3>PacketID - 请求包标识<a class="headerlink" href="#packetid" title="永久链接至标题">¶</a></h3>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//包的唯一标识，用于回放攻击的识别和保护</span>
 <span class="kd">message</span> <span class="nc">PacketID</span>
 <span class="p">{</span>
@@ -597,7 +597,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>PacketID 用于唯一标识一次请求</li>
 <li>serailNO 由请求方自定义填入包头，为防回放攻击要求自增，否则新的请求将被忽略</li>
@@ -606,7 +606,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="packetencalgo">
-<h3>PacketEncAlgo - 包加密算法<a class="headerlink" href="#packetencalgo" title="Permalink to this headline">¶</a></h3>
+<h3>PacketEncAlgo - 包加密算法<a class="headerlink" href="#packetencalgo" title="永久链接至标题">¶</a></h3>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//包加密算法</span>
 <span class="kd">enum</span> <span class="n">PacketEncAlgo</span>
 <span class="p">{</span>
@@ -620,7 +620,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="protofmt">
-<h3>ProtoFmt - 协议格式<a class="headerlink" href="#protofmt" title="Permalink to this headline">¶</a></h3>
+<h3>ProtoFmt - 协议格式<a class="headerlink" href="#protofmt" title="永久链接至标题">¶</a></h3>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//协议格式，请求协议在请求头中指定，推送协议在Init时指定</span>
 <span class="kd">enum</span> <span class="n">ProtoFmt</span>
 <span class="p">{</span>
@@ -632,7 +632,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="programstatus">
-<h3>ProgramStatus - 程序的当前状态<a class="headerlink" href="#programstatus" title="Permalink to this headline">¶</a></h3>
+<h3>ProgramStatus - 程序的当前状态<a class="headerlink" href="#programstatus" title="永久链接至标题">¶</a></h3>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//程序的当前状态</span>
 <span class="kd">enum</span> <span class="n">ProgramStatusType</span>
 <span class="p">{</span>
@@ -665,9 +665,9 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id3">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_Common.proto">Qot_Common.proto</a> - 行情通用定义<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_Common.proto">Qot_Common.proto</a> - 行情通用定义<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="qotmarket">
-<h3>QotMarket - 行情市场<a class="headerlink" href="#qotmarket" title="Permalink to this headline">¶</a></h3>
+<h3>QotMarket - 行情市场<a class="headerlink" href="#qotmarket" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotMarket</span>
 <span class="p">{</span>
@@ -680,7 +680,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>QotMarket定义一支证券所属的行情市场分类</li>
 <li>QotMarket_HK_Future 港股期货，目前仅支持 999010(恒指当月期货)、999011(恒指下月期货)</li>
@@ -690,7 +690,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="securitytype">
-<h3>SecurityType - 证券类型<a class="headerlink" href="#securitytype" title="Permalink to this headline">¶</a></h3>
+<h3>SecurityType - 证券类型<a class="headerlink" href="#securitytype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SecurityType</span>
 <span class="p">{</span>
@@ -711,7 +711,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="platesettype">
-<h3>PlateSetType - 板块集合类型<a class="headerlink" href="#platesettype" title="Permalink to this headline">¶</a></h3>
+<h3>PlateSetType - 板块集合类型<a class="headerlink" href="#platesettype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PlateSetType</span>
 <span class="p">{</span>
@@ -724,7 +724,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>Qot_GetPlateSet 请求参数类型</li>
 </ul>
@@ -733,7 +733,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="warranttype">
-<h3>WarrantType - 窝轮类型<a class="headerlink" href="#warranttype" title="Permalink to this headline">¶</a></h3>
+<h3>WarrantType - 窝轮类型<a class="headerlink" href="#warranttype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantType</span>
 <span class="p">{</span>
@@ -750,7 +750,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="optiontype">
-<h3>OptionType - 期权类型<a class="headerlink" href="#optiontype" title="Permalink to this headline">¶</a></h3>
+<h3>OptionType - 期权类型<a class="headerlink" href="#optiontype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OptionType</span>
 <span class="p">{</span>
@@ -764,7 +764,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="indexoptiontype">
-<h3>IndexOptionType - 指数期权类型<a class="headerlink" href="#indexoptiontype" title="Permalink to this headline">¶</a></h3>
+<h3>IndexOptionType - 指数期权类型<a class="headerlink" href="#indexoptiontype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">IndexOptionType</span>
 <span class="p">{</span>
@@ -778,7 +778,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="optionareatype">
-<h3>OptionAreaType - 期权地区类型<a class="headerlink" href="#optionareatype" title="Permalink to this headline">¶</a></h3>
+<h3>OptionAreaType - 期权地区类型<a class="headerlink" href="#optionareatype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OptionAreaType</span>
 <span class="p">{</span>
@@ -793,7 +793,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id4">
-<h3>QotMarketState - 行情市场状态<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>QotMarketState - 行情市场状态<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotMarketState</span>
 <span class="p">{</span>
@@ -822,7 +822,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="tradedatetype">
-<h3>TradeDateType - 交易时间类型<a class="headerlink" href="#tradedatetype" title="Permalink to this headline">¶</a></h3>
+<h3>TradeDateType - 交易时间类型<a class="headerlink" href="#tradedatetype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TradeDateType</span>
 <span class="p">{</span>
@@ -836,7 +836,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="tradedatemarket">
-<h3>TradeDateMarket - 交易日查询市场<a class="headerlink" href="#tradedatemarket" title="Permalink to this headline">¶</a></h3>
+<h3>TradeDateMarket - 交易日查询市场<a class="headerlink" href="#tradedatemarket" title="永久链接至标题">¶</a></h3>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TradeDateMarket</span>
 <span class="p">{</span>
         <span class="na">TradeDateMarket_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知</span>
@@ -851,7 +851,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="rehabtype-k">
-<h3>RehabType - K线复权类型<a class="headerlink" href="#rehabtype-k" title="Permalink to this headline">¶</a></h3>
+<h3>RehabType - K线复权类型<a class="headerlink" href="#rehabtype-k" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">RehabType</span>
 <span class="p">{</span>
@@ -865,7 +865,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="kltype-k">
-<h3>KLType - K线类型<a class="headerlink" href="#kltype-k" title="Permalink to this headline">¶</a></h3>
+<h3>KLType - K线类型<a class="headerlink" href="#kltype-k" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//枚举值兼容旧协议定义</span>
  <span class="c1">//新类型季K,年K,3分K暂时没有支持历史K线</span>
@@ -889,7 +889,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="klfields-k">
-<h3>KLFields - K线数据字段<a class="headerlink" href="#klfields-k" title="Permalink to this headline">¶</a></h3>
+<h3>KLFields - K线数据字段<a class="headerlink" href="#klfields-k" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">KLFields</span>
 <span class="p">{</span>
@@ -910,7 +910,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="subtype">
-<h3>SubType - 行情定阅类型<a class="headerlink" href="#subtype" title="Permalink to this headline">¶</a></h3>
+<h3>SubType - 行情定阅类型<a class="headerlink" href="#subtype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//订阅类型</span>
  <span class="c1">//枚举值兼容旧协议定义</span>
@@ -940,7 +940,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="tickerdirection">
-<h3>TickerDirection - 逐笔方向<a class="headerlink" href="#tickerdirection" title="Permalink to this headline">¶</a></h3>
+<h3>TickerDirection - 逐笔方向<a class="headerlink" href="#tickerdirection" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TickerDirection</span>
 <span class="p">{</span>
@@ -954,7 +954,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="tickertype">
-<h3>TickerType - 逐笔类型<a class="headerlink" href="#tickertype" title="Permalink to this headline">¶</a></h3>
+<h3>TickerType - 逐笔类型<a class="headerlink" href="#tickertype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//逐笔类型</span>
 <span class="kd">enum</span> <span class="n">TickerType</span>
@@ -997,7 +997,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="pushdatatype">
-<h3>PushDataType - 推送数据来源分类，目前只有逐笔在使用<a class="headerlink" href="#pushdatatype" title="Permalink to this headline">¶</a></h3>
+<h3>PushDataType - 推送数据来源分类，目前只有逐笔在使用<a class="headerlink" href="#pushdatatype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//推送数据来源分类，目前只有逐笔在使用</span>
 <span class="kd">enum</span> <span class="n">PushDataType</span>
@@ -1013,7 +1013,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="darkstatus">
-<h3>DarkStatus - 暗盘交易状态<a class="headerlink" href="#darkstatus" title="Permalink to this headline">¶</a></h3>
+<h3>DarkStatus - 暗盘交易状态<a class="headerlink" href="#darkstatus" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//暗盘交易状态</span>
 <span class="kd">enum</span> <span class="n">DarkStatus</span>
@@ -1028,7 +1028,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="securitystatus">
-<h3>SecurityStatus - 股票状态<a class="headerlink" href="#securitystatus" title="Permalink to this headline">¶</a></h3>
+<h3>SecurityStatus - 股票状态<a class="headerlink" href="#securitystatus" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//暗盘交易状态</span>
 <span class="kd">enum</span> <span class="n">SecurityStatus</span>
@@ -1062,7 +1062,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="companyact">
-<h3>CompanyAct - 公司行动<a class="headerlink" href="#companyact" title="Permalink to this headline">¶</a></h3>
+<h3>CompanyAct - 公司行动<a class="headerlink" href="#companyact" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span> <span class="c1">//公司行动</span>
 <span class="kd">enum</span> <span class="n">CompanyAct</span>
@@ -1083,7 +1083,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="holdercategory">
-<h3>HolderCategory - 持有者类别<a class="headerlink" href="#holdercategory" title="Permalink to this headline">¶</a></h3>
+<h3>HolderCategory - 持有者类别<a class="headerlink" href="#holdercategory" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">HolderCategory</span>
 <span class="p">{</span>
@@ -1098,7 +1098,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="sortfield">
-<h3>SortField - 窝轮排序<a class="headerlink" href="#sortfield" title="Permalink to this headline">¶</a></h3>
+<h3>SortField - 窝轮排序<a class="headerlink" href="#sortfield" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SortField</span>
 <span class="p">{</span>
@@ -1161,7 +1161,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="issuer">
-<h3>Issuer - 窝轮发行人<a class="headerlink" href="#issuer" title="Permalink to this headline">¶</a></h3>
+<h3>Issuer - 窝轮发行人<a class="headerlink" href="#issuer" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Issuer</span>
 <span class="p">{</span>
@@ -1196,7 +1196,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="ipoperiod">
-<h3>IpoPeriod - 窝轮上市日<a class="headerlink" href="#ipoperiod" title="Permalink to this headline">¶</a></h3>
+<h3>IpoPeriod - 窝轮上市日<a class="headerlink" href="#ipoperiod" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">IpoPeriod</span>
 <span class="p">{</span>
@@ -1213,7 +1213,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="pricetype">
-<h3>PriceType - 窝轮价(界)外/内<a class="headerlink" href="#pricetype" title="Permalink to this headline">¶</a></h3>
+<h3>PriceType - 窝轮价(界)外/内<a class="headerlink" href="#pricetype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PriceType</span>
 <span class="p">{</span>
@@ -1227,7 +1227,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="warrantstatus">
-<h3>WarrantStatus - 窝轮状态<a class="headerlink" href="#warrantstatus" title="Permalink to this headline">¶</a></h3>
+<h3>WarrantStatus - 窝轮状态<a class="headerlink" href="#warrantstatus" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">WarrantStatus</span>
 <span class="p">{</span>
@@ -1243,7 +1243,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="qotright">
-<h3>QotRight - 行情权限<a class="headerlink" href="#qotright" title="Permalink to this headline">¶</a></h3>
+<h3>QotRight - 行情权限<a class="headerlink" href="#qotright" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">QotRight</span>
 <span class="p">{</span>
@@ -1258,7 +1258,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="stockfield">
-<h3>StockField - 条件选股的简单属性筛选条件<a class="headerlink" href="#stockfield" title="Permalink to this headline">¶</a></h3>
+<h3>StockField - 条件选股的简单属性筛选条件<a class="headerlink" href="#stockfield" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">StockField</span>
 <span class="p">{</span>
@@ -1286,7 +1286,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="accumulatefield">
-<h3>AccumulateField - 条件选股的累积属性筛选条件<a class="headerlink" href="#accumulatefield" title="Permalink to this headline">¶</a></h3>
+<h3>AccumulateField - 条件选股的累积属性筛选条件<a class="headerlink" href="#accumulatefield" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">AccumulateField</span>
 <span class="p">{</span>
@@ -1303,7 +1303,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="financialfield">
-<h3>FinancialField - 条件选股的财务属性筛选条件<a class="headerlink" href="#financialfield" title="Permalink to this headline">¶</a></h3>
+<h3>FinancialField - 条件选股的财务属性筛选条件<a class="headerlink" href="#financialfield" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">FinancialField</span>
 <span class="p">{</span>
@@ -1323,7 +1323,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="financialquarter">
-<h3>FinancialQuarter - 条件选股的财报时间<a class="headerlink" href="#financialquarter" title="Permalink to this headline">¶</a></h3>
+<h3>FinancialQuarter - 条件选股的财报时间<a class="headerlink" href="#financialquarter" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">FinancialQuarter</span>
 <span class="p">{</span>
@@ -1340,7 +1340,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="sortdir">
-<h3>SortDir - 条件选股的排序方向<a class="headerlink" href="#sortdir" title="Permalink to this headline">¶</a></h3>
+<h3>SortDir - 条件选股的排序方向<a class="headerlink" href="#sortdir" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">SortDir</span>
 <span class="p">{</span>
@@ -1354,7 +1354,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="security">
-<h3>Security - 证券标识<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<h3>Security - 证券标识<a class="headerlink" href="#security" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Security</span>
 <span class="p">{</span>
@@ -1367,7 +1367,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="kline-k">
-<h3>KLine - K线数据点<a class="headerlink" href="#kline-k" title="Permalink to this headline">¶</a></h3>
+<h3>KLine - K线数据点<a class="headerlink" href="#kline-k" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">KLine</span>
 <span class="p">{</span>
@@ -1391,7 +1391,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="optionbasicqotexdata">
-<h3>OptionBasicQotExData - 基础报价的期权特有字段<a class="headerlink" href="#optionbasicqotexdata" title="Permalink to this headline">¶</a></h3>
+<h3>OptionBasicQotExData - 基础报价的期权特有字段<a class="headerlink" href="#optionbasicqotexdata" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OptionBasicQotExData</span>
 <span class="p">{</span>
@@ -1420,7 +1420,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="futurebasicqotexdata">
-<h3>FutureBasicQotExData - 基础报价的期货特有字段<a class="headerlink" href="#futurebasicqotexdata" title="Permalink to this headline">¶</a></h3>
+<h3>FutureBasicQotExData - 基础报价的期货特有字段<a class="headerlink" href="#futurebasicqotexdata" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">FutureBasicQotExData</span>
 <span class="p">{</span>
@@ -1435,7 +1435,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="basicqot">
-<h3>BasicQot - 基础报价<a class="headerlink" href="#basicqot" title="Permalink to this headline">¶</a></h3>
+<h3>BasicQot - 基础报价<a class="headerlink" href="#basicqot" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">BasicQot</span>
 <span class="p">{</span>
@@ -1468,7 +1468,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="preaftermarketdata">
-<h3>PreAfterMarketData - 盘前盘后数据<a class="headerlink" href="#preaftermarketdata" title="Permalink to this headline">¶</a></h3>
+<h3>PreAfterMarketData - 盘前盘后数据<a class="headerlink" href="#preaftermarketdata" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//美股支持盘前盘后数据</span>
 <span class="c1">//科创板仅支持盘后数据：成交量，成交额</span>
@@ -1489,7 +1489,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="timeshare">
-<h3>TimeShare - 分时数据点<a class="headerlink" href="#timeshare" title="Permalink to this headline">¶</a></h3>
+<h3>TimeShare - 分时数据点<a class="headerlink" href="#timeshare" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TimeShare</span>
 <span class="p">{</span>
@@ -1509,7 +1509,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="securitystaticbasic">
-<h3>SecurityStaticBasic - 证券基本静态信息<a class="headerlink" href="#securitystaticbasic" title="Permalink to this headline">¶</a></h3>
+<h3>SecurityStaticBasic - 证券基本静态信息<a class="headerlink" href="#securitystaticbasic" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SecurityStaticBasic</span>
 <span class="p">{</span>
@@ -1528,7 +1528,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="warrantstaticexdata">
-<h3>WarrantStaticExData - 窝轮额外静态信息<a class="headerlink" href="#warrantstaticexdata" title="Permalink to this headline">¶</a></h3>
+<h3>WarrantStaticExData - 窝轮额外静态信息<a class="headerlink" href="#warrantstaticexdata" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">WarrantStaticExData</span>
 <span class="p">{</span>
@@ -1541,7 +1541,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="optionstaticexdata">
-<h3>OptionStaticExData - 期权额外静态信息<a class="headerlink" href="#optionstaticexdata" title="Permalink to this headline">¶</a></h3>
+<h3>OptionStaticExData - 期权额外静态信息<a class="headerlink" href="#optionstaticexdata" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OptionStaticExData</span>
 <span class="p">{</span>
@@ -1560,7 +1560,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="futurestaticexdata">
-<h3>FutureStaticExData - 期货额外静态信息<a class="headerlink" href="#futurestaticexdata" title="Permalink to this headline">¶</a></h3>
+<h3>FutureStaticExData - 期货额外静态信息<a class="headerlink" href="#futurestaticexdata" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">FutureStaticExData</span>
 <span class="p">{</span>
@@ -1574,7 +1574,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="securitystaticinfo">
-<h3>SecurityStaticInfo - 证券静态信息<a class="headerlink" href="#securitystaticinfo" title="Permalink to this headline">¶</a></h3>
+<h3>SecurityStaticInfo - 证券静态信息<a class="headerlink" href="#securitystaticinfo" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SecurityStaticInfo</span>
 <span class="p">{</span>
@@ -1589,7 +1589,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="broker">
-<h3>Broker - 买卖经纪摆盘<a class="headerlink" href="#broker" title="Permalink to this headline">¶</a></h3>
+<h3>Broker - 买卖经纪摆盘<a class="headerlink" href="#broker" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Broker</span>
 <span class="p">{</span>
@@ -1603,7 +1603,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="ticker">
-<h3>Ticker - 逐笔成交<a class="headerlink" href="#ticker" title="Permalink to this headline">¶</a></h3>
+<h3>Ticker - 逐笔成交<a class="headerlink" href="#ticker" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Ticker</span>
 <span class="p">{</span>
@@ -1625,7 +1625,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="orderbook">
-<h3>OrderBook - 买卖十档摆盘<a class="headerlink" href="#orderbook" title="Permalink to this headline">¶</a></h3>
+<h3>OrderBook - 买卖十档摆盘<a class="headerlink" href="#orderbook" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderBook</span>
 <span class="p">{</span>
@@ -1639,7 +1639,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="shareholdingchange">
-<h3>ShareHoldingChange - 持股变动<a class="headerlink" href="#shareholdingchange" title="Permalink to this headline">¶</a></h3>
+<h3>ShareHoldingChange - 持股变动<a class="headerlink" href="#shareholdingchange" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">ShareHoldingChange</span>
 <span class="p">{</span>
@@ -1657,7 +1657,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="subinfo">
-<h3>SubInfo - 单个定阅类型信息<a class="headerlink" href="#subinfo" title="Permalink to this headline">¶</a></h3>
+<h3>SubInfo - 单个定阅类型信息<a class="headerlink" href="#subinfo" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">SubInfo</span>
 <span class="p">{</span>
@@ -1670,7 +1670,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="connsubinfo">
-<h3>ConnSubInfo - 单条连接定阅信息<a class="headerlink" href="#connsubinfo" title="Permalink to this headline">¶</a></h3>
+<h3>ConnSubInfo - 单条连接定阅信息<a class="headerlink" href="#connsubinfo" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">ConnSubInfo</span>
 <span class="p">{</span>
@@ -1681,7 +1681,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>一条连接重复定阅其它连接已经订阅过的，不会额外消耗订阅额度</li>
 </ul>
@@ -1689,7 +1689,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="plateinfo">
-<h3>PlateInfo - 单条连接定阅信息<a class="headerlink" href="#plateinfo" title="Permalink to this headline">¶</a></h3>
+<h3>PlateInfo - 单条连接定阅信息<a class="headerlink" href="#plateinfo" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">PlateInfo</span>
 <span class="p">{</span>
@@ -1703,7 +1703,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="rehab">
-<h3>Rehab - 复权信息<a class="headerlink" href="#rehab" title="Permalink to this headline">¶</a></h3>
+<h3>Rehab - 复权信息<a class="headerlink" href="#rehab" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Rehab</span>
 <span class="p">{</span>
@@ -1737,7 +1737,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="priceremindertype">
-<h3>PriceReminderType - 提醒类型<a class="headerlink" href="#priceremindertype" title="Permalink to this headline">¶</a></h3>
+<h3>PriceReminderType - 提醒类型<a class="headerlink" href="#priceremindertype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//提醒类型</span>
 <span class="kd">enum</span> <span class="n">PriceReminderType</span>
@@ -1763,7 +1763,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id5">
-<h3>PriceReminderType - 提醒频率<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>PriceReminderType - 提醒频率<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//提醒频率</span>
 <span class="kd">enum</span> <span class="n">PriceReminderFreq</span>
@@ -1780,9 +1780,9 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id6">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto">Trd_Common.proto</a> - 交易通用定义<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto">Trd_Common.proto</a> - 交易通用定义<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="section" id="orderstatus">
-<h3>OrderStatus - 订单状态<a class="headerlink" href="#orderstatus" title="Permalink to this headline">¶</a></h3>
+<h3>OrderStatus - 订单状态<a class="headerlink" href="#orderstatus" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderStatus</span>
 <span class="p">{</span>
@@ -1809,7 +1809,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdenv">
-<h3>TrdEnv - 交易环境<a class="headerlink" href="#trdenv" title="Permalink to this headline">¶</a></h3>
+<h3>TrdEnv - 交易环境<a class="headerlink" href="#trdenv" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdEnv</span>
 <span class="p">{</span>
@@ -1822,7 +1822,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdmarket">
-<h3>TrdMarket - 交易市场<a class="headerlink" href="#trdmarket" title="Permalink to this headline">¶</a></h3>
+<h3>TrdMarket - 交易市场<a class="headerlink" href="#trdmarket" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//交易市场，是大的市场，不是具体品种</span>
 <span class="kd">enum</span> <span class="n">TrdMarket</span>
@@ -1840,7 +1840,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdside">
-<h3>TrdSide - 交易方向<a class="headerlink" href="#trdside" title="Permalink to this headline">¶</a></h3>
+<h3>TrdSide - 交易方向<a class="headerlink" href="#trdside" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdSide</span>
 <span class="p">{</span>
@@ -1857,7 +1857,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="ordertype">
-<h3>OrderType - 订单类型<a class="headerlink" href="#ordertype" title="Permalink to this headline">¶</a></h3>
+<h3>OrderType - 订单类型<a class="headerlink" href="#ordertype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderType</span>
 <span class="p">{</span>
@@ -1877,7 +1877,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="orderfillstatus">
-<h3>OrderFillStatus - 一笔成交的状态<a class="headerlink" href="#orderfillstatus" title="Permalink to this headline">¶</a></h3>
+<h3>OrderFillStatus - 一笔成交的状态<a class="headerlink" href="#orderfillstatus" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderFillStatus</span>
 <span class="p">{</span>
@@ -1891,7 +1891,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="positionside">
-<h3>PositionSide - 持仓方向类型<a class="headerlink" href="#positionside" title="Permalink to this headline">¶</a></h3>
+<h3>PositionSide - 持仓方向类型<a class="headerlink" href="#positionside" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">PositionSide</span>
 <span class="p">{</span>
@@ -1905,7 +1905,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="modifyorderop">
-<h3>ModifyOrderOp - 修改订单操作类型<a class="headerlink" href="#modifyorderop" title="Permalink to this headline">¶</a></h3>
+<h3>ModifyOrderOp - 修改订单操作类型<a class="headerlink" href="#modifyorderop" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">ModifyOrderOp</span>
 <span class="p">{</span>
@@ -1923,7 +1923,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdacctype">
-<h3>TrdAccType - 交易账户类型<a class="headerlink" href="#trdacctype" title="Permalink to this headline">¶</a></h3>
+<h3>TrdAccType - 交易账户类型<a class="headerlink" href="#trdacctype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">TrdAccType</span>
 <span class="p">{</span>
@@ -1937,7 +1937,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="currency">
-<h3>Currency - 货币种类<a class="headerlink" href="#currency" title="Permalink to this headline">¶</a></h3>
+<h3>Currency - 货币种类<a class="headerlink" href="#currency" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">Currency</span>
 <span class="p">{</span>
@@ -1952,7 +1952,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="cltrisklevel">
-<h3>CltRiskLevel - 账户风险控制等级<a class="headerlink" href="#cltrisklevel" title="Permalink to this headline">¶</a></h3>
+<h3>CltRiskLevel - 账户风险控制等级<a class="headerlink" href="#cltrisklevel" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">CltRiskLevel</span>
 <span class="p">{</span>
@@ -1969,7 +1969,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="reconfirmorderreason">
-<h3>ReconfirmOrderReason - 确认订单类型<a class="headerlink" href="#reconfirmorderreason" title="Permalink to this headline">¶</a></h3>
+<h3>ReconfirmOrderReason - 确认订单类型<a class="headerlink" href="#reconfirmorderreason" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">ReconfirmOrderReason</span>
 <span class="p">{</span>
@@ -1983,7 +1983,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdheader">
-<h3>TrdHeader - 交易公共参数头<a class="headerlink" href="#trdheader" title="Permalink to this headline">¶</a></h3>
+<h3>TrdHeader - 交易公共参数头<a class="headerlink" href="#trdheader" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TrdHeader</span>
 <span class="p">{</span>
@@ -1997,7 +1997,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdacc">
-<h3>TrdAcc - 交易账户<a class="headerlink" href="#trdacc" title="Permalink to this headline">¶</a></h3>
+<h3>TrdAcc - 交易账户<a class="headerlink" href="#trdacc" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">TrdAcc</span>
 <span class="p">{</span>
@@ -2013,7 +2013,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="acccashinfo">
-<h3>AccCashInfo - 账户现金信息，目前仅用于期货账户<a class="headerlink" href="#acccashinfo" title="Permalink to this headline">¶</a></h3>
+<h3>AccCashInfo - 账户现金信息，目前仅用于期货账户<a class="headerlink" href="#acccashinfo" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">AccCashInfo</span>
 <span class="p">{</span>
@@ -2027,7 +2027,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="funds">
-<h3>Funds - 账户资金<a class="headerlink" href="#funds" title="Permalink to this headline">¶</a></h3>
+<h3>Funds - 账户资金<a class="headerlink" href="#funds" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Funds</span>
 <span class="p">{</span>
@@ -2054,7 +2054,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="position">
-<h3>Position - 账户持仓<a class="headerlink" href="#position" title="Permalink to this headline">¶</a></h3>
+<h3>Position - 账户持仓<a class="headerlink" href="#position" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Position</span>
 <span class="p">{</span>
@@ -2087,7 +2087,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="order">
-<h3>Order - 订单<a class="headerlink" href="#order" title="Permalink to this headline">¶</a></h3>
+<h3>Order - 订单<a class="headerlink" href="#order" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">Order</span>
 <span class="p">{</span>
@@ -2116,7 +2116,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="orderfill">
-<h3>OrderFill - 成交<a class="headerlink" href="#orderfill" title="Permalink to this headline">¶</a></h3>
+<h3>OrderFill - 成交<a class="headerlink" href="#orderfill" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderFill</span>
 <span class="p">{</span>
@@ -2143,7 +2143,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="maxtrdqtys">
-<h3>MaxTrdQtys - 最大交易数量<a class="headerlink" href="#maxtrdqtys" title="Permalink to this headline">¶</a></h3>
+<h3>MaxTrdQtys - 最大交易数量<a class="headerlink" href="#maxtrdqtys" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">MaxTrdQtys</span>
 <span class="p">{</span>
@@ -2160,7 +2160,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdfilterconditions">
-<h3>TrdFilterConditions - 过滤条件<a class="headerlink" href="#trdfilterconditions" title="Permalink to this headline">¶</a></h3>
+<h3>TrdFilterConditions - 过滤条件<a class="headerlink" href="#trdfilterconditions" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//过滤条件，条件组合是&quot;与&quot;不是&quot;或&quot;，用于获取订单、成交、持仓等时二次过滤</span>
 <span class="kd">message</span> <span class="nc">TrdFilterConditions</span>
@@ -2176,7 +2176,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trdsecmarket">
-<h3>TrdSecMarket - 可交易证券所属市场<a class="headerlink" href="#trdsecmarket" title="Permalink to this headline">¶</a></h3>
+<h3>TrdSecMarket - 可交易证券所属市场<a class="headerlink" href="#trdsecmarket" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//可交易证券所属市场，目前主要是区分A股的沪市和深市，香港和美国暂不需要细分</span>
 <span class="kd">enum</span> <span class="n">TrdSecMarket</span>
@@ -2217,7 +2217,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; 版权所有 2018, futu.
 
     </p>
   </div> 

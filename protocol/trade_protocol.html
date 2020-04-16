@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易协议 &mdash; futu-api-doc 3.19 documentation</title>
+  <title>交易协议 &mdash; futu-api-doc 3.19 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.19 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.19 文档" href="../index.html"/>
         <link rel="next" title="介绍" href="../api/intro.html"/>
         <link rel="prev" title="行情协议" href="quote_protocol.html"/> 
 
@@ -244,11 +244,11 @@
 }
 </style>
 <div class="section" id="id1">
-<h1>交易协议<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>交易协议<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div>这里对FutuOpenD开放的交易协议接口作出归档说明。</div></blockquote>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>为避免增删导致的版本兼容问题，所有enum枚举类型只用于值的定义，在protobuf结构体中声明类型时使用int32类型</li>
 <li>所有类型定义使用protobuf格式声明，不同语言对接时请自行通过相关工具转换成对应的头文件</li>
@@ -258,7 +258,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-getacclist-proto-2001">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetAccList.proto">Trd_GetAccList.proto</a> - 2001获取交易账户列表<a class="headerlink" href="#trd-getacclist-proto-2001" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetAccList.proto">Trd_GetAccList.proto</a> - 2001获取交易账户列表<a class="headerlink" href="#trd-getacclist-proto-2001" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetAccList</span><span class="p">;</span>
 
@@ -292,7 +292,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>业务账户结构参考 <a class="reference external" href="base_define.html#trdacc">TrdAcc</a></li>
 </ul>
@@ -300,7 +300,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-unlocktrade-proto-2005">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_UnlockTrade.proto">Trd_UnlockTrade.proto</a> - 2005解锁或锁定交易<a class="headerlink" href="#trd-unlocktrade-proto-2005" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_UnlockTrade.proto">Trd_UnlockTrade.proto</a> - 2005解锁或锁定交易<a class="headerlink" href="#trd-unlocktrade-proto-2005" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_UnlockTrade</span><span class="p">;</span>
 
@@ -334,7 +334,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>除2001协议外，所有交易协议请求都需要FutuOpenD先解锁交易</li>
 <li>密码MD5方式获取请参考 <a class="reference external" href="../setup/FutuOpenDGuide.html#id6">FutuOpenD配置</a> 内的login_pwd_md5字段</li>
@@ -346,7 +346,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-subaccpush-proto-2008">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_SubAccPush.proto">Trd_SubAccPush.proto</a> - 2008订阅接收交易账户的推送数据<a class="headerlink" href="#trd-subaccpush-proto-2008" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_SubAccPush.proto">Trd_SubAccPush.proto</a> - 2008订阅接收交易账户的推送数据<a class="headerlink" href="#trd-subaccpush-proto-2008" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_SubAccPush</span><span class="p">;</span>
 
@@ -379,7 +379,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>指定发送该协议的连接接收交易数据（订单状态，成交状态等）推送</li>
 </ul>
@@ -387,7 +387,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-getfunds-proto-2101">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetFunds.proto">Trd_GetFunds.proto</a> - 2101获取账户资金<a class="headerlink" href="#trd-getfunds-proto-2101" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetFunds.proto">Trd_GetFunds.proto</a> - 2101获取账户资金<a class="headerlink" href="#trd-getfunds-proto-2101" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetFunds</span><span class="p">;</span>
 
@@ -426,7 +426,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>账户资金结构参考 <a class="reference external" href="base_define.html#funds">Funds</a></li>
@@ -435,7 +435,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-getpositionlist-proto-2102">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetPositionList.proto">Trd_GetPositionList.proto</a> - 2102获取持仓列表<a class="headerlink" href="#trd-getpositionlist-proto-2102" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetPositionList.proto">Trd_GetPositionList.proto</a> - 2102获取持仓列表<a class="headerlink" href="#trd-getpositionlist-proto-2102" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetPositionList</span><span class="p">;</span>
 
@@ -476,7 +476,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>持仓资金结构参考 <a class="reference external" href="base_define.html#position">Position</a></li>
@@ -486,7 +486,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-getmaxtrdqtys-proto-2111">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetMaxTrdQtys.proto">Trd_GetMaxTrdQtys.proto</a> - 2111获取最大交易数量<a class="headerlink" href="#trd-getmaxtrdqtys-proto-2111" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetMaxTrdQtys.proto">Trd_GetMaxTrdQtys.proto</a> - 2111获取最大交易数量<a class="headerlink" href="#trd-getmaxtrdqtys-proto-2111" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetMaxTrdQtys</span><span class="p">;</span>
 
@@ -528,7 +528,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>最大可交易数量结构参考 <a class="reference external" href="base_define.html#MaxTrdQtys">MaxTrdQtys</a></li>
@@ -537,7 +537,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-getorderlist-proto-2201">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetOrderList.proto">Trd_GetOrderList.proto</a> - 2201获取订单列表<a class="headerlink" href="#trd-getorderlist-proto-2201" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetOrderList.proto">Trd_GetOrderList.proto</a> - 2201获取订单列表<a class="headerlink" href="#trd-getorderlist-proto-2201" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetOrderList</span><span class="p">;</span>
 
@@ -577,7 +577,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>订单结构参考 <a class="reference external" href="base_define.html#order">Order</a></li>
@@ -587,7 +587,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-placeorder-proto-2202">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_PlaceOrder.proto">Trd_PlaceOrder.proto</a> - 2202下单<a class="headerlink" href="#trd-placeorder-proto-2202" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_PlaceOrder.proto">Trd_PlaceOrder.proto</a> - 2202下单<a class="headerlink" href="#trd-placeorder-proto-2202" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_PlaceOrder</span><span class="p">;</span>
 
@@ -640,7 +640,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>请求包标识结构参考 <a class="reference external" href="base_define.html#packetid">PacketID</a></li>
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
@@ -660,7 +660,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-modifyorder-proto-2205">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_ModifyOrder.proto">Trd_ModifyOrder.proto</a> - 2205修改订单(改价、改量、改状态等)<a class="headerlink" href="#trd-modifyorder-proto-2205" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_ModifyOrder.proto">Trd_ModifyOrder.proto</a> - 2205修改订单(改价、改量、改状态等)<a class="headerlink" href="#trd-modifyorder-proto-2205" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_ModifyOrder</span><span class="p">;</span>
 
@@ -706,7 +706,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>请求包标识结构参考 <a class="reference external" href="base_define.html#packetid">PacketID</a></li>
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
@@ -718,7 +718,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-updateorder-proto-2208">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_UpdateOrder.proto">Trd_UpdateOrder.proto</a> - 2208推送订单更新<a class="headerlink" href="#trd-updateorder-proto-2208" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_UpdateOrder.proto">Trd_UpdateOrder.proto</a> - 2208推送订单更新<a class="headerlink" href="#trd-updateorder-proto-2208" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_UpdateOrder</span><span class="p">;</span>
 
@@ -745,7 +745,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>订单结构参考 <a class="reference external" href="base_define.html#order">Order</a></li>
@@ -754,7 +754,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-getorderfilllist-proto-2211">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetOrderFillList.proto">Trd_GetOrderFillList.proto</a> - 2211获取成交列表<a class="headerlink" href="#trd-getorderfilllist-proto-2211" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetOrderFillList.proto">Trd_GetOrderFillList.proto</a> - 2211获取成交列表<a class="headerlink" href="#trd-getorderfilllist-proto-2211" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetOrderFillList</span><span class="p">;</span>
 
@@ -793,7 +793,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>订单结构参考 <a class="reference external" href="base_define.html#orderfill">OrderFill</a></li>
@@ -803,7 +803,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-updateorderfill-proto-2218">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_UpdateOrderFill.proto">Trd_UpdateOrderFill.proto</a> - 2218推送新成交<a class="headerlink" href="#trd-updateorderfill-proto-2218" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_UpdateOrderFill.proto">Trd_UpdateOrderFill.proto</a> - 2218推送新成交<a class="headerlink" href="#trd-updateorderfill-proto-2218" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_UpdateOrderFill</span><span class="p">;</span>
 
@@ -830,7 +830,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>订单结构参考 <a class="reference external" href="base_define.html#orderfill">OrderFill</a></li>
@@ -839,7 +839,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-gethistoryorderlist-proto-2221">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetHistoryOrderList.proto">Trd_GetHistoryOrderList.proto</a> - 2221获取历史订单列表<a class="headerlink" href="#trd-gethistoryorderlist-proto-2221" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetHistoryOrderList.proto">Trd_GetHistoryOrderList.proto</a> - 2221获取历史订单列表<a class="headerlink" href="#trd-gethistoryorderlist-proto-2221" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetHistoryOrderList</span><span class="p">;</span>
 
@@ -876,7 +876,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>订单结构参考 <a class="reference external" href="base_define.html#order">Order</a></li>
@@ -888,7 +888,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="trd-gethistoryorderfilllist-proto-2222">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetHistoryOrderFillList.proto">Trd_GetHistoryOrderFillList.proto</a> - 2222获取历史成交列表<a class="headerlink" href="#trd-gethistoryorderfilllist-proto-2222" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_GetHistoryOrderFillList.proto">Trd_GetHistoryOrderFillList.proto</a> - 2222获取历史成交列表<a class="headerlink" href="#trd-gethistoryorderfilllist-proto-2222" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 <span class="kn">package</span> <span class="nn">Trd_GetHistoryOrderFillList</span><span class="p">;</span>
 
@@ -924,7 +924,7 @@
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>交易公共参数头结构参考 <a class="reference external" href="base_define.html#trdheader">TrdHeader</a></li>
 <li>成交结构参考 <a class="reference external" href="base_define.html#orderfill">OrderFill</a></li>
@@ -958,7 +958,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; 版权所有 2018, futu.
 
     </p>
   </div> 

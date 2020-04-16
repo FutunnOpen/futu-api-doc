@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易API &mdash; futu-api-doc 3.19 documentation</title>
+  <title>交易API &mdash; futu-api-doc 3.19 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.19 documentation" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.19 文档" href="../index.html"/>
         <link rel="next" title="介绍" href="../net/intro.html"/>
         <link rel="prev" title="行情API" href="Quote_API.html"/> 
 
@@ -260,11 +260,11 @@
 }
 </style>
 <div class="section" id="api">
-<h1>交易API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<h1>交易API<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div></div></blockquote>
 <div class="section" id="id1">
-<h2>一分钟上手<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>一分钟上手<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>如下范例，创建api交易对象，先调用unlock_trade对交易解锁，然后调用place_order下单，以700.0价格，买100股腾讯00700，最后关闭对象。</p>
 <p>注意交易对象区分港股美股。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
@@ -277,20 +277,20 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2>接口类对象<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>接口类对象<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="openhktradecontext-openustradecontext-openhkcctradecontext-a-opencntradecontext-a-openfuturetradecontext">
-<h3>OpenHKTradeContext（港股交易）、OpenUSTradeContext（美股交易）、OpenHKCCTradeContext(A股通)、OpenCNTradeContext（A股交易）、 OpenFutureTradeContext（期货交易）-交易接口类<a class="headerlink" href="#openhktradecontext-openustradecontext-openhkcctradecontext-a-opencntradecontext-a-openfuturetradecontext" title="Permalink to this headline">¶</a></h3>
+<h3>OpenHKTradeContext（港股交易）、OpenUSTradeContext（美股交易）、OpenHKCCTradeContext(A股通)、OpenCNTradeContext（A股交易）、 OpenFutureTradeContext（期货交易）-交易接口类<a class="headerlink" href="#openhktradecontext-openustradecontext-openhkcctradecontext-a-opencntradecontext-a-openfuturetradecontext" title="永久链接至标题">¶</a></h3>
 <div class="section" id="init">
-<h4>__init__<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h4>
+<h4>__init__<a class="headerlink" href="#init" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>host='127.0.0.1'</em>, <em>port=11111</em>, <em>is_encrypt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>host='127.0.0.1'</em>, <em>port=11111</em>, <em>is_encrypt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__" title="永久链接至目标">¶</a></dt>
 <dd><p>构造函数</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first last simple">
 <li><strong>host</strong> &#8211; str FutuOpenD监听的IP地址</li>
 <li><strong>port</strong> &#8211; int FutuOpenD监听的IP端口</li>
 <li><strong>is_encrypt</strong> &#8211; bool 是否启用加密。默认为None，表示使用 <a class="reference external" href="Base_API.html#enable_proto_encrypt">SysConfig.enable_proto_encrypt</a> 的设置。</li>
@@ -308,7 +308,7 @@
 </div>
 </div>
 <div class="section" id="close">
-<h4>close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h4>
+<h4>close<a class="headerlink" href="#close" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
@@ -322,10 +322,10 @@
 </div>
 </div>
 <div class="section" id="get-acc-list">
-<h4>get_acc_list - 获取交易业务账户列表<a class="headerlink" href="#get-acc-list" title="Permalink to this headline">¶</a></h4>
+<h4>get_acc_list - 获取交易业务账户列表<a class="headerlink" href="#get-acc-list" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="get_acc_list">
-<code class="descname">get_acc_list</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#get_acc_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_acc_list</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#get_acc_list" title="永久链接至目标">¶</a></dt>
 <dd><p>获取交易业务账户列表。要调用交易接口前，必须先获取此列表，后续交易接口根据不同市场传入不同的交易业务账户ID，传0默认第一个账户</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -386,16 +386,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="unlock-trade">
-<h4>unlock_trade - 解锁交易<a class="headerlink" href="#unlock-trade" title="Permalink to this headline">¶</a></h4>
+<h4>unlock_trade - 解锁交易<a class="headerlink" href="#unlock-trade" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="unlock_trade">
-<code class="descname">unlock_trade</code><span class="sig-paren">(</span><em>self</em>, <em>password</em>, <em>password_md5=None</em>, <em>is_unlock=True</em><span class="sig-paren">)</span><a class="headerlink" href="#unlock_trade" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unlock_trade</code><span class="sig-paren">(</span><em>self</em>, <em>password</em>, <em>password_md5=None</em>, <em>is_unlock=True</em><span class="sig-paren">)</span><a class="headerlink" href="#unlock_trade" title="永久链接至目标">¶</a></dt>
 <dd><p>解锁交易。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>password</strong> &#8211; str，交易密码，如果password_md5不为空就使用传入的password_md5解锁，否则使用password转MD5得到password_md5再解锁</li>
 <li><strong>password_md5</strong> &#8211; str，交易密码的32位MD5加密16进制字符串(全小写)，解锁交易必须要填密码，锁定交易忽略</li>
 <li><strong>is_unlock</strong> &#8211; bool，解锁或锁定，True解锁，False锁定</li>
@@ -423,16 +423,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="accinfo-query">
-<h4>accinfo_query - 获取账户资金数据<a class="headerlink" href="#accinfo-query" title="Permalink to this headline">¶</a></h4>
+<h4>accinfo_query - 获取账户资金数据<a class="headerlink" href="#accinfo-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="accinfo_query">
-<code class="descname">accinfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em>, <em>currency=Currency.HKD</em><span class="sig-paren">)</span><a class="headerlink" href="#accinfo_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">accinfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em>, <em>currency=Currency.HKD</em><span class="sig-paren">)</span><a class="headerlink" href="#accinfo_query" title="永久链接至目标">¶</a></dt>
 <dd><p>获取账户资金数据。获取账户的资产净值、证券市值、现金、购买力等资金数据。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
@@ -551,16 +551,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="position-list-query">
-<h4>position_list_query - 获取账户持仓列表<a class="headerlink" href="#position-list-query" title="Permalink to this headline">¶</a></h4>
+<h4>position_list_query - 获取账户持仓列表<a class="headerlink" href="#position-list-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="position_list_query">
-<code class="descname">position_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>pl_ratio_min=None</em>, <em>pl_ratio_max=None</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#position_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">position_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>pl_ratio_min=None</em>, <em>pl_ratio_max=None</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#position_list_query" title="永久链接至目标">¶</a></dt>
 <dd><p>获取账户持仓列表。获取账户的证券持仓列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
 <li><strong>pl_ratio_min</strong> &#8211; float，过滤盈亏比例下限，高于此比例的会返回，如10，返回盈亏比例大于10%的持仓</li>
 <li><strong>pl_ratio_max</strong> &#8211; float，过滤盈亏比例上限，低于此比例的会返回，如20，返回盈亏比例小于20%的持仓</li>
@@ -693,10 +693,10 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="place-order">
-<h4>place_order - 下单<a class="headerlink" href="#place-order" title="Permalink to this headline">¶</a></h4>
+<h4>place_order - 下单<a class="headerlink" href="#place-order" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="place_order">
-<code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>remark=None</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>remark=None</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="永久链接至目标">¶</a></dt>
 <dd><p>下单交易。</p>
 <p>注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。</p>
 <p>如果是OpenFutureTradeContext，目前仅支持港股的指数期货。</p>
@@ -704,7 +704,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>price</strong> &#8211; float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值</li>
 <li><strong>qty</strong> &#8211; float，订单数量，整数，期权单位是&#8221;张&#8221;，期货单位是“张”</li>
 <li><strong>code</strong> &#8211; str，代码。如果是期货交易，且code为期货主连代码，则会自动转为对应的实际合约代码。</li>
@@ -738,7 +738,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id25">下单限制</a></li>
 </ul>
@@ -746,16 +746,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="order-list-query">
-<h4>order_list_query - 获取订单列表<a class="headerlink" href="#order-list-query" title="Permalink to this headline">¶</a></h4>
+<h4>order_list_query - 获取订单列表<a class="headerlink" href="#order-list-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="order_list_query">
-<code class="descname">order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_id=&quot;&quot;</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#order_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_id=&quot;&quot;</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#order_list_query" title="永久链接至目标">¶</a></dt>
 <dd><p>获取订单列表。获取账户的交易订单列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_id</strong> &#8211; str，订单号过滤，只返回此订单号的数据，没传不过滤，返回所有</li>
 <li><strong>status_filter_list</strong> &#8211; str数组，订单状态过滤，只返回这些状态的订单数据，没传不过滤，返回所有，参考 <a class="reference external" href="Base_API.html#orderstatus">OrderStatus</a> 类的定义</li>
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
@@ -866,10 +866,10 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="modify-order">
-<h4>modify_order - 修改订单<a class="headerlink" href="#modify-order" title="Permalink to this headline">¶</a></h4>
+<h4>modify_order - 修改订单<a class="headerlink" href="#modify-order" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="modify_order">
-<code class="descname">modify_order</code><span class="sig-paren">(</span><em>self</em>, <em>modify_order_op</em>, <em>order_id</em>, <em>qty</em>, <em>price</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#modify_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">modify_order</code><span class="sig-paren">(</span><em>self</em>, <em>modify_order_op</em>, <em>order_id</em>, <em>qty</em>, <em>price</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#modify_order" title="永久链接至目标">¶</a></dt>
 <dd><p>修改订单。修改订单，包括修改订单的价格和数量(即以前的改单)、撤单、失效、生效、删除等。</p>
 <p>如果是OpenHKCCTradeContext，将不支持改单。可撤单。删除订单是本地操作。</p>
 <p>如果是OpenFutureTradeContext，将不支持订单生效、失效操作。</p>
@@ -877,7 +877,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>modify_order_op</strong> &#8211; str，改单操作类型，参考 <a class="reference external" href="Base_API.html#ModifyOrderOp">ModifyOrderOp</a> 类的定义，有</li>
 <li><strong>order_id</strong> &#8211; str，订单号</li>
 <li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，整数，期权单位是&#8221;张&#8221;，期货单位是“张”</li>
@@ -938,7 +938,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id31">改单限制</a></li>
 </ul>
@@ -946,16 +946,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="cancel-all-order">
-<h4>cancel_all_order - 撤消全部订单<a class="headerlink" href="#cancel-all-order" title="Permalink to this headline">¶</a></h4>
+<h4>cancel_all_order - 撤消全部订单<a class="headerlink" href="#cancel-all-order" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="cancel_all_order">
-<code class="descname">cancel_all_order</code><span class="sig-paren">(</span><em>self</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cancel_all_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_all_order</code><span class="sig-paren">(</span><em>self</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#cancel_all_order" title="永久链接至目标">¶</a></dt>
 <dd><p>撤消全部订单。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，仅支持TrdEnv.REAL(真实环境)，仿真环境不支持该协议。</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
@@ -981,7 +981,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id31">改单限制</a></li>
 <li>模拟交易以及A股通暂不支持全部撤单</li>
@@ -990,16 +990,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="change-order">
-<h4>change_order - 改单(老接口，兼容以前)<a class="headerlink" href="#change-order" title="Permalink to this headline">¶</a></h4>
+<h4>change_order - 改单(老接口，兼容以前)<a class="headerlink" href="#change-order" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="change_order">
-<code class="descname">change_order</code><span class="sig-paren">(</span><em>self</em>, <em>order_id</em>, <em>price</em>, <em>qty</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#change_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_order</code><span class="sig-paren">(</span><em>self</em>, <em>order_id</em>, <em>price</em>, <em>qty</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#change_order" title="永久链接至目标">¶</a></dt>
 <dd><p>改单(老接口，兼容以前)。改单，即修改订单的价格和数量，是modify_order修改订单的一种操作，为兼容以前，保留此接口，新写代码请使用modify_order。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_id</strong> &#8211; str，订单号</li>
 <li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，整数，期权单位是&#8221;张&#8221;</li>
 <li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位小数，超过四舍五入</li>
@@ -1030,7 +1030,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id26">改单限制</a></li>
 </ul>
@@ -1038,16 +1038,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="deal-list-query">
-<h4>deal_list_query - 获取成交列表<a class="headerlink" href="#deal-list-query" title="Permalink to this headline">¶</a></h4>
+<h4>deal_list_query - 获取成交列表<a class="headerlink" href="#deal-list-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="deal_list_query">
-<code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=&quot;&quot;</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>refresh_cache=False</em><span class="sig-paren">)</span><a class="headerlink" href="#deal_list_query" title="永久链接至目标">¶</a></dt>
 <dd><p>获取成交列表。获取账户的交易成交列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
@@ -1143,16 +1143,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="history-order-list-query">
-<h4>history_order_list_query - 获取历史订单列表<a class="headerlink" href="#history-order-list-query" title="Permalink to this headline">¶</a></h4>
+<h4>history_order_list_query - 获取历史订单列表<a class="headerlink" href="#history-order-list-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="history_order_list_query">
-<code class="descname">history_order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_order_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">history_order_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>status_filter_list=[]</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_order_list_query" title="永久链接至目标">¶</a></dt>
 <dd><p>获取历史订单列表。获取账户的历史交易订单列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>status_filter_list</strong> &#8211; str数组，订单状态过滤，只返回这些状态的订单数据，没传不过滤，返回所有，参考 <a class="reference external" href="Base_API.html#orderstatus">OrderStatus</a> 类的定义</li>
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
 <li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
@@ -1183,7 +1183,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id27">获取历史订单列表限制</a></li>
 </ul>
@@ -1191,16 +1191,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="history-deal-list-query">
-<h4>history_deal_list_query - 获取历史成交列表<a class="headerlink" href="#history-deal-list-query" title="Permalink to this headline">¶</a></h4>
+<h4>history_deal_list_query - 获取历史成交列表<a class="headerlink" href="#history-deal-list-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="history_deal_list_query">
-<code class="descname">history_deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_deal_list_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">history_deal_list_query</code><span class="sig-paren">(</span><em>self</em>, <em>code=''</em>, <em>start=''</em>, <em>end=''</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#history_deal_list_query" title="永久链接至目标">¶</a></dt>
 <dd><p>获取历史成交列表。获取账户的历史交易成交列表。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
 <li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
 <li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
@@ -1229,7 +1229,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id28">获取历史成交列表限制</a></li>
 </ul>
@@ -1237,16 +1237,16 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="acctradinginfo-query">
-<h4>acctradinginfo_query - 查询账户下最大可买卖数量<a class="headerlink" href="#acctradinginfo-query" title="Permalink to this headline">¶</a></h4>
+<h4>acctradinginfo_query - 查询账户下最大可买卖数量<a class="headerlink" href="#acctradinginfo-query" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="acctradinginfo_query">
-<code class="descname">acctradinginfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_type</em>, <em>code</em>, <em>price</em>, <em>order_id=None</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#acctradinginfo_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">acctradinginfo_query</code><span class="sig-paren">(</span><em>self</em>, <em>order_type</em>, <em>code</em>, <em>price</em>, <em>order_id=None</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#acctradinginfo_query" title="永久链接至目标">¶</a></dt>
 <dd><p>查询账户下最大可买卖数量。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_type</strong> &#8211; 订单类型，参见 <a class="reference external" href="Base_API.html#ordertype">OrderType</a></li>
 <li><strong>code</strong> &#8211; 证券代码，例如&#8217;HK.00700&#8217;。如果是期货交易，且code为期货主连代码，则会自动转为对应的实际合约代码。</li>
 <li><strong>price</strong> &#8211; 报价，3位小数，超过四舍五入</li>
@@ -1320,7 +1320,7 @@
 </dd></dl>
 
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id24">获取最大交易数量限制</a></li>
 </ul>
@@ -1329,19 +1329,19 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="id10">
-<h3>TradeOrderHandlerBase - 响应订单推送基类<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>TradeOrderHandlerBase - 响应订单推送基类<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <div class="section" id="on-recv-rsp">
-<h4>on_recv_rsp - 响应订单推送<a class="headerlink" href="#on-recv-rsp" title="Permalink to this headline">¶</a></h4>
+<h4>on_recv_rsp - 响应订单推送<a class="headerlink" href="#on-recv-rsp" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="on_recv_rsp">
-<code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span><a class="headerlink" href="#on_recv_rsp" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span><a class="headerlink" href="#on_recv_rsp" title="永久链接至目标">¶</a></dt>
 <dd><p>响应订单推送。OpenD会主动推送订单的最新更新数据过来，需要客户端响应处理。</p>
 <p>该类与place_order返回的顺序参见 <a class="reference internal" href="#place_order">place_order</a> 的说明。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; class，订单推送协议pb对象</td>
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; class，订单推送协议pb对象</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的  <a class="reference internal" href="#order_list_query">order_list_query</a>  (获取订单列表)相同</td>
@@ -1378,9 +1378,9 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="tradedealhandlerbase">
-<h3>TradeDealHandlerBase - 响应成交推送基类<a class="headerlink" href="#tradedealhandlerbase" title="Permalink to this headline">¶</a></h3>
+<h3>TradeDealHandlerBase - 响应成交推送基类<a class="headerlink" href="#tradedealhandlerbase" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id11">
-<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -1390,7 +1390,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; class，成交推送协议pb对象</td>
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><strong>rsp_pb</strong> &#8211; class，成交推送协议pb对象</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Return(ret_code, ret_data):</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body">ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据跟上面的 <a class="reference internal" href="#deal_list_query">deal_list_query</a> (获取成交列表)相同</td>
@@ -1451,7 +1451,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, futu.
+        &copy; 版权所有 2018, futu.
 
     </p>
   </div> 
