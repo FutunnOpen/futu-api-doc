@@ -78,7 +78,7 @@ release = '3.19'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'en'
+language = 'zh'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -170,6 +170,11 @@ nbsphinx_kernel_name = 'python3'
 # Execute notebooks before conversion: 'always', 'never', 'auto' (default)
 nbsphinx_execute = 'never'
 
+# Language to be used for generating the HTML full-text search index.
+# Sphinx supports the following languages:
+#   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
+#   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr', 'zh'
+html_search_language = 'zh'
 
 # -- Options for LaTeX output ---------------------------------------------
 
