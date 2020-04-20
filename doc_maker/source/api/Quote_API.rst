@@ -1509,23 +1509,23 @@ get_order_book
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK], subscribe_push=False)[0]
-    # 先订阅买卖摆盘类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK], subscribe_push=False, num=10)[0]
+    # 先订阅买卖摆盘类型。订阅成功后 OpenD 将持续收到服务器的推送，False 代表暂时不需要推送给脚本
     if ret_sub == RET_OK:  # 订阅成功
-        ret, data = quote_ctx.get_order_book('HK.00700')  # 获取一次实时摆盘数据
+        ret, data = quote_ctx.get_order_book('HK.00700', num=3)  # 获取一次 3 档实时摆盘数据
         if ret == RET_OK:
             print(data)
         else:
             print('error:', data)
     else:
         print('subscription failed')
-    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+    quote_ctx.close()  # 关闭当条连接，OpenD 会在 1 分钟后自动取消相应股票相应类型的订阅
 	
  :Output:
 
  .. code:: python
 
-    {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-27 14:34:13.821', 'svr_recv_time_ask': '', 'Bid': [(384.2, 15400, 6), (384.0, 3700, 7), (383.8, 6600, 10), (383.6, 12700, 11), (383.4, 9700, 7), (383.2, 25400, 10), (383.0, 64900, 8), (382.8, 14000, 4), (382.6, 14000, 4), (382.4, 22600, 5)], 'Ask': [(384.4, 3000, 9), (384.6, 25800, 23), (384.8, 19100, 27), (385.0, 311000, 332), (385.2, 9200, 23), (385.4, 17300, 23), (385.6, 7000, 17), (385.8, 17300, 32), (386.0, 115700, 230), (386.2, 13300, 11)]}
+    {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-27 14:34:13.821', 'svr_recv_time_ask': '', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
 
 :strike:`get_multi_points_history_kline`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
