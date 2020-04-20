@@ -1824,9 +1824,6 @@ get_user_security
 		港股期权			HK options
 		美股期权			US options
 		特别关注			Starred
-		持仓				Positions
-		基金宝				Mutual Fund
-		外汇				Forex
 		期货				Futures
         =================   ===========  
 		
