@@ -1807,10 +1807,29 @@ get_user_security
 
 ..  py:function:: get_user_security(self, group_name)
 
- 获取指定分组的自选股列表（不支持持仓分组）
+ 获取指定分组的自选股列表
 
- :param group_name: 需要查询的自选股分组名称.
-
+ :param group_name: 需要查询的自选股分组名称。
+ 
+        系统分组的中英文对应名称如下：
+ 
+        =================   ===========   
+        中文                英文     
+        =================   ===========   
+        全部                All
+		沪深				CN
+		港股				HK
+		美股				US
+		期权				Options
+		港股期权			HK options
+		美股期权			US options
+		特别关注			Starred
+		持仓				Positions
+		基金宝				Mutual Fund
+		外汇				Forex
+		期货				Futures
+        =================   ===========  
+		
  :return: (ret, data)
 
         ret != RET_OK 返回错误字符串

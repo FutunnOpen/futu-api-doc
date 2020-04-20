@@ -425,7 +425,7 @@ API用户额度
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3213_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
-	* 仅支持自定义分组
+	* 不支持持仓（Positions），基金宝（Mutual Fund），外汇（Forex）的查询。
 
 .. _modify-user-security-limit:
 	
