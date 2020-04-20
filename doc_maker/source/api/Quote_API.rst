@@ -2948,8 +2948,24 @@ get_user_security_group
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
-    quote_ctx.close()	# 结束后记得关闭当条连接，防止连接条数用尽
+  
+    ret, data = quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+
+ :Output:
+
+ .. code:: python
+
+               group_name group_type
+    0          期权     SYSTEM
+    ..         ...        ...
+    12          C     CUSTOM
+    
+    [13 rows x 2 columns]
 
 .. note::
 
