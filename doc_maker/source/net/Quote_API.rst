@@ -45,6 +45,7 @@
   .. _StockFilter: ../protocol/quote_protocol.html#qot-stockfilter-proto-3215
   .. _SetPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
   .. _GetPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
+  .. _GetUserSecurityGroup: ../protocol/quote_protocol.html#qot-getusersecuritygroup-proto-3222
   .. _UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
   .. _UpdateRT: ../protocol/quote_protocol.html#qot-updatert-proto-3009
@@ -97,7 +98,8 @@ GetFutureInfo_                      获取期货合约资料                    
 StockFilter_                        筛选股票                                           OnReply_StockFilter
 RequestTradeDate_                   在线拉取交易日                                      OnReply_RequestTradeDate
 SetPriceReminder_                   设置到价提醒                                        OnReply_SetPriceReminder
-GetPriceReminder_                   获取到价提醒                                        OnReply_getPriceReminder
+GetPriceReminder_                   获取到价提醒                                        OnReply_GetPriceReminder
+GetUserSecurityGroup_               获取自选股分组                                      OnReply_GetUserSecurityGroup
 ================================    ==============================================   ==================================
 
 

@@ -1478,12 +1478,12 @@ get_cur_kline
 get_order_book
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_order_book(self, code)
+..  py:function:: get_order_book(self, code, num = 10)
 
  获取实时摆盘数据
 
  :param code: 股票代码
- :param num: 请求摆盘档数，LV2 行情用户最多可以获取 10 档，SF 行情用户可以获取全部摆盘信息
+ :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取40档
  :return: (ret, data)
 
  ret == RET_OK 返回字典，数据格式如下::
@@ -2290,10 +2290,26 @@ get_user_security
 
 ..  py:function:: get_user_security(self, group_name)
 
- 获取指定分组的自选股列表（不支持持仓分组）
+ 获取指定分组的自选股列表
 
- :param group_name: 需要查询的自选股分组名称.
-
+ :param group_name: 需要查询的自选股分组名称。
+ 
+        系统分组的中英文对应名称如下：
+ 
+        =================   ===========   
+        中文                英文     
+        =================   ===========   
+        全部                All
+		沪深				CN
+		港股				HK
+		美股				US
+		期权				Options
+		港股期权			HK options
+		美股期权			US options
+		特别关注			Starred
+		期货				Futures
+        =================   ===========  
+		
  :return: (ret, data)
 
         ret != RET_OK 返回错误字符串
