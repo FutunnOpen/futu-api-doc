@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.19 文档</title>
+  <title>行情协议 &mdash; futu-api-doc 3.20 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.19 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.19
+                3.20
               </div>
             
           
@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-setpricereminder-proto-3220">Qot_SetPriceReminder.proto - 3220设置到价提醒</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getpricereminder-proto-3221">Qot_GetPriceReminder.proto - 3221获取到价提醒</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-updatepricereminder-proto-3019">Qot_UpdatePriceReminder.proto - 3019到价提醒通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-getusersecuritygroup-proto-3222">Qot_GetUserSecurityGroup.proto - 3222获取自选股分组列表</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trade_protocol.html">交易协议</a></li>
@@ -748,7 +749,7 @@
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//请求的摆盘个数(1~10)</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//请求的摆盘个数</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -836,6 +837,7 @@
 <span class="kd">message</span> <span class="nc">C2S</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//请求的经纪个数</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -2870,6 +2872,10 @@
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketStatus</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//市场状态</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">content</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//内容</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">note</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//备注</span>
+        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">key</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 到价提醒的标识</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// Qot_Common::PriceReminderType，提醒频率类型</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">setValue</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 设置的提醒值</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">curValue</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 设置的提醒类型触发时当前值</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">Response</span>
@@ -2886,6 +2892,57 @@
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="qot-getusersecuritygroup-proto-3222">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetUserSecurityGroup.proto">Qot_GetUserSecurityGroup.proto</a> - 3222获取自选股分组列表<a class="headerlink" href="#qot-getusersecuritygroup-proto-3222" title="永久链接至标题">¶</a></h2>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">Qot_GetUserSecurityGroup</span><span class="p">;</span>
+<span class="k">option</span> <span class="na">java_package</span> <span class="o">=</span> <span class="s">&quot;com.futu.openapi.pb&quot;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="c1">// 自选股分组类型</span>
+<span class="kd">enum</span> <span class="n">GroupType</span>
+<span class="p">{</span>
+        <span class="na">GroupType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
+        <span class="na">GroupType_Custom</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 自定义分组</span>
+        <span class="na">GroupType_System</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 系统分组</span>
+        <span class="na">GroupType_All</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 全部分组</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">C2S</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">groupType</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// GroupType,自选股分组类型。</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">GroupData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">groupName</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 自选股分组名字</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">groupType</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// GroupType,自选股分组类型。</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">S2C</span>
+<span class="p">{</span>
+        <span class="k">repeated</span> <span class="n">GroupData</span> <span class="na">groupList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 自选股分组列表</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Response</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>限频接口：30秒内最多10次</li>
 </ul>
 </div>
 </div>
@@ -2934,7 +2991,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.19',
+            VERSION:'3.20',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.19 文档</title>
+  <title>基础定义 &mdash; futu-api-doc 3.20 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.19 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.19
+                3.20
               </div>
             
           
@@ -166,10 +166,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#plateinfo">PlateInfo - 单条连接定阅信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rehab">Rehab - 复权信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#priceremindertype">PriceReminderType - 提醒类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">PriceReminderType - 提醒频率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pricereminderfreq">PriceReminderFreq - 提醒频率</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">Trd_Common.proto - 交易通用定义</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Trd_Common.proto - 交易通用定义</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#orderstatus">OrderStatus - 订单状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdenv">TrdEnv - 交易环境</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdmarket">TrdMarket - 交易市场</a></li>
@@ -990,6 +990,7 @@
         <span class="na">TickerType_ReOpeningPriced</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span> <span class="c1">//再开盘定价</span>
         <span class="na">TickerType_ClosingPriced</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span> <span class="c1">//收盘定价</span>
         <span class="na">TickerType_ComprehensiveDelayPrice</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="c1">//综合延迟价格</span>
+        <span class="na">TickerType_Overseas</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span> <span class="c1">//交易的一方不是香港交易所的成员，属于场外交易</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1251,6 +1252,7 @@
         <span class="na">QotRight_Bmp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Bmp，无法订阅</span>
         <span class="na">QotRight_Level1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Level1</span>
         <span class="na">QotRight_Level2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//Level2</span>
+        <span class="na">QotRight_SF</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//SF高级行情</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1596,6 +1598,10 @@
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//经纪ID</span>
         <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//经纪名称</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">pos</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//经纪档位</span>
+
+        <span class="c1">//以下为SF行情特有字段</span>
+        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">orderID</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//交易所订单ID，与交易接口返回的订单ID并不一样</span>
+        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//订单股数</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1745,13 +1751,13 @@
         <span class="na">PriceReminderType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 未知</span>
         <span class="na">PriceReminderType_PriceUp</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 价格涨到</span>
         <span class="na">PriceReminderType_PriceDown</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 价格跌到</span>
-        <span class="na">PriceReminderType_ChangeRateUp</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 日涨幅超</span>
-        <span class="na">PriceReminderType_ChangeRateDown</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 日跌幅超</span>
-        <span class="na">PriceReminderType_5MinChangeRateUp</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 5分钟涨幅超</span>
-        <span class="na">PriceReminderType_5MinChangeRateDown</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 5分钟跌幅超</span>
+        <span class="na">PriceReminderType_ChangeRateUp</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 日涨幅超，该字段为百分比字段，设置时填20表示20%</span>
+        <span class="na">PriceReminderType_ChangeRateDown</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 日跌幅超，该字段为百分比字段，设置时填20表示20%</span>
+        <span class="na">PriceReminderType_5MinChangeRateUp</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 5分钟涨幅超，该字段为百分比字段，设置时填20表示20%</span>
+        <span class="na">PriceReminderType_5MinChangeRateDown</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 5分钟跌幅超，该字段为百分比字段，设置时填20表示20%</span>
         <span class="na">PriceReminderType_VolumeUp</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 成交量超过</span>
         <span class="na">PriceReminderType_TurnoverUp</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 成交额超过</span>
-        <span class="na">PriceReminderType_TurnoverRateUp</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 换手率超过</span>
+        <span class="na">PriceReminderType_TurnoverRateUp</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 换手率超过，该字段为百分比字段，设置时填20表示20%</span>
         <span class="na">PriceReminderType_BidPriceUp</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 买一价高于</span>
         <span class="na">PriceReminderType_AskPriceDown</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 卖一价低于</span>
         <span class="na">PriceReminderType_BidVolUp</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 买一量高于</span>
@@ -1762,8 +1768,8 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id5">
-<h3>PriceReminderType - 提醒频率<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="section" id="pricereminderfreq">
+<h3>PriceReminderFreq - 提醒频率<a class="headerlink" href="#pricereminderfreq" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="c1">//提醒频率</span>
 <span class="kd">enum</span> <span class="n">PriceReminderFreq</span>
@@ -1779,8 +1785,8 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id6">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto">Trd_Common.proto</a> - 交易通用定义<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto">Trd_Common.proto</a> - 交易通用定义<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="orderstatus">
 <h3>OrderStatus - 订单状态<a class="headerlink" href="#orderstatus" title="永久链接至标题">¶</a></h3>
 <blockquote>
@@ -2238,7 +2244,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.19',
+            VERSION:'3.20',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

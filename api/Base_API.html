@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.19 文档</title>
+  <title>基础API &mdash; futu-api-doc 3.20 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.19 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.19
+                3.20
               </div>
             
           
@@ -118,6 +118,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">枚举常量</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#autype-k">AuType - K线复权类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#currency">Currency - 交易相关的货币类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cltrisklevel">CltRiskLevel - 账户风控状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#darkstatus">DarkStatus - 暗盘状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dealstatus">DealStatus - 成交状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#financialquarter">FinancialQuarter - 财务指标周期</a></li>
@@ -167,10 +169,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#trdenv">TrdEnv - 交易环境类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdmarket">TrdMarket - 交易市场类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdside">TrdSide - 交易方向类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 窝轮状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usersecuritygrouptype">UserSecurityGroupType - 自选股的类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wrttype">WrtType - 港股窝轮类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#currency">Currency - 交易相关的货币类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cltrisklevel">CltRiskLevel - 账户风控状态</a></li>
 </ul>
 </li>
 </ul>
@@ -482,6 +482,86 @@
 <dt id="AuType.NONE">
 <code class="descname">NONE</code><a class="headerlink" href="#AuType.NONE" title="永久链接至目标">¶</a></dt>
 <dd><p>不复权</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="currency">
+<h3>Currency - 交易相关的货币类型<a class="headerlink" href="#currency" title="永久链接至标题">¶</a></h3>
+<p>交易相关的货币类型</p>
+<dl class="class">
+<dt id="Currency">
+<em class="property">class </em><code class="descname">Currency</code><a class="headerlink" href="#Currency" title="永久链接至目标">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="Currency.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#Currency.NONE" title="永久链接至目标">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Currency.HKD">
+<code class="descname">HKD</code><a class="headerlink" href="#Currency.HKD" title="永久链接至目标">¶</a></dt>
+<dd><p>港币</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Currency.USD">
+<code class="descname">USD</code><a class="headerlink" href="#Currency.USD" title="永久链接至目标">¶</a></dt>
+<dd><p>美元</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Currency.CNH">
+<code class="descname">CNH</code><a class="headerlink" href="#Currency.CNH" title="永久链接至目标">¶</a></dt>
+<dd><p>离岸人民币</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
+<div class="section" id="cltrisklevel">
+<h3>CltRiskLevel - 账户风控状态<a class="headerlink" href="#cltrisklevel" title="永久链接至标题">¶</a></h3>
+<p>账户风控状态</p>
+<dl class="class">
+<dt id="CltRiskLevel">
+<em class="property">class </em><code class="descname">CltRiskLevel</code><a class="headerlink" href="#CltRiskLevel" title="永久链接至目标">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="CltRiskLevel.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#CltRiskLevel.NONE" title="永久链接至目标">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="CltRiskLevel.SAFE">
+<code class="descname">SAFE</code><a class="headerlink" href="#CltRiskLevel.SAFE" title="永久链接至目标">¶</a></dt>
+<dd><p>安全</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="CltRiskLevel.WARNING">
+<code class="descname">WARNING</code><a class="headerlink" href="#CltRiskLevel.WARNING" title="永久链接至目标">¶</a></dt>
+<dd><p>预警</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="CltRiskLevel.DANGER">
+<code class="descname">DANGER</code><a class="headerlink" href="#CltRiskLevel.DANGER" title="永久链接至目标">¶</a></dt>
+<dd><p>危险</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="CltRiskLevel.ABSOLUTE_SAFE">
+<code class="descname">ABSOLUTE_SAFE</code><a class="headerlink" href="#CltRiskLevel.ABSOLUTE_SAFE" title="永久链接至目标">¶</a></dt>
+<dd><p>绝对安全</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="CltRiskLevel.OPT_DANGER">
+<code class="descname">OPT_DANGER</code><a class="headerlink" href="#CltRiskLevel.OPT_DANGER" title="永久链接至目标">¶</a></dt>
+<dd><p>危险，期权相关</p>
 </dd></dl>
 
 </dd></dl>
@@ -1685,25 +1765,25 @@
 <dl class="attribute">
 <dt id="PriceReminderType.CHANGE_RATE_UP">
 <code class="descname">CHANGE_RATE_UP</code><a class="headerlink" href="#PriceReminderType.CHANGE_RATE_UP" title="永久链接至目标">¶</a></dt>
-<dd><p>日涨幅超</p>
+<dd><p>日涨幅超，该字段为百分比字段，设置时填20表示20%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PriceReminderType.CHANGE_RATE_DOWN">
 <code class="descname">CHANGE_RATE_DOWN</code><a class="headerlink" href="#PriceReminderType.CHANGE_RATE_DOWN" title="永久链接至目标">¶</a></dt>
-<dd><p>日跌幅超</p>
+<dd><p>日跌幅超，该字段为百分比字段，设置时填20表示20%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PriceReminderType.FIVE_MIN_CHANGE_RATE_UP">
 <code class="descname">FIVE_MIN_CHANGE_RATE_UP</code><a class="headerlink" href="#PriceReminderType.FIVE_MIN_CHANGE_RATE_UP" title="永久链接至目标">¶</a></dt>
-<dd><p>5分钟涨幅超</p>
+<dd><p>5分钟涨幅超，该字段为百分比字段，设置时填20表示20%</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="PriceReminderType.FIVE_MIN_CHANGE_RATE_DOWN">
 <code class="descname">FIVE_MIN_CHANGE_RATE_DOWN</code><a class="headerlink" href="#PriceReminderType.FIVE_MIN_CHANGE_RATE_DOWN" title="永久链接至目标">¶</a></dt>
-<dd><p>5分钟跌幅超</p>
+<dd><p>5分钟跌幅超，该字段为百分比字段，设置时填20表示20%</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1721,7 +1801,7 @@
 <dl class="attribute">
 <dt id="PriceReminderType.TURNOVER_RATE_UP">
 <code class="descname">TURNOVER_RATE_UP</code><a class="headerlink" href="#PriceReminderType.TURNOVER_RATE_UP" title="永久链接至目标">¶</a></dt>
-<dd><p>换手率超过</p>
+<dd><p>换手率超过，该字段为百分比字段，设置时填20表示20%</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -3249,6 +3329,12 @@
 <dd><p>综合延迟价格</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="TickerType.OVERSEAS">
+<code class="descname">OVERSEAS</code><a class="headerlink" href="#TickerType.OVERSEAS" title="永久链接至目标">¶</a></dt>
+<dd><p>交易的一方不是香港交易所的成员，属于场外交易</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -3435,8 +3521,38 @@
 
 </div>
 <hr class="docutils" />
-<div class="section" id="warrantstatus">
-<h3>WarrantStatus - 窝轮状态<a class="headerlink" href="#warrantstatus" title="永久链接至标题">¶</a></h3>
+<div class="section" id="usersecuritygrouptype">
+<h3>UserSecurityGroupType - 自选股的类型<a class="headerlink" href="#usersecuritygrouptype" title="永久链接至标题">¶</a></h3>
+<p>自选股的类型定义</p>
+<dl class="class">
+<dt id="GroupType">
+<em class="property">class </em><code class="descname">GroupType</code><a class="headerlink" href="#GroupType" title="永久链接至目标">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="GroupType.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#GroupType.NONE" title="永久链接至目标">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GroupType.CUSTOM">
+<code class="descname">CUSTOM</code><a class="headerlink" href="#GroupType.CUSTOM" title="永久链接至目标">¶</a></dt>
+<dd><p>自定义分组</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GroupType.SYSTEM">
+<code class="descname">SYSTEM</code><a class="headerlink" href="#GroupType.SYSTEM" title="永久链接至目标">¶</a></dt>
+<dd><p>系统分组</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="GroupType.ALL">
+<code class="descname">ALL</code><a class="headerlink" href="#GroupType.ALL" title="永久链接至目标">¶</a></dt>
+<dd><p>全部分组</p>
+</dd></dl>
+
+</dd></dl>
+
 <p>窝轮状态定义</p>
 <dl class="class">
 <dt id="WarrantStatus">
@@ -3519,86 +3635,6 @@
 
 </dd></dl>
 
-</div>
-<hr class="docutils" />
-<div class="section" id="currency">
-<h3>Currency - 交易相关的货币类型<a class="headerlink" href="#currency" title="永久链接至标题">¶</a></h3>
-<p>交易相关的货币类型</p>
-<dl class="class">
-<dt id="Currency">
-<em class="property">class </em><code class="descname">Currency</code><a class="headerlink" href="#Currency" title="永久链接至目标">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="Currency.NONE">
-<code class="descname">NONE</code><a class="headerlink" href="#Currency.NONE" title="永久链接至目标">¶</a></dt>
-<dd><p>未知</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Currency.HKD">
-<code class="descname">HKD</code><a class="headerlink" href="#Currency.HKD" title="永久链接至目标">¶</a></dt>
-<dd><p>港币</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Currency.USD">
-<code class="descname">USD</code><a class="headerlink" href="#Currency.USD" title="永久链接至目标">¶</a></dt>
-<dd><p>美元</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Currency.CNH">
-<code class="descname">CNH</code><a class="headerlink" href="#Currency.CNH" title="永久链接至目标">¶</a></dt>
-<dd><p>离岸人民币</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<hr class="docutils" />
-<div class="section" id="cltrisklevel">
-<h3>CltRiskLevel - 账户风控状态<a class="headerlink" href="#cltrisklevel" title="永久链接至标题">¶</a></h3>
-<p>账户风控状态</p>
-<dl class="class">
-<dt id="CltRiskLevel">
-<em class="property">class </em><code class="descname">CltRiskLevel</code><a class="headerlink" href="#CltRiskLevel" title="永久链接至目标">¶</a></dt>
-<dd><dl class="attribute">
-<dt id="CltRiskLevel.NONE">
-<code class="descname">NONE</code><a class="headerlink" href="#CltRiskLevel.NONE" title="永久链接至目标">¶</a></dt>
-<dd><p>未知</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="CltRiskLevel.SAFE">
-<code class="descname">SAFE</code><a class="headerlink" href="#CltRiskLevel.SAFE" title="永久链接至目标">¶</a></dt>
-<dd><p>安全</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="CltRiskLevel.WARNING">
-<code class="descname">WARNING</code><a class="headerlink" href="#CltRiskLevel.WARNING" title="永久链接至目标">¶</a></dt>
-<dd><p>预警</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="CltRiskLevel.DANGER">
-<code class="descname">DANGER</code><a class="headerlink" href="#CltRiskLevel.DANGER" title="永久链接至目标">¶</a></dt>
-<dd><p>危险</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="CltRiskLevel.ABSOLUTE_SAFE">
-<code class="descname">ABSOLUTE_SAFE</code><a class="headerlink" href="#CltRiskLevel.ABSOLUTE_SAFE" title="永久链接至目标">¶</a></dt>
-<dd><p>绝对安全</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="CltRiskLevel.OPT_DANGER">
-<code class="descname">OPT_DANGER</code><a class="headerlink" href="#CltRiskLevel.OPT_DANGER" title="永久链接至目标">¶</a></dt>
-<dd><p>危险，期权相关</p>
-</dd></dl>
-
-</dd></dl>
-
 <hr class="docutils" />
 </div>
 </div>
@@ -3647,7 +3683,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.19',
+            VERSION:'3.20',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -58,6 +58,7 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
   .. _set_price_reminder: Quote_API.html#set_price_reminder
   .. _get_price_reminder: Quote_API.html#get_price_reminder
   .. _get_ipo_list: Quote_API.html#get_ipo_list
+  .. _get_user_security_group: Quote_API.html#get_user_security_group
 
   .. _get_acc_list:  Trade_API.html#get_acc_list
   .. _unlock_trade:  Trade_API.html#unlock_trade
@@ -113,6 +114,7 @@ get_future_info_                    获取期货合约资料
 request_trading_days_               在线请求交易日
 set_price_reminder_                 设置到价提醒
 get_price_reminder_                 获取对某只股票(某个市场)设置的到价提醒列表
+get_user_security_group_            获取自选股分组列表
 ================================    ============================================================================
 
 交易函数:

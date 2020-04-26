@@ -281,7 +281,7 @@ place_order - 下单
 	
 .. note::
 
-	* 接口限制请参见 `下单限制 <../protocol/intro.html#id25>`_
+	* 接口限制请参见 :ref:`下单限制 <place-order-limit>`
 	
 ----------------------------
 
