@@ -151,6 +151,66 @@ K线复权定义
   
 --------------------------------------
 
+
+
+Currency - 交易相关的货币类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+交易相关的货币类型
+
+..  py:class:: Currency
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: HKD
+
+  港币
+
+ ..  py:attribute:: USD
+
+  美元
+
+ ..  py:attribute:: CNH
+
+  离岸人民币
+
+--------------------------------------
+
+CltRiskLevel - 账户风控状态
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+账户风控状态
+
+..  py:class:: CltRiskLevel
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: SAFE
+
+  安全
+
+ ..  py:attribute:: WARNING
+
+  预警
+
+ ..  py:attribute:: DANGER
+
+  危险
+
+ ..  py:attribute:: ABSOLUTE_SAFE
+
+  绝对安全
+
+ ..  py:attribute:: OPT_DANGER
+
+  危险，期权相关
+  
+--------------------------------------
+
 DarkStatus - 暗盘状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1003,19 +1063,19 @@ PriceReminderType - 到价提醒类型
   
  ..  py:attribute:: CHANGE_RATE_UP
 
-  日涨幅超
+  日涨幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: CHANGE_RATE_DOWN
 
-  日跌幅超
+  日跌幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_UP 
 
-  5分钟涨幅超
+  5分钟涨幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: FIVE_MIN_CHANGE_RATE_DOWN
 
-  5分钟跌幅超
+  5分钟跌幅超，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: VOLUME_UP
 
@@ -1027,7 +1087,7 @@ PriceReminderType - 到价提醒类型
   
  ..  py:attribute:: TURNOVER_RATE_UP 
 
-  换手率超过
+  换手率超过，该字段为百分比字段，设置时填20表示20%
   
  ..  py:attribute:: BID_PRICE_UP
 
@@ -1246,7 +1306,19 @@ SecurityType - 证券类型
  ..  py:attribute:: DRVT
  
   期权
-   
+ 
+ ..  py:attribute:: FUTURE
+
+  期货
+
+ ..  py:attribute:: PLATE
+
+  板块
+
+ ..  py:attribute:: PLATESET
+
+  板块集合
+
  ..  py:attribute:: NONE
  
   未知
@@ -2086,7 +2158,11 @@ TickerType - 逐笔类型
  ..  py:attribute:: COMPREHENSIVE_DELAY_PRICE
  
   综合延迟价格
-  
+
+ ..  py:attribute:: OVERSEAS
+ 
+  交易的一方不是香港交易所的成员，属于场外交易
+
 --------------------------------------
 
 TradeDateType - 交易时间类型
@@ -2196,7 +2272,7 @@ TrdMarket - 交易市场类型
 TrdSide - 交易方向类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-交易方向类型定义(客户端下单只传Buy或Sell即可，SELL_SHORT / BUY_BACK 服务器可能会传回)
+交易方向类型定义(除了期货，其他股票都只支持传入买入和卖出)
 
 ..  py:class:: TrdSide
 
@@ -2222,6 +2298,31 @@ TrdSide - 交易方向类型
   
 --------------------------------------
 
+UserSecurityGroupType - 自选股的类型
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+自选股的类型定义
+
+..  py:class:: GroupType
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: CUSTOM
+
+  自定义分组
+
+ ..  py:attribute:: SYSTEM
+
+  系统分组
+
+ ..  py:attribute:: ALL
+
+  全部分组
+
+
+--------------------------------------
 WarrantStatus - 窝轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2283,63 +2384,4 @@ WrtType - 港股窝轮类型
 
   未知
 
---------------------------------------
-
-
-Currency - 交易相关的货币类型
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-交易相关的货币类型
-
-..  py:class:: Currency
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: HKD
-
-  港币
-
- ..  py:attribute:: USD
-
-  美元
-
- ..  py:attribute:: CNH
-
-  离岸人民币
-
---------------------------------------
-
-CltRiskLevel - 账户风控状态
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-账户风控状态
-
-..  py:class:: CltRiskLevel
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: SAFE
-
-  安全
-
- ..  py:attribute:: WARNING
-
-  预警
-
- ..  py:attribute:: DANGER
-
-  危险
-
- ..  py:attribute:: ABSOLUTE_SAFE
-
-  绝对安全
-
- ..  py:attribute:: OPT_DANGER
-
-  危险，期权相关
-  
 --------------------------------------

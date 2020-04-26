@@ -90,6 +90,8 @@
  
  .. _PriceReminderMarketStatus: Base_API.html#priceremindermarketstatus
  
+ .. _UserSecurityGroupType: Base_API.html#usersecuritygrouptype
+ 
 一分钟上手
 ============
 
@@ -835,6 +837,8 @@ get_broker_queue
         bid_broker_id           int             经纪买盘id
         bid_broker_name         str             经纪买盘名称
         bid_broker_pos          int             经纪档位
+        order_id                int64           交易所订单id，与交易接口返回的订单id并不一样
+        order_volume            int64           订单股数
         =====================   ===========   ==============================================================
 
         ask_frame_table 经纪卖盘数据
@@ -846,6 +850,8 @@ get_broker_queue
         ask_broker_id           int             经纪卖盘id
         ask_broker_name         str             经纪卖盘名称
         ask_broker_pos          int             经纪档位
+        order_id                int64           交易所订单id，与交易接口返回的订单id并不一样
+        order_volume            int64           订单股数
         =====================   ===========   ==============================================================
 
  :Example:
@@ -1193,11 +1199,12 @@ get_cur_kline
 get_order_book
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_order_book(self, code)
+..  py:function:: get_order_book(self, code, num = 10)
 
  获取实时摆盘数据
 
  :param code: 股票代码
+ :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取40档
  :return: (ret, data)
 
  ret == RET_OK 返回字典，数据格式如下::
@@ -1224,7 +1231,7 @@ get_order_book
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK])
-    print(quote_ctx.get_order_book('HK.00700'))
+    print(quote_ctx.get_order_book('HK.00700', 10))
     quote_ctx.close()
 
 
@@ -1800,10 +1807,26 @@ get_user_security
 
 ..  py:function:: get_user_security(self, group_name)
 
- 获取指定分组的自选股列表（不支持持仓分组）
+ 获取指定分组的自选股列表
 
- :param group_name: 需要查询的自选股分组名称.
-
+ :param group_name: 需要查询的自选股分组名称。
+ 
+        系统分组的中英文对应名称如下：
+ 
+        =================   ===========   
+        中文                英文     
+        =================   ===========   
+        全部                All
+		沪深				CN
+		港股				HK
+		美股				US
+		期权				Options
+		港股期权			HK options
+		美股期权			US options
+		特别关注			Starred
+		期货				Futures
+        =================   ===========  
+		
  :return: (ret, data)
 
         ret != RET_OK 返回错误字符串
@@ -2240,13 +2263,13 @@ get_price_reminder
 
 ..  py:function:: get_price_reminder(self, code = None, market = None)
 
- 获取对某只股票(某个市场)设置的到价提醒列表
+  获取对某只股票(某个市场)设置的到价提醒列表
 
  :param code: 获取该股票的到价提醒，code和market二选一，都存在的情况下code优先。
  :param market: 获取该市场的到价提醒，注意输入沪深都会认为是A股市场。输入Market.HK_FUTURE效果同Market.HK，返回港股市场所有数据。参见 Market_
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
-	
+
     ret == RET_OK data为DataFrame类型，字段如下:
     
     =========================   ==================   ========================================
@@ -2274,6 +2297,40 @@ get_price_reminder
 .. note::
 
     * 接口限制请参见 :ref:`获取到价提醒列表 <get-price-reminder-limit>`
+
+-----------------------------------------------------------------------------------------------------
+
+get_user_security_group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_user_security_group(self, group_type = UserSecurityGroupType.ALL)
+     
+  获取自选股分组列表
+  
+ :param group_type: UserSecurityGroupType_，分组类型
+ :return: (ret, data) ret != RET_OK 返回错误字符串
+  
+    ret == RET_OK data为DataFrame类型，字段如下:
+  
+  =========================   ==================   ================================
+  参数                         类型                 说明
+  =========================   ==================   ================================
+  group_name                   str                  分组名
+  group_type                   str                  UserSecurityGroupType，分组类型
+  =========================   ==================   ================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    print(quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
+    quote_ctx.close()
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取自选股分组列表 <get-user-security-group-limit>`
 
 -----------------------------------------------------------------------------------------------------
 
@@ -2652,9 +2709,9 @@ on_recv_rsp
  注意该回调是在独立子线程中
 
  :param rsp_pb: 派生类中不需要直接处理该参数
- :return: 失败时返回(RET_ERROR, ERR_MSG, None)
+ :return: 失败时返回(RET_ERROR, ERR_MSG)
  
- 成功时返回(RET_OK, '', data), data为DataFrame类型，字段如下
+ 成功时返回(RET_OK, '', data), data为dict类型，字段如下
     
     =========================   =========================   ====================================================================
     参数                         类型                         说明
@@ -2665,6 +2722,10 @@ on_recv_rsp
     market_status               str                          触发的时间段，盘前、盘中、盘后，参见 PriceReminderMarketStatus_
     content                     str                          到价提醒文字内容
     note                        str                          备注，最多10个字符
+	key                         int64                        到价提醒标识
+	reminder_type               str                          到价提醒的类型，参见 PriceReminderType_
+	set_value                   float                        用户设置的提醒值
+	cur_value                   float                        提醒触发时的值
     =========================   =========================   ====================================================================
 
           
