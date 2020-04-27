@@ -2339,16 +2339,16 @@ start和end的组合如下：</p>
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><strong>is_all_conn</strong> &#8211; 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据</td>
 </tr>
 <tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
-<p>ret == RET_OK 返回 定阅信息的字典数据 ，格式如下:</p>
+<p>ret == RET_OK 返回订阅信息的字典数据 ，格式如下:</p>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;total_used&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>    <span class="c1"># 所有连接已使用的定阅额度</span>
-    <span class="s1">&#39;own_used&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>       <span class="c1"># 当前连接已使用的定阅额度</span>
-    <span class="s1">&#39;remain&#39;</span><span class="p">:</span> <span class="mi">496</span><span class="p">,</span>       <span class="c1">#  剩余的定阅额度</span>
-    <span class="s1">&#39;sub_list&#39;</span><span class="p">:</span>          <span class="c1">#  每种定阅类型对应的股票列表</span>
+    <span class="s1">&#39;total_used&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>    <span class="c1"># 所有连接已使用的订阅额度</span>
+    <span class="s1">&#39;own_used&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>       <span class="c1"># 当前连接已使用的订阅额度</span>
+    <span class="s1">&#39;remain&#39;</span><span class="p">:</span> <span class="mi">496</span><span class="p">,</span>       <span class="c1">#  剩余的订阅额度</span>
+    <span class="s1">&#39;sub_list&#39;</span><span class="p">:</span>          <span class="c1">#  每种订阅类型对应的股票列表</span>
     <span class="p">{</span>
         <span class="s1">&#39;BROKER&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.02318&#39;</span><span class="p">],</span>
         <span class="s1">&#39;RT_DATA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HK.00700&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.02318&#39;</span><span class="p">]</span>
