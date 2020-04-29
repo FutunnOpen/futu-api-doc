@@ -438,7 +438,7 @@ request_history_kline
  :param ktype: k线类型， 参见 KLType_ 定义
  :param autype: 复权类型, 参见 AuType_ 定义
  :param fields: 需返回的字段列表，参见 KL_FIELD_ 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....
- :param max_count: 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。
+ :param max_count: 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。注意：OpenD 是把所有数据请求到再下发给脚本的，如果K线个数过多，建议选择分页，因为超过10秒仍未获取完会提示超时。
  :param page_req_key: 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。
  :return: (ret, data, page_req_key)
 
