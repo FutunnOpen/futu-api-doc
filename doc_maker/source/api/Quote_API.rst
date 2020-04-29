@@ -470,25 +470,39 @@ request_history_kline
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    
-    ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2019-06-20', end='2019-09-22', max_count=2) #请求开头50个数据
+    ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2019-09-11', end='2019-09-18', max_count=5)  # 每页5个，请求第一页
     if ret == RET_OK:
         print(data)
         print(data['code'][0])    # 取第一条的股票代码
-        print(data['code'].values.tolist())   # 转为list
+        print(data['close'].values.tolist())   # 第一页收盘价转为list
     else:
-        print('error:', data)    
+        print('error:', data)
+    while page_req_key != None:  # 请求后面的所有结果
+        print('*************************************')
+        ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2019-09-11', end='2019-09-18', max_count=5, page_req_key=page_req_key) # 请求翻页后的数据
+        if ret == RET_OK:
+            print(data)
+        else:
+            print('error:', data)
+    print('All pages are finished!')
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 	
  :Output:
 
  .. code:: python
 
-       code             time_key   open  close   high    low  pe_ratio  turnover_rate    volume      turnover  change_rate  last_close
-    0  HK.00700  2019-06-20 00:00:00  349.0  354.0  354.0  348.0    37.247        0.00202  19226151  6.770775e+09     1.958525       347.2
-    1  HK.00700  2019-06-21 00:00:00  357.4  354.4  357.4  349.0    37.289        0.00211  20111025  7.094849e+09     0.112994       354.0
+        code             time_key   open  close   high    low  pe_ratio  turnover_rate    volume      turnover  change_rate  last_close
+    0   HK.00700  2019-09-11 00:00:00  341.0  346.0  347.8  339.4    36.405        0.00165  15794903  5.437023e+09     1.466276       340.2
+    ..       ...                  ...    ...    ...    ...    ...       ...            ...       ...           ...          ...         ...
+    4   HK.00700  2019-09-17 00:00:00  343.2  343.6  345.4  340.6    36.153        0.00097   9225687  3.165508e+09    -0.865551       346.6
+    
+    [5 rows x 12 columns]
     HK.00700
-    ['HK.00700', 'HK.00700']
+    [346.0, 349.4, 349.6, 346.6, 343.6]
+    *************************************
+       code             time_key   open  close   high    low  pe_ratio  turnover_rate   volume      turnover  change_rate  last_close
+    0  HK.00700  2019-09-18 00:00:00  344.0  343.0  345.6  341.6     36.09        0.00077  7335407  2.516701e+09    -0.290698       343.6
+    All pages are finished!
 
 .. note::
 
@@ -1001,12 +1015,12 @@ get_broker_queue
 
  .. code:: python
 
-        code  bid_broker_id bid_broker_name  bid_broker_pos
-    0   HK.00700           2846     麦格理资本股份有限公司               1
-    ..       ...            ...             ...             ...
-    37  HK.00700           1450            万邦亚太               2
+        code  bid_broker_id bid_broker_name  bid_broker_pos order_id order_volume
+    0   HK.00700            140      海通国际证券有限公司               1      N/A          N/A
+    ..       ...            ...             ...             ...      ...          ...
+    35  HK.00700           4978  法国兴业证券(香港)有限公司               5      N/A          N/A
     
-    [38 rows x 4 columns]
+    [36 rows x 6 columns]
 
 subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1050,13 +1064,13 @@ subscribe
 
  .. code:: python
 
-    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-30 15:56:00.96', 'svr_recv_time_ask': '', 'Bid': [(376.0, 19200, 19), (375.8, 11700, 9), (375.6, 26100, 18), (375.4, 19000, 11), (375.2, 34300, 21), (375.0, 37500, 49), (374.8, 10900, 9), (374.6, 13800, 9), (374.4, 2700, 5), (374.2, 2500, 14)], 'Ask': [(376.2, 8400, 10), (376.4, 9100, 11), (376.6, 20000, 22), (376.8, 29400, 14), (377.0, 16800, 14), (377.2, 6500, 3), (377.4, 10400, 8), (377.6, 9600, 7), (377.8, 1900, 8), (378.0, 31000, 44)]}
+    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '2020-04-29 10:40:03.147', 'svr_recv_time_ask': '2020-04-29 10:40:03.147', 'Bid': [(416.8, 2600, 11, {}), (416.6, 13100, 17, {}), (416.4, 24600, 17, {}), (416.2, 28000, 13, {}), (416.0, 46900, 30, {}), (415.8, 10900, 7, {}), (415.6, 7100, 9, {}), (415.4, 13300, 3, {}), (415.2, 300, 3, {}), (415.0, 11200, 36, {})], 'Ask': [(417.0, 17600, 31, {}), (417.2, 17800, 24, {}), (417.4, 15300, 10, {}), (417.6, 28800, 17, {}), (417.8, 20700, 11, {}), (418.0, 114200, 155, {}), (418.2, 20600, 19, {}), (418.4, 24100, 28, {}), (418.6, 42700, 45, {}), (418.8, 181900, 76, {})]}
 
 .. note::
     
 	* 接口限制请参见 :ref:`订阅反订阅限制 <subscribe-limit>`
 
-		
+
 unsubscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1126,31 +1140,31 @@ unsubscribe_all
  .. code:: python
 
     from futu import *
-	import time
-	quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-
-	print('current subscription status :', quote_ctx.query_subscription())  # 查询初始订阅状态
-	ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE, SubType.TICKER], subscribe_push=False)
-	# 先订阅了QUOTE和TICKER两个类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
-	if ret_sub == RET_OK:   # 订阅成功
-		print('subscribe successfully！current subscription status :', quote_ctx.query_subscription())  # 订阅成功后查询订阅状态
-		time.sleep(60)  # 订阅之后至少1分钟才能取消订阅
-		ret_unsub, err_message_unsub = quote_ctx.unsubscribe_all()  # 取消所有订阅
-		if ret_unsub == RET_OK:
-			print('unsubscribe successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
-		else:
-			print('unsubscription failed', err_message_unsub)
-	else:
-		print('subscription failed', err_message)
-	quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+    import time
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    
+    print('current subscription status :', quote_ctx.query_subscription())  # 查询初始订阅状态
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE, SubType.TICKER], subscribe_push=False)
+    # 先订阅了QUOTE和TICKER两个类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:  # 订阅成功
+        print('subscribe successfully！current subscription status :', quote_ctx.query_subscription())  # 订阅成功后查询订阅状态
+        time.sleep(60)  # 订阅之后至少1分钟才能取消订阅
+        ret_unsub, err_message_unsub = quote_ctx.unsubscribe_all()  # 取消所有订阅
+        if ret_unsub == RET_OK:
+            print('unsubscribe successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
+        else:
+            print('unsubscription failed', err_message_unsub)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close()  # 结束后记得关闭当条连接，防止连接条数用尽
 
  :Output:
 
  .. code:: python
 
-    current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
-    subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
-    unsubscribe successfully！current subscription status: (0, {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'TICKER': ['HK.00700']}})
+	current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
+	subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
+	unsubscribe successfully！current subscription status: (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
 
 .. note::
 
@@ -1525,7 +1539,7 @@ get_order_book
 
  .. code:: python
 
-    {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-27 14:34:13.821', 'svr_recv_time_ask': '', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
+    {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-27 14:34:13.821', 'svr_recv_time_ask': '2020-03-27 14:34:13.821', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
 
 :strike:`get_multi_points_history_kline`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1696,7 +1710,7 @@ get_owner_plate
     if ret == RET_OK:
         print(data)
         print(data['code'][0])    # 取第一条的股票代码
-        print(data['plate_code'].values.tolist())   # 转为list
+        print(data['plate_code'].values.tolist())   # 板块代码转为list
     else:
         print('error:', data)
     quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
@@ -2791,6 +2805,7 @@ set_price_reminder
  .. code:: python
 
     from futu import *
+    import time
     class PriceReminderTest(PriceReminderHandlerBase):
         def on_recv_rsp(self, rsp_str):
             ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
@@ -2806,18 +2821,18 @@ set_price_reminder
     if ret == RET_OK:
         bid_price = data['bid_price'][0]  # 获取实时买一价
         ask_price = data['ask_price'][0]  # 获取实时卖一价
-    # 设置当卖一价低于（ask_price-1）时提醒
-    ret_ask, ask_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.ASK_PRICE_DOWN, reminder_freq=PriceReminderFreq.ALWAYS, value=(ask_price-1), note='123')
-    if ret_ask == RET_OK:
-        print('卖一价低于（ask_price-1）时提醒设置成功：', ask_data)
-    else:
-        print('error:', ask_data)
-    # 设置当买一价高于（bid_price+1）时提醒
-    ret_bid, bid_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.BID_PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS, value=(bid_price+1), note='456')
-    if ret_bid == RET_OK:
-        print('买一价高于（bid_price+1）时提醒设置成功：', bid_data)
-    else:
-        print('error:', bid_data)
+        # 设置当卖一价低于（ask_price-1）时提醒
+        ret_ask, ask_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.ASK_PRICE_DOWN, reminder_freq=PriceReminderFreq.ALWAYS, value=(ask_price-1), note='123')
+        if ret_ask == RET_OK:
+            print('卖一价低于（ask_price-1）时提醒设置成功：', ask_data)
+        else:
+            print('error:', ask_data)
+        # 设置当买一价高于（bid_price+1）时提醒
+        ret_bid, bid_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.BID_PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS, value=(bid_price+1), note='456')
+        if ret_bid == RET_OK:
+            print('买一价高于（bid_price+1）时提醒设置成功：', bid_data)
+        else:
+            print('error:', bid_data)
     time.sleep(15)
     quote_ctx.close()
 	
@@ -2825,10 +2840,10 @@ set_price_reminder
 
  .. code:: python
 
-    卖一价低于（ask_price-1）时提醒设置成功： 158555658455564801
-    买一价高于（bid_price+1）时提醒设置成功： 158555658456686801
-    PriceReminderTest  {'code': 'HK.HSImain', 'price': 23474.0, 'change_rate': 1.998, 'market_status': 'OPEN', 'content': '卖一价低于23476.000', 'note': '123'}
-    ……
+    卖一价低于（ask_price-1）时提醒设置成功： 158815356110052101
+    买一价高于（bid_price+1）时提醒设置成功： 158815356129980801
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 24532.0, 'change_rate': 0.122, 'market_status': 'OPEN', 'content': '买一价高于24533.000', 'note': '456', 'key': 158815356129980801, 'reminder_type': 'BID_PRICE_UP', 'set_value': 24533.0, 'cur_value': 24533.0}
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 24532.0, 'change_rate': 0.122, 'market_status': 'OPEN', 'content': '卖一价低于24533.000', 'note': '123', 'key': 158815356110052101, 'reminder_type': 'ASK_PRICE_DOWN', 'set_value': 24533.0, 'cur_value': 24533.0}
 
 .. note::
 
@@ -2982,8 +2997,9 @@ SysNotifyHandlerBase - OpenD通知回调
 
  .. code:: python
 
+    import time
     from futu import *
-
+    
     class SysNotifyTest(SysNotifyHandlerBase):
         def on_recv_rsp(self, rsp_str):
             ret_code, data = super(SysNotifyTest, self).on_recv_rsp(rsp_str)
@@ -2996,7 +3012,8 @@ SysNotifyHandlerBase - OpenD通知回调
     
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = SysNotifyTest()
-    quote_ctx.set_handler(handler) # 设置回调
+    quote_ctx.set_handler(handler)  # 设置回调
+    time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
     quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
                 
 -----------------------------------------------------------------------------------------------------
@@ -3120,8 +3137,8 @@ OrderBookHandlerBase - 实时摆盘回调
 
  .. code:: python
 
-    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '', 'svr_recv_time_ask': '', 'Bid': [(382.8, 16200, 25), (382.6, 17300, 20), (382.4, 30700, 16), (382.2, 15800, 23), (382.0, 72100, 49), (381.8, 1045600, 44), (381.6, 10300, 7), (381.4, 43000, 10), (381.2, 4800, 11), (381.0, 13100, 42)], 'Ask': [(383.0, 68800, 49), (383.2, 15400, 9), (383.4, 22500, 11), (383.6, 42700, 12), (383.8, 22800, 22), (384.0, 150500, 115), (384.2, 23600, 19), (384.4, 10200, 21), (384.6, 23000, 30), (384.8, 12300, 31)]}
-            
+    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '2020-04-29 15:55:53.299', 'svr_recv_time_ask': '2020-04-29 15:55:53.299', 'Bid': [(414.2, 60600, 63, {}), (414.0, 96000, 34, {}), (413.8, 23400, 17, {}), (413.6, 31800, 24, {}), (413.4, 33900, 19, {}), (413.2, 47800, 17, {}), (413.0, 42500, 44, {}), (412.8, 17000, 6, {}), (412.6, 10600, 6, {}), (412.4, 5200, 5, {})], 'Ask': [(414.4, 74200, 61, {}), (414.6, 25700, 26, {}), (414.8, 18800, 24, {}), (415.0, 35700, 51, {}), (415.2, 17500, 15, {}), (415.4, 33500, 9, {}), (415.6, 62000, 18, {}), (415.8, 36700, 11, {}), (416.0, 42000, 73, {}), (416.2, 3800, 10, {})]}
+   
 -------------------------------------------
 
 on_recv_rsp
@@ -3330,17 +3347,17 @@ BrokerHandlerBase - 实时经纪推送回调
 
  .. code:: python
 
-        BrokerTest: stock: HK.00700 data: [        code  bid_broker_id bid_broker_name  bid_broker_pos
-    0   HK.00700           3443    高盛(亚洲)证券有限公司               1
-    ..       ...            ...             ...             ...
-    38  HK.00700           4481       巴克莱亚洲有限公司               2
+        BrokerTest: stock: HK.00700 data: [        code  bid_broker_id  bid_broker_name  bid_broker_pos order_id order_volume
+    0   HK.00700            517  Eclipse Options               1      N/A          N/A
+    ..       ...            ...              ...             ...      ...          ...
+    23  HK.00700            535       海通国际证券有限公司              14      N/A          N/A
     
-    [39 rows x 4 columns],         code  ask_broker_id ask_broker_name  ask_broker_pos
-    0   HK.00700           6898            BTIG               1
-    ..       ...            ...             ...             ...
-    38  HK.00700           3440    高盛(亚洲)证券有限公司               2
+    [24 rows x 6 columns],         code  ask_broker_id ask_broker_name  ask_broker_pos order_id order_volume
+    0   HK.00700           8577  汇丰证券经纪(亚洲)有限公司               1      N/A          N/A
+    ..       ...            ...             ...             ...      ...          ...
+    37  HK.00700           5357     星展唯高达香港有限公司               3      N/A          N/A
     
-    [39 rows x 4 columns]] 
+    [38 rows x 6 columns]] 
 	
 -------------------------------------------
 
@@ -3391,7 +3408,7 @@ PriceReminderHandlerBase - 到价提醒通知回调
 
  .. code:: python
 
-    PriceReminderTest  {'code': 'HK.00700', 'price': 383.2, 'change_rate': 0.366, 'market_status': 'OPEN', 'content': '价格涨到383.200', 'note': '10:50:04'}
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 24529.0, 'change_rate': 0.11, 'market_status': 'OPEN', 'content': '价格涨到24531.000', 'note': '', 'key': 158815186771390101, 'reminder_type': 'PRICE_UP', 'set_value': 24531.0, 'cur_value': 24532.0}
     
 -------------------------------------------
 
