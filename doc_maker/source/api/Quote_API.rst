@@ -3243,6 +3243,8 @@ TickerHandlerBase - 实时逐笔推送回调
 
 	   TickerTest         code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
 	0  HK.00700  2020-03-27 15:15:17  382.4     100   38240.0             SELL  6808782951082376714  AUTO_MATCH          CACHE
+	   TickerTest          code                 time   price  volume  turnover ticker_direction             sequence     type push_data_type
+	0  HK.00700  2020-03-27 15:15:19  382.6     900   344340.0             BUY  6808782951082378963  AUTO_MATCH       REALTIME
 	
 .. note::
 
