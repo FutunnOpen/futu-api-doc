@@ -1323,7 +1323,20 @@ Ticker - 逐笔成交
 	
 -----------------------------------------------
 
-OrderBook - 买卖十档摆盘
+OrderBookDetail - 买卖档明细
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	message OrderBookDetail
+	{
+		required int64 orderID = 1; //交易所订单ID，与交易接口返回的订单ID并不一样
+		required int64 volume = 2; //订单股数
+	}
+	
+-----------------------------------------------
+
+OrderBook - 买卖档
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1333,6 +1346,7 @@ OrderBook - 买卖十档摆盘
 		required double price = 1; //委托价格
 		required int64 volume = 2; //委托数量
 		required int32 orederCount = 3; //委托订单个数
+		repeated OrderBookDetail detailList = 4; //订单信息，SF行情特有
 	}
 	
 -----------------------------------------------

@@ -1025,7 +1025,7 @@ get_broker_queue
 subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True)
+..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=True)
 
  订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。 
 
@@ -1033,6 +1033,7 @@ subscribe
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
  :param is_first_push: 订阅成功之后是否马上推送一次数据
  :param subscribe_push: 订阅后推送
+ :param is_detailed_orderbook 是否订阅详细的摆盘订单明细，仅用于 SF 行情权限下订阅 ORDER_BOOK 类型
  :return: (ret, err_message)
 
         ret == RET_OK err_message为None
