@@ -1454,7 +1454,7 @@ SetPriceReminderOp - 设置到价提醒操作
   
   新增
    
- ..  py:attribute:: DELETE
+ ..  py:attribute:: DEL
   
   删除
   
