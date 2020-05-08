@@ -403,7 +403,7 @@
 	* 交易方向枚举参考 `TrdSide <base_define.html#trdside>`_
 	* 订单类型枚举参考 `OrderType <base_define.html#ordertype>`_
 	* 股票行情市场参考 `TrdSecMarket <base_define.html#trdsecmarket>`_
-	* 限频接口：30秒内最多30次
+	* 限频接口：:ref:`place-order-limit`
 	
 	* 如果下单返回的retMsg没用描述清楚错误，可再查看errCode了解详情，errCode一些取值和对应的错误描述如下:
 	* 2: 需要升级到保证金账户
@@ -468,7 +468,7 @@
 	* 请求包标识结构参考 `PacketID <base_define.html#packetid>`_
 	* 交易公共参数头结构参考 `TrdHeader <base_define.html#trdheader>`_
 	* 修改操作枚举参考 `ModifyOrderOp <base_define.html#modifyorderop>`_
-	* 限频接口：30秒内最多30次
+	* 限频接口：:ref:`modify-order-limit`
 	* 模拟交易以及A股通暂不支持全部撤单
 	
 -------------------------------------
@@ -639,7 +639,7 @@
 	* 订单结构参考 `Order <base_define.html#order>`_
 	* 过滤条件结构参考 `TrdFilterConditions <base_define.html#trdfilterconditions>`_
 	* 订单状态枚举参考 `OrderStatus <base_define.html#orderstatus>`_
-	* 限频接口：30秒内最多10次
+	* 限频接口：:ref:`history-order-list-query-limit`
 	
 -------------------------------------
 
@@ -686,6 +686,6 @@
 	* 交易公共参数头结构参考 `TrdHeader <base_define.html#trdheader>`_
 	* 成交结构参考 `OrderFill <base_define.html#orderfill>`_
 	* 过滤条件结构参考 `TrdFilterConditions <base_define.html#trdfilterconditions>`_
-	* 限频接口：30秒内最多10次
+	* 限频接口：:ref:`history-deal-list-query-limit`
 	
--------------------------------------
+

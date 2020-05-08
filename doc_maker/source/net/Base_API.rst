@@ -269,6 +269,3 @@ OnDisConnect
   :param errCode: 错误码。高32位为 ConnectFailType_ 类型，低32位为系统错误码；
   :return: void
 
---------------------------------------------
-
-

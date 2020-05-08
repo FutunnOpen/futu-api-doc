@@ -8,8 +8,6 @@
 交易API
 ========
 
---------------
-
   .. _GetAccList: ../protocol/trade_protocol.html#trd-getacclist-proto-2001
   .. _UnlockTrade: ../protocol/trade_protocol.html#trd-unlocktrade-proto-2005
   .. _SubAccPush: ../protocol/trade_protocol.html#trd-subaccpush-proto-2008

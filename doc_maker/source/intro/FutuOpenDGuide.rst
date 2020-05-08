@@ -346,8 +346,9 @@ WebSocket相关
   3. 生成私钥以及证书（PEM）。
   
   证书生成参数参考如下：
-  ::
+    ```
     openssl req -x509 -newkey rsa:2048 -out futu.cer -outform PEM -keyout futu.key -days 10000 -verbose -config openssl.cnf -nodes -sha256 -subj "/CN=Futu CA" -reqexts v3_req -extensions v3_req
+    ```
 
   附上本地自签证书以及生成证书的配置文件供测试： `openssl.cnf <../_static/file/openssl.cnf>`_  |  `futu.cer <../_static/file/cer>`_  | `futu.key <../_static/file/key>`_  
   

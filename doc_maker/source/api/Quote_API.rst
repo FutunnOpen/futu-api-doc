@@ -316,103 +316,7 @@ get_stock_basicinfo
     * 当传入程序无法识别的股票时（包括很久之前退市的股票和不存在的股票），仍然返回股票信息，用静态信息标志来该股票不存在。统一处理为：code正常显示，name显示为“未知股票”，delisting显示为“true”，其他字段均为默认值（整型默认是0，字符串默认是空字符串）。
     * 跟其他的行情接口不同，其他接口遇到程序无法识别的股票时，会拒绝请求并返回错误描述“未知股票”。
 
-:strike:`get_multiple_history_kline`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_multiple_history_kline(self, codelist, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ)
-
- 获取多只股票的本地历史k线数据
-
- :param codelist: 股票代码列表，list或str。例如：['HK.00700', 'HK.00001']，'HK.00700,SZ.399001'
- :param start: 起始时间，，例如'2017-06-20'
- :param end: 结束时间，例如'2017-07-20'
- :param ktype: k线类型，参见 KLType_
- :param autype: 复权类型，参见 AuType_
- :return: 成功时返回(RET_OK, [data])，data是DataFrame数据, 数据列格式如下
-
-    =================   ===========   ==============================================================================
-    参数                  类型                        说明
-    =================   ===========   ==============================================================================
-    code                str            股票代码
-    time_key            str            k线时间（港股A股默认是北京时间）
-    open                float          开盘价
-    close               float          收盘价
-    high                float          最高价
-    low                 float          最低价
-    pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    volume              int            成交量
-    turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    last_close          float          昨收价
-    =================   ===========   ==============================================================================
-
-	失败时返回(RET_ERROR, data)，其中data是错误描述字符串
-	
- :Example:
-
- .. code-block:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_multiple_history_kline(['HK.00700'], '2017-06-20', '2017-06-25', KLType.K_DAY, AuType.QFQ))
-    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
-
-:strike:`get_history_kline`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_history_kline(self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL])
-
- :strike:`得到本地历史k线，需先参照帮助文档下载k线`
-
- :param code: 股票代码
- :param start: 开始时间，例如'2017-06-20'。
- :param end:  结束时间，例如'2017-06-30'。
-            start和end的组合如下：
-			
-              ==========    ==========    ========================================
-              start类型      end类型       说明
-              ==========    ==========    ========================================
-                str            str           start和end分别为指定的日期
-                None           str           start为end往前365天
-                str            None          end为start往后365天
-                None           None          end为当前日期，start为end往前365天
-              ==========    ==========    ========================================
- :param ktype: k线类型， 参见 KLType_ 定义
- :param autype: 复权类型, 参见 AuType_ 定义
- :param fields: 需返回的字段列表，参见 KL_FIELD_ 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....
- :return: (ret, data)
-
-        ret == RET_OK 返回pd Dataframe数据, 数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
-    =================   ===========   ==============================================================================
-    参数                  类型                        说明
-    =================   ===========   ==============================================================================
-    code                str            股票代码
-    time_key            str            k线时间（港股A股默认是北京时间）
-    open                float          开盘价
-    close               float          收盘价
-    high                float          最高价
-    low                 float          最低价
-    pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    volume              int            成交量
-    turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    last_close          float          昨收价
-    =================   ===========   ==============================================================================
-
-	
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_history_kline('HK.00700', start='2017-06-20', end='2017-06-22'))
-    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 
 request_history_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -508,52 +412,7 @@ request_history_kline
 
     * 接口限制请参见 :ref:`在线获取单只股票一段历史K线限制 <request-history-kline-limit>`
 	
-:strike:`get_autype_list`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_autype_list(self, code_list)
-
- 获取给定股票列表的复权因子
-
- :param code_list: 股票列表，例如['HK.00700']
- :return: (ret, data)
-
-        ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
- =====================   ===========   ====================================================================================
- 参数                      类型                        说明
- =====================   ===========   ====================================================================================
- code                    str            股票代码
- ex_div_date             str            除权除息日
- split_ratio             float          拆合股比例（该字段为比例字段，展示为小数表示）例如，对于5股合1股为5.0，对于1股拆5股为0.2
- per_cash_div            float          每股派现
- per_share_div_ratio     float          每股送股比例（该字段为比例字段，展示为小数表示）
- per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，展示为小数表示）
- allotment_ratio         float          每股配股比例（该字段为比例字段，展示为小数表示）
- allotment_price         float          配股价
- stk_spo_ratio           float          增发比例（该字段为比例字段，展示为小数表示）
- stk_spo_price           float          增发价格
- forward_adj_factorA     float          前复权因子A
- forward_adj_factorB     float          前复权因子B
- backward_adj_factorA    float          后复权因子A
- backward_adj_factorB    float          后复权因子B
- =====================   ===========   ====================================================================================
-		
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_autype_list(["HK.00700"]))
-    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
-	
-.. note::
-
-	* 复权后价格 = 复权前价格 * 复权因子a + 复权因子b
-	
 	
 get_market_snapshot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1542,52 +1401,7 @@ get_order_book
 
     {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-27 14:34:13.821', 'svr_recv_time_ask': '2020-03-27 14:34:13.821', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
 
-:strike:`get_multi_points_history_kline`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_multi_points_history_kline(self, code_list, dates, fields, ktype=KLType.K_DAY, autype=AuType.QFQ, no_data_mode=KLNoDataMode.FORWARD)
-
- 从本地历史K线中获取多支股票多个时间点的指定数据列
-
- :param code_list: 单个或多个股票 'HK.00700'  or  ['HK.00700', 'HK.00001']
- :param dates: 单个或多个日期 '2017-01-01' or ['2017-01-01', '2017-01-02']，最多5个时间点
- :param fields: 单个或多个数据列 KL_FIELD.ALL or [KL_FIELD.DATE_TIME, KL_FIELD.OPEN]
- :param ktype: K线类型 KLType_
- :param autype: 复权类型 AuType_ 
- :param no_data_mode: 指定时间为非交易日时，对应的k线数据取值模式，参见 KLNoDataMode_
- :return: (ret, data)
-
-        ret == RET_OK 返回pd dataframe数据，固定表头包括'code'(代码) 'time_point'(指定的日期) 'data_status' (KLDataStatus)。数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
-    =================   ===========   ==============================================================================
-    参数                  类型                        说明
-    =================   ===========   ==============================================================================
-    code                str            股票代码
-    time_point          str            请求的时间（港股A股默认是北京时间）
-    data_status         str            数据点是否有效，参见 KLDataStatus_
-    time_key            str            k线时间（港股A股默认是北京时间）
-    open                float          开盘价
-    close               float          收盘价
-    high                float          最高价
-    low                 float          最低价
-    pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    volume              int            成交量
-    turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    last_close          float          昨收价
-    =================   ===========   ==============================================================================
-    
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_multi_points_history_kline(['HK.00700'], ['2017-06-20', '2017-06-25'], KL_FIELD.ALL, KLType.K_DAY, AuType.QFQ))
-    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽	
 	
 get_referencestock_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
