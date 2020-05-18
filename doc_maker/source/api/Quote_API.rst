@@ -884,7 +884,7 @@ get_broker_queue
 subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=True)
+..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=False)
 
  订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。 
 
@@ -892,7 +892,7 @@ subscribe
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
  :param is_first_push: 订阅成功之后是否马上推送一次数据
  :param subscribe_push: 订阅后推送
- :param is_detailed_orderbook 是否订阅详细的摆盘订单明细，仅用于 SF 行情权限下订阅 ORDER_BOOK 类型
+ :param is_detailed_orderbook: 是否订阅详细的摆盘订单明细，仅用于 SF 行情权限下订阅 ORDER_BOOK 类型
  :return: (ret, err_message)
 
         ret == RET_OK err_message为None
@@ -1357,33 +1357,36 @@ get_order_book
  获取实时摆盘数据
 
  :param code: 股票代码
- :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取40档
+ :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取全盘
  :return: (ret, data)
 
+ ret != RET_OK 返回错误字符串
+ 
  ret == RET_OK 返回字典，数据格式如下::
  
   {
   'code': 股票代码
   'svr_recv_time_bid': 富途服务器从交易所收到数据的时间(for bid) 部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
   'svr_recv_time_ask': 富途服务器从交易所收到数据的时间(for ask)
-  'Ask': [ (ask_price1, ask_volume1，order_num), (ask_price2, ask_volume2, order_num),…]
-  'Bid': [ (bid_price1, bid_volume1, order_num), (bid_price2, bid_volume2, order_num),…]
+  'Ask': [ (ask_price1, ask_volume1，order_num, {'orderid1': order_volume1, 'orderid2': order_volume2, …… }), (ask_price2, ask_volume2, order_num, {'orderid1': order_volume1, 'orderid2': order_volume2, …… }),…]
+  'Bid': [ (bid_price1, bid_volume1, order_num, {'orderid1': order_volume1, 'orderid2': order_volume2, …… }), (bid_price2, bid_volume2, order_num,  {'orderid1': order_volume1, 'orderid2': order_volume2, …… }),…]
   }
 
  | 'Ask'：卖盘
  | 'Bid': 买盘
- | 每个元组的含义是(委托价格，委托数量，委托订单数)
+ | 每个元组的含义是:
+ | 委托价格
+ | 委托数量
+ | 委托订单数
+ | 委托订单明细（仅港股SF行情支持此字段，最多支持1000笔委托订单明细）
 
- ret != RET_OK 返回错误字符串
-    
-        
  :Example:
 
  .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK], subscribe_push=False, num=10)[0]
+    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK], subscribe_push=False)[0]
     # 先订阅买卖摆盘类型。订阅成功后 OpenD 将持续收到服务器的推送，False 代表暂时不需要推送给脚本
     if ret_sub == RET_OK:  # 订阅成功
         ret, data = quote_ctx.get_order_book('HK.00700', num=3)  # 获取一次 3 档实时摆盘数据
@@ -1399,9 +1402,7 @@ get_order_book
 
  .. code:: python
 
-    {'code': 'HK.00700', 'svr_recv_time_bid': '2020-03-27 14:34:13.821', 'svr_recv_time_ask': '2020-03-27 14:34:13.821', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
-
-
+    {'code': 'HK.00700', 'svr_recv_time_bid': '', 'svr_recv_time_ask': '', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
 	
 get_referencestock_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
