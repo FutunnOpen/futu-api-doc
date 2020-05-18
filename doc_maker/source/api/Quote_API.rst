@@ -484,6 +484,7 @@ get_market_snapshot
  wrt_upper_strike_price             float          上限价，仅界内证支持该字段
  wrt_lower_strike_price             float          下限价，仅界内证支持该字段
  wrt_inline_price_status            str            界内界外, 参见 PriceType_ ，仅界内证支持该字段
+ wrt_issuer_code                    str            发行人代码
  option_valid                       bool           是否是期权（为true时以下期权相关的字段才有合法数值）
  option_type                        str            期权类型，参见 OptionType_
  strike_time                        str            期权行权日（港股A股默认是北京时间）
@@ -1098,6 +1099,7 @@ get_global_state
 		market_sh               str            上海市场状态，参见 MarketState_
 		market_hk               str            香港市场状态，参见 MarketState_
 		market_hkfuture         str            香港期货市场状态，参见 MarketState_
+		market_usfuture         str            香港期货市场状态，参见 MarketState_
 		market_us               str            美国市场状态，参见 MarketState_
 		server_ver              str            FutuOpenD版本号
 		trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
