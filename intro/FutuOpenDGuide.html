@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.20 文档</title>
+  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.21 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
         <link rel="next" title="协议接口" href="../protocol/intro.html"/>
         <link rel="prev" title="介绍" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.20
+                3.21
               </div>
             
           
@@ -120,6 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#show-delay-report">show_delay_report - 展示延迟统计报告</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#close-api-conn-api">close_api_conn - 关闭API连接</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#show-sub-info">show_sub_info - 展示订阅状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request-highest-quote-right">request_highest_quote_right - 请求最高行情权限</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#websocket">WebSocket相关</a><ul>
@@ -704,7 +705,6 @@
 <p><strong>Paramters: conn_id</strong> - uint64，API连接ID</p>
 </div></blockquote>
 </div>
-<hr class="docutils" />
 <div class="section" id="show-sub-info">
 <h3>show_sub_info - 展示订阅状态<a class="headerlink" href="#show-sub-info" title="永久链接至标题">¶</a></h3>
 <blockquote>
@@ -712,6 +712,13 @@
 <p>展示某条连接的订阅状态，若不指定则展示所有</p>
 <p><strong>Paramters: conn_id</strong> - uint64，API连接ID</p>
 <p><strong>Paramters: sub_info_path</strong> - str，文件输出路径（MAC系统仅支持绝对路径，不支持相对路径），可选参数，若不指定则输出到控制台</p>
+</div></blockquote>
+</div>
+<div class="section" id="request-highest-quote-right">
+<h3>request_highest_quote_right - 请求最高行情权限<a class="headerlink" href="#request-highest-quote-right" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p>request_highest_quote_right</p>
+<p>当高级行情权限被其他设备（如：桌面端/手机端）占用时，可使用该命令重新请求最高行情权限（届时，其他处于登录状态的设备将无法使用高级行情）。</p>
 </div></blockquote>
 </div>
 </div>
@@ -743,10 +750,12 @@
 <li>修改openssl.cnf，在alt_names节点下加上FutuOpenD所在机器IP地址或域名;如 IP.2 = xxx.xxx.xxx.xxx, DNS.2 = www.xxx.com</li>
 <li>生成私钥以及证书（PEM）。</li>
 </ol>
-<p>证书生成参数参考如下：</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">x509</span> <span class="o">-</span><span class="n">newkey</span> <span class="n">rsa</span><span class="p">:</span><span class="mi">2048</span> <span class="o">-</span><span class="n">out</span> <span class="n">futu</span><span class="o">.</span><span class="n">cer</span> <span class="o">-</span><span class="n">outform</span> <span class="n">PEM</span> <span class="o">-</span><span class="n">keyout</span> <span class="n">futu</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">days</span> <span class="mi">10000</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">-</span><span class="n">config</span> <span class="n">openssl</span><span class="o">.</span><span class="n">cnf</span> <span class="o">-</span><span class="n">nodes</span> <span class="o">-</span><span class="n">sha256</span> <span class="o">-</span><span class="n">subj</span> <span class="s2">&quot;/CN=Futu CA&quot;</span> <span class="o">-</span><span class="n">reqexts</span> <span class="n">v3_req</span> <span class="o">-</span><span class="n">extensions</span> <span class="n">v3_req</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>证书生成参数参考如下：</dt>
+<dd><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">openssl</span> <span class="pre">req</span> <span class="pre">-x509</span> <span class="pre">-newkey</span> <span class="pre">rsa:2048</span> <span class="pre">-out</span> <span class="pre">futu.cer</span> <span class="pre">-outform</span> <span class="pre">PEM</span> <span class="pre">-keyout</span> <span class="pre">futu.key</span> <span class="pre">-days</span> <span class="pre">10000</span> <span class="pre">-verbose</span> <span class="pre">-config</span> <span class="pre">openssl.cnf</span> <span class="pre">-nodes</span> <span class="pre">-sha256</span> <span class="pre">-subj</span> <span class="pre">&quot;/CN=Futu</span> <span class="pre">CA&quot;</span> <span class="pre">-reqexts</span> <span class="pre">v3_req</span> <span class="pre">-extensions</span> <span class="pre">v3_req</span>
+<span class="pre">`</span></code></dd>
+</dl>
 <p>附上本地自签证书以及生成证书的配置文件供测试： <a class="reference external" href="../_static/file/openssl.cnf">openssl.cnf</a>  |  <a class="reference external" href="../_static/file/cer">futu.cer</a>  | <a class="reference external" href="../_static/file/key">futu.key</a></p>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -852,7 +861,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.20',
+            VERSION:'3.21',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

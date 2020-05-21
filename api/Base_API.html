@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.20 文档</title>
+  <title>基础API &mdash; futu-api-doc 3.21 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.20
+                3.21
               </div>
             
           
@@ -154,7 +154,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#securityreferencetype">SecurityReferenceType - 股票关联数据类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setpricereminderop">SetPriceReminderOp - 设置到价提醒操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stockholder">StockHolder - 持有者类别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#subtype">SubType - 实时数据订阅类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subtype">SubType - 实时数据定阅类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stockfield-simplefilter">StockField - 条件选股筛选条件字段(SimpleFilter)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stockfield-accumulatefilter">StockField - 条件选股筛选条件字段(AccumulateFilter)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stockfield-financialfilter">StockField - 条件选股筛选条件字段(FinancialFilter)</a></li>
@@ -1378,6 +1378,48 @@
 <dd><p>港股盘后竞价</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="MarketState.FUTURE_NIGHT_WAIT">
+<code class="descname">FUTURE_NIGHT_WAIT</code><a class="headerlink" href="#MarketState.FUTURE_NIGHT_WAIT" title="永久链接至目标">¶</a></dt>
+<dd><p>期货夜市等待开盘</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.FUTURE_AFTERNOON">
+<code class="descname">FUTURE_AFTERNOON</code><a class="headerlink" href="#MarketState.FUTURE_AFTERNOON" title="永久链接至目标">¶</a></dt>
+<dd><p>期货下午开盘</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.FUTURE_SWITCH_DATE">
+<code class="descname">FUTURE_SWITCH_DATE</code><a class="headerlink" href="#MarketState.FUTURE_SWITCH_DATE" title="永久链接至目标">¶</a></dt>
+<dd><p>期货切交易日</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.FUTURE_OPEN">
+<code class="descname">FUTURE_OPEN</code><a class="headerlink" href="#MarketState.FUTURE_OPEN" title="永久链接至目标">¶</a></dt>
+<dd><p>期货开盘</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.FUTURE_BREAK">
+<code class="descname">FUTURE_BREAK</code><a class="headerlink" href="#MarketState.FUTURE_BREAK" title="永久链接至目标">¶</a></dt>
+<dd><p>期货中盘休息</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.FUTURE_BREAK_OVER">
+<code class="descname">FUTURE_BREAK_OVER</code><a class="headerlink" href="#MarketState.FUTURE_BREAK_OVER" title="永久链接至目标">¶</a></dt>
+<dd><p>期货休息后开盘</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.FUTURE_CLOSE">
+<code class="descname">FUTURE_CLOSE</code><a class="headerlink" href="#MarketState.FUTURE_CLOSE" title="永久链接至目标">¶</a></dt>
+<dd><p>期货收盘</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -2320,8 +2362,8 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="SetPriceReminderOp.DEL">
-<code class="descname">DEL</code><a class="headerlink" href="#SetPriceReminderOp.DEL" title="永久链接至目标">¶</a></dt>
+<dt id="SetPriceReminderOp.DELETE">
+<code class="descname">DELETE</code><a class="headerlink" href="#SetPriceReminderOp.DELETE" title="永久链接至目标">¶</a></dt>
 <dd><p>删除</p>
 </dd></dl>
 
@@ -2376,8 +2418,8 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="subtype">
-<h3>SubType - 实时数据订阅类型<a class="headerlink" href="#subtype" title="永久链接至标题">¶</a></h3>
-<p>实时数据订阅类型定义</p>
+<h3>SubType - 实时数据定阅类型<a class="headerlink" href="#subtype" title="永久链接至标题">¶</a></h3>
+<p>实时数据定阅类型定义</p>
 <dl class="class">
 <dt id="SubType">
 <em class="property">class </em><code class="descname">SubType</code><a class="headerlink" href="#SubType" title="永久链接至目标">¶</a></dt>
@@ -3683,7 +3725,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.20',
+            VERSION:'3.21',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

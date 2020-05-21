@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>协议接口 &mdash; futu-api-doc 3.20 文档</title>
+  <title>协议接口 &mdash; futu-api-doc 3.21 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
         <link rel="next" title="基础定义" href="base_define.html"/>
         <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.20
+                3.21
               </div>
             
           
@@ -101,7 +101,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">协议接口</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id35">特点</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id36">协议清单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id37">协议请求限制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quota-limit">协议请求限制</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#api">API用户额度</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unlock-limit">解锁或锁定交易</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#acctradinginfo-query-limit">获取最大交易数量</a></li>
@@ -556,39 +556,17 @@
 <li>所有 Protobuf 文件可从 <a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb">futu-api</a> Python开源项目下获取</li>
 </ul>
 </div>
-</div>
 <hr class="docutils" />
-<div class="section" id="id37">
-<h2>协议请求限制<a class="headerlink" href="#id37" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="quota-limit">
+<span id="id37"></span><h2>协议请求限制<a class="headerlink" href="#quota-limit" title="永久链接至标题">¶</a></h2>
 <div class="section" id="api">
-<span id="quota-limit"></span><h3>API用户额度<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h3>
+<h3>API用户额度<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h3>
 <blockquote>
-<div><p>新版规则会依据您的资产情况和交易情况，为您划分不同的行情权限，具体规则如下：</p>
-<img alt="../_images/quota-table.png" src="../_images/quota-table.png" />
-<ol class="arabic simple">
-<li>总资产</li>
-</ol>
-<p>是指您在富途的所有资产，包括港美 A 股账户、Futu Inc. 账户、基金账户等，按照即期汇率换算成以港币为单位。</p>
-<ol class="arabic simple" start="2">
-<li>交易笔数</li>
-</ol>
-<p>会综合您当前自然月与上一自然月的交易情况，取您上个自然月的成交笔数与当前自然月的成交笔数的较大值进行计算，即：max (上个自然月的成交笔数，当前自然月的成交笔数)。</p>
-<ol class="arabic simple" start="3">
-<li>交易额</li>
-</ol>
-<p>是取您上个自然月的成交总金额与当前自然月的成交总金额的较大值进行计算，即：max（上个自然月的成交总金额，当前自然月的成交总金额），按照即期汇率换算成以港币为单位。</p>
-<ol class="arabic simple" start="4">
-<li>订阅额度</li>
-</ol>
-<p>适用于订阅才可获取到的实时数据接口，每只股票订阅一个类型即占用 1 个订阅额度。</p>
-<ol class="arabic simple" start="5">
-<li>历史 K 线额度（30天内）</li>
-</ol>
-<p>适用于历史 K 线接口，30 天内每只股票占用 1 个额度。</p>
-<p><strong>举例：</strong></p>
-<p>当前您在富途的所有资产总和折算成港币为 40 万 HKD ，上月交易笔数 250 笔，本月交易笔数 180 笔，上月交易额为 190 万 HKD，本月交易额为 150 万 HKD 。</p>
-<p>在计算您的额度时，总资产为 40 万 HKD ，交易笔数取 250 笔，交易额取 190 万HKD。</p>
-<p>由上表可得您的交易笔数符合大于 200 的要求，所以您的订阅额度为 1000，历史 K 线额度（30天内）为 1000 。</p>
+<div><p>部分协议额度限制划分如下：</p>
+<blockquote>
+<div><img alt="../_images/quota-table.png" src="../_images/quota-table.png" />
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="unlock-limit">
@@ -644,7 +622,7 @@
 <blockquote>
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-placeorder-proto-2202">2202</a></li>
-<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">15</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次</li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">15</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次。连续两次请求的间隔不可小于 <span class="red-strengthen">0.02</span> 秒。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -653,7 +631,7 @@
 <blockquote>
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-modifyorder-proto-2205">2205</a></li>
-<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">20</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次</li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">20</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次。连续两次请求的间隔不可小于 <span class="red-strengthen">0.02</span> 秒。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -683,6 +661,7 @@
 <li>支持多种实时数据类型的定阅，参见 <a class="reference external" href="base_define.html#subtype">SubType</a> , 每支股票订阅一个类型占用一个额度。</li>
 <li>额度现在限制请参见 <a class="reference internal" href="#quota-limit"><span class="std std-ref">API用户额度</span></a></li>
 <li>至少订阅一分钟才可以反订阅。</li>
+<li>由于港股 SF 行情摆盘数据量较大，为保证 SF 行情的速度和 OpenD 的处理性能，目前 SF 权限用户仅限同时订阅 50 只证券类产品（含 hkex 的正股、窝轮、牛熊）的摆盘（如需放开限制，请联系工作人员 <a class="reference external" href="https://help.futu5.com/faq/topic2348">https://help.futu5.com/faq/topic2348</a>），剩余订阅额度仍可用于订阅其他类型，如：逐笔，买卖经纪等</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1208,7 +1187,7 @@ message Response
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.20',
+            VERSION:'3.21',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.20 文档</title>
+  <title>行情协议 &mdash; futu-api-doc 3.21 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.20
+                3.21
               </div>
             
           
@@ -116,9 +116,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-updateorderbook-proto-3013">Qot_UpdateOrderBook.proto - 3013推送买卖盘</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getbroker-proto-3014">Qot_GetBroker.proto - 3014获取经纪队列</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-updatebroker-proto-3015">Qot_UpdateBroker.proto - 3015推送经纪队列</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qot-gethistorykl-proto-3100k">Qot_GetHistoryKL.proto - <span class="strike">3100从本地下载历史数据获取单只股票一段历史K线</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qot-gethistoryklpoints-proto-3101k">Qot_GetHistoryKLPoints.proto  - <span class="strike">3101从本地下载历史数据获取多只股票多点历史K线</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qot-getrehab-proto-3102">Qot_GetRehab.proto - <span class="strike">3102从本地下载历史数据获取复权信息</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-requestrehab-proto-3105">Qot_RequestRehab.proto - 3105在线获取单只股票复权信息</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-requesthistorykl-proto-3103k">Qot_RequestHistoryKL.proto - 3103在线获取单只股票一段历史K线</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-gettradedate-proto-3200">Qot_GetTradeDate.proto - <span class="strike">3200获取市场交易日</span></a></li>
@@ -303,6 +300,7 @@
         <span class="k">repeated</span> <span class="kt">int32</span> <span class="na">regPushRehabTypeList</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//Qot_Common.RehabType,复权类型,注册推送并且是K线类型才生效,其他订阅类型忽略该参数,注册K线推送时该参数不指定默认前复权</span>
         <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isFirstPush</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//注册后如果本地已有数据是否首推一次已存在数据,该参数不指定则默认true</span>
         <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isUnsubAll</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//一键取消当前连接的所有订阅,当被设置为True时忽略其他参数。</span>
+        <span class="k">optional</span> <span class="kt">bool</span> <span class="na">isSubOrderBookDetail</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//订阅摆盘可用,是否订阅摆盘明细,仅支持SF行情,该参数不指定则默认false</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -330,7 +328,7 @@
 <li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
 <li>订阅数据类型参考 <a class="reference external" href="base_define.html#subtype">SubType</a></li>
 <li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>为控制订阅产生推送数据流量，股票订阅总量有额度控制，订阅规则参考 <a class="reference external" href="../api/Quote_API.html#id32">高频数据接口</a></li>
+<li>为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 <a class="reference external" href="../api/Quote_API.html#id32">高频数据接口</a></li>
 <li>高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送</li>
 </ul>
 </div>
@@ -904,194 +902,6 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="qot-gethistorykl-proto-3100k">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKL.proto">Qot_GetHistoryKL.proto</a> - <span class="strike">3100从本地下载历史数据获取单只股票一段历史K线</span><a class="headerlink" href="#qot-gethistorykl-proto-3100k" title="永久链接至标题">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
-<span class="kn">package</span> <span class="nn">Qot_GetHistoryKL</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
-
-<span class="kd">message</span> <span class="nc">C2S</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">rehabType</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.RehabType,复权类型</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">klType</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Qot_Common.KLType,K线类型</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//股票市场以及股票代码</span>
-        <span class="k">required</span> <span class="kt">string</span> <span class="na">beginTime</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//开始时间字符串</span>
-        <span class="k">required</span> <span class="kt">string</span> <span class="na">endTime</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//结束时间字符串</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">maxAckKLNum</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//最多返回多少根K线，如果未指定表示不限制</span>
-        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">needKLFieldsFlag</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//指定返回K线结构体特定某几项数据，KLFields枚举值或组合，如果未指定返回全部字段</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">S2C</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.KLine</span> <span class="na">klList</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//K线数据</span>
-        <span class="k">optional</span> <span class="kt">string</span> <span class="na">nextKLTime</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//如请求不指定maxAckKLNum值，则不会返回该字段，该字段表示超过指定限制的下一K线时间字符串</span>
-        <span class="k">optional</span> <span class="kt">double</span> <span class="na">nextKLTimestamp</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//时间戳，如请求不指定maxAckKLNum值，则不会返回该字段，该字段表示超过指定限制的下一K线时间戳</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Request</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Response</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
-        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-
-        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">注解</p>
-<ul class="last simple">
-<li><span class="red-strengthen">历史K线数据下载到本地需单独申请</span></li>
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
-<li>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></li>
-</ul>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="qot-gethistoryklpoints-proto-3101k">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetHistoryKLPoints.proto">Qot_GetHistoryKLPoints.proto</a>  - <span class="strike">3101从本地下载历史数据获取多只股票多点历史K线</span><a class="headerlink" href="#qot-gethistoryklpoints-proto-3101k" title="永久链接至标题">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
-<span class="kn">package</span> <span class="nn">Qot_GetHistoryKLPoints</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
-
- <span class="c1">//当请求时间点数据为空时，如何返回数据</span>
-<span class="kd">enum</span> <span class="n">NoDataMode</span>
-<span class="p">{</span>
-        <span class="na">NoDataMode_Null</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//直接返回空数据</span>
-        <span class="na">NoDataMode_Forward</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//往前取值，返回前一个时间点数据</span>
-        <span class="na">NoDataMode_Backward</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//向后取值，返回后一个时间点数据</span>
-<span class="p">}</span>
-
- <span class="c1">//这个时间点返回数据的状态以及来源</span>
-<span class="kd">enum</span> <span class="n">DataStatus</span>
-<span class="p">{</span>
-        <span class="na">DataStatus_Null</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//空数据</span>
-        <span class="na">DataStatus_Current</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//当前时间点数据</span>
-        <span class="na">DataStatus_Previous</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//前一个时间点数据</span>
-        <span class="na">DataStatus_Back</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//后一个时间点数据</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">C2S</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">rehabType</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.RehabType,复权类型</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">klType</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Qot_Common.KLType,K线类型</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">noDataMode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//NoDataMode,当请求时间点数据为空时，如何返回数据</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//股票市场以及股票代码</span>
-        <span class="k">repeated</span> <span class="kt">string</span> <span class="na">timeList</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//时间字符串</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">maxReqSecurityNum</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//最多返回多少只股票的数据，如果未指定表示不限制</span>
-        <span class="k">optional</span> <span class="kt">int64</span> <span class="na">needKLFieldsFlag</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//指定返回K线结构体特定某几项数据，KLFields枚举值或组合，如果未指定返回全部字段</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">HistoryPointsKL</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">status</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//DataStatus,数据状态</span>
-        <span class="k">required</span> <span class="kt">string</span> <span class="na">reqTime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//请求的时间</span>
-        <span class="k">required</span> <span class="n">Qot_Common.KLine</span> <span class="na">kl</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//K线数据</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">SecurityHistoryKLPoints</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-        <span class="k">repeated</span> <span class="n">HistoryPointsKL</span> <span class="na">klList</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//K线数据</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">S2C</span>
-<span class="p">{</span>
-        <span class="k">repeated</span> <span class="n">SecurityHistoryKLPoints</span> <span class="na">klPointList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//多只股票的多点历史K线点</span>
-        <span class="k">optional</span> <span class="kt">bool</span> <span class="na">hasNext</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//如请求不指定maxReqSecurityNum值，则不会返回该字段，该字段表示请求是否还有超过指定限制的数据</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Request</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Response</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
-        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-
-        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">注解</p>
-<ul class="last simple">
-<li>历史K线数据下载到本地需单独申请</li>
-<li>复权类型参考 <a class="reference external" href="base_define.html#rehabtype-k">RehabType</a></li>
-<li>K线类型参考 <a class="reference external" href="base_define.html#kltype-k">KLType</a></li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>K线结构参考 <a class="reference external" href="base_define.html#kline-k">KLine</a></li>
-<li>K线字段类型参考 <a class="reference external" href="base_define.html#klfields-k">KLFields</a></li>
-<li>目前限制最多5个时间点，股票个数不做限制，但不建议传入过多股票，查询耗时过多会导致协议返回超时。</li>
-</ul>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="qot-getrehab-proto-3102">
-<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetRehab.proto">Qot_GetRehab.proto</a> - <span class="strike">3102从本地下载历史数据获取复权信息</span><a class="headerlink" href="#qot-getrehab-proto-3102" title="永久链接至标题">¶</a></h2>
-<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
-<span class="kn">package</span> <span class="nn">Qot_GetRehab</span><span class="p">;</span>
-
-<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
-<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
-
-<span class="kd">message</span> <span class="nc">C2S</span>
-<span class="p">{</span>
-        <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">SecurityRehab</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
-        <span class="k">repeated</span> <span class="n">Rehab</span> <span class="na">rehabList</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//复权信息</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">S2C</span>
-<span class="p">{</span>
-        <span class="k">repeated</span> <span class="n">SecurityRehab</span> <span class="na">securityRehabList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//多支股票的复权信息</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Request</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">Response</span>
-<span class="p">{</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
-        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-
-        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">注解</p>
-<ul class="last simple">
-<li>历史K线数据下载到本地需单独申请</li>
-<li>股票结构参考 <a class="reference external" href="base_define.html#security">Security</a></li>
-<li>复权结构参考 <a class="reference external" href="base_define.html#rehab">Rehab</a></li>
-</ul>
-</div>
-</div>
-<hr class="docutils" />
 <div class="section" id="qot-requestrehab-proto-3105">
 <h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_RequestRehab.proto">Qot_RequestRehab.proto</a> - 3105在线获取单只股票复权信息<a class="headerlink" href="#qot-requestrehab-proto-3105" title="永久链接至标题">¶</a></h2>
 <div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
@@ -1349,6 +1159,7 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">upperStrikePrice</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">//上限价，仅界内证支持该字段</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">lowerStrikePrice</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">//下限价，仅界内证支持该字段</span>
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">inLinePriceStatus</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span> <span class="c1">//Qot_Common.PriceType, 界内界外，仅界内证支持该字段</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">issuerCode</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">//发行人代码</span>
 <span class="p">}</span>
 
  <span class="c1">// 期权类型额外数据</span>
@@ -2991,7 +2802,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.20',
+            VERSION:'3.21',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

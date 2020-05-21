@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.20 文档</title>
+  <title>基础定义 &mdash; futu-api-doc 3.21 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.20 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.20
+                3.21
               </div>
             
           
@@ -159,7 +159,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#securitystaticinfo">SecurityStaticInfo - 证券静态信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#broker">Broker - 买卖经纪摆盘</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ticker">Ticker - 逐笔成交</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#orderbook">OrderBook - 买卖十档摆盘</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orderbookdetail">OrderBookDetail - 买卖档明细</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orderbook">OrderBook - 买卖档</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shareholdingchange">ShareHoldingChange - 持股变动</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#subinfo">SubInfo - 单个定阅类型信息</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connsubinfo">ConnSubInfo - 单条连接定阅信息</a></li>
@@ -397,14 +398,20 @@
 <span class="kd">message</span> <span class="nc">S2C</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketHK</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,港股主板市场状态</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketUS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,美股Nasdaq市场状态</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketSH</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,沪市状态</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketSZ</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,深市状态</span>
-        <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketHKFuture</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>      <span class="c1">//Qot_Common.QotMarketState,港股期货市场状态</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketHKFuture</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,港股期货市场状态</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">marketUSFuture</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,美国期货市场状态</span>
         <span class="k">required</span> <span class="kt">bool</span> <span class="na">qotLogined</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//是否登陆行情服务器</span>
         <span class="k">required</span> <span class="kt">bool</span> <span class="na">trdLogined</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//是否登陆交易服务器</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">serverVer</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//版本号</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">serverBuildNo</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//buildNo</span>
-        <span class="k">required</span> <span class="kt">int64</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//当前格林威治时间</span>
+        <span class="k">required</span> <span class="kt">int64</span> <span class="na">time</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//当前服务器时间</span>
+        <span class="k">optional</span> <span class="kt">double</span> <span class="na">localTime</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">//当前本地时间</span>
+        <span class="k">optional</span> <span class="n">Common.ProgramStatus</span> <span class="na">programStatus</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//当前程序状态</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">qotSvrIpAddr</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">trdSvrIpAddr</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">Request</span>
@@ -815,6 +822,14 @@
         <span class="na">QotMarketState_FutureDayClose</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span> <span class="c1">// 期指日市收盘</span>
         <span class="na">QotMarketState_FutureDayWaitForOpen</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span> <span class="c1">// 期指日市等待开盘</span>
         <span class="na">QotMarketState_HkCas</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span> <span class="c1">// 盘后竞价,港股市场增加CAS机制对应的市场状态</span>
+        <span class="na">QotMarketState_FutureNightWait</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// 夜市等待开盘</span>
+        <span class="na">QotMarketState_FutureAfternoon</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span> <span class="c1">// 期货下午开盘</span>
+        <span class="c1">//美国期货新增加状态</span>
+        <span class="na">QotMarketState_FutureSwitchDate</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span> <span class="c1">// 期货切交易日</span>
+        <span class="na">QotMarketState_FutureOpen</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span> <span class="c1">// 期货开盘</span>
+        <span class="na">QotMarketState_FutureBreak</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span> <span class="c1">// 期货中盘休息</span>
+        <span class="na">QotMarketState_FutureBreakOver</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">// 期货休息后开盘</span>
+        <span class="na">QotMarketState_FutureClose</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span> <span class="c1">// 期货收盘</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1630,14 +1645,28 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
+<div class="section" id="orderbookdetail">
+<h3>OrderBookDetail - 买卖档明细<a class="headerlink" href="#orderbookdetail" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderBookDetail</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int64</span> <span class="na">orderID</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//交易所订单ID，与交易接口返回的订单ID并不一样</span>
+        <span class="k">required</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//订单股数</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<hr class="docutils" />
 <div class="section" id="orderbook">
-<h3>OrderBook - 买卖十档摆盘<a class="headerlink" href="#orderbook" title="永久链接至标题">¶</a></h3>
+<h3>OrderBook - 买卖档<a class="headerlink" href="#orderbook" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">message</span> <span class="nc">OrderBook</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">price</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//委托价格</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">volume</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//委托数量</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">orederCount</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//委托订单个数</span>
+        <span class="k">repeated</span> <span class="n">OrderBookDetail</span> <span class="na">detailList</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//订单信息，SF行情特有</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2244,7 +2273,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.20',
+            VERSION:'3.21',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
