@@ -20,9 +20,6 @@
   .. _GetKL: ../protocol/quote_protocol.html#qot-getkl-proto-3006k
   .. _GetRT: ../protocol/quote_protocol.html#qot-getrt-proto-3008
   .. _GetBroker: ../protocol/quote_protocol.html#qot-getbroker-proto-3014
-  .. _GetHistoryKL: ../protocol/quote_protocol.html#qot-gethistorykl-proto-3100k
-  .. _GetHistoryKLPoints: ../protocol/quote_protocol.html#qot-gethistoryklpoints-proto-3101k
-  .. _GetRehab: ../protocol/quote_protocol.html#qot-getrehab-proto-3102
   .. _RequestRehab: ../protocol/quote_protocol.html#qot-requestrehab-proto-3105
   .. _RequestHistoryKL: ../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k
   .. _RequestHistoryKLQuota: ../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k

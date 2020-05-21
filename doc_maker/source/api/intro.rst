@@ -10,23 +10,10 @@
 py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
 
 
-
-交易品种:
-::
-
-          1.港股：正股、ETF、窝轮、牛熊证
-          2.美股：正股、ETF
-行情数据:
-::
-          1.支持A股、港股
-          2.支持定阅并接收实时报价、逐笔、买卖档，买卖经纪（仅港股)等深度数据
-
 --------------
 
   .. _get_trading_days: Quote_API.html#get_trading_days
   .. _get_stock_basicinfo: Quote_API.html#get_stock_basicinfo
-  .. _get_multiple_history_kline: Quote_API.html#get_multiple_history_kline
-  .. _get_autype_list:  Quote_API.html#get_autype_list
   .. _get_market_snapshot:  Quote_API.html#get_market_snapshot
   .. _get_rt_data:  Quote_API.html#get_rt_data
   .. _get_plate_stock:  Quote_API.html#get_plate_stock
@@ -37,7 +24,6 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
   .. _get_rt_ticker:  Quote_API.html#get_rt_ticker
   .. _get_cur_kline:  Quote_API.html#get_cur_kline
   .. _get_order_book:  Quote_API.html#get_order_book
-  .. _get_multi_points_history_kline:  Quote_API.html#get_multi_points_history_kline
   .. _get_referencestock_list:  Quote_API.html#get_referencestock_list
   .. _get_owner_plate:  Quote_API.html#get_owner_plate
   .. _get_holding_change_list:  Quote_API.html#get_holding_change_list
@@ -71,9 +57,7 @@ py-futu-api依赖FutuOpenD网关客户端，需要先运行登录 FutuOpenD_
   .. _history_order_list_query: Trade_API.html#history_order_list_query
   .. _history_deal_list_query: Trade_API.html#history_deal_list_query
   .. _acctradinginfo_query: Trade_API.html#acctradinginfo_query
-  
 
----------------------------------------------------
  
 主要函数列表
 ----------

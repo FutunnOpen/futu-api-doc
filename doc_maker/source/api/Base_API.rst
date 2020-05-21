@@ -784,6 +784,34 @@ MarketState - 行情市场状态
  ..  py:attribute:: HK_CAS
  
   港股盘后竞价
+ 
+ ..  py:attribute:: FUTURE_NIGHT_WAIT
+ 
+  期货夜市等待开盘
+   
+ ..  py:attribute:: FUTURE_AFTERNOON
+ 
+  期货下午开盘 
+  
+ ..  py:attribute:: FUTURE_SWITCH_DATE
+ 
+  期货切交易日 
+  
+ ..  py:attribute:: FUTURE_OPEN
+ 
+  期货开盘 
+  
+ ..  py:attribute:: FUTURE_BREAK
+ 
+  期货中盘休息 
+  
+ ..  py:attribute:: FUTURE_BREAK_OVER
+ 
+  期货休息后开盘
+  
+ ..  py:attribute:: FUTURE_CLOSE
+ 
+  期货收盘
   
 --------------------------------------
 

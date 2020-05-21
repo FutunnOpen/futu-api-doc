@@ -96,13 +96,15 @@
 ============
 
 如下范例，创建api行情对象，调用get_market_snapshot获取港股腾讯00700的报价快照数据,最后关闭对象
+   
+ :Example:
 
-.. code:: python
+ .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_market_snapshot('HK.00700'))
-    quote_ctx.close()
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
     
 ----------------------------
 
@@ -123,13 +125,14 @@ __init__
  :param host: str FutuOpenD监听的IP地址
  :param port: int FutuOpenD监听的IP端口
  :param is_encrypt: bool 是否启用加密。默认为None，表示使用 SysConfig.enable_proto_encrypt_ 的设置。
+        
+ :Example:
 
-.. code:: python
+ .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111, is_encrypt=False)
-    quote_ctx.close()
-
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 
 close
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,13 +140,14 @@ close
 ..  py:function:: close
 
 关闭上下文对象。默认情况下，futu-api内部创建的线程会阻止进程退出，只有当所有context都close后，进程才能正常退出。但通过SysConfig.set_all_thread_daemon可以设置所有内部线程为daemon线程，这时即使没有调用context的close，进程也可以正常退出。
+        
+ :Example:
 
-.. code:: python
+ .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.close()
-    
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
     
 start
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,10 +228,7 @@ set_handler
          {'time': '2018-12-24', 'trade_date_type': 'MORNING'}]
 
 ..
-
-
-
-        
+  
  :Example:
 
  .. code:: python
@@ -235,7 +236,7 @@ set_handler
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_trading_days(Market.HK, start='2018-01-01', end='2018-01-10'))
-    quote_ctx.close()
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 
 get_stock_basicinfo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -278,112 +279,44 @@ get_stock_basicinfo
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.WARRANT))
-    print(quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.STOCK, 'HK.00700'))
-    quote_ctx.close()
+    ret, data = quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.STOCK)
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    print('******************************************')
+    ret, data = quote_ctx.get_stock_basicinfo(Market.HK, SecurityType.STOCK, ['HK.00647', 'HK.00700'])
+    if ret == RET_OK:
+        print(data)
+        print(data['name'][0])  # 取第一条的股票名称
+        print(data['name'].values.tolist())  # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close()  # 结束后记得关闭当条连接，防止连接条数用尽
+
+ :Output:
+
+ .. code-block:: python
+
+           code             name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting index_option_type  main_contract last_trade_time
+    0      HK.00001               长和       500      STOCK              N/A                                              N/A        N/A   2015-03-18   4440996184065      False               N/A          False  
+    ...         ...              ...       ...        ...              ...         ...         ...         ...          ...        ...          ...             ...        ...               ...            ...             ...
+    2592   HK.84602  ICBC CNHPREF1-R     10000      STOCK              N/A                                              N/A        N/A   2014-12-11  70497593281146      False               N/A          False                
+    
+    [2593 rows x 16 columns]
+    ******************************************
+           code            name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting index_option_type  main_contract last_trade_time
+    0  HK.00647  JOYCE BOUTIQUE      2000      STOCK              N/A                                              N/A        N/A   2019-08-27  32607391711879      False               N/A          False                
+    1  HK.00700            腾讯控股       100      STOCK              N/A                                              N/A        N/A   2004-06-16  54047868453564      False               N/A          False                
+    JOYCE BOUTIQUE
+    ['JOYCE BOUTIQUE', '腾讯控股']
 
 .. note::
 
     * 当传入程序无法识别的股票时（包括很久之前退市的股票和不存在的股票），仍然返回股票信息，用静态信息标志来该股票不存在。统一处理为：code正常显示，name显示为“未知股票”，delisting显示为“true”，其他字段均为默认值（整型默认是0，字符串默认是空字符串）。
     * 跟其他的行情接口不同，其他接口遇到程序无法识别的股票时，会拒绝请求并返回错误描述“未知股票”。
 
-:strike:`get_multiple_history_kline`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_multiple_history_kline(self, codelist, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ)
-
- 获取多只股票的本地历史k线数据
-
- :param codelist: 股票代码列表，list或str。例如：['HK.00700', 'HK.00001']，'HK.00700,SZ.399001'
- :param start: 起始时间，，例如'2017-06-20'
- :param end: 结束时间，例如'2017-07-20'
- :param ktype: k线类型，参见 KLType_
- :param autype: 复权类型，参见 AuType_
- :return: 成功时返回(RET_OK, [data])，data是DataFrame数据, 数据列格式如下
-
-    =================   ===========   ==============================================================================
-    参数                  类型                        说明
-    =================   ===========   ==============================================================================
-    code                str            股票代码
-    time_key            str            k线时间（港股A股默认是北京时间）
-    open                float          开盘价
-    close               float          收盘价
-    high                float          最高价
-    low                 float          最低价
-    pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    volume              int            成交量
-    turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    last_close          float          昨收价
-    =================   ===========   ==============================================================================
-
-	失败时返回(RET_ERROR, data)，其中data是错误描述字符串
-	
- :Example:
-
- .. code-block:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_multiple_history_kline(['HK.00700'], '2017-06-20', '2017-06-25', KLType.K_DAY, AuType.QFQ))
-    quote_ctx.close()
-
-:strike:`get_history_kline`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_history_kline(self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL])
-
- :strike:`得到本地历史k线，需先参照帮助文档下载k线`
-
- :param code: 股票代码
- :param start: 开始时间，例如'2017-06-20'。
- :param end:  结束时间，例如'2017-06-30'。
-            start和end的组合如下：
-			
-              ==========    ==========    ========================================
-              start类型      end类型       说明
-              ==========    ==========    ========================================
-                str            str           start和end分别为指定的日期
-                None           str           start为end往前365天
-                str            None          end为start往后365天
-                None           None          end为当前日期，start为end往前365天
-              ==========    ==========    ========================================
- :param ktype: k线类型， 参见 KLType_ 定义
- :param autype: 复权类型, 参见 AuType_ 定义
- :param fields: 需返回的字段列表，参见 KL_FIELD_ 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....
- :return: (ret, data)
-
-        ret == RET_OK 返回pd Dataframe数据, 数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
-    =================   ===========   ==============================================================================
-    参数                  类型                        说明
-    =================   ===========   ==============================================================================
-    code                str            股票代码
-    time_key            str            k线时间（港股A股默认是北京时间）
-    open                float          开盘价
-    close               float          收盘价
-    high                float          最高价
-    low                 float          最低价
-    pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    volume              int            成交量
-    turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    last_close          float          昨收价
-    =================   ===========   ==============================================================================
-
-	
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_history_kline('HK.00700', start='2017-06-20', end='2017-06-22'))
-    quote_ctx.close()
 
 request_history_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -409,7 +342,7 @@ request_history_kline
  :param ktype: k线类型， 参见 KLType_ 定义
  :param autype: 复权类型, 参见 AuType_ 定义
  :param fields: 需返回的字段列表，参见 KL_FIELD_ 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....
- :param max_count: 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。
+ :param max_count: 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。注意：OpenD 是把所有数据请求到再下发给脚本的，如果K线个数过多，建议选择分页，因为超过10秒仍未获取完会提示超时。
  :param page_req_key: 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。
  :return: (ret, data, page_req_key)
 
@@ -441,62 +374,45 @@ request_history_kline
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2017-06-20', end='2018-06-22', max_count=50) #请求开头50个数据
-    print(ret, data)
-    ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2017-06-20', end='2018-06-22', max_count=50, page_req_key=page_req_key) #请求下50个数据
-    print(ret, data)
-    quote_ctx.close()
+    ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2019-09-11', end='2019-09-18', max_count=5)  # 每页5个，请求第一页
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['close'].values.tolist())   # 第一页收盘价转为list
+    else:
+        print('error:', data)
+    while page_req_key != None:  # 请求后面的所有结果
+        print('*************************************')
+        ret, data, page_req_key = quote_ctx.request_history_kline('HK.00700', start='2019-09-11', end='2019-09-18', max_count=5, page_req_key=page_req_key) # 请求翻页后的数据
+        if ret == RET_OK:
+            print(data)
+        else:
+            print('error:', data)
+    print('All pages are finished!')
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        code             time_key   open  close   high    low  pe_ratio  turnover_rate    volume      turnover  change_rate  last_close
+    0   HK.00700  2019-09-11 00:00:00  341.0  346.0  347.8  339.4    36.405        0.00165  15794903  5.437023e+09     1.466276       340.2
+    ..       ...                  ...    ...    ...    ...    ...       ...            ...       ...           ...          ...         ...
+    4   HK.00700  2019-09-17 00:00:00  343.2  343.6  345.4  340.6    36.153        0.00097   9225687  3.165508e+09    -0.865551       346.6
+    
+    [5 rows x 12 columns]
+    HK.00700
+    [346.0, 349.4, 349.6, 346.6, 343.6]
+    *************************************
+       code             time_key   open  close   high    low  pe_ratio  turnover_rate   volume      turnover  change_rate  last_close
+    0  HK.00700  2019-09-18 00:00:00  344.0  343.0  345.6  341.6     36.09        0.00077  7335407  2.516701e+09    -0.290698       343.6
+    All pages are finished!
 
 .. note::
 
     * 接口限制请参见 :ref:`在线获取单只股票一段历史K线限制 <request-history-kline-limit>`
 	
-:strike:`get_autype_list`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: get_autype_list(self, code_list)
-
- 获取给定股票列表的复权因子
-
- :param code_list: 股票列表，例如['HK.00700']
- :return: (ret, data)
-
-        ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
- =====================   ===========   ====================================================================================
- 参数                      类型                        说明
- =====================   ===========   ====================================================================================
- code                    str            股票代码
- ex_div_date             str            除权除息日
- split_ratio             float          拆合股比例（该字段为比例字段，展示为小数表示）例如，对于5股合1股为5.0，对于1股拆5股为0.2
- per_cash_div            float          每股派现
- per_share_div_ratio     float          每股送股比例（该字段为比例字段，展示为小数表示）
- per_share_trans_ratio   float          每股转增股比例（该字段为比例字段，展示为小数表示）
- allotment_ratio         float          每股配股比例（该字段为比例字段，展示为小数表示）
- allotment_price         float          配股价
- stk_spo_ratio           float          增发比例（该字段为比例字段，展示为小数表示）
- stk_spo_price           float          增发价格
- forward_adj_factorA     float          前复权因子A
- forward_adj_factorB     float          前复权因子B
- backward_adj_factorA    float          后复权因子A
- backward_adj_factorB    float          后复权因子B
- =====================   ===========   ====================================================================================
-		
- :Example:
-
- .. code:: python
-
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_autype_list(["HK.00700"]))
-    quote_ctx.close()
-	
-.. note::
-
-	* 复权后价格 = 复权前价格 * 复权因子a + 复权因子b
-	
 	
 get_market_snapshot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -568,6 +484,7 @@ get_market_snapshot
  wrt_upper_strike_price             float          上限价，仅界内证支持该字段
  wrt_lower_strike_price             float          下限价，仅界内证支持该字段
  wrt_inline_price_status            str            界内界外, 参见 PriceType_ ，仅界内证支持该字段
+ wrt_issuer_code                    str            发行人代码
  option_valid                       bool           是否是期权（为true时以下期权相关的字段才有合法数值）
  option_type                        str            期权类型，参见 OptionType_
  strike_time                        str            期权行权日（港股A股默认是北京时间）
@@ -647,8 +564,31 @@ get_market_snapshot
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_market_snapshot(['SH.600000', 'HK.00700']))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_market_snapshot(['SH.600000', 'HK.00700'])
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+       code          update_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  suspension listing_date  lot_size  price_spread  stock_owner  ask_price  bid_price  ask_vol  bid_vol  enable_margin  mortgage_ratio  long_margin_initial_ratio  enable_short_sell  short_sell_rate  short_available_volume  short_margin_initial_ratio  amplitude  avg_price  bid_ask_ratio  volume_ratio  highest52weeks_price  lowest52weeks_price  highest_history_price  lowest_history_price  after_volume  after_turnover sec_status  equity_valid  issued_shares  total_market_val     net_asset    net_profit  earning_per_share  outstanding_shares  circular_market_val  net_asset_per_share  ey_ratio  pe_ratio  pb_ratio  pe_ttm_ratio  ...  wrt_upper_strike_price  wrt_lowe_strike_price  wrt_inline_price_status  option_valid  option_type  strike_time  option_strike_price  option_contract_size  option_open_interest  option_implied_volatility  option_premium  option_delta  option_gamma  option_vega  option_theta  option_rho  option_net_open_interest  option_expiry_date_distance  option_contract_nominal_value  option_owner_lot_multiplier  option_area_type  \
+    0  SH.600000  2020-03-26 15:00:00       10.23        10.1       10.37      10.08             10.15  30921803  3.159604e+08          0.110       False   1999-11-10       100          0.01          NaN      10.23      10.22    39048    12300           True             0.0                       60.0              False              NaN                     NaN                         NaN      2.857     10.218         -1.327         0.823                 13.33                 9.82                  13.57             -1.408106             0             0.0     NORMAL          True    29352080397      3.002718e+11  4.801707e+11  5.591571e+10              1.905         28103763899         2.875015e+11               16.359     0.127      5.37     0.625         4.918  ...                     NaN                    NaN                      NaN         False          NaN          NaN                  NaN                   NaN                   NaN                        NaN             NaN           NaN           NaN          NaN           NaN         NaN                       NaN                          NaN                            NaN                          NaN               NaN   
+    1   HK.00700  2020-03-26 16:08:06      381.80       386.0      386.00     376.00            380.00  29318892  1.119300e+10          0.307       False   2004-06-16       100          0.20          NaN     382.00     381.80   383400     5900           True            70.0                       44.0              False              NaN                     NaN                         NaN      2.632    381.767         30.192         0.655                420.00               312.20                 474.72             -3.581000             0             0.0     NORMAL          True     9552936193      3.647311e+12  4.776564e+11  1.029998e+11             10.782          9552936193         3.647311e+12               50.001     0.227     35.41     7.635        33.606  ...                     NaN                    NaN                      NaN         False          NaN          NaN                  NaN                   NaN                   NaN                        NaN             NaN           NaN           NaN          NaN           NaN         NaN                       NaN                          NaN                            NaN                          NaN               NaN   
+    
+       option_contract_multiplier  index_valid  index_raise_count  index_fall_count  index_equal_count  plate_valid  plate_raise_count  plate_fall_count  plate_equal_count  future_valid  future_last_settle_price  future_position  future_position_change  future_main_contract  future_last_trade_time  pre_price  pre_high_price  pre_low_price  pre_volume  pre_turnover  pre_change_val  pre_change_rate  pre_amplitude  after_price  after_high_price  after_low_price  after_change_val  after_change_rate  after_amplitude  
+    0                         NaN        False                NaN               NaN                NaN        False                NaN               NaN                NaN         False                       NaN              NaN                     NaN                   NaN                     NaN        N/A             N/A            N/A         N/A           N/A             N/A              N/A            N/A          N/A               N/A              N/A               N/A                N/A              N/A  
+    1                         NaN        False                NaN               NaN                NaN        False                NaN               NaN                NaN         False                       NaN              NaN                     NaN                   NaN                     NaN        N/A             N/A            N/A         N/A           N/A             N/A              N/A            N/A          N/A               N/A              N/A               N/A                N/A              N/A  
+    
+    [2 rows x 123 columns]
+    SH.600000
+    ['SH.600000', 'HK.00700']
 
 .. note::
 
@@ -687,10 +627,29 @@ get_rt_data
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA])
-    print(quote_ctx.get_rt_data('HK.00700'))
-    quote_ctx.close()
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA], subscribe_push=False)
+    # 先订阅分时数据类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:   # 订阅成功
+        ret, data = quote_ctx.get_rt_data('HK.00700')   # 获取一次分时数据
+        if ret == RET_OK:
+            print(data)
+        else:
+            print('error:', data)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
 	
+ :Output:
+
+ .. code:: python
+
+        code                 time  is_blank  opened_mins  cur_price  last_close   avg_price  volume     turnover
+    0   HK.00700  2020-03-30 09:30:00     False          570      371.8       382.4  371.800000  923800  343468840.0
+    ..       ...                  ...       ...          ...        ...         ...         ...     ...          ...
+    32  HK.00700  2020-03-30 10:02:00     False          602      372.8       382.4  372.979075    4100    1527820.0
+    
+    [33 rows x 9 columns]
+
 get_plate_stock
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -725,8 +684,28 @@ get_plate_stock
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_plate_stock('HK.BK1001'))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_plate_stock('HK.BK1001')
+    if ret == RET_OK:
+        print(data)
+        print(data['stock_name'][0])    # 取第一条的股票名称
+        print(data['stock_name'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+ 
+        code  lot_size stock_name  stock_owner  stock_child_type stock_type   list_time        stock_id  main_contract last_trade_time
+    0   HK.00462      4000       天然乳品          NaN               NaN      STOCK  2005-06-10  55589761712590          False                
+    ..       ...       ...        ...          ...               ...        ...         ...             ...            ...             ...
+    10  HK.06863      1000       辉山乳业          NaN               NaN      STOCK  2013-09-27  68607807593167          False                
+    
+    [11 rows x 10 columns]
+    天然乳品
+    ['天然乳品', '现代牧业', '雅士利国际', '原生态牧业', '中国圣牧', '中地乳业', '庄园牧场', '澳优', '蒙牛乳业', '中国飞鹤', '辉山乳业']
 
 .. note::
 
@@ -777,7 +756,7 @@ get_plate_stock
         US.BK2996                  美股贵金属期货		
 		US.BK2912                  已上市新股-美股
         =====================  ==============================================================
-   
+
         
 get_plate_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -806,8 +785,28 @@ get_plate_list
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_plate_list(Market.HK, Plate.ALL))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_plate_list(Market.HK, Plate.CONCEPT)
+    if ret == RET_OK:
+        print(data)
+        print(data['plate_name'][0])    # 取第一条的板块名称
+        print(data['plate_name'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        code plate_name plate_id
+    0   HK.BK1000      做空集合股   BK1000
+    ..        ...        ...      ...
+    77  HK.BK1999       殡葬概念   BK1999
+    
+    [78 rows x 3 columns]
+    做空集合股
+    ['做空集合股', '阿里概念股', '雄安概念股', '苹果概念', '一带一路', '5G概念', '夜店股', '粤港澳大湾区', '特斯拉概念股', '啤酒', '疑似财技股', '体育用品', '稀土概念', '人民币升值概念', '抗疫概念', '新股与次新股', '腾讯概念', '云办公', 'SaaS概念', '在线教育', '汽车经销商', '挪威政府全球养老基金持仓', '武汉本地概念股', '核电', '内地医药股', '化妆美容股', '科网股', '公用股', '石油股', '电讯设备', '电力股', '手游股', '婴儿及小童用品股', '百货业股', '收租股', '港口运输股', '电信股', '环保', '煤炭股', '汽车股', '电池', '物流', '内地物业管理股', '农业股', '黄金股', '奢侈品股', '电力设备股', '连锁快餐店', '重型机械股', '食品股', '内险股', '纸业股', '水务股', '奶制品股', '光伏太阳能股', '内房股', '内地教育股', '家电股', '风电股', '蓝筹地产股', '内银股', '航空股', '石化股', '建材水泥股', '中资券商股', '高铁基建股', '燃气股', '公路及铁路股', '钢铁金属股', '华为概念', 'OLED概念', '工业大麻', '香港本地股', '香港零售股', '区块链', '猪肉概念', '节假日概念', '殡葬概念']
 	
 .. note::
 
@@ -860,14 +859,33 @@ get_broker_queue
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe(['HK.00700'], [SubType.BROKER])
-    print(quote_ctx.get_broker_queue('HK.00700'))
-    quote_ctx.close()
-		
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.BROKER], subscribe_push=False)
+    # 先订阅经纪队列类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:   # 订阅成功
+        ret, bid_frame_table, ask_frame_table = quote_ctx.get_broker_queue('HK.00700')   # 获取一次经纪队列数据
+        if ret == RET_OK:
+            print(bid_frame_table)
+        else:
+            print('error:', bid_frame_table)
+    else:
+        print('subscription failed')
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+        code  bid_broker_id bid_broker_name  bid_broker_pos order_id order_volume
+    0   HK.00700            140      海通国际证券有限公司               1      N/A          N/A
+    ..       ...            ...             ...             ...      ...          ...
+    35  HK.00700           4978  法国兴业证券(香港)有限公司               5      N/A          N/A
+    
+    [36 rows x 6 columns]
+
 subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True)
+..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=False)
 
  订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。 
 
@@ -875,6 +893,7 @@ subscribe
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
  :param is_first_push: 订阅成功之后是否马上推送一次数据
  :param subscribe_push: 订阅后推送
+ :param is_detailed_orderbook: 是否订阅详细的摆盘订单明细，仅用于 SF 行情权限下订阅 ORDER_BOOK 类型
  :return: (ret, err_message)
 
         ret == RET_OK err_message为None
@@ -885,16 +904,34 @@ subscribe
 
  .. code:: python
 
+    import time
     from futu import *
+    class OrderBookTest(OrderBookHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, data = super(OrderBookTest,self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("OrderBookTest: error, msg: %s" % data)
+                return RET_ERROR, data
+            print("OrderBookTest ", data) # OrderBookTest自己的处理逻辑
+            return RET_OK, data
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE]))
-    quote_ctx.close()
+    handler = OrderBookTest()
+    quote_ctx.set_handler(handler)  # 设置实时摆盘回调
+    quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK])  # 订阅买卖摆盘类型，OpenD开始持续收到服务器的推送
+    time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '2020-04-29 10:40:03.147', 'svr_recv_time_ask': '2020-04-29 10:40:03.147', 'Bid': [(416.8, 2600, 11, {}), (416.6, 13100, 17, {}), (416.4, 24600, 17, {}), (416.2, 28000, 13, {}), (416.0, 46900, 30, {}), (415.8, 10900, 7, {}), (415.6, 7100, 9, {}), (415.4, 13300, 3, {}), (415.2, 300, 3, {}), (415.0, 11200, 36, {})], 'Ask': [(417.0, 17600, 31, {}), (417.2, 17800, 24, {}), (417.4, 15300, 10, {}), (417.6, 28800, 17, {}), (417.8, 20700, 11, {}), (418.0, 114200, 155, {}), (418.2, 20600, 19, {}), (418.4, 24100, 28, {}), (418.6, 42700, 45, {}), (418.8, 181900, 76, {})]}
 
 .. note::
     
 	* 接口限制请参见 :ref:`订阅反订阅限制 <subscribe-limit>`
 
-		
+
 unsubscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -916,9 +953,31 @@ unsubscribe
  .. code:: python
 
     from futu import *
+    import time
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE]))
-    quote_ctx.close()	 
+    
+    print('current subscription status :', quote_ctx.query_subscription())  # 查询初始订阅状态
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE, SubType.TICKER], subscribe_push=False)
+    # 先订阅了QUOTE和TICKER两个类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:   # 订阅成功
+        print('subscribe successfully！current subscription status :', quote_ctx.query_subscription())  # 订阅成功后查询订阅状态
+        time.sleep(60)  # 订阅之后至少1分钟才能取消订阅
+        ret_unsub, err_message_unsub = quote_ctx.unsubscribe(['HK.00700'], [SubType.QUOTE])
+        if ret_unsub == RET_OK:
+            print('unsubscribe all successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
+        else:
+            print('Failed to cancel all subscriptions！', err_message_unsub)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+    current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
+    subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
+    unsubscribe all successfully！current subscription status: (0, {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'TICKER': ['HK.00700']}})
   
 .. note::
 
@@ -942,9 +1001,31 @@ unsubscribe_all
  .. code:: python
 
     from futu import *
+    import time
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.unsubscribe_all())
-    quote_ctx.close()
+    
+    print('current subscription status :', quote_ctx.query_subscription())  # 查询初始订阅状态
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE, SubType.TICKER], subscribe_push=False)
+    # 先订阅了QUOTE和TICKER两个类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:  # 订阅成功
+        print('subscribe successfully！current subscription status :', quote_ctx.query_subscription())  # 订阅成功后查询订阅状态
+        time.sleep(60)  # 订阅之后至少1分钟才能取消订阅
+        ret_unsub, err_message_unsub = quote_ctx.unsubscribe_all()  # 取消所有订阅
+        if ret_unsub == RET_OK:
+            print('unsubscribe successfully！current subscription status:', quote_ctx.query_subscription())  # 取消订阅后查询订阅状态
+        else:
+            print('unsubscription failed', err_message_unsub)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close()  # 结束后记得关闭当条连接，防止连接条数用尽
+
+ :Output:
+
+ .. code:: python
+
+	current subscription status : (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
+	subscribe successfully！current subscription status : (0, {'total_used': 2, 'remain': 998, 'own_used': 2, 'sub_list': {'QUOTE': ['HK.00700'], 'TICKER': ['HK.00700']}})
+	unsubscribe successfully！current subscription status: (0, {'total_used': 0, 'remain': 1000, 'own_used': 0, 'sub_list': {}})
 
 .. note::
 
@@ -983,10 +1064,21 @@ query_subscription
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.query_subscription())
-    quote_ctx.close()
-        
-		
+    
+    quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE])
+    ret, data = quote_ctx.query_subscription()
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+    {'total_used': 1, 'remain': 999, 'own_used': 1, 'sub_list': {'QUOTE': ['HK.00700']}}
+	
 get_global_state
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1007,6 +1099,7 @@ get_global_state
 		market_sh               str            上海市场状态，参见 MarketState_
 		market_hk               str            香港市场状态，参见 MarketState_
 		market_hkfuture         str            香港期货市场状态，参见 MarketState_
+		market_usfuture         str            香港期货市场状态，参见 MarketState_
 		market_us               str            美国市场状态，参见 MarketState_
 		server_ver              str            FutuOpenD版本号
 		trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
@@ -1022,7 +1115,7 @@ get_global_state
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     print(quote_ctx.get_global_state())
-    quote_ctx.close()
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
 
 get_stock_quote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1101,11 +1194,30 @@ position_change         float          日增仓，期货特有字段
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    code_list = ['US.AAPL210115C185000']
-    print(quote_ctx.subscribe(code_list, [SubType.QUOTE]))
-    print(quote_ctx.get_stock_quote(code_list))
-    quote_ctx.close()
-        
+    
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE], subscribe_push=False)
+    # 先订阅k线类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:  # 订阅成功
+        ret, data = quote_ctx.get_stock_quote(['HK.00700'])  # 获取订阅股票报价的实时数据
+        if ret == RET_OK:
+            print(data)
+            print(data['code'][0])   # 取第一条的股票代码
+            print(data['code'].values.tolist())   # 转为list
+        else:
+            print('error:', data)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+       code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
+    0  HK.00700  2020-03-30  15:49:19       376.8       371.8       380.0      371.6             382.4  18829170  7.055425e+09          0.197      2.197       False   2004-06-16           0.2         N/A     NORMAL          N/A           N/A           N/A                N/A     N/A   N/A   N/A  N/A   N/A  N/A               N/A                  N/A                    N/A                  N/A              N/A                 N/A               N/A      N/A             N/A       N/A            N/A           N/A        N/A          N/A            N/A             N/A           N/A         N/A              N/A             N/A          N/A            N/A              N/A               N/A             N/A
+    HK.00700
+    ['HK.00700']
+    
 get_rt_ticker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1140,9 +1252,30 @@ get_rt_ticker
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe(['HK.00700'], [SubType.TICKER])
-    print(quote_ctx.get_rt_ticker('HK.00700', 10))
-    quote_ctx.close()
+    
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.TICKER], subscribe_push=False)
+    # 先订阅逐笔类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:  # 订阅成功
+        ret, data = quote_ctx.get_rt_ticker('HK.00700', 2)  # 获取港股00700最近2个逐笔
+        if ret == RET_OK:
+            print(data)
+            print(data['turnover'][0])   # 取第一条的成交金额
+            print(data['turnover'].values.tolist())   # 转为list
+        else:
+            print('error:', data)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+       code                 time  price   volume     turnover ticker_direction             sequence     type
+    0  HK.00700  2020-03-30 16:04:41  372.4       60      22344.0          NEUTRAL  6809908936888567318  ODD_LOT
+    1  HK.00700  2020-03-30 16:08:17  376.6  2198400  827917440.0          NEUTRAL  6809909864601503255  AUCTION
+    22344.0
+    [22344.0, 827917440.0]
 	
 .. note::
 
@@ -1188,9 +1321,31 @@ get_cur_kline
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe(['HK.00700'], [SubType.K_DAY])
-    print(quote_ctx.get_cur_kline('HK.00700', 10, SubType.K_DAY, AuType.QFQ))
-    quote_ctx.close()
+    
+    ret_sub, err_message = quote_ctx.subscribe(['HK.00700'], [SubType.K_DAY], subscribe_push=False)
+    # 先订阅k线类型。订阅成功后OpenD将持续收到服务器的推送，False代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:  # 订阅成功
+        ret, data = quote_ctx.get_cur_kline('HK.00700', 2, SubType.K_DAY, AuType.QFQ)  # 获取港股00700最近2个K线数据
+        if ret == RET_OK:
+            print(data)
+            print(data['turnover_rate'][0])   # 取第一条的换手率
+            print(data['turnover_rate'].values.tolist())   # 转为list
+        else:
+            print('error:', data)
+    else:
+        print('subscription failed', err_message)
+    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+
+	
+ :Output:
+
+ .. code:: python
+
+       code             time_key   open  close   high    low    volume      turnover  pe_ratio  turnover_rate  last_close
+    0  HK.00700  2020-03-27 00:00:00  390.0  382.4  390.0  381.8  28738698  1.103966e+10    35.466        0.00301       381.8
+    1  HK.00700  2020-03-30 00:00:00  371.8  376.6  380.0  371.6  21838731  8.188543e+09    34.928        0.00229       382.4
+    0.00301
+    [0.00301, 0.00229]
 
 .. note::
 
@@ -1204,86 +1359,52 @@ get_order_book
  获取实时摆盘数据
 
  :param code: 股票代码
- :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取40档
+ :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取全盘
  :return: (ret, data)
 
+ ret != RET_OK 返回错误字符串
+ 
  ret == RET_OK 返回字典，数据格式如下::
  
   {
   'code': 股票代码
   'svr_recv_time_bid': 富途服务器从交易所收到数据的时间(for bid) 部分数据的接收时间为零，例如服务器重启或第一次推送的缓存数据。
   'svr_recv_time_ask': 富途服务器从交易所收到数据的时间(for ask)
-  'Ask': [ (ask_price1, ask_volume1，order_num), (ask_price2, ask_volume2, order_num),…]
-  'Bid': [ (bid_price1, bid_volume1, order_num), (bid_price2, bid_volume2, order_num),…]
+  'Ask': [ (ask_price1, ask_volume1，order_num, {'orderid1': order_volume1, 'orderid2': order_volume2, …… }), (ask_price2, ask_volume2, order_num, {'orderid1': order_volume1, 'orderid2': order_volume2, …… }),…]
+  'Bid': [ (bid_price1, bid_volume1, order_num, {'orderid1': order_volume1, 'orderid2': order_volume2, …… }), (bid_price2, bid_volume2, order_num,  {'orderid1': order_volume1, 'orderid2': order_volume2, …… }),…]
   }
 
  | 'Ask'：卖盘
  | 'Bid': 买盘
- | 每个元组的含义是(委托价格，委托数量，委托订单数)
+ | 每个元组的含义是:
+ | 委托价格
+ | 委托数量
+ | 委托订单数
+ | 委托订单明细（仅港股SF行情支持此字段，最多支持1000笔委托订单明细）
 
- ret != RET_OK 返回错误字符串
-    
-        
  :Example:
 
  .. code:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK])
-    print(quote_ctx.get_order_book('HK.00700', 10))
-    quote_ctx.close()
-
-
-
-:strike:`get_multi_points_history_kline`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..  py:function:: get_multi_points_history_kline(self, code_list, dates, fields, ktype=KLType.K_DAY, autype=AuType.QFQ, no_data_mode=KLNoDataMode.FORWARD)
-
- 从本地历史K线中获取多支股票多个时间点的指定数据列
-
- :param code_list: 单个或多个股票 'HK.00700'  or  ['HK.00700', 'HK.00001']
- :param dates: 单个或多个日期 '2017-01-01' or ['2017-01-01', '2017-01-02']，最多5个时间点
- :param fields: 单个或多个数据列 KL_FIELD.ALL or [KL_FIELD.DATE_TIME, KL_FIELD.OPEN]
- :param ktype: K线类型 KLType_
- :param autype: 复权类型 AuType_ 
- :param no_data_mode: 指定时间为非交易日时，对应的k线数据取值模式，参见 KLNoDataMode_
- :return: (ret, data)
-
-        ret == RET_OK 返回pd dataframe数据，固定表头包括'code'(代码) 'time_point'(指定的日期) 'data_status' (KLDataStatus)。数据列格式如下
-
-        ret != RET_OK 返回错误字符串
-
-    =================   ===========   ==============================================================================
-    参数                  类型                        说明
-    =================   ===========   ==============================================================================
-    code                str            股票代码
-    time_point          str            请求的时间（港股A股默认是北京时间）
-    data_status         str            数据点是否有效，参见 KLDataStatus_
-    time_key            str            k线时间（港股A股默认是北京时间）
-    open                float          开盘价
-    close               float          收盘价
-    high                float          最高价
-    low                 float          最低价
-    pe_ratio            float          市盈率
-    turnover_rate       float          换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    volume              int            成交量
-    turnover            float          成交额
-    change_rate         float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
-    last_close          float          昨收价
-    =================   ===========   ==============================================================================
-    
- :Example:
+    ret_sub = quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK], subscribe_push=False)[0]
+    # 先订阅买卖摆盘类型。订阅成功后 OpenD 将持续收到服务器的推送，False 代表暂时不需要推送给脚本
+    if ret_sub == RET_OK:  # 订阅成功
+        ret, data = quote_ctx.get_order_book('HK.00700', num=3)  # 获取一次 3 档实时摆盘数据
+        if ret == RET_OK:
+            print(data)
+        else:
+            print('error:', data)
+    else:
+        print('subscription failed')
+    quote_ctx.close()  # 关闭当条连接，OpenD 会在 1 分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
 
  .. code:: python
 
-    from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_multi_points_history_kline(['HK.00700'], ['2017-06-20', '2017-06-25'], KL_FIELD.ALL, KLType.K_DAY, AuType.QFQ))
-    quote_ctx.close()	
-	
-	
+    {'code': 'HK.00700', 'svr_recv_time_bid': '', 'svr_recv_time_ask': '', 'Bid': [(384.2, 15400, 6, {}), (384.0, 3700, 7, {}), (383.8, 6600, 10, {})], 'Ask': [(384.4, 3000, 9, {}), (384.6, 25800, 23, {}), (384.8, 19100, 27, {})]}
 	
 get_referencestock_list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1323,8 +1444,49 @@ get_referencestock_list
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_referencestock_list('HK.00700', SecurityReferenceType.WARRANT))
-    quote_ctx.close()	
+    
+    # 获取正股相关的窝轮
+    ret, data = quote_ctx.get_referencestock_list('HK.00700', SecurityReferenceType.WARRANT)
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    print('******************************************')
+    # 港期相关合约
+    ret, data = quote_ctx.get_referencestock_list('HK.A50main', SecurityReferenceType.FUTURE)
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+          code  lot_size stock_type stock_name   list_time  wrt_valid wrt_type  wrt_code  future_valid  future_main_contract  future_last_trade_time
+    0     HK.47096      1000    WARRANT   腾讯摩通零三界A  2019-07-25       True   INLINE  HK.00700         False                   NaN                     NaN
+    ...        ...       ...        ...        ...         ...        ...      ...       ...           ...                   ...                     ...
+    1396  HK.58533     10000    WARRANT   腾讯高盛零九熊A  2020-04-01       True     BEAR  HK.00700         False                   NaN                     NaN
+    
+    [1397 rows x 11 columns]
+    HK.47096
+    ['HK.47096', 'HK.24512', 'HK.24719', 'HK.27886', 'HK.28043', 'HK.28152', 'HK.28621', 'HK.14339', 'HK.17017',
+    ...        ...       ...        ...        ...         ...        ...      ...       ... 
+     'HK.58474', 'HK.58533']
+    ******************************************
+          code  lot_size stock_type         stock_name list_time  wrt_valid  wrt_type  wrt_code  future_valid  future_main_contract future_last_trade_time
+    0   HK.A50main      5000     FUTURE  安硕富时 A50 ETF 期货主连                False       NaN       NaN          True                  True                       
+    ..         ...       ...        ...                ...       ...        ...       ...       ...           ...                   ...                    ...
+    5   HK.A502009      5000     FUTURE  安硕富时 A50 ETF 2009                False       NaN       NaN          True                 False             2020-09-29
+    
+    [6 rows x 11 columns]
+    HK.A50main
+    ['HK.A50main', 'HK.A502003', 'HK.A502004', 'HK.A502005', 'HK.A502006', 'HK.A502009']
 
 .. note::
 
@@ -1360,9 +1522,29 @@ get_owner_plate
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    code_list = ['HK.00700', 'HK.00001']
-    print(quote_ctx.get_owner_plate(code_list))
-    quote_ctx.close()
+    
+    code_list = ['HK.00001']
+    ret, data = quote_ctx.get_owner_plate(code_list)
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['plate_code'].values.tolist())   # 板块代码转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        code          plate_code plate_name plate_type
+    0   HK.00001  HK.HSI Constituent      恒指成份股      OTHER
+    ..       ...                 ...        ...        ...
+    10  HK.00001           HK.BK1993      香港本地股    CONCEPT
+    
+    [11 rows x 4 columns]
+    HK.00001
+    ['HK.HSI Constituent', 'HK.GangGuTong', 'HK.BK1000', 'HK.BK1061', 'HK.BK1107', 'HK.BK1197', 'HK.BK1249', 'HK.BK1600', 'HK.BK1609', 'HK.BK1922', 'HK.BK1983', 'HK.BK1993']
 
 .. note::
 
@@ -1414,8 +1596,30 @@ time                    str           发布时间（美股的时间默认是美
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2018-10-01'))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_holding_change_list('US.AAPL', StockHolder.INSTITUTE, '2018-10-01')
+    if ret == RET_OK:
+        print(data)
+        print(data['holding_ratio'][0])   # 取第一条的持股比例
+        print(data['holding_ratio'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        holder_name  holding_qty  holding_ratio  change_qty  change_ratio                 time
+    0                            The Vanguard Group, Inc.  331132509.0         7.4525  -3981157.0         -1.19  2019-09-30 00:00:00
+    ..                                                ...          ...            ...         ...           ...                  ...
+    92  Los Angeles Capital Management And Equity Rese...    4007663.0         0.0902    -57784.0         -1.42  2019-09-30 00:00:00
+    
+    [93 rows x 6 columns]
+    7.4525
+    [7.4525, 5.6004, 4.3059, 4.1463, 2.1087, 1.3884, 1.0522, 0.905, 0.7931, 0.7871, 0.7782, 0.6872, 0.6687, 0.666, 0.6186, 0.0956, 0.0954, 0.0903, 
+    ..                                                ...          ...            ...         ...           ...                  ...
+    0.0903, 0.0902]
 
 .. note::
 
@@ -1494,15 +1698,37 @@ get_option_chain
         index_option_type    str           指数期权类型
         ==================   ===========   ==============================================================
 
-.. code:: python
+ :Example:
+
+ .. code-block:: python
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    filter = OptionDataFilter()
-    filter.delta_min = 0.1
-    print(quote_ctx.get_option_chain('HK.00700', IndexOptionType.NONE, '2018-08-01', '2018-08-18', OptionType.ALL, OptionCondType.OUTSIDE, filter))
-    quote_ctx.close()
     
+    ret, data = quote_ctx.get_option_chain('HK.00700', IndexOptionType.SMALL, '2020-03-28', '2020-04-02', OptionType.CALL, OptionCondType.WITHIN)
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        code                name  lot_size stock_type option_type stock_owner strike_time  strike_price  suspension  stock_id index_option_type
+    0   HK.TCH200330C250000  腾讯 200330 250.00 购       100       DRVT        CALL    HK.00700  2020-03-30         250.0       False  80049079               N/A
+    ..                  ...                 ...       ...        ...         ...         ...         ...           ...         ...       ...               ...
+    18  HK.TCH200330C380000  腾讯 200330 380.00 购       100       DRVT        CALL    HK.00700  2020-03-30         380.0       False  80031978               N/A
+    
+    [19 rows x 11 columns]
+    HK.TCH200330C250000
+    ['HK.TCH200330C250000', 'HK.TCH200330C255000', 'HK.TCH200330C260000', 'HK.TCH200330C265000', 'HK.TCH200330C270000', 'HK.TCH200330C275000', 
+    ..                  ...                 ...       ...        ...         ...         ...         ...           ...
+     'HK.TCH200330C380000']
+   
 .. note::
 
     * 	接口限制请参见 :ref:`获取期权链限制 <get-option-chain-limit>`
@@ -1543,9 +1769,19 @@ get_history_kl_quota
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_history_kl_quota())
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_history_kl_quota(get_detail=True)  # 设置True代表需要返回详细的拉取历史K线的记录
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
 
+ .. code:: python
+
+    (1, 99, [{'code': 'HK.00700', 'request_time': '2020-03-27 19:15:57'}])
 
 get_rehab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1586,8 +1822,28 @@ backward_adj_factorB    float          后复权因子B
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_rehab("HK.00700"))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_rehab("HK.00700")
+    if ret == RET_OK:
+        print(data)
+        print(data['ex_div_date'][0])    # 取第一条的除权除息日
+        print(data['ex_div_date'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        ex_div_date  split_ratio  per_cash_div  per_share_div_ratio  per_share_trans_ratio  allotment_ratio  allotment_price  stk_spo_ratio  stk_spo_price  forward_adj_factorA  forward_adj_factorB  backward_adj_factorA  backward_adj_factorB
+    0   2005-04-19          NaN          0.07                  NaN                    NaN              NaN              NaN            NaN            NaN                  1.0                -0.07                   1.0                  0.07
+    ..         ...          ...           ...                  ...                    ...              ...              ...            ...            ...                  ...                  ...                   ...                   ...
+    15  2019-05-17          NaN          1.00                  NaN                    NaN              NaN              NaN            NaN            NaN                  1.0                -1.00                   1.0                  1.00
+    
+    [16 rows x 13 columns]
+    2005-04-19
+    ['2005-04-19', '2006-05-15', '2007-05-09', '2008-05-06', '2009-05-06', '2010-05-05', '2011-05-03', '2012-05-18', '2013-05-20', '2014-05-15', '2014-05-16', '2015-05-15', '2016-05-20', '2017-05-19', '2018-05-18', '2019-05-17']
 
 .. note::
 
@@ -1714,11 +1970,32 @@ inline_price_status            str                界内界外 参见 PriceType_
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+    
     req = WarrantRequest()
     req.sort_field = SortField.TURNOVER
-    print(quote_ctx.get_warrant("HK.00700",req))
-    quote_ctx.close()
+    req.type_list = WrtType.CALL
+    req.cur_price_min = 0.2
+    req.cur_price_max = 0.201
+    ret, ls = quote_ctx.get_warrant("HK.00700", req)
+    if ret == RET_OK:  # 所有接口先判断是否正常，再取数据
+        warrant_data_list, last_page, all_count = ls
+        print(len(warrant_data_list), all_count, warrant_data_list)
+        print(warrant_data_list['stock'][0])    # 取第一条的窝轮代码
+        print(warrant_data_list['stock'].values.tolist())   # 转为list
+    else:
+        print('error: ', ls)
+    quote_ctx.close()  # 所有接口结尾加上这条close，防止连接条数用尽
+	
+ :Output:
 
+ .. code:: python
+
+    2 2 
+       stock        name stock_owner  type issuer maturity_time   list_time last_trade_time  recovery_price  conversion_ratio  lot_size  strike_price  last_close_price  cur_price  price_change_val  change_rate  status  bid_price  ask_price   bid_vol  ask_vol    volume   turnover   score  premium  break_even_point  leverage    ipop  price_recovery_ratio  conversion_price  street_rate  street_vol  amplitude  issue_size  high_price  low_price  implied_volatility  delta  effective_leverage  list_timestamp  last_trade_timestamp  maturity_timestamp  upper_strike_price  lower_strike_price  inline_price_status
+    0  HK.19692  腾讯法巴零八购B.C    HK.00700  CALL     BP    2020-08-04  2020-01-15      2020-07-29             NaN             100.0     10000        430.50             0.234      0.201            -0.033   -14.102564  NORMAL      0.198      0.201   5000000  5000000   2360000   496360.0  77.402   18.019            450.60    18.995 -11.312                   NaN              20.1         0.33      264000      2.137    80000000       0.214      0.209              41.154  0.358               6.800    1.579018e+09          1.595952e+09        1.596470e+09                 NaN                 NaN                  NaN
+    1  HK.18854  腾讯瑞信零七购A.C    HK.00700  CALL     CS    2020-07-09  2020-01-08      2020-07-03             NaN             100.0     10000        401.28             0.212      0.200            -0.012    -5.660377  NORMAL      0.199      0.200  10000000   100000  12200000  2581320.0  72.970   10.340            421.28    19.090  -4.854                   NaN              20.0         4.98    12450000     17.453   250000000       0.220      0.183              34.305  0.429               8.189    1.578413e+09          1.593706e+09        1.594224e+09                 NaN                 NaN                  NaN
+    HK.19692
+    ['HK.19692', 'HK.18854']
 
 .. note::
 
@@ -1753,8 +2030,30 @@ get_capital_flow
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_capital_flow("HK.00700"))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_capital_flow("HK.00700")
+    if ret == RET_OK:
+        print(data)
+        print(data['in_flow'][0])    # 取第一条的净流入的资金额度
+        print(data['in_flow'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+         last_valid_time       in_flow capital_flow_item_time
+    0    2020-03-26 16:00:00 -3.162472e+07    2020-03-26 09:30:00
+    ..                   ...           ...                    ...
+    330  2020-03-26 16:00:00 -1.433742e+09    2020-03-26 16:00:00
+    
+    [331 rows x 3 columns]
+    -31624720.0
+    [-31624720.0, -64132100.0, -70575660.0, -65573840.0, -43585860.0, -80639800.0, -80546540.0, -107078020.0, -117504440.0, -111991620.0, -118827340.0, 
+    ..                   ...           ...                    ...
+    -1419125560.0, -1415245360.0, -1437747220.0, -1433741860.0, -1433741860.0]
 
 .. note::
 
@@ -1794,8 +2093,24 @@ get_capital_distribution
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_capital_distribution("HK.00700"))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_capital_distribution("HK.00700")
+    if ret == RET_OK:
+        print(data)
+        print(data['capital_in_big'][0])    # 取第一条的流入资金额度，大单
+        print(data['capital_in_big'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+          capital_in_big  capital_in_mid  capital_in_small  capital_out_big  capital_out_mid  capital_out_small          update_time
+    0     227797260.0     438703020.0       114061560.0      209093300.0      578002980.0        141638900.0  2020-03-27 09:47:36
+    227797260.0
+    [227797260.0]
 
 .. note::
 
@@ -1859,8 +2174,25 @@ get_user_security
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_user_security("MyGroup"))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_user_security("A")
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+       code    name  lot_size stock_type stock_child_type stock_owner option_type strike_time strike_price suspension listing_date        stock_id  delisting  main_contract last_trade_time
+    0  HK.HSImain  恒指期货主连        50     FUTURE              N/A                                              N/A        N/A                     71000662      False           True                
+    1  HK.00700    腾讯控股       100      STOCK              N/A                                              N/A        N/A   2004-06-16  54047868453564      False          False                
+    HK.HSImain
+    ['HK.HSImain', 'HK.00700']
 
 .. note::
 
@@ -1889,8 +2221,19 @@ modify_user_security
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.modify_user_security("MyGroup", ModifyUserSecurityOp.ADD, ['HK.00700']))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.modify_user_security("A", ModifyUserSecurityOp.ADD, ['HK.00700'])
+    if ret == RET_OK:
+        print(data) # 返回success
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+    success
 
 .. note::
 
@@ -1997,28 +2340,30 @@ return_on_equity_rate                          float          净资产收益率
  .. code:: python
 
     from futu import *
-    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)     
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     simple_filter = SimpleFilter()
-    simple_filter.filter_min = 100
+    simple_filter.filter_min = 200
     simple_filter.filter_max = 1000
     simple_filter.stock_field = StockField.CUR_PRICE
     simple_filter.is_no_filter = False
     simple_filter.sort = SortDir.ASCEND
-    
-    acc_filter = AccumulateFilter()
-    acc_filter.filter_min = 50
-    acc_filter.filter_max = 100
-    acc_filter.days = 2
-    acc_filter.stock_field = StockField.CHANGE_RATE
-    acc_filter.is_no_filter = False
-    acc_filter.sort = SortDir.NONE
-
-    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter, acc_filter], begin=200, num=10)
+    ret, ls = quote_ctx.get_stock_filter(Market.HK, [simple_filter])  # 对香港市场的股票做简单筛选
     if ret == RET_OK:
         last_page, all_count, ret_list = ls
         print(len(ret_list), all_count, ret_list)
+        for item in ret_list:
+            print(item.stock_code)  # 取其中的股票代码
     else:
         print('error: ', ls)
+    quote_ctx.close()  # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+    2 2 [ stock_code:HK.00388  stock_name:香港交易所  cur_price:231.8 ,  stock_code:HK.00700  stock_name:腾讯控股  cur_price:381.8 ]
+    HK.00388
+    HK.00700
 
 .. note::
 
@@ -2099,8 +2444,24 @@ apply_end_timestamp                          float          截止认购日期�
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_ipo_list(Market.HK))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_ipo_list(Market.HK)
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+       code      name   list_time  list_timestamp apply_code issue_size online_issue_size apply_upper_limit apply_limit_market_value is_estimate_ipo_price ipo_price industry_pe_rate is_estimate_winning_ratio winning_ratio issue_pe_rate apply_time apply_timestamp winning_time winning_timestamp is_has_won winning_num_data  ipo_price_min  ipo_price_max  list_price  lot_size  entrance_price  is_subscribe_status apply_end_time  apply_end_timestamp
+    0  HK.01957  MBV INTL  2020-03-30    1.585498e+09        N/A        N/A               N/A               N/A                      N/A                   N/A       N/A              N/A                       N/A           N/A           N/A        N/A             N/A          N/A               N/A        N/A              N/A            0.8           0.88         0.0      2500         2222.17                False     2020-03-19         1.584580e+09
+    HK.01957
+    ['HK.01957']
 
 .. note::
 
@@ -2147,8 +2508,25 @@ get_future_info
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_future_info(["HK.MPImain", "HK.HOImain"]))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_future_info(["HK.MPImain", "HK.HAImain"])
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+       code      name       owner exchange  type     size size_unit price_currency price_unit  min_change min_change_unit                        trade_time time_zone last_trade_time                                exchange_format_url
+    0  HK.MPImain    內房期货主连  恒生中国内地地产指数      港交所  股指期货     50.0    指数点×港元             港元        指数点        0.50             指数点  (09:15 - 12:00), (13:00 - 16:30)       CCT                  https://sc.hkex.com.hk/TuniS/www.hkex.com.hk/P...
+    1  HK.HAImain  海通证券期货主连    HK.06837      港交所  股票期货  10000.0         股             港元      每股/港元        0.01              港元  (09:30 - 12:00), (13:00 - 16:00)       CCT                  https://sc.hkex.com.hk/TuniS/www.hkex.com.hk/P...
+    HK.MPImain
+    ['HK.MPImain', 'HK.HAImain']
 
 .. note::
 
@@ -2201,8 +2579,19 @@ request_trading_days
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.request_trading_days(TradeDateMarket.HK, start='2018-01-01', end='2018-01-10'))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.request_trading_days(TradeDateMarket.HK, start='2020-04-01', end='2020-04-10')
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+    [{'time': '2020-04-01', 'trade_date_type': 'WHOLE'}, {'time': '2020-04-02', 'trade_date_type': 'WHOLE'}, {'time': '2020-04-03', 'trade_date_type': 'WHOLE'}, {'time': '2020-04-06', 'trade_date_type': 'WHOLE'}, {'time': '2020-04-07', 'trade_date_type': 'WHOLE'}, {'time': '2020-04-08', 'trade_date_type': 'WHOLE'}, {'time': '2020-04-09', 'trade_date_type': 'WHOLE'}]
 
 .. note::
 
@@ -2234,11 +2623,45 @@ set_price_reminder
  .. code:: python
 
     from futu import *
+    import time
+    class PriceReminderTest(PriceReminderHandlerBase):
+        def on_recv_rsp(self, rsp_str):
+            ret_code, content = super(PriceReminderTest,self).on_recv_rsp(rsp_str)
+            if ret_code != RET_OK:
+                print("PriceReminderTest: error, msg: %s" % content)
+                return RET_ERROR, content
+            print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
+            return RET_OK, content
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.set_price_reminder(code='HK.00700', op=SetPriceReminderOp.ADD, key=None,
-                                 reminder_type=PriceReminderType.PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS,
-                                 value=400.0, note=''))
+    handler = PriceReminderTest()
+    quote_ctx.set_handler(handler)
+    ret, data = quote_ctx.get_market_snapshot(['HK.HSImain'])
+    if ret == RET_OK:
+        bid_price = data['bid_price'][0]  # 获取实时买一价
+        ask_price = data['ask_price'][0]  # 获取实时卖一价
+        # 设置当卖一价低于（ask_price-1）时提醒
+        ret_ask, ask_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.ASK_PRICE_DOWN, reminder_freq=PriceReminderFreq.ALWAYS, value=(ask_price-1), note='123')
+        if ret_ask == RET_OK:
+            print('卖一价低于（ask_price-1）时提醒设置成功：', ask_data)
+        else:
+            print('error:', ask_data)
+        # 设置当买一价高于（bid_price+1）时提醒
+        ret_bid, bid_data = quote_ctx.set_price_reminder(code='HK.HSImain', op=SetPriceReminderOp.ADD, key=None, reminder_type=PriceReminderType.BID_PRICE_UP, reminder_freq=PriceReminderFreq.ALWAYS, value=(bid_price+1), note='456')
+        if ret_bid == RET_OK:
+            print('买一价高于（bid_price+1）时提醒设置成功：', bid_data)
+        else:
+            print('error:', bid_data)
+    time.sleep(15)
     quote_ctx.close()
+	
+ :Output:
+
+ .. code:: python
+
+    卖一价低于（ask_price-1）时提醒设置成功： 158815356110052101
+    买一价高于（bid_price+1）时提醒设置成功： 158815356129980801
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 24532.0, 'change_rate': 0.122, 'market_status': 'OPEN', 'content': '买一价高于24533.000', 'note': '456', 'key': 158815356129980801, 'reminder_type': 'BID_PRICE_UP', 'set_value': 24533.0, 'cur_value': 24533.0}
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 24532.0, 'change_rate': 0.122, 'market_status': 'OPEN', 'content': '卖一价低于24533.000', 'note': '123', 'key': 158815356110052101, 'reminder_type': 'ASK_PRICE_DOWN', 'set_value': 24533.0, 'cur_value': 24533.0}
 
 .. note::
 
@@ -2290,9 +2713,42 @@ get_price_reminder
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_price_reminder(code='HK.00700'))
-    print(quote_ctx.get_price_reminder(code=None, market=Market.HK))
-    quote_ctx.close()
+    
+    ret, data = quote_ctx.get_price_reminder(code='HK.00700')
+    if ret == RET_OK:
+        print(data)
+        print(data['key'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    print('******************************************')
+    ret, data = quote_ctx.get_price_reminder(code=None, market=Market.HK)
+    if ret == RET_OK:
+        print(data)
+        print(data['code'][0])    # 取第一条的股票代码
+        print(data['code'].values.tolist())   # 转为list
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+	
+ :Output:
+
+ .. code:: python
+
+        code                key       reminder_type  reminder_freq  value  enable      note
+    0   HK.00700  158441340870842901      PRICE_UP        ALWAYS    382.4   False   10:50:04
+    1   HK.00700  158573111208632201    PRICE_DOWN        ALWAYS    370.0    True         
+    
+    [6 rows x 7 columns]
+    [158441340870842901, 158573111208632201]
+    ******************************************
+        code              key          reminder_type  reminder_freq   value  enable      note
+    0   HK.00700   158441340870842901      PRICE_UP        ALWAYS    382.4   False    10:50:04
+    1   HK.00700   158573111208632201    PRICE_DOWN        ALWAYS    370.0    True
+    2   HK.HSImain  158573100205367801    PRICE_DOWN        ALWAYS  22900.0    True         
+    
+    [12 rows x 7 columns]
+    HK.00700
+    ['HK.00700', 'HK.00700', 'HK.HSImain']
 
 .. note::
 
@@ -2325,8 +2781,24 @@ get_user_security_group
 
     from futu import *
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
-    print(quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
-    quote_ctx.close()
+  
+    ret, data = quote_ctx.get_user_security_group(group_type = UserSecurityGroupType.ALL)
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+
+ :Output:
+
+ .. code:: python
+
+               group_name group_type
+    0          期权     SYSTEM
+    ..         ...        ...
+    12          C     CUSTOM
+    
+    [13 rows x 2 columns]
 
 .. note::
 
@@ -2339,23 +2811,28 @@ SysNotifyHandlerBase - OpenD通知回调
 
 通知OpenD一些重要消息，类似连接断开等。
 
-.. code:: python
-    
+ :Example:
+
+ .. code:: python
+
+    import time
     from futu import *
-	
+    
     class SysNotifyTest(SysNotifyHandlerBase):
         def on_recv_rsp(self, rsp_str):
-            ret_code, data = super(SysNotifyTest, self).on_recv_rsp(rsp_pb)
+            ret_code, data = super(SysNotifyTest, self).on_recv_rsp(rsp_str)
             notify_type, sub_type, msg = data
             if ret_code != RET_OK:
                 logger.debug("SysNotifyTest: error, msg: {}".format(msg))
                 return RET_ERROR, data
             print(msg)
             return RET_OK, data
-			
+    
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = SysNotifyTest()
-    quote_ctx.set_handler(handler)
+    quote_ctx.set_handler(handler)  # 设置回调
+    time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
                 
 -----------------------------------------------------------------------------------------------------
 
@@ -2396,35 +2873,41 @@ SysNotifyType.QOT_RIGHT           None                                 | {'hk_qo
 SysNotifyType.API_LEVEL           None                                 str, API用户等级
 ==============================   ================================   ==============================================
 
-----------------------------
+--------------------------------------------------------------------------------------------------------------------
 
 StockQuoteHandlerBase - 实时报价回调
 -------------------------------------------
 
 异步处理推送的订阅股票的报价。
 
-.. code:: python
-    
+ :Example:
+
+ .. code:: python
+
     import time
     from futu import *
-	
+    
     class StockQuoteTest(StockQuoteHandlerBase):
         def on_recv_rsp(self, rsp_str):
             ret_code, data = super(StockQuoteTest,self).on_recv_rsp(rsp_str)
             if ret_code != RET_OK:
                 print("StockQuoteTest: error, msg: %s" % data)
                 return RET_ERROR, data
-
             print("StockQuoteTest ", data) # StockQuoteTest自己的处理逻辑
-
             return RET_OK, data
-			
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = StockQuoteTest()
-    quote_ctx.set_handler(handler)
-    quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE])
-    time.sleep(15)  
-    quote_ctx.close()	
+    quote_ctx.set_handler(handler)  # 设置实时报价回调
+    quote_ctx.subscribe(['HK.00700'], [SubType.QUOTE])  # 订阅实时报价类型，OpenD开始持续收到服务器的推送
+    time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅	
+	
+ :Output:
+
+ .. code:: python
+
+       StockQuoteTest         code   data_date data_time  last_price  open_price  high_price  low_price  prev_close_price    volume      turnover  turnover_rate  amplitude  suspension listing_date  price_spread dark_status sec_status strike_price contract_size open_interest implied_volatility premium delta gamma vega theta  rho net_open_interest expiry_date_distance contract_nominal_value owner_lot_multiplier option_area_type contract_multiplier last_settle_price position position_change pre_price pre_high_price pre_low_price pre_volume pre_turnover pre_change_val pre_change_rate pre_amplitude after_price after_high_price after_low_price after_volume after_turnover after_change_val after_change_rate after_amplitude
+    0  HK.00700  2020-03-27  14:43:35       384.0       390.0       390.0      381.8             381.8  21573862  8.298364e+09          0.226      2.148       False   2004-06-16           0.2         N/A     NORMAL          N/A           N/A           N/A                N/A     N/A   N/A   N/A  N/A   N/A  N/A               N/A                  N/A                    N/A                  N/A              N/A                 N/A               N/A      N/A             N/A       N/A            N/A           N/A        N/A          N/A            N/A             N/A           N/A         N/A              N/A             N/A          N/A            N/A              N/A               N/A             N/A
                 
 -------------------------------------------
 
@@ -2446,30 +2929,34 @@ OrderBookHandlerBase - 实时摆盘回调
 -------------------------------------------
 
 异步处理推送的实时摆盘。
+	
+ :Example:
 
-.. code:: python
-    
+ .. code:: python
+
     import time
     from futu import *
-	
     class OrderBookTest(OrderBookHandlerBase):
         def on_recv_rsp(self, rsp_str):
             ret_code, data = super(OrderBookTest,self).on_recv_rsp(rsp_str)
             if ret_code != RET_OK:
                 print("OrderBookTest: error, msg: %s" % data)
                 return RET_ERROR, data
-
             print("OrderBookTest ", data) # OrderBookTest自己的处理逻辑
-
             return RET_OK, data
-			
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = OrderBookTest()
-    quote_ctx.set_handler(handler)
-    quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK])
-    time.sleep(15)  
-    quote_ctx.close()
-            
+    quote_ctx.set_handler(handler)  # 设置实时摆盘回调
+    quote_ctx.subscribe(['HK.00700'], [SubType.ORDER_BOOK])  # 订阅买卖摆盘类型，OpenD开始持续收到服务器的推送
+    time.sleep(15)  #  设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()  # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+    OrderBookTest  {'code': 'HK.00700', 'svr_recv_time_bid': '2020-04-29 15:55:53.299', 'svr_recv_time_ask': '2020-04-29 15:55:53.299', 'Bid': [(414.2, 60600, 63, {}), (414.0, 96000, 34, {}), (413.8, 23400, 17, {}), (413.6, 31800, 24, {}), (413.4, 33900, 19, {}), (413.2, 47800, 17, {}), (413.0, 42500, 44, {}), (412.8, 17000, 6, {}), (412.6, 10600, 6, {}), (412.4, 5200, 5, {})], 'Ask': [(414.4, 74200, 61, {}), (414.6, 25700, 26, {}), (414.8, 18800, 24, {}), (415.0, 35700, 51, {}), (415.2, 17500, 15, {}), (415.4, 33500, 9, {}), (415.6, 62000, 18, {}), (415.8, 36700, 11, {}), (416.0, 42000, 73, {}), (416.2, 3800, 10, {})]}
+   
 -------------------------------------------
 
 on_recv_rsp
@@ -2491,29 +2978,38 @@ CurKlineHandlerBase - 实时k线推送回调
 -------------------------------------------
 
 异步处理推送的k线数据。
+	
+ :Example:
 
-.. code:: python
+ .. code:: python
 
     import time
     from futu import *
-
     class CurKlineTest(CurKlineHandlerBase):
         def on_recv_rsp(self, rsp_str):
             ret_code, data = super(CurKlineTest,self).on_recv_rsp(rsp_str)
             if ret_code != RET_OK:
                 print("CurKlineTest: error, msg: %s" % data)
                 return RET_ERROR, data
-
             print("CurKlineTest ", data) # CurKlineTest自己的处理逻辑
-
             return RET_OK, data
-
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = CurKlineTest()
-    quote_ctx.set_handler(handler)
-    quote_ctx.subscribe(['HK.00700'], [SubType.K_1M])
-    time.sleep(15)  
-    quote_ctx.close()			
+    quote_ctx.set_handler(handler)  # 设置实时摆盘回调
+    quote_ctx.subscribe(['HK.00700'], [SubType.K_1M])   # 订阅k线数据类型，OpenD开始持续收到服务器的推送
+    time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅		
+	
+ :Output:
+
+ .. code:: python
+
+       CurKlineTest         code             time_key   open  close   high    low  volume    turnover k_type  last_close
+                      0  HK.00700  2020-04-01 15:55:00  375.2  375.4  375.4  375.2   39000  14639140.0   K_1M         0.0
+       CurKlineTest         code             time_key   open  close   high    low  volume  turnover k_type  last_close
+                      0  HK.00700  2020-04-01 15:56:00  375.4  375.4  375.4  375.4    1000  375400.0   K_1M       375.4
+       CurKlineTest         code             time_key   open  close   high    low  volume  turnover k_type  last_close
+                      0  HK.00700  2020-04-01 15:56:00  375.4  375.4  375.4  375.4    1100  412940.0   K_1M       375.4
 
 -------------------------------------------
 
@@ -2536,29 +3032,37 @@ TickerHandlerBase - 实时逐笔推送回调
 -------------------------------------------
 
 异步处理推送的逐笔数据。
+	
+ :Example:
 
-.. code:: python
-    
+ .. code:: python
+
 	import time
 	from futu import *
 	
 	class TickerTest(TickerHandlerBase):
-		def on_recv_rsp(self, rsp_str):
-			ret_code, data = super(TickerTest,self).on_recv_rsp(rsp_str)
-			if ret_code != RET_OK:
-				print("TickerTest: error, msg: %s" % data)
-				return RET_ERROR, data
-
-			print("TickerTest ", data) # TickerTest自己的处理逻辑
-
-			return RET_OK, data
-                
+	    def on_recv_rsp(self, rsp_str):
+	        ret_code, data = super(TickerTest,self).on_recv_rsp(rsp_str)
+	        if ret_code != RET_OK:
+	            print("TickerTest: error, msg: %s" % data)
+	            return RET_ERROR, data
+	        print("TickerTest ", data) # TickerTest自己的处理逻辑
+	        return RET_OK, data
 	quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
 	handler = TickerTest()
-	quote_ctx.set_handler(handler)
-	quote_ctx.subscribe(['HK.00700'], [SubType.TICKER])
-	time.sleep(15)  
-	quote_ctx.close()
+	quote_ctx.set_handler(handler)  # 设置实时逐笔推送回调
+	quote_ctx.subscribe(['HK.00700'], [SubType.TICKER]) # 订阅逐笔类型，OpenD开始持续收到服务器的推送
+	time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+	quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+	   TickerTest         code                 time  price  volume  turnover ticker_direction             sequence        type push_data_type
+	0  HK.00700  2020-03-27 15:15:17  382.4     100   38240.0             SELL  6808782951082376714  AUTO_MATCH          CACHE
+	   TickerTest          code                 time   price  volume  turnover ticker_direction             sequence     type push_data_type
+	0  HK.00700  2020-03-27 15:15:19  382.6     900   344340.0             BUY  6808782951082378963  AUTO_MATCH       REALTIME
 	
 .. note::
 
@@ -2585,29 +3089,35 @@ RTDataHandlerBase - 实时分时推送回调
 -------------------------------------------
 
 异步处理推送的分时数据。
+	
+ :Example:
 
-.. code:: python
-    
+ .. code:: python
+
 	import time
 	from futu import *
 	
 	class RTDataTest(RTDataHandlerBase):
-		def on_recv_rsp(self, rsp_str):
-			ret_code, data = super(RTDataTest,self).on_recv_rsp(rsp_str)
-			if ret_code != RET_OK:
-				print("RTDataTest: error, msg: %s" % data)
-				return RET_ERROR, data
-
-			print("RTDataTest ", data) # RTDataTest自己的处理逻辑
-
-			return RET_OK, data
-                
+	    def on_recv_rsp(self, rsp_str):
+	        ret_code, data = super(RTDataTest, self).on_recv_rsp(rsp_str)
+	        if ret_code != RET_OK:
+	            print("RTDataTest: error, msg: %s" % data)
+	            return RET_ERROR, data
+	        print("RTDataTest ", data) # RTDataTest自己的处理逻辑
+	        return RET_OK, data
 	quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
 	handler = RTDataTest()
-	quote_ctx.set_handler(handler)
-	quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA])
-	time.sleep(15)  
-	quote_ctx.close()
+	quote_ctx.set_handler(handler)  # 设置实时分时推送回调
+	quote_ctx.subscribe(['HK.00700'], [SubType.RT_DATA]) # 订阅分时类型，OpenD开始持续收到服务器的推送
+	time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+	quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+	   RTDataTest         code                 time  is_blank  opened_mins  cur_price  last_close   avg_price     turnover   volume
+	0  HK.00700  2020-03-30 16:00:00     False          960      376.6       382.4  374.818939  855764640.0  2272500
 	
 -------------------------------------------
 
@@ -2630,8 +3140,13 @@ BrokerHandlerBase - 实时经纪推送回调
 -------------------------------------------
 
 异步处理推送的经纪数据。
+	
+ :Example:
 
-.. code:: python
+ .. code:: python
+
+    import time
+    from futu import *
     
     class BrokerTest(BrokerHandlerBase):
         def on_recv_rsp(self, rsp_str):
@@ -2639,18 +3154,30 @@ BrokerHandlerBase - 实时经纪推送回调
             if ret_code != RET_OK:
                 print("BrokerTest: error, msg: {}".format(err_or_stock_code))
                 return RET_ERROR, data
-
             print("BrokerTest: stock: {} data: {} ".format(err_or_stock_code, data))  # BrokerTest自己的处理逻辑
-
             return RET_OK, data
-
-
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = BrokerTest()
-    quote_ctx.set_handler(handler)
-    quote_ctx.subscribe(['HK.00700'], [SubType.BROKER])
-    time.sleep(15)
-    quote_ctx.close()
+    quote_ctx.set_handler(handler)  # 设置实时经纪推送回调
+    quote_ctx.subscribe(['HK.00700'], [SubType.BROKER]) # 订阅经纪类型，OpenD开始持续收到服务器的推送
+    time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+        BrokerTest: stock: HK.00700 data: [        code  bid_broker_id  bid_broker_name  bid_broker_pos order_id order_volume
+    0   HK.00700            517  Eclipse Options               1      N/A          N/A
+    ..       ...            ...              ...             ...      ...          ...
+    23  HK.00700            535       海通国际证券有限公司              14      N/A          N/A
+    
+    [24 rows x 6 columns],         code  ask_broker_id ask_broker_name  ask_broker_pos order_id order_volume
+    0   HK.00700           8577  汇丰证券经纪(亚洲)有限公司               1      N/A          N/A
+    ..       ...            ...             ...             ...      ...          ...
+    37  HK.00700           5357     星展唯高达香港有限公司               3      N/A          N/A
+    
+    [38 rows x 6 columns]] 
 	
 -------------------------------------------
 
@@ -2675,8 +3202,13 @@ PriceReminderHandlerBase - 到价提醒通知回调
 -------------------------------------------
 
 异步处理推送的到价提醒通知
+	
+ :Example:
 
-.. code:: python
+ .. code:: python
+
+    import time
+    from futu import *
     
     class PriceReminderTest(PriceReminderHandlerBase):
         def on_recv_rsp(self, rsp_str):
@@ -2684,17 +3216,19 @@ PriceReminderHandlerBase - 到价提醒通知回调
             if ret_code != RET_OK:
                 print("PriceReminderTest: error, msg: %s" % content)
                 return RET_ERROR, content
-
             print("PriceReminderTest ", content) # PriceReminderTest自己的处理逻辑
-
             return RET_OK, content
-
-
     quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
     handler = PriceReminderTest()
-    quote_ctx.set_handler(handler)
-    time.sleep(15)
-    quote_ctx.close()
+    quote_ctx.set_handler(handler)  # 设置到价提醒通知回调
+    time.sleep(15)  # 设置脚本接收OpenD的推送持续时间为15秒
+    quote_ctx.close()   # 关闭当条连接，OpenD会在1分钟后自动取消相应股票相应类型的订阅
+	
+ :Output:
+
+ .. code:: python
+
+    PriceReminderTest  {'code': 'HK.HSImain', 'price': 24529.0, 'change_rate': 0.11, 'market_status': 'OPEN', 'content': '价格涨到24531.000', 'note': '', 'key': 158815186771390101, 'reminder_type': 'PRICE_UP', 'set_value': 24531.0, 'cur_value': 24532.0}
     
 -------------------------------------------
 

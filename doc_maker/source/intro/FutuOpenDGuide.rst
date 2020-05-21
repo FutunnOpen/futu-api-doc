@@ -292,8 +292,6 @@ close_api_conn - 关闭API连接
   关闭某条API连接，若不指定则关闭所有
   
   **Paramters: conn_id** - uint64，API连接ID
-  
----------------------------- 
 
 show_sub_info - 展示订阅状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -305,6 +303,14 @@ show_sub_info - 展示订阅状态
   **Paramters: conn_id** - uint64，API连接ID
   
   **Paramters: sub_info_path** - str，文件输出路径（MAC系统仅支持绝对路径，不支持相对路径），可选参数，若不指定则输出到控制台
+  
+request_highest_quote_right - 请求最高行情权限
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  request_highest_quote_right 
+
+  当高级行情权限被其他设备（如：桌面端/手机端）占用时，可使用该命令重新请求最高行情权限（届时，其他处于登录状态的设备将无法使用高级行情）。
+  
   
 ---------------------------- 
 
@@ -340,8 +346,9 @@ WebSocket相关
   3. 生成私钥以及证书（PEM）。
   
   证书生成参数参考如下：
-  ::
+    ```
     openssl req -x509 -newkey rsa:2048 -out futu.cer -outform PEM -keyout futu.key -days 10000 -verbose -config openssl.cnf -nodes -sha256 -subj "/CN=Futu CA" -reqexts v3_req -extensions v3_req
+    ```
 
   附上本地自签证书以及生成证书的配置文件供测试： `openssl.cnf <../_static/file/openssl.cnf>`_  |  `futu.cer <../_static/file/cer>`_  | `futu.key <../_static/file/key>`_  
   

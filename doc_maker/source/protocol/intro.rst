@@ -220,9 +220,10 @@
 
 ---------------------------------------------------
  
+.. _quota-limit:
+
 协议请求限制
 ---------------
-.. _quota-limit:
 
 API用户额度
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -275,14 +276,14 @@ API用户额度
 下单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2202_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次。连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
 
 .. _modify-order-limit:	
 	
 修改订单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2205_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次。连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
 	
 .. _history-order-list-query-limit:	
 
@@ -306,6 +307,7 @@ API用户额度
   * 支持多种实时数据类型的定阅，参见 SubType_ , 每支股票订阅一个类型占用一个额度。
   * 额度现在限制请参见 :ref:`API用户额度 <quota-limit>`
   * 至少订阅一分钟才可以反订阅。
+  * 由于港股 SF 行情摆盘数据量较大，为保证 SF 行情的速度和 OpenD 的处理性能，目前 SF 权限用户仅限同时订阅 50 只证券类产品（含 hkex 的正股、窝轮、牛熊）的摆盘（如需放开限制，请联系工作人员 https://help.futu5.com/faq/topic2348），剩余订阅额度仍可用于订阅其他类型，如：逐笔，买卖经纪等
 
 .. _get-cur-kline-limit:
 	

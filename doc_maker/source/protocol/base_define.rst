@@ -81,14 +81,20 @@
 	message S2C
 	{
 		required int32 marketHK = 1; //Qot_Common.QotMarketState,港股主板市场状态 
+		required int32 marketUS = 2; //Qot_Common.QotMarketState,美股Nasdaq市场状态 
 		required int32 marketSH = 3; //Qot_Common.QotMarketState,沪市状态 
 		required int32 marketSZ = 4; //Qot_Common.QotMarketState,深市状态 
-		required int32 marketHKFuture = 5; 	//Qot_Common.QotMarketState,港股期货市场状态 
+		required int32 marketHKFuture = 5; //Qot_Common.QotMarketState,港股期货市场状态 
+		optional int32 marketUSFuture = 15; //Qot_Common.QotMarketState,美国期货市场状态 
 		required bool qotLogined = 6; //是否登陆行情服务器
 		required bool trdLogined = 7; //是否登陆交易服务器
 		required int32 serverVer = 8; //版本号
 		required int32 serverBuildNo = 9; //buildNo
-		required int64 time = 10; //当前格林威治时间
+		required int64 time = 10; //当前服务器时间
+		optional double localTime = 11; //当前本地时间
+		optional Common.ProgramStatus programStatus = 12; //当前程序状态
+		optional string qotSvrIpAddr = 13;
+		optional string trdSvrIpAddr = 14;
 	}
 
 	message Request
@@ -506,6 +512,14 @@ QotMarketState - 行情市场状态
 		QotMarketState_FutureDayClose = 17; // 期指日市收盘 
 		QotMarketState_FutureDayWaitForOpen = 18; // 期指日市等待开盘 
 		QotMarketState_HkCas = 19; // 盘后竞价,港股市场增加CAS机制对应的市场状态
+		QotMarketState_FutureNightWait = 20; // 夜市等待开盘
+		QotMarketState_FutureAfternoon = 21; // 期货下午开盘
+		//美国期货新增加状态
+		QotMarketState_FutureSwitchDate = 22; // 期货切交易日
+		QotMarketState_FutureOpen = 23; // 期货开盘
+		QotMarketState_FutureBreak = 24; // 期货中盘休息
+		QotMarketState_FutureBreakOver = 25; // 期货休息后开盘
+		QotMarketState_FutureClose = 26; // 期货收盘
 	}
 	
 
@@ -1323,7 +1337,20 @@ Ticker - 逐笔成交
 	
 -----------------------------------------------
 
-OrderBook - 买卖十档摆盘
+OrderBookDetail - 买卖档明细
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	message OrderBookDetail
+	{
+		required int64 orderID = 1; //交易所订单ID，与交易接口返回的订单ID并不一样
+		required int64 volume = 2; //订单股数
+	}
+	
+-----------------------------------------------
+
+OrderBook - 买卖档
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1333,6 +1360,7 @@ OrderBook - 买卖十档摆盘
 		required double price = 1; //委托价格
 		required int64 volume = 2; //委托数量
 		required int32 orederCount = 3; //委托订单个数
+		repeated OrderBookDetail detailList = 4; //订单信息，SF行情特有
 	}
 	
 -----------------------------------------------
