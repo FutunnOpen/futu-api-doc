@@ -2050,7 +2050,7 @@
 	// Ipo基本数据
 	message BasicIpoData
 	{
-		required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+		required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持港股、美股和 A股。其中，A 股整体返回，不区分沪股和深股。
 		required string name = 2; // 股票名称
 		optional string listTime = 3; // 上市日期字符串
 		optional double listTimestamp = 4; // 上市日期时间戳

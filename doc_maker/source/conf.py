@@ -61,7 +61,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'futu-api-doc'
-copyright = '2018, futu'
+copyright = '2020, futu'
 author = 'futu'
 
 # The version info for the project you're documenting, acts as replacement for
