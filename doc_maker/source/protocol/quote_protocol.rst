@@ -61,7 +61,7 @@
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 订阅数据类型参考 `SubType <base_define.html#subtype>`_
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
-	* 为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考限制条件 :ref:`订阅反订阅<subscribe-limit>`
+	* 为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考 `高频数据接口 <../api/Quote_API.html#id32>`_
 	* 高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送
 	
 -------------------------------------
