@@ -989,6 +989,13 @@ StockField - 条件选股的简单属性筛选条件
 		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
 		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间
 		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间
+		
+		// 基础量价属性
+		StockField_PSTTM = 17; // 市销率(TTM) 例如填写 [100, 500] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%） 
+		StockField_PCFTTM = 18; // 市现率(TTM) 例如填写 [100, 1000] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		StockField_TotalShare = 19; // 总股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+		StockField_FloatShare = 20; // 流通股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+		StockField_FloatMarketVal = 21; // 流通市值 例如填写 [1000000000,1000000000] 值区间 (单位：元)
 	}
 			
 -----------------------------------------------------------------------------
@@ -1017,6 +1024,7 @@ FinancialField - 条件选股的财务属性筛选条件
 
 	enum FinancialField
 	{
+		// 基础财务属性
 		FinancialField_Unknown = 0; // 未知
 		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
 		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-20.13,300]值区间
@@ -1026,11 +1034,122 @@ FinancialField - 条件选股的财务属性筛选条件
 		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[0.12,65]值区间
 		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[0.05,470]值区间
 		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[0.01,230]值区间
+		
+		// 盈利能力属性
+		FinancialField_ROIC = 9; // 投入资本回报率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROATTM = 10; // 资产回报率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		FinancialField_EBITTTM = 11; // 息税前利润(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+		FinancialField_EBITDA = 12; // 税息折旧及摊销前利润 例如填写 [1000000000,1000000000] 值区间（单位：元）
+		FinancialField_OperatingMarginTTM = 13; // 营业利润率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		FinancialField_EBITMargin = 14; // EBIT利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EBITDAMargin  = 15; // EBITDA利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_FinancialCostRate = 16; // 财务成本率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitTTM  = 17; // 营业利润(TTM) 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+		FinancialField_ShareholderNetProfitTTM = 18; // 归属于母公司的净利润 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+		FinancialField_NetProfitCashCover = 19; // 盈利中的现金收入比例 例如填写 [1.0,60.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		
+		// 偿债能力属性
+		FinancialField_CurrentRatio = 20; // 流动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_QuickRatio = 21; // 速动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）	
+		
+		// 清债能力属性
+		FinancialField_CurrentAssetRatio = 22; // 流动资产率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_CurrentDebtRatio = 23; // 流动负债率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EquityMultiplier = 24; // 权益乘数 例如填写 [100,180] 值区间
+		FinancialField_PropertyRatio = 25; // 产权比率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%） 
+		FinancialField_CashAndCashEquivalents = 26; // 现金和现金等价 例如填写 [1000000000,1000000000] 值区间（单位：元）	
+		
+		// 运营能力属性
+		FinancialField_TotalAssetTurnover = 27; // 总资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_FixedAssetTurnover = 28; // 固定资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_InventoryTurnover = 29; // 存货周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingCashFlowTTM = 30; // 经营活动现金流(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+		FinancialField_AccountsReceivable = 31; // 应收帐款净额 例如填写 [1000000000,1000000000] 值区间 例如填写 [1000000000,1000000000] 值区间 （单位：元）	
+		
+		// 成长能力属性
+		FinancialField_EBITGrowthRate = 32 ; // EBIT同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitGrowthRate = 33; // 营业利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_TotalAssetsGrowthRate = 34; // 总资产同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ProfitToShareholdersGrowthRate = 35; // 归母净利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ProfitBeforeTaxGrowthRate = 36; // 总利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EPSGrowthRate = 37; // EPS同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROEGrowthRate = 38; // ROE同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROICGrowthRate = 39; // ROIC同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_NOCFGrowthRate = 40; // 经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_NOCFPerShareGrowthRate = 41; // 每股经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		
+		// 现金流属性
+		FinancialField_OperatingRevenueCashCover = 42; // 经营现金收入比 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitToTotalProfit = 43; // 营业利润占比 例如填写 [10,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%） 	
+		
+		// 市场表现属性
+		FinancialField_BasicEPS = 44; // 基本每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+		FinancialField_DilutedEPS = 45; // 稀释每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+		FinancialField_NOCFPerShare = 46; // 每股经营现金净流量 例如填写 [0.1,10] 值区间 (单位：元)
 	}
-			
 -----------------------------------------------------------------------------
 
-FinancialQuarter - 条件选股的财报时间
+CustomIndicatorField - 条件选股的自定义技术指标属性
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum CustomIndicatorField
+	{
+		CustomIndicatorField_Unknown = 0; // 未知
+		CustomIndicatorField_Price = 1; // 最新价格 
+		CustomIndicatorField_MA5 = 2; // 5日简单均线 
+		CustomIndicatorField_MA10 = 3; // 10日简单均线 
+		CustomIndicatorField_MA20 = 4; // 20日简单均线 
+		CustomIndicatorField_MA30 = 5; // 30日简单均线 
+		CustomIndicatorField_MA60 = 6; // 60日简单均线 
+		CustomIndicatorField_MA120 = 7; // 120日简单均线
+		CustomIndicatorField_MA250 = 8; // 250日简单均线
+		CustomIndicatorField_RSI = 9; // 动态RSI
+		CustomIndicatorField_EMA5 = 10; // 5日指数移动均线 
+		CustomIndicatorField_EMA10 = 11; // 10日指数移动均线 
+		CustomIndicatorField_EMA20 = 12; // 20日指数移动均线 
+		CustomIndicatorField_EMA30 = 13; // 30日指数移动均线 
+		CustomIndicatorField_EMA60 = 14; // 60日指数移动均线 
+		CustomIndicatorField_EMA120 = 15; // 120日指数移动均线
+		CustomIndicatorField_EMA250 = 16; // 250日指数移动均线
+		CustomIndicatorField_Value = 17; // 自定义数值，用于与 RSI 进行比较（stock_field1不支持此字段）
+	}
+-----------------------------------------------------------------------------
+
+PatternField - 条件选股的形态技术指标属性
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum PatternField
+	{
+		PatternField_Unknown = 0 ; // 未知
+		PatternField_MAAlignmentLong = 1 ; // MA多头排列（连续两天MA5>MA10>MA20>MA30>MA60，且当日收盘价大于前一天收盘价）
+		PatternField_MAAlignmentShort = 2 ; // MA空头排列（连续两天MA5 <MA10 <MA20 <MA30 <MA60，且当日收盘价小于前一天收盘价）
+		PatternField_EMAAlignmentLong = 3 ; // EMA多头排列（连续两天EMA5>EMA10>EMA20>EMA30>EMA60，且当日收盘价大于前一天收盘价）
+		PatternField_EMAAlignmentShort = 4 ; // EMA空头排列（连续两天EMA5 <EMA10 <EMA20 <EMA30 <EMA60，且当日收盘价小于前一天收盘价）
+		PatternField_RSIGoldCrossLow = 5 ; // RSI低位金叉（50以下，短线RSI上穿长线RSI（前一日短线RSI小于长线RSI，当日短线RSI大于长线RSI）） 
+		PatternField_RSIDeathCrossHigh = 6 ; // RSI高位死叉（50以上，短线RSI下穿长线RSI（前一日短线RSI大于长线RSI，当日短线RSI小于长线RSI）） 
+		PatternField_RSITopDivergence = 7 ; // RSI顶背离（相邻的两个K线波峰，后面的波峰对应的CLOSE>前面的波峰对应的CLOSE，后面波峰的RSI12值 <前面波峰的RSI12值）
+		PatternField_RSIBottomDivergence = 8 ; // RSI底背离（相邻的两个K线波谷，后面的波谷对应的CLOSE <前面的波谷对应的CLOSE，后面波谷的RSI12值>前面波谷的RSI12值） 
+		PatternField_KDJGoldCrossLow = 9 ; // KDJ低位金叉（KDJ的值都小于或等于30，且前一日K,J值分别小于D值，当日K,J值分别大于D值）
+		PatternField_KDJDeathCrossHigh = 10 ; // KDJ高位死叉（KDJ的值都大于或等于70，且前一日K,J值分别大于D值，当日K,J值分别小于D值）
+		PatternField_KDJTopDivergence = 11 ; // KDJ顶背离（相邻的两个K线波峰，后面的波峰对应的CLOSE>前面的波峰对应的CLOSE，后面波峰的J值 <前面波峰的J值）
+		PatternField_KDJBottomDivergence = 12 ; // KDJ底背离（相邻的两个K线波谷，后面的波谷对应的CLOSE <前面的波谷对应的CLOSE，后面波谷的J值>前面波谷的J值）
+		PatternField_MACDGoldCrossLow = 13 ; // MACD低位金叉（DIFF上穿DEA（前一日DIFF小于DEA，当日DIFF大于DEA））
+		PatternField_MACDDeathCrossHigh = 14 ; // MACD高位死叉（DIFF下穿DEA（前一日DIFF大于DEA，当日DIFF小于DEA））
+		PatternField_MACDTopDivergence = 15 ; // MACD顶背离（相邻的两个K线波峰，后面的波峰对应的CLOSE>前面的波峰对应的CLOSE，后面波峰的macd值 <前面波峰的macd值）
+		PatternField_MACDBottomDivergence = 16 ; // MACD底背离（相邻的两个K线波谷，后面的波谷对应的CLOSE <前面的波谷对应的CLOSE，后面波谷的macd值>前面波谷的macd值）
+		PatternField_BOLLBreakUpper = 17 ; // BOLL突破上轨（前一日股价低于上轨值，当日股价大于上轨值） 
+		PatternField_BOLLLower = 18 ; // BOLL突破下轨（前一日股价高于下轨值，当日股价小于下轨值）
+		PatternField_BOLLCrossMiddleUp = 19 ; // BOLL向上破中轨（前一日股价低于中轨值，当日股价大于中轨值）
+		PatternField_BOLLCrossMiddleDown = 20 ; // BOLL向下破中轨（前一日股价大于中轨值，当日股价小于中轨值）
+	}
+
+-----------------------------------------------------------------------------
+
+FinancialQuarter - 条件选股的财报时间周期
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1044,7 +1163,23 @@ FinancialQuarter - 条件选股的财报时间
 		FinancialQuarter_ThirdQuarter = 4; // 三季报
 		FinancialQuarter_MostRecentQuarter = 5; // 最近季报
 	}
-			
+
+-----------------------------------------------------------------------------
+
+RelativePosition - 条件选股的相对位置比较
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+
+	enum RelativePosition
+	{
+		RelativePosition_Unknown = 0; // 未知
+		RelativePosition_More = 1; // 大于，first位于second的上方
+		RelativePosition_Less = 2; // 小于，first位于second的下方
+		RelativePosition_CrossUp = 3; // 升穿，first从下往上穿second
+		RelativePosition_CrossDown = 4; // 跌穿，first从上往下穿second
+	}
+
 -----------------------------------------------------------------------------
 
 SortDir - 条件选股的排序方向
@@ -1058,7 +1193,7 @@ SortDir - 条件选股的排序方向
 		SortDir_Ascend = 1; // 升序
 		SortDir_Descend = 2; // 降序
 	}
-						
+
 -----------------------------------------------------------------------------
 
 Security - 证券标识

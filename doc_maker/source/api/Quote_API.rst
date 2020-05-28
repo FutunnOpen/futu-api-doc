@@ -92,6 +92,8 @@
  
  .. _UserSecurityGroupType: Base_API.html#usersecuritygrouptype
  
+ .. _RelativePosition: Base_API.html#relativeposition-ma-ema-rsi
+ 
 一分钟上手
 ============
 
@@ -2248,7 +2250,7 @@ get_stock_filter
 
  :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
  :param filter_list: 
-        | 简单属性筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter或FinancialFilter类型数据的list对象field。
+        | 筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter，FinancialFilter，PatternFilter或CustomIndicatorFilter类型数据的list对象field。
         
         | SimpleFilter对象field的相关参数如下：
         
@@ -2287,6 +2289,29 @@ get_stock_filter
         sort                                           str            SortDir 排序方向，取值见 SortDir_，不传默认为不排序
         quarter                                        str            财报累积时间，取值见 FinancialQuarter_ 
         ============================================   ===========   ================================================
+        
+        | PatternFilter对象field的相关参数如下：
+        
+        ============================================   ===========   ================================================
+        参数                                            类型           说明
+        ============================================   ===========   ================================================
+        stock_field                                    str            StockField 形态技术指标字段，取值见 `StockField <Base_API.html#stockfield-patternfilter>`_
+		ktype                                          int            Qot_Common.KLType，K线类型，仅支持K_60M，K_DAY，K_WEEK，K_MON 四种时间周期，取值参见 KLType_
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        ============================================   ===========   ================================================
+        
+        | CustomIndicatorFilter对象field的相关参数如下：
+        
+        ============================================   ===========   ================================================
+        参数                                            类型           说明
+        ============================================   ===========   ================================================
+        stock_field1                                   str            StockField 自定义技术指标字段，取值见 `StockField <Base_API.html#stockfield-customindicatorfilter>`_ 
+		stock_field2                                   str            StockField 自定义技术指标字段，取值见 `StockField <Base_API.html#stockfield-customindicatorfilter>`_ 
+        relative_position                              int            RelativePosition 相对位置,主要用于MA，EMA，RSI指标做比较，取值参见 RelativePosition_
+        value                                          float          自定义数值，用于与RSI进行比较
+        ktype                                          int            Qot_Common.KLType，K线类型，仅支持K_60M，K_DAY，K_WEEK，K_MON 四种时间周期，取值参见 KLType_
+        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
+        ============================================   ===========   ================================================
 
  :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。
  :param begin: 数据起始点
@@ -2318,6 +2343,11 @@ pe_ttm                                         float          市盈率TTM
 pb_rate                                        float          市净率
 change_rate_5min                               float          五分钟价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 change_rate_begin_year                         float          年初至今价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+ps_ttm                                         float          市销率(TTM) 例如填写 [100, 500] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+pcf_ttm                                        float          市现率(TTM) 例如填写 [100, 1000] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+total_share                                    float          总股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+float_share                                    float          流通股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+float_market_val                               float          流通市值 例如填写 [1000000000,1000000000] 值区间 (单位：元)
 \ 
 change_rate                                    float          涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 amplitude                                      float          振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）
@@ -2333,6 +2363,62 @@ net_profit_rate                                float          净利率（该字
 gross_profit_rate                              float          毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 debt_asset_rate                                float          资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 return_on_equity_rate                          float          净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
+roic                                           float          盈利能力属性投入资本回报率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+roa_ttm                                        float          资产回报率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+ebit_ttm                                       float          息税前利润(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+ebitda                                         float          税息折旧及摊销前利润 例如填写 [1000000000,1000000000] 值区间（单位：元）
+operating_margin_ttm                           float          营业利润率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+ebit_margin                                    float          EBIT利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+ebitda_margin                                  float          EBITDA利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+financial_cost_rate                            float          财务成本率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+operating_profit_ttm                           float          营业利润(TTM) 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+shareholder_net_profit_ttm                     float          归属于母公司的净利润 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+net_profit_cash_cover                          float          盈利中的现金收入比例 例如填写 [1.0,60.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+current_ratio                                  float          偿债能力属性流动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+quick_ratio                                    float          速动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+current_asset_ratio                            float          清债能力属性流动资产率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+current_debt_ratio                             float          流动负债率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+equity_multiplier                              float          权益乘数 例如填写 [100,180] 值区间
+property_ratio                                 float          产权比率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+cash_and_cash_equivalents                      float          现金和现金等价 例如填写 [1000000000,1000000000] 值区间（单位：元）
+total_asset_turnover                           float          运营能力属性总资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+fixed_asset_turnover                           float          固定资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+inventory_turnover                             float          存货周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+operating_cash_flow_ttm                        float          经营活动现金流(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+accounts_receivable                            float          应收帐款净额 例如填写 [1000000000,1000000000] 值区间 例如填写 [1000000000,1000000000] 值区间 （单位：元）
+ebit_growth_rate                               float          成长能力属性EBIT同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+operating_profit_growth_rate                   float          营业利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+total_assets_growth_rate                       float          总资产同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+profit_to_shareholders_growth_rate             float          归母净利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+profit_before_tax_growth_rate                  float          总利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+eps_growth_rate                                float          EPS同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+roe_growth_rate                                float          ROE同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+roic_growth_rate                               float          ROIC同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+nocf_growth_rate                               float          经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+nocf_per_share_growth_rate                     float          每股经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+operating_revenue_cash_cover                   float          现金流属性经营现金收入比 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+operating_profit_to_total_profit               float          营业利润占比 例如填写 [10,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+basic_eps                                      float          市场表现属性基本每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+diluted_eps                                    float          稀释每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+nocf_per_share                                 float          每股经营现金净流量 例如填写 [0.1,10] 值区间 (单位：元)
+\ 
+price                                          float          最新价格
+ma5                                            float          5日简单均线
+ma10                                           float          10日简单均线
+ma20                                           float          20日简单均线
+ma30                                           float          30日简单均线
+ma60                                           float          60日简单均线
+ma120                                          float          120日简单均线
+ma250                                          float          250日简单均线
+rsi                                            float          动态RSI
+ema5                                           float          5日指数移动均线
+ema10                                          float          10日指数移动均线
+ema20                                          float          20日指数移动均线
+ema30                                          float          30日指数移动均线
+ema60                                          float          60日指数移动均线
+ema120                                         float          120日指数移动均线
+ema250                                         float          250日指数移动均线
+\ 
 ============================================   ===========   ==============================================================================
 
  :Example:

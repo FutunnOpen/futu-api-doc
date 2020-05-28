@@ -1597,7 +1597,7 @@ SubType - 实时数据定阅类型
 StockField - 条件选股筛选条件字段(SimpleFilter)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积或财务筛选。
+简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积，财务，自定义技术指标，形态技术指标筛选。
 
 ..  py:class:: StockField
 
@@ -1669,12 +1669,32 @@ StockField - 条件选股筛选条件字段(SimpleFilter)
 
   年初至今价格涨跌幅
 
+ ..  py:attribute:: PS_TTM
+
+市销率(TTM)
+
+ ..  py:attribute:: PCF_TTM
+
+市现率(TTM)
+
+ ..  py:attribute:: TOTAL_SHARE
+
+总股数
+
+ ..  py:attribute:: FLOAT_SHARE
+
+流通股数
+
+ ..  py:attribute:: FLOAT_MARKET_VAL
+
+流通市值
+
 --------------------------------------------------------------------------------
 
 StockField - 条件选股筛选条件字段(AccumulateFilter)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单或财务筛选。
+累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单，财务，自定义技术指标，形态技术指标筛选。
 
 ..  py:class:: StockField
 
@@ -1703,7 +1723,7 @@ StockField - 条件选股筛选条件字段(AccumulateFilter)
 StockField - 条件选股筛选条件字段(FinancialFilter)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单或累积筛选。
+财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单，累积，自定义技术指标，形态技术指标筛选。
 
 财务筛选字段的使用说明：
 
@@ -1747,6 +1767,346 @@ StockField - 条件选股筛选条件字段(FinancialFilter)
  ..  py:attribute:: RETURN_ON_EQUITY_RATE
 
   净资产收益率
+
+ ..  py:attribute:: ROIC
+
+  投入资本回报率
+
+ ..  py:attribute:: ROA_TTM
+
+  资产回报率(TTM)
+
+ ..  py:attribute:: EBIT_TTM
+
+  息税前利润(TTM)
+
+ ..  py:attribute:: EBITDA
+
+  税息折旧及摊销前利润
+
+ ..  py:attribute:: OPERATING_MARGIN_TTM
+
+  营业利润率(TTM)
+
+ ..  py:attribute:: EBIT_MARGIN
+
+  EBIT利润率
+
+ ..  py:attribute:: EBITDA_MARGIN
+
+  EBITDA利润率
+
+ ..  py:attribute:: FINANCIAL_COST_RATE
+
+  财务成本率
+
+ ..  py:attribute:: OPERATING_PROFIT_TTM
+
+  营业利润(TTM)
+
+ ..  py:attribute:: SHAREHOLDER_NET_PROFIT_TTM
+
+  归属于母公司的净利润
+
+ ..  py:attribute:: NET_PROFIT_CASH_COVER
+
+  盈利中的现金收入比例
+
+ ..  py:attribute:: CURRENT_RATIO
+
+  流动比率
+
+ ..  py:attribute:: QUICK_RATIO
+
+  速动比率
+
+ ..  py:attribute:: CURRENT_ASSET_RATIO
+
+  流动资产率
+
+ ..  py:attribute:: CURRENT_DEBT_RATIO
+
+  流动负债率
+
+ ..  py:attribute:: EQUITY_MULTIPLIER
+
+  权益乘数
+
+ ..  py:attribute:: PROPERTY_RATIO
+
+  产权比率
+
+ ..  py:attribute:: CASH_AND_CASH_EQUIVALENTS
+
+  现金和现金等价
+
+ ..  py:attribute:: TOTAL_ASSET_TURNOVER
+
+  总资产周转率
+
+ ..  py:attribute:: FIXED_ASSET_TURNOVER
+
+  固定资产周转率
+
+ ..  py:attribute:: INVENTORY_TURNOVER
+
+  存货周转率
+
+ ..  py:attribute:: OPERATING_CASH_FLOW_TTM
+
+  经营活动现金流(TTM)
+
+ ..  py:attribute:: ACCOUNTS_RECEIVABLE
+
+  应收帐款净额
+
+ ..  py:attribute:: EBIT_GROWTH_RATE
+
+  EBIT同比增长率
+
+ ..  py:attribute:: OPERATING_PROFIT_GROWTH_RATE
+
+  营业利润同比增长率
+
+ ..  py:attribute:: TOTAL_ASSETS_GROWTH_RATE
+
+  总资产同比增长率
+
+ ..  py:attribute:: PROFIT_TO_SHAREHOLDERS_GROWTH_RATE
+
+  归母净利润同比增长率
+
+ ..  py:attribute:: PROFIT_BEFORE_TAX_GROWTH_RATE
+
+  总利润同比增长率
+
+ ..  py:attribute:: EPS_GROWTH_RATE
+
+  EPS同比增长率
+
+ ..  py:attribute:: ROE_GROWTH_RATE
+
+  ROE同比增长率
+
+ ..  py:attribute:: ROIC_GROWTH_RATE
+
+  ROIC同比增长率
+
+ ..  py:attribute:: NOCF_GROWTH_RATE
+
+  经营现金流同比增长率
+
+ ..  py:attribute:: NOCF_PER_SHARE_GROWTH_RATE
+
+  每股经营现金流同比增长率
+
+ ..  py:attribute:: OPERATING_REVENUE_CASH_COVER
+
+  经营现金收入比
+
+ ..  py:attribute:: OPERATING_PROFIT_TO_TOTAL_PROFIT
+
+  营业利润占比
+
+ ..  py:attribute:: BASIC_EPS
+
+  基本每股收益
+
+ ..  py:attribute:: DILUTED_EPS
+
+  稀释每股收益
+
+ ..  py:attribute:: NOCF_PER_SHARE
+
+  每股经营现金净流量
+
+--------------------------------------------------------------------------------
+
+StockField - 条件选股筛选条件字段(PatternFilter)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+形态技术指标字段定义，仅适用于PatternFilter类型筛选，不能用于简单，累积，财务，自定义技术指标筛选。
+
+ ..  py:attribute:: MA_ALIGNMENT_LONG
+
+MA多头排列
+
+ ..  py:attribute:: MA_ALIGNMENT_SHORT
+
+MA空头排列
+
+ ..  py:attribute:: EMA_ALIGNMENT_LONG
+
+EMA多头排列
+
+ ..  py:attribute:: EMA_ALIGNMENT_SHORT
+
+EMA空头排列
+
+ ..  py:attribute:: RSI_GOLD_CROSS_LOW
+
+RSI低位金叉
+
+ ..  py:attribute:: RSI_DEATH_CROSS_HIGH
+
+RSI高位死叉
+
+ ..  py:attribute:: RSI_TOP_DIVERGENCE
+
+RSI顶背离
+
+ ..  py:attribute:: RSI_BOTTOM_DIVERGENCE
+
+RSI底背离
+
+ ..  py:attribute:: KDJ_GOLD_CROSS_LOW
+
+KDJ低位金叉
+
+ ..  py:attribute:: KDJ_DEATH_CROSS_HIGH
+
+KDJ高位死叉
+
+ ..  py:attribute:: KDJ_TOP_DIVERGENCE
+
+KDJ顶背离
+
+ ..  py:attribute:: KDJ_BOTTOM_DIVERGENCE
+
+KDJ底背离
+
+ ..  py:attribute:: MACD_GOLD_CROSS_LOW
+
+MACD低位金叉
+
+ ..  py:attribute:: MACD_DEATH_CROSS_HIGH
+
+MACD高位死叉
+
+ ..  py:attribute:: MACD_TOP_DIVERGENCE
+
+MACD顶背离
+
+ ..  py:attribute:: MACD_BOTTOM_DIVERGENCE
+
+MACD底背离
+
+ ..  py:attribute:: BOLL_BREAK_UPPER
+
+BOLL突破上轨
+
+ ..  py:attribute:: BOLL_LOWER
+
+BOLL突破下轨
+
+ ..  py:attribute:: BOLL_CROSS_MIDDLE_UP
+
+BOLL向上破中轨
+
+ ..  py:attribute:: BOLL_CROSS_MIDDLE_DOWN
+
+BOLL向下破中轨
+
+--------------------------------------------------------------------------------
+
+StockField - 条件选股筛选条件字段(CustomIndicatorFilter)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+自定义技术指标字段定义，仅适用于CustomIndicatorFilter类型筛选，不能用于简单，累积，财务，形态技术指标筛选。
+
+
+ ..  py:attribute:: PRICE
+
+最新价格
+
+ ..  py:attribute:: MA5
+
+5日简单均线
+
+ ..  py:attribute:: MA10
+
+10日简单均线
+
+ ..  py:attribute:: MA20
+
+20日简单均线
+
+ ..  py:attribute:: MA30
+
+30日简单均线
+
+ ..  py:attribute:: MA60
+
+60日简单均线
+
+ ..  py:attribute:: MA120
+
+120日简单均线
+
+ ..  py:attribute:: MA250
+
+250日简单均线
+
+ ..  py:attribute:: RSI
+
+动态RSI
+
+ ..  py:attribute:: EMA5
+
+5日指数移动均线
+
+ ..  py:attribute:: EMA10
+
+10日指数移动均线
+
+ ..  py:attribute:: EMA20
+
+20日指数移动均线
+
+ ..  py:attribute:: EMA30
+
+30日指数移动均线
+
+ ..  py:attribute:: EMA60
+
+60日指数移动均线
+
+ ..  py:attribute:: EMA120
+
+120日指数移动均线
+
+ ..  py:attribute:: EMA250
+
+250日指数移动均线
+
+ ..  py:attribute:: VALUE
+
+自定义数值，用于与 RSI 进行比较（stock_field1 不支持此字段）
+
+--------------------------------------------------------------------------------
+
+RelativePosition - 相对位置,主要用于MA，EMA，RSI指标做比较
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+自定义技术指标中相对位置,主要用于MA，EMA，RSI指标做比较。
+
+..  py:class:: RelativePosition
+
+ ..  py:attribute:: MORE
+
+  大于，first位于second的上方
+
+ ..  py:attribute:: LESS
+
+  小于，first位于second的下方
+
+ ..  py:attribute:: CROSS_UP
+
+  升穿，first从下往上穿second
+
+ ..  py:attribute:: CROSS_DOWN
+
+  跌穿，first从上往下穿second
 
 --------------------------------------------------------------------------------
 
