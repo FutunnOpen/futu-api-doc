@@ -2250,7 +2250,7 @@ get_stock_filter
 
  :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
  :param filter_list: 
-        | 筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter，FinancialFilter，PatternFilter或CustomIndicatorFilter类型数据的list对象field。
+        | 筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter，FinancialFilter类型数据的list对象field。
         
         | SimpleFilter对象field的相关参数如下：
         
@@ -2290,29 +2290,6 @@ get_stock_filter
         quarter                                        str            财报累积时间，取值见 FinancialQuarter_ 
         ============================================   ===========   ================================================
         
-        | PatternFilter对象field的相关参数如下：
-        
-        ============================================   ===========   ================================================
-        参数                                            类型           说明
-        ============================================   ===========   ================================================
-        stock_field                                    str            StockField 形态技术指标字段，取值见 `StockField <Base_API.html#stockfield-patternfilter>`_
-		ktype                                          int            Qot_Common.KLType，K线类型，仅支持K_60M，K_DAY，K_WEEK，K_MON 四种时间周期，取值参见 KLType_
-        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
-        ============================================   ===========   ================================================
-        
-        | CustomIndicatorFilter对象field的相关参数如下：
-        
-        ============================================   ===========   ================================================
-        参数                                            类型           说明
-        ============================================   ===========   ================================================
-        stock_field1                                   str            StockField 自定义技术指标字段，取值见 `StockField <Base_API.html#stockfield-customindicatorfilter>`_ 
-		stock_field2                                   str            StockField 自定义技术指标字段，取值见 `StockField <Base_API.html#stockfield-customindicatorfilter>`_ 
-        relative_position                              int            RelativePosition 相对位置,主要用于MA，EMA，RSI指标做比较，取值参见 RelativePosition_
-        value                                          float          自定义数值，用于与RSI进行比较
-        ktype                                          int            Qot_Common.KLType，K线类型，仅支持K_60M，K_DAY，K_WEEK，K_MON 四种时间周期，取值参见 KLType_
-        is_no_filter                                   bool           该字段是否不需要筛选，True代表不筛选，False代表筛选。不传默认为不筛选
-        ============================================   ===========   ================================================
-
  :param plate_code: 板块代码，string，例如，“SH.BK0001”，“SH.BK0002”，先利用获取子板块列表函数获取子板块代码。支持的板块代码详情请查看下面的Note。
  :param begin: 数据起始点
  :param num: 请求数据个数，最大200
@@ -2401,24 +2378,7 @@ operating_profit_to_total_profit               float          营业利润占比
 basic_eps                                      float          市场表现属性基本每股收益 例如填写 [0.1,10] 值区间 (单位：元)
 diluted_eps                                    float          稀释每股收益 例如填写 [0.1,10] 值区间 (单位：元)
 nocf_per_share                                 float          每股经营现金净流量 例如填写 [0.1,10] 值区间 (单位：元)
-\ 
-price                                          float          最新价格
-ma5                                            float          5日简单均线
-ma10                                           float          10日简单均线
-ma20                                           float          20日简单均线
-ma30                                           float          30日简单均线
-ma60                                           float          60日简单均线
-ma120                                          float          120日简单均线
-ma250                                          float          250日简单均线
-rsi                                            float          动态RSI
-ema5                                           float          5日指数移动均线
-ema10                                          float          10日指数移动均线
-ema20                                          float          20日指数移动均线
-ema30                                          float          30日指数移动均线
-ema60                                          float          60日指数移动均线
-ema120                                         float          120日指数移动均线
-ema250                                         float          250日指数移动均线
-\ 
+\
 ============================================   ===========   ==============================================================================
 
  :Example:
