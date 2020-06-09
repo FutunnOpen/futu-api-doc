@@ -212,7 +212,7 @@ position_list_query - 获取账户持仓列表
  code                         str           代码
  stock_name                   str           名称
  qty                          float         持有数量，整数，期权单位是"张"，下同
- can_sell_qty                 float         可卖数量，整数。期货为0
+ can_sell_qty                 float         可卖数量，整数。
  nominal_price                float         市价，3位小数，超过四舍五入
  cost_price                   float        	成本价，无精度限制
  cost_price_valid             bool          成本价是否有效，True有效，False无效
