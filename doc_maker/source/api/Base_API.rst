@@ -1660,7 +1660,7 @@ StockField - 条件选股筛选条件字段(SimpleFilter)
  ..  py:attribute:: PB_RATE
 
   市净率
-  
+
  ..  py:attribute:: CHANGE_RATE_5MIN
 
   五分钟价格涨跌幅
@@ -1671,23 +1671,23 @@ StockField - 条件选股筛选条件字段(SimpleFilter)
 
  ..  py:attribute:: PS_TTM
 
-市销率(TTM)
+  市销率(TTM)
 
  ..  py:attribute:: PCF_TTM
 
-市现率(TTM)
+  市现率(TTM)
 
  ..  py:attribute:: TOTAL_SHARE
 
-总股数
+  总股数
 
  ..  py:attribute:: FLOAT_SHARE
 
-流通股数
+  流通股数
 
  ..  py:attribute:: FLOAT_MARKET_VAL
 
-流通市值
+  流通市值
 
 --------------------------------------------------------------------------------
 
@@ -1858,7 +1858,7 @@ StockField - 条件选股筛选条件字段(FinancialFilter)
 
  ..  py:attribute:: ACCOUNTS_RECEIVABLE
 
-  应收帐款净额
+  应收账款净额
 
  ..  py:attribute:: EBIT_GROWTH_RATE
 
