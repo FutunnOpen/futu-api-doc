@@ -305,14 +305,14 @@ API用户额度
 下单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2202_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次。连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
 
 .. _modify-order-limit:	
 	
 修改订单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2205_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次。连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
 	
 .. _history-order-list-query-limit:	
 
