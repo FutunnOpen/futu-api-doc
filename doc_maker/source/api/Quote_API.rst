@@ -2299,7 +2299,7 @@ get_stock_filter
         | **ret** - ret != RET_OK 返回错误字符串, ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。
         | **last_page** - 是否是最后一页
         | **all_count** - 列表总数量
-        | **stock_list** - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:
+        | **stock_list** - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置了筛选的字段也会返回。返回的数据列字段如下:
 
 ============================================   ===========   ==============================================================================
 参数                                            类型           说明
