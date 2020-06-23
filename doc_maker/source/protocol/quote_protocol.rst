@@ -30,7 +30,7 @@
 	{
 		repeated Qot_Common.Security securityList = 1; //股票
 		repeated int32 subTypeList = 2; //Qot_Common.SubType,订阅数据类型
-		required bool isSubOrUnSub = 3; //ture表示订阅,false表示反订阅
+		required bool isSubOrUnSub = 3; //true表示订阅,false表示反订阅
 		optional bool isRegOrUnRegPush = 4; //是否注册或反注册该连接上面行情的推送,该参数不指定不做注册反注册操作
 		repeated int32 regPushRehabTypeList = 5; //Qot_Common.RehabType,复权类型,注册推送并且是K线类型才生效,其他订阅类型忽略该参数,注册K线推送时该参数不指定默认前复权
 		optional bool isFirstPush = 6; //注册后如果本地已有数据是否首推一次已存在数据,该参数不指定则默认true
@@ -1093,7 +1093,7 @@
 	{
 		required Qot_Common.Security plate = 1; //板块
 		optional int32 sortField = 2;//Qot_Common.SortField,根据哪个字段排序,不填默认Code排序
-		optional bool ascend = 3;//升序ture, 降序false, 不填默认升序
+		optional bool ascend = 3;//升序true, 降序false, 不填默认升序
 
 	}
 
@@ -1395,7 +1395,7 @@
 		required int32 begin = 1; //数据起始点
 		required int32 num =  2; //请求数据个数，最大200
 		required int32 sortField = 3;//Qot_Common.SortField,根据哪个字段排序
-		required bool ascend = 4;//升序ture, 降序false
+		required bool ascend = 4;//升序true, 降序false
 		
 		//以下为筛选条件，可选字段，不填表示不过滤
 		optional Qot_Common.Security owner = 5;	//所属正股

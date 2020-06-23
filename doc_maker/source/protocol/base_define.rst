@@ -1142,7 +1142,7 @@ KLine - K线数据点
 	message KLine
 	{
 		required string time = 1; //时间戳字符串
-		required bool isBlank = 2; //是否是空内容的点,若为ture则只有时间信息
+		required bool isBlank = 2; //是否是空内容的点,若为true则只有时间信息
 		optional double highPrice = 3; //最高价
 		optional double openPrice = 4; //开盘价
 		optional double lowPrice = 5; //最低价
@@ -1265,7 +1265,7 @@ TimeShare - 分时数据点
 	{
 		required string time = 1; //时间字符串
 		required int32 minute = 2; //距离0点过了多少分钟
-		required bool isBlank = 3; //是否是空内容的点,若为ture则只有时间信息
+		required bool isBlank = 3; //是否是空内容的点,若为true则只有时间信息
 		optional double price = 4; //当前价
 		optional double lastClosePrice = 5; //昨收价
 		optional double avgPrice = 6; //均价
