@@ -889,7 +889,7 @@ subscribe
 
 ..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=False)
 
- 订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。 
+ 订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要港股LV2以上的权限，港股期货/期权订阅需要港股期权期货LV2以上权限，BMP 权限不支持订阅。
 
  :param code_list: 需要订阅的股票代码列表
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
@@ -1858,7 +1858,7 @@ get_warrant
 
 ..  py:function:: get_warrant(self, stock_owner='', req=None)
 
- 通过标的股查询窝轮
+ 通过标的股查询窝轮，港股 BMP 权限不支持查询窝轮功能。
 
  :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的窝轮，注意有些股票没有对应窝轮牛熊。
  :param req: 请求参数组合
@@ -2246,7 +2246,7 @@ get_stock_filter
 
 ..  py:function:: get_stock_filter(self, market, filter_list, plate_code=None, begin=0, num=200)
 
- 获取条件选股
+ 获取条件选股，港股 BMP 权限不支持条件选股功能。
 
  :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
  :param filter_list: 
