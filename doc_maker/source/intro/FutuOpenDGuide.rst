@@ -94,7 +94,7 @@ FutuOpenD配置
   login_account              登录帐号                                                                                                                                                        是，可以使用证书登录或命令行输入
   login_pwd                  登录密码明文                                                                                                                                                    是，可以使用密文、证书登录或命令行输入
   login_pwd_md5              登录密码密文（32位MD5加密16进制），密文明文都存在情况下，只使用密文                                                                                             是，可以使用明文、证书登录或命令行输入
-  log_level                  日志级别，可填no，debug，info，warning，error，fatal                                                                                                            是，默认info级别
+  log_level                  日志级别，可填no(无日志)，debug(最详细)，info(次详细)，warning，error，fatal                                                                                    是，默认info级别
   simulate_trade             是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable                                                                                           是，默认启用
   websocket_ip               API协议监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）                                                                       是，不设置则默认127.0.0.1 
   websocket_port             WebSocket服务监听端口                                                                                                                                           是，不设置则不启用该功能  
@@ -178,7 +178,7 @@ FutuOpenD配置
   api_ip                     API服务监听地址                                                                                                                                         是，不设置则默认127.0.0.1   
   api_port                   API协议接收端口                                                                                                                                         是，不设置则使用配置文件配置项
   help                       输出启动命令行参数然后退出程序                                                                                                                          是，不设置则正常启动FutuOpenD
-  log_level                  日志级别，可填no，debug，info，warning，error，fatal                                                                                                    是，默认info级别
+  log_level                  日志级别，可填no(无日志)，debug(最详细)，info(次详细)，warning，error，fatal                                                                            是，默认info级别
   no_monitor                 是否启动守护进程，启动：0，不启动：1                                                                                                                    是，默认带守护进程启动
   simulate_trade             是否启用模拟交易，关闭模拟交易可节省少量资源使用，可填enable，disable                                                                                   是，默认启用
   websocket_ip               WebSocket服务监听地址，可选127.0.0.1（监听来自本地的连接）以及0.0.0.0（监听来自所有网卡的连接）                                                         是，不设置则默认127.0.0.1    
