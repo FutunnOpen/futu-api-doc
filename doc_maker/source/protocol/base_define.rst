@@ -75,7 +75,7 @@
 
 	message C2S
 	{
-		required uint64 userID = 1; //需要跟FutuOpenD登陆的牛牛用户ID一致，否则会返回失败
+		required uint64 userID = 1; //历史原因，目前已废弃，填0即可
 	}
 
 	message S2C
@@ -95,6 +95,7 @@
 		optional Common.ProgramStatus programStatus = 12; //当前程序状态
 		optional string qotSvrIpAddr = 13;
 		optional string trdSvrIpAddr = 14;
+		optional uint64 connID = 16; //此连接的连接ID，连接的唯一标识
 	}
 
 	message Request
@@ -989,6 +990,13 @@ StockField - 条件选股的简单属性筛选条件
 		StockField_PbRate = 14; // 市净率 例如填写[0,0.8]值区间
 		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间
 		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间
+		
+		// 基础量价属性
+		StockField_PSTTM = 17; // 市销率(TTM) 例如填写 [100, 500] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%） 
+		StockField_PCFTTM = 18; // 市现率(TTM) 例如填写 [100, 1000] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		StockField_TotalShare = 19; // 总股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+		StockField_FloatShare = 20; // 流通股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+		StockField_FloatMarketVal = 21; // 流通市值 例如填写 [1000000000,1000000000] 值区间 (单位：元)
 	}
 			
 -----------------------------------------------------------------------------
@@ -1017,6 +1025,7 @@ FinancialField - 条件选股的财务属性筛选条件
 
 	enum FinancialField
 	{
+		// 基础财务属性
 		FinancialField_Unknown = 0; // 未知
 		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
 		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-20.13,300]值区间
@@ -1026,11 +1035,62 @@ FinancialField - 条件选股的财务属性筛选条件
 		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[0.12,65]值区间
 		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[0.05,470]值区间
 		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[0.01,230]值区间
+		
+		// 盈利能力属性
+		FinancialField_ROIC = 9; // 投入资本回报率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROATTM = 10; // 资产回报率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		FinancialField_EBITTTM = 11; // 息税前利润(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+		FinancialField_EBITDA = 12; // 税息折旧及摊销前利润 例如填写 [1000000000,1000000000] 值区间（单位：元）
+		FinancialField_OperatingMarginTTM = 13; // 营业利润率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		FinancialField_EBITMargin = 14; // EBIT利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EBITDAMargin  = 15; // EBITDA利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_FinancialCostRate = 16; // 财务成本率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitTTM  = 17; // 营业利润(TTM) 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+		FinancialField_ShareholderNetProfitTTM = 18; // 归属于母公司的净利润 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+		FinancialField_NetProfitCashCover = 19; // 盈利中的现金收入比例 例如填写 [1.0,60.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		
+		// 偿债能力属性
+		FinancialField_CurrentRatio = 20; // 流动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_QuickRatio = 21; // 速动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）	
+		
+		// 清债能力属性
+		FinancialField_CurrentAssetRatio = 22; // 流动资产率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_CurrentDebtRatio = 23; // 流动负债率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EquityMultiplier = 24; // 权益乘数 例如填写 [100,180] 值区间
+		FinancialField_PropertyRatio = 25; // 产权比率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%） 
+		FinancialField_CashAndCashEquivalents = 26; // 现金和现金等价 例如填写 [1000000000,1000000000] 值区间（单位：元）	
+		
+		// 运营能力属性
+		FinancialField_TotalAssetTurnover = 27; // 总资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_FixedAssetTurnover = 28; // 固定资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_InventoryTurnover = 29; // 存货周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingCashFlowTTM = 30; // 经营活动现金流(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+		FinancialField_AccountsReceivable = 31; // 应收帐款净额 例如填写 [1000000000,1000000000] 值区间 例如填写 [1000000000,1000000000] 值区间 （单位：元）	
+		
+		// 成长能力属性
+		FinancialField_EBITGrowthRate = 32 ; // EBIT同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitGrowthRate = 33; // 营业利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_TotalAssetsGrowthRate = 34; // 总资产同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ProfitToShareholdersGrowthRate = 35; // 归母净利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ProfitBeforeTaxGrowthRate = 36; // 总利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EPSGrowthRate = 37; // EPS同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROEGrowthRate = 38; // ROE同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROICGrowthRate = 39; // ROIC同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_NOCFGrowthRate = 40; // 经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_NOCFPerShareGrowthRate = 41; // 每股经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		
+		// 现金流属性
+		FinancialField_OperatingRevenueCashCover = 42; // 经营现金收入比 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitToTotalProfit = 43; // 营业利润占比 例如填写 [10,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%） 	
+		
+		// 市场表现属性
+		FinancialField_BasicEPS = 44; // 基本每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+		FinancialField_DilutedEPS = 45; // 稀释每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+		FinancialField_NOCFPerShare = 46; // 每股经营现金净流量 例如填写 [0.1,10] 值区间 (单位：元)
 	}
-			
 -----------------------------------------------------------------------------
 
-FinancialQuarter - 条件选股的财报时间
+FinancialQuarter - 条件选股的财报时间周期
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1044,7 +1104,7 @@ FinancialQuarter - 条件选股的财报时间
 		FinancialQuarter_ThirdQuarter = 4; // 三季报
 		FinancialQuarter_MostRecentQuarter = 5; // 最近季报
 	}
-			
+
 -----------------------------------------------------------------------------
 
 SortDir - 条件选股的排序方向
@@ -1058,7 +1118,7 @@ SortDir - 条件选股的排序方向
 		SortDir_Ascend = 1; // 升序
 		SortDir_Descend = 2; // 降序
 	}
-						
+
 -----------------------------------------------------------------------------
 
 Security - 证券标识
@@ -1082,7 +1142,7 @@ KLine - K线数据点
 	message KLine
 	{
 		required string time = 1; //时间戳字符串
-		required bool isBlank = 2; //是否是空内容的点,若为ture则只有时间信息
+		required bool isBlank = 2; //是否是空内容的点,若为true则只有时间信息
 		optional double highPrice = 3; //最高价
 		optional double openPrice = 4; //开盘价
 		optional double lowPrice = 5; //最低价
@@ -1205,7 +1265,7 @@ TimeShare - 分时数据点
 	{
 		required string time = 1; //时间字符串
 		required int32 minute = 2; //距离0点过了多少分钟
-		required bool isBlank = 3; //是否是空内容的点,若为ture则只有时间信息
+		required bool isBlank = 3; //是否是空内容的点,若为true则只有时间信息
 		optional double price = 4; //当前价
 		optional double lastClosePrice = 5; //昨收价
 		optional double avgPrice = 6; //均价

@@ -20,39 +20,42 @@
 
 .. code-block:: cpp
 
-    FTAPI.Init(); //初始化环境
-    FTAPI_Qot client = new FTAPI_Qot(); //创建行情对象
-    client.SetConnCallback(new SampleConnCallback()); //创建连接回调类
-    client.SetQotCallback(new SampleQotCallback()); //创建行情数据回调类
-    client.SetClientInfo("FTAPI4NET_Sample", 1); //建立标识
-    client.InitConnect("127.0.0.1", 11111, false); //开始连接
+    FTAPI.init(); //初始化环境
+    FTAPI_Conn_Qot client = new FTAPI_Conn_Qot(); //创建行情对象
+    client.setConnSpi(new SampleQotCallback()); //创建连接回调类
+    client.setQotSpi(new SampleQotCallback()); //创建行情数据回调类
+    client.setClientInfo("FTAPI4J_Sample", 1); //建立标识
+    client.initConnect("127.0.0.1", (short)11111, false); //开始连接
 
 
 
 .. code-block:: cpp
 
-    class SampleConnCallback : FTSPI_Conn
+    class SampleQotCallback implements FTSPI_Qot, FTSPI_Conn
     {
-        public void OnConnect(FTAPI client, long errCode)
+        @Override
+        public void onInitConnect(FTAPI_Conn client, long errCode, String desc) 
         {
-            Console.WriteLine("Connected");
-        }
-
-        public void OnInitConnect(FTAPI client, bool ret, string desc)
-        {
-            Console.WriteLine("InitConnected");
+            System.out.printf("Qot onInitConnect: ret=%b desc=%s connID=%d\n", errCode, desc, client.getConnectID());
             //简单演示一下获取用户行情基本信息
-            FTAPI_Qot qot = client as FTAPI_Qot;
+            FTAPI_Conn_Qot qot = (FTAPI_Conn_Qot)client;
             {
-                GetGlobalState.Request req = GetGlobalState.Request.CreateBuilder().SetC2S(GetGlobalState.C2S.CreateBuilder().SetUserID(900019)).Build();
-                uint serialNo = qot.GetGlobalState(req);
-                Console.WriteLine("Send GetGlobalState: {0}", serialNo);
+               GetGlobalState.Request req = GetGlobalState.Request.newBuilder().setC2S(
+                GetGlobalState.C2S.newBuilder().setUserID(Config.userID)
+                ).build();
+                int seqNo = qot.getGlobalState(req);
+                System.out.printf("Send GetGlobalState: %d\n", seqNo);
             }
         }
 
-        public void OnDisconnect(FTAPI client, long errCode, TcpDisconnectType disConnType)
-        {
-            Console.WriteLine("DisConnected");
+        @Override
+        public void onDisconnect(FTAPI_Conn client, long errCode) {
+            System.out.printf("Qot onDisConnect: %d\n", errCode);
+        }
+
+        @Override
+        public void onReply_GetGlobalState(FTAPI_Conn client, int nSerialNo, GetGlobalState.Response rsp) {
+            System.out.printf("Reply: GetGlobalState: %d  %s\n", nSerialNo, rsp.toString());
         }
     }
 

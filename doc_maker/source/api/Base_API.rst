@@ -1597,7 +1597,7 @@ SubType - 实时数据订阅类型
 StockField - 条件选股筛选条件字段(SimpleFilter)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积或财务筛选。
+简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积，财务，自定义技术指标，形态技术指标筛选。
 
 ..  py:class:: StockField
 
@@ -1660,7 +1660,7 @@ StockField - 条件选股筛选条件字段(SimpleFilter)
  ..  py:attribute:: PB_RATE
 
   市净率
-  
+
  ..  py:attribute:: CHANGE_RATE_5MIN
 
   五分钟价格涨跌幅
@@ -1669,12 +1669,32 @@ StockField - 条件选股筛选条件字段(SimpleFilter)
 
   年初至今价格涨跌幅
 
+ ..  py:attribute:: PS_TTM
+
+  市销率(TTM)
+
+ ..  py:attribute:: PCF_TTM
+
+  市现率(TTM)
+
+ ..  py:attribute:: TOTAL_SHARE
+
+  总股数
+
+ ..  py:attribute:: FLOAT_SHARE
+
+  流通股数
+
+ ..  py:attribute:: FLOAT_MARKET_VAL
+
+  流通市值
+
 --------------------------------------------------------------------------------
 
 StockField - 条件选股筛选条件字段(AccumulateFilter)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单或财务筛选。
+累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单，财务，自定义技术指标，形态技术指标筛选。
 
 ..  py:class:: StockField
 
@@ -1703,7 +1723,7 @@ StockField - 条件选股筛选条件字段(AccumulateFilter)
 StockField - 条件选股筛选条件字段(FinancialFilter)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-条件选股的筛选条件财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单或累积筛选。
+财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单，累积，自定义技术指标，形态技术指标筛选。
 
 财务筛选字段的使用说明：
 
@@ -1747,6 +1767,158 @@ StockField - 条件选股筛选条件字段(FinancialFilter)
  ..  py:attribute:: RETURN_ON_EQUITY_RATE
 
   净资产收益率
+
+ ..  py:attribute:: ROIC
+
+  投入资本回报率
+
+ ..  py:attribute:: ROA_TTM
+
+  资产回报率(TTM)
+
+ ..  py:attribute:: EBIT_TTM
+
+  息税前利润(TTM)
+
+ ..  py:attribute:: EBITDA
+
+  税息折旧及摊销前利润
+
+ ..  py:attribute:: OPERATING_MARGIN_TTM
+
+  营业利润率(TTM)
+
+ ..  py:attribute:: EBIT_MARGIN
+
+  EBIT利润率
+
+ ..  py:attribute:: EBITDA_MARGIN
+
+  EBITDA利润率
+
+ ..  py:attribute:: FINANCIAL_COST_RATE
+
+  财务成本率
+
+ ..  py:attribute:: OPERATING_PROFIT_TTM
+
+  营业利润(TTM)
+
+ ..  py:attribute:: SHAREHOLDER_NET_PROFIT_TTM
+
+  归属于母公司的净利润
+
+ ..  py:attribute:: NET_PROFIT_CASH_COVER
+
+  盈利中的现金收入比例
+
+ ..  py:attribute:: CURRENT_RATIO
+
+  流动比率
+
+ ..  py:attribute:: QUICK_RATIO
+
+  速动比率
+
+ ..  py:attribute:: CURRENT_ASSET_RATIO
+
+  流动资产率
+
+ ..  py:attribute:: CURRENT_DEBT_RATIO
+
+  流动负债率
+
+ ..  py:attribute:: EQUITY_MULTIPLIER
+
+  权益乘数
+
+ ..  py:attribute:: PROPERTY_RATIO
+
+  产权比率
+
+ ..  py:attribute:: CASH_AND_CASH_EQUIVALENTS
+
+  现金和现金等价
+
+ ..  py:attribute:: TOTAL_ASSET_TURNOVER
+
+  总资产周转率
+
+ ..  py:attribute:: FIXED_ASSET_TURNOVER
+
+  固定资产周转率
+
+ ..  py:attribute:: INVENTORY_TURNOVER
+
+  存货周转率
+
+ ..  py:attribute:: OPERATING_CASH_FLOW_TTM
+
+  经营活动现金流(TTM)
+
+ ..  py:attribute:: ACCOUNTS_RECEIVABLE
+
+  应收账款净额
+
+ ..  py:attribute:: EBIT_GROWTH_RATE
+
+  EBIT同比增长率
+
+ ..  py:attribute:: OPERATING_PROFIT_GROWTH_RATE
+
+  营业利润同比增长率
+
+ ..  py:attribute:: TOTAL_ASSETS_GROWTH_RATE
+
+  总资产同比增长率
+
+ ..  py:attribute:: PROFIT_TO_SHAREHOLDERS_GROWTH_RATE
+
+  归母净利润同比增长率
+
+ ..  py:attribute:: PROFIT_BEFORE_TAX_GROWTH_RATE
+
+  总利润同比增长率
+
+ ..  py:attribute:: EPS_GROWTH_RATE
+
+  EPS同比增长率
+
+ ..  py:attribute:: ROE_GROWTH_RATE
+
+  ROE同比增长率
+
+ ..  py:attribute:: ROIC_GROWTH_RATE
+
+  ROIC同比增长率
+
+ ..  py:attribute:: NOCF_GROWTH_RATE
+
+  经营现金流同比增长率
+
+ ..  py:attribute:: NOCF_PER_SHARE_GROWTH_RATE
+
+  每股经营现金流同比增长率
+
+ ..  py:attribute:: OPERATING_REVENUE_CASH_COVER
+
+  经营现金收入比
+
+ ..  py:attribute:: OPERATING_PROFIT_TO_TOTAL_PROFIT
+
+  营业利润占比
+
+ ..  py:attribute:: BASIC_EPS
+
+  基本每股收益
+
+ ..  py:attribute:: DILUTED_EPS
+
+  稀释每股收益
+
+ ..  py:attribute:: NOCF_PER_SHARE
+
+  每股经营现金净流量
 
 --------------------------------------------------------------------------------
 

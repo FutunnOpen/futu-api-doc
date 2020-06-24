@@ -30,7 +30,7 @@
 	{
 		repeated Qot_Common.Security securityList = 1; //股票
 		repeated int32 subTypeList = 2; //Qot_Common.SubType,订阅数据类型
-		required bool isSubOrUnSub = 3; //ture表示订阅,false表示反订阅
+		required bool isSubOrUnSub = 3; //true表示订阅,false表示反订阅
 		optional bool isRegOrUnRegPush = 4; //是否注册或反注册该连接上面行情的推送,该参数不指定不做注册反注册操作
 		repeated int32 regPushRehabTypeList = 5; //Qot_Common.RehabType,复权类型,注册推送并且是K线类型才生效,其他订阅类型忽略该参数,注册K线推送时该参数不指定默认前复权
 		optional bool isFirstPush = 6; //注册后如果本地已有数据是否首推一次已存在数据,该参数不指定则默认true
@@ -61,7 +61,7 @@
 	* 股票结构参考 `Security <base_define.html#security>`_
 	* 订阅数据类型参考 `SubType <base_define.html#subtype>`_
 	* 复权类型参考 `RehabType <base_define.html#rehabtype-k>`_
-	* 为控制订阅产生推送数据流量，股票订阅总量有额度控制，订阅规则参考 `高频数据接口 <../api/Quote_API.html#id32>`_
+	* 为控制定阅产生推送数据流量，股票定阅总量有额度控制，订阅规则参考限制条件 :ref:`订阅反订阅 <subscribe-limit>`
 	* 高频数据接口需要订阅之后才能使用，注册推送之后才可以收到数据更新推送
 	
 -------------------------------------
@@ -1093,7 +1093,7 @@
 	{
 		required Qot_Common.Security plate = 1; //板块
 		optional int32 sortField = 2;//Qot_Common.SortField,根据哪个字段排序,不填默认Code排序
-		optional bool ascend = 3;//升序ture, 降序false, 不填默认升序
+		optional bool ascend = 3;//升序true, 降序false, 不填默认升序
 
 	}
 
@@ -1395,7 +1395,7 @@
 		required int32 begin = 1; //数据起始点
 		required int32 num =  2; //请求数据个数，最大200
 		required int32 sortField = 3;//Qot_Common.SortField,根据哪个字段排序
-		required bool ascend = 4;//升序ture, 降序false
+		required bool ascend = 4;//升序true, 降序false
 		
 		//以下为筛选条件，可选字段，不填表示不过滤
 		optional Qot_Common.Security owner = 5;	//所属正股
@@ -1790,6 +1790,13 @@
 		StockField_PbRate = 14; // 市净率 例如填写[0.5,20]值区间
 		StockField_ChangeRate5min = 15; // 五分钟价格涨跌幅 例如填写[-5,6.3]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		StockField_ChangeRateBeginYear = 16; // 年初至今价格涨跌幅 例如填写[-50.1,400.7]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		
+		// 基础量价属性
+		StockField_PSTTM = 17; // 市销率(TTM) 例如填写 [100, 500] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%） 
+		StockField_PCFTTM = 18; // 市现率(TTM) 例如填写 [100, 1000] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		StockField_TotalShare = 19; // 总股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+		StockField_FloatShare = 20; // 流通股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)
+		StockField_FloatMarketVal = 21; // 流通市值 例如填写 [1000000000,1000000000] 值区间 (单位：元)
 	};
 
 	// 累积属性
@@ -1806,6 +1813,7 @@
 	// 财务属性
 	enum FinancialField
 	{
+		// 基础财务属性
 		FinancialField_Unknown = 0; // 未知
 		FinancialField_NetProfit = 1; // 净利润 例如填写[100000000,2500000000]值区间
 		FinancialField_NetProfitGrowth = 2; // 净利润增长率 例如填写[-10,300]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
@@ -1815,9 +1823,61 @@
 		FinancialField_GrossProfitRate = 6; // 毛利率 例如填写[4,65]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		FinancialField_DebtAssetRate = 7; // 资产负债率 例如填写[5,470]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
 		FinancialField_ReturnOnEquityRate = 8; // 净资产收益率 例如填写[20,230]值区间（该字段为百分比字段，默认不展示%，如20实际对应20%）
+		
+		// 盈利能力属性
+		FinancialField_ROIC = 9; // 投入资本回报率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROATTM = 10; // 资产回报率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		FinancialField_EBITTTM = 11; // 息税前利润(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+		FinancialField_EBITDA = 12; // 税息折旧及摊销前利润 例如填写 [1000000000,1000000000] 值区间（单位：元）
+		FinancialField_OperatingMarginTTM = 13; // 营业利润率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		FinancialField_EBITMargin = 14; // EBIT利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EBITDAMargin  = 15; // EBITDA利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_FinancialCostRate = 16; // 财务成本率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitTTM  = 17; // 营业利润(TTM) 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+		FinancialField_ShareholderNetProfitTTM = 18; // 归属于母公司的净利润 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）
+		FinancialField_NetProfitCashCoverTTM = 19; // 盈利中的现金收入比例 例如填写 [1.0,60.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）
+		
+		// 偿债能力属性
+		FinancialField_CurrentRatio = 20; // 流动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_QuickRatio = 21; // 速动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）	
+		
+		// 清债能力属性
+		FinancialField_CurrentAssetRatio = 22; // 流动资产率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_CurrentDebtRatio = 23; // 流动负债率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EquityMultiplier = 24; // 权益乘数 例如填写 [100,180] 值区间
+		FinancialField_PropertyRatio = 25; // 产权比率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%） 
+		FinancialField_CashAndCashEquivalents = 26; // 现金和现金等价 例如填写 [1000000000,1000000000] 值区间（单位：元）	
+		
+		// 运营能力属性
+		FinancialField_TotalAssetTurnover = 27; // 总资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_FixedAssetTurnover = 28; // 固定资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_InventoryTurnover = 29; // 存货周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingCashFlowTTM = 30; // 经营活动现金流(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）
+		FinancialField_AccountsReceivable = 31; // 应收账款净额 例如填写 [1000000000,1000000000] 值区间 例如填写 [1000000000,1000000000] 值区间 （单位：元）	
+		
+		// 成长能力属性
+		FinancialField_EBITGrowthRate = 32 ; // EBIT同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitGrowthRate = 33; // 营业利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_TotalAssetsGrowthRate = 34; // 总资产同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ProfitToShareholdersGrowthRate = 35; // 归母净利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ProfitBeforeTaxGrowthRate = 36; // 总利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_EPSGrowthRate = 37; // EPS同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROEGrowthRate = 38; // ROE同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_ROICGrowthRate = 39; // ROIC同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_NOCFGrowthRate = 40; // 经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_NOCFPerShareGrowthRate = 41; // 每股经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）
+		
+		// 现金流属性
+		FinancialField_OperatingRevenueCashCover = 42; // 经营现金收入比 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）
+		FinancialField_OperatingProfitToTotalProfit = 43; // 营业利润占比 例如填写 [10,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%） 	
+		
+		// 市场表现属性
+		FinancialField_BasicEPS = 44; // 基本每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+		FinancialField_DilutedEPS = 45; // 稀释每股收益 例如填写 [0.1,10] 值区间 (单位：元)
+		FinancialField_NOCFPerShare = 46; // 每股经营现金净流量 例如填写 [0.1,10] 值区间 (单位：元)
 	}
-
-	// 财报时间
+	
+	// 财报时间周期
 	enum FinancialQuarter
 	{
 		FinancialQuarter_Unknown = 0; // 未知
@@ -1875,7 +1935,7 @@
 		required double value = 2;
 	};
 
-	// 累积指标数据
+	// 累积属性数据
 	message AccumulateData
 	{
 		required int32 fieldName = 1; // AccumulateField 累积属性
@@ -1892,7 +1952,7 @@
 	}
 
 	// 返回的股票数据
-	message StockData  
+	message StockData
 	{
 		required Qot_Common.Security security = 1; // 股票
 		required string name = 2; // 股票名称
@@ -1904,13 +1964,13 @@
 	message C2S
 	{
 		required int32 begin = 1; // 数据起始点
-		required int32 num =  2;  // 请求数据个数，最大200		
+		required int32 num =  2;  // 请求数据个数，最大200
 		required int32 market= 3; // Qot_Common::QotMarket股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
 		// 以下为筛选条件，可选字段，不填表示不过滤
 		optional Qot_Common.Security plate = 4; // 板块
-		repeated BaseFilter baseFilterList = 5; // 简单行情过滤器
-		repeated AccumulateFilter accumulateFilterList = 6; // 累积行情过滤器
-		repeated FinancialFilter financialFilterList = 7; // 财务行情过滤器
+		repeated BaseFilter baseFilterList = 5; // 简单属性过滤器
+		repeated AccumulateFilter accumulateFilterList = 6; // 累积属性过滤器
+		repeated FinancialFilter financialFilterList = 7; // 财务属性过滤器
 	}
 
 	message S2C
@@ -1940,7 +2000,7 @@
 	* 简单属性筛选条件参考 `StockField <base_define.html#stockfield>`_
 	* 累积属性筛选条件参考 `AccumulateField <base_define.html#accumulatefield>`_
 	* 财务属性筛选条件参考 `FinancialField <base_define.html#financialfield>`_
-	* 财报时间参考 `FinancialQuarter <base_define.html#financialquarter>`_
+	* 财报时间周期参考 `FinancialQuarter <base_define.html#financialquarter>`_
 	* 排序方向参考 `SortDir <base_define.html#sortdir>`_
 	* 限频接口：30秒内最多10次	
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
@@ -2050,7 +2110,7 @@
 	// Ipo基本数据
 	message BasicIpoData
 	{
-		required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持沪股和深股，且沪股和深股不做区分都代表A股市场。
+		required Qot_Common.Security security = 1; // Qot_Common::QotMarket 股票市场，支持港股、美股和 A股。其中，A 股整体返回，不区分沪股和深股。
 		required string name = 2; // 股票名称
 		optional string listTime = 3; // 上市日期字符串
 		optional double listTimestamp = 4; // 上市日期时间戳
