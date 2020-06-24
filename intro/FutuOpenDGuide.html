@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.21 文档</title>
+  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.22 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.22 文档" href="../index.html"/>
         <link rel="next" title="协议接口" href="../protocol/intro.html"/>
         <link rel="prev" title="介绍" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.21
+                3.22
               </div>
             
           
@@ -337,14 +337,14 @@
 <p><strong>配置项：</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="14%" />
-<col width="58%" />
-<col width="28%" />
+<col width="10%" />
+<col width="69%" />
+<col width="21%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">键值</th>
-<th class="head">说明</th>
-<th class="head">是否可选配置项</th>
+<th class="head">说明                                                                                                 是否可选配置项</th>
+<th class="head">&nbsp;</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -389,7 +389,7 @@
 <td>是，可以使用明文、证书登录或命令行输入</td>
 </tr>
 <tr class="row-even"><td>log_level</td>
-<td>日志级别，可填no，debug，info，warning，error，fatal</td>
+<td>日志级别，可填no(无日志)，debug(最详细)，info(次详细)，warning，error，fatal</td>
 <td>是，默认info级别</td>
 </tr>
 <tr class="row-odd"><td>simulate_trade</td>
@@ -419,6 +419,10 @@
 <tr class="row-odd"><td>price_reminder_push</td>
 <td>是否接收到价提醒推送，0：不接收，1：接收（需在脚本中设置回调函数 <a class="reference external" href="../api/Quote_API.html#set-handler">set_handler</a> )</td>
 <td>是，默认会推送</td>
+</tr>
+<tr class="row-even"><td>auto_hold_quote_right</td>
+<td>被踢后是否自动抢权限？0：否，1：是，开启该选项时，OpenD在行情权限被抢后，会自动抢回。如果10秒内再次被抢，则其他终端获得最高行情权限（OpenD不会再抢）</td>
+<td>是，默认会自动抢权限</td>
 </tr>
 </tbody>
 </table>
@@ -512,9 +516,9 @@
 <p><strong>参数项：</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="14%" />
-<col width="58%" />
-<col width="28%" />
+<col width="11%" />
+<col width="67%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">键值</th>
@@ -572,7 +576,7 @@
 <td>是，不设置则正常启动FutuOpenD</td>
 </tr>
 <tr class="row-even"><td>log_level</td>
-<td>日志级别，可填no，debug，info，warning，error，fatal</td>
+<td>日志级别，可填no(无日志)，debug(最详细)，info(次详细)，warning，error，fatal</td>
 <td>是，默认info级别</td>
 </tr>
 <tr class="row-odd"><td>no_monitor</td>
@@ -606,6 +610,10 @@
 <tr class="row-even"><td>price_reminder_push</td>
 <td>是否接收到价提醒推送，0：不接收，1：接收（需在脚本中设置回调函数 <a class="reference external" href="../api/Quote_API.html#set-handler">set_handler</a> )</td>
 <td>是，默认会推送</td>
+</tr>
+<tr class="row-odd"><td>auto_hold_quote_right</td>
+<td>被踢后是否自动抢权限？0：否，1：是，开启该选项时，OpenD在行情权限被抢后，会自动抢回。如果10秒内再次被抢，则其他终端获得最高行情权限（OpenD不会再抢）</td>
+<td>是，默认会自动抢权限</td>
 </tr>
 </tbody>
 </table>
@@ -840,7 +848,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2018, futu.
+        &copy; 版权所有 2020, futu.
 
     </p>
   </div> 
@@ -861,7 +869,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.21',
+            VERSION:'3.22',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

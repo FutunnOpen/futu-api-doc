@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.21 文档</title>
+  <title>行情API &mdash; futu-api-doc 3.22 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.22 文档" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.21
+                3.22
               </div>
             
           
@@ -4760,7 +4760,7 @@ HK.HSImain
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>market</strong> &#8211; 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 <a class="reference external" href="Base_API.html#market">Market</a></li>
 <li><strong>filter_list</strong> &#8211; <div class="line-block">
-<div class="line">简单属性筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter或FinancialFilter类型数据的list对象field。</div>
+<div class="line">筛选条件的枚举值，筛选条件是SimpleFilter，AccumulateFilter，FinancialFilter类型数据的list对象field。</div>
 </div>
 <div class="line-block">
 <div class="line">SimpleFilter对象field的相关参数如下：</div>
@@ -4896,7 +4896,7 @@ HK.HSImain
 <div class="line"><strong>ret</strong> - ret != RET_OK 返回错误字符串, ret == RET_OK 返回（last_page, all_count, stock_list）。对于不支持的板块，返回的数据是(True, 0, [])。</div>
 <div class="line"><strong>last_page</strong> - 是否是最后一页</div>
 <div class="line"><strong>all_count</strong> - 列表总数量</div>
-<div class="line"><strong>stock_list</strong> - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置的字段也会返回。返回的数据列字段如下:</div>
+<div class="line"><strong>stock_list</strong> - 返回的是SimpleFilter类型数据的list对象ret_list，对象ret_list中stock_code和stock_name默认都会返回，同时filter_list中设置了筛选的字段也会返回。返回的数据列字段如下:</div>
 </div>
 </p>
 </td>
@@ -4907,9 +4907,9 @@ HK.HSImain
 
 <table border="1" class="docutils">
 <colgroup>
-<col width="31%" />
-<col width="8%" />
-<col width="61%" />
+<col width="26%" />
+<col width="7%" />
+<col width="67%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -4982,65 +4982,241 @@ HK.HSImain
 <td>float</td>
 <td>年初至今价格涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
-<tr class="row-even"><td></td>
+<tr class="row-even"><td>ps_ttm</td>
+<td>float</td>
+<td>市销率(TTM) 例如填写 [100, 500] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>pcf_ttm</td>
+<td>float</td>
+<td>市现率(TTM) 例如填写 [100, 1000] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>total_share</td>
+<td>float</td>
+<td>总股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)</td>
+</tr>
+<tr class="row-odd"><td>float_share</td>
+<td>float</td>
+<td>流通股数 例如填写 [1000000000,1000000000] 值区间 (单位：股)</td>
+</tr>
+<tr class="row-even"><td>float_market_val</td>
+<td>float</td>
+<td>流通市值 例如填写 [1000000000,1000000000] 值区间 (单位：元)</td>
+</tr>
+<tr class="row-odd"><td></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>change_rate</td>
+<tr class="row-even"><td>change_rate</td>
 <td>float</td>
 <td>涨跌幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
-<tr class="row-even"><td>amplitude</td>
+<tr class="row-odd"><td>amplitude</td>
 <td>float</td>
 <td>振幅（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
-<tr class="row-odd"><td>volume</td>
+<tr class="row-even"><td>volume</td>
 <td>float</td>
 <td>日均成交量</td>
 </tr>
-<tr class="row-even"><td>turnover</td>
+<tr class="row-odd"><td>turnover</td>
 <td>float</td>
 <td>日均成交额</td>
 </tr>
-<tr class="row-odd"><td>turnover_rate</td>
+<tr class="row-even"><td>turnover_rate</td>
 <td>float</td>
 <td>换手率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>net_profit</td>
+<td>float</td>
+<td>净利润</td>
+</tr>
+<tr class="row-odd"><td>net_profix_growth</td>
+<td>float</td>
+<td>净利润增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>sum_of_business</td>
+<td>float</td>
+<td>营业收入</td>
+</tr>
+<tr class="row-odd"><td>sum_of_business_growth</td>
+<td>float</td>
+<td>营业同比增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>net_profit_rate</td>
+<td>float</td>
+<td>净利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>gross_profit_rate</td>
+<td>float</td>
+<td>毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>debt_asset_rate</td>
+<td>float</td>
+<td>资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>return_on_equity_rate</td>
+<td>float</td>
+<td>净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-even"><td>roic</td>
+<td>float</td>
+<td>盈利能力属性投入资本回报率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>roa_ttm</td>
+<td>float</td>
+<td>资产回报率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）</td>
+</tr>
+<tr class="row-even"><td>ebit_ttm</td>
+<td>float</td>
+<td>息税前利润(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）</td>
+</tr>
+<tr class="row-odd"><td>ebitda</td>
+<td>float</td>
+<td>税息折旧及摊销前利润 例如填写 [1000000000,1000000000] 值区间（单位：元）</td>
+</tr>
+<tr class="row-even"><td>operating_margin_ttm</td>
+<td>float</td>
+<td>营业利润率(TTM) 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）</td>
+</tr>
+<tr class="row-odd"><td>ebit_margin</td>
+<td>float</td>
+<td>EBIT利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>ebitda_margin</td>
+<td>float</td>
+<td>EBITDA利润率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>financial_cost_rate</td>
+<td>float</td>
+<td>财务成本率 例如填写 [1.0,10.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>operating_profit_ttm</td>
+<td>float</td>
+<td>营业利润(TTM) 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）</td>
+</tr>
+<tr class="row-odd"><td>shareholder_net_profit_ttm</td>
+<td>float</td>
+<td>归属于母公司的净利润 例如填写 [1000000000,1000000000] 值区间 （单位：元。仅适用于年报。）</td>
+</tr>
+<tr class="row-even"><td>net_profit_cash_cover_ttm</td>
+<td>float</td>
+<td>盈利中的现金收入比例 例如填写 [1.0,60.0] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%。仅适用于年报。）</td>
+</tr>
+<tr class="row-odd"><td>current_ratio</td>
+<td>float</td>
+<td>偿债能力属性流动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>quick_ratio</td>
+<td>float</td>
+<td>速动比率 例如填写 [100,250] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>current_asset_ratio</td>
+<td>float</td>
+<td>清债能力属性流动资产率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>current_debt_ratio</td>
+<td>float</td>
+<td>流动负债率 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>equity_multiplier</td>
+<td>float</td>
+<td>权益乘数 例如填写 [100,180] 值区间</td>
+</tr>
+<tr class="row-even"><td>property_ratio</td>
+<td>float</td>
+<td>产权比率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>cash_and_cash_equivalents</td>
+<td>float</td>
+<td>现金和现金等价 例如填写 [1000000000,1000000000] 值区间（单位：元）</td>
+</tr>
+<tr class="row-even"><td>total_asset_turnover</td>
+<td>float</td>
+<td>运营能力属性总资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>fixed_asset_turnover</td>
+<td>float</td>
+<td>固定资产周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>inventory_turnover</td>
+<td>float</td>
+<td>存货周转率 例如填写 [50,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>operating_cash_flow_ttm</td>
+<td>float</td>
+<td>经营活动现金流(TTM) 例如填写 [1000000000,1000000000] 值区间（单位：元。仅适用于年报。）</td>
+</tr>
+<tr class="row-even"><td>accounts_receivable</td>
+<td>float</td>
+<td>应收账款净额 例如填写 [1000000000,1000000000] 值区间 例如填写 [1000000000,1000000000] 值区间 （单位：元）</td>
+</tr>
+<tr class="row-odd"><td>ebit_growth_rate</td>
+<td>float</td>
+<td>成长能力属性EBIT同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>operating_profit_growth_rate</td>
+<td>float</td>
+<td>营业利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>total_assets_growth_rate</td>
+<td>float</td>
+<td>总资产同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>profit_to_shareholders_growth_rate</td>
+<td>float</td>
+<td>归母净利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>profit_before_tax_growth_rate</td>
+<td>float</td>
+<td>总利润同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>eps_growth_rate</td>
+<td>float</td>
+<td>EPS同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>roe_growth_rate</td>
+<td>float</td>
+<td>ROE同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>roic_growth_rate</td>
+<td>float</td>
+<td>ROIC同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>nocf_growth_rate</td>
+<td>float</td>
+<td>经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>nocf_per_share_growth_rate</td>
+<td>float</td>
+<td>每股经营现金流同比增长率 例如填写 [1.0,10.0] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>operating_revenue_cash_cover</td>
+<td>float</td>
+<td>现金流属性经营现金收入比 例如填写 [10,100] 值区间（该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-even"><td>operating_profit_to_total_profit</td>
+<td>float</td>
+<td>营业利润占比 例如填写 [10,100] 值区间 （该字段为百分比字段，默认省略%，如20实际对应20%）</td>
+</tr>
+<tr class="row-odd"><td>basic_eps</td>
+<td>float</td>
+<td>市场表现属性基本每股收益 例如填写 [0.1,10] 值区间 (单位：元)</td>
+</tr>
+<tr class="row-even"><td>diluted_eps</td>
+<td>float</td>
+<td>稀释每股收益 例如填写 [0.1,10] 值区间 (单位：元)</td>
+</tr>
+<tr class="row-odd"><td>nocf_per_share</td>
+<td>float</td>
+<td>每股经营现金净流量 例如填写 [0.1,10] 值区间 (单位：元)</td>
 </tr>
 <tr class="row-even"><td></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>net_profit</td>
-<td>float</td>
-<td>净利润</td>
-</tr>
-<tr class="row-even"><td>net_profix_growth</td>
-<td>float</td>
-<td>净利润增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-odd"><td>sum_of_business</td>
-<td>float</td>
-<td>营业收入</td>
-</tr>
-<tr class="row-even"><td>sum_of_business_growth</td>
-<td>float</td>
-<td>营业同比增长率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-odd"><td>net_profit_rate</td>
-<td>float</td>
-<td>净利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>gross_profit_rate</td>
-<td>float</td>
-<td>毛利率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-odd"><td>debt_asset_rate</td>
-<td>float</td>
-<td>资产负债率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
-</tr>
-<tr class="row-even"><td>return_on_equity_rate</td>
-<td>float</td>
-<td>净资产收益率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
 </tr>
 </tbody>
 </table>
@@ -6617,7 +6793,7 @@ ret != RET_OK 返回错误字符串</p>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2018, futu.
+        &copy; 版权所有 2020, futu.
 
     </p>
   </div> 
@@ -6638,7 +6814,7 @@ ret != RET_OK 返回错误字符串</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.21',
+            VERSION:'3.22',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

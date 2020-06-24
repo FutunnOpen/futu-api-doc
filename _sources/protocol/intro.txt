@@ -305,14 +305,14 @@ API用户额度
 下单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2202_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次。连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`15` 次，连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
 
 .. _modify-order-limit:	
 	
 修改订单
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2205_
-	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，同时 :red-strengthen:`1` 秒内最多 :red-strengthen:`5` 次。连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`20` 次，连续两次请求的间隔不可小于 :red-strengthen:`0.02` 秒。
 	
 .. _history-order-list-query-limit:	
 
@@ -475,7 +475,9 @@ API用户额度
 	* 请求协议ID: 3215_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 每次请求的数据个数最多 :red-strengthen:`200` 个
-	* 建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。
+	* 建议筛选条件不超过 :red-strengthen:`250` 个，否则可能会出现“业务处理超时没返回”。
+	* 累积属性的同一筛选条件数量最多 :red-strengthen:`10` 个
+	* 自定义指标属性的同一类筛选条件数量最多 :red-strengthen:`10` 个
 
 .. _get-ipo-list-limit:
 

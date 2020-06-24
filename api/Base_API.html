@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.21 文档</title>
+  <title>基础API &mdash; futu-api-doc 3.22 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.22 文档" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.21
+                3.22
               </div>
             
           
@@ -2525,7 +2525,7 @@
 <hr class="docutils" />
 <div class="section" id="stockfield-simplefilter">
 <h3>StockField - 条件选股筛选条件字段(SimpleFilter)<a class="headerlink" href="#stockfield-simplefilter" title="永久链接至标题">¶</a></h3>
-<p>条件选股的筛选条件简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积或财务筛选。</p>
+<p>简单筛选定义，仅适用于SimpleFilter类型筛选，不能用于累积，财务，自定义技术指标，形态技术指标筛选。</p>
 <dl class="class">
 <dt id="StockField">
 <em class="property">class </em><code class="descname">StockField</code><a class="headerlink" href="#StockField" title="永久链接至目标">¶</a></dt>
@@ -2631,13 +2631,43 @@
 <dd><p>年初至今价格涨跌幅</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="StockField.PS_TTM">
+<code class="descname">PS_TTM</code><a class="headerlink" href="#StockField.PS_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>市销率(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PCF_TTM">
+<code class="descname">PCF_TTM</code><a class="headerlink" href="#StockField.PCF_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>市现率(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.TOTAL_SHARE">
+<code class="descname">TOTAL_SHARE</code><a class="headerlink" href="#StockField.TOTAL_SHARE" title="永久链接至目标">¶</a></dt>
+<dd><p>总股数</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.FLOAT_SHARE">
+<code class="descname">FLOAT_SHARE</code><a class="headerlink" href="#StockField.FLOAT_SHARE" title="永久链接至目标">¶</a></dt>
+<dd><p>流通股数</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.FLOAT_MARKET_VAL">
+<code class="descname">FLOAT_MARKET_VAL</code><a class="headerlink" href="#StockField.FLOAT_MARKET_VAL" title="永久链接至目标">¶</a></dt>
+<dd><p>流通市值</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
 <hr class="docutils" />
 <div class="section" id="stockfield-accumulatefilter">
 <h3>StockField - 条件选股筛选条件字段(AccumulateFilter)<a class="headerlink" href="#stockfield-accumulatefilter" title="永久链接至标题">¶</a></h3>
-<p>条件选股的筛选条件累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单或财务筛选。</p>
+<p>累积字段定义，仅适用于AccumulateFilter类型筛选，不能用于简单，财务，自定义技术指标，形态技术指标筛选。</p>
 <dl class="class">
 <dt>
 <em class="property">class </em><code class="descname">StockField</code></dt>
@@ -2677,7 +2707,7 @@
 <hr class="docutils" />
 <div class="section" id="stockfield-financialfilter">
 <h3>StockField - 条件选股筛选条件字段(FinancialFilter)<a class="headerlink" href="#stockfield-financialfilter" title="永久链接至标题">¶</a></h3>
-<p>条件选股的筛选条件财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单或累积筛选。</p>
+<p>财务字段定义，仅适用于FinancialFilter类型筛选，不能用于简单，累积，自定义技术指标，形态技术指标筛选。</p>
 <p>财务筛选字段的使用说明：</p>
 <ol class="arabic simple">
 <li>港股和A股：使用累计季报数据；</li>
@@ -2733,6 +2763,234 @@
 <dt id="StockField.RETURN_ON_EQUITY_RATE">
 <code class="descname">RETURN_ON_EQUITY_RATE</code><a class="headerlink" href="#StockField.RETURN_ON_EQUITY_RATE" title="永久链接至目标">¶</a></dt>
 <dd><p>净资产收益率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.ROIC">
+<code class="descname">ROIC</code><a class="headerlink" href="#StockField.ROIC" title="永久链接至目标">¶</a></dt>
+<dd><p>投入资本回报率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.ROA_TTM">
+<code class="descname">ROA_TTM</code><a class="headerlink" href="#StockField.ROA_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>资产回报率(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EBIT_TTM">
+<code class="descname">EBIT_TTM</code><a class="headerlink" href="#StockField.EBIT_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>息税前利润(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EBITDA">
+<code class="descname">EBITDA</code><a class="headerlink" href="#StockField.EBITDA" title="永久链接至目标">¶</a></dt>
+<dd><p>税息折旧及摊销前利润</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.OPERATING_MARGIN_TTM">
+<code class="descname">OPERATING_MARGIN_TTM</code><a class="headerlink" href="#StockField.OPERATING_MARGIN_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>营业利润率(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EBIT_MARGIN">
+<code class="descname">EBIT_MARGIN</code><a class="headerlink" href="#StockField.EBIT_MARGIN" title="永久链接至目标">¶</a></dt>
+<dd><p>EBIT利润率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EBITDA_MARGIN">
+<code class="descname">EBITDA_MARGIN</code><a class="headerlink" href="#StockField.EBITDA_MARGIN" title="永久链接至目标">¶</a></dt>
+<dd><p>EBITDA利润率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.FINANCIAL_COST_RATE">
+<code class="descname">FINANCIAL_COST_RATE</code><a class="headerlink" href="#StockField.FINANCIAL_COST_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>财务成本率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.OPERATING_PROFIT_TTM">
+<code class="descname">OPERATING_PROFIT_TTM</code><a class="headerlink" href="#StockField.OPERATING_PROFIT_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>营业利润(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.SHAREHOLDER_NET_PROFIT_TTM">
+<code class="descname">SHAREHOLDER_NET_PROFIT_TTM</code><a class="headerlink" href="#StockField.SHAREHOLDER_NET_PROFIT_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>归属于母公司的净利润</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.NET_PROFIT_CASH_COVER">
+<code class="descname">NET_PROFIT_CASH_COVER</code><a class="headerlink" href="#StockField.NET_PROFIT_CASH_COVER" title="永久链接至目标">¶</a></dt>
+<dd><p>盈利中的现金收入比例</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CURRENT_RATIO">
+<code class="descname">CURRENT_RATIO</code><a class="headerlink" href="#StockField.CURRENT_RATIO" title="永久链接至目标">¶</a></dt>
+<dd><p>流动比率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.QUICK_RATIO">
+<code class="descname">QUICK_RATIO</code><a class="headerlink" href="#StockField.QUICK_RATIO" title="永久链接至目标">¶</a></dt>
+<dd><p>速动比率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CURRENT_ASSET_RATIO">
+<code class="descname">CURRENT_ASSET_RATIO</code><a class="headerlink" href="#StockField.CURRENT_ASSET_RATIO" title="永久链接至目标">¶</a></dt>
+<dd><p>流动资产率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CURRENT_DEBT_RATIO">
+<code class="descname">CURRENT_DEBT_RATIO</code><a class="headerlink" href="#StockField.CURRENT_DEBT_RATIO" title="永久链接至目标">¶</a></dt>
+<dd><p>流动负债率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EQUITY_MULTIPLIER">
+<code class="descname">EQUITY_MULTIPLIER</code><a class="headerlink" href="#StockField.EQUITY_MULTIPLIER" title="永久链接至目标">¶</a></dt>
+<dd><p>权益乘数</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PROPERTY_RATIO">
+<code class="descname">PROPERTY_RATIO</code><a class="headerlink" href="#StockField.PROPERTY_RATIO" title="永久链接至目标">¶</a></dt>
+<dd><p>产权比率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.CASH_AND_CASH_EQUIVALENTS">
+<code class="descname">CASH_AND_CASH_EQUIVALENTS</code><a class="headerlink" href="#StockField.CASH_AND_CASH_EQUIVALENTS" title="永久链接至目标">¶</a></dt>
+<dd><p>现金和现金等价</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.TOTAL_ASSET_TURNOVER">
+<code class="descname">TOTAL_ASSET_TURNOVER</code><a class="headerlink" href="#StockField.TOTAL_ASSET_TURNOVER" title="永久链接至目标">¶</a></dt>
+<dd><p>总资产周转率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.FIXED_ASSET_TURNOVER">
+<code class="descname">FIXED_ASSET_TURNOVER</code><a class="headerlink" href="#StockField.FIXED_ASSET_TURNOVER" title="永久链接至目标">¶</a></dt>
+<dd><p>固定资产周转率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.INVENTORY_TURNOVER">
+<code class="descname">INVENTORY_TURNOVER</code><a class="headerlink" href="#StockField.INVENTORY_TURNOVER" title="永久链接至目标">¶</a></dt>
+<dd><p>存货周转率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.OPERATING_CASH_FLOW_TTM">
+<code class="descname">OPERATING_CASH_FLOW_TTM</code><a class="headerlink" href="#StockField.OPERATING_CASH_FLOW_TTM" title="永久链接至目标">¶</a></dt>
+<dd><p>经营活动现金流(TTM)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.ACCOUNTS_RECEIVABLE">
+<code class="descname">ACCOUNTS_RECEIVABLE</code><a class="headerlink" href="#StockField.ACCOUNTS_RECEIVABLE" title="永久链接至目标">¶</a></dt>
+<dd><p>应收账款净额</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EBIT_GROWTH_RATE">
+<code class="descname">EBIT_GROWTH_RATE</code><a class="headerlink" href="#StockField.EBIT_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>EBIT同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.OPERATING_PROFIT_GROWTH_RATE">
+<code class="descname">OPERATING_PROFIT_GROWTH_RATE</code><a class="headerlink" href="#StockField.OPERATING_PROFIT_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>营业利润同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.TOTAL_ASSETS_GROWTH_RATE">
+<code class="descname">TOTAL_ASSETS_GROWTH_RATE</code><a class="headerlink" href="#StockField.TOTAL_ASSETS_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>总资产同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PROFIT_TO_SHAREHOLDERS_GROWTH_RATE">
+<code class="descname">PROFIT_TO_SHAREHOLDERS_GROWTH_RATE</code><a class="headerlink" href="#StockField.PROFIT_TO_SHAREHOLDERS_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>归母净利润同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.PROFIT_BEFORE_TAX_GROWTH_RATE">
+<code class="descname">PROFIT_BEFORE_TAX_GROWTH_RATE</code><a class="headerlink" href="#StockField.PROFIT_BEFORE_TAX_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>总利润同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.EPS_GROWTH_RATE">
+<code class="descname">EPS_GROWTH_RATE</code><a class="headerlink" href="#StockField.EPS_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>EPS同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.ROE_GROWTH_RATE">
+<code class="descname">ROE_GROWTH_RATE</code><a class="headerlink" href="#StockField.ROE_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>ROE同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.ROIC_GROWTH_RATE">
+<code class="descname">ROIC_GROWTH_RATE</code><a class="headerlink" href="#StockField.ROIC_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>ROIC同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.NOCF_GROWTH_RATE">
+<code class="descname">NOCF_GROWTH_RATE</code><a class="headerlink" href="#StockField.NOCF_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>经营现金流同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.NOCF_PER_SHARE_GROWTH_RATE">
+<code class="descname">NOCF_PER_SHARE_GROWTH_RATE</code><a class="headerlink" href="#StockField.NOCF_PER_SHARE_GROWTH_RATE" title="永久链接至目标">¶</a></dt>
+<dd><p>每股经营现金流同比增长率</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.OPERATING_REVENUE_CASH_COVER">
+<code class="descname">OPERATING_REVENUE_CASH_COVER</code><a class="headerlink" href="#StockField.OPERATING_REVENUE_CASH_COVER" title="永久链接至目标">¶</a></dt>
+<dd><p>经营现金收入比</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.OPERATING_PROFIT_TO_TOTAL_PROFIT">
+<code class="descname">OPERATING_PROFIT_TO_TOTAL_PROFIT</code><a class="headerlink" href="#StockField.OPERATING_PROFIT_TO_TOTAL_PROFIT" title="永久链接至目标">¶</a></dt>
+<dd><p>营业利润占比</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.BASIC_EPS">
+<code class="descname">BASIC_EPS</code><a class="headerlink" href="#StockField.BASIC_EPS" title="永久链接至目标">¶</a></dt>
+<dd><p>基本每股收益</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.DILUTED_EPS">
+<code class="descname">DILUTED_EPS</code><a class="headerlink" href="#StockField.DILUTED_EPS" title="永久链接至目标">¶</a></dt>
+<dd><p>稀释每股收益</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="StockField.NOCF_PER_SHARE">
+<code class="descname">NOCF_PER_SHARE</code><a class="headerlink" href="#StockField.NOCF_PER_SHARE" title="永久链接至目标">¶</a></dt>
+<dd><p>每股经营现金净流量</p>
 </dd></dl>
 
 </dd></dl>
@@ -3704,7 +3962,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2018, futu.
+        &copy; 版权所有 2020, futu.
 
     </p>
   </div> 
@@ -3725,7 +3983,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.21',
+            VERSION:'3.22',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

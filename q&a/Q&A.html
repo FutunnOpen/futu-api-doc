@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Q&amp;A &mdash; futu-api-doc 3.21 文档</title>
+  <title>Q&amp;A &mdash; futu-api-doc 3.22 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.22 文档" href="../index.html"/>
         <link rel="prev" title="快速上手" href="../javascript/start.html"/> 
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                3.21
+                3.22
               </div>
             
           
@@ -148,38 +148,45 @@
 <li class="toctree-l3"><a class="reference internal" href="#q1">Q1:因未确认协议而退出</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q2">Q2:因自带数据不存在退出</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q3-futuopend">Q3:FutuOpenD服务器启动失败</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#q4">Q4:如何验证手机验证码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#q5">Q5:是否支持其他编程语言</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q4">Q4:如何验证手机验证码？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q5">Q5:是否支持其他编程语言？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q6">Q6:在同一设备多次验证设备锁</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#q7-futuopenddocker">Q7:FutuOpenD是否有提供Docker镜像</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q7-futuopenddocker">Q7:FutuOpenD是否有提供Docker镜像？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q8-futuopend">Q8:一个账号可以登录多个FutuOpenD吗？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q9-futuopend">Q9:如何控制FutuOpenD和其他客户端（桌面端和移动端）的行情权限？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q10-opend">Q10: 如何优先保证OpenD行情权限？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q11">Q11: 如何优先保证移动端（或桌面端）的行情权限？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q12-ui-futuopend">Q12: 使用带 UI 界面 FutuOpenD 记住密码登录，长时间挂机后提示连接断开，需要重新登录？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q13">Q13：使用遇到无法解决的问题时，如何请富途的研发人员协助排查？</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">连接相关</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id4">连接相关</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#q1-futuopend">Q1:脚本连接不上FutuOpenD</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Q2:脚本连接上之后没反应</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Q2:脚本连接上之后没反应</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q3">Q3:连接上一段时间后断开</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q4-linuxmultiprocessingpythonfutuopend">Q4:Linux下通过multiprocessing模块以多进程方式运行Python脚本可能会连不上FutuOpenD</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">行情相关</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Q1:订阅失败</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">Q2:反订阅失败</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">Q3:反订阅成功但没返还额度</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Q4:订阅不足一分钟关闭脚本会返还额度吗</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Q5:请求限频逻辑是怎样</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Q6:如何获取一级用户权限</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#q7">Q7:自选股添加不上是什么原因</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">行情相关</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Q1:订阅失败</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Q2:反订阅失败</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Q3:反订阅成功但没返还额度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Q4:订阅不足一分钟关闭脚本会返还额度吗？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Q5:请求限频逻辑是怎样？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Q6:自选股添加不上是什么原因？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q7-openapi">Q7：为什么 OpenAPI 端的美股报价和牛牛显示端的全美综合报价有不同？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q8-openapi">Q8：OpenAPI行情卡在哪里购买？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q9-get">Q9：为什么有时候，获取实时数据的get接口响应比较慢？</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id13">交易相关</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">Q1:如何使用模拟交易</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">Q2:模拟与真实交易是否有区别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">Q3:是否模拟交易可视化数据</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#q4-a">Q4:是否支持A股交易</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">Q5:各市场支持的交易方向</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">Q6:各市场支持的订单类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">Q7:各市场支持的订单操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">交易相关</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Q1:如何使用模拟交易？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Q2:模拟与真实交易是否有区别？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Q3:是否模拟交易可视化数据？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q4-a">Q4:是否支持A股交易？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Q5:各市场支持的交易方向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Q6:各市场支持的订单类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q7">Q7:各市场支持的订单操作</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id22">其他</a><ul>
@@ -296,14 +303,14 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="q4">
-<h3>Q4:如何验证手机验证码<a class="headerlink" href="#q4" title="永久链接至标题">¶</a></h3>
+<h3>Q4:如何验证手机验证码？<a class="headerlink" href="#q4" title="永久链接至标题">¶</a></h3>
 <p>A: 在FutuOpenD界面上或远程到Telnet端口输入命令input_phone_verify_code -code=123456（手机验证码）。</p>
 <blockquote>
 <div>注 ：【-code=123456】前有空格</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="q5">
-<h3>Q5:是否支持其他编程语言<a class="headerlink" href="#q5" title="永久链接至标题">¶</a></h3>
+<h3>Q5:是否支持其他编程语言？<a class="headerlink" href="#q5" title="永久链接至标题">¶</a></h3>
 <p>A: 除了python接口外，FutuOpenD有对外提供基于socket的协议，目前我们提供并维护python，c++，java，.net和js接口。<a class="reference external" href="https://www.futunn.com/download/openAPI">下载入口</a></p>
 </div>
 <hr class="docutils" />
@@ -319,7 +326,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="q7-futuopenddocker">
-<h3>Q7:FutuOpenD是否有提供Docker镜像<a class="headerlink" href="#q7-futuopenddocker" title="永久链接至标题">¶</a></h3>
+<h3>Q7:FutuOpenD是否有提供Docker镜像？<a class="headerlink" href="#q7-futuopenddocker" title="永久链接至标题">¶</a></h3>
 <p>A: 目前没有。</p>
 </div>
 <hr class="docutils" />
@@ -327,10 +334,53 @@
 <h3>Q8:一个账号可以登录多个FutuOpenD吗？<a class="headerlink" href="#q8-futuopend" title="永久链接至标题">¶</a></h3>
 <p>A: 一个账号可以在多台机器上登录FutuOpenD或者其他客户终端，最多10个终端同时登录。同时有“行情互踢”的限制，只能有一个最高权限行情。例如：两个终端登录同一个账号，只能有一个港股Level2行情，另一个是港股BMP行情。</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="q9-futuopend">
+<h3>Q9:如何控制FutuOpenD和其他客户端（桌面端和移动端）的行情权限？<a class="headerlink" href="#q9-futuopend" title="永久链接至标题">¶</a></h3>
+<p>A: 应交易所的规定，多个终端同时在线会有“行情互踢”的限制，只能有一个终端获得最高权限行情。FutuOpenD命令行版本的启动参数内置了&lt;auto_hold_quote_right&gt;参数，用于灵活配置行情权限。当该参数选项开启时，OpenD在行情权限被抢后，会自动抢回。如果10秒内再次被抢，则其他终端获得最高行情权限（OpenD不会再抢）。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h2>连接相关<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="q10-opend">
+<h3>Q10: 如何优先保证OpenD行情权限？<a class="headerlink" href="#q10-opend" title="永久链接至标题">¶</a></h3>
+<p>A: OpenD启动参数&lt;auto_hold_quote_right&gt;设置为1，移动端或桌面端不要在10秒内连续两次抢最高权限（登录算一次，点击“重启行情”算第二次）。</p>
+<blockquote>
+<div><img alt="../_images/quote_right.png" src="../_images/quote_right.png" />
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="q11">
+<h3>Q11: 如何优先保证移动端（或桌面端）的行情权限？<a class="headerlink" href="#q11" title="永久链接至标题">¶</a></h3>
+<p>A: OpenD启动参数&lt;auto_hold_quote_right&gt;设置为0，移动端或桌面端在OpenD之后登录即可。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="q12-ui-futuopend">
+<h3>Q12: 使用带 UI 界面 FutuOpenD 记住密码登录，长时间挂机后提示连接断开，需要重新登录？<a class="headerlink" href="#q12-ui-futuopend" title="永久链接至标题">¶</a></h3>
+<p>A:使用带UI界面FutuOpenD，如果选择记住密码登录，用的是记录在本地的令牌。由于令牌有时间限制，当令牌过期，且出现且网络波动或富途后台发布，就可能导致与后台断开连接后无法自动连接上的情况。因此，带界面的FutuOpenD如果希望长时间挂机，建议手动输入密码登录，由 FutuOpenD 自动处理该情况。</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="q13">
+<h3>Q13：使用遇到无法解决的问题时，如何请富途的研发人员协助排查？<a class="headerlink" href="#q13" title="永久链接至标题">¶</a></h3>
+<dl class="docutils">
+<dt>A:</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">通过QQ/微信，联系富途OpenAPI研发人员，方便即时沟通和传输文件。</p>
+</li>
+<li><p class="first">详述发生错误的时间，OpenD版本号，API版本号，脚本语言，接口名或协议号，详细入参和返回的短代码或截图。</p>
+</li>
+<li><p class="first">必要时，须提供FutuOpenD日志，方便定位确认问题。交易问题需要info日志级别，行情问题需要debug日志级别。日志级别 log_level 可以在 FutuOpenD.xml中 <a class="reference external" href="../intro/FutuOpenDGuide.html#id9">配置</a> ，配置后需要重启FutuOpenD方能生效，待问题复现后，将该段日志打包发给富途研发人员。</p>
+<blockquote>
+<div><p>日志路径如下：</p>
+<p>windows：%appdata%/com.futunn.FutuOpenD/Log</p>
+<p>非windows：~/.com.futunn.FutuOpenD/Log</p>
+</div></blockquote>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>连接相关<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="q1-futuopend">
 <h3>Q1:脚本连接不上FutuOpenD<a class="headerlink" href="#q1-futuopend" title="永久链接至标题">¶</a></h3>
 <p>A: 请先尝试检查是否以下情况：</p>
@@ -342,8 +392,8 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h3>Q2:脚本连接上之后没反应<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id5">
+<h3>Q2:脚本连接上之后没反应<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>A: 检查是否有启动API版本的PC牛牛(3.42)，若有则请关闭API版本的PC牛牛或者修改该版本的端口配置。</p>
 </div>
 <hr class="docutils" />
@@ -364,10 +414,10 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id5">
-<h2>行情相关<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id6">
-<h3>Q1:订阅失败<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h2>行情相关<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h3>Q1:订阅失败<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <p>A: 检查订阅接口返回的错误描述，常见有以下情况：</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -379,46 +429,82 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id8">
-<h3>Q2:反订阅失败<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id9">
+<h3>Q2:反订阅失败<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <p>A: 订阅至少一分钟后才能反订阅。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id9">
-<h3>Q3:反订阅成功但没返还额度<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id10">
+<h3>Q3:反订阅成功但没返还额度<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>A: 所有连接都对该行情反订阅才会返还额度。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id10">
-<h3>Q4:订阅不足一分钟关闭脚本会返还额度吗<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id11">
+<h3>Q4:订阅不足一分钟关闭脚本会返还额度吗？<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>A: 不返还。连接关闭后，订阅不足一分钟的行情一段时间后自动反订阅。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id11">
-<h3>Q5:请求限频逻辑是怎样<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id12">
+<h3>Q5:请求限频逻辑是怎样？<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>A: 30秒内最多n次指第1次和第n+1次请求间隔需要大于30秒。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id12">
-<h3>Q6:如何获取一级用户权限<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
-<p>A: 目前仅提供给有一定交易额的实盘交易用户，有需要可加入QQ群108534288联系管理员。</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="q7">
-<h3>Q7:自选股添加不上是什么原因<a class="headerlink" href="#q7" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id13">
+<h3>Q6:自选股添加不上是什么原因？<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>A: 请先检查是否有超出上限，或者删除一部分自选。</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="q7-openapi">
+<h3>Q7：为什么 OpenAPI 端的美股报价和牛牛显示端的全美综合报价有不同？<a class="headerlink" href="#q7-openapi" title="永久链接至标题">¶</a></h3>
+<p>A: 由于美股交易分散在很多家交易所，富途有提供两种美股基本报价行情，一种是 Nasdaq Basic（Nasdaq 交易所的报价），另一种是全美综合报价（全美13家交易所的报价）。而Futu OpenAPI 的美股正股行情目前仅支持通过行情卡购买的方式获取 Nasdaq Basic，不支持全美综合报价。因此，如果您同时购买了显示端的全美综合报价行情卡，和仅用于 OpenAPI 的 Nasdaq Basic 行情卡，确实有可能出现牛牛显示端和 OpenAPI 端的报价差异。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id13">
-<h2>交易相关<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<div class="section" id="q8-openapi">
+<h3>Q8：OpenAPI行情卡在哪里购买？<a class="headerlink" href="#q8-openapi" title="永久链接至标题">¶</a></h3>
+<p>A:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="35%" />
+<col width="57%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="4">港股市场</td>
+<td>港股LV2高级行情（仅非中国大陆 ip）</td>
+<td><a class="reference external" href="https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=1#/">https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=1#/</a></td>
+</tr>
+<tr class="row-even"><td>期权期货LV2高级行情（仅非中国大陆 ip）</td>
+<td><a class="reference external" href="https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=8#/">https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=8#/</a></td>
+</tr>
+<tr class="row-odd"><td>港股LV2+期权期货LV2行情（仅非中国大陆 ip）</td>
+<td><a class="reference external" href="https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=9#/">https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=9#/</a></td>
+</tr>
+<tr class="row-even"><td>高级全盘行情（SF 行情）</td>
+<td><a class="reference external" href="https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=10#/">https://qtcard.futu5.com/buy?market_id=1&amp;channel=2&amp;good_type=10#/</a></td>
+</tr>
+<tr class="row-odd"><td>美股市场</td>
+<td>Nasdaq Basic</td>
+<td><a class="reference external" href="https://qtcard.futu5.com/buy?market_id=2&amp;channel=2&amp;good_type=12#/">https://qtcard.futu5.com/buy?market_id=2&amp;channel=2&amp;good_type=12#/</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="q9-get">
+<h3>Q9：为什么有时候，获取实时数据的get接口响应比较慢？<a class="headerlink" href="#q9-get" title="永久链接至标题">¶</a></h3>
+<p>A: 因为获取实时数据的get接口需要先订阅，并依赖后台给OpenD的推送。如果用户刚订阅就立刻用get接口请求，OpenD有可能尚未收到后台推送。为了防止这种情况的发生，get接口内置了等待逻辑，3秒内收到推送会立刻返回给脚本，超过3秒仍未收到后台推送，才会给脚本返回空数据。</p>
+<p>涉及的get接口包括：get_rt_ticker、get_cur_kline、get_order_book、get_broker_queue、get_stock_quote。因此，当发现获取实时数据的get接口响应比较慢时，可以先检查一下是否是无成交数据的原因。</p>
+</div>
+</div>
 <div class="section" id="id14">
-<h3>Q1:如何使用模拟交易<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<h2>交易相关<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id15">
+<h3>Q1:如何使用模拟交易？<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <p>A: 只要有牛牛帐号即可使用模拟交易，在使用交易接口时交易环境传入模拟环境即可。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id15">
-<h3>Q2:模拟与真实交易是否有区别<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id16">
+<h3>Q2:模拟与真实交易是否有区别？<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>A: 有区别:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -427,47 +513,51 @@
 <li>不支持成交数据，包括今日成交，历史成交，成交推送</li>
 <li>下单仅支持Normal类型</li>
 <li>模拟交易不需要解锁交易</li>
+<li>模拟交易不支持期货</li>
 </ol>
 <p>更多模拟交易规则可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate#/rule">模拟交易规则</a>。</p>
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id17">
-<h3>Q3:是否模拟交易可视化数据<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id18">
+<h3>Q3:是否模拟交易可视化数据？<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 <p>A: 可视数据可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate/">模拟炒股页面</a>，该页面仅支持手机浏览器访问。</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="q4-a">
-<h3>Q4:是否支持A股交易<a class="headerlink" href="#q4-a" title="永久链接至标题">¶</a></h3>
+<h3>Q4:是否支持A股交易？<a class="headerlink" href="#q4-a" title="永久链接至标题">¶</a></h3>
 <p>A: 支持A股模拟交易，真实交易可通过A股通交易部分A股。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id19">
-<h3>Q5:各市场支持的交易方向<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id20">
+<h3>Q5:各市场支持的交易方向<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>A: 除了期货，其他股票都只支持传入买入和卖出，在空仓情况下卖出，产生的订单交易方向是卖空。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id20">
-<h3>Q6:各市场支持的订单类型<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id21">
+<h3>Q6:各市场支持的订单类型<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 <dl class="docutils">
 <dt>A:</dt>
 <dd><ul class="first last simple">
 <li>港股支持增强限价单，竞价单，竞价限价单，绝对限价单，特别限价单</li>
 <li>美股支持限价单，市价单</li>
 <li>A股通仅支持A股限价委托</li>
+<li>港股的股指期货支持限价单，竞价单</li>
+<li>港股的美元黄金期货支持限价单</li>
 </ul>
 </dd>
 </dl>
 </div>
 <hr class="docutils" />
-<div class="section" id="id21">
-<h3>Q7:各市场支持的订单操作<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<div class="section" id="q7">
+<h3>Q7:各市场支持的订单操作<a class="headerlink" href="#q7" title="永久链接至标题">¶</a></h3>
 <dl class="docutils">
 <dt>A:</dt>
 <dd><ul class="first last simple">
 <li>港股支持改单、撤单、生效、失效、删除</li>
 <li>美股仅支持改单和撤单</li>
 <li>A股通仅支持改单和撤单</li>
+<li>期货支持改单、撤单、删除</li>
 </ul>
 </dd>
 </dl>
@@ -503,7 +593,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2018, futu.
+        &copy; 版权所有 2020, futu.
 
     </p>
   </div> 
@@ -524,7 +614,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.21',
+            VERSION:'3.22',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

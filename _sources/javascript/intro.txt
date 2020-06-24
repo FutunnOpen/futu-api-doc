@@ -10,7 +10,7 @@
 
 .. _FutuOpenD: ../intro/FutuOpenDGuide.html
 .. _intro: ../intro/intro.html
-
+.. _GetGlobalState: ../protocol/base_define.html#getglobalstate-proto-1002
 
 JavaScript WebSocket API简介
 -------------
@@ -43,4 +43,6 @@ JavaScript WebSocket API简介
 调用须知
 -------------
   * 所有接口以异步回调方式完成
+  * 中间层已经发送连接初始化协议，因此JavaScript接口不需重复调用
+  * 交易协议中Common.PacketID需要用到连接ID，该信息可以在2.14及以上版本FutuOpenD的 GetGlobalState_ 协议回包中获取
 

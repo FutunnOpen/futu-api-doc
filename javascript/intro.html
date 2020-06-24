@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; futu-api-doc 3.21 文档</title>
+  <title>介绍 &mdash; futu-api-doc 3.22 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.22 文档" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="快速上手" href="../cpp/start.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.21
+                3.22
               </div>
             
           
@@ -271,6 +271,8 @@
 <blockquote>
 <div><ul class="simple">
 <li>所有接口以异步回调方式完成</li>
+<li>中间层已经发送连接初始化协议，因此JavaScript接口不需重复调用</li>
+<li>交易协议中Common.PacketID需要用到连接ID，该信息可以在2.14及以上版本FutuOpenD的 <a class="reference external" href="../protocol/base_define.html#getglobalstate-proto-1002">GetGlobalState</a> 协议回包中获取</li>
 </ul>
 </div></blockquote>
 </div>
@@ -298,7 +300,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2018, futu.
+        &copy; 版权所有 2020, futu.
 
     </p>
   </div> 
@@ -319,7 +321,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.21',
+            VERSION:'3.22',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

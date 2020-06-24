@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>协议接口 &mdash; futu-api-doc 3.21 文档</title>
+  <title>协议接口 &mdash; futu-api-doc 3.22 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.21 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.22 文档" href="../index.html"/>
         <link rel="next" title="基础定义" href="base_define.html"/>
         <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.21
+                3.22
               </div>
             
           
@@ -646,7 +646,7 @@
 <blockquote>
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-placeorder-proto-2202">2202</a></li>
-<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">15</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次。连续两次请求的间隔不可小于 <span class="red-strengthen">0.02</span> 秒。</li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">15</span> 次，连续两次请求的间隔不可小于 <span class="red-strengthen">0.02</span> 秒。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -655,7 +655,7 @@
 <blockquote>
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="trade_protocol.html#trd-modifyorder-proto-2205">2205</a></li>
-<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">20</span> 次，同时 <span class="red-strengthen">1</span> 秒内最多 <span class="red-strengthen">5</span> 次。连续两次请求的间隔不可小于 <span class="red-strengthen">0.02</span> 秒。</li>
+<li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">20</span> 次，连续两次请求的间隔不可小于 <span class="red-strengthen">0.02</span> 秒。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -858,7 +858,9 @@
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-stockfilter-proto-3215">3215</a></li>
 <li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">10</span> 次</li>
 <li>每次请求的数据个数最多 <span class="red-strengthen">200</span> 个</li>
-<li>建议筛选条件不超过250个，否则可能会出现“业务处理超时没返回”。</li>
+<li>建议筛选条件不超过 <span class="red-strengthen">250</span> 个，否则可能会出现“业务处理超时没返回”。</li>
+<li>累积属性的同一筛选条件数量最多 <span class="red-strengthen">10</span> 个</li>
+<li>自定义指标属性的同一类筛选条件数量最多 <span class="red-strengthen">10</span> 个</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1190,7 +1192,7 @@ message Response
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2018, futu.
+        &copy; 版权所有 2020, futu.
 
     </p>
   </div> 
@@ -1211,7 +1213,7 @@ message Response
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.21',
+            VERSION:'3.22',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
