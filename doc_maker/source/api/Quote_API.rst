@@ -1040,7 +1040,7 @@ query_subscription
 
  查询已订阅的实时信息
 
- :param is_all_conn: 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据
+ :param is_all_conn: 是否返回所有连接的订阅状态,传False只返回当前连接数据
  :return: (ret, data)  
         
         ret != RET_OK 返回错误字符串
