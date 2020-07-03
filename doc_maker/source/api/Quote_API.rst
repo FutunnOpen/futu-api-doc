@@ -889,7 +889,7 @@ subscribe
 
 ..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=False)
 
- 订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要港股LV2以上的权限，港股期货/期权订阅需要港股期权期货LV2以上权限，BMP 权限不支持订阅。
+ 订阅注册需要的实时信息，指定股票和订阅的数据类型即可。香港市场（含正股窝轮牛熊期权期货）订阅，需要 LV1 及以上的权限。BMP 权限下不支持订阅。
 
  :param code_list: 需要订阅的股票代码列表
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
