@@ -889,7 +889,7 @@ subscribe
 
 ..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=False)
 
- 订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要港股LV2以上的权限，港股期货/期权订阅需要港股期权期货LV2以上权限，BMP 权限不支持订阅。
+ 订阅注册需要的实时信息，指定股票和订阅的数据类型即可。香港市场（含正股窝轮牛熊期权期货）订阅，需要 LV1 及以上的权限。BMP 权限下不支持订阅。
 
  :param code_list: 需要订阅的股票代码列表
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
@@ -1361,7 +1361,7 @@ get_order_book
  获取实时摆盘数据
 
  :param code: 股票代码
- :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取全盘
+ :param num: 请求摆盘档数，摆盘档数获取上限请参见 `摆盘档数明细 <../q&a/Q&A.html#q10>`_
  :return: (ret, data)
 
  ret != RET_OK 返回错误字符串
