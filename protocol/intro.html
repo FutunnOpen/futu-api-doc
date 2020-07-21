@@ -687,6 +687,7 @@
 <li>额度现在限制请参见 <a class="reference internal" href="#quota-limit"><span class="std std-ref">API用户额度</span></a></li>
 <li>至少订阅一分钟才可以反订阅。</li>
 <li>由于港股 SF 行情摆盘数据量较大，为保证 SF 行情的速度和 OpenD 的处理性能，目前 SF 权限用户仅限同时订阅 50 只证券类产品（含 hkex 的正股、窝轮、牛熊）的摆盘（如需放开限制，请联系工作人员 <a class="reference external" href="https://help.futu5.com/faq/topic2348">https://help.futu5.com/faq/topic2348</a>），剩余订阅额度仍可用于订阅其他类型，如：逐笔，买卖经纪等</li>
+<li>港股期权期货在LV1权限下，不支持订阅逐笔类型。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -706,6 +707,7 @@
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getticker-proto-3010">3010</a></li>
 <li>最多能获取最近 <span class="red-strengthen">1000</span> 根</li>
+<li>港股期权期货在LV1权限下，不支持获取逐笔。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -734,8 +736,10 @@
 <blockquote>
 <div><ul class="simple">
 <li>请求协议ID: <a class="reference external" href="quote_protocol.html#qot-getsecuritysnapshot-proto-3203">3203</a></li>
-<li>每次可请求股票数最多 <span class="red-strengthen">400</span></li>
-<li>30秒内快照最多请求次数 <span class="red-strengthen">60</span></li>
+<li>每次可请求股票数最多 <span class="red-strengthen">400</span> 个</li>
+<li>30秒内快照最多请求次数 <span class="red-strengthen">60</span> 次</li>
+<li>港股 BMP 权限下，单次请求的香港证券（含窝轮牛熊界内证）快照数量上限是 <span class="red-strengthen">20</span> 个</li>
+<li>港股期权期货 BMP 权限下，单次请求的香港期货和期权的快照数量上限是 <span class="red-strengthen">20</span> 个</li>
 </ul>
 </div></blockquote>
 </div>

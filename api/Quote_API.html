@@ -159,31 +159,31 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">on_recv_rsp</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id7">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id8">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id9">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id10">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id11">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pricereminderhandlerbase">PriceReminderHandlerBase - 到价提醒通知回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id12">on_recv_rsp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pricereminderhandlerbase">PriceReminderHandlerBase - 到价提醒通知回调</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -950,7 +950,7 @@ All pages are finished!
 </tr>
 <tr class="row-odd"><td>update_time</td>
 <td>str</td>
-<td>更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）</td>
+<td>当前价更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）</td>
 </tr>
 <tr class="row-even"><td>last_price</td>
 <td>float</td>
@@ -2074,7 +2074,7 @@ All pages are finished!
 <dl class="function">
 <dt>
 <code class="descname">subscribe</code><span class="sig-paren">(</span><em>self</em>, <em>code_list</em>, <em>subtype_list</em>, <em>is_first_push=True</em>, <em>subscribe_push=True</em>, <em>is_detailed_orderbook=False</em><span class="sig-paren">)</span></dt>
-<dd><p>订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。</p>
+<dd><p>订阅注册需要的实时信息，指定股票和订阅的数据类型即可。香港市场（含正股窝轮牛熊期权期货）订阅，需要 LV1 及以上的权限。BMP 权限下不支持订阅。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2275,7 +2275,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><strong>is_all_conn</strong> &#8211; 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据</td>
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><strong>is_all_conn</strong> &#8211; 是否返回所有连接的订阅状态,传False只返回当前连接数据</td>
 </tr>
 <tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
 <p>ret == RET_OK 返回 定阅信息的字典数据 ，格式如下:</p>
@@ -2372,7 +2372,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 </tr>
 <tr class="row-even"><td>market_usfuture</td>
 <td>str</td>
-<td>香港期货市场状态，参见 <a class="reference external" href="Base_API.html#marketstate">MarketState</a></td>
+<td>美国期货市场状态，参见 <a class="reference external" href="Base_API.html#marketstate">MarketState</a></td>
 </tr>
 <tr class="row-odd"><td>market_us</td>
 <td>str</td>
@@ -2458,7 +2458,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 </tr>
 <tr class="row-even"><td>data_time</td>
 <td>str</td>
-<td>时间（港股A股默认是北京时间）</td>
+<td>当前价更新时间（港股A股默认是北京时间）</td>
 </tr>
 <tr class="row-odd"><td>last_price</td>
 <td>float</td>
@@ -2957,7 +2957,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; 股票代码</li>
-<li><strong>num</strong> &#8211; 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取全盘</li>
+<li><strong>num</strong> &#8211; 请求摆盘档数，摆盘档数获取上限请参见 <a class="reference external" href="../q&amp;a/Q&amp;A.html#q10">摆盘档数明细</a></li>
 </ul>
 </td>
 </tr>
@@ -3906,7 +3906,7 @@ HK.TCH200330C250000
 <dl class="function">
 <dt id="get_warrant">
 <code class="descname">get_warrant</code><span class="sig-paren">(</span><em>self</em>, <em>stock_owner=''</em>, <em>req=None</em><span class="sig-paren">)</span><a class="headerlink" href="#get_warrant" title="永久链接至目标">¶</a></dt>
-<dd><p>通过标的股查询窝轮</p>
+<dd><p>通过标的股查询窝轮，港股 BMP 权限不支持查询窝轮功能。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -4752,7 +4752,7 @@ HK.HSImain
 <dl class="function">
 <dt id="get_stock_filter">
 <code class="descname">get_stock_filter</code><span class="sig-paren">(</span><em>self</em>, <em>market</em>, <em>filter_list</em>, <em>plate_code=None</em>, <em>begin=0</em>, <em>num=200</em><span class="sig-paren">)</span><a class="headerlink" href="#get_stock_filter" title="永久链接至目标">¶</a></dt>
-<dd><p>获取条件选股</p>
+<dd><p>获取条件选股，港股 BMP 权限不支持条件选股功能。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -6270,8 +6270,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id6">
-<h4>on_recv_rsp<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id7">
+<h4>on_recv_rsp<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6335,8 +6335,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id7">
-<h4>on_recv_rsp<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id8">
+<h4>on_recv_rsp<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6405,8 +6405,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id8">
-<h4>on_recv_rsp<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id9">
+<h4>on_recv_rsp<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6480,8 +6480,8 @@ ret != RET_OK 返回错误字符串</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id9">
-<h4>on_recv_rsp<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id10">
+<h4>on_recv_rsp<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6547,8 +6547,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id10">
-<h4>on_recv_rsp<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id11">
+<h4>on_recv_rsp<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6623,8 +6623,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id11">
-<h4>on_recv_rsp<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id12">
+<h4>on_recv_rsp<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6689,8 +6689,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id12">
-<h4>on_recv_rsp<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id13">
+<h4>on_recv_rsp<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
