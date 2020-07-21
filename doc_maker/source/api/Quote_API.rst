@@ -434,7 +434,7 @@ get_market_snapshot
  参数                                类型                       说明
  ===============================   =============   ===================================================================
  code                               str            股票代码
- update_time                        str            更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
+ update_time                        str            当前价更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
  last_price                         float          最新价格
  open_price                         float          今日开盘价
  high_price                         float          最高价格
@@ -1138,7 +1138,7 @@ get_stock_quote
 ======================  ===========   ==============================================================
 code                    str            股票代码
 data_date               str            日期
-data_time               str            时间（港股A股默认是北京时间）
+data_time               str            当前价更新时间（港股A股默认是北京时间）
 last_price              float          最新价格
 open_price              float          今日开盘价
 high_price              float          最高价格
