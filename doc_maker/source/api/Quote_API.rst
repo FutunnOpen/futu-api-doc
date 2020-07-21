@@ -434,7 +434,7 @@ get_market_snapshot
  参数                                类型                       说明
  ===============================   =============   ===================================================================
  code                               str            股票代码
- update_time                        str            更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
+ update_time                        str            当前价更新时间(yyyy-MM-dd HH:mm:ss)（港股A股默认是北京时间）
  last_price                         float          最新价格
  open_price                         float          今日开盘价
  high_price                         float          最高价格
@@ -889,7 +889,7 @@ subscribe
 
 ..  py:function:: subscribe(self, code_list, subtype_list, is_first_push=True, subscribe_push=True, is_detailed_orderbook=False)
 
- 订阅注册需要的实时信息，指定股票和订阅的数据类型即可，港股订阅需要Lv2行情。 
+ 订阅注册需要的实时信息，指定股票和订阅的数据类型即可。香港市场（含正股窝轮牛熊期权期货）订阅，需要 LV1 及以上的权限。BMP 权限下不支持订阅。
 
  :param code_list: 需要订阅的股票代码列表
  :param subtype_list: 需要订阅的数据类型列表，参见 SubType_
@@ -1040,7 +1040,7 @@ query_subscription
 
  查询已订阅的实时信息
 
- :param is_all_conn: 是否返回所有连接的订阅状态,不传或者传False只返回当前连接数据
+ :param is_all_conn: 是否返回所有连接的订阅状态,传False只返回当前连接数据
  :return: (ret, data)  
         
         ret != RET_OK 返回错误字符串
@@ -1101,7 +1101,7 @@ get_global_state
 		market_sh               str            上海市场状态，参见 MarketState_
 		market_hk               str            香港市场状态，参见 MarketState_
 		market_hkfuture         str            香港期货市场状态，参见 MarketState_
-		market_usfuture         str            香港期货市场状态，参见 MarketState_
+		market_usfuture         str            美国期货市场状态，参见 MarketState_
 		market_us               str            美国市场状态，参见 MarketState_
 		server_ver              str            FutuOpenD版本号
 		trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
@@ -1138,7 +1138,7 @@ get_stock_quote
 ======================  ===========   ==============================================================
 code                    str            股票代码
 data_date               str            日期
-data_time               str            时间（港股A股默认是北京时间）
+data_time               str            当前价更新时间（港股A股默认是北京时间）
 last_price              float          最新价格
 open_price              float          今日开盘价
 high_price              float          最高价格
@@ -1361,7 +1361,7 @@ get_order_book
  获取实时摆盘数据
 
  :param code: 股票代码
- :param num: 请求摆盘档数，LV2行情用户最多可以获取10档，SF 行情用户可以获取全盘
+ :param num: 请求摆盘档数，摆盘档数获取上限请参见 `摆盘档数明细 <../q&a/Q&A.html#q10>`_
  :return: (ret, data)
 
  ret != RET_OK 返回错误字符串
@@ -1858,7 +1858,7 @@ get_warrant
 
 ..  py:function:: get_warrant(self, stock_owner='', req=None)
 
- 通过标的股查询窝轮
+ 通过标的股查询窝轮，港股 BMP 权限不支持查询窝轮功能。
 
  :param stock_owner: 所属正股的股票代码,例如：'HK.00700'，会去找腾讯的窝轮，注意有些股票没有对应窝轮牛熊。
  :param req: 请求参数组合
@@ -2246,7 +2246,7 @@ get_stock_filter
 
 ..  py:function:: get_stock_filter(self, market, filter_list, plate_code=None, begin=0, num=200)
 
- 获取条件选股
+ 获取条件选股，港股 BMP 权限不支持条件选股功能。
 
  :param market: 市场标识，注意这里不区分沪和深，输入沪或者深都会返回沪深市场的股票（这个是和客户端保持一致的）参见 Market_
  :param filter_list: 
