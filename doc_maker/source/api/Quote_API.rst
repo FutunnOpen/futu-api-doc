@@ -1976,8 +1976,8 @@ inline_price_status            str                界内界外 参见 PriceType_
     req = WarrantRequest()
     req.sort_field = SortField.TURNOVER
     req.type_list = WrtType.CALL
-    req.cur_price_min = 0.2
-    req.cur_price_max = 0.201
+    req.cur_price_min = 0.1
+    req.cur_price_max = 0.2
     ret, ls = quote_ctx.get_warrant("HK.00700", req)
     if ret == RET_OK:  # 所有接口先判断是否正常，再取数据
         warrant_data_list, last_page, all_count = ls
@@ -1986,8 +1986,19 @@ inline_price_status            str                界内界外 参见 PriceType_
         print(warrant_data_list['stock'].values.tolist())   # 转为list
     else:
         print('error: ', ls)
+        
+    req = WarrantRequest()
+    req.sort_field = SortField.TURNOVER
+    req.issuer_list = ['UB','CS','BI']
+    ret, ls = quote_ctx.get_warrant(Market.HK, req)
+    if ret == RET_OK: 
+        warrant_data_list, last_page, all_count = ls
+        print(len(warrant_data_list), all_count, warrant_data_list)
+    else:
+        print('error: ', ls)
+
     quote_ctx.close()  # 所有接口结尾加上这条close，防止连接条数用尽
-	
+    
  :Output:
 
  .. code:: python
@@ -1998,6 +2009,14 @@ inline_price_status            str                界内界外 参见 PriceType_
     1  HK.18854  腾讯瑞信零七购A.C    HK.00700  CALL     CS    2020-07-09  2020-01-08      2020-07-03             NaN             100.0     10000        401.28             0.212      0.200            -0.012    -5.660377  NORMAL      0.199      0.200  10000000   100000  12200000  2581320.0  72.970   10.340            421.28    19.090  -4.854                   NaN              20.0         4.98    12450000     17.453   250000000       0.220      0.183              34.305  0.429               8.189    1.578413e+09          1.593706e+09        1.594224e+09                 NaN                 NaN                  NaN
     HK.19692
     ['HK.19692', 'HK.18854']
+
+    200 358
+    stock        name stock_owner    type issuer maturity_time   list_time last_trade_time  recovery_price  conversion_ratio  lot_size  strike_price  last_close_price  cur_price  price_change_val  change_rate      status  bid_price  ask_price   bid_vol   ask_vol  volume  turnover   score  premium  break_even_point  leverage     ipop  price_recovery_ratio  conversion_price  street_rate  street_vol  amplitude  issue_size  high_price  low_price  implied_volatility  delta  effective_leverage  list_timestamp  last_trade_timestamp  maturity_timestamp  upper_strike_price  lower_strike_price inline_price_status
+    0    HK.19792  平安瑞信零乙购A.C    HK.02318    CALL     CS    2020-12-31  2017-12-07      2020-12-24             NaN           100.000     50000        83.880             0.064      0.066             0.002     3.125000      NORMAL      0.066      0.068  12000000  12000000       0       0.0   0.075    4.420            90.480    13.128    3.302                   NaN          6.600000       11.230    22460000        0.0   200000000         0.0        0.0              22.509  0.614               8.060    1.512576e+09          1.608739e+09        1.609344e+09                 NaN                 NaN                 NaN
+    1    HK.19839  平安瑞银零乙购A.C    HK.02318    CALL     UB    2020-12-31  2017-12-11      2020-12-24             NaN           100.000     50000        83.880             0.066      0.067             0.001     1.515152      NORMAL      0.067      0.069  30000000  30000000       0       0.0  57.931    4.535            90.580    12.932    3.302                   NaN          6.700000        3.100    15500000        0.0   500000000         0.0        0.0              22.961  0.613               7.927    1.512922e+09          1.608739e+09        1.609344e+09                 NaN                 NaN                 NaN
+    ......
+    198  HK.18645  铁塔瑞银零七购A.C    HK.00788    CALL     UB    2020-07-10  2020-01-07      2020-07-06             NaN             1.000      2000         1.870             0.010      0.010             0.000     0.000000  STOP_TRADE      0.000      0.000         0         0       0       0.0   0.059   27.027             1.880   148.000  -20.855                   NaN          0.010000        4.960     3472000        0.0    70000000         0.0        0.0               0.000  0.000               0.000    1.578326e+09          1.593965e+09        1.594310e+09                 NaN                 NaN                 NaN
+    199  HK.18705  小米瑞信零七购B.C    HK.01810    CALL     CS    2020-07-30  2020-01-07      2020-07-24             NaN             5.000      1000        11.580             0.990      0.990             0.000     0.000000      NORMAL      0.990      1.070    461000    100000       0       0.0  50.234   -0.661            16.530     3.361   43.696                   NaN          4.950000        5.030     5030000        0.0   100000000         0.0        0.0               0.000  0.000               0.000    1.578326e+09          1.595520e+09        1.596038e+09                 NaN                 NaN                 NaN
 
 .. note::
 
