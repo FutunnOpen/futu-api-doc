@@ -375,7 +375,7 @@ QotMarket - 行情市场
 	{
 		QotMarket_Unknown = 0; //未知市场
 		QotMarket_HK_Security = 1; //港股
-		QotMarket_HK_Future = 2; //港期货(目前是恒指的当月、下月期货行情)
+		QotMarket_US_Security = 11; //美股
 		QotMarket_CNSH_Security = 21; //沪股
 		QotMarket_CNSZ_Security = 22; //深股
 	}
