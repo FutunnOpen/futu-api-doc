@@ -94,6 +94,8 @@
  
  .. _RelativePosition: Base_API.html#relativeposition-ma-ema-rsi
  
+ .. _AssetClass: Base_API.html#assetclass
+ 
 一分钟上手
 ============
 
@@ -492,7 +494,7 @@ get_market_snapshot
  option_type                        str            期权类型，参见 OptionType_
  strike_time                        str            期权行权日（港股A股默认是北京时间）
  option_strike_price                float          行权价
- option_contract_size               int            每份合约数
+ option_contract_size               float          每份合约数
  option_open_interest               int            总未平仓合约数
  option_implied_volatility          float          隐含波动率
  option_premium                     float          溢价
@@ -559,6 +561,13 @@ get_market_snapshot
  future_position_change             float          日增仓
  future_main_contract               bool           是否主连合约
  future_last_trade_time             string         最后交易时间，主连，当月，下月等期货没有该字段
+ trust_vaild                        bool           是否基金 
+ trust_dividend_yield               float          股息率 
+ trust_aum                          float          资产规模 
+ trust_outstanding_units            int            总发行量 
+ trust_netAssetValue                float          单位净值 
+ trust_premium                      float          溢价 
+ trust_assetClass                   string         资产类别，见 AssetClass_ 
  ===============================   =============   ===================================================================
 
  :Example:
@@ -1155,7 +1164,7 @@ price_spread            float          当前向上的价差，亦即摆盘数�
 dark_status             str            暗盘交易状态，见 DarkStatus_
 sec_status              str            股票状态，见 SecurityStatus_ 
 strike_price            float          行权价
-contract_size           int            每份合约数
+contract_size           float          每份合约数
 open_interest           int            未平仓合约数
 implied_volatility      float          隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 premium                 float          溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）

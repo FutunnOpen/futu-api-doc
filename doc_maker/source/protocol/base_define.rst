@@ -1166,7 +1166,8 @@ OptionBasicQotExData - 基础报价的期权特有字段
 	message OptionBasicQotExData
 	{
 		required double strikePrice = 1; //行权价
-		required int32 contractSize = 2; //每份合约数
+		required int32 contractSize = 2; //每份合约数(整型数据)
+		optional double contractSizeFloat = 17; //每份合约数（浮点型数据）
 		required int32 openInterest = 3; //未平仓合约数
 		required double impliedVolatility = 4; //隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double premium = 5; //溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
@@ -1545,7 +1546,7 @@ PriceReminderType - 提醒类型
 		PriceReminderType_BidVolUp = 12; // 买一量高于	
 		PriceReminderType_AskVolUp = 13; // 卖一量高于
 	}
-	 
+
 -----------------------------------------------
 
 PriceReminderFreq - 提醒频率
@@ -1561,7 +1562,26 @@ PriceReminderFreq - 提醒频率
 		PriceReminderFreq_OnceADay = 2; // 每日一次
 		PriceReminderFreq_OnlyOnce = 3; // 仅提醒一次
 	}
-	 
+
+-----------------------------------------------
+
+AssetClass - 资产类别
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	//资产类别
+	enum AssetClass
+	{
+		AssetClass_Unknow = 0; //未知
+		AssetClass_Stock = 1; //股票
+		AssetClass_Bond = 2; //债券
+		AssetClass_Commodity = 3; //商品
+		AssetClass_CurrencyMarket = 4; //货币市场
+		AssetClass_Future = 5; //期货
+		AssetClass_Swap = 6; //掉期
+	}
+
 -----------------------------------------------
 
 `Trd_Common.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto>`_ - 交易通用定义
