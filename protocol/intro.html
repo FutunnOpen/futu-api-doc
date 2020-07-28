@@ -946,14 +946,14 @@
 <h3>协议头结构<a class="headerlink" href="#id71" title="永久链接至标题">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>struct APIProtoHeader
 <span class="o">{</span>
-    u8_t szHeaderFlag<span class="o">[</span>2<span class="o">]</span><span class="p">;</span>
+    u8_t szHeaderFlag<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="p">;</span>
     u32_t nProtoID<span class="p">;</span>
     u8_t nProtoFmtType<span class="p">;</span>
     u8_t nProtoVer<span class="p">;</span>
     u32_t nSerialNo<span class="p">;</span>
     u32_t nBodyLen<span class="p">;</span>
-    u8_t arrBodySHA1<span class="o">[</span>20<span class="o">]</span><span class="p">;</span>
-    u8_t arrReserved<span class="o">[</span>8<span class="o">]</span><span class="p">;</span>
+    u8_t arrBodySHA1<span class="o">[</span><span class="m">20</span><span class="o">]</span><span class="p">;</span>
+    u8_t arrReserved<span class="o">[</span><span class="m">8</span><span class="o">]</span><span class="p">;</span>
 <span class="o">}</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -1011,27 +1011,27 @@
 <p><strong>Protobuf协议请求包体结构</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>message C2S
 <span class="o">{</span>
-    required int64 <span class="nv">req</span> <span class="o">=</span> 1<span class="p">;</span>
+    required int64 <span class="nv">req</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
 <span class="o">}</span>
 
 message Request
 <span class="o">{</span>
-    required C2S <span class="nv">c2s</span> <span class="o">=</span> 1<span class="p">;</span>
+    required C2S <span class="nv">c2s</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Protobuf协议回应包体结构</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>message S2C
 <span class="o">{</span>
-    required int64 <span class="nv">data</span> <span class="o">=</span> 1<span class="p">;</span>
+    required int64 <span class="nv">data</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
 <span class="o">}</span>
 
 message Response
 <span class="o">{</span>
     required int32 <span class="nv">retType</span> <span class="o">=</span> <span class="m">1</span> <span class="o">[</span><span class="nv">default</span> <span class="o">=</span> -400<span class="o">]</span><span class="p">;</span> //RetType,返回结果
-    optional string <span class="nv">retMsg</span> <span class="o">=</span> 2<span class="p">;</span>
-    optional int32 <span class="nv">errCode</span> <span class="o">=</span> 3<span class="p">;</span>
-    optional S2C <span class="nv">s2c</span> <span class="o">=</span> 4<span class="p">;</span>
+    optional string <span class="nv">retMsg</span> <span class="o">=</span> <span class="m">2</span><span class="p">;</span>
+    optional int32 <span class="nv">errCode</span> <span class="o">=</span> <span class="m">3</span><span class="p">;</span>
+    optional S2C <span class="nv">s2c</span> <span class="o">=</span> <span class="m">4</span><span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 </div>
@@ -1039,19 +1039,19 @@ message Response
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{</span>
     <span class="s2">&quot;c2s&quot;</span>:
     <span class="o">{</span>
-         <span class="s2">&quot;req&quot;</span>: 0
+         <span class="s2">&quot;req&quot;</span>: <span class="m">0</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
 <p><strong>Json协议回应包体结构</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{</span>
-    <span class="s2">&quot;retType&quot;</span> : 0
+    <span class="s2">&quot;retType&quot;</span> : <span class="m">0</span>
     <span class="s2">&quot;retMsg&quot;</span> : <span class="s2">&quot;&quot;</span>
-    <span class="s2">&quot;errCode&quot;</span> : 0
+    <span class="s2">&quot;errCode&quot;</span> : <span class="m">0</span>
     <span class="s2">&quot;s2c&quot;</span>:
     <span class="o">{</span>
-        <span class="s2">&quot;data&quot;</span>: 0
+        <span class="s2">&quot;data&quot;</span>: <span class="m">0</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
