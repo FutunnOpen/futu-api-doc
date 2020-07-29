@@ -22,8 +22,6 @@
 
  .. _DealStatus: Base_API.html#dealstatus
 
- .. _FreqLimit: ../protocol/intro.html#id27
-
  .. _Currency: Base_API.html#currency
 
  .. _CltRiskLevel: Base_API.html#cltrisklevel
@@ -149,7 +147,7 @@ accinfo_query - 获取账户资金数据
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 :ref:`频率限制 <accinfo-query-limit>`。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :param currency: str, 参见 Currency_，以什么货币统计资金信息，返回的DataFrame中，除了明确指明是港元或美元的字段，其它资金相关字段都以此参数换算，期货账户适用，其它账户类型会忽略此参数。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
@@ -202,7 +200,7 @@ position_list_query - 获取账户持仓列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 :ref:`频率限制 <position-list-query-limit>`。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   =======================================================================================
@@ -300,7 +298,7 @@ order_list_query - 获取订单列表
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 :ref:`频率限制 <order-list-query-limit>`。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   =======================================================================
@@ -377,7 +375,7 @@ modify_order - 修改订单
   
 .. note::
 
-   * 接口限制请参见 `改单限制 <../protocol/intro.html#id31>`_
+   * 接口限制请参见 :ref:`改单限制 <modify-order-limit>`
 	
 ----------------------------
 
@@ -407,7 +405,7 @@ cancel_all_order - 撤消全部订单
 
 .. note::
 
-   * 接口限制请参见 `改单限制 <../protocol/intro.html#id31>`_
+   * 接口限制请参见 :ref:`改单限制 <modify-order-limit>`
    * 模拟交易以及A股通暂不支持全部撤单
 
 ----------------------------
@@ -443,7 +441,7 @@ change_order - 改单(老接口，兼容以前)
   
 .. note::
 
-	* 接口限制请参见 `改单限制 <../protocol/intro.html#id26>`_
+	* 接口限制请参见 :ref:`改单限制 <modify-order-limit>`
 	
 ----------------------------
 
@@ -458,7 +456,7 @@ deal_list_query - 获取成交列表
  :param trd_env: str，交易环境 TrdEnv_ ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
- :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 FreqLimit_。默认False。特殊情况导致缓存没有及时更新才需要刷新。
+ :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 :ref:`频率限制 <deal-list-query-limit>`。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
  =====================        ===========   ===================================================================
@@ -521,7 +519,7 @@ history_order_list_query - 获取历史订单列表
   
 .. note::
 
-	* 接口限制请参见 `获取历史订单列表限制 <../protocol/intro.html#id27>`_
+	* 接口限制请参见 `获取历史订单列表限制 <history-order-list-query-limit>`
 	
 ----------------------------
 
@@ -553,7 +551,7 @@ history_deal_list_query - 获取历史成交列表
 
 .. note::
 
-	* 接口限制请参见 `获取历史成交列表限制 <../protocol/intro.html#id28>`_
+	* 接口限制请参见 `获取历史成交列表限制 <history-deal-list-query-limit>`
 	
 ----------------------------
 
@@ -601,7 +599,7 @@ acctradinginfo_query - 查询账户下最大可买卖数量
 
 .. note::
 
-	* 接口限制请参见 `获取最大交易数量限制 <../protocol/intro.html#id24>`_
+	* 接口限制请参见 `获取最大交易数量限制 <acctradinginfo-query-limit>`
 	
 ----------------------------
 
