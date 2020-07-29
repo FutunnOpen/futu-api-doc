@@ -32,6 +32,7 @@
   .. _2111:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   
   .. _Trd_GetOrderList.proto:  trade_protocol.html#trd-getorderlist-proto-2201
+  .. _2201:  trade_protocol.html#trd-getorderlist-proto-2201
   
   .. _Trd_PlaceOrder.proto:  trade_protocol.html#trd-placeorder-proto-2202
   .. _2202:  trade_protocol.html#trd-placeorder-proto-2202
@@ -299,6 +300,14 @@ API用户额度
 获取成交列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 2211_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅当refreshCache为True时限制频率
+
+.. _order-list-query-limit:
+
+获取订单列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2201_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅当refreshCache为True时限制频率
 	

@@ -130,12 +130,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#acctradinginfo-query">acctradinginfo_query - 查询账户下最大可买卖数量</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">TradeOrderHandlerBase - 响应订单推送基类</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">TradeOrderHandlerBase - 响应订单推送基类</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#on-recv-rsp">on_recv_rsp - 响应订单推送</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedealhandlerbase">TradeDealHandlerBase - 响应成交推送基类</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id10">on_recv_rsp - 响应成交推送</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">on_recv_rsp - 响应成交推送</a></li>
 </ul>
 </li>
 </ul>
@@ -436,7 +436,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
-<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 <a class="reference internal" href="../protocol/intro.html#accinfo-query-limit"><span class="std std-ref">频率限制</span></a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 <li><strong>currency</strong> &#8211; str, 参见 <a class="reference external" href="Base_API.html#currency">Currency</a>，以什么货币统计资金信息，返回的DataFrame中，除了明确指明是港元或美元的字段，其它资金相关字段都以此参数换算，期货账户适用，其它账户类型会忽略此参数。</li>
 </ul>
 </td>
@@ -567,7 +567,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
-<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 <a class="reference internal" href="../protocol/intro.html#position-list-query-limit"><span class="std std-ref">频率限制</span></a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -764,7 +764,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
-<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 <a class="reference internal" href="../protocol/intro.html#order-list-query-limit"><span class="std std-ref">频率限制</span></a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -940,7 +940,7 @@
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id31">改单限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#modify-order-limit"><span class="std std-ref">改单限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -983,7 +983,7 @@
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id31">改单限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#modify-order-limit"><span class="std std-ref">改单限制</span></a></li>
 <li>模拟交易以及A股通暂不支持全部撤单</li>
 </ul>
 </div>
@@ -1032,7 +1032,7 @@
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id26">改单限制</a></li>
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#modify-order-limit"><span class="std std-ref">改单限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -1052,7 +1052,7 @@
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
-<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到频率限制 <a class="reference external" href="../protocol/intro.html#id27">FreqLimit</a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
+<li><strong>refresh_cache</strong> &#8211; bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 <a class="reference internal" href="../protocol/intro.html#deal-list-query-limit"><span class="std std-ref">频率限制</span></a>。默认False。特殊情况导致缓存没有及时更新才需要刷新。</li>
 </ul>
 </td>
 </tr>
@@ -1185,7 +1185,7 @@
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id27">获取历史订单列表限制</a></li>
+<li>接口限制请参见 <cite>获取历史订单列表限制 &lt;history-order-list-query-limit&gt;</cite></li>
 </ul>
 </div>
 </div>
@@ -1231,7 +1231,7 @@
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id28">获取历史成交列表限制</a></li>
+<li>接口限制请参见 <cite>获取历史成交列表限制 &lt;history-deal-list-query-limit&gt;</cite></li>
 </ul>
 </div>
 </div>
@@ -1322,14 +1322,14 @@
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
-<li>接口限制请参见 <a class="reference external" href="../protocol/intro.html#id24">获取最大交易数量限制</a></li>
+<li>接口限制请参见 <cite>获取最大交易数量限制 &lt;acctradinginfo-query-limit&gt;</cite></li>
 </ul>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id9">
-<h3>TradeOrderHandlerBase - 响应订单推送基类<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id3">
+<h3>TradeOrderHandlerBase - 响应订单推送基类<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <div class="section" id="on-recv-rsp">
 <h4>on_recv_rsp - 响应订单推送<a class="headerlink" href="#on-recv-rsp" title="永久链接至标题">¶</a></h4>
 <dl class="function">
@@ -1379,8 +1379,8 @@
 <hr class="docutils" />
 <div class="section" id="tradedealhandlerbase">
 <h3>TradeDealHandlerBase - 响应成交推送基类<a class="headerlink" href="#tradedealhandlerbase" title="永久链接至标题">¶</a></h3>
-<div class="section" id="id10">
-<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id4">
+<h4>on_recv_rsp - 响应成交推送<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
