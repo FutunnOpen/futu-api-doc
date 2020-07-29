@@ -130,6 +130,43 @@ set_all_thread_daemon
 枚举常量
 ---------
 
+AssetClass - 资产类别
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+资产类别定义
+
+..  py:class:: AssetClass
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: STOCK
+
+  股票
+
+ ..  py:attribute:: BOND
+
+  债券
+
+ ..  py:attribute:: COMMODITY
+
+  商品
+  
+ ..  py:attribute:: CURRENCY_MARKET
+
+  货币市场
+
+ ..  py:attribute:: FUTURE
+
+  期货
+
+ ..  py:attribute:: SWAP
+
+  掉期
+
+--------------------------------------
+
 AuType - K线复权类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2585,39 +2622,3 @@ WrtType - 港股窝轮类型
 
 --------------------------------------
 
-AssetClass - 资产类别
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-资产类别定义
-
-..  py:class:: AssetClass
-
- ..  py:attribute:: NONE
-
-  未知
-
- ..  py:attribute:: STOCK
-
-  股票
-
- ..  py:attribute:: BOND
-
-  债券
-
- ..  py:attribute:: COMMODITY
-
-  商品
-  
- ..  py:attribute:: CURRENCY_MARKET
-
-  货币市场
-
- ..  py:attribute:: FUTURE
-
-  期货
-
- ..  py:attribute:: SWAP
-
-  掉期
-
---------------------------------------
