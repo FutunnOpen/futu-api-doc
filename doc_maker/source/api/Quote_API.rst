@@ -1371,7 +1371,7 @@ get_order_book
  获取实时摆盘数据
 
  :param code: 股票代码
- :param num: 请求摆盘档数，摆盘档数获取上限请参见 `摆盘档数明细 <../q&a/Q&A.html#q10>`_
+ :param num: 请求摆盘档数，摆盘档数获取上限请参见 `摆盘档数明细 <../q&a/Q&A.html#q11-orderbook>`_
  :return: (ret, data)
 
  ret != RET_OK 返回错误字符串
