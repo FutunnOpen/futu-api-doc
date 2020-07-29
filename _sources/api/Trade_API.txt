@@ -519,7 +519,7 @@ history_order_list_query - 获取历史订单列表
   
 .. note::
 
-	* 接口限制请参见 `获取历史订单列表限制 <history-order-list-query-limit>`
+	* 接口限制请参见  :ref:`获取历史订单列表限制 <history-order-list-query-limit>`
 	
 ----------------------------
 
@@ -551,7 +551,7 @@ history_deal_list_query - 获取历史成交列表
 
 .. note::
 
-	* 接口限制请参见 `获取历史成交列表限制 <history-deal-list-query-limit>`
+	* 接口限制请参见  :ref:`获取历史成交列表限制 <history-deal-list-query-limit>`
 	
 ----------------------------
 
@@ -599,7 +599,7 @@ acctradinginfo_query - 查询账户下最大可买卖数量
 
 .. note::
 
-	* 接口限制请参见 `获取最大交易数量限制 <acctradinginfo-query-limit>`
+	* 接口限制请参见  :ref:`获取最大交易数量限制 <acctradinginfo-query-limit>`
 	
 ----------------------------
 
