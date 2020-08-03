@@ -507,7 +507,7 @@ get_market_snapshot
  option_expiry_date_distance        int            距离到期日天数，负数表示已过期
  option_contract_nominal_value      float          合约名义金额
  option_owner_lot_multiplier        float          相等正股手数，指数期权无该字段
- option_area_type                   str            期权地区类型，见 OptionAreaType_
+ option_area_type                   str            期权类型（按行权时间），见 OptionAreaType_
  option_contract_multiplier         float          合约乘数，指数期权特有字段
  plate_valid                        bool           是否为板块类型（为true时以下板块类型字段才有合法数值）
  plate_raise_count                  int            板块类型上涨支数
@@ -1177,7 +1177,7 @@ net_open_interest       int            净未平仓合约数
 expiry_date_distance    int            距离到期日天数，负数表示已过期
 contract_nominal_value  float          合约名义金额
 owner_lot_multiplier    float          相等正股手数，指数期权无该字段
-option_area_type        str            期权地区类型，见 OptionAreaType_
+option_area_type        str            期权类型（按行权时间），见 OptionAreaType_
 contract_multiplier     float          合约乘数，指数期权特有字段
 pre_price               float          盘前价格
 pre_high_price          float          盘前最高价

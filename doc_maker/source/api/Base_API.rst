@@ -948,10 +948,10 @@ IndexOptionType - 指数期权类型
   
 --------------------------------------
 
-OptionAreaType - 期权地区类型
+OptionAreaType - 期权类型（按行权时间）
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-期权地区类型定义
+期权类型（按行权时间）定义
 
 ..  py:class:: OptionAreaType
 

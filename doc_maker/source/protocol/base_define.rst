@@ -473,7 +473,7 @@ IndexOptionType - 指数期权类型
  
 -----------------------------------------------
  
-OptionAreaType - 期权地区类型
+OptionAreaType - 期权类型（按行权时间）
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1182,7 +1182,7 @@ OptionBasicQotExData - 基础报价的期权特有字段
 		optional int32 expiryDateDistance = 12; //距离到期日天数
 		optional double contractNominalValue = 13; //合约名义金额
 		optional double ownerLotMultiplier = 14; //相等正股手数，指数期权无该字段
-		optional int32 optionAreaType = 15; //OptionAreaType, 期权地区类型
+		optional int32 optionAreaType = 15; //OptionAreaType, 期权类型（按行权时间）
 		optional double contractMultiplier = 16; //合约乘数，指数期权特有字段
 	}		
 
