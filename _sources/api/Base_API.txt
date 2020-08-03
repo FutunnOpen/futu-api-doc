@@ -688,6 +688,10 @@ Market - 行情市场
     
   港股
   
+ ..  py:attribute:: US    
+    
+  美股
+  
  ..  py:attribute:: SH  
     
   沪市
@@ -695,10 +699,6 @@ Market - 行情市场
  ..  py:attribute:: SZ
     
   深市
-  
- ..  py:attribute:: HK_FUTURE  
-    
-  港股期货
   
  ..  py:attribute:: NONE
     
@@ -911,10 +911,10 @@ IndexOptionType - 指数期权类型
   
 --------------------------------------
 
-OptionAreaType - 期权地区类型
+OptionAreaType - 期权类型（按行权时间）
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-期权地区类型定义
+期权类型（按行权时间）定义
 
 ..  py:class:: OptionAreaType
 

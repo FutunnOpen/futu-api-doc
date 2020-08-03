@@ -119,7 +119,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#warranttype">WarrantType - 窝轮类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optiontype">OptionType - 期权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#indexoptiontype">IndexOptionType - 指数期权类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#optionareatype">OptionAreaType - 期权地区类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optionareatype">OptionAreaType - 期权类型（按行权时间）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id4">QotMarketState - 行情市场状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedatetype">TradeDateType - 交易时间类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tradedatemarket">TradeDateMarket - 交易日查询市场</a></li>
@@ -786,7 +786,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="optionareatype">
-<h3>OptionAreaType - 期权地区类型<a class="headerlink" href="#optionareatype" title="永久链接至标题">¶</a></h3>
+<h3>OptionAreaType - 期权类型（按行权时间）<a class="headerlink" href="#optionareatype" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OptionAreaType</span>
 <span class="p">{</span>
@@ -1489,7 +1489,7 @@
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">expiryDateDistance</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">//距离到期日天数</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">contractNominalValue</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">//合约名义金额</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">ownerLotMultiplier</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">//相等正股手数，指数期权无该字段</span>
-        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">optionAreaType</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//OptionAreaType, 期权地区类型</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">optionAreaType</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="c1">//OptionAreaType, 期权类型（按行权时间）</span>
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">contractMultiplier</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="c1">//合约乘数，指数期权特有字段</span>
 <span class="p">}</span>
 </pre></div>

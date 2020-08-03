@@ -137,7 +137,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#optioncondtype">OptionCondType - 价内价外</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optiontype">OptionType - 期权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#indexoptiontype">IndexOptionType - 指数期权类型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#optionareatype">OptionAreaType - 期权地区类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optionareatype">OptionAreaType - 期权类型（按行权时间）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ordertype">OrderType - 订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#orderstatus">OrderStatus - 订单状态定义</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pricereminderfreq">PriceReminderFreq - 到价提醒频率</a></li>
@@ -1237,6 +1237,12 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="Market.US">
+<code class="descname">US</code><a class="headerlink" href="#Market.US" title="永久链接至目标">¶</a></dt>
+<dd><p>美股</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="Market.SH">
 <code class="descname">SH</code><a class="headerlink" href="#Market.SH" title="永久链接至目标">¶</a></dt>
 <dd><p>沪市</p>
@@ -1246,12 +1252,6 @@
 <dt id="Market.SZ">
 <code class="descname">SZ</code><a class="headerlink" href="#Market.SZ" title="永久链接至目标">¶</a></dt>
 <dd><p>深市</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Market.HK_FUTURE">
-<code class="descname">HK_FUTURE</code><a class="headerlink" href="#Market.HK_FUTURE" title="永久链接至目标">¶</a></dt>
-<dd><p>港股期货</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1555,8 +1555,8 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="optionareatype">
-<h3>OptionAreaType - 期权地区类型<a class="headerlink" href="#optionareatype" title="永久链接至标题">¶</a></h3>
-<p>期权地区类型定义</p>
+<h3>OptionAreaType - 期权类型（按行权时间）<a class="headerlink" href="#optionareatype" title="永久链接至标题">¶</a></h3>
+<p>期权类型（按行权时间）定义</p>
 <dl class="class">
 <dt id="OptionAreaType">
 <em class="property">class </em><code class="descname">OptionAreaType</code><a class="headerlink" href="#OptionAreaType" title="永久链接至目标">¶</a></dt>
