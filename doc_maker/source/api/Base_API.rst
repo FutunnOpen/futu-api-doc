@@ -688,6 +688,10 @@ Market - 行情市场
     
   港股
   
+ ..  py:attribute:: US    
+    
+  美股
+  
  ..  py:attribute:: SH  
     
   沪市
@@ -695,10 +699,6 @@ Market - 行情市场
  ..  py:attribute:: SZ
     
   深市
-  
- ..  py:attribute:: HK_FUTURE  
-    
-  港股期货
   
  ..  py:attribute:: NONE
     
