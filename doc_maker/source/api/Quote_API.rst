@@ -450,13 +450,13 @@ get_market_snapshot
  listing_date                       str            上市日期 (yyyy-MM-dd)
  equity_valid                       bool           是否正股（为true时以下正股相关字段才有合法数值）
  issued_shares                      int            发行股本
- total_market_val                   float          总市值
+ total_market_val                   float          总市值（单位：元）
  net_asset                          int            资产净值
  net_profit                         int            净利润
  earning_per_share                  float          每股盈利
  outstanding_shares                 int            流通股本
  net_asset_per_share                float          每股净资产
- circular_market_val                float          流通市值
+ circular_market_val                float          流通市值（单位：元）
  ey_ratio                           float          收益率（该字段为比例字段，默认不展示%）
  pe_ratio                           float          市盈率（该字段为比例字段，默认不展示%）
  pb_ratio                           float          市净率（该字段为比例字段，默认不展示%）
@@ -562,11 +562,11 @@ get_market_snapshot
  future_main_contract               bool           是否主连合约
  future_last_trade_time             string         最后交易时间，主连，当月，下月等期货没有该字段
  trust_valid                        bool           是否基金 
- trust_dividend_yield               float          股息率 
- trust_aum                          float          资产规模 
+ trust_dividend_yield               float          股息率（该字段为百分比字段，默认不展示%，如20实际对应20%。） 
+ trust_aum                          float          资产规模（单位：元）
  trust_outstanding_units            int            总发行量 
  trust_netAssetValue                float          单位净值 
- trust_premium                      float          溢价 
+ trust_premium                      float          溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。） 
  trust_assetClass                   string         资产类别，见 AssetClass_ 
  ===============================   =============   ===================================================================
 
