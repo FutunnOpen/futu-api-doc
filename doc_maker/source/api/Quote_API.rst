@@ -561,7 +561,7 @@ get_market_snapshot
  future_position_change             float          日增仓
  future_main_contract               bool           是否主连合约
  future_last_trade_time             string         最后交易时间，主连，当月，下月等期货没有该字段
- trust_vaild                        bool           是否基金 
+ trust_valid                        bool           是否基金 
  trust_dividend_yield               float          股息率 
  trust_aum                          float          资产规模 
  trust_outstanding_units            int            总发行量 
