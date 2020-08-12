@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>协议接口 &mdash; futu-api-doc 3.23 文档</title>
+  <title>协议接口 &mdash; futu-api-doc 3.24 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.23 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
         <link rel="next" title="基础定义" href="base_define.html"/>
         <link rel="prev" title="FutuOpenD使用说明" href="../intro/FutuOpenDGuide.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.23
+                3.24
               </div>
             
           
@@ -730,6 +730,7 @@
 <li>30天内在线获取历史K线最多可请求股票数请参见 <a class="reference internal" href="#quota-limit"><span class="std std-ref">API用户额度</span></a></li>
 <li><span class="red-strengthen">30</span> 秒内请求最多 <span class="red-strengthen">60</span> 次，可分页的请求，第1页限频，后续页请求不限频</li>
 <li>分K提供最近2年数据，日K及以上提供近10年数据。</li>
+<li>美股盘前和盘后仅支持 60 分钟及以下级别的K线。由于美股盘前和盘后时段为非常规交易时段，此时段的K线数据可能不足两年。</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1229,7 +1230,7 @@ message Response
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.23',
+            VERSION:'3.24',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

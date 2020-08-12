@@ -94,6 +94,8 @@
  
  .. _RelativePosition: Base_API.html#relativeposition-ma-ema-rsi
  
+ .. _AssetClass: Base_API.html#assetclass
+ 
 一分钟上手
 ============
 
@@ -323,7 +325,7 @@ get_stock_basicinfo
 request_history_kline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  py:function:: request_history_kline(self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL], max_count=1000, page_req_key=None)
+..  py:function:: request_history_kline(self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL], max_count=1000, page_req_key=None, extended_time=False)
 
  获取k线，不需要事先下载k线数据。
 
@@ -346,6 +348,7 @@ request_history_kline
  :param fields: 需返回的字段列表，参见 KL_FIELD_ 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....
  :param max_count: 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。注意：OpenD 是把所有数据请求到再下发给脚本的，如果K线个数过多，建议选择分页，因为超过10秒仍未获取完会提示超时。
  :param page_req_key: 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。
+ :param extended_time: 是否允许美股盘前盘后数据，bool，False不允许，True允许。
  :return: (ret, data, page_req_key)
 
         ret == RET_OK 返回pd dataframe数据，data.DataFrame数据, 数据列格式如下。page_req_key在分页请求时（即max_count>0）可能返回，并且需要在后续的请求中传入。如果没有更多数据，page_req_key返回None。
@@ -447,13 +450,13 @@ get_market_snapshot
  listing_date                       str            上市日期 (yyyy-MM-dd)
  equity_valid                       bool           是否正股（为true时以下正股相关字段才有合法数值）
  issued_shares                      int            发行股本
- total_market_val                   float          总市值
+ total_market_val                   float          总市值（单位：元）
  net_asset                          int            资产净值
  net_profit                         int            净利润
  earning_per_share                  float          每股盈利
  outstanding_shares                 int            流通股本
  net_asset_per_share                float          每股净资产
- circular_market_val                float          流通市值
+ circular_market_val                float          流通市值（单位：元）
  ey_ratio                           float          收益率（该字段为比例字段，默认不展示%）
  pe_ratio                           float          市盈率（该字段为比例字段，默认不展示%）
  pb_ratio                           float          市净率（该字段为比例字段，默认不展示%）
@@ -491,7 +494,7 @@ get_market_snapshot
  option_type                        str            期权类型，参见 OptionType_
  strike_time                        str            期权行权日（港股A股默认是北京时间）
  option_strike_price                float          行权价
- option_contract_size               int            每份合约数
+ option_contract_size               float          每份合约数
  option_open_interest               int            总未平仓合约数
  option_implied_volatility          float          隐含波动率
  option_premium                     float          溢价
@@ -558,6 +561,13 @@ get_market_snapshot
  future_position_change             float          日增仓
  future_main_contract               bool           是否主连合约
  future_last_trade_time             string         最后交易时间，主连，当月，下月等期货没有该字段
+ trust_valid                        bool           是否基金 
+ trust_dividend_yield               float          股息率（该字段为百分比字段，默认不展示%，如20实际对应20%。） 
+ trust_aum                          float          资产规模（单位：元）
+ trust_outstanding_units            int            总发行量 
+ trust_netAssetValue                float          单位净值 
+ trust_premium                      float          溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。） 
+ trust_assetClass                   string         资产类别，见 AssetClass_ 
  ===============================   =============   ===================================================================
 
  :Example:
@@ -1154,7 +1164,7 @@ price_spread            float          当前向上的价差，亦即摆盘数�
 dark_status             str            暗盘交易状态，见 DarkStatus_
 sec_status              str            股票状态，见 SecurityStatus_ 
 strike_price            float          行权价
-contract_size           int            每份合约数
+contract_size           float          每份合约数
 open_interest           int            未平仓合约数
 implied_volatility      float          隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%。）
 premium                 float          溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）
@@ -1976,8 +1986,8 @@ inline_price_status            str                界内界外 参见 PriceType_
     req = WarrantRequest()
     req.sort_field = SortField.TURNOVER
     req.type_list = WrtType.CALL
-    req.cur_price_min = 0.2
-    req.cur_price_max = 0.201
+    req.cur_price_min = 0.1
+    req.cur_price_max = 0.2
     ret, ls = quote_ctx.get_warrant("HK.00700", req)
     if ret == RET_OK:  # 所有接口先判断是否正常，再取数据
         warrant_data_list, last_page, all_count = ls
@@ -1986,8 +1996,19 @@ inline_price_status            str                界内界外 参见 PriceType_
         print(warrant_data_list['stock'].values.tolist())   # 转为list
     else:
         print('error: ', ls)
+        
+    req = WarrantRequest()
+    req.sort_field = SortField.TURNOVER
+    req.issuer_list = ['UB','CS','BI']
+    ret, ls = quote_ctx.get_warrant(Market.HK, req)
+    if ret == RET_OK: 
+        warrant_data_list, last_page, all_count = ls
+        print(len(warrant_data_list), all_count, warrant_data_list)
+    else:
+        print('error: ', ls)
+
     quote_ctx.close()  # 所有接口结尾加上这条close，防止连接条数用尽
-	
+    
  :Output:
 
  .. code:: python
@@ -1998,6 +2019,14 @@ inline_price_status            str                界内界外 参见 PriceType_
     1  HK.18854  腾讯瑞信零七购A.C    HK.00700  CALL     CS    2020-07-09  2020-01-08      2020-07-03             NaN             100.0     10000        401.28             0.212      0.200            -0.012    -5.660377  NORMAL      0.199      0.200  10000000   100000  12200000  2581320.0  72.970   10.340            421.28    19.090  -4.854                   NaN              20.0         4.98    12450000     17.453   250000000       0.220      0.183              34.305  0.429               8.189    1.578413e+09          1.593706e+09        1.594224e+09                 NaN                 NaN                  NaN
     HK.19692
     ['HK.19692', 'HK.18854']
+
+    200 358
+    stock        name stock_owner    type issuer maturity_time   list_time last_trade_time  recovery_price  conversion_ratio  lot_size  strike_price  last_close_price  cur_price  price_change_val  change_rate      status  bid_price  ask_price   bid_vol   ask_vol  volume  turnover   score  premium  break_even_point  leverage     ipop  price_recovery_ratio  conversion_price  street_rate  street_vol  amplitude  issue_size  high_price  low_price  implied_volatility  delta  effective_leverage  list_timestamp  last_trade_timestamp  maturity_timestamp  upper_strike_price  lower_strike_price inline_price_status
+    0    HK.19792  平安瑞信零乙购A.C    HK.02318    CALL     CS    2020-12-31  2017-12-07      2020-12-24             NaN           100.000     50000        83.880             0.064      0.066             0.002     3.125000      NORMAL      0.066      0.068  12000000  12000000       0       0.0   0.075    4.420            90.480    13.128    3.302                   NaN          6.600000       11.230    22460000        0.0   200000000         0.0        0.0              22.509  0.614               8.060    1.512576e+09          1.608739e+09        1.609344e+09                 NaN                 NaN                 NaN
+    1    HK.19839  平安瑞银零乙购A.C    HK.02318    CALL     UB    2020-12-31  2017-12-11      2020-12-24             NaN           100.000     50000        83.880             0.066      0.067             0.001     1.515152      NORMAL      0.067      0.069  30000000  30000000       0       0.0  57.931    4.535            90.580    12.932    3.302                   NaN          6.700000        3.100    15500000        0.0   500000000         0.0        0.0              22.961  0.613               7.927    1.512922e+09          1.608739e+09        1.609344e+09                 NaN                 NaN                 NaN
+    ......
+    198  HK.18645  铁塔瑞银零七购A.C    HK.00788    CALL     UB    2020-07-10  2020-01-07      2020-07-06             NaN             1.000      2000         1.870             0.010      0.010             0.000     0.000000  STOP_TRADE      0.000      0.000         0         0       0       0.0   0.059   27.027             1.880   148.000  -20.855                   NaN          0.010000        4.960     3472000        0.0    70000000         0.0        0.0               0.000  0.000               0.000    1.578326e+09          1.593965e+09        1.594310e+09                 NaN                 NaN                 NaN
+    199  HK.18705  小米瑞信零七购B.C    HK.01810    CALL     CS    2020-07-30  2020-01-07      2020-07-24             NaN             5.000      1000        11.580             0.990      0.990             0.000     0.000000      NORMAL      0.990      1.070    461000    100000       0       0.0  50.234   -0.661            16.530     3.361   43.696                   NaN          4.950000        5.030     5030000        0.0   100000000         0.0        0.0               0.000  0.000               0.000    1.578326e+09          1.595520e+09        1.596038e+09                 NaN                 NaN                 NaN
 
 .. note::
 

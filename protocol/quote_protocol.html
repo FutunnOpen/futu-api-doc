@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.23 文档</title>
+  <title>行情协议 &mdash; futu-api-doc 3.24 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.23 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.23
+                3.24
               </div>
             
           
@@ -963,6 +963,7 @@
         <span class="k">optional</span> <span class="kt">int32</span> <span class="na">maxAckKLNum</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//最多返回多少根K线，如果未指定表示不限制</span>
         <span class="k">optional</span> <span class="kt">int64</span> <span class="na">needKLFieldsFlag</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//指定返回K线结构体特定某几项数据，KLFields枚举值或组合，如果未指定返回全部字段</span>
         <span class="k">optional</span> <span class="kt">bytes</span> <span class="na">nextReqKey</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//分页请求key</span>
+        <span class="k">optional</span> <span class="kt">bool</span> <span class="na">extendedTime</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>  <span class="c1">//是否获取美股盘前盘后数据，当前仅支持1分k。</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -1115,12 +1116,12 @@
 <span class="kd">message</span> <span class="nc">EquitySnapshotExData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">issuedShares</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 发行股本,即总股本</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">issuedMarketVal</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 总市值 =总股本*当前价格</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">issuedMarketVal</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 总市值 =总股本*当前价格（单位：元）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">netAsset</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 资产净值</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">netProfit</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 盈利（亏损）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">earningsPershare</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 每股盈利</span>
         <span class="k">required</span> <span class="kt">int64</span> <span class="na">outstandingShares</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 流通股本</span>
-        <span class="k">required</span> <span class="kt">double</span> <span class="na">outstandingMarketVal</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 流通市值 =流通股本*当前价格</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">outstandingMarketVal</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 流通市值 =流通股本*当前价格（单位：元）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">netAssetPershare</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 每股净资产</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">eyRate</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 收益率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）</span>
         <span class="k">required</span> <span class="kt">double</span> <span class="na">peRate</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 市盈率</span>
@@ -1217,7 +1218,18 @@
         <span class="k">required</span> <span class="kt">bool</span> <span class="na">isMainContract</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//是否主连合约</span>
 <span class="p">}</span>
 
- <span class="c1">//基本快照数据</span>
+<span class="c1">//基金类型额外数据</span>
+<span class="kd">message</span> <span class="nc">TrustSnapshotExData</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">dividendYield</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股息率（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">aum</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//资产规模（单位：元）</span>
+        <span class="k">required</span> <span class="kt">int64</span> <span class="na">outstandingUnits</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//总发行量</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">netAssetValue</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//单位净值</span>
+        <span class="k">required</span> <span class="kt">double</span> <span class="na">premium</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//溢价（该字段为百分比字段，默认不展示%，如20实际对应20%）</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">assetClass</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//Qot_Common.AssetClass，资产类别</span>
+<span class="p">}</span>
+
+<span class="c1">//基本快照数据</span>
 <span class="kd">message</span> <span class="nc">SnapshotBasicData</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票</span>
@@ -1270,6 +1282,7 @@
         <span class="k">optional</span> <span class="n">IndexSnapshotExData</span> <span class="na">indexExData</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//指数快照额外数据</span>
         <span class="k">optional</span> <span class="n">PlateSnapshotExData</span> <span class="na">plateExData</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//板块快照额外数据</span>
         <span class="k">optional</span> <span class="n">FutureSnapshotExData</span> <span class="na">futureExData</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//期货类型额外数据</span>
+        <span class="k">optional</span> <span class="n">TrustSnapshotExData</span> <span class="na">trustExData</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//基金类型额外数据</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
@@ -2862,7 +2875,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.23',
+            VERSION:'3.24',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

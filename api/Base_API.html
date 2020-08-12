@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.23 文档</title>
+  <title>基础API &mdash; futu-api-doc 3.24 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.23 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.23
+                3.24
               </div>
             
           
@@ -117,6 +117,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">枚举常量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#assetclass">AssetClass - 资产类别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#autype-k">AuType - K线复权类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#currency">Currency - 交易相关的货币类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cltrisklevel">CltRiskLevel - 账户风控状态</a></li>
@@ -460,6 +461,58 @@
 <hr class="docutils" />
 <div class="section" id="id1">
 <h2>枚举常量<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="assetclass">
+<h3>AssetClass - 资产类别<a class="headerlink" href="#assetclass" title="永久链接至标题">¶</a></h3>
+<p>资产类别定义</p>
+<dl class="class">
+<dt id="AssetClass">
+<em class="property">class </em><code class="descname">AssetClass</code><a class="headerlink" href="#AssetClass" title="永久链接至目标">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="AssetClass.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#AssetClass.NONE" title="永久链接至目标">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AssetClass.STOCK">
+<code class="descname">STOCK</code><a class="headerlink" href="#AssetClass.STOCK" title="永久链接至目标">¶</a></dt>
+<dd><p>股票</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AssetClass.BOND">
+<code class="descname">BOND</code><a class="headerlink" href="#AssetClass.BOND" title="永久链接至目标">¶</a></dt>
+<dd><p>债券</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AssetClass.COMMODITY">
+<code class="descname">COMMODITY</code><a class="headerlink" href="#AssetClass.COMMODITY" title="永久链接至目标">¶</a></dt>
+<dd><p>商品</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AssetClass.CURRENCY_MARKET">
+<code class="descname">CURRENCY_MARKET</code><a class="headerlink" href="#AssetClass.CURRENCY_MARKET" title="永久链接至目标">¶</a></dt>
+<dd><p>货币市场</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AssetClass.FUTURE">
+<code class="descname">FUTURE</code><a class="headerlink" href="#AssetClass.FUTURE" title="永久链接至目标">¶</a></dt>
+<dd><p>期货</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AssetClass.SWAP">
+<code class="descname">SWAP</code><a class="headerlink" href="#AssetClass.SWAP" title="永久链接至目标">¶</a></dt>
+<dd><p>掉期</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<hr class="docutils" />
 <div class="section" id="autype-k">
 <h3>AuType - K线复权类型<a class="headerlink" href="#autype-k" title="永久链接至标题">¶</a></h3>
 <p>K线复权定义</p>
@@ -3898,6 +3951,12 @@
 <dt id="WrtType">
 <em class="property">class </em><code class="descname">WrtType</code><a class="headerlink" href="#WrtType" title="永久链接至目标">¶</a></dt>
 <dd><dl class="attribute">
+<dt id="WrtType.NONE">
+<code class="descname">NONE</code><a class="headerlink" href="#WrtType.NONE" title="永久链接至目标">¶</a></dt>
+<dd><p>未知</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="WrtType.CALL">
 <code class="descname">CALL</code><a class="headerlink" href="#WrtType.CALL" title="永久链接至目标">¶</a></dt>
 <dd><p>认购</p>
@@ -3925,12 +3984,6 @@
 <dt id="WrtType.INLINE">
 <code class="descname">INLINE</code><a class="headerlink" href="#WrtType.INLINE" title="永久链接至目标">¶</a></dt>
 <dd><p>界内证</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="WrtType.NONE">
-<code class="descname">NONE</code><a class="headerlink" href="#WrtType.NONE" title="永久链接至目标">¶</a></dt>
-<dd><p>未知</p>
 </dd></dl>
 
 </dd></dl>
@@ -3983,7 +4036,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.23',
+            VERSION:'3.24',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

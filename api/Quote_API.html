@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.23 文档</title>
+  <title>行情API &mdash; futu-api-doc 3.24 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.23 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.23
+                3.24
               </div>
             
           
@@ -730,7 +730,7 @@ JOYCE BOUTIQUE
 <h4>request_history_kline<a class="headerlink" href="#request-history-kline" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="request_history_kline">
-<code class="descname">request_history_kline</code><span class="sig-paren">(</span><em>self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL], max_count=1000, page_req_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#request_history_kline" title="永久链接至目标">¶</a></dt>
+<code class="descname">request_history_kline</code><span class="sig-paren">(</span><em>self, code, start=None, end=None, ktype=KLType.K_DAY, autype=AuType.QFQ, fields=[KL_FIELD.ALL], max_count=1000, page_req_key=None, extended_time=False</em><span class="sig-paren">)</span><a class="headerlink" href="#request_history_kline" title="永久链接至目标">¶</a></dt>
 <dd><p>获取k线，不需要事先下载k线数据。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -778,6 +778,7 @@ start和end的组合如下：</p>
 <li><strong>fields</strong> &#8211; 需返回的字段列表，参见 <a class="reference external" href="Base_API.html#kl-field-k">KL_FIELD</a> 定义 KL_FIELD.ALL  KL_FIELD.OPEN ....</li>
 <li><strong>max_count</strong> &#8211; 本次请求最大返回的数据点个数，传None表示返回start和end之间所有的数据。注意：OpenD 是把所有数据请求到再下发给脚本的，如果K线个数过多，建议选择分页，因为超过10秒仍未获取完会提示超时。</li>
 <li><strong>page_req_key</strong> &#8211; 分页请求的key。如果start和end之间的数据点多于max_count，那么后续请求时，要传入上次调用返回的page_req_key。初始请求时应该传None。</li>
+<li><strong>extended_time</strong> &#8211; 是否允许美股盘前盘后数据，bool，False不允许，True允许。</li>
 </ul>
 </td>
 </tr>
@@ -1002,7 +1003,7 @@ All pages are finished!
 </tr>
 <tr class="row-even"><td>total_market_val</td>
 <td>float</td>
-<td>总市值</td>
+<td>总市值（单位：元）</td>
 </tr>
 <tr class="row-odd"><td>net_asset</td>
 <td>int</td>
@@ -1026,7 +1027,7 @@ All pages are finished!
 </tr>
 <tr class="row-even"><td>circular_market_val</td>
 <td>float</td>
-<td>流通市值</td>
+<td>流通市值（单位：元）</td>
 </tr>
 <tr class="row-odd"><td>ey_ratio</td>
 <td>float</td>
@@ -1177,7 +1178,7 @@ All pages are finished!
 <td>行权价</td>
 </tr>
 <tr class="row-even"><td>option_contract_size</td>
-<td>int</td>
+<td>float</td>
 <td>每份合约数</td>
 </tr>
 <tr class="row-odd"><td>option_open_interest</td>
@@ -1443,6 +1444,34 @@ All pages are finished!
 <tr class="row-even"><td>future_last_trade_time</td>
 <td>string</td>
 <td>最后交易时间，主连，当月，下月等期货没有该字段</td>
+</tr>
+<tr class="row-odd"><td>trust_valid</td>
+<td>bool</td>
+<td>是否基金</td>
+</tr>
+<tr class="row-even"><td>trust_dividend_yield</td>
+<td>float</td>
+<td>股息率（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>trust_aum</td>
+<td>float</td>
+<td>资产规模（单位：元）</td>
+</tr>
+<tr class="row-even"><td>trust_outstanding_units</td>
+<td>int</td>
+<td>总发行量</td>
+</tr>
+<tr class="row-odd"><td>trust_netAssetValue</td>
+<td>float</td>
+<td>单位净值</td>
+</tr>
+<tr class="row-even"><td>trust_premium</td>
+<td>float</td>
+<td>溢价（该字段为百分比字段，默认不展示%，如20实际对应20%。）</td>
+</tr>
+<tr class="row-odd"><td>trust_assetClass</td>
+<td>string</td>
+<td>资产类别，见 <a class="reference external" href="Base_API.html#assetclass">AssetClass</a></td>
 </tr>
 </tbody>
 </table>
@@ -2521,7 +2550,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 <td>行权价</td>
 </tr>
 <tr class="row-even"><td>contract_size</td>
-<td>int</td>
+<td>float</td>
 <td>每份合约数</td>
 </tr>
 <tr class="row-odd"><td>open_interest</td>
@@ -4290,8 +4319,8 @@ HK.TCH200330C250000
 <span class="n">req</span> <span class="o">=</span> <span class="n">WarrantRequest</span><span class="p">()</span>
 <span class="n">req</span><span class="o">.</span><span class="n">sort_field</span> <span class="o">=</span> <span class="n">SortField</span><span class="o">.</span><span class="n">TURNOVER</span>
 <span class="n">req</span><span class="o">.</span><span class="n">type_list</span> <span class="o">=</span> <span class="n">WrtType</span><span class="o">.</span><span class="n">CALL</span>
-<span class="n">req</span><span class="o">.</span><span class="n">cur_price_min</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">req</span><span class="o">.</span><span class="n">cur_price_max</span> <span class="o">=</span> <span class="mf">0.201</span>
+<span class="n">req</span><span class="o">.</span><span class="n">cur_price_min</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">req</span><span class="o">.</span><span class="n">cur_price_max</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_warrant</span><span class="p">(</span><span class="s2">&quot;HK.00700&quot;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">RET_OK</span><span class="p">:</span>  <span class="c1"># 所有接口先判断是否正常，再取数据</span>
     <span class="n">warrant_data_list</span><span class="p">,</span> <span class="n">last_page</span><span class="p">,</span> <span class="n">all_count</span> <span class="o">=</span> <span class="n">ls</span>
@@ -4300,6 +4329,17 @@ HK.TCH200330C250000
     <span class="k">print</span><span class="p">(</span><span class="n">warrant_data_list</span><span class="p">[</span><span class="s1">&#39;stock&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>   <span class="c1"># 转为list</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;error: &#39;</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
+
+<span class="n">req</span> <span class="o">=</span> <span class="n">WarrantRequest</span><span class="p">()</span>
+<span class="n">req</span><span class="o">.</span><span class="n">sort_field</span> <span class="o">=</span> <span class="n">SortField</span><span class="o">.</span><span class="n">TURNOVER</span>
+<span class="n">req</span><span class="o">.</span><span class="n">issuer_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UB&#39;</span><span class="p">,</span><span class="s1">&#39;CS&#39;</span><span class="p">,</span><span class="s1">&#39;BI&#39;</span><span class="p">]</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_warrant</span><span class="p">(</span><span class="n">Market</span><span class="o">.</span><span class="n">HK</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">RET_OK</span><span class="p">:</span>
+    <span class="n">warrant_data_list</span><span class="p">,</span> <span class="n">last_page</span><span class="p">,</span> <span class="n">all_count</span> <span class="o">=</span> <span class="n">ls</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">warrant_data_list</span><span class="p">),</span> <span class="n">all_count</span><span class="p">,</span> <span class="n">warrant_data_list</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;error: &#39;</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
+
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 所有接口结尾加上这条close，防止连接条数用尽</span>
 </pre></div>
 </div>
@@ -4317,6 +4357,14 @@ HK.TCH200330C250000
 1  HK.18854  腾讯瑞信零七购A.C    HK.00700  CALL     CS    2020-07-09  2020-01-08      2020-07-03             NaN             100.0     10000        401.28             0.212      0.200            -0.012    -5.660377  NORMAL      0.199      0.200  10000000   100000  12200000  2581320.0  72.970   10.340            421.28    19.090  -4.854                   NaN              20.0         4.98    12450000     17.453   250000000       0.220      0.183              34.305  0.429               8.189    1.578413e+09          1.593706e+09        1.594224e+09                 NaN                 NaN                  NaN
 HK.19692
 [&#39;HK.19692&#39;, &#39;HK.18854&#39;]
+
+200 358
+stock        name stock_owner    type issuer maturity_time   list_time last_trade_time  recovery_price  conversion_ratio  lot_size  strike_price  last_close_price  cur_price  price_change_val  change_rate      status  bid_price  ask_price   bid_vol   ask_vol  volume  turnover   score  premium  break_even_point  leverage     ipop  price_recovery_ratio  conversion_price  street_rate  street_vol  amplitude  issue_size  high_price  low_price  implied_volatility  delta  effective_leverage  list_timestamp  last_trade_timestamp  maturity_timestamp  upper_strike_price  lower_strike_price inline_price_status
+0    HK.19792  平安瑞信零乙购A.C    HK.02318    CALL     CS    2020-12-31  2017-12-07      2020-12-24             NaN           100.000     50000        83.880             0.064      0.066             0.002     3.125000      NORMAL      0.066      0.068  12000000  12000000       0       0.0   0.075    4.420            90.480    13.128    3.302                   NaN          6.600000       11.230    22460000        0.0   200000000         0.0        0.0              22.509  0.614               8.060    1.512576e+09          1.608739e+09        1.609344e+09                 NaN                 NaN                 NaN
+1    HK.19839  平安瑞银零乙购A.C    HK.02318    CALL     UB    2020-12-31  2017-12-11      2020-12-24             NaN           100.000     50000        83.880             0.066      0.067             0.001     1.515152      NORMAL      0.067      0.069  30000000  30000000       0       0.0  57.931    4.535            90.580    12.932    3.302                   NaN          6.700000        3.100    15500000        0.0   500000000         0.0        0.0              22.961  0.613               7.927    1.512922e+09          1.608739e+09        1.609344e+09                 NaN                 NaN                 NaN
+......
+198  HK.18645  铁塔瑞银零七购A.C    HK.00788    CALL     UB    2020-07-10  2020-01-07      2020-07-06             NaN             1.000      2000         1.870             0.010      0.010             0.000     0.000000  STOP_TRADE      0.000      0.000         0         0       0       0.0   0.059   27.027             1.880   148.000  -20.855                   NaN          0.010000        4.960     3472000        0.0    70000000         0.0        0.0               0.000  0.000               0.000    1.578326e+09          1.593965e+09        1.594310e+09                 NaN                 NaN                 NaN
+199  HK.18705  小米瑞信零七购B.C    HK.01810    CALL     CS    2020-07-30  2020-01-07      2020-07-24             NaN             5.000      1000        11.580             0.990      0.990             0.000     0.000000      NORMAL      0.990      1.070    461000    100000       0       0.0  50.234   -0.661            16.530     3.361   43.696                   NaN          4.950000        5.030     5030000        0.0   100000000         0.0        0.0               0.000  0.000               0.000    1.578326e+09          1.595520e+09        1.596038e+09                 NaN                 NaN                 NaN
 </pre></div>
 </div>
 </div></blockquote>
@@ -6814,7 +6862,7 @@ ret != RET_OK 返回错误字符串</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.23',
+            VERSION:'3.24',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
