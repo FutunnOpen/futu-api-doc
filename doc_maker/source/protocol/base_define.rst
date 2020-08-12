@@ -375,7 +375,7 @@ QotMarket - 行情市场
 	{
 		QotMarket_Unknown = 0; //未知市场
 		QotMarket_HK_Security = 1; //港股
-		QotMarket_HK_Future = 2; //港期货(目前是恒指的当月、下月期货行情)
+		QotMarket_US_Security = 11; //美股
 		QotMarket_CNSH_Security = 21; //沪股
 		QotMarket_CNSZ_Security = 22; //深股
 	}
@@ -473,7 +473,7 @@ IndexOptionType - 指数期权类型
  
 -----------------------------------------------
  
-OptionAreaType - 期权地区类型
+OptionAreaType - 期权类型（按行权时间）
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  .. code-block:: protobuf
@@ -1166,7 +1166,8 @@ OptionBasicQotExData - 基础报价的期权特有字段
 	message OptionBasicQotExData
 	{
 		required double strikePrice = 1; //行权价
-		required int32 contractSize = 2; //每份合约数
+		required int32 contractSize = 2; //每份合约数(整型数据)
+		optional double contractSizeFloat = 17; //每份合约数（浮点型数据）
 		required int32 openInterest = 3; //未平仓合约数
 		required double impliedVolatility = 4; //隐含波动率（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
 		required double premium = 5; //溢价（该字段为百分比字段，默认不展示%，如20实际对应20%，如20实际对应20%）
@@ -1181,7 +1182,7 @@ OptionBasicQotExData - 基础报价的期权特有字段
 		optional int32 expiryDateDistance = 12; //距离到期日天数
 		optional double contractNominalValue = 13; //合约名义金额
 		optional double ownerLotMultiplier = 14; //相等正股手数，指数期权无该字段
-		optional int32 optionAreaType = 15; //OptionAreaType, 期权地区类型
+		optional int32 optionAreaType = 15; //OptionAreaType, 期权类型（按行权时间）
 		optional double contractMultiplier = 16; //合约乘数，指数期权特有字段
 	}		
 
@@ -1545,7 +1546,7 @@ PriceReminderType - 提醒类型
 		PriceReminderType_BidVolUp = 12; // 买一量高于	
 		PriceReminderType_AskVolUp = 13; // 卖一量高于
 	}
-	 
+
 -----------------------------------------------
 
 PriceReminderFreq - 提醒频率
@@ -1561,7 +1562,26 @@ PriceReminderFreq - 提醒频率
 		PriceReminderFreq_OnceADay = 2; // 每日一次
 		PriceReminderFreq_OnlyOnce = 3; // 仅提醒一次
 	}
-	 
+
+-----------------------------------------------
+
+AssetClass - 资产类别
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ .. code-block:: protobuf
+ 
+	//资产类别
+	enum AssetClass
+	{
+		AssetClass_Unknow = 0; //未知
+		AssetClass_Stock = 1; //股票
+		AssetClass_Bond = 2; //债券
+		AssetClass_Commodity = 3; //商品
+		AssetClass_CurrencyMarket = 4; //货币市场
+		AssetClass_Future = 5; //期货
+		AssetClass_Swap = 6; //掉期
+	}
+
 -----------------------------------------------
 
 `Trd_Common.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Trd_Common.proto>`_ - 交易通用定义
@@ -1651,14 +1671,15 @@ OrderType - 订单类型
 	enum OrderType
 	{
 		OrderType_Unknown = 0; //未知类型
-		OrderType_Normal = 1; //普通订单(港股的增强限价订单、A股的限价委托、美股的限价订单)
-		OrderType_Market = 2; //市价订单(目前仅美股)
+		OrderType_Normal = 1; //普通订单(港股的增强限价单、A股的限价单、美股的限价单)
+		OrderType_Market = 2; //市价订单(目前支持美股、港股正股、涡轮、牛熊、界内证)
 		
-		OrderType_AbsoluteLimit = 5; //绝对限价订单(目前仅港股)，只有价格完全匹配才成交，比如你下价格为5元的买单，卖单价格必须也要是5元才能成交，低于5元也不能成交。卖出同理
-		OrderType_Auction = 6; //竞价订单(目前仅港股)，A股的早盘竞价订单类型不变还是OrderType_Normal
-		OrderType_AuctionLimit = 7; //竞价限价订单(目前仅港股)
+		OrderType_AbsoluteLimit = 5; //绝对限价订单(目前仅港股)，只有价格完全匹配才成交，否则下单失败，比如你下价格为5元的买单，卖单价格必须也要是5元才能成交，低于5元也不能成交，下单失败。卖出同理
+		OrderType_Auction = 6; //竞价订单(目前仅港股)，仅港股早盘竞价和收盘竞价有效，A股的早盘竞价订单类型不变还是OrderType_Normal
+		OrderType_AuctionLimit = 7; //竞价限价订单(目前仅港股)，仅早盘竞价和收盘竞价有效，参与竞价，且要求满足指定价格才会成交
 		OrderType_SpecialLimit = 8; //特别限价订单(目前仅港股)，成交规则同增强限价订单，且部分成交后，交易所自动撤销订单
 		OrderType_SpecialLimit_All = 9; //特别限价且要求全部成交订单(目前仅港股)，要么全部成交，要么自动撤单
+	}
 	}
 
 

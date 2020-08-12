@@ -130,6 +130,43 @@ set_all_thread_daemon
 枚举常量
 ---------
 
+AssetClass - 资产类别
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+资产类别定义
+
+..  py:class:: AssetClass
+
+ ..  py:attribute:: NONE
+
+  未知
+
+ ..  py:attribute:: STOCK
+
+  股票
+
+ ..  py:attribute:: BOND
+
+  债券
+
+ ..  py:attribute:: COMMODITY
+
+  商品
+  
+ ..  py:attribute:: CURRENCY_MARKET
+
+  货币市场
+
+ ..  py:attribute:: FUTURE
+
+  期货
+
+ ..  py:attribute:: SWAP
+
+  掉期
+
+--------------------------------------
+
 AuType - K线复权类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -688,6 +725,10 @@ Market - 行情市场
     
   港股
   
+ ..  py:attribute:: US    
+    
+  美股
+  
  ..  py:attribute:: SH  
     
   沪市
@@ -695,10 +736,6 @@ Market - 行情市场
  ..  py:attribute:: SZ
     
   深市
-  
- ..  py:attribute:: HK_FUTURE  
-    
-  港股期货
   
  ..  py:attribute:: NONE
     
@@ -911,10 +948,10 @@ IndexOptionType - 指数期权类型
   
 --------------------------------------
 
-OptionAreaType - 期权地区类型
+OptionAreaType - 期权类型（按行权时间）
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-期权地区类型定义
+期权类型（按行权时间）定义
 
 ..  py:class:: OptionAreaType
 
@@ -2552,13 +2589,16 @@ WarrantStatus - 窝轮状态
 
 --------------------------------------
 
-
 WrtType - 港股窝轮类型
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 港股窝轮类型定义
 
 ..  py:class:: WrtType
+
+ ..  py:attribute:: NONE
+
+  未知
 
  ..  py:attribute:: CALL
 
@@ -2580,8 +2620,5 @@ WrtType - 港股窝轮类型
 
   界内证
 
- ..  py:attribute:: NONE
-
-  未知
-
 --------------------------------------
+

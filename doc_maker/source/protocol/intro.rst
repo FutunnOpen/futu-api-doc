@@ -32,6 +32,7 @@
   .. _2111:  trade_protocol.html#trd-getmaxtrdqtys-proto-2111
   
   .. _Trd_GetOrderList.proto:  trade_protocol.html#trd-getorderlist-proto-2201
+  .. _2201:  trade_protocol.html#trd-getorderlist-proto-2201
   
   .. _Trd_PlaceOrder.proto:  trade_protocol.html#trd-placeorder-proto-2202
   .. _2202:  trade_protocol.html#trd-placeorder-proto-2202
@@ -301,6 +302,14 @@ API用户额度
 	* 请求协议ID: 2211_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
 	* 仅当refreshCache为True时限制频率
+
+.. _order-list-query-limit:
+
+获取订单列表
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 2201_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 仅当refreshCache为True时限制频率
 	
 .. _place-order-limit:
 
@@ -365,6 +374,7 @@ API用户额度
   * 30天内在线获取历史K线最多可请求股票数请参见 :ref:`API用户额度 <quota-limit>`
   * :red-strengthen:`30` 秒内请求最多 :red-strengthen:`60` 次，可分页的请求，第1页限频，后续页请求不限频
   * 分K提供最近2年数据，日K及以上提供近10年数据。
+  * 美股盘前和盘后仅支持 60 分钟及以下级别的K线。由于美股盘前和盘后时段为非常规交易时段，此时段的K线数据可能不足两年。
   
 .. _get-rehab-limit:
 
