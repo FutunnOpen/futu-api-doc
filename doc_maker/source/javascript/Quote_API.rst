@@ -41,6 +41,7 @@
   .. _SetPriceReminder: ../protocol/quote_protocol.html#qot-setpricereminder-proto-3220
   .. _GetPriceReminder: ../protocol/quote_protocol.html#qot-getpricereminder-proto-3221
   .. _GetUserSecurityGroup: ../protocol/quote_protocol.html#qot-getusersecuritygroup-proto-3222
+  .. _GetMarketState: ../protocol/quote_protocol.html#qot-getmarketstate-proto-3223
   .. _OnPush_Notify: ../protocol/base_define.html#notify-proto-1003
   .. _OnPush_UpdateBasicQot: ../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005
   .. _OnPush_UpdateKL: ../protocol/quote_protocol.html#qot-updatekl-proto-3007k
@@ -93,6 +94,7 @@ RequestTradeDate_                   获取市场交易日，在线拉取不在�
 SetPriceReminder_                   设置到价提醒
 GetPriceReminder_                   获取到价提醒
 GetUserSecurityGroup_               获取自选股分组
+GetMarketState_                     获取股票对应市场状态
 ================================    ==============================================
 
 
