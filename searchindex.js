@@ -16,9 +16,9 @@ Search.setIndex({envversion:50,filenames:["api/Base_API","api/Quote_API","api/Tr
 :29,basedata:29,basedatalist:29,basefilt:29,basefilter
 :29,basefilterlist:29,basic:[0,1,27,29],basic_ep:1,basic_eps:0,basiceps:[27,29],basicipodata
 :29,basicipodata:29,basicqot
-:27,basicqotlist:29,bc:[0,27],bce6z5j:11,be:0,bear:[0,1,27],befor:1,before:0,before_dark_trade_opeing:0,beforedraktradeopen:27,begin:[0,1,11,29],begintim:[27,29],benableencrypt:5,bermuda:[0,27],bf:11,bgetdetail:29,bi:[0,1,27],bid:[0,1,27,29],bid_ask_ratio:[0,1],bid_broker_id:1,bid_broker_nam:1,bid_broker_po:1,bid_frame_t:1,bid_pric:1,bid_price:0,bid_price_up:0,bid_vol:[0,1],bid_vol_up:[0,1],bidaskratio:[27,29],bidpric:[27,29],bidpriceup:27,bidvol:[27,29],bidvolup:27,big:1,bin:[4,6],bind:[5,13,22],bindfail:[5,22],bindfailed:13,bk0001:1,bk0002:1,bk0600:1,bk0901:1,bk0902:1,bk0912:1,bk0992:1,bk1000
-:1,bk1000:1,bk1001:1,bk1061:1,bk1107:1,bk1197:1,bk1249:1,bk1600:1,bk1609:1,bk1910:1,bk1911:1,bk1912:1,bk1922:1,bk1983:1,bk1986:1,bk1987:1,bk1988:1,bk1989:1,bk1990:1,bk1993:1,bk1999
-:1,bk1999:1,bk2912:1,bk2989:1,bk2990:1,bk2991:1,bk2992:1,bk2993:1,bk2994:1,bk2995:1,bk2996:1,blank:1,bmp:[1,27,28,31],board:0,bodi:[0,28],bond:[0,27],bonu:27,bonusbas:27,bonusert:27,book:0,bool:[0,1,2,5,13,22,27,29,30],boutique
+:27,basicqotlist:29,bc:[0,27],bce6z5j:11,be:0,bear:[0,1,27],befor:1,before:0,before_dark_trade_opeing:0,beforedraktradeopen:27,begin:[0,1,11,29],begintim:[27,29],benableencrypt:5,bermuda:[0,27],bf:11,bgetdetail:29,bi:[0,1,27],bid:[0,1,27,29],bid_ask_ratio:[0,1],bid_broker_id:1,bid_broker_nam:1,bid_broker_po:1,bid_frame_t:1,bid_pric:1,bid_price:0,bid_price_up:0,bid_vol:[0,1],bid_vol_up:[0,1],bidaskratio:[27,29],bidpric:[27,29],bidpriceup:27,bidvol:[27,29],bidvolup:27,big:1,bin:[4,6],bind:[5,13,22],bindfail:[5,22],bindfailed:13,bk0001:1,bk0002:1,bk0600:1,bk0901:1,bk0902:1,bk0921:1,bk0992:1,bk1000
+:1,bk1000:1,bk1001:1,bk1061:1,bk1107:1,bk1197:1,bk1249:1,bk1600:1,bk1609:1,bk1910:1,bk1911:1,bk1912:1,bk1921:1,bk1922:1,bk1983:1,bk1986:1,bk1987:1,bk1988:1,bk1989:1,bk1990:1,bk1993:1,bk1999
+:1,bk1999:1,bk2921:1,bk2989:1,bk2990:1,bk2991:1,bk2992:1,bk2993:1,bk2994:1,bk2995:1,bk2996:1,blank:1,bmp:[1,27,28,31],board:0,bodi:[0,28],bond:[0,27],bonu:27,bonusbas:27,bonusert:27,book:0,bool:[0,1,2,5,13,22,27,29,30],boutique
 :1,boutique:1,bp:[0,1,27],bqxinzcv3sxkfrxm9mnvabjd
 :11,bqxinzcv3sxkfrxm9mnvabjd:11,break_even_point:[0,1],breaker:0,breakevenpoint:[27,29],broker
 :27,broker:0,brokerasklist:29,brokerbidlist:29,brokertest:1,bui:[2,27,31],build:[17,26],buildno
