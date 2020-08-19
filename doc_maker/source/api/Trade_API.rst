@@ -293,17 +293,17 @@ order_list_query - 获取订单列表
  :param order_id: str，订单号过滤，只返回此订单号的数据，没传不过滤，返回所有
  :param status_filter_list: str数组，订单状态过滤，只返回这些状态的订单数据，没传不过滤，返回所有，参考 OrderStatus_ 类的定义
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
- :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+ :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
+ :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
  :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 :ref:`频率限制 <order-list-query-limit>`。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
- =====================        ===========   =======================================================================
+ =====================        ===========   ============================================================================================================================================================
  参数                         类型          说明
- =====================        ===========   =======================================================================
+ =====================        ===========   ============================================================================================================================================================
  trd_side                     str           交易方向，参考 TrdSide_ 类的定义
  order_type                   str           订单类型，参考 OrderType_ 类的定义。OpenHKCCTradeContext仅返回NORMAL
  order_status                 str           订单状态，参考 OrderStatus_ 类的定义。OpenHKCCTradeContext没有DISABLED
@@ -312,13 +312,13 @@ order_list_query - 获取订单列表
  stock_name                   str           名称
  qty                          float         订单数量，整数，期权单位是"张"
  price                        float         订单价格，3位小数，超过四舍五入
- create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- updated_time                 str        	  最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+ create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
+ updated_time                 str        	  最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
  dealt_qty                    float         成交数量，整数，期权单位是"张"
  dealt_avg_price              float         成交均价，无精度限制
  last_err_msg                 str           最后的错误描述，如果有错误，会有此描述最后一次错误的原因，无错误为空
  remark                       str           备注，详见 place_order_ 的说明。
- =====================        ===========   =======================================================================
+ =====================        ===========   ============================================================================================================================================================
  
  :example:
  
@@ -459,9 +459,9 @@ deal_list_query - 获取成交列表
  :param refresh_cache: bool, True表示立即向server重新请求数据，而不是使用OpenD的缓存，此时会受到 :ref:`频率限制 <deal-list-query-limit>`。默认False。特殊情况导致缓存没有及时更新才需要刷新。
  :return(ret_code, ret_data): ret_code为RET_OK时，ret_data为DataFrame数据，否则为错误原因字符串，DataFrame数据如下：
 
- =====================        ===========   ===================================================================
+ =====================        ===========   ========================================================================================================================================
  参数                         类型          说明
- =====================        ===========   ===================================================================
+ =====================        ===========   ========================================================================================================================================
  trd_side                     str           交易方向，参考 TrdSide_ 类的定义
  deal_id                      str           成交号
  order_id                     str           订单号
@@ -469,11 +469,11 @@ deal_list_query - 获取成交列表
  stock_name                   str           名称
  qty                          float         成交数量，整数，期权单位是"张"
  price                        float         成交价格，3位小数，超过四舍五入
- create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+ create_time                  str           创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
  counter_broker_id            int           对手经纪号，港股有效。OpenHKCCTradeContext无此字段
  counter_broker_name          str         	对手经纪名称，港股有效。OpenHKCCTradeContext无此字段
  status                       str           成交状态，见 DealStatus_
- =====================        ===========   ===================================================================
+ =====================        ===========   ========================================================================================================================================
  
  :example:
  
@@ -498,8 +498,8 @@ history_order_list_query - 获取历史订单列表
 
  :param status_filter_list: str数组，订单状态过滤，只返回这些状态的订单数据，没传不过滤，返回所有，参考 OrderStatus_ 类的定义
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
- :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+ :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
+ :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
@@ -531,8 +531,8 @@ history_deal_list_query - 获取历史成交列表
  获取历史成交列表。获取账户的历史交易成交列表。
 
  :param code: str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有
- :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
- :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传
+ :param start: str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
+ :param end: str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 :ref:`FutuOpenD启动参数配置 <opend-config>`
  :param trd_env: str，交易环境 TrdEnv_ ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
  :param acc_index: int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID
