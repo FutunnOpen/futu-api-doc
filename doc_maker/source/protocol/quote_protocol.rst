@@ -2557,6 +2557,60 @@
 		repeated GroupData groupList = 1; // 自选股分组列表
 	}
 
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 限频接口：30秒内最多10次
+
+`Qot_GetMarketState.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetMarketState.proto>`_ - 3223获取指定品种的市场状态
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetMarketState;
+	option go_package = "github.com/futuopen/ftapi4go/pb/qotgetmarketstate";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		repeated Qot_Common.Security securityList = 1; //股票列表
+	}
+	
+
+	message MarketInfo
+	{
+		required Qot_Common.Security security = 1; //股票代码
+		required string name = 2; // 股票名称
+		required int32 marketState = 3; //Qot_Common.QotMarketState,市场状态
+	}
+	
+	message S2C
+	{
+		repeated MarketInfo marketInfoList = 1; // 市场状态信息
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
 	message Response
 	{
 		required int32 retType = 1 [default = -400]; //RetType,返回结果

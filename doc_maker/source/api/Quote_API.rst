@@ -1104,21 +1104,21 @@ get_global_state
 
 		ret != RET_OK data为错误描述字符串
 
-		=====================   ===========   ==============================================================
-		key                      value类型                        说明
-		=====================   ===========   ==============================================================
-		market_sz               str            深圳市场状态，参见 MarketState_
-		market_sh               str            上海市场状态，参见 MarketState_
-		market_hk               str            香港市场状态，参见 MarketState_
-		market_hkfuture         str            香港期货市场状态，参见 MarketState_
-		market_usfuture         str            美国期货市场状态，参见 MarketState_
-		market_us               str            美国市场状态，参见 MarketState_
-		server_ver              str            FutuOpenD版本号
-		trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
-		qot_logined             bool           True：已登录行情服务器，False: 未登录行情服务器
-		timestamp               str            当前格林威治时间戳(秒）
-		local_timestamp         float          FutuOpenD运行机器的当前时间戳(秒)
-		=====================   ===========   ==============================================================
+=====================   ===========   ==============================================================
+key                      value类型                        说明
+=====================   ===========   ==============================================================
+market_sz               str            深圳市场状态，参见 MarketState_
+market_sh               str            上海市场状态，参见 MarketState_
+market_hk               str            香港市场状态，参见 MarketState_
+market_hkfuture         str            香港期货市场状态，参见 MarketState_
+market_usfuture         str            美国期货市场状态，参见 MarketState_ （由于美期市场，不同品种的交易时间存在差异，建议使用 get_market_state 接口获取指定品种的市场状态）
+market_us               str            美国市场状态，参见 MarketState_
+server_ver              str            FutuOpenD版本号
+trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
+qot_logined             bool           True：已登录行情服务器，False: 未登录行情服务器
+timestamp               str            当前格林威治时间戳(秒）
+local_timestamp         float          FutuOpenD运行机器的当前时间戳(秒)
+=====================   ===========   ==============================================================
  
  :Example:
 
@@ -2879,6 +2879,55 @@ get_user_security_group
 
     * 接口限制请参见 :ref:`获取自选股分组列表 <get-user-security-group-limit>`
 
+-----------------------------------------------------------------------------------------------------
+
+get_market_state
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_market_state(self, code_list)
+     
+  获取指定品种的市场状态
+  
+ :param code_list: 需要查询市场状态的股票代码列表，股票个数最多 400 个
+ :return:  (ret, data)
+
+  ret != RET_OK 返回错误字符串
+
+  ret == RET_OK 返回pd dataframe数据，数据列格式如下:
+  
+  =========================   ==================   ================================
+  参数                         类型                 说明
+  =========================   ==================   ================================
+  code                         str                  股票代码
+  stock_name                   str                  股票名称
+  market_state                 str                  市场状态
+  =========================   ==================   ================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+  
+    ret, data = quote_ctx.get_market_state(['SZ.000001', 'HK.00700'])
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+
+ :Output:
+
+ .. code:: python
+
+      stock_code  name       market_state
+   0  SZ.000001  平安银行    CLOSED
+   1  HK.00700   腾讯控股    AFTERNOON
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取指定品种的市场状态的限制 <get-market-state-limit>`
 -----------------------------------------------------------------------------------------------------
 
 SysNotifyHandlerBase - OpenD通知回调
