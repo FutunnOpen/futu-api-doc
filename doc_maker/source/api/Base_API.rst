@@ -849,6 +849,18 @@ MarketState - 行情市场状态
  ..  py:attribute:: FUTURE_CLOSE
  
   期货收盘
+
+ ..  py:attribute:: STIB_AFTER_HOURS_WAIT
+ 
+  科创板的盘后撮合时段 
+  
+ ..  py:attribute:: STIB_AFTER_HOURS_BEGIN
+ 
+  科创板的盘后交易开始
+  
+ ..  py:attribute:: STIB_AFTER_HOURS_END
+ 
+  科创板的盘后交易结束
   
 --------------------------------------
 

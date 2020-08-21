@@ -521,6 +521,10 @@ QotMarketState - 行情市场状态
 		QotMarketState_FutureBreak = 24; // 期货中盘休息
 		QotMarketState_FutureBreakOver = 25; // 期货休息后开盘
 		QotMarketState_FutureClose = 26; // 期货收盘
+		//科创板新增状态
+		QotMarketState_StibAfterHoursWait = 27; // 科创板的盘后撮合时段
+		QotMarketState_StibAfterHoursBegin = 28; // 科创板的盘后交易开始
+		QotMarketState_StibAfterHoursEnd = 29; // 科创板的盘后交易结束
 	}
 	
 
