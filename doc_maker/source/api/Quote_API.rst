@@ -2921,9 +2921,9 @@ get_market_state
 
  .. code:: python
 
-   code         stock_name   market_state
-0  SZ.000001    平安银行     AFTERNOON
-1  HK.00700     腾讯控股     AFTERNOON
+       code         stock_name   market_state
+    0  SZ.000001    平安银行     AFTERNOON
+    1  HK.00700     腾讯控股     AFTERNOON
 
 .. note::
 
