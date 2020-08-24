@@ -252,7 +252,7 @@ place_order - 下单
 
  如果是OpenFutureTradeContext，目前仅支持港股的指数期货。
 
- :param price: float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值
+ :param price: float，订单价格，3位小数（期货9位小数），超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值
  :param qty: float，订单数量，整数，期权单位是"张"，期货单位是“张”
  :param code: str，代码。如果是期货交易，且code为期货主连代码，则会自动转为对应的实际合约代码。
  :param trd_side: str，交易方向，参考 TrdSide_ 类的定义
@@ -347,7 +347,7 @@ modify_order - 修改订单
  :param modify_order_op: str，改单操作类型，参考 ModifyOrderOp_ 类的定义，有
  :param order_id: str，订单号
  :param qty: float，(改单有效)新的订单数量，整数，期权单位是"张"，期货单位是“张”
- :param price: float，(改单有效)新的订单价格，3位小数，超过四舍五入
+ :param price: float，(改单有效)新的订单价格，3位小数（期货是9位小数），超过四舍五入
  :param adjust_limit: float，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。期货会忽略此参数。
  :param trd_env: str，交易环境 TrdEnv_ ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)
  :param acc_id: int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户
@@ -564,7 +564,7 @@ acctradinginfo_query - 查询账户下最大可买卖数量
 
  :param order_type: 订单类型，参见 OrderType_
  :param code: 证券代码，例如'HK.00700'。如果是期货交易，且code为期货主连代码，则会自动转为对应的实际合约代码。
- :param price: 报价，3位小数，超过四舍五入
+ :param price: 报价，3位小数（期货9位小数），超过四舍五入
  :param order_id: 订单号。如果是新下单，则可以传None。如果是改单则要传单号，此时计算最大可买可卖时会包括该订单所消耗的购买力，新下订单需要等待半秒才可使用该接口。
  :param adjust_limit: 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整。期货会忽略此参数。
  :param trd_env: 交易环境，参见 TrdEnv_
