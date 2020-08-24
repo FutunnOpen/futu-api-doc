@@ -2683,7 +2683,7 @@ set_price_reminder
  
  :param code: 股票
  :param op: SetPriceReminderOp_，操作类型
- :param key: int64，标识，新增的情况不需要填
+ :param key: int64，标识，新增和删除全部的情况不需要填
  :param reminder_type: PriceReminderType_，到价提醒的类型，删除、启用、禁用的情况下会忽略该入参
  :param reminder_freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参
  :param value: float，提醒值，删除、启用、禁用的情况下会忽略该入参

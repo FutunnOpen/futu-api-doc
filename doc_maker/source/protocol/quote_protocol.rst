@@ -2367,6 +2367,7 @@
 		SetPriceReminderOp_Enable = 3; //启用
 		SetPriceReminderOp_Disable = 4; //禁用
 		SetPriceReminderOp_Modify = 5; //修改
+		SetPriceReminderOp_DelAll = 6; //删除全部（删除指定股票下的所有到价提醒）
 	}
 
 	message C2S

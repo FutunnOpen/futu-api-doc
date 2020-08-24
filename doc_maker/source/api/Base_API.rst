@@ -1546,6 +1546,10 @@ SetPriceReminderOp - 设置到价提醒操作
  ..  py:attribute:: MODIFY
   
   修改
+   
+ ..  py:attribute:: DEL_ALL
+  
+  删除全部（删除指定股票下的所有到价提醒）
   
 --------------------------------------
 
