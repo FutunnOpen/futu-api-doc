@@ -2691,7 +2691,7 @@ set_price_reminder
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
 	
-    ret == RET_OK data为key
+    ret == RET_OK data为key。当删除指定股票的全部提醒时，返回data为0。
 ..
 
  :Example:
