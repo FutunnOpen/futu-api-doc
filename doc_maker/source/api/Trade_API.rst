@@ -250,7 +250,6 @@ place_order - 下单
  
  注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。
 
- 如果是OpenFutureTradeContext，目前仅支持港股的指数期货。
 
  :param price: float，订单价格，3位小数（期货9位小数），超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值
  :param qty: float，订单数量，期权期货单位是"张"
@@ -341,8 +340,6 @@ modify_order - 修改订单
  修改订单。修改订单，包括修改订单的价格和数量(即以前的改单)、撤单、失效、生效、删除等。
  
  如果是OpenHKCCTradeContext，将不支持改单。可撤单。删除订单是本地操作。
-
- 如果是OpenFutureTradeContext，将不支持订单生效、失效操作。
 
  :param modify_order_op: str，改单操作类型，参考 ModifyOrderOp_ 类的定义，有
  :param order_id: str，订单号
