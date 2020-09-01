@@ -43,7 +43,7 @@ FutuOpenD使用说明
   
   * 下载方式同命令行FutuOpenD。
 
-方式1：`富途官网下载 <https://www.futunn.com/download/index/>`_ 
+方式1：`富途官网下载 <https://www.futunn.com/download/openAPI/>`_ 
 
 .. image:: ../_static/futunn.com.png
 
