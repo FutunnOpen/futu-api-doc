@@ -849,6 +849,18 @@ MarketState - 行情市场状态
  ..  py:attribute:: FUTURE_CLOSE
  
   期货收盘
+
+ ..  py:attribute:: STIB_AFTER_HOURS_WAIT
+ 
+  科创板的盘后撮合时段 
+  
+ ..  py:attribute:: STIB_AFTER_HOURS_BEGIN
+ 
+  科创板的盘后交易开始
+  
+ ..  py:attribute:: STIB_AFTER_HOURS_END
+ 
+  科创板的盘后交易结束
   
 --------------------------------------
 
@@ -986,7 +998,7 @@ OrderType - 订单类型
   
  ..  py:attribute:: NORMAL
   
-  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单)。目前港股期权只能指定此订单类型。
+  普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单，CME期货的限价单)。目前港股期权只能指定此订单类型。
   
  ..  py:attribute:: MARKET
  
@@ -1534,6 +1546,10 @@ SetPriceReminderOp - 设置到价提醒操作
  ..  py:attribute:: MODIFY
   
   修改
+   
+ ..  py:attribute:: DEL_ALL
+  
+  删除全部（删除指定股票下的所有到价提醒）
   
 --------------------------------------
 
@@ -2560,6 +2576,7 @@ UserSecurityGroupType - 自选股的类型
 
 
 --------------------------------------
+
 WarrantStatus - 窝轮状态
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
