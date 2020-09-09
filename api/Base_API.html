@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础API &mdash; futu-api-doc 3.24 文档</title>
+  <title>基础API &mdash; futu-api-doc 3.25 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
         <link rel="next" title="行情API" href="Quote_API.html"/>
         <link rel="prev" title="安装指南" href="setup.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.24
+                3.25
               </div>
             
           
@@ -171,6 +171,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#trdmarket">TrdMarket - 交易市场类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#trdside">TrdSide - 交易方向类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usersecuritygrouptype">UserSecurityGroupType - 自选股的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#warrantstatus">WarrantStatus - 窝轮状态</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wrttype">WrtType - 港股窝轮类型</a></li>
 </ul>
 </li>
@@ -1473,6 +1474,24 @@
 <dd><p>期货收盘</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="MarketState.STIB_AFTER_HOURS_WAIT">
+<code class="descname">STIB_AFTER_HOURS_WAIT</code><a class="headerlink" href="#MarketState.STIB_AFTER_HOURS_WAIT" title="永久链接至目标">¶</a></dt>
+<dd><p>科创板的盘后撮合时段</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.STIB_AFTER_HOURS_BEGIN">
+<code class="descname">STIB_AFTER_HOURS_BEGIN</code><a class="headerlink" href="#MarketState.STIB_AFTER_HOURS_BEGIN" title="永久链接至目标">¶</a></dt>
+<dd><p>科创板的盘后交易开始</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="MarketState.STIB_AFTER_HOURS_END">
+<code class="descname">STIB_AFTER_HOURS_END</code><a class="headerlink" href="#MarketState.STIB_AFTER_HOURS_END" title="永久链接至目标">¶</a></dt>
+<dd><p>科创板的盘后交易结束</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1656,7 +1675,7 @@
 <dl class="attribute">
 <dt id="OrderType.NORMAL">
 <code class="descname">NORMAL</code><a class="headerlink" href="#OrderType.NORMAL" title="永久链接至目标">¶</a></dt>
-<dd><p>普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单)。目前港股期权只能指定此订单类型。</p>
+<dd><p>普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单，CME期货的限价单)。目前港股期权只能指定此订单类型。</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -2436,6 +2455,12 @@
 <dt id="SetPriceReminderOp.MODIFY">
 <code class="descname">MODIFY</code><a class="headerlink" href="#SetPriceReminderOp.MODIFY" title="永久链接至目标">¶</a></dt>
 <dd><p>修改</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="SetPriceReminderOp.DEL_ALL">
+<code class="descname">DEL_ALL</code><a class="headerlink" href="#SetPriceReminderOp.DEL_ALL" title="永久链接至目标">¶</a></dt>
+<dd><p>删除全部（删除指定股票下的所有到价提醒）</p>
 </dd></dl>
 
 </dd></dl>
@@ -3906,6 +3931,10 @@
 
 </dd></dl>
 
+</div>
+<hr class="docutils" />
+<div class="section" id="warrantstatus">
+<h3>WarrantStatus - 窝轮状态<a class="headerlink" href="#warrantstatus" title="永久链接至标题">¶</a></h3>
 <p>窝轮状态定义</p>
 <dl class="class">
 <dt id="WarrantStatus">
@@ -4036,7 +4065,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.24',
+            VERSION:'3.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

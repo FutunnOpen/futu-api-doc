@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.24 文档</title>
+  <title>行情API &mdash; futu-api-doc 3.25 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
         <link rel="next" title="交易API" href="Trade_API.html"/>
         <link rel="prev" title="基础API" href="Base_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.24
+                3.25
               </div>
             
           
@@ -152,6 +152,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#set-price-reminder">set_price_reminder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-price-reminder">get_price_reminder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-user-security-group">get_user_security_group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-market-state">get_market_state</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#sysnotifyhandlerbase-opend">SysNotifyHandlerBase - OpenD通知回调</a><ul>
@@ -1764,14 +1765,14 @@ All pages are finished!
 <tr class="row-odd"><td>HK.HSCEI Stock</td>
 <td>国指成份股</td>
 </tr>
-<tr class="row-even"><td>HK.BK9910</td>
-<td>香港主板</td>
+<tr class="row-even"><td>HK.Motherboard</td>
+<td>港股主板</td>
 </tr>
 <tr class="row-odd"><td>HK.GEM</td>
 <td>港股创业板</td>
 </tr>
 <tr class="row-even"><td>HK.BK1910</td>
-<td>全部港股</td>
+<td>所有港股</td>
 </tr>
 <tr class="row-odd"><td>HK.BK1911</td>
 <td>主板H股</td>
@@ -1780,25 +1781,25 @@ All pages are finished!
 <td>创业板H股</td>
 </tr>
 <tr class="row-odd"><td>HK.Fund</td>
-<td>ETF(港股基金)</td>
+<td>港股基金</td>
 </tr>
 <tr class="row-even"><td>HK.BK1600</td>
-<td>热度榜(港)</td>
+<td>富途热门(港)</td>
 </tr>
 <tr class="row-odd"><td>HK.BK1986</td>
-<td>全部期货(港)</td>
+<td>港股期货全类型</td>
 </tr>
 <tr class="row-even"><td>HK.BK1987</td>
-<td>股指期货(港)</td>
+<td>港股股指期货</td>
 </tr>
 <tr class="row-odd"><td>HK.BK1988</td>
-<td>汇率期货(港)</td>
+<td>港股汇率期货</td>
 </tr>
 <tr class="row-even"><td>HK.BK1989</td>
-<td>金属期货(港)</td>
+<td>港股金属期货</td>
 </tr>
 <tr class="row-odd"><td>HK.BK1990</td>
-<td>股票期货(港)</td>
+<td>港股股票期货</td>
 </tr>
 <tr class="row-even"><td>HK.BK1921</td>
 <td>已上市新股-港股</td>
@@ -1816,10 +1817,10 @@ All pages are finished!
 <td>沪深指数</td>
 </tr>
 <tr class="row-odd"><td>SH.3000005</td>
-<td>全部A股(沪深)</td>
+<td>沪深全部A股</td>
 </tr>
 <tr class="row-even"><td>SH.BK0600</td>
-<td>热度榜(沪深)</td>
+<td>富途热门(沪深)</td>
 </tr>
 <tr class="row-odd"><td>SH.BK0992</td>
 <td>科创板</td>
@@ -1831,37 +1832,37 @@ All pages are finished!
 <td>深证主板</td>
 </tr>
 <tr class="row-even"><td>SZ.3000003</td>
-<td>中小板</td>
+<td>中小企业板块</td>
 </tr>
 <tr class="row-odd"><td>SZ.3000004</td>
-<td>创业板(深)</td>
+<td>深证创业板</td>
 </tr>
 <tr class="row-even"><td>US.USAALL</td>
-<td>全部美股</td>
+<td>所有美股</td>
 </tr>
 <tr class="row-odd"><td>US.BK2989</td>
-<td>全部期货(美)</td>
+<td>美股期货全类型</td>
 </tr>
 <tr class="row-even"><td>US.BK2990</td>
-<td>农产品期货(美)</td>
+<td>美股农产品期货</td>
 </tr>
 <tr class="row-odd"><td>US.BK2991</td>
-<td>利率期货(美)</td>
+<td>美股利率期货</td>
 </tr>
 <tr class="row-even"><td>US.BK2992</td>
-<td>外汇期货(美)</td>
+<td>美股外汇期货</td>
 </tr>
 <tr class="row-odd"><td>US.BK2993</td>
-<td>数字货币期货(美)</td>
+<td>美股数字货币期货</td>
 </tr>
 <tr class="row-even"><td>US.BK2994</td>
-<td>股指期货(美)</td>
+<td>美股股指期货</td>
 </tr>
 <tr class="row-odd"><td>US.BK2995</td>
-<td>能源化工期货(美)</td>
+<td>美股能源化工期货</td>
 </tr>
 <tr class="row-even"><td>US.BK2996</td>
-<td>贵金属期货(美)</td>
+<td>美股贵金属期货</td>
 </tr>
 <tr class="row-odd"><td>US.BK2921</td>
 <td>已上市新股-美股</td>
@@ -2370,11 +2371,17 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">(ret, data)<p>ret == RET_OK data为包含全局状态的字典，含义如下</p>
 <p>ret != RET_OK data为错误描述字符串</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="12%" />
-<col width="66%" />
+<col width="13%" />
+<col width="7%" />
+<col width="81%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">key</th>
@@ -2401,7 +2408,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 </tr>
 <tr class="row-even"><td>market_usfuture</td>
 <td>str</td>
-<td>美国期货市场状态，参见 <a class="reference external" href="Base_API.html#marketstate">MarketState</a></td>
+<td>美国期货市场状态，参见 <a class="reference external" href="Base_API.html#marketstate">MarketState</a> （由于美期市场，不同品种的交易时间存在差异，建议使用 get_market_state 接口获取指定品种的市场状态）</td>
 </tr>
 <tr class="row-odd"><td>market_us</td>
 <td>str</td>
@@ -2429,9 +2436,12 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 </tr>
 </tbody>
 </table>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"></td>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
 </tr>
 </tbody>
 </table>
@@ -2441,8 +2451,7 @@ unsubscribe successfully！current subscription status: (0, {&#39;total_used&#39
 <span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># 结束后记得关闭当条连接，防止连接条数用尽</span>
 </pre></div>
 </div>
-</dd></dl>
-
+</div></blockquote>
 </div>
 <div class="section" id="get-stock-quote">
 <h4>get_stock_quote<a class="headerlink" href="#get-stock-quote" title="永久链接至标题">¶</a></h4>
@@ -5839,7 +5848,7 @@ start和end的组合如下：</p>
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; 股票</li>
 <li><strong>op</strong> &#8211; <a class="reference external" href="Base_API.html#setpricereminderop">SetPriceReminderOp</a>，操作类型</li>
-<li><strong>key</strong> &#8211; int64，标识，新增的情况不需要填</li>
+<li><strong>key</strong> &#8211; int64，标识，新增和删除全部的情况不需要填</li>
 <li><strong>reminder_type</strong> &#8211; <a class="reference external" href="Base_API.html#priceremindertype">PriceReminderType</a>，到价提醒的类型，删除、启用、禁用的情况下会忽略该入参</li>
 <li><strong>reminder_freq</strong> &#8211; <a class="reference external" href="Base_API.html#pricereminderfreq">PriceReminderFreq</a>，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参</li>
 <li><strong>value</strong> &#8211; float，提醒值，删除、启用、禁用的情况下会忽略该入参</li>
@@ -5849,7 +5858,7 @@ start和end的组合如下：</p>
 </tr>
 <tr class="field-even field"><th class="field-name">返回:</th><td class="field-body"><p class="first last"><p>(ret, data)
 ret != RET_OK 返回错误字符串</p>
-<p>ret == RET_OK data为key</p>
+<p>ret == RET_OK data为key。当删除指定股票的全部提醒时，返回data为0。</p>
 </p>
 </td>
 </tr>
@@ -6135,6 +6144,88 @@ ret != RET_OK 返回错误字符串</p>
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-user-security-group-limit"><span class="std std-ref">获取自选股分组列表</span></a></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-market-state">
+<h4>get_market_state<a class="headerlink" href="#get-market-state" title="永久链接至标题">¶</a></h4>
+<dl class="function">
+<dt id="get_market_state">
+<code class="descname">get_market_state</code><span class="sig-paren">(</span><em>self</em>, <em>code_list</em><span class="sig-paren">)</span><a class="headerlink" href="#get_market_state" title="永久链接至目标">¶</a></dt>
+<dd><blockquote>
+<div>获取指定品种的市场状态</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><strong>code_list</strong> &#8211; 需要查询市场状态的股票代码列表，股票个数最多 400 个</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">(ret, data)<p>ret != RET_OK 返回错误字符串</p>
+<p>ret == RET_OK 返回pd dataframe数据，数据列格式如下:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="24%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">类型</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>code</td>
+<td>str</td>
+<td>股票代码</td>
+</tr>
+<tr class="row-odd"><td>stock_name</td>
+<td>str</td>
+<td>股票名称</td>
+</tr>
+<tr class="row-even"><td>market_state</td>
+<td>str</td>
+<td>市场状态</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">futu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">quote_ctx</span> <span class="o">=</span> <span class="n">OpenQuoteContext</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">11111</span><span class="p">)</span>
+
+<span class="n">ret</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">quote_ctx</span><span class="o">.</span><span class="n">get_market_state</span><span class="p">([</span><span class="s1">&#39;SZ.000001&#39;</span><span class="p">,</span> <span class="s1">&#39;HK.00700&#39;</span><span class="p">])</span>
+<span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="n">RET_OK</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;error:&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">quote_ctx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># 结束后记得关闭当条连接，防止连接条数用尽</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Output:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span>   code         stock_name   market_state
+0  SZ.000001    平安银行     AFTERNOON
+1  HK.00700     腾讯控股     AFTERNOON
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>接口限制请参见 <a class="reference internal" href="../protocol/intro.html#get-market-state-limit"><span class="std std-ref">获取指定品种的市场状态的限制</span></a></li>
 </ul>
 </div>
 </div>
@@ -6862,7 +6953,7 @@ ret != RET_OK 返回错误字符串</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.24',
+            VERSION:'3.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情协议 &mdash; futu-api-doc 3.24 文档</title>
+  <title>行情协议 &mdash; futu-api-doc 3.25 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
         <link rel="next" title="交易协议" href="trade_protocol.html"/>
         <link rel="prev" title="基础定义" href="base_define.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.24
+                3.25
               </div>
             
           
@@ -142,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#qot-getpricereminder-proto-3221">Qot_GetPriceReminder.proto - 3221获取到价提醒</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-updatepricereminder-proto-3019">Qot_UpdatePriceReminder.proto - 3019到价提醒通知</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qot-getusersecuritygroup-proto-3222">Qot_GetUserSecurityGroup.proto - 3222获取自选股分组列表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qot-getmarketstate-proto-3223">Qot_GetMarketState.proto - 3223获取指定品种的市场状态</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="trade_protocol.html">交易协议</a></li>
@@ -2623,6 +2624,7 @@
         <span class="na">SetPriceReminderOp_Enable</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//启用</span>
         <span class="na">SetPriceReminderOp_Disable</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">//禁用</span>
         <span class="na">SetPriceReminderOp_Modify</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//修改</span>
+        <span class="na">SetPriceReminderOp_DelAll</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">//删除全部（删除指定股票下的所有到价提醒）</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">C2S</span>
@@ -2635,10 +2637,17 @@
         <span class="k">optional</span> <span class="kt">double</span> <span class="na">value</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 提醒值，删除、启用、禁用的情况下会忽略该字段</span>
         <span class="k">optional</span> <span class="kt">string</span> <span class="na">note</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 用户设置到价提醒时的标注，最多10个字符，删除、启用、禁用的情况下会忽略该字段</span>
 <span class="p">}</span>
+<span class="c1">//注意：</span>
+<span class="c1">//1. API 中成交量设置统一以股为单位。但是牛牛客户端中，A 股是以为手为单位展示</span>
+<span class="c1">//2. 到价提醒类型，存在最小精度，如下：</span>
+<span class="c1">// TURNOVER_UP：成交额最小精度为 10 元（人民币元，港元，美元）。传入的数值会自动向下取整到最小精度的整数倍。如果设置【00700成交额102元提醒】，设置后会得到【00700成交额100元提醒】；如果设置【00700 成交额 8 元提醒】，设置后会得到【00700 成交额 0 元提醒】</span>
+<span class="c1">// VOLUME_UP：A 股成交量最小精度为 1000 股，其他市场股票成交量最小精度为 10 股，期权成交量最小精度为0.001张。传入的数值会自动向下取整到最小精度的整数倍。</span>
+<span class="c1">// BID_VOL_UP、ASK_VOL_UP：A 股的买一卖一量最小精度为 100 股。传入的数值会自动向下取整到最小精度的整数倍。</span>
+<span class="c1">// 其余到价提醒类型精度支持到小数点后 3 位</span>
 
 <span class="kd">message</span> <span class="nc">S2C</span>
 <span class="p">{</span>
-
+        <span class="k">required</span> <span class="kt">int64</span> <span class="na">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//设置成功的情况下返回对应的key，不成功返回0</span>
 <span class="p">}</span>
 
 <span class="kd">message</span> <span class="nc">Request</span>
@@ -2813,6 +2822,11 @@
         <span class="k">repeated</span> <span class="n">GroupData</span> <span class="na">groupList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 自选股分组列表</span>
 <span class="p">}</span>
 
+<span class="kd">message</span> <span class="nc">Request</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="kd">message</span> <span class="nc">Response</span>
 <span class="p">{</span>
         <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
@@ -2827,6 +2841,56 @@
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>限频接口：30秒内最多10次</li>
+</ul>
+</div>
+</div>
+<div class="section" id="qot-getmarketstate-proto-3223">
+<h2><a class="reference external" href="https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetMarketState.proto">Qot_GetMarketState.proto</a> - 3223获取指定品种的市场状态<a class="headerlink" href="#qot-getmarketstate-proto-3223" title="永久链接至标题">¶</a></h2>
+<div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<span class="kn">package</span> <span class="nn">Qot_GetMarketState</span><span class="p">;</span>
+<span class="k">option</span> <span class="na">go_package</span> <span class="o">=</span> <span class="s">&quot;github.com/futuopen/ftapi4go/pb/qotgetmarketstate&quot;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="s">&quot;Common.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="s">&quot;Qot_Common.proto&quot;</span><span class="p">;</span>
+
+<span class="kd">message</span> <span class="nc">C2S</span>
+<span class="p">{</span>
+        <span class="k">repeated</span> <span class="n">Qot_Common.Security</span> <span class="na">securityList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票列表</span>
+<span class="p">}</span>
+
+
+<span class="kd">message</span> <span class="nc">MarketInfo</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">Qot_Common.Security</span> <span class="na">security</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//股票代码</span>
+        <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 股票名称</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">marketState</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">//Qot_Common.QotMarketState,市场状态</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">S2C</span>
+<span class="p">{</span>
+        <span class="k">repeated</span> <span class="n">MarketInfo</span> <span class="na">marketInfoList</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 市场状态信息</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Request</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="n">C2S</span> <span class="na">c2s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">message</span> <span class="nc">Response</span>
+<span class="p">{</span>
+        <span class="k">required</span> <span class="kt">int32</span> <span class="na">retType</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">];</span> <span class="c1">//RetType,返回结果</span>
+        <span class="k">optional</span> <span class="kt">string</span> <span class="na">retMsg</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">optional</span> <span class="kt">int32</span> <span class="na">errCode</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+        <span class="k">optional</span> <span class="n">S2C</span> <span class="na">s2c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>限频接口：30秒内最多10次</li>
+<li>每次请求的数据个数最多 400 个</li>
 </ul>
 </div>
 </div>
@@ -2875,7 +2939,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.24',
+            VERSION:'3.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

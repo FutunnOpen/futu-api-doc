@@ -2015,7 +2015,7 @@
 	* 财务属性筛选条件参考 `FinancialField <base_define.html#financialfield>`_
 	* 财报时间周期参考 `FinancialQuarter <base_define.html#financialquarter>`_
 	* 排序方向参考 `SortDir <base_define.html#sortdir>`_
-	* 限频接口：30秒内最多10次	
+	* 限频接口：30秒内最多10次
 	* 使用类似最新价的排序字段获取数据的时候，多页获取的间隙，数据的排序有可能是变化的。
 		
 ----------------------------------------------------------------------------------------
@@ -2367,6 +2367,7 @@
 		SetPriceReminderOp_Enable = 3; //启用
 		SetPriceReminderOp_Disable = 4; //禁用
 		SetPriceReminderOp_Modify = 5; //修改
+		SetPriceReminderOp_DelAll = 6; //删除全部（删除指定股票下的所有到价提醒）
 	}
 
 	message C2S
@@ -2379,10 +2380,17 @@
 		optional double value = 5; // 提醒值，删除、启用、禁用的情况下会忽略该字段
 		optional string note = 6; // 用户设置到价提醒时的标注，最多10个字符，删除、启用、禁用的情况下会忽略该字段
 	}
+	//注意：
+	//1. API 中成交量设置统一以股为单位。但是牛牛客户端中，A 股是以为手为单位展示
+	//2. 到价提醒类型，存在最小精度，如下：
+	// TURNOVER_UP：成交额最小精度为 10 元（人民币元，港元，美元）。传入的数值会自动向下取整到最小精度的整数倍。如果设置【00700成交额102元提醒】，设置后会得到【00700成交额100元提醒】；如果设置【00700 成交额 8 元提醒】，设置后会得到【00700 成交额 0 元提醒】
+	// VOLUME_UP：A 股成交量最小精度为 1000 股，其他市场股票成交量最小精度为 10 股，期权成交量最小精度为0.001张。传入的数值会自动向下取整到最小精度的整数倍。
+	// BID_VOL_UP、ASK_VOL_UP：A 股的买一卖一量最小精度为 100 股。传入的数值会自动向下取整到最小精度的整数倍。
+	// 其余到价提醒类型精度支持到小数点后 3 位
 
 	message S2C
 	{
-		
+		required int64 key = 1; //设置成功的情况下返回对应的key，不成功返回0
 	}
 
 	message Request
@@ -2557,6 +2565,11 @@
 		repeated GroupData groupList = 1; // 自选股分组列表
 	}
 
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
 	message Response
 	{
 		required int32 retType = 1 [default = -400]; //RetType,返回结果
@@ -2570,3 +2583,53 @@
 .. note::
 	
 	* 限频接口：30秒内最多10次
+
+`Qot_GetMarketState.proto <https://github.com/FutunnOpen/py-futu-api/tree/master/futu/common/pb/Qot_GetMarketState.proto>`_ - 3223获取指定品种的市场状态
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.. code-block:: protobuf
+
+	syntax = "proto2";
+	package Qot_GetMarketState;
+	option go_package = "github.com/futuopen/ftapi4go/pb/qotgetmarketstate";
+
+	import "Common.proto";
+	import "Qot_Common.proto";
+
+	message C2S
+	{
+		repeated Qot_Common.Security securityList = 1; //股票列表
+	}
+	
+
+	message MarketInfo
+	{
+		required Qot_Common.Security security = 1; //股票代码
+		required string name = 2; // 股票名称
+		required int32 marketState = 3; //Qot_Common.QotMarketState,市场状态
+	}
+	
+	message S2C
+	{
+		repeated MarketInfo marketInfoList = 1; // 市场状态信息
+	}
+
+	message Request
+	{
+		required C2S c2s = 1;
+	}
+
+	message Response
+	{
+		required int32 retType = 1 [default = -400]; //RetType,返回结果
+		optional string retMsg = 2;
+		optional int32 errCode = 3;
+		
+		optional S2C s2c = 4;
+	}
+
+
+.. note::
+	
+	* 限频接口：30秒内最多10次
+	* 每次请求的数据个数最多 400 个

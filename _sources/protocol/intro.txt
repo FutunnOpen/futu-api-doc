@@ -136,6 +136,9 @@
   .. _Qot_GetUserSecurityGroup.proto:  quote_protocol.html#qot-getusersecuritygroup-proto-3222
   .. _3222:  quote_protocol.html#qot-getusersecuritygroup-proto-3222
   
+  .. _Qot_GetMarketState.proto:  quote_protocol.html#qot-getmarketstate-proto-3223
+  .. _3223:  quote_protocol.html#qot-getmarketstate-proto-3223
+
   .. role:: red-strengthen
 
 特点
@@ -212,7 +215,8 @@
  3219             Qot_RequestTradeDate.proto_             获取市场交易日，在线拉取不在本地计算
  3220             Qot_SetPriceReminder.proto_             设置到价提醒
  3221             Qot_GetPriceReminder.proto_             获取到价提醒 
- 3222             Qot_GetUserSecurityGroup.proto_         获取自选股分组列表  
+ 3222             Qot_GetUserSecurityGroup.proto_         获取自选股分组列表
+ 3223             Qot_GetMarketState.proto_               获取指定品种的市场状态  
  ==============   ==================================     ==================================================================
 
 .. note::
@@ -537,6 +541,14 @@ API用户额度
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	* 请求协议ID: 3222_
 	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+
+.. _get-market-state-limit:
+	
+获取指定品种的市场状态的限制
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	* 请求协议ID: 3223_
+	* :red-strengthen:`30` 秒内请求最多 :red-strengthen:`10` 次
+	* 每次请求的数据个数最多 :red-strengthen:`400` 个
 	
 协议请求流程 
 -------------

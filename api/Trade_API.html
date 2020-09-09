@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>交易API &mdash; futu-api-doc 3.24 文档</title>
+  <title>交易API &mdash; futu-api-doc 3.25 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
         <link rel="next" title="介绍" href="../net/intro.html"/>
         <link rel="prev" title="行情API" href="Quote_API.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.24
+                3.25
               </div>
             
           
@@ -604,11 +604,11 @@
 </tr>
 <tr class="row-odd"><td>qty</td>
 <td>float</td>
-<td>持有数量，整数，期权单位是&#8221;张&#8221;，下同</td>
+<td>持有数量，期权期货单位是&#8221;张&#8221;，下同</td>
 </tr>
 <tr class="row-even"><td>can_sell_qty</td>
 <td>float</td>
-<td>可卖数量，整数。</td>
+<td>可卖数量</td>
 </tr>
 <tr class="row-odd"><td>nominal_price</td>
 <td>float</td>
@@ -699,14 +699,13 @@
 <code class="descname">place_order</code><span class="sig-paren">(</span><em>self</em>, <em>price</em>, <em>qty</em>, <em>code</em>, <em>trd_side</em>, <em>order_type=OrderType.NORMAL</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em>, <em>remark=None</em><span class="sig-paren">)</span><a class="headerlink" href="#place_order" title="永久链接至目标">¶</a></dt>
 <dd><p>下单交易。</p>
 <p>注意，由于python api是同步的，但网络收发是异步的，当place_order对应的应答数据包与订单成交推送（TradeDealHandlerBase）或订单状态变化推送（TradeOrderHandlerBase）间隔很短时，就可能出现虽然是place_order的数据包先返回，但推送的回调会先被调用的情况。例如可能先调用了TradeOrderHandlerBase，然后place_order这个接口才返回。</p>
-<p>如果是OpenFutureTradeContext，目前仅支持港股的指数期货。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
-<li><strong>price</strong> &#8211; float，订单价格，3位小数，超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值</li>
-<li><strong>qty</strong> &#8211; float，订单数量，整数，期权单位是&#8221;张&#8221;，期货单位是“张”</li>
+<li><strong>price</strong> &#8211; float，订单价格，3位小数（期货9位小数），超过四舍五入，当订单是市价单或竞价单类型，忽略该参数传值</li>
+<li><strong>qty</strong> &#8211; float，订单数量，期权期货单位是&#8221;张&#8221;</li>
 <li><strong>code</strong> &#8211; str，代码。如果是期货交易，且code为期货主连代码，则会自动转为对应的实际合约代码。</li>
 <li><strong>trd_side</strong> &#8211; str，交易方向，参考 <a class="reference external" href="Base_API.html#trdside">TrdSide</a> 类的定义</li>
 <li><strong>order_type</strong> &#8211; str，订单类型，参考 <a class="reference external" href="Base_API.html#ordertype">OrderType</a> 类的定义</li>
@@ -759,8 +758,8 @@
 <li><strong>order_id</strong> &#8211; str，订单号过滤，只返回此订单号的数据，没传不过滤，返回所有</li>
 <li><strong>status_filter_list</strong> &#8211; str数组，订单状态过滤，只返回这些状态的订单数据，没传不过滤，返回所有，参考 <a class="reference external" href="Base_API.html#orderstatus">OrderStatus</a> 类的定义</li>
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
-<li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
-<li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
+<li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></li>
+<li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
@@ -776,9 +775,9 @@
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="20%" />
-<col width="10%" />
-<col width="70%" />
+<col width="11%" />
+<col width="6%" />
+<col width="83%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -813,7 +812,7 @@
 </tr>
 <tr class="row-even"><td>qty</td>
 <td>float</td>
-<td>订单数量，整数，期权单位是&#8221;张&#8221;</td>
+<td>订单数量，期权期货单位是&#8221;张&#8221;</td>
 </tr>
 <tr class="row-odd"><td>price</td>
 <td>float</td>
@@ -821,15 +820,15 @@
 </tr>
 <tr class="row-even"><td>create_time</td>
 <td>str</td>
-<td>创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</td>
+<td>创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></td>
 </tr>
 <tr class="row-odd"><td>updated_time</td>
 <td>str</td>
-<td>最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</td>
+<td>最后更新时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></td>
 </tr>
 <tr class="row-even"><td>dealt_qty</td>
 <td>float</td>
-<td>成交数量，整数，期权单位是&#8221;张&#8221;</td>
+<td>成交数量，期权期货单位是&#8221;张&#8221;</td>
 </tr>
 <tr class="row-odd"><td>dealt_avg_price</td>
 <td>float</td>
@@ -872,7 +871,6 @@
 <code class="descname">modify_order</code><span class="sig-paren">(</span><em>self</em>, <em>modify_order_op</em>, <em>order_id</em>, <em>qty</em>, <em>price</em>, <em>adjust_limit=0</em>, <em>trd_env=TrdEnv.REAL</em>, <em>acc_id=0</em>, <em>acc_index=0</em><span class="sig-paren">)</span><a class="headerlink" href="#modify_order" title="永久链接至目标">¶</a></dt>
 <dd><p>修改订单。修改订单，包括修改订单的价格和数量(即以前的改单)、撤单、失效、生效、删除等。</p>
 <p>如果是OpenHKCCTradeContext，将不支持改单。可撤单。删除订单是本地操作。</p>
-<p>如果是OpenFutureTradeContext，将不支持订单生效、失效操作。</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -880,8 +878,8 @@
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>modify_order_op</strong> &#8211; str，改单操作类型，参考 <a class="reference external" href="Base_API.html#ModifyOrderOp">ModifyOrderOp</a> 类的定义，有</li>
 <li><strong>order_id</strong> &#8211; str，订单号</li>
-<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，整数，期权单位是&#8221;张&#8221;，期货单位是“张”</li>
-<li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位小数，超过四舍五入</li>
+<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，期权期货单位是&#8221;张&#8221;</li>
+<li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位小数（期货是9位小数），超过四舍五入</li>
 <li><strong>adjust_limit</strong> &#8211; float，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。期货会忽略此参数。</li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
@@ -1001,7 +999,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_id</strong> &#8211; str，订单号</li>
-<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，整数，期权单位是&#8221;张&#8221;</li>
+<li><strong>qty</strong> &#8211; float，(改单有效)新的订单数量，期权单位是&#8221;张&#8221;</li>
 <li><strong>price</strong> &#8211; float，(改单有效)新的订单价格，3位小数，超过四舍五入</li>
 <li><strong>adjust_limit</strong> &#8211; float，(改单有效)港股有价位表，订单价格必须在规定的价位上，OpenD会对传入价格自动调整到合法价位上，此参数指定价格调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%</li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
@@ -1064,9 +1062,9 @@
 </table>
 <table border="1" class="docutils">
 <colgroup>
-<col width="21%" />
-<col width="11%" />
-<col width="68%" />
+<col width="13%" />
+<col width="7%" />
+<col width="81%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">参数</th>
@@ -1097,7 +1095,7 @@
 </tr>
 <tr class="row-odd"><td>qty</td>
 <td>float</td>
-<td>成交数量，整数，期权单位是&#8221;张&#8221;</td>
+<td>成交数量，期权期货单位是&#8221;张&#8221;</td>
 </tr>
 <tr class="row-even"><td>price</td>
 <td>float</td>
@@ -1105,7 +1103,7 @@
 </tr>
 <tr class="row-odd"><td>create_time</td>
 <td>str</td>
-<td>创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</td>
+<td>创建时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></td>
 </tr>
 <tr class="row-even"><td>counter_broker_id</td>
 <td>int</td>
@@ -1155,8 +1153,8 @@
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>status_filter_list</strong> &#8211; str数组，订单状态过滤，只返回这些状态的订单数据，没传不过滤，返回所有，参考 <a class="reference external" href="Base_API.html#orderstatus">OrderStatus</a> 类的定义</li>
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
-<li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
-<li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
+<li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></li>
+<li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，TrdEnv.REAL(真实环境)或TrdEnv.SIMULATE(仿真环境)</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
@@ -1202,8 +1200,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>code</strong> &#8211; str，代码过滤，只返回包含这个代码的数据，没传不过滤，返回所有</li>
-<li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
-<li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传</li>
+<li><strong>start</strong> &#8211; str，开始时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></li>
+<li><strong>end</strong> &#8211; str，结束时间，严格按YYYY-MM-DD HH:MM:SS或YYYY-MM-DD HH:MM:SS.MS格式传，期货时区指定，请参见 <a class="reference internal" href="../intro/FutuOpenDGuide.html#opend-config"><span class="std std-ref">FutuOpenD启动参数配置</span></a></li>
 <li><strong>trd_env</strong> &#8211; str，交易环境 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a> ，仅支持TrdEnv.REAL(真实环境)，仿真环境暂不支持成交数据</li>
 <li><strong>acc_id</strong> &#8211; int，交易业务账户ID，acc_id为ID号时以acc_id为准，传0使用acc_index所对应的账户</li>
 <li><strong>acc_index</strong> &#8211; int，交易业务子账户ID列表所对应的下标，默认0，表示第1个业务ID</li>
@@ -1249,7 +1247,7 @@
 <tr class="field-odd field"><th class="field-name">参数:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_type</strong> &#8211; 订单类型，参见 <a class="reference external" href="Base_API.html#ordertype">OrderType</a></li>
 <li><strong>code</strong> &#8211; 证券代码，例如&#8217;HK.00700&#8217;。如果是期货交易，且code为期货主连代码，则会自动转为对应的实际合约代码。</li>
-<li><strong>price</strong> &#8211; 报价，3位小数，超过四舍五入</li>
+<li><strong>price</strong> &#8211; 报价，3位小数（期货9位小数），超过四舍五入</li>
 <li><strong>order_id</strong> &#8211; 订单号。如果是新下单，则可以传None。如果是改单则要传单号，此时计算最大可买可卖时会包括该订单所消耗的购买力，新下订单需要等待半秒才可使用该接口。</li>
 <li><strong>adjust_limit</strong> &#8211; 调整方向和调整幅度百分比限制，正数代表向上调整，负数代表向下调整，具体值代表调整幅度限制，如：0.015代表向上调整且幅度不超过1.5%；-0.01代表向下调整且幅度不超过1%。默认0表示不调整。期货会忽略此参数。</li>
 <li><strong>trd_env</strong> &#8211; 交易环境，参见 <a class="reference external" href="Base_API.html#trdenv">TrdEnv</a></li>
@@ -1472,7 +1470,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.24',
+            VERSION:'3.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>基础定义 &mdash; futu-api-doc 3.24 文档</title>
+  <title>基础定义 &mdash; futu-api-doc 3.25 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
         <link rel="next" title="行情协议" href="quote_protocol.html"/>
         <link rel="prev" title="协议接口" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.24
+                3.25
               </div>
             
           
@@ -832,6 +832,10 @@
         <span class="na">QotMarketState_FutureBreak</span> <span class="o">=</span> <span class="mi">24</span><span class="p">;</span> <span class="c1">// 期货中盘休息</span>
         <span class="na">QotMarketState_FutureBreakOver</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span> <span class="c1">// 期货休息后开盘</span>
         <span class="na">QotMarketState_FutureClose</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span> <span class="c1">// 期货收盘</span>
+        <span class="c1">//科创板新增状态</span>
+        <span class="na">QotMarketState_StibAfterHoursWait</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span> <span class="c1">// 科创板的盘后撮合时段</span>
+        <span class="na">QotMarketState_StibAfterHoursBegin</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span> <span class="c1">// 科创板的盘后交易开始</span>
+        <span class="na">QotMarketState_StibAfterHoursEnd</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span> <span class="c1">// 科创板的盘后交易结束</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1979,7 +1983,7 @@
 <div><div class="highlight-protobuf"><div class="highlight"><pre><span></span><span class="kd">enum</span> <span class="n">OrderType</span>
 <span class="p">{</span>
         <span class="na">OrderType_Unknown</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//未知类型</span>
-        <span class="na">OrderType_Normal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//普通订单(港股的增强限价单、A股的限价单、美股的限价单)</span>
+        <span class="na">OrderType_Normal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//普通订单(港股的增强限价单、港股期权的限价单，A股限价委托、美股的限价单，港股期货的限价单，CME期货的限价单)。目前港股期权只能指定此订单类型。</span>
         <span class="na">OrderType_Market</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">//市价订单(目前支持美股、港股正股、涡轮、牛熊、界内证)</span>
 
         <span class="na">OrderType_AbsoluteLimit</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">//绝对限价订单(目前仅港股)，只有价格完全匹配才成交，否则下单失败，比如你下价格为5元的买单，卖单价格必须也要是5元才能成交，低于5元也不能成交，下单失败。卖出同理</span>
@@ -1987,7 +1991,6 @@
         <span class="na">OrderType_AuctionLimit</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">//竞价限价订单(目前仅港股)，仅早盘竞价和收盘竞价有效，参与竞价，且要求满足指定价格才会成交</span>
         <span class="na">OrderType_SpecialLimit</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">//特别限价订单(目前仅港股)，成交规则同增强限价订单，且部分成交后，交易所自动撤销订单</span>
         <span class="na">OrderType_SpecialLimit_All</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">//特别限价且要求全部成交订单(目前仅港股)，要么全部成交，要么自动撤单</span>
-<span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2356,7 +2359,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.24',
+            VERSION:'3.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

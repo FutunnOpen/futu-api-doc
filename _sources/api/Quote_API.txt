@@ -733,39 +733,39 @@ get_plate_stock
         =====================  ==============================================================
         HK.HSI Constituent         恒指成份股
         HK.HSCEI Stock             国指成份股
-        HK.BK9910                  香港主板
+        HK.Motherboard             港股主板
         HK.GEM                     港股创业板
-        HK.BK1910                  全部港股
+        HK.BK1910                  所有港股
         HK.BK1911                  主板H股
         HK.BK1912                  创业板H股
-        HK.Fund                    ETF(港股基金)
-        HK.BK1600                  热度榜(港)
-        HK.BK1986                  全部期货(港)
-        HK.BK1987                  股指期货(港)
-        HK.BK1988                  汇率期货(港)
-        HK.BK1989                  金属期货(港)
-        HK.BK1990                  股票期货(港)
+        HK.Fund                    港股基金
+        HK.BK1600                  富途热门(港)
+        HK.BK1986                  港股期货全类型
+        HK.BK1987                  港股股指期货
+        HK.BK1988                  港股汇率期货
+        HK.BK1989                  港股金属期货
+        HK.BK1990                  港股股票期货
 		HK.BK1921                  已上市新股-港股
         SH.3000000                 上海主板
         SH.BK0901                  上证B股
         SH.BK0902                  深证B股 
         SH.3000002                 沪深指数
-        SH.3000005                 全部A股(沪深)
-        SH.BK0600                  热度榜(沪深)
+        SH.3000005                 沪深全部A股
+        SH.BK0600                  富途热门(沪深)
         SH.BK0992                  科创板
 		SH.BK0921                  已上市新股-A股	
         SZ.3000001                 深证主板
-        SZ.3000003                 中小板
-        SZ.3000004                 创业板(深)	
-        US.USAALL                  全部美股
-        US.BK2989                  全部期货(美)
-        US.BK2990                  农产品期货(美)
-        US.BK2991                  利率期货(美)
-        US.BK2992                  外汇期货(美)
-        US.BK2993                  数字货币期货(美)
-        US.BK2994                  股指期货(美)
-        US.BK2995                  能源化工期货(美)
-        US.BK2996                  贵金属期货(美)		
+        SZ.3000003                 中小企业板块
+        SZ.3000004                 深证创业板	
+        US.USAALL                  所有美股
+        US.BK2989                  美股期货全类型
+        US.BK2990                  美股农产品期货
+        US.BK2991                  美股利率期货
+        US.BK2992                  美股外汇期货
+        US.BK2993                  美股数字货币期货
+        US.BK2994                  美股股指期货
+        US.BK2995                  美股能源化工期货
+        US.BK2996                  美股贵金属期货		
 		US.BK2921                  已上市新股-美股
         =====================  ==============================================================
 
@@ -1104,21 +1104,21 @@ get_global_state
 
 		ret != RET_OK data为错误描述字符串
 
-		=====================   ===========   ==============================================================
-		key                      value类型                        说明
-		=====================   ===========   ==============================================================
-		market_sz               str            深圳市场状态，参见 MarketState_
-		market_sh               str            上海市场状态，参见 MarketState_
-		market_hk               str            香港市场状态，参见 MarketState_
-		market_hkfuture         str            香港期货市场状态，参见 MarketState_
-		market_usfuture         str            美国期货市场状态，参见 MarketState_
-		market_us               str            美国市场状态，参见 MarketState_
-		server_ver              str            FutuOpenD版本号
-		trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
-		qot_logined             bool           True：已登录行情服务器，False: 未登录行情服务器
-		timestamp               str            当前格林威治时间戳(秒）
-		local_timestamp         float          FutuOpenD运行机器的当前时间戳(秒)
-		=====================   ===========   ==============================================================
+=====================   ===========   ==============================================================
+key                      value类型                        说明
+=====================   ===========   ==============================================================
+market_sz               str            深圳市场状态，参见 MarketState_
+market_sh               str            上海市场状态，参见 MarketState_
+market_hk               str            香港市场状态，参见 MarketState_
+market_hkfuture         str            香港期货市场状态，参见 MarketState_
+market_usfuture         str            美国期货市场状态，参见 MarketState_ （由于美期市场，不同品种的交易时间存在差异，建议使用 get_market_state 接口获取指定品种的市场状态）
+market_us               str            美国市场状态，参见 MarketState_
+server_ver              str            FutuOpenD版本号
+trd_logined             bool           True：已登录交易服务器，False: 未登录交易服务器
+qot_logined             bool           True：已登录行情服务器，False: 未登录行情服务器
+timestamp               str            当前格林威治时间戳(秒）
+local_timestamp         float          FutuOpenD运行机器的当前时间戳(秒)
+=====================   ===========   ==============================================================
  
  :Example:
 
@@ -2683,7 +2683,7 @@ set_price_reminder
  
  :param code: 股票
  :param op: SetPriceReminderOp_，操作类型
- :param key: int64，标识，新增的情况不需要填
+ :param key: int64，标识，新增和删除全部的情况不需要填
  :param reminder_type: PriceReminderType_，到价提醒的类型，删除、启用、禁用的情况下会忽略该入参
  :param reminder_freq: PriceReminderFreq_，到价提醒的频率，删除、启用、禁用的情况下会忽略该入参
  :param value: float，提醒值，删除、启用、禁用的情况下会忽略该入参
@@ -2691,7 +2691,7 @@ set_price_reminder
  :return: (ret, data)
     ret != RET_OK 返回错误字符串
 	
-    ret == RET_OK data为key
+    ret == RET_OK data为key。当删除指定股票的全部提醒时，返回data为0。
 ..
 
  :Example:
@@ -2879,6 +2879,55 @@ get_user_security_group
 
     * 接口限制请参见 :ref:`获取自选股分组列表 <get-user-security-group-limit>`
 
+-----------------------------------------------------------------------------------------------------
+
+get_market_state
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  py:function:: get_market_state(self, code_list)
+     
+  获取指定品种的市场状态
+  
+ :param code_list: 需要查询市场状态的股票代码列表，股票个数最多 400 个
+ :return:  (ret, data)
+
+  ret != RET_OK 返回错误字符串
+
+  ret == RET_OK 返回pd dataframe数据，数据列格式如下:
+  
+  =========================   ==================   ================================
+  参数                         类型                 说明
+  =========================   ==================   ================================
+  code                         str                  股票代码
+  stock_name                   str                  股票名称
+  market_state                 str                  市场状态
+  =========================   ==================   ================================
+
+ :Example:
+
+ .. code:: python
+
+    from futu import *
+    quote_ctx = OpenQuoteContext(host='127.0.0.1', port=11111)
+  
+    ret, data = quote_ctx.get_market_state(['SZ.000001', 'HK.00700'])
+    if ret == RET_OK:
+        print(data)
+    else:
+        print('error:', data)
+    quote_ctx.close() # 结束后记得关闭当条连接，防止连接条数用尽
+
+ :Output:
+
+ .. code:: python
+
+       code         stock_name   market_state
+    0  SZ.000001    平安银行     AFTERNOON
+    1  HK.00700     腾讯控股     AFTERNOON
+
+.. note::
+
+    * 接口限制请参见 :ref:`获取指定品种的市场状态的限制 <get-market-state-limit>`
 -----------------------------------------------------------------------------------------------------
 
 SysNotifyHandlerBase - OpenD通知回调

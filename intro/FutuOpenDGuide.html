@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.24 文档</title>
+  <title>FutuOpenD使用说明 &mdash; futu-api-doc 3.25 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   
 
   
-    <link rel="top" title="futu-api-doc 3.24 文档" href="../index.html"/>
+    <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
         <link rel="next" title="协议接口" href="../protocol/intro.html"/>
         <link rel="prev" title="介绍" href="intro.html"/> 
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.24
+                3.25
               </div>
             
           
@@ -102,7 +102,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">登录参数使用优先级</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">FutuOpenD配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#opend-config">FutuOpenD配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id9">命令行FutuOpenD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">可视化FutuOpenD</a></li>
 </ul>
@@ -306,7 +306,7 @@
 <li>下载方式同命令行FutuOpenD。</li>
 </ul>
 </div></blockquote>
-<p>方式1：<a class="reference external" href="https://www.futunn.com/download/index/">富途官网下载</a></p>
+<p>方式1：<a class="reference external" href="https://www.futunn.com/download/openAPI">富途官网下载</a></p>
 <img alt="../_images/futunn.com.png" src="../_images/futunn.com.png" />
 <p>方式2：QQ群文件下载</p>
 <img alt="../_images/download-QQ.png" src="../_images/download-QQ.png" />
@@ -323,10 +323,10 @@
 <p>5.配置文件帐号密码密文登录</p>
 <p>6.配置文件帐号密码明文登录</p>
 </div></blockquote>
-</div>
 <hr class="docutils" />
-<div class="section" id="id8">
-<h2>FutuOpenD配置<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="opend-config">
+<span id="id8"></span><h2>FutuOpenD配置<a class="headerlink" href="#opend-config" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id9">
 <h3>命令行FutuOpenD<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <blockquote>
@@ -337,8 +337,8 @@
 <p><strong>配置项：</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="10%" />
-<col width="69%" />
+<col width="12%" />
+<col width="68%" />
 <col width="21%" />
 </colgroup>
 <thead valign="bottom">
@@ -424,6 +424,10 @@
 <td>被踢后是否自动抢权限？0：否，1：是，开启该选项时，OpenD在行情权限被抢后，会自动抢回。如果10秒内再次被抢，则其他终端获得最高行情权限（OpenD不会再抢）</td>
 <td>是，默认会自动抢权限</td>
 </tr>
+<tr class="row-odd"><td>future_trade_api_time_zone</td>
+<td>指定期货交易API时区，期货账户调用交易API时，涉及的时间按照此时区规则</td>
+<td>是，可以命令行指定，不设置则默认交易所时区</td>
+</tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -483,6 +487,9 @@
 <tr class="row-odd"><td>WebSocket鉴权密钥</td>
 <td>密钥密文（32位MD5加密16进制），用于JS接口连接时用于判断是否可信连接</td>
 </tr>
+<tr class="row-even"><td>期货交易API时区</td>
+<td>指定期货交易API时区，期货账户调用交易API时，涉及的时间按照此时区规则</td>
+</tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -516,9 +523,9 @@
 <p><strong>参数项：</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
+<col width="12%" />
 <col width="67%" />
-<col width="22%" />
+<col width="21%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">键值</th>
@@ -614,6 +621,10 @@
 <tr class="row-odd"><td>auto_hold_quote_right</td>
 <td>被踢后是否自动抢权限？0：否，1：是，开启该选项时，OpenD在行情权限被抢后，会自动抢回。如果10秒内再次被抢，则其他终端获得最高行情权限（OpenD不会再抢）</td>
 <td>是，默认会自动抢权限</td>
+</tr>
+<tr class="row-even"><td>future_trade_api_time_zone</td>
+<td>指定期货交易API时区，期货账户调用交易API时，涉及的时间按照此时区规则</td>
+<td>是，可以命令行指定，不设置则默认交易所时区</td>
 </tr>
 </tbody>
 </table>
@@ -869,7 +880,7 @@ sxTqXpBBCtTqcAotMlx4ZJQYL3f2PmI2Q/o0NUMt40w<span class="o">=</span>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.24',
+            VERSION:'3.25',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
