@@ -1,1 +1,1 @@
-https://futunnopen.github.io/futu-api-doc/
+https://openapi.futunn.com/futu-api-doc/
