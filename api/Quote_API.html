@@ -106,11 +106,11 @@
 <p class="caption"><span class="caption-text">Python API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">环境搭建</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">行情API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">一分钟上手</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">接口类对象</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">一分钟上手</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">接口类对象</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#openquotecontext">OpenQuoteContext - 行情上下文</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#init">__init__</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#close">close</a></li>
@@ -127,7 +127,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#get-broker-queue">get_broker_queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subscribe">subscribe</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#unsubscribe">unsubscribe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">unsubscribe_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">unsubscribe_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#query-subscription">query_subscription</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-global-state">get_global_state</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-stock-quote">get_stock_quote</a></li>
@@ -160,31 +160,31 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stockquotehandlerbase">StockQuoteHandlerBase - 实时报价回调</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id7">on_recv_rsp</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id8">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#orderbookhandlerbase">OrderBookHandlerBase - 实时摆盘回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id9">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#curklinehandlerbase-k">CurKlineHandlerBase - 实时k线推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id10">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tickerhandlerbase">TickerHandlerBase - 实时逐笔推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id11">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rtdatahandlerbase">RTDataHandlerBase - 实时分时推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id12">on_recv_rsp</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pricereminderhandlerbase">PriceReminderHandlerBase - 到价提醒通知回调</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brokerhandlerbase">BrokerHandlerBase - 实时经纪推送回调</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id13">on_recv_rsp</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pricereminderhandlerbase">PriceReminderHandlerBase - 到价提醒通知回调</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">on_recv_rsp</a></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +199,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">.Java API</span></p>
 <ul>
@@ -207,7 +208,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CPP API</span></p>
 <ul>
@@ -215,14 +217,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/base.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">JavaScript API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -309,12 +313,17 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
+<div class="admonition note">
+<p class="first admonition-title">重要通知</p>
+<p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
+<p class="last">旧的github文档将不再更新，并于2020年11月16日正式停止访问。</p>
+</div>
 <div class="section" id="api">
 <h1>行情API<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div></div></blockquote>
-<div class="section" id="id1">
-<h2>一分钟上手<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>一分钟上手<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>如下范例，创建api行情对象，调用get_market_snapshot获取港股腾讯00700的报价快照数据,最后关闭对象</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -334,8 +343,8 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id2">
-<h2>接口类对象<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>接口类对象<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="openquotecontext">
 <h3>OpenQuoteContext - 行情上下文<a class="headerlink" href="#openquotecontext" title="永久链接至标题">¶</a></h3>
 <div class="section" id="init">
@@ -2235,8 +2244,8 @@ unsubscribe all successfully！current subscription status: (0, {&#39;total_used
 </ul>
 </div>
 </div>
-<div class="section" id="id3">
-<h4>unsubscribe_all<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id4">
+<h4>unsubscribe_all<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt id="unsubscribe_all">
 <code class="descname">unsubscribe_all</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="headerlink" href="#unsubscribe_all" title="永久链接至目标">¶</a></dt>
@@ -6409,8 +6418,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id7">
-<h4>on_recv_rsp<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id8">
+<h4>on_recv_rsp<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6474,8 +6483,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id8">
-<h4>on_recv_rsp<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id9">
+<h4>on_recv_rsp<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6544,8 +6553,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id9">
-<h4>on_recv_rsp<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id10">
+<h4>on_recv_rsp<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6619,8 +6628,8 @@ ret != RET_OK 返回错误字符串</p>
 </ul>
 </div>
 <hr class="docutils" />
-<div class="section" id="id10">
-<h4>on_recv_rsp<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id11">
+<h4>on_recv_rsp<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6686,8 +6695,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id11">
-<h4>on_recv_rsp<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id12">
+<h4>on_recv_rsp<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6762,8 +6771,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id12">
-<h4>on_recv_rsp<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id13">
+<h4>on_recv_rsp<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>
@@ -6828,8 +6837,8 @@ ret != RET_OK 返回错误字符串</p>
 </div>
 </div></blockquote>
 <hr class="docutils" />
-<div class="section" id="id13">
-<h4>on_recv_rsp<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id14">
+<h4>on_recv_rsp<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
 <dl class="function">
 <dt>
 <code class="descname">on_recv_rsp</code><span class="sig-paren">(</span><em>self</em>, <em>rsp_pb</em><span class="sig-paren">)</span></dt>

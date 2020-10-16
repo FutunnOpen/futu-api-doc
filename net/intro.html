@@ -106,7 +106,7 @@
 <p class="caption"><span class="caption-text">Python API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">环境搭建</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
@@ -115,15 +115,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#net-api">.NET API简介</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">接口框架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">代码结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">调用须知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">接口框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">代码结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">调用须知</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">.Java API</span></p>
 <ul>
@@ -131,7 +132,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CPP API</span></p>
 <ul>
@@ -139,14 +141,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/base.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">JavaScript API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -233,8 +237,12 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="id1">
-<h1>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">重要通知</p><p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
+<p class="last">旧的github文档将不再更新，并于2020年11月16日正式停止访问。</p>
+</div>
+<div class="section" id="id2">
+<h1>介绍<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
 <div class="section" id="net-api">
 <h2>.NET API简介<a class="headerlink" href="#net-api" title="永久链接至标题">¶</a></h2>
 <blockquote>
@@ -247,8 +255,8 @@
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>接口框架<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h2>接口框架<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>为了保证性能最大，我们的中间层采用C++编写，然后提供C#接口调用层</li>
@@ -260,8 +268,8 @@
 <p class="last">因为涉及到底层Native线程和.NET线程回调的问题，回调时需要特别注意自己的代码所处的线程。建议简单过滤后，把消息抛到上层主线程处理。</p>
 </div>
 </div>
-<div class="section" id="id5">
-<h2>代码结构<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id6">
+<h2>代码结构<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="highlight-text"><div class="highlight"><pre><span></span>|-- FTAPI4Net
 |   |-- lib 所有依赖的库，包含第3方库和API库。即用户不必自己生成API库。
 |   |-- FTCAPI.cs  Native接口导入类
@@ -274,8 +282,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>调用须知<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h2>调用须知<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>FTSPI_Conn、FTSPI_Qot、FTSPI_Trd调用和回调会在不同线程，注意线程安全问题。</li>

@@ -106,7 +106,7 @@
 <p class="caption"><span class="caption-text">Python API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">环境搭建</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
@@ -117,7 +117,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">.Java API</span></p>
 <ul>
@@ -125,16 +126,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CPP API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">基础API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">枚举常量</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">ConnectFailType - 连接错误码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">InitFailType - 初始化连接协议失败</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">FTAPI_InitFail - 初始化连接协议失败错误值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">枚举常量</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">ConnectFailType - 连接错误码</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">InitFailType - 初始化连接协议失败</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">FTAPI_InitFail - 初始化连接协议失败错误值</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ftapi-api">FTAPI - API全局工具类。</a><ul>
@@ -165,14 +167,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trd.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">JavaScript API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -259,12 +263,16 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
+<div class="admonition note">
+<p class="first admonition-title">重要通知</p><p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
+<p class="last">旧的github文档将不再更新，并于2020年11月16日正式停止访问。</p>
+</div>
 <div class="section" id="api">
 <h1>基础API<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>枚举常量<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
-<h3>ConnectFailType - 连接错误码<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<h2>枚举常量<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>ConnectFailType - 连接错误码<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <p>连接错误码</p>
 <dl class="enum">
 <dt id="_CPPv215ConnectFailType">
@@ -351,8 +359,8 @@
 
 </div>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h3>InitFailType - 初始化连接协议失败<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id4">
+<h3>InitFailType - 初始化连接协议失败<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>初始化连接协议失败，即InitConnect协议相关的错误</p>
 <dl class="enum">
 <dt id="_CPPv212InitFailType">
@@ -397,8 +405,8 @@
 
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h3>FTAPI_InitFail - 初始化连接协议失败错误值<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id5">
+<h3>FTAPI_InitFail - 初始化连接协议失败错误值<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>指定初始化连接协议失败，即InitConnect协议相关的错误，错误值：100。</p>
 </div>
 </div>

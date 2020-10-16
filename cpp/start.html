@@ -117,7 +117,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">.Java API</span></p>
 <ul>
@@ -125,7 +126,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CPP API</span></p>
 <ul class="current">
@@ -133,18 +135,17 @@
 <li class="toctree-l1"><a class="reference internal" href="base.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trd.html">交易API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">快速上手</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">环境搭建</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">代码快速入门</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id3">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id4">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">JavaScript API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -231,11 +232,17 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="id1">
-<h1>快速上手<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<hr class="docutils" />
+<div class="admonition note">
+<p class="first admonition-title">重要通知</p>
+<p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
+<p class="last">旧的github文档将不再更新，并于2020年11月16日正式停止访问。</p>
+</div>
 <div class="section" id="id2">
-<h2>环境搭建<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h1>快速上手<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h1>环境搭建<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
@@ -245,8 +252,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>代码快速入门<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h1>代码快速入门<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h1>
 <div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">FTAPI</span><span class="o">::</span><span class="n">InitFTApi</span><span class="p">();</span> <span class="c1">//初始化环境</span>
 <span class="n">FTAPI_Qot</span> <span class="o">*</span><span class="n">pQot</span> <span class="o">=</span> <span class="n">FTAPI</span><span class="o">::</span><span class="n">CreateQotApi</span><span class="p">();</span> <span class="c1">//创建行情对象</span>
 <span class="n">SampleConnCallback</span> <span class="o">*</span><span class="n">pCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SampleConnCallback</span><span class="p">();</span>
@@ -288,7 +295,6 @@
        <span class="c1">//避免范例代码过长，其他行情回调在这里不列举</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 </div>
 

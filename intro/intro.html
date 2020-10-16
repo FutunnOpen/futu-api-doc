@@ -94,11 +94,11 @@
               <p class="caption"><span class="caption-text">基础</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">主要功能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">特点</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">系统架构</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">简介</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">第三方应用与 FutuOpenD 通讯架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">主要功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">特点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">系统架构</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">第三方应用与 FutuOpenD 通讯架构</a></li>
 </ul>
 </li>
 </ul>
@@ -115,7 +115,7 @@
 <p class="caption"><span class="caption-text">Python API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">环境搭建</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
@@ -126,7 +126,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">.Java API</span></p>
 <ul>
@@ -134,7 +135,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CPP API</span></p>
 <ul>
@@ -142,14 +144,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/base.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">JavaScript API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul>
@@ -236,12 +240,16 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
-<div class="section" id="id1">
-<h1>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">重要通知</p><p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
+<p class="last">旧的github文档将不再更新，并于2020年11月16日正式停止访问。</p>
+</div>
+<div class="section" id="id2">
+<h1>介绍<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
 <p>futu-api提供了交易和行情接口，可以满足个人开发者使用富途牛牛软件进行程序化投资的需求。</p>
 <hr class="docutils" />
-<div class="section" id="id2">
-<h2>主要功能<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>主要功能<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>交易品种：</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>1. 港股：正股、ETF、窝轮、牛熊证、界内证、期货、期权
 2. 美股：正股、ETF、期权、期货
@@ -260,8 +268,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>特点<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h2>特点<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
@@ -284,15 +292,15 @@
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h2>系统架构<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3>简介<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h2>系统架构<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id6">
+<h3>简介<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>使用futu-api时，需在本地或云端启动网关程序 <a class="reference external" href="FutuOpenDGuide.html">FutuOpenD</a>，该程序以自定义TCP协议的方式对外暴露接口,
 该协议接口与编程语言无关, 为方便使用，针对不同编程语言，富途封装了对应语言的API SDK供第三方使用</p>
 </div>
-<div class="section" id="id6">
-<h3>第三方应用与 <a class="reference external" href="FutuOpenDGuide.html">FutuOpenD</a> 通讯架构<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id7">
+<h3>第三方应用与 <a class="reference external" href="FutuOpenDGuide.html">FutuOpenD</a> 通讯架构<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/API.png" src="../_images/API.png" />
 </div>
 </div>

@@ -37,7 +37,7 @@
 
   
     <link rel="top" title="futu-api-doc 3.25 文档" href="../index.html"/>
-        <link rel="prev" title="快速上手" href="../javascript/start.html"/> 
+        <link rel="prev" title="环境搭建" href="../javascript/start.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -105,7 +105,7 @@
 <p class="caption"><span class="caption-text">Python API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">环境搭建</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
@@ -116,7 +116,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../net/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../net/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../net/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../net/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">.Java API</span></p>
 <ul>
@@ -124,7 +125,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CPP API</span></p>
 <ul>
@@ -132,14 +134,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../cpp/base.html">基础API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">JavaScript API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">代码快速入门</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Q&amp;A</span></p>
 <ul class="current">
@@ -160,20 +164,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#q13">Q13：使用遇到无法解决的问题时，如何请富途的研发人员协助排查？</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">连接相关</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">连接相关</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#q1-futuopend">Q1:脚本连接不上FutuOpenD</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Q2:脚本连接上之后没反应</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Q2:脚本连接上之后没反应</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q3">Q3:连接上一段时间后断开</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q4-linuxmultiprocessingpythonfutuopend">Q4:Linux下通过multiprocessing模块以多进程方式运行Python脚本可能会连不上FutuOpenD</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">行情相关</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Q1:订阅失败</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">Q2:反订阅失败</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Q3:反订阅成功但没返还额度</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Q4:订阅不足一分钟关闭脚本会返还额度吗？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Q5:请求限频逻辑是怎样？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">Q6:自选股添加不上是什么原因？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">行情相关</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Q1:订阅失败</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Q2:反订阅失败</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Q3:反订阅成功但没返还额度</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Q4:订阅不足一分钟关闭脚本会返还额度吗？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Q5:请求限频逻辑是怎样？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Q6:自选股添加不上是什么原因？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q7-openapi">Q7：为什么 OpenAPI 端的美股报价和牛牛显示端的全美综合报价有不同？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q8-openapi">Q8：OpenAPI行情卡在哪里购买？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q9-get">Q9：为什么有时候，获取实时数据的get接口响应比较慢？</a></li>
@@ -181,20 +185,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#q11-orderbook">Q11：各个行情品类的摆盘(orderbook)支持多少档？</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">交易相关</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">Q1:如何使用模拟交易？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">Q2:模拟与真实交易是否有区别？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">Q3:是否模拟交易可视化数据？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">交易相关</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Q1:如何使用模拟交易？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Q2:模拟与真实交易是否有区别？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Q3:是否模拟交易可视化数据？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q4-a">Q4:是否支持A股交易？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">Q5:各市场支持的交易方向</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">Q6:各市场支持的订单类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Q5:各市场支持的交易方向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Q6:各市场支持的订单类型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q7">Q7:各市场支持的订单操作</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#q8-futuopend-future-trade-api-time-zone">Q8：FutuOpenD 启动参数 future_trade_api_time_zone 如何使用？</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">其他</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id23">Q1:请求限制说明</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">Q2:有没有更完整的策略样例可以参考？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">其他</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Q1:请求限制说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Q2:有没有更完整的策略样例可以参考？</a></li>
 </ul>
 </li>
 </ul>
@@ -281,6 +285,10 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
+<div class="admonition note">
+<p class="first admonition-title">重要通知</p><p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
+<p class="last">旧的github文档将不再更新，并于2020年11月16日正式停止访问。</p>
+</div>
 <div class="section" id="q-a">
 <h1>Q&amp;A<a class="headerlink" href="#q-a" title="永久链接至标题">¶</a></h1>
 <div class="section" id="futuopend">
@@ -383,8 +391,8 @@
 </dl>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>连接相关<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h2>连接相关<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="q1-futuopend">
 <h3>Q1:脚本连接不上FutuOpenD<a class="headerlink" href="#q1-futuopend" title="永久链接至标题">¶</a></h3>
 <p>A: 请先尝试检查是否以下情况：</p>
@@ -396,8 +404,8 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id5">
-<h3>Q2:脚本连接上之后没反应<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id6">
+<h3>Q2:脚本连接上之后没反应<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>A: 检查是否有启动API版本的PC牛牛(3.42)，若有则请关闭API版本的PC牛牛或者修改该版本的端口配置。</p>
 </div>
 <hr class="docutils" />
@@ -418,10 +426,10 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id6">
-<h2>行情相关<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id7">
-<h3>Q1:订阅失败<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<h2>行情相关<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id8">
+<h3>Q1:订阅失败<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <p>A: 检查订阅接口返回的错误描述，常见有以下情况：</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -433,28 +441,28 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id9">
-<h3>Q2:反订阅失败<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id10">
+<h3>Q2:反订阅失败<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>A: 订阅至少一分钟后才能反订阅。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id10">
-<h3>Q3:反订阅成功但没返还额度<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id11">
+<h3>Q3:反订阅成功但没返还额度<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>A: 所有连接都对该行情反订阅才会返还额度。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id11">
-<h3>Q4:订阅不足一分钟关闭脚本会返还额度吗？<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id12">
+<h3>Q4:订阅不足一分钟关闭脚本会返还额度吗？<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>A: 不返还。连接关闭后，订阅不足一分钟的行情一段时间后自动反订阅。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id12">
-<h3>Q5:请求限频逻辑是怎样？<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id13">
+<h3>Q5:请求限频逻辑是怎样？<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>A: 30秒内最多n次指第1次和第n+1次请求间隔需要大于30秒。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id13">
-<h3>Q6:自选股添加不上是什么原因？<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id14">
+<h3>Q6:自选股添加不上是什么原因？<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>A: 请先检查是否有超出上限，或者删除一部分自选。</p>
 </div>
 <hr class="docutils" />
@@ -563,15 +571,15 @@
 </table>
 </div>
 </div>
-<div class="section" id="id14">
-<h2>交易相关<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id15">
-<h3>Q1:如何使用模拟交易？<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<h2>交易相关<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id16">
+<h3>Q1:如何使用模拟交易？<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <p>A: 只要有牛牛帐号即可使用模拟交易，在使用交易接口时交易环境传入模拟环境即可。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id16">
-<h3>Q2:模拟与真实交易是否有区别？<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id17">
+<h3>Q2:模拟与真实交易是否有区别？<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <p>A: 有区别:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -586,8 +594,8 @@
 </div></blockquote>
 </div>
 <hr class="docutils" />
-<div class="section" id="id18">
-<h3>Q3:是否模拟交易可视化数据？<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id19">
+<h3>Q3:是否模拟交易可视化数据？<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>A: 可视数据可跳转至 <a class="reference external" href="https://m-match.futunn.com/simulate/">模拟炒股页面</a>，该页面仅支持手机浏览器访问。</p>
 </div>
 <hr class="docutils" />
@@ -596,13 +604,13 @@
 <p>A: 支持A股模拟交易，真实交易可通过A股通交易部分A股。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id20">
-<h3>Q5:各市场支持的交易方向<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id21">
+<h3>Q5:各市场支持的交易方向<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 <p>A: 除了期货，其他股票都只支持传入买入和卖出，在空仓情况下卖出，产生的订单交易方向是卖空。</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id21">
-<h3>Q6:各市场支持的订单类型<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id22">
+<h3>Q6:各市场支持的订单类型<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
 <dl class="docutils">
 <dt>A:</dt>
 <dd><ul class="first last simple">
@@ -641,14 +649,14 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id22">
-<h2>其他<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id23">
-<h3>Q1:请求限制说明<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<h2>其他<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id24">
+<h3>Q1:请求限制说明<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
 <p>A: 请求限制说明请参见 <a class="reference internal" href="../protocol/intro.html#quota-limit"><span class="std std-ref">协议请求限制</span></a></p>
 </div>
-<div class="section" id="id24">
-<h3>Q2:有没有更完整的策略样例可以参考？<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id25">
+<h3>Q2:有没有更完整的策略样例可以参考？<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
 <p>A: Python 策略样例在 /futu/examples/ 文件夹下，C++ 策略样例在 /FTAPI4CPP/Samples/ 文件夹下，Java 策略样例在 /FTAPI4J/sample/ 文件夹下，Javascript 策略样例在 /FTAPI4JS/sample/ 文件夹下，C# 策略样例在 /FTAPI4NET/Sample/ 文件夹下。</p>
 <hr class="docutils" />
 </div>
@@ -666,7 +674,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../javascript/start.html" class="btn btn-neutral" title="快速上手" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../javascript/start.html" class="btn btn-neutral" title="环境搭建" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
