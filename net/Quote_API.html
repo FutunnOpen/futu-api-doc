@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,160 +6,29 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>行情API &mdash; futu-api-doc 3.26 文档</title>
-  
-
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  
-  
+  <title>futu-api-doc 3.26 文档</title>
+ 
     <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
     <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
     <link rel="stylesheet" href="../_static/css/myStyle.css" type="text/css" />
-  
 
-  
-    <link rel="top" title="futu-api-doc 3.26 文档" href="../index.html"/>
-        <link rel="next" title="交易API" href="Trade_API.html"/>
-        <link rel="prev" title="基础API" href="Base_API.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
+	<script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
+  <div class="wy-grid-for-nav">  
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> futu-api-doc
-          
-
-          
+        <div class="wy-side-nav-search">      
+          <a  class="icon icon-home"> futu-api-doc   
           </a>
-
-          
-            
-            
               <div class="version">
                 3.26
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
+              </div>  
         </div>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">基础</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../intro/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro/FutuOpenDGuide.html">FutuOpenD使用说明</a></li>
-</ul>
-<p class="caption"><span class="caption-text">PROTOCOL</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/intro.html">协议接口</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/base_define.html">基础定义</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/quote_protocol.html">行情协议</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol/trade_protocol.html">交易协议</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Python API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../api/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/setup.html">安装指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Base_API.html">基础API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Quote_API.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/Trade_API.html">交易API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">.Net API</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Base_API.html">基础API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">行情API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ftapi-qot">FTAPI_Qot功能函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ftspi-qot">FTSPI_Qot行情推送接收接口函数</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a></li>
-<li class="toctree-l1"><a class="reference internal" href="start.html#id3">环境搭建</a></li>
-<li class="toctree-l1"><a class="reference internal" href="start.html#id4">代码快速入门</a></li>
-</ul>
-<p class="caption"><span class="caption-text">.Java API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../java/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/Base_API.html">基础API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/Quote_API.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html">快速上手</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id3">环境搭建</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../java/start.html#id4">代码快速入门</a></li>
-</ul>
-<p class="caption"><span class="caption-text">CPP API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/base.html">基础API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/qot.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/trd.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html">快速上手</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html#id3">环境搭建</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cpp/start.html#id4">代码快速入门</a></li>
-</ul>
-<p class="caption"><span class="caption-text">JavaScript API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/intro.html">介绍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/Quote_API.html">行情API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/Trade_API.html">交易API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html">快速上手</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id3">环境搭建</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../javascript/start.html#id4">代码快速入门</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Q&amp;A</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../q&amp;a/Q&amp;A.html">Q&amp;A</a></li>
-</ul>
 
-            
-          
-        </div>
       </div>
     </nav>
 
@@ -179,48 +46,7 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>行情API</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../_sources/net/Quote_API.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  
 <style>
 /* CSS overrides for sphinx_rtd_theme */
 
@@ -239,293 +65,22 @@
     margin-right: 4px;  /* make room for the exclamation icon */
 }
 </style>
+
 <div class="admonition note">
-<p class="first admonition-title">重要通知</p>
+<p class="first admonition-title">重要提示</p>
 <p>Futu OpenAPI 文档已于2020年10月16日全新升级，请移步至 <a class="reference external" href="https://openapi.futunn.com/futu-api-doc/">新文档</a></p>
-<p class="last"> 旧的github文档已于2020年11月16日正式停止访问。</p>
-</div>
-<div class="section" id="api">
-<h1>行情API<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h1>
-<blockquote>
-<div></div></blockquote>
-<hr class="docutils" />
-<div class="section" id="ftapi-qot">
-<h2>FTAPI_Qot功能函数<a class="headerlink" href="#ftapi-qot" title="永久链接至标题">¶</a></h2>
-<ul class="simple">
-<li>FTAPI_Qot继承自<a class="reference external" href="./Base_API.html#ftapi-conn">FTAPI_Conn</a> ，连接层调用接口参考FTAPI_Conn说明。</li>
-</ul>
-<table border="1" class="docutils">
-<colgroup>
-<col width="29%" />
-<col width="41%" />
-<col width="30%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">函数名（点开链接可查看具体协议）</th>
-<th class="head">功能简介</th>
-<th class="head">回调函数(FTSPI_Qot)</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="../protocol/base_define.html#getglobalstate-proto-1002">GetGlobalState</a></td>
-<td>获取全局状态</td>
-<td>OnReply_GetGlobalState</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-sub-proto-3001">Sub</a></td>
-<td>订阅或者反订阅</td>
-<td>OnReply_Sub</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-regqotpush-proto-3002">RegQotPush</a></td>
-<td>注册推送</td>
-<td>OnReply_RegQotPush</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getsubinfo-proto-3003">GetSubInfo</a></td>
-<td>获取订阅信息</td>
-<td>OnReply_GetSubInfo</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getticker-proto-3010">GetTicker</a></td>
-<td>获取逐笔,调用该接口前需要先订阅</td>
-<td>OnReply_GetTicker</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getbasicqot-proto-3004">GetBasicQot</a></td>
-<td>获取基本行情,调用该接口前需要先订阅</td>
-<td>OnReply_GetBasicQot</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getorderbook-proto-3012">GetOrderBook</a></td>
-<td>获取摆盘,调用该接口前需要先订阅</td>
-<td>OnReply_GetOrderBook</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getkl-proto-3006k">GetKL</a></td>
-<td>获取K线，调用该接口前需要先订阅</td>
-<td>OnReply_GetKL</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getrt-proto-3008">GetRT</a></td>
-<td>获取分时，调用该接口前需要先订阅</td>
-<td>OnReply_GetRT</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getbroker-proto-3014">GetBroker</a></td>
-<td>获取经纪队列，调用该接口前需要先订阅</td>
-<td>OnReply_GetBroker</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requestrehab-proto-3105">RequestRehab</a></td>
-<td>在线请求历史复权信息，不读本地历史数据DB</td>
-<td>OnReply_RequestRehab</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requesthistorykl-proto-3103k">RequestHistoryKL</a></td>
-<td>在线请求历史K线，不读本地历史数据DB</td>
-<td>OnReply_RequestHistoryKL</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requesthistoryklquota-proto-3104k">RequestHistoryKLQuota</a></td>
-<td>获取历史K线已经用掉的额度</td>
-<td>OnReply_RequestHistoryKLQuota</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-gettradedate-proto-3200">GetTradeDate</a></td>
-<td>获取交易日</td>
-<td>OnReply_GetTradeDate</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getstaticinfo-proto-3202">GetStaticInfo</a></td>
-<td>获取静态信息</td>
-<td>OnReply_GetStaticInfo</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getsecuritysnapshot-proto-3203">GetSecuritySnapshot</a></td>
-<td>获取股票快照</td>
-<td>OnReply_GetSecuritySnapshot</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getplateset-proto-3204">GetPlateSet</a></td>
-<td>获取板块集合下的板块</td>
-<td>OnReply_GetPlateSet</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getplatesecurity-proto-3205">GetPlateSecurity</a></td>
-<td>获取板块下的股票</td>
-<td>OnReply_GetPlateSecurity</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getreference-proto-3206">GetReference</a></td>
-<td>获取相关股票</td>
-<td>OnReply_GetReference</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getownerplate-proto-3207">GetOwnerPlate</a></td>
-<td>获取股票所属的板块</td>
-<td>OnReply_GetOwnerPlate</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getholdingchangelist-proto-3208">GetHoldingChangeList</a></td>
-<td>获取大股东持股变化列表</td>
-<td>OnReply_GetHoldingChangeList</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getoptionchain-proto-3209">GetOptionChain</a></td>
-<td>筛选期权</td>
-<td>OnReply_GetOptionChain</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getwarrant-proto-3210">GetWarrant</a></td>
-<td>筛选窝轮</td>
-<td>OnReply_GetWarrant</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getcapitalflow-proto-3211">GetCapitalFlow</a></td>
-<td>获取资金流向</td>
-<td>OnReply_GetCapitalFlow</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getcapitaldistribution-proto-3212">GetCapitalDistribution</a></td>
-<td>获取资金分布</td>
-<td>OnReply_GetCapitalDistribution</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getusersecurity-proto-3213">GetUserSecurity</a></td>
-<td>获取自选股分组下的股票</td>
-<td>OnReply_GetUserSecurity</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-modifyusersecurity-proto-3214">ModifyUserSecurity</a></td>
-<td>修改自选股分组下的股票</td>
-<td>OnReply_ModifyUserSecurity</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getipolist-proto-3217ipo">GetIpolist</a></td>
-<td>获取ipo数据</td>
-<td>OnReply_GetIpoList</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getcodechange-proto-3216">GetCodeChange</a></td>
-<td>获取股票代码变更</td>
-<td>OnReply_GetCodeChange</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getfutureinfo-proto-3218">GetFutureInfo</a></td>
-<td>获取期货合约资料</td>
-<td>OnReply_GetFutureInfo</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-stockfilter-proto-3215">StockFilter</a></td>
-<td>筛选股票</td>
-<td>OnReply_StockFilter</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-requesttradedate-proto-3219">RequestTradeDate</a></td>
-<td>在线拉取交易日</td>
-<td>OnReply_RequestTradeDate</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-setpricereminder-proto-3220">SetPriceReminder</a></td>
-<td>设置到价提醒</td>
-<td>OnReply_SetPriceReminder</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getpricereminder-proto-3221">GetPriceReminder</a></td>
-<td>获取到价提醒</td>
-<td>OnReply_GetPriceReminder</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-getusersecuritygroup-proto-3222">GetUserSecurityGroup</a></td>
-<td>获取自选股分组</td>
-<td>OnReply_GetUserSecurityGroup</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="ftspi-qot">
-<h2>FTSPI_Qot行情推送接收接口函数<a class="headerlink" href="#ftspi-qot" title="永久链接至标题">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="41%" />
-<col width="59%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">回调函数（点开链接可查看具体协议）</th>
-<th class="head">功能简介</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="../protocol/base_define.html#notify-proto-1003">Notify</a></td>
-<td>推送通知</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebasicqot-proto-3005">UpdateBasicQot</a></td>
-<td>推送基本行情</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatekl-proto-3007k">UpdateKL</a></td>
-<td>推送K线</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatert-proto-3009">UpdateRT</a></td>
-<td>推送分时</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updateticker-proto-3011">UpdateTicker</a></td>
-<td>推送逐笔</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updateorderbook-proto-3013">UpdateOrderBook</a></td>
-<td>推送买卖盘</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatebroker-proto-3015">UpdateBroker</a></td>
-<td>推送经纪队列</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="../protocol/quote_protocol.html#qot-updatepricereminder-proto-3019">UpdatePriceReminder</a></td>
-<td>推送到价提醒通知</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p class="last">旧的github文档已于2020年11月16日正式停止访问。</p>
 </div>
 
-
-           </div>
-           <div class="articleComments">
-            
-           </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Trade_API.html" class="btn btn-neutral float-right" title="交易API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Base_API.html" class="btn btn-neutral" title="基础API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
+<footer>
   <div role="contentinfo">
     <p>
         &copy; 版权所有 2020, futu.
-
     </p>
   </div> 
-
 </footer>
 
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'3.26',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-  
- 
-<script type="text/javascript">
-    console.log("Layout By futu-api");
-</script>
-
+<script type="text/javascript" src="../_static/js/theme.js"></script>
 
 </body>
 </html>
